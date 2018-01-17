@@ -1,0 +1,23 @@
+---
+title: "Homework 2 Instructions"
+author: "Chris Merkord"
+date: "updated January 17, 2018"
+output: html_document
+---
+
+##
+
+## Set up your Homework 2 project
+
+1. Follow D2L link to initiate hw2 repo
+2. Create new RStudio project (select version control option)
+3. Create a new file named README.md
+
+## Work through Chapter 2 in GSwR
+3. Read about Excel but don’t manually enter the data into Excel
+4. Download the datasets (pg 40)
+5. Unzip the zip file
+6. Move the compensation.csv file to your hw2 project directory
+
+# Work through Chapter 3 in GSwR
+

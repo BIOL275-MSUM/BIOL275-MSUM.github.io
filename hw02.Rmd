@@ -2,10 +2,8 @@
 title: "Homework 2 Instructions"
 author: "Chris Merkord"
 date: "updated January 17, 2018"
-output: html_document
+output: github_document
 ---
-
-##
 
 ## Set up your Homework 2 project
 

@@ -17,7 +17,7 @@ You will work through some chapters in the lab textbook and "turn in" your homew
 
 ## Project setup
 
-You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw1.md) last week.
+You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.md) last week.
 
 As a reminder, here are the instructions for creating your project:
 

@@ -1,0 +1,135 @@
+---
+title: "Homework 3"
+date: "Updated 2017-01-24"
+output: github_document
+---
+
+The purpose of Lab 3 is to introduce you to plotting in R using the `ggplot2` package, creating R Markdown files, and using R Markdown files to Knit other types of documents.
+
+You will work through some chapters in the lab textbook and "turn in" your homework by pushing your files to a GitHub repository for Homework 3. In addition, you will perform our first peer reviews in lab.
+
+## Overview
+
+- [Project setup](#project-setup)
+- [Getting your data into R](#getting-your-data-into-r)
+- [Data management, manipulation, and exploration with *dplyr*](#data-management-manipulation-and-exploration-with-dplyr)
+- [What to turn in](#what-to-turn-in)
+
+## Project setup
+
+You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.md) and [Homework 2](hw02.md) last week.
+
+1. [Claim](claim_repo.md) your Homework 3 repository on GitHub.
+2. Create a new RStudio project using the version control option.
+3. Add the .gitignore and .RProj files to your git repo, commit, and push.
+3. Create a README (in RStudio) for the new repository and commit and push it.
+4. Create a new R script for the homework assignment, e.g. `hw3.R`, and commit and push it.
+
+As a reminder, be sure to keep all your files in your project directory, including R scripts and data files. This is the simplest and most effective way to avoid problems when managing your files.
+
+Another reminder: never create a file on Github. Always create files on your in RStudio local machine and commit and push them to Github.
+
+## Visualizing your data
+
+This is the self-guided part of the lab. 
+
+In your `hw3.r` script, work through the examples in _Getting Started with R_ Chapter 4: Visualizing your data.
+
+When you get to section 4.5 on saving your graphs, definitely give it a try. You should see a .png file (an image file optimized for viewing on the internet) created in your project directory. At this point, do not Add that .png file to your git repo (i.e. do not stage or commit it). Instead, once you are done viewing it, delete it and comment out the ggsave line in your R script, for example:
+
+```{r eval=FALSE}
+# ggsave("ThatCoolHistogramOfFruit.png")
+```
+
+To finalize your R script for grading, be sure it has a header section (comments) like you learned how to do in Chapter 1, and comments throughout the code to make it readable and show your reviewers that you actually knew what you were typing.
+
+## Introducing R Markdown
+
+Until now, you have been relying on reviewers to read your R scripts and trust you that the scripts work. If a reviewer really wanted to check, they could do one of two things:
+
+- Copy your script text from Github and paste it into their own RStudio window. Of course this would only work if they also downloaded the necessary data file and set their working directory appropriately. That's a lot of work!
+- Clone your repo to their machine, just like you did when you created your RStudio project today. Because all the files get "downloaded", i.e. cloned to their machine, including the .RProj file that sets the working directory, then the whole script should work without any further work. That's easy!
+
+Of course, both of these steps require a lot of work by the reviewer. Wouldn't it be nice if there was a way to see whether somebody's R code works without having to run it yourself?
+
+Here you will learn about one way to do just that!
+
+RStudio offers you the ability to create special markdown scripts known as R Markdown files wth the extension `.Rmd`. RStudio will then _knit_ these files into a regular `.md` markdown file. The only difference? Any code you put in your `.Rmd` file will be evaluated and the output will be shown in the `.md` file. Remember, the `.md` files are automatically rendered on Github so you see the pretty output, not the marked up text that created it.
+
+R Markdown files are an excellent way to present the results of an analysis in R.
+
+There are even different output options for R Markdown files. They can be used to _knit_ any of the following:
+
+- a markdown document, like we're doing here
+- an HTML document, like for a web page
+- a presentation, similar to PowerPoint
+- a PDF
+- and many more
+
+Certain R packages will even let you create dynamic, interactive web pages and presentations. Shiny is a great example (see their [gallery of example web pages](https://shiny.rstudio.com/gallery/))
+
+## Your first R Markdown script
+
+Now is your opportunity to try out R Markdown yourself. This is important because later in the semester you will be using R Markdown to create your class presentations.
+
+Here are the steps:
+
+1. Go to File > New File > R Markdown...
+2. On the left, select **From Template**
+3. Select **GitHub Document (Markdown)** and click OK.
+
+Your new script will be created. Be sure to save it right away as `hw03`. The appropriate `.Rmd` file extension will be added automatically when you save it. Go ahead and stage the new file, commit the change, and push the commit. That way you can roll back your file in case you accidentally mess it up later.
+
+You will notice the new `.Rmd` file has a couple of lines at the top. That's called the YAML header. The first line is the title. Go ahead and change the name to **Homework 3** (and save the file). Do not change the output type. It should remain **github_document**.
+
+The script comes with an example template to give you an idea of how this thing works.
+
+To see what the output is, click the **Knit** button, the one with a blue yarn ball next to it. You may be prompted to install some R packages before it will continue. Go ahead and do so.
+
+At this point, three things happen:
+
+1. R creates a new file named `hw03.md` by translating `hw03.Rmd`.
+2. R creates a new directory named `hw03_files` which contains any images shown in the `.md` file. This only happens if your `.md` file creates images. If not, this directory won't be created.
+3. A browser window opens automatically showing your rendered `.md` file.
+
+Notice that the rendered document contains both R code (nicely formatted by the way) and R output, in this case a graph. Wow!
+
+Now go back to the `.Rmd` file and look at the code to see how it was done. Basically the file will look like the README.md files you've been creating. The only new thing are what are known as _code chunks_, which start and end with three backticks (\`).
+
+### Your assignment
+
+Your assignment is to create a markdown document showing all of the figures you created in your `hw02.R` script. You will do this by copying the appropriate code into code chunks in your `.Rmd` file, and adding any necessary headings and text to explain what each figure represents.
+
+Here is how you should organize your markdown document:
+
+1. The YAML header
+2. A paragraph explaining what this document is for (e.g. to show the results of homework 3 and to prove you can use R Markdown).
+2. For each graph, create the following:
+    - a level 2 heading with the name of the graph
+    - a sentence describing the graph and what you are supposed to learn about it
+    - the code that generates the graph
+    - the graph itself
+3. A concluding heading and paragraph, which includes your name and a link to your homework 3 repository.
+
+That last one is so that if anyone ever prints your markdown document, there will be a breadcrumb leading back to its source.
+
+### Getting help
+
+There are two great resources for working with R Markdown files:
+
+1. the R Markdown Cheat Sheet
+2. the R Markdown Reference Guide
+
+You can download either of these PDF documents in RStudio by going to Help > Cheat Sheets. I suggest you download both and keep them handy. You could even go old-school and print them like I do.
+
+## What to turn in
+
+Your repository should end up with the following seven files in it:
+
+1. the R project file `hw3-username.Rproj`
+2. an R script `hw3.R`
+3. an Rmd file `hw3.Rmd`
+4. an md file `hw3.md` (note: this is generated automatically by R)
+5. the dataset `compensation.csv`
+6. a README file `README.md` for the repository
+7. `.gitignore`

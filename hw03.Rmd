@@ -11,8 +11,9 @@ You will work through some chapters in the lab textbook and "turn in" your homew
 ## Overview
 
 - [Project setup](#project-setup)
-- [Getting your data into R](#getting-your-data-into-r)
-- [Data management, manipulation, and exploration with *dplyr*](#data-management-manipulation-and-exploration-with-dplyr)
+- [Visualizing your data](#visualizing-your-data)
+- [Introducing R Markdown](#introducing-r-markdown)
+- [Your first R Markdown script](#your-first-r-markdown-script)
 - [What to turn in](#what-to-turn-in)
 
 ## Project setup
@@ -45,6 +46,12 @@ To finalize your R script for grading, be sure it has a header section (comments
 
 ## Introducing R Markdown
 
+This section introduces you to the markup language *R Markdown*, which is very similar to *markdown* but with a few key differences.
+
+This section is informative only. Your actual assignment is described in the next section, [Your first R Markdown script](#your-first-r-markdown-script).
+
+### When to use R Markdown
+
 Until now, you have been relying on reviewers to read your R scripts and trust you that the scripts work. If a reviewer really wanted to check, they could do one of two things:
 
 - Copy your script text from Github and paste it into their own RStudio window. Of course this would only work if they also downloaded the necessary data file and set their working directory appropriately. That's a lot of work!
@@ -52,7 +59,9 @@ Until now, you have been relying on reviewers to read your R scripts and trust y
 
 Of course, both of these steps require a lot of work by the reviewer. Wouldn't it be nice if there was a way to see whether somebody's R code works without having to run it yourself?
 
-Here you will learn about one way to do just that!
+Here you will learn about one way to do just that: *R Markdown*!
+
+### How R Markdown works
 
 RStudio offers you the ability to create special markdown scripts known as R Markdown files wth the extension `.Rmd`. RStudio will then _knit_ these files into a regular `.md` markdown file. The only difference? Any code you put in your `.Rmd` file will be evaluated and the output will be shown in the `.md` file. Remember, the `.md` files are automatically rendered on Github so you see the pretty output, not the marked up text that created it.
 
@@ -70,6 +79,10 @@ Certain R packages will even let you create dynamic, interactive web pages and p
 
 ## Your first R Markdown script
 
+**This is part of you actual assignment today**. You will create a new .Rmd file, copy code into it from your R script created above, add some nice text and headings, knit, and push your files to Github. The resulting .md file will form the main part of your grade for this assignment.
+
+### Getting started
+
 Now is your opportunity to try out R Markdown yourself. This is important because later in the semester you will be using R Markdown to create your class presentations.
 
 Here are the steps:
@@ -83,6 +96,8 @@ Your new script will be created. Be sure to save it right away as `hw03`. The ap
 You will notice the new `.Rmd` file has a couple of lines at the top. That's called the YAML header. The first line is the title. Go ahead and change the name to **Homework 3** (and save the file). Do not change the output type. It should remain **github_document**.
 
 The script comes with an example template to give you an idea of how this thing works.
+
+### Knitting
 
 To see what the output is, click the **Knit** button, the one with a blue yarn ball next to it. You may be prompted to install some R packages before it will continue. Go ahead and do so.
 
@@ -98,7 +113,7 @@ Now go back to the `.Rmd` file and look at the code to see how it was done. Basi
 
 ### Your assignment
 
-Your assignment is to create a markdown document showing all of the figures you created in your `hw02.R` script. You will do this by copying the appropriate code into code chunks in your `.Rmd` file, and adding any necessary headings and text to explain what each figure represents.
+Your assignment is to create a markdown document showing all of the figures you created in your `hw03.R` script. You will do this by copying the appropriate code into code chunks in your `.Rmd` file, and adding any necessary headings and text to explain what each figure represents.
 
 Here is how you should organize your markdown document:
 

@@ -1,0 +1,37 @@
+---
+title: "Lab Project"
+date: "Updated 2017-01-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+
+A major part of the lab will be to develop your own data science project in R.
+
+You will choose a dataset to use and a question to answer. You will present your results to the class and at the [MSUM’s Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is Feb. 25).
+
+## Purpose
+
+The purpose of the lab project is to provide you an opportunity to learn how to work with data, explore datasets, and perform statistical analyses in R while trying to answer a question that interests _you_.
+
+## Datasets
+
+You may choose one of the following datasets, or choose another publicly available dataset, or use your own dataset, for example if you are involved in an ongoing research project.
+
+### Datasets in R
+
+There are literally thousands of datasets available in R
+
+### Other public datasets
+
+Here are some ideas for other public datasets. You will have only a short time to acquire your dataset.
+
+- [eBird data](https://ebird.org/science) on bird observations
+
+And finally, the internet has lots of other lists of datasets, for example:
+
+- [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets). A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone! 

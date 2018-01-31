@@ -1,6 +1,7 @@
 ---
 title: "Claiming a GitHub Classroom repository"
-output: github_document
+date: "Updated 2017-01-24"
+output: html_document
 ---
 
 Behind the scenes, your instructor is using [GitHub Classroom](https://classroom.github.com/classrooms) to help you create repositories for assignments such as homework and projects. 

@@ -79,7 +79,7 @@ You will create a new RStudio project and Git repository for this assignment.
 
 Here are the instructions for creating your project:
 
-1. Claim your Homework 1 repository on GitHub. Detailed instructions on claiming a repository can be found [here](claim_repo.md).
+1. Claim your Homework 1 repository on GitHub. Detailed instructions on claiming a repository can be found [here](claim_repo.html).
 2. Create a new RStudio project (select version control option). Pay very careful attention to the folder on your computer where you create the project. You should be able to navigate to this folder in your file browser. If you are using a USB flash drive, create the new project right on your flash drive.
 
 An intro to git: staging, committing, and pushing:

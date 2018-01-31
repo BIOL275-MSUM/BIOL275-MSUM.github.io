@@ -20,7 +20,7 @@ You will work through some chapters in the lab textbook and "turn in" your homew
 
 You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.html) and [Homework 2](hw02.html) last week.
 
-1. [Claim](claim_repo.md) your Homework 3 repository on GitHub.
+1. [Claim](claim_repo.html) your Homework 3 repository on GitHub.
 2. Create a new RStudio project using the version control option.
 3. Add the .gitignore and .RProj files to your git repo, commit, and push.
 3. Create a README (in RStudio) for the new repository and commit and push it.

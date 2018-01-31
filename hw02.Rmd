@@ -1,7 +1,7 @@
 ---
 title: "Homework 2"
 date: "Updated 2017-01-24"
-output: github_document
+output: html_document
 ---
 
 The purpose of Lab 2 is to show you how to import datasets into R, inspect them, and perform some basic manipulations on them.
@@ -69,7 +69,51 @@ Go through all of Chapter 3. If you are feeling completely lost, that's ok. We'l
 Your repository should end up with the following five files in it:
 
 1. the R project file `hw2-username.Rproj`
-2. an R script `hw2.R`
+2. an R script `homework_2.R`
 3. the dataset `compensation.csv`
 4. a README file `README.md` for the repository
 5. `.gitignore`
+
+You will be graded on the following:
+
+- Do you have the basic structure of the repository correct (see the file list above)?
+    - the `compensation.csv` dataset should be in the repo.
+    - the README should have at least a heading and one paragraph description of the project.
+- Does your R script have an appropriate header comment (see section 1.6 in the lab book)?
+- Does your R script appear to have the correct code? At a minimum it should:
+    - have all `library()` commands at the top of the script, under the header comment
+    - import `compensation.csv` using `read_csv()` (not `read.csv()`)
+    - use functions like `str()`, `dim()`, `head()`, `tail()`, and `glimpse()`
+    
+### Peer review assignments
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+library(DT)
+
+random_assign <- function(x) {
+  repeat{
+    out <- sample(x, length(x))
+    if (!any(x == out)) {
+      break
+    }
+  }
+  out
+}
+roster <- 
+  read_csv("data/roster_2018.csv") %>% 
+  arrange(section, github)
+set.seed(3)
+hw_2 <-
+  roster %>% 
+  group_by(section) %>% 
+  mutate(rev_1 = random_assign(github),
+         rev_2 = random_assign(github),
+         same = rev_1 == rev_2) %>% 
+  ungroup() %>% 
+  select(-section, -last_name, -same)
+#any(hw_2$same)
+datatable(hw_2, colnames = c("You", "Reviewer 1", "Reviewer 2"))
+```
+

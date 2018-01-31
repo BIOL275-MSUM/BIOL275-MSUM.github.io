@@ -18,7 +18,7 @@ You will work through some chapters in the lab textbook and "turn in" your homew
 
 ## Project setup
 
-You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.md) and [Homework 2](hw02.md) last week.
+You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.md) and [Homework 2](hw02.html) last week.
 
 1. [Claim](claim_repo.md) your Homework 3 repository on GitHub.
 2. Create a new RStudio project using the version control option.

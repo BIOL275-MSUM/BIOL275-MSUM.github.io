@@ -1,0 +1,14 @@
+---
+title: "BIOL 275 @ MSUM Home"
+author: "Chris Merkord"
+date: "January 31, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Homework
+
+Homework 1

@@ -1,5 +1,5 @@
 ---
-title: "BIOL 275 @ MSUM Home"
+title: "BIOL 275 @ MSUM"
 date: "updated January 31, 2018"
 output: html_document
 ---
@@ -8,6 +8,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Topics
+
+- [Claiming a GitHub Classroom repository](claim_repo.html)
+
 ## Homework
 
 - [Homework 1](hw01.html)
+- [Homework 2](hw02.html)
+- [Homework 3](hw03.html)
+
+## Troubleshooting
+

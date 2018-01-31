@@ -24,7 +24,7 @@ You will create a new RStudio project and Git repository for this assignment, ju
 2. Create a new RStudio project using the version control option.
 3. Add the .gitignore and .RProj files to your git repo, commit, and push.
 3. Create a README (in RStudio) for the new repository and commit and push it.
-4. Create a new R script for the homework assignment, e.g. `hw3.R`, and commit and push it.
+4. Create a new R script for the homework assignment, e.g. `homework_3.R`, and commit and push it.
 
 As a reminder, be sure to keep all your files in your project directory, including R scripts and data files. This is the simplest and most effective way to avoid problems when managing your files.
 

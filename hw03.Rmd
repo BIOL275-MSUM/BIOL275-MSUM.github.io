@@ -1,7 +1,7 @@
 ---
 title: "Homework 3"
-date: "Updated 2017-01-24"
-output: github_document
+date: "Updated 2017-01-31"
+output: html_document
 ---
 
 The purpose of Lab 3 is to introduce you to plotting in R using the `ggplot2` package, creating R Markdown files, and using R Markdown files to Knit other types of documents.
@@ -18,7 +18,7 @@ You will work through some chapters in the lab textbook and "turn in" your homew
 
 ## Project setup
 
-You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.md) and [Homework 2](hw02.html) last week.
+You will create a new RStudio project and Git repository for this assignment, just like you did for [Homework 1](hw01.html) and [Homework 2](hw02.html) last week.
 
 1. [Claim](claim_repo.md) your Homework 3 repository on GitHub.
 2. Create a new RStudio project using the version control option.

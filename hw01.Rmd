@@ -1,7 +1,7 @@
 ---
 title: "Homework 1"
 date: "Updated 2017-01-17"
-output: github_document
+output: html_document
 ---
 
 The purpose of Lab 1 is to introduce you to R, RStudio, Git, and GitHub.

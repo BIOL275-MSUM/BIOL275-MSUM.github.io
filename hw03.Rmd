@@ -1,12 +1,12 @@
 ---
 title: "Homework 3"
-date: "Updated 2017-01-31"
+date: "Updated 2017-02-07"
 output: html_document
 ---
 
-The purpose of Lab 3 is to introduce you to plotting in R using the `ggplot2` package, creating R Markdown files, and using R Markdown files to Knit other types of documents.
+The purpose of Lab 3 is to introduce you to plotting in R using the `ggplot2` package, creating R Markdown files, and using R Markdown files to Knit github markdown documents.
 
-You will work through some chapters in the lab textbook and "turn in" your homework by pushing your files to a GitHub repository for Homework 3. In addition, you will perform our first peer reviews in lab.
+You will work through some chapters in the lab textbook and "turn in" your homework by pushing your files to a GitHub repository for Homework 3.
 
 ## Overview
 
@@ -148,3 +148,48 @@ Your repository should end up with the following seven files in it:
 5. the dataset `compensation.csv`
 6. a README file `README.md` for the repository
 7. `.gitignore`
+
+You will be graded on the following:
+
+- Do you have the basic structure of the repository correct (see the file list above)?
+    - the `compensation.csv` dataset should be in the repo.
+    - the README should have at least a heading and one paragraph description of the project.
+- Does your R script have an appropriate header comment (see section 1.6 in the lab book)?
+- Does your .md document have the requested content, including:
+    - headings to separate the components of the assignment
+    - text paragraphs to explain what each code or plot output shows
+    - at least one of each plot type (scatterplot, bar chart, histogram)
+    - enough code, console output, and plot output to "tell the story" about how you created the figures
+
+### Peer review assignments
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+library(DT)
+
+random_assign <- function(x) {
+  repeat{
+    out <- sample(x, length(x))
+    if (!any(x == out)) {
+      break
+    }
+  }
+  out
+}
+roster <- 
+  read_csv("data/roster_2018.csv") %>% 
+  arrange(section, github)
+set.seed(4)
+hw_3 <-
+  roster %>% 
+  group_by(section) %>% 
+  mutate(rev_1 = random_assign(github),
+         rev_2 = random_assign(github),
+         same = rev_1 == rev_2) %>% 
+  ungroup() %>% 
+  select(-section, -last_name, -same)
+#any(hw_3$same)
+datatable(hw_3, colnames = c("You", "Reviewer 1", "Reviewer 2"))
+```
+

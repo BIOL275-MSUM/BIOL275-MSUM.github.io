@@ -180,16 +180,22 @@ random_assign <- function(x) {
 roster <- 
   read_csv("data/roster_2018.csv") %>% 
   arrange(section, github)
-set.seed(4)
-hw_3 <-
-  roster %>% 
-  group_by(section) %>% 
-  mutate(rev_1 = random_assign(github),
-         rev_2 = random_assign(github),
+
+hw_3 <- group_by(roster, section)
+set.seed(7)
+hw_3 <- 
+  hw_3 %>% 
+  mutate(rev_1 = random_assign(github))
+set.seed(8)
+hw_3 <- 
+  hw_3 %>% 
+  mutate(rev_2 = random_assign(github),
          same = rev_1 == rev_2) %>% 
   ungroup() %>% 
-  select(-section, -last_name, -same)
-#any(hw_3$same)
-datatable(hw_3, colnames = c("You", "Reviewer 1", "Reviewer 2"))
+  select(-section, -last_name)
+any(hw_3$same)
+hw_3 %>% 
+  select(-same) %>% 
+  datatable(colnames = c("You", "Reviewer 1", "Reviewer 2"))
 ```
 

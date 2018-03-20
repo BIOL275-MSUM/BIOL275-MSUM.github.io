@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [Claiming a GitHub Classroom repository](claim_repo.html)
 - [Peer review guidelines](peer_review.html)
+- [Github notifications](github_notifications.html)
 - [Lab Project Guidelines](lab_project.html)
 
 ## Homework

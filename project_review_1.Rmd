@@ -29,13 +29,13 @@ set.seed(10)
 proj_1 <- 
   proj_1 %>% 
   mutate(rev_1 = random_assign(github))
-set.seed(13)
+set.seed(14)
 proj_1 <- 
   proj_1 %>% 
   mutate(rev_2 = random_assign(github),
          same = rev_1 == rev_2) %>% 
   ungroup()
-# filter(proj_1, rev_1 == rev_2) %>% 
+# filter(proj_1, rev_1 == rev_2) %>%
 #   select(-section, -last_name)
 
 proj_1 %>% 

@@ -25,11 +25,11 @@ roster <-
   arrange(section, github)
 
 proj_1 <- group_by(roster, section)
-set.seed(109)
+set.seed(10)
 proj_1 <- 
   proj_1 %>% 
   mutate(rev_1 = random_assign(github))
-set.seed(4067)
+set.seed(13)
 proj_1 <- 
   proj_1 %>% 
   mutate(rev_2 = random_assign(github),

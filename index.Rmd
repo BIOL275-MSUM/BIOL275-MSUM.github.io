@@ -20,6 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Homework 1](hw01.html)
 - [Homework 2](hw02.html)
 - [Homework 3](hw03.html)
+- [Project Review 1](project_review_1.html)
 
 ## Troubleshooting
 

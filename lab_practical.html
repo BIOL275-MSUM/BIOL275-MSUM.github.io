@@ -137,9 +137,13 @@ $(document).ready(function () {
 <li>Use the Version Control + GitHub method to clone the repository to your computer.</li>
 </ul></li>
 <li>Save <a href="sample-data.csv" class="uri">sample-data.csv</a> into your project directory. Mac users will need to Ctrl+click and select Download File.</li>
-<li>Load the tidverse package. This is the only package you will need.</li>
-<li>Create a new R script and save it into the project directory.</li>
-<li>Read the dataset and left assign it to an object in the R environment</li>
+<li>Load the <code>tidverse</code> package. This is the only package you will need.</li>
+<li>Create a new R script and save it into the project directory. Put code for all the following steps in this R script.</li>
+<li>Read the dataset and left assign it to an object in the R environment.
+<ul>
+<li>Do not use the import dialog in RStudio.</li>
+<li>Do write the appropriate R code and include it in your script.</li>
+</ul></li>
 <li>Calculate the mean and standard error of height for species A and B only. The output should be a tibble with exactly three columns: species, mean height, and standard error of height.
 <ul>
 <li>Filter variable Species to exclude species “C”.</li>
@@ -150,6 +154,67 @@ $(document).ready(function () {
 <li>Create a ggplot showing a histogram of height with facets for Species (showing all three species)</li>
 <li>Create a ggplot showing a scatterplot of height and weight. (using all three species)</li>
 </ol>
+</div>
+<div id="required-packages" class="section level2">
+<h2>Required packages</h2>
+<p>The only package you will be required to install and load is <code>tidyverse</code>.</p>
+</div>
+<div id="functions-to-know" class="section level2">
+<h2>Functions to know</h2>
+<p>You will need to know a variety of functions including:</p>
+<ul>
+<li>basic R functions:
+<ul>
+<li><code>library()</code></li>
+</ul></li>
+<li>tidyverse functions for data import, tidying, and manipulating:
+<ul>
+<li><code>read_csv()</code> — not read.csv()</li>
+<li><code>select()</code></li>
+<li><code>filter()</code> using the logical operators/functions ==, !=, &lt;, &gt;, &lt;=, &gt;=, and is.na()</li>
+<li><code>mutate()</code></li>
+<li><code>group_by()</code></li>
+<li><code>summarize()</code> using these summary functions:
+<ul>
+<li><code>mean()</code></li>
+<li><code>var()</code></li>
+<li><code>n()</code></li>
+</ul></li>
+</ul></li>
+<li>ggplot functions for plotting
+<ul>
+<li><code>ggplot()</code> and <code>aes()</code></li>
+<li><code>geom_histogram()</code></li>
+<li><code>geom_point()</code> [for scatterplots]</li>
+<li>functions for adding labels to a ggplot
+<ul>
+<li><code>labs()</code>, or the following:</li>
+<li><code>ggtitle()</code></li>
+<li><code>xlab()</code></li>
+<li><code>ylab()</code></li>
+</ul></li>
+</ul></li>
+<li>operators
+<ul>
+<li><code>&lt;-</code> [left assign]</li>
+<li><code>%&gt;%</code> [pipe]</li>
+<li><code>+</code> [used after calling <code>ggplot()</code>]</li>
+</ul></li>
+</ul>
+</div>
+<div id="scoring" class="section level2">
+<h2>Scoring</h2>
+<p>I will score the code and the plots in class when you are done.</p>
+<p>The score will be out of 100 and will be graded holistically.</p>
+<p>Rubric:</p>
+<ul>
+<li>A+ = 100 (earned for exceptionally thoughtful, creative, )</li>
+<li>A = 95</li>
+<li>B = 85</li>
+<li>C = 75</li>
+<li>D = 65</li>
+<li>F = 55</li>
+</ul>
 </div>
 
 

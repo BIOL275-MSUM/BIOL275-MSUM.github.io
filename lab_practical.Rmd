@@ -32,9 +32,11 @@ You will be given a dataset and a prompt. Here is an example:
     - Claim your repository
     - Use the Version Control + GitHub method to clone the repository to your computer.
 2. Save [sample-data.csv](sample-data.csv) into your project directory. Mac users will need to Ctrl+click and select Download File.
-3. Load the tidverse package. This is the only package you will need.
-4. Create a new R script and save it into the project directory.
-5. Read the dataset and left assign it to an object in the R environment
+3. Load the `tidverse` package. This is the only package you will need.
+4. Create a new R script and save it into the project directory. Put code for all the following steps in this R script.
+5. Read the dataset and left assign it to an object in the R environment. 
+    - Do not use the import dialog in RStudio.
+    - Do write the appropriate R code and include it in your script.
 6. Calculate the mean and standard error of height for species A and B only. The output should be a tibble with exactly three columns: species, mean height, and standard error of height.
     - Filter variable Species to exclude species "C".
     - Group by Species and summarize, calculating the mean, variance, and sample size (n) of each group. Don't forget to ungroup afterwards.
@@ -42,3 +44,52 @@ You will be given a dataset and a prompt. Here is an example:
     - Remove all columns except the three requested
 7. Create a ggplot showing a histogram of height with facets for Species (showing all three species)
 8. Create a ggplot showing a scatterplot of height and weight.  (using all three species)
+
+## Required packages
+
+The only package you will be required to install and load is `tidyverse`.
+
+## Functions to know
+
+You will need to know a variety of functions including:
+
+- basic R functions:
+    - `library()`
+- tidyverse functions for data import, tidying, and manipulating:
+    - `read_csv()` — not read.csv()
+    - `select()`
+    - `filter()`  using the logical operators/functions ==, !=, <, >, <=, >=, and is.na()
+    - `mutate()`
+    - `group_by()`
+    - `summarize()` using these summary functions:
+        - `mean()`
+        - `var()`
+        - `n()`
+- ggplot functions for plotting
+    - `ggplot()` and `aes()`
+    - `geom_histogram()`
+    - `geom_point()`   [for scatterplots]
+    - functions for adding labels to a ggplot
+        - `labs()`, or the following: 
+        - `ggtitle()`
+        - `xlab()`
+        - `ylab()`
+- operators
+    - `<-`   [left assign]
+    - `%>%`  [pipe]
+    - `+`    [used after calling `ggplot()`]
+
+## Scoring
+
+I will score the code and the plots in class when you are done.
+
+The score will be out of 100 and will be graded holistically.
+
+Rubric:
+
+- A+ = 100   (earned for exceptionally thoughtful, creative, )
+- A = 95
+- B = 85
+- C = 75
+- D = 65
+- F = 55

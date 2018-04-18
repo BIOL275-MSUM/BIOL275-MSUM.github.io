@@ -8,4 +8,20 @@ output: html_document
 
 Here is a sample dataset:
 
+```{r create-example, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+set.seed(1)
+tibble(
+  A = rnorm(10, 5, 1),
+  B = rnorm(10, 10, 2),
+  C = rnorm(10, 20, 4)
+) %>% 
+  gather(species, height) %>% 
+  mutate(add = rnorm(30, 1, .1),
+         mult = rnorm(30, 3, .1),
+         weight = (height + add) * mult) %>% 
+  select(-add, -mult) %>% 
+  write.csv("sample-data.csv", row.names = FALSE)
+```
 
+- [sample-data.csv](sample-data.csv)

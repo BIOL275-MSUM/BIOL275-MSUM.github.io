@@ -140,12 +140,15 @@ $(document).ready(function () {
 <li>Load the tidverse package. This is the only package you will need.</li>
 <li>Create a new R script and save it into the project directory.</li>
 <li>Read the dataset and left assign it to an object in the R environment</li>
-<li>Select only the variables species, height, and weight.</li>
+<li>Calculate the mean and standard error of height for species A and B only. The output should be a tibble with exactly three columns: species, mean height, and standard error of height.
+<ul>
 <li>Filter variable Species to exclude species “C”.</li>
 <li>Group by Species and summarize, calculating the mean, variance, and sample size (n) of each group. Don’t forget to ungroup afterwards.</li>
 <li>Calculate a new variable for standard error using the formula <code>se = sqrt(var/n)</code>.</li>
-<li>Create a ggplot showing a histogram of height with facets for Species.</li>
-<li>Create a ggplot showing a scatterplot of height and weight.</li>
+<li>Remove all columns except the three requested</li>
+</ul></li>
+<li>Create a ggplot showing a histogram of height with facets for Species (showing all three species)</li>
+<li>Create a ggplot showing a scatterplot of height and weight. (using all three species)</li>
 </ol>
 </div>
 

@@ -4,9 +4,11 @@ date: "Updated 2017-02-21"
 output: html_document
 ---
 
-## Sample dataset
+## Format of the practical
 
-Here is a sample dataset:
+You will demonstrate in lab using R and RStudio that you know how to create a project, save data files into it, create an R script, and write R code. I will grade the assignment in lab when you are finished with it, before you leave.
+
+## Practice example
 
 ```{r create-example, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
@@ -24,4 +26,18 @@ tibble(
   write.csv("sample-data.csv", row.names = FALSE)
 ```
 
-- [sample-data.csv](sample-data.csv)
+You will be given a dataset and a prompt. Here is an example:
+
+1. Create a new project in RStudio
+    - Claim your repository
+    - Use the Version Control + GitHub method to clone the repository to your computer.
+2. Save [sample-data.csv](sample-data.csv) into your project directory. Mac users will need to Ctrl+click and select Download File.
+3. Load the tidverse package. This is the only package you will need.
+3. Create a new R script and save it into the project directory.
+3. Read the dataset and left assign it to an object in the R environment
+4. Select only the variables species, height, and weight.
+5. Filter variable Species to exclude species "C".
+6. Group by Species and summarize, calculating the mean, variance, and sample size (n) of each group. Don't forget to ungroup afterwards.
+7.	Calculate a new variable for standard error using the formula `se = sqrt(var/n)`.
+8. Create a ggplot showing a histogram of height with facets for Species.
+9.	Create a ggplot showing a scatterplot of height and weight.

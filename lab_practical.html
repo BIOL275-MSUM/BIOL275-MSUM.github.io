@@ -123,12 +123,30 @@ $(document).ready(function () {
 </div>
 
 
-<div id="sample-dataset" class="section level2">
-<h2>Sample dataset</h2>
-<p>Here is a sample dataset:</p>
+<div id="format-of-the-practical" class="section level2">
+<h2>Format of the practical</h2>
+<p>You will demonstrate in lab using R and RStudio that you know how to create a project, save data files into it, create an R script, and write R code. I will grade the assignment in lab when you are finished with it, before you leave.</p>
+</div>
+<div id="practice-example" class="section level2">
+<h2>Practice example</h2>
+<p>You will be given a dataset and a prompt. Here is an example:</p>
+<ol style="list-style-type: decimal">
+<li>Create a new project in RStudio
 <ul>
-<li><a href="sample-data.csv" class="uri">sample-data.csv</a></li>
-</ul>
+<li>Claim your repository</li>
+<li>Use the Version Control + GitHub method to clone the repository to your computer.</li>
+</ul></li>
+<li>Save <a href="sample-data.csv" class="uri">sample-data.csv</a> into your project directory. Mac users will need to Ctrl+click and select Download File.</li>
+<li>Load the tidverse package. This is the only package you will need.</li>
+<li>Create a new R script and save it into the project directory.</li>
+<li>Read the dataset and left assign it to an object in the R environment</li>
+<li>Select only the variables species, height, and weight.</li>
+<li>Filter variable Species to exclude species “C”.</li>
+<li>Group by Species and summarize, calculating the mean, variance, and sample size (n) of each group. Don’t forget to ungroup afterwards.</li>
+<li>Calculate a new variable for standard error using the formula <code>se = sqrt(var/n)</code>.</li>
+<li>Create a ggplot showing a histogram of height with facets for Species.</li>
+<li>Create a ggplot showing a scatterplot of height and weight.</li>
+</ol>
 </div>
 
 

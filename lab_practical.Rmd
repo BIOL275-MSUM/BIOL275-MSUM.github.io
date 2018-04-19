@@ -37,14 +37,18 @@ You will be given a dataset and a prompt. Here is an example:
 5. Read the dataset and left assign it to an object in the R environment. 
     - Do not use the import dialog in RStudio.
     - Do write the appropriate R code and include it in your script.
-6. Calculate the mean and standard error of height for species A and B. Steps in this analysis might include:
-    - Exclude species "C".
-    - For each species, calculating the mean, variance, and sample size (n) of each group.
-    - For each species, calculate a new variable for standard error using the formula `se = sqrt(var/n)`.
-    - Remove all columns except the three requested
-    - Print (in the console) a tibble with 3 colums: species, mean height, and standard error of the mean height
-7. Create a ggplot showing a histogram of height with facets for Species (showing all three species)
-8. Create a ggplot showing a scatterplot of height and weight.  (using all three species)
+6. Print (in the console) a tibble with 3 colums: 
+    - species,
+    - mean height,
+    - standard error of the mean height
+    This won't be spelled out on the practical, but steps in this analysis might include:
+    1. Exclude species `"C"` using `filter()`
+    2. For each species, calculating the mean, variance, and sample size (n) of each group using `group_by()` and `summarize`
+    3. For each species, calculate a new variable for standard error using `mutate()` and the formula `se = sqrt(var/n)`.
+    4. Remove all columns except the three requested (species, mean, SE) using `select`
+    5. Print (in the console) a tibble with 3 colums
+7. Create a ggplot showing a histogram of heights with facets for Species (showing all three species)
+8. Create a ggplot showing a scatterplot of heights and weights.  (using all three species)
 
 ## Required packages
 
@@ -59,7 +63,7 @@ You will need to know a variety of functions including:
 - tidyverse functions for data import, tidying, and manipulating:
     - `read_csv()` — not read.csv()
     - `select()`
-    - `filter()`  using the logical operators/functions ==, !=, <, >, <=, >=, and is.na()
+    - `filter()`  using the logical operators/functions `==`, `!=`, `<`, `>`, `<=`, `>=`, and the function `is.na()`
     - `mutate()`
     - `group_by()`
     - `summarize()` using these summary functions:
@@ -70,15 +74,17 @@ You will need to know a variety of functions including:
     - `ggplot()` and `aes()`
     - `geom_histogram()`
     - `geom_point()`   [for scatterplots]
+    - `facet_wrap()`
     - functions for adding labels to a ggplot
         - `labs()`, or the following: 
         - `ggtitle()`
         - `xlab()`
         - `ylab()`
 - operators
-    - `<-`   [left assign]
-    - `%>%`  [pipe]
-    - `+`    [used after calling `ggplot()`]
+    - `+ - / *` [mathematical operators]
+    - `<-`      [left assign]
+    - `%>%`     [pipe]
+    - `+`       [used after calling `ggplot()`]
 
 ## Scoring
 

@@ -29,10 +29,10 @@ tibble(
 You will be given a dataset and a prompt. Here is an example:
 
 1. Create a new project in RStudio
-    - Claim your repository
+    - [Claim your repository](claim_repo.html)
     - Use the Version Control + GitHub method to clone the repository to your computer.
 2. Save [sample-data.csv](sample-data.csv) into your project directory. Mac users will need to Ctrl+click and select Download File.
-3. Load the `tidverse` package. This is the only package you will need.
+3. Load the `tidyverse` package. This is the only package you will need.
 4. Create a new R script and save it into the project directory. Put code for all the following steps in this R script.
 5. Read the dataset and left assign it to an object in the R environment. 
     - Do not use the import dialog in RStudio.

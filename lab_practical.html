@@ -144,12 +144,13 @@ $(document).ready(function () {
 <li>Do not use the import dialog in RStudio.</li>
 <li>Do write the appropriate R code and include it in your script.</li>
 </ul></li>
-<li>Calculate the mean and standard error of height for species A and B only. The output should be a tibble with exactly three columns: species, mean height, and standard error of height.
+<li>Calculate the mean and standard error of height for species A and B. Steps in this analysis might include:
 <ul>
-<li>Filter variable Species to exclude species “C”.</li>
-<li>Group by Species and summarize, calculating the mean, variance, and sample size (n) of each group. Don’t forget to ungroup afterwards.</li>
-<li>Calculate a new variable for standard error using the formula <code>se = sqrt(var/n)</code>.</li>
+<li>Exclude species “C”.</li>
+<li>For each species, calculating the mean, variance, and sample size (n) of each group.</li>
+<li>For each species, calculate a new variable for standard error using the formula <code>se = sqrt(var/n)</code>.</li>
 <li>Remove all columns except the three requested</li>
+<li>Print (in the console) a tibble with 3 colums: species, mean height, and standard error of the mean height</li>
 </ul></li>
 <li>Create a ggplot showing a histogram of height with facets for Species (showing all three species)</li>
 <li>Create a ggplot showing a scatterplot of height and weight. (using all three species)</li>

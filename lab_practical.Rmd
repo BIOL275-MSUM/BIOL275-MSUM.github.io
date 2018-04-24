@@ -97,7 +97,7 @@ The score will be out of 100 and will be graded holistically.
 
 Rubric:
 
-- A+ = 100   (earned for exceptionally thoughtful, creative, )
+- A+ = 100   (earned for exceptionally thoughtful, creative, or efficient code)
 - A = 95
 - B = 85
 - C = 75

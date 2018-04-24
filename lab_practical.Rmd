@@ -1,6 +1,6 @@
 ---
-title: "Peer review guidelines"
-date: "Updated 2017-02-21"
+title: "Lab practical"
+date: "Updated 2017-04-24"
 output: html_document
 ---
 

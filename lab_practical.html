@@ -148,17 +148,18 @@ $(document).ready(function () {
 <ul>
 <li>species,</li>
 <li>mean height,</li>
-<li>standard error of the mean height This won’t be spelled out on the practical, but steps in this analysis might include:</li>
-</ul>
+<li>standard error of the mean height</li>
+</ul></li>
+<li>Create a ggplot showing a histogram of heights with facets for Species (showing all three species)</li>
+<li>Create a ggplot showing a scatterplot of heights and weights. (using all three species)</li>
+</ol>
+<p>Accomplishing step 6 above will require some data manipulation. This won’t be spelled out on the practical, but steps in this analysis might include:</p>
 <ol style="list-style-type: decimal">
 <li>Exclude species <code>&quot;C&quot;</code> using <code>filter()</code></li>
 <li>For each species, calculating the mean, variance, and sample size (n) of each group using <code>group_by()</code> and <code>summarize</code></li>
 <li>For each species, calculate a new variable for standard error using <code>mutate()</code> and the formula <code>se = sqrt(var/n)</code>.</li>
 <li>Remove all columns except the three requested (species, mean, SE) using <code>select</code></li>
 <li>Print (in the console) a tibble with 3 colums</li>
-</ol></li>
-<li>Create a ggplot showing a histogram of heights with facets for Species (showing all three species)</li>
-<li>Create a ggplot showing a scatterplot of heights and weights. (using all three species)</li>
 </ol>
 </div>
 <div id="required-packages" class="section level2">

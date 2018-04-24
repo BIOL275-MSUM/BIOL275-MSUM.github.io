@@ -41,14 +41,17 @@ You will be given a dataset and a prompt. Here is an example:
     - species,
     - mean height,
     - standard error of the mean height
-    This won't be spelled out on the practical, but steps in this analysis might include:
-    1. Exclude species `"C"` using `filter()`
-    2. For each species, calculating the mean, variance, and sample size (n) of each group using `group_by()` and `summarize`
-    3. For each species, calculate a new variable for standard error using `mutate()` and the formula `se = sqrt(var/n)`.
-    4. Remove all columns except the three requested (species, mean, SE) using `select`
-    5. Print (in the console) a tibble with 3 colums
 7. Create a ggplot showing a histogram of heights with facets for Species (showing all three species)
 8. Create a ggplot showing a scatterplot of heights and weights.  (using all three species)
+
+Accomplishing step 6 above will require some data manipulation. This won't be spelled out on the practical, but steps in this analysis might include:
+
+1. Exclude species `"C"` using `filter()`
+2. For each species, calculating the mean, variance, and sample size (n) of each group using `group_by()` and `summarize`
+3. For each species, calculate a new variable for standard error using `mutate()` and the formula `se = sqrt(var/n)`.
+4. Remove all columns except the three requested (species, mean, SE) using `select`
+5. Print (in the console) a tibble with 3 colums
+
 
 ## Required packages
 

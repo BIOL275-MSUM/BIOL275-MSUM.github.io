@@ -37,7 +37,7 @@ You will be given a dataset and a prompt. Here is an example:
 5. Read the dataset and left assign it to an object in the R environment. 
     - Do not use the import dialog in RStudio.
     - Do write the appropriate R code and include it in your script.
-6. Print (in the console) a tibble with 3 colums: 
+6. For species A and B, what is the mean and standard error of height? To answer, print (in the console) a tibble exactly two rows (one for each species) and three 3 columns:
     - species,
     - mean height,
     - standard error of the mean height

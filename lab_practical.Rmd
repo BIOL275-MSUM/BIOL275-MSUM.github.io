@@ -1,5 +1,5 @@
 ---
-title: "Lab practical"
+title: "Lab practical study guide"
 date: "Updated 2017-04-24"
 output: html_document
 ---

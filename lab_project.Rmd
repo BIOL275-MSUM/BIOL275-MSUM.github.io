@@ -28,12 +28,6 @@ If you are involved in an ongoing research project, for example with a faculty m
 
 In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
 
-### An MSUM Biosciences dataset
-
-Many faculty in the Biosciences Department conduct research with undergraduate.
-
-At the moment, these are the available datasets you may choose:
-
 ### Ecology and Evolutionary Biology
 
 - **[Plant growth in an aquaponic-based system](marry.html)**, a data set from MSUM Biosciences professor Dr. Mazz Marry.
@@ -41,14 +35,6 @@ At the moment, these are the available datasets you may choose:
     - The relationship between abundance of a species and specific environmental conditions (e.g. climate, land cover)
     - The relationship between birding effort and number/diversity of birds observed
 - The **Botanical Information and Ecology Network** brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you'd probably need to combine it with some other earth observation data like those found below.
-- **[County Health Rankings & Roadmaps](http://www.countyhealthrankings.org/)**. A source of annual county-level public health data. You can download data by state and year (see [Minnesota](http://www.countyhealthrankings.org/app/minnesota/2017/downloads), for example).
-- **[KIDS COUNT](http://datacenter.kidscount.org/)**. A source of data on children and families and a project of the Annie E. Casey Foundation. Data is available by year and county/state. You would need to choose and download the variables necessary to answer your question. Topics include:
-    - Demographics
-    - Economic Well-Being
-    - Education
-    - Family and Community
-    - Health
-    - Safety and Risky Behaviors
 - **Earth Observation datasets**. These are generally remote-sensing datasets in raster format. and would require slighly more time to convert to tabular format and to plot as a map.
     - **[National Land Cover Database](https://www.mrlc.gov/finddata.php)**. Could possible look at land cover change in a particular area.
     - **MODIS data for Minnesota**. This could include climate, land cover, vegetation index, or fire data. 500 m spatial resolution and 1-day, 8-day, 16-day, or monthly temporal resolution.
@@ -62,10 +48,19 @@ At the moment, these are the available datasets you may choose:
 
 ### Health and medical
 
-- **[Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota)**, a list compiled by County Health Rankings & Roadmaps.
 - **[Diabetes data](proj_diabetes.html)** from Dr. Bee Wisenden's lab.
+- **[County Health Rankings & Roadmaps](http://www.countyhealthrankings.org/)**. A source of annual county-level public health data. You can download data by state and year (see [Minnesota](http://www.countyhealthrankings.org/app/minnesota/2017/downloads), for example).
+- **[KIDS COUNT](http://datacenter.kidscount.org/)**. A source of data on children and families and a project of the Annie E. Casey Foundation. Data is available by year and county/state. You would need to choose and download the variables necessary to answer your question. Topics include:
+    - Demographics
+    - Economic Well-Being
+    - Education
+    - Family and Community
+    - Health
+    - Safety and Risky Behaviors
+- Other sources of data sets:
+    - **[Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota)**, a list compiled by County Health Rankings & Roadmaps.
 
-### Other sources of data sets
+### General online data repositories
 
 - **[Dryad](http://datadryad.org/)**. A curated, general purpose data repository. You can search through it to find an interesting dataset. Here are two examples:
     - **[Mammal community data from Wen _et al._ (2018)](http://hdl.handle.net/10255/dryad.170813 )**. A dataset of mammal species found at sites along an elevational gradient on three mountains in China.

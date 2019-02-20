@@ -1,6 +1,6 @@
 ---
 title: "Lab Project"
-date: "Updated 2017-01-31"
+date: "Updated 2019-02-20"
 output: html_document
 ---
 
@@ -10,13 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview
 
-A major part of the lab will be to develop your own data science project in R.
+A major part of the lab will be to perform your own exploratory data analysis in R.
 
 You will choose a dataset to use and a question to answer. You will present your results to the class and at the [MSUM’s Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is Feb. 25).
 
 ## Purpose
 
-The purpose of the lab project is to provide you an opportunity to learn how to work with data, explore datasets, and perform statistical analyses in R while trying to answer a question that interests _you_.
+The purpose of the lab project is for you to practice working with real data, exploring data sets to answer a question that interests _you_, and communicating the results.
 
 ## Datasets
 
@@ -26,7 +26,7 @@ You may choose one of the following datasets, or choose another publicly availab
 
 If you are involved in an ongoing research project, for example with a faculty member at MSUM, you may be able to use the data collected as part of that project for your BIOL 275 lab project.
 
-In order for you to choose your own dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
+In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
 
 ### An MSUM Biosciences dataset
 
@@ -68,5 +68,5 @@ And finally, the internet has lots of other lists of datasets, for example:
 
 ### Datasets in R
 
-There are literally thousands of datasets available in R
+Many R packages have datasets included.
 

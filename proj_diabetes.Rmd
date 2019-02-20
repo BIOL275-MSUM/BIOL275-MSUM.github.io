@@ -1,0 +1,19 @@
+---
+title: "Diabetes data set"
+date: "Updated 2019-02-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project: Type 2 Diabetes: Risk Factors for high Blood Glucose
+
+### Overview
+
+This data set consists of human health data collected from students in Human Anatomy and Physiology at MSUM. Subjects answered a set of questions about themselves and then submitted a blood sample to be tested for glucose levels.
+
+### Introduction
+
+Insulin is a hormone secreted in constant proportion to the amount of circulating glucose in the body. In healthy individuals, glucose levels naturally increase after eating. The uptake of glucose from the blood into cells is regulated by insulin released from the pancreas in response to rising levels of glucose in the blood. Insufficient uptake of glucose results in sustained high levels of glucose in the blood, which is toxic. Diabetes Mellitus is a disease condition in which blood sugar levels are elevated for extended periods because of either insufficient levels of insulin secretions (aka Type 1) or because of insulin resistance (aka Type 2). Type 1 diabetes is inherited and not due to lifestyle or diet. Patients with type 1 diabetes usually require insulin injections. Diet and lifestyle factors are primarily responsible for type 2 diabetes. Treatment of type 2 diabetes includes strategies to manage these factors such as control of blood pressure, smoking cessation and maintaining a healthy body weight. If left untreated, persistent high levels of blood glucose can lead to several serious medical complications, including amputation due to diabetic neuropathy (nerve damage in the hands, feet or legs leading to decreased sensation); blindness, heart disease or stroke, kidney disease and death. 

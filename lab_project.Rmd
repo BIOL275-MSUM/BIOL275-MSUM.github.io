@@ -34,8 +34,6 @@ Many faculty in the Biosciences Department conduct research with undergraduate.
 
 At the moment, these are the available datasets you may choose:
 
-- **Neuroscience experiment from the Stocker Lab**. Dr. Stocker is exploring the effect of particular genes on brain development and behavior in mice. His dataset includes the results of a behavioral experiment.
-
 ### Ecology and Evolutionary Biology
 
 - **[Plant growth in an aquaponic-based system](marry.html)**, a data set from MSUM Biosciences professor Dr. Mazz Marry.
@@ -60,10 +58,12 @@ At the moment, these are the available datasets you may choose:
 ### Cellular and molecular biology and biochemistry
 
 - **[The Actinobacteriophage Database at PhagesDB.org](https://phagesdb.org/)**, a website that collects and shares data, pictures, protocols, and analysis tools associated with the discovery, sequencing, and characterization of [mycobacteriophages](https://phagesdb.org/glossary/#Mycobacteriophage)—viruses that infect the *Mycobacteria* and also other bacterial hosts in the phylum Actinobacteria. It was developed at—and is maintained from—the **Pittsburgh Bacteriophage Institute**, a joint venture of **Dr. Graham Hatfull** and **Dr. Roger Hendrix**, both of the Department of Biological Sciences at the University of Pittsburgh.
+- **Neuroscience experiment from the Stocker Lab**. Dr. Stocker is exploring the effect of particular genes on brain development and behavior in mice. His dataset includes the results of a behavioral experiment.
 
 ### Health and medical
 
 - **[Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota)**, a list compiled by County Health Rankings & Roadmaps.
+- **[Diabetes data](proj_diabetes.html)** from Dr. Bee Wisenden's lab.
 
 ### Other sources of data sets
 

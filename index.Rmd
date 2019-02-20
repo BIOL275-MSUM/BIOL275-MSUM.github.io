@@ -10,10 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Topics
 
+- [Lab project guidelines](lab_project.html)
 - [Claiming a GitHub Classroom repository](claim_repo.html)
 - [Peer review guidelines](peer_review.html)
 - [Github notifications](github_notifications.html)
-- [Lab Project Guidelines](lab_project.html)
 - [Lab practical study guide](lab_practical.html)
 
 ## Homework

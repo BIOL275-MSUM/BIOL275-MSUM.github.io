@@ -369,7 +369,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Lab Project</h1>
-<h4 class="date"><em>Updated 2019-02-20</em></h4>
+<h4 class="date"><em>Updated 2019-02-21</em></h4>
 
 </div>
 
@@ -401,12 +401,28 @@ $(document).ready(function () {
 <li>The relationship between birding effort and number/diversity of birds observed</li>
 </ul></li>
 <li>The <strong>Botanical Information and Ecology Network</strong> brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you’d probably need to combine it with some other earth observation data like those found below.</li>
-<li><strong>Earth Observation datasets</strong>. These are generally remote-sensing datasets in raster format. and would require slighly more time to convert to tabular format and to plot as a map.
+<li><strong><a href="https://lpdaacsvc.cr.usgs.gov/appeears/">The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a></strong> offers a simple and efficient way to access and transform geospatial data from a variety of federal data archives.
+<ul>
+<li>AppEEARS enables users to subset geospatial datasets using spatial, temporal, and band/layer parameters.</li>
+<li>Two types of sample requests are available: point samples for geographic coordinates and area samples for spatial areas via vector polygons.</li>
+<li>There are <a href="https://www.youtube.com/watch?v=thRApFufBq8">handy videos</a> on how to use the system to get data</li>
+<li>Some datasets include:
+<ul>
+<li>Land Surface Temperature (min, max, mean)</li>
+<li>Sea Surface Temperature</li>
+<li>Precipitation</li>
+<li>Snow cover</li>
+<li>Land cover</li>
+<li>Soil moisture, soil temperature</li>
+<li>Vegetation indices (e.g. NDVI)</li>
+<li>Gridded population data</li>
+</ul></li>
+<li>The temporal and spatial range and resolution of these data sets varies.</li>
+<li>You could explore geospatial data by itself, or if you have GPS coordinate for other types of data (e.g. georeferenced specimen or observation data) then you could us AppEARS to extract environmental data associated with those points.</li>
+</ul></li>
+<li>Other geospatial data
 <ul>
 <li><strong><a href="https://www.mrlc.gov/finddata.php">National Land Cover Database</a></strong>. Could possible look at land cover change in a particular area.</li>
-<li><strong>MODIS data for Minnesota</strong>. This could include climate, land cover, vegetation index, or fire data. 500 m spatial resolution and 1-day, 8-day, 16-day, or monthly temporal resolution.</li>
-<li><strong>LANDSAT data for Clay County</strong>. This could include land cover or vegation indices. 30-m spatial resolution and 16-day temporal resolution.</li>
-<li>Various vector datasets including administrative boundaries, cities, rivers, etc.</li>
 </ul></li>
 </ul>
 </div>
@@ -447,6 +463,9 @@ $(document).ready(function () {
 </ul></li>
 <li><strong><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome Public Datasets</a></strong>. A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone!</li>
 </ul>
+</div>
+<div id="other-useful-datasets" class="section level3">
+<h3>Other useful datasets</h3>
 </div>
 <div id="datasets-in-r" class="section level3">
 <h3>Datasets in R</h3>

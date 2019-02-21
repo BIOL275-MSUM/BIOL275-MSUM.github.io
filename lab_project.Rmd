@@ -1,6 +1,6 @@
 ---
 title: "Lab Project"
-date: "Updated 2019-02-20"
+date: "Updated 2019-02-21"
 output: html_document
 ---
 
@@ -35,11 +35,23 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
     - The relationship between abundance of a species and specific environmental conditions (e.g. climate, land cover)
     - The relationship between birding effort and number/diversity of birds observed
 - The **Botanical Information and Ecology Network** brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you'd probably need to combine it with some other earth observation data like those found below.
-- **Earth Observation datasets**. These are generally remote-sensing datasets in raster format. and would require slighly more time to convert to tabular format and to plot as a map.
+- **[The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)](https://lpdaacsvc.cr.usgs.gov/appeears/)** offers a simple and efficient way to access and transform geospatial data from a variety of federal data archives. 
+    - AppEEARS enables users to subset geospatial datasets using spatial, temporal, and band/layer parameters.
+    - Two types of sample requests are available: point samples for geographic coordinates and area samples for spatial areas via vector polygons.
+    - There are [handy videos](https://www.youtube.com/watch?v=thRApFufBq8) on how to use the system to get data
+    - Some datasets include:
+        - Land Surface Temperature (min, max, mean)
+        - Sea Surface Temperature
+        - Precipitation
+        - Snow cover
+        - Land cover
+        - Soil moisture, soil temperature
+        - Vegetation indices (e.g. NDVI)
+        - Gridded population data
+    - The temporal and spatial range and resolution of these data sets varies.
+    - You could explore geospatial data by itself, or if you have GPS coordinate for other types of data (e.g. georeferenced  specimen or observation data) then you could us AppEARS to extract environmental data associated with those points.
+- Other geospatial data
     - **[National Land Cover Database](https://www.mrlc.gov/finddata.php)**. Could possible look at land cover change in a particular area.
-    - **MODIS data for Minnesota**. This could include climate, land cover, vegetation index, or fire data. 500 m spatial resolution and 1-day, 8-day, 16-day, or monthly temporal resolution.
-    - **LANDSAT data for Clay County**. This could include land cover or vegation indices. 30-m spatial resolution and 16-day temporal resolution.
-    - Various vector datasets including administrative boundaries, cities, rivers, etc.
 
 ### Cellular and molecular biology and biochemistry
 
@@ -66,6 +78,10 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
     - **[Mammal community data from Wen _et al._ (2018)](http://hdl.handle.net/10255/dryad.170813 )**. A dataset of mammal species found at sites along an elevational gradient on three mountains in China.
     - **[Birth seasonality data from Martinez-Bakker _et al._ (2014)](http://hdl.handle.net/10255/dryad.170822)**. A dataset of the number of births per month over the past 100 years in the US and 60 years in the World. Could possible be combined with another dataset to ask an interesting question.
 - **[Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)**. A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone! 
+
+### Other useful datasets
+
+
 
 ### Datasets in R
 

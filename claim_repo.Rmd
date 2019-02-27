@@ -1,6 +1,6 @@
 ---
 title: "Claiming a GitHub Classroom repository"
-date: "Updated 2017-01-24"
+date: "Updated 2017-02-27"
 output: html_document
 ---
 
@@ -12,8 +12,8 @@ When you have a new assignment to complete, your instructor will create a new As
 
 To claim a repository, follow these instructions:
 
-1. Go to the BIOL 275 course in [D2L](https://mnstate.learn.minnstate.edu/).
-2. Navigate to Content > Materials > Lab Homework and click on the appropriate link for example **Homework 1 Link**. 
+1. Go to the BIOL 275 course on [D2L](https://mnstate.learn.minnstate.edu/).
+2. Navigate to Content > Materials > Lab and click on the appropriate link for example **Claim GitHub Practice repository**. 
 3. You will be redirected to GitHub and prompted to sign in. Go ahead and do so.
 4. If this is your first time claiming a repo, you will be asked to click on your name. This will match your name on the class roster with your GitHub username. Be careful not to click on the wrong name!
 5. GitHub will now create the new repository and redirect you to its home page.
@@ -24,4 +24,7 @@ Repositories created like this through GitHub classroom will have a name like **
 
 ## Privacy
 
-For now, only you and your instructor will have access to this repo. At some point you may need to add collaborators, for example when its time for peer review.
+Your instructor will decide which privacy setting your repository will have:
+
+- **Public**. Anybody can view the repository on GitHub.
+- **Private**. Only you and the instructor and Learning Assistants can view the repository on GitHub.

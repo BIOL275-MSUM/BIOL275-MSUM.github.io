@@ -4,68 +4,88 @@ date: "Updated 2017-02-27"
 output: html_document
 ---
 
-This assignment has several purposes. You will learn to:
-- Claim a GitHub repository (repo) via GitHub Classroom
-- Create code to read, transform, and plot a data set
-- Use Git for version control
-- Use the R Markdown to GitHub pipeline to create pretty output on the web
+## Learning Objectives
 
-## Overview
+In this assignment you will learn to:
+- [Claim a GitHub repository](claim_repo.html) via GitHub Classroom.
+- Use Git for version control.
+- Create a README file using Markdown syntax.
+- Use code headings, comments, and white space to make a readable, understandable R script.
+- Use the [R Markdown to GitHub pipeline](rmd_pipeline.html) to create pretty output on GitHub
+
+
+## Sections
 
 - [Create your GitHub account]
 - [Claim your GitHub repo]
 - [Project setup]
-- [Your script]
+- [Assignment]
 - [What to "turn in"]
-
-## Example output
-
-[Finches Analysis](finches_analysis.html)
 
 ## Create your GitHub account
 
-By now you should have:
+By now you should already have:
+
 1. Created your [GitHub](https://github.com/) account following the directions in the **Create GitHub Account** assignment
-2. Posted your user name on the shared Google Sheet (see D2L for the link)
+2. Posted your user name on the shared Google Sheet (see [D2L](https://mnstate.learn.minnstate.edu/d2l/home/4541637) for the link)
+
+If not, please do so now.
 
 ## Claim your GitHub repo
 
-Follow these instructions: [Claiming a GitHub Classroom repository](claim_repo.html)
+Your instructor has created your first GitHub repository for you. Follow these instructions:
+
+1. Go to [D2L](https://mnstate.learn.minnstate.edu/d2l/home/4541637).
+2. Navigate to **Materials** > **Content** > **Lab** > **GitHub** and click the link for **Claim GitHub Practice repistory**. This will take you to the GitHub Classroom website.
+3. Follow the rest of the instructions for [Claiming a GitHub Classroom repository](claim_repo.html).
+
+This process will automatically create a repository for you on GitHub, pre-loaded with the necessary files.
 
 ## Project setup
 
-You will create a new RStudio project and Git repository for this assignment.
+Now you need to get your repository onto your local computer.
 
 Follow these instructions:
-1. **Create a new RStudio project**
-2. Select the **version control** option
-3. Save it somewhere where you can find it again. Pay very careful attention to the location of the folder on your computer where you create the project. You should be able to navigate to this folder in your file browser. If you are using a USB flash drive, create the new project right on your flash drive.
 
-An intro to git: staging, committing, and pushing:
+1. Open RStudio
+2. **Create a new RStudio project**
+3. Select the **Version Control** option
+4. For Repository URL, paste in the URL for your repository, e.g. https://github.com/chrismerkord/github-practice
+5. The project name field should fill itself in automatically, but if it doesn't, type the name of your repository as it appears in the URL above (and on GitHub), e.g. `github-practice`
+3. Choose a folder location where you can find it again. Pay attention to where you save it. You should be able to navigate to this folder in your file browser if necessary. If you are using a USB flash drive, create the new project right on your flash drive.
 
-- Stage the R project file and .gitignore file. commit and push.
-- Edit the README. Save your changes, stage, commit, and push.
+When you click finish, RStudio will restart with your new project open.
 
-## Your script
-
-Your repository will contain a script for you to use as a template while completing your assignment.
-
-You will keep all the comments and code sections in the original template, and add your code to the template.
-
-In the end, you will end up with a readable, well-commented script that reads, transforms, and plots your data.
+In addition to the usual tabs available in RStudio, there will be a new Git tab in the upper right pane.
 
 ## Assignment
 
-Here are the basic steps to your assignment. Your instructor will provide more details:
+Here are the basic steps to your assignment. Your instructor will provide more details.
 
-1. Add a README file
-2. Add code to the script to replicate the desired output (see example). Keep all the existing comments and code headings.
-3. Create an R Markdown document
-4. Copy the code from the script to code chunks in the R Markdown document. For each code section in the script, you should have:
-    - a plain text sentence describing what you are doing
-    - the R code
-    - the output of the code (if any)
-5. Knit the script to create an .md file
+1. Create a README.md file.
+    1. Create a new file called README.md (exactly like that)
+    2. In the new file, enter a heading like `## GitHub Practice Assignment` or something similar, followed by a blank line
+    3. Add a sentence describing the purpose of this repo, followed by a blank line.
+    4. Add a list of important files in the repo. You can create a list by preceding each line with an asterisk `*`. For extra credit, create a link to your analysis Markdown document (which isn't created yet, but will be in a subsequent step).
+    4. Save the file, commit your changes, and push the commit to GitHub
+2. Starting with the most blank R script:
+    - Copy code from the [Finches Analysis](finches_analysis.html) and paste it into the appropriate areas in the script. 
+    - Don't delete and code headings or comments in the script. 
+    - This is your chance to see a nicely formatted, readable, well-commented, understandble script!
+    - Run the code in the script to make sure it all works.
+4. Create a Markdown document to show off your analysis. The goal is to end up with a document that looks like the [Finches Analysis](finches_analysis.html) file... a pretty explanation of your analysis, including code, console output, and plots.
+    1. Start by creating an R Markdown file. See [The RMarkdown to GitHub Pipeline](rmd_pipeline.html) for instructions.
+    2. Delete the headings, text, and the last two R code chunks.
+    2. For each code section in the script, you should have:
+        - a plain text sentence describing what you are doing
+        - the R code
+        - the output of the code (if any)
+    3. To insert R code:
+        - Click the Insert button, then R. This will insert an empty R code chunk.
+        - Copy code from your R script, and paste it into the empty R code chunk, between the two sets of triple back ticks.
+    5. Knit the script to create a markdown (.md) file.
+        - Click "Knit"
+        - A preview will pop up in its own window.
 6. Add all files to GitHub and commit
 7. Push all commits to GitHub and double check that the .md file renders correctly.
 

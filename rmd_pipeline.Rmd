@@ -1,0 +1,42 @@
+---
+title: "The RMarkdown to GitHub Pipeline"
+date: "Updated 2017-01-17"
+output: html_document
+---
+
+## Using R Markdown for Github
+
+When you need to show others the output of your R code rather than the code itself, the best option is to start with an R Markdown document (`.Rmd`), which will create a Markdown document (`.md`) that can be parsed by GitHub.
+
+The general workflow is as follows:
+
+1. Create an R Markdown document
+2. Edit the document
+3. Knit the document into a `.md` markdown file
+4. Add both files to git and commit
+5. Repeat steps 2-4 as necessary.
+6. Push both files to Github
+
+## Create an R Markdown document
+
+In RStudio, you can create an Rmd file by going to:
+File > New File > R Markdown...
+
+In the dialog window, select **From Template**, select **GitHub Document (Markdown)**, and click **OK**.
+
+A template document will be created for you. At the top you will see some text like this:
+
+```{r eval=FALSE}
+---
+title: "Untitled"
+output: github_document
+---
+```
+
+This is the YAML header. Change the title from "Untitled" to something useful, e.g. "Practice Github Document".
+
+Below that you will see a combination of R code chunks, R output, and plain text.
+
+To see the **knit** process in action, click the **Knit** button on the script toolbar. This will start the process of "knitting" a Github Markdown document.
+
+A window will pop up with the rendered page, a Markdown (.md) document. If you were to push the .md file to GitHub, this is how it would appear in the web browser.

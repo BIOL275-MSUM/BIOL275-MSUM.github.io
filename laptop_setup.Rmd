@@ -1,0 +1,44 @@
+---
+title: "Setting up a Personal Laptop"
+date: "Updated 2017-02-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Sections
+
+- [Install R]
+- [Install RStudio]
+- [Install and configure Git]
+
+## Install R
+
+Install R version 3.4.3. See section 1.2 in GSR for directions or follow these simplified directions:
+
+1. Go to https://cloud.r-project.org/
+2. Click the link for your operating system: Linux, Mac, or Windows
+3. If you have Windows, click `base` and then click `Download R 3.4.3 for Windows`.
+4. If you have a Mac, click `R-3.4.3.pkg`.
+
+## Install RStudio
+
+Install the most recent version of RStudio: https://www.rstudio.com/products/rstudio/download/
+
+As of today the most recent version is 1.1.414. Version 1.1.383 was the version at the beginning of the semester. Either of these, or any subsequent version 1.1.xxx releases should be fine.
+
+## Install and configure Git
+
+See instructions above for installing Git.
+
+Once you have it installed, you will need to configure some settings. 
+
+Run the program Git Bash (on Windows) or Git (?) (on Mac), which will open a terminal window. In this window, there will be a command prompt. Run the following two commands.
+
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+
+In the code above replace "you@example.com" with your email address and replace "Your Name" with your name, for example "Chris Merkord".
+
+After typing each command press Enter before typing the next command. Commands must be typed exactly as shown. Spaces and capitalization matter. Terminal windows are tricky so its best to type the commands rather than trying to copy and paste them from here.

@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [Lab project guidelines](lab_project.html)
 - [Claiming a GitHub Classroom repository](claim_repo.html)
+- [Setting up a Personal Laptop](laptop_setup.html)
 - [Peer review guidelines](peer_review.html)
 - [Github notifications](github_notifications.html)
 - [Lab practical study guide](lab_practical.html)

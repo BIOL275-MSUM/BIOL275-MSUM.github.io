@@ -69,6 +69,8 @@ Here are the basic steps to your assignment. Your instructor will provide more d
 6. Add all files to GitHub and commit
 7. Push all commits to GitHub and double check that the .md file renders correctly.
 
+For more detailed instructions on steps 3-5, see [The RMarkdown to GitHub Pipeline](rmd_pipeline.html).
+
 ## What to "turn in"
 
 Your repository should end up with the following four files in it:

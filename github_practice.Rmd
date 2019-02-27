@@ -1,0 +1,53 @@
+---
+title: "GitHub Practice Assignment"
+date: "Updated 2017-01-17"
+output: html_document
+---
+
+The purpose of Lab 1 is to introduce you to R, RStudio, Git, and GitHub.
+
+You will work through Chapter 1 in the lab textbook and "turn in" your homework by pushing your files to a GitHub repository for Homework 1.
+
+## Overview
+
+- [Create your GitHub account](#create-your-github-account)
+- [System setup](#system-setup)
+- [Getting acquainted with R](#getting-acquainted-with-R)
+- [Project setup](#project-setup)
+- [Your first script](#your-first-script)
+- [What to turn in](#what-to-turn-in)
+
+## Create your GitHub account
+
+By now you should have:
+1. Created your [GitHub](https://github.com/) account following the directions in the **Create GitHub Account** assignment
+2. Posted your user name on the shared Google Sheet (see D2L for the link)
+
+## Project setup
+
+You will create a new RStudio project and Git repository for this assignment.
+
+Here are the instructions for creating your project:
+
+1. **Claim your repository on GitHub.** Detailed instructions on claiming a repository can be found [here](claim_repo.html).
+2. **Create a new RStudio project** (select ***version control*** option). Pay very careful attention to the location of the folder on your computer where you create the project. You should be able to navigate to this folder in your file browser. If you are using a USB flash drive, create the new project right on your flash drive.
+
+An intro to git: staging, committing, and pushing:
+
+- Stage the R project file and .gitignore file. commit and push.
+- Edit the README. Save your changes, stage, commit, and push.
+
+## Your first script
+
+Your repository will contain a script for you to use as a template while completing your assignment.
+
+## What to turn in
+
+Your repository should end up with the following four files in it:
+
+1. the R project file `github-practice-username.Rproj`
+2. an R script `github-practice.R`
+3. an Rmd file `github-practice.Rmd`
+3. a Markdown document `github-practice.md`
+4. a README file `README.md` for the repository
+5. `.gitignore`

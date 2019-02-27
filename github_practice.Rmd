@@ -4,18 +4,19 @@ date: "Updated 2017-02-27"
 output: html_document
 ---
 
-The purpose of Lab 1 is to introduce you to R, RStudio, Git, and GitHub.
-
-You will work through Chapter 1 in the lab textbook and "turn in" your homework by pushing your files to a GitHub repository for Homework 1.
+This assignment has several purposes. You will learn to:
+- Claim a GitHub repository (repo) via GitHub Classroom
+- Create code to read, transform, and plot a data set
+- Use Git for version control
+- Use the R Markdown to GitHub pipeline to create pretty output on the web
 
 ## Overview
 
-- [Create your GitHub account](#create-your-github-account)
-- [System setup](#system-setup)
-- [Getting acquainted with R](#getting-acquainted-with-R)
-- [Project setup](#project-setup)
-- [Your first script](#your-first-script)
-- [What to turn in](#what-to-turn-in)
+- [Create your GitHub account]
+- [Claim your GitHub repo]
+- [Project setup]
+- [Your script]
+- [What to "turn in"]
 
 ## Create your GitHub account
 
@@ -23,25 +24,47 @@ By now you should have:
 1. Created your [GitHub](https://github.com/) account following the directions in the **Create GitHub Account** assignment
 2. Posted your user name on the shared Google Sheet (see D2L for the link)
 
+## Claim your GitHub repo
+
+Follow these instructions: [Claiming a GitHub Classroom repository](claim_repo.html)
+
 ## Project setup
 
 You will create a new RStudio project and Git repository for this assignment.
 
-Here are the instructions for creating your project:
-
-1. **Claim your repository on GitHub.** Detailed instructions on claiming a repository can be found [here](claim_repo.html).
-2. **Create a new RStudio project** (select ***version control*** option). Pay very careful attention to the location of the folder on your computer where you create the project. You should be able to navigate to this folder in your file browser. If you are using a USB flash drive, create the new project right on your flash drive.
+Follow these instructions:
+1. **Create a new RStudio project**
+2. Select the **version control** option
+3. Save it somewhere where you can find it again. Pay very careful attention to the location of the folder on your computer where you create the project. You should be able to navigate to this folder in your file browser. If you are using a USB flash drive, create the new project right on your flash drive.
 
 An intro to git: staging, committing, and pushing:
 
 - Stage the R project file and .gitignore file. commit and push.
 - Edit the README. Save your changes, stage, commit, and push.
 
-## Your first script
+## Your script
 
 Your repository will contain a script for you to use as a template while completing your assignment.
 
-## What to turn in
+You will keep all the comments and code sections in the original template, and add your code to the template.
+
+In the end, you will end up with a readable, well-commented script that reads, transforms, and plots your data.
+
+## Assignment
+
+Here are the basic steps to your assignment. Your instructor will provide more details:
+1. Add a README file
+2. Add code to the script to replicate the desired output (see example). Keep all the existing comments and code headings.
+3. Create an R Markdown document
+4. Copy the code from the script to code chunks in the R Markdown document. For each code section in the script, you should have:
+    - a plain text sentence describing what you are doing
+    - the R code
+    - the output of the code (if any)
+5. Knit the script to create an .md file
+6. Add all files to GitHub and commit
+7. Push all commits to GitHub and double check that the .md file renders correctly.
+
+## What to "turn in"
 
 Your repository should end up with the following four files in it:
 
@@ -51,3 +74,5 @@ Your repository should end up with the following four files in it:
 3. a Markdown document `github-practice.md`
 4. a README file `README.md` for the repository
 5. `.gitignore`
+
+You will be graded on the files in your GitHub repo. Specifically, the content of the markdown document and the README file.

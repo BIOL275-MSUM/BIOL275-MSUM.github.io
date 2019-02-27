@@ -18,6 +18,10 @@ This assignment has several purposes. You will learn to:
 - [Your script]
 - [What to "turn in"]
 
+## Example output
+
+[Finches Analysis](finches_analysis.html)
+
 ## Create your GitHub account
 
 By now you should have:

@@ -254,9 +254,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -287,8 +285,6 @@ summary {
 </style>
 
 
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -363,17 +359,32 @@ $(document).ready(function () {
 
 
 
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
 
 <div class="fluid-row" id="header">
 
 
 
 <h1 class="title toc-ignore">Lab Project</h1>
-<h4 class="date"><em>Updated 2019-02-21</em></h4>
+<h4 class="date">Updated 2019-02-21</h4>
 
 </div>
 
 
+<ul>
+<li><a href="#Overview">Overview</a></li>
+<li><a href="#Purpose">Purpose</a></li>
+<li><a href="#Datasets">Datasets</a></li>
+<li><a href="#Data%20Import%20Tips">Data Import Tips</a></li>
+</ul>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>A major part of the lab will be to perform your own exploratory data analysis in R.</p>
@@ -471,6 +482,42 @@ $(document).ready(function () {
 <h3>Datasets in R</h3>
 <p>Many R packages have datasets included.</p>
 </div>
+</div>
+<div id="data-import-tips" class="section level2">
+<h2>Data Import Tips</h2>
+<p>Where to store your data?</p>
+<ul>
+<li>ALWAYS in your project folder, never elsewhere on your computer</li>
+<li>Create a folder named <code>data</code></li>
+<li>Add <code>data/</code> to your gitignore file</li>
+<li>download data files and save them into your <code>data/</code> folder
+<ul>
+<li>you can download manually (point and click in browser). if so, write the link to the data source in your README so its easy to find</li>
+<li>you can download programatically with <code>download.file()</code> function</li>
+</ul></li>
+</ul>
+<p>Importing your data</p>
+<ul>
+<li>never edit your raw data file. instead, read it as is and clean it up in R</li>
+<li>use read_csv() or readxl::read_excel()
+<ul>
+<li>do NOT use read.csv()</li>
+<li>readxl package is installed with tidyverse, but not loaded</li>
+<li>you have to load it yourself: library(readxl)</li>
+<li>path argument: type “” put cursor in between and hit tab to autocomplete</li>
+</ul></li>
+<li>read_excel() has a <code>sheet</code> argument to choose which sheet</li>
+<li>R puts back ticks around non-standard column names eg <code>-</code> is a backtick, its on the upper left of the keyboard
+<ul>
+<li>standard names have only letters, numbers, <code>_</code> and <code>.</code></li>
+<li>any name with special characters or starts with a number is considered non-standard.</li>
+<li>its a good idea to rename these columns</li>
+</ul></li>
+<li>You can rename columns during import with the col_names argument to <code>read_*()</code> or using <code>dplyr::rename()</code></li>
+<li>You can skip rows using the skip argument to <code>read_*()</code></li>
+<li>When you play with <code>skip</code> argument, sometimes you need to change the <code>col_names</code> argument too</li>
+<li>You can read only a set number of rows using the <code>n_max</code> argument</li>
+</ul>
 </div>
 
 

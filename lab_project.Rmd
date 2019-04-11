@@ -1,6 +1,6 @@
 ---
 title: "Lab Project"
-date: "Updated 2019-02-21"
+date: "Updated 2019-4-11"
 output: html_document
 ---
 
@@ -8,10 +8,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-- [Overview](#Overview)
-- [Purpose](#Purpose)
-- [Datasets](#Datasets)
-- [Data Import Tips](#Data Import Tips)
+- [Overview](#overview)
+- [Purpose](#purpose)
+- [Datasets](#datasets)
+- [Data Import Tips](#data-import-tips)
+- [Assignment: Introduction & Methods](#assignment-introduction-methods)
+- [Assignment: Results & Discusssion](#assignment-results-discusssion)
+- [Assignment: Poster](#assignment-poster)
 
 ## Overview
 
@@ -121,3 +124,21 @@ Importing your data
 - You can skip rows using the skip argument to `read_*()`
 - When you play with `skip` argument, sometimes you need to change the `col_names` argument too
 - You can read only a set number of rows using the `n_max` argument
+
+## Assignment: Introduction & Methods
+
+**DUE: April 3-4 (come to lab with this assignment done.)**
+
+1. Create a new R Markdown file to hold your poster content
+2. 
+
+## Assignment: Results & Discusssion
+
+**DUE: April 10-11 (come to lab with this assignment done.)**
+
+
+## Assignment: Poster
+
+After you finish preparing the content for your poster, you will copy and paste it on to your poster and format the poster for printing.
+
+Stay tuned for more information, including a template poster.

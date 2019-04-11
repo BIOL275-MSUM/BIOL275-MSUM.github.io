@@ -1,20 +1,19 @@
 ---
-title: "BIOL 275 @ MSUM"
-date: "updated February 21, 2018"
-output: html_document
+title: "Quantitative Biology"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Topics
+Welcome to the course website for BIOL 275 Quantitative Biology at MSUM.
+
+## Pages
 
 - [Lab project guidelines](lab_project.html)
-- [GitHub practice assignment](github_practice.html)
+- [Assignment: GitHub practice](github_practice.html)
 - [Claiming a GitHub Classroom repository](claim_repo.html)
 - [Setting up a Personal Laptop](laptop_setup.html)
 - [The RMarkdown to GitHub Pipeline](rmd_pipeline.html)
-- [Peer review guidelines](peer_review.html)
 - [Github notifications](github_notifications.html)
 - [Lab practical study guide](lab_practical.html)

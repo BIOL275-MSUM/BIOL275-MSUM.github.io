@@ -1,0 +1,11 @@
+name: "BIOL 275 Quantitative Biology @ MSUM"
+output_dir: "."
+navbar:
+  title: "Quantitative Biology"
+output:
+  html_document:
+    theme: flatly
+    highlight: kate
+    include:
+      after_body: footer.html
+    css: styles.css

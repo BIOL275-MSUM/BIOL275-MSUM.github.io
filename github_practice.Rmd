@@ -1,6 +1,5 @@
 ---
-title: "GitHub Practice Assignment"
-date: "Updated 2017-02-27"
+title: "Assignment: GitHub Practice"
 output: html_document
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Lab practical study guide"
-date: "Updated 2017-04-24"
 output: html_document
 ---
 
@@ -12,7 +11,7 @@ You will demonstrate in lab using R and RStudio that you know how to create a pr
 
 ```{r create-example, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
-set.seed(1)
+set.seed(2)
 tibble(
   A = rnorm(10, 5, 1),
   B = rnorm(10, 10, 2),
@@ -69,20 +68,24 @@ You will need to know a variety of functions including:
     - `filter()`  using the logical operators/functions `==`, `!=`, `<`, `>`, `<=`, `>=`, and the function `is.na()`
     - `mutate()`
     - `group_by()`
-    - `summarize()` using these summary functions:
-        - `mean()`
-        - `var()`
+    - `summarize(x)` using these summary functions:
+        - `mean(x)`
+        - `var(x)`
+        - `sd(x)`
         - `n()`
+        - SE: `sd(x)/sqrt(n())`
 - ggplot functions for plotting
     - `ggplot()` and `aes()`
     - `geom_histogram()`
     - `geom_point()`   [for scatterplots]
     - `facet_wrap()`
     - functions for adding labels to a ggplot
-        - `labs()`, or the following: 
-        - `ggtitle()`
-        - `xlab()`
-        - `ylab()`
+        - `labs()`, with the following arguments:
+            - `title`
+            - `x`
+            - `y`
+            - `color`, `size`, etc. depending on the aesthetics you mapped
+
 - operators
     - `+ - / *` [mathematical operators]
     - `<-`      [left assign]

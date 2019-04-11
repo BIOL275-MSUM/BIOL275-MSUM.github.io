@@ -1,6 +1,5 @@
 ---
 title: "Setting up a Personal Laptop"
-date: "Updated 2017-02-27"
 output: html_document
 ---
 

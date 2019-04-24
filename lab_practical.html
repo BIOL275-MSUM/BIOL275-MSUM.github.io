@@ -295,7 +295,7 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li>Create a new project in RStudio
 <ul>
-<li><a href="claim_repo.html">Claim your repository</a></li>
+<li>Claim your repository (<a href="claim_repo.html">How to claim a repo</a>)</li>
 <li>Use the Version Control + GitHub method to clone the repository to your computer.</li>
 </ul></li>
 <li>Save <a href="sample-data.csv" class="uri">sample-data.csv</a> into your project directory. Mac users will need to Ctrl+click and select Download File.</li>
@@ -320,7 +320,8 @@ $(document).ready(function () {
 <li>Exclude species <code>&quot;C&quot;</code> using <code>filter()</code></li>
 <li>For each species, calculating the mean, variance, and sample size (n) of each group using <code>group_by()</code> and <code>summarize</code></li>
 <li>For each species, calculate a new variable for standard error using <code>mutate()</code> and the formula <code>se = sqrt(var/n)</code>.</li>
-<li>Remove all columns except the three requested (species, mean, SE) using <code>select</code></li>
+<li>You need to remove missing values in either step 1 or 2 above.</li>
+<li>Remove any extra columns you created except the three requested (species, mean, SE) using <code>select()</code> or <code>transmute()</code></li>
 <li>Print (in the console) a tibble with 3 colums</li>
 </ol>
 </div>
@@ -381,15 +382,15 @@ $(document).ready(function () {
 <div id="scoring" class="section level2">
 <h2>Scoring</h2>
 <p>I will score the code and the plots in class when you are done.</p>
-<p>The score will be out of 100 and will be graded holistically.</p>
+<p>The score will be out of 8 and will be graded holistically.</p>
 <p>Rubric:</p>
 <ul>
-<li>A+ = 100 (earned for exceptionally thoughtful, creative, or efficient code)</li>
-<li>A = 95</li>
-<li>B = 85</li>
-<li>C = 75</li>
-<li>D = 65</li>
-<li>F = 55</li>
+<li>A+ = 8 (earned for exceptionally thoughtful, creative, or efficient code)</li>
+<li>A = 7.5</li>
+<li>B = 6.5</li>
+<li>C = 5.5</li>
+<li>D = 4.5</li>
+<li>F = 3.5</li>
 </ul>
 </div>
 

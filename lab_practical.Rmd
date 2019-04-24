@@ -13,14 +13,18 @@ You will demonstrate in lab using R and RStudio that you know how to create a pr
 library(tidyverse)
 set.seed(2)
 tibble(
-  A = rnorm(10, 5, 1),
-  B = rnorm(10, 10, 2),
-  C = rnorm(10, 20, 4)
+  A = rnorm(20, 5, 1),
+  B = rnorm(20, 10, 2),
+  C = rnorm(20, 20, 4)
 ) %>% 
-  gather(species, height) %>% 
-  mutate(add = rnorm(30, 1, .1),
-         mult = rnorm(30, 3, .1),
-         weight = (height + add) * mult) %>% 
+  gather(species, height) %>%
+  sample_frac(.95) %>% 
+  mutate(
+    height = ifelse(runif(n()) > .9, NA, height),
+    add = rnorm(n(), 1, .1),
+    mult = rnorm(n(), 3, .1),
+    weight = (height + add) * mult
+  ) %>% 
   select(-add, -mult) %>% 
   write.csv("sample-data.csv", row.names = FALSE)
 ```
@@ -28,7 +32,7 @@ tibble(
 You will be given a dataset and a prompt. Here is an example:
 
 1. Create a new project in RStudio
-    - [Claim your repository](claim_repo.html)
+    - Claim your repository ([How to claim a repo](claim_repo.html))
     - Use the Version Control + GitHub method to clone the repository to your computer.
 2. Save [sample-data.csv](sample-data.csv) into your project directory. Mac users will need to Ctrl+click and select Download File.
 3. Load the `tidyverse` package. This is the only package you will need.
@@ -48,7 +52,8 @@ Accomplishing step 6 above will require some data manipulation. This won't be sp
 1. Exclude species `"C"` using `filter()`
 2. For each species, calculating the mean, variance, and sample size (n) of each group using `group_by()` and `summarize`
 3. For each species, calculate a new variable for standard error using `mutate()` and the formula `se = sqrt(var/n)`.
-4. Remove all columns except the three requested (species, mean, SE) using `select`
+3. You need to remove missing values in either step 1 or 2 above.
+4. Remove any extra columns you created except the three requested (species, mean, SE) using `select()` or `transmute()`
 5. Print (in the console) a tibble with 3 colums
 
 
@@ -96,13 +101,13 @@ You will need to know a variety of functions including:
 
 I will score the code and the plots in class when you are done.
 
-The score will be out of 100 and will be graded holistically.
+The score will be out of 8 and will be graded holistically.
 
 Rubric:
 
-- A+ = 100   (earned for exceptionally thoughtful, creative, or efficient code)
-- A = 95
-- B = 85
-- C = 75
-- D = 65
-- F = 55
+- A+ = 8   (earned for exceptionally thoughtful, creative, or efficient code)
+- A = 7.5
+- B = 6.5
+- C = 5.5
+- D = 4.5
+- F = 3.5

@@ -17,3 +17,16 @@ Welcome to the course website for BIOL 275 Quantitative Biology at MSUM.
 - [The RMarkdown to GitHub Pipeline](rmd_pipeline.html)
 - [Github notifications](github_notifications.html)
 - [Lab practical study guide](lab_practical.html)
+
+## Lab Assignments
+
+<div class="card border-primary mb-3" style="max-width: 20rem;">
+<div class="card-header">Labs</div>
+<div class="card-body">
+<h4 class="card-title">Lab 1</h4>
+<p class="card-text">Introduction to R, RStudio, and the tidyverse</p>
+</div>
+</div>
+
+## Exploratory Data Analysis Project
+

@@ -1,0 +1,41 @@
+---
+title: "Lab Practical Data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r create-example, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+set.seed(10)
+tibble(
+  county = c(rep("Norman", 64),
+             rep("Clay", 112),
+             rep("Wilkin", 32)),
+  trap = c(rep(LETTERS[1:4], each = 16),
+           rep(LETTERS[5:11], each = 16),
+           rep(LETTERS[12:13], each = 16)),
+  sample_num = rep(1:16, 13),
+  sample_date = as.Date("2017-05-08") + 
+           lubridate::weeks(sample_num),
+  mosq_count = c(rpois(64, 120),
+                 rpois(112, 132),
+                 rpois(32, 160)),
+  temp = 45 + (sample_num/1.5) + rnorm(1, 0, 3)
+) %>% 
+  mutate(
+    mosq_count = ifelse(runif(n()) > .95, NA, mosq_count),
+    mosq_count = (sample_num * 10) + mosq_count
+  ) %>% 
+  write.csv("data/practical-data-2019.csv", row.names = FALSE)
+```
+
+## Instructions
+
+1. Create a new project in RStudio
+    - [Claim the GitHub repository](claim_repo.html) for your lab practical at this link: https://classroom.github.com/a/jw-cVo3J
+    - Use the Version Control + GitHub method to clone the repository to your computer.
+2. Save this file **in the project folder** on your computer. Mac users will need to Ctrl+click and select Download File:
+    - [practical-data-2019.csv](data/practical-data-2019.csv)

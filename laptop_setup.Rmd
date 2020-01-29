@@ -8,11 +8,36 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Sections
 
-- [Install R]
-- [Install RStudio]
-- [Install and configure Git]
+- [Connect to Class Share]
+    - [On Campus]
+    - [Off Campus]
+- [Run RStudio]
+    - [Install R]
+    - [Install RStudio]
+    - [Install and configure Git]
 
-## Install R
+## Connect to Class Share
+
+### On campus
+
+- Connect to the the **dragonconnect-student** wifi network or directly to an ethernet connection.
+- Follow the usual instructions for connecting to Class Share.
+- You will be prompted to enter your login credentials.
+    - For username, enter MNSTATE\StarID
+    - For password, enter your StarID password
+
+### Off campus
+
+1. Connect to the MSUM network via Cisco Connect Virtual Private Network (VPN)
+    - [Install the VPN software](https://www.mnstate.edu/it/vpn/) on your computer
+    - Connect to the VPN (run the Cisco Connect VPN application)
+2. Follow the instructions above for connecting from on-campus.
+    - Connect to class share
+    - Use the credentials specified above.
+
+## Run RStudio
+
+### Install R
 
 Install R version 3.4.3. See section 1.2 in GSR for directions or follow these simplified directions:
 
@@ -21,13 +46,13 @@ Install R version 3.4.3. See section 1.2 in GSR for directions or follow these s
 3. If you have Windows, click `base` and then click `Download R 3.4.3 for Windows`.
 4. If you have a Mac, click `R-3.4.3.pkg`.
 
-## Install RStudio
+### Install RStudio
 
 Install the most recent version of RStudio: https://www.rstudio.com/products/rstudio/download/
 
 As of today the most recent version is 1.1.414. Version 1.1.383 was the version at the beginning of the semester. Either of these, or any subsequent version 1.1.xxx releases should be fine.
 
-## Install and configure Git
+### Install and configure Git
 
 See instructions above for installing Git.
 

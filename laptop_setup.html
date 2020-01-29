@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -67,7 +67,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -216,6 +215,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -227,18 +227,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -288,13 +276,53 @@ $(document).ready(function () {
 <div id="sections" class="section level2">
 <h2>Sections</h2>
 <ul>
+<li><a href="#connect-to-class-share">Connect to Class Share</a>
+<ul>
+<li><a href="#on-campus">On Campus</a></li>
+<li><a href="#off-campus">Off Campus</a></li>
+</ul></li>
+<li><a href="#run-rstudio">Run RStudio</a>
+<ul>
 <li><a href="#install-r">Install R</a></li>
 <li><a href="#install-rstudio">Install RStudio</a></li>
 <li><a href="#install-and-configure-git">Install and configure Git</a></li>
+</ul></li>
 </ul>
 </div>
-<div id="install-r" class="section level2">
-<h2>Install R</h2>
+<div id="connect-to-class-share" class="section level2">
+<h2>Connect to Class Share</h2>
+<div id="on-campus" class="section level3">
+<h3>On campus</h3>
+<ul>
+<li>Connect to the the <strong>dragonconnect-student</strong> wifi network or directly to an ethernet connection.</li>
+<li>Follow the usual instructions for connecting to Class Share.</li>
+<li>You will be prompted to enter your login credentials.
+<ul>
+<li>For username, enter MNSTATE</li>
+<li>For password, enter your StarID password</li>
+</ul></li>
+</ul>
+</div>
+<div id="off-campus" class="section level3">
+<h3>Off campus</h3>
+<ol style="list-style-type: decimal">
+<li>Connect to the MSUM network via Cisco Connect Virtual Private Network (VPN)
+<ul>
+<li><a href="https://www.mnstate.edu/it/vpn/">Install the VPN software</a> on your computer</li>
+<li>Connect to the VPN (run the Cisco Connect VPN application)</li>
+</ul></li>
+<li>Follow the instructions above for connecting from on-campus.
+<ul>
+<li>Connect to class share</li>
+<li>Use the credentials specified above.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="run-rstudio" class="section level2">
+<h2>Run RStudio</h2>
+<div id="install-r" class="section level3">
+<h3>Install R</h3>
 <p>Install R version 3.4.3. See section 1.2 in GSR for directions or follow these simplified directions:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></li>
@@ -303,20 +331,21 @@ $(document).ready(function () {
 <li>If you have a Mac, click <code>R-3.4.3.pkg</code>.</li>
 </ol>
 </div>
-<div id="install-rstudio" class="section level2">
-<h2>Install RStudio</h2>
+<div id="install-rstudio" class="section level3">
+<h3>Install RStudio</h3>
 <p>Install the most recent version of RStudio: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></p>
 <p>As of today the most recent version is 1.1.414. Version 1.1.383 was the version at the beginning of the semester. Either of these, or any subsequent version 1.1.xxx releases should be fine.</p>
 </div>
-<div id="install-and-configure-git" class="section level2">
-<h2>Install and configure Git</h2>
+<div id="install-and-configure-git" class="section level3">
+<h3>Install and configure Git</h3>
 <p>See instructions above for installing Git.</p>
 <p>Once you have it installed, you will need to configure some settings.</p>
 <p>Run the program Git Bash (on Windows) or Git (?) (on Mac), which will open a terminal window. In this window, there will be a command prompt. Run the following two commands.</p>
 <pre><code>git config --global user.email &quot;you@example.com&quot;
 git config --global user.name &quot;Your Name&quot;</code></pre>
-<p>In the code above replace “<a href="mailto:you@example.com">you@example.com</a>” with your email address and replace “Your Name” with your name, for example “Chris Merkord”.</p>
+<p>In the code above replace “<a href="mailto:you@example.com" class="email">you@example.com</a>” with your email address and replace “Your Name” with your name, for example “Chris Merkord”.</p>
 <p>After typing each command press Enter before typing the next command. Commands must be typed exactly as shown. Spaces and capitalization matter. Terminal windows are tricky so its best to type the commands rather than trying to copy and paste them from here.</p>
+</div>
 </div>
 
 <div class="footer">
@@ -339,6 +368,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

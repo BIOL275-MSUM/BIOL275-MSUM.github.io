@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Data sets</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Quantitative Biology</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Data sets</h1>
+
+</div>
+
+
+<div id="datasets" class="section level1">
+<h1>Datasets</h1>
+<p>You may choose one of the following datasets, or choose another publicly available dataset, or use your own dataset, for example if you are involved in an ongoing research project.</p>
+<div id="your-own-dataset" class="section level2">
+<h2>Your own dataset</h2>
+<p>If you are involved in an ongoing research project, for example with a faculty member at MSUM, you may be able to use the data collected as part of that project for your BIOL 275 lab project.</p>
+<p>In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.</p>
+</div>
+<div id="ecology-and-evolutionary-biology" class="section level2">
+<h2>Ecology and Evolutionary Biology</h2>
+<ul>
+<li><strong><a href="https://ebird.org/science">eBird data</a></strong> on bird observations. This is a huge dataset with many possible questions to explore. Possibilities include:
+<ul>
+<li>The relationship between abundance of a species and specific environmental conditions (e.g. climate, land cover)</li>
+<li>The relationship between birding effort and number/diversity of birds observed</li>
+</ul></li>
+<li>The <strong>Botanical Information and Ecology Network</strong> brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you’d probably need to combine it with some other earth observation data like those found below.</li>
+<li><strong><a href="https://lpdaacsvc.cr.usgs.gov/appeears/">The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a></strong> offers a simple and efficient way to access and transform geospatial data from a variety of federal data archives.</li>
+<li>AppEEARS enables users to subset geospatial datasets using spatial, temporal, and band/layer parameters.</li>
+<li>Two types of sample requests are available: point samples for geographic coordinates and area samples for spatial areas via vector polygons.</li>
+<li>There are <a href="https://www.youtube.com/watch?v=thRApFufBq8">handy videos</a> on how to use the system to get data
+<ul>
+<li>Some datasets include:
+<ul>
+<li>Land Surface Temperature (min, max, mean)</li>
+<li>Sea Surface Temperature</li>
+<li>Precipitation</li>
+<li>Snow cover</li>
+<li>Land cover</li>
+<li>Soil moisture, soil temperature</li>
+<li>Vegetation indices (e.g. NDVI)</li>
+<li>Gridded population data</li>
+</ul></li>
+<li>The temporal and spatial range and resolution of these data sets varies.</li>
+<li>You could explore geospatial data by itself, or if you have GPS coordinate for other types of data (e.g. georeferenced specimen or observation data) then you could us AppEARS to extract environmental data associated with those points.</li>
+</ul></li>
+<li>Other geospatial data
+<ul>
+<li><strong><a href="https://www.mrlc.gov/finddata.php">National Land Cover Database</a></strong>. Could possible look at land cover change in a particular area.</li>
+</ul></li>
+</ul>
+</div>
+<div id="cellular-and-molecular-biology-and-biochemistry" class="section level2">
+<h2>Cellular and molecular biology and biochemistry</h2>
+<ul>
+<li><strong><a href="https://phagesdb.org/">The Actinobacteriophage Database at PhagesDB.org</a></strong>, a website that collects and shares data, pictures, protocols, and analysis tools associated with the discovery, sequencing, and characterization of <a href="https://phagesdb.org/glossary/#Mycobacteriophage">mycobacteriophages</a>—viruses that infect the <em>Mycobacteria</em> and also other bacterial hosts in the phylum Actinobacteria. It was developed at—and is maintained from—the <strong>Pittsburgh Bacteriophage Institute</strong>, a joint venture of <strong>Dr. Graham Hatfull</strong> and <strong>Dr. Roger Hendrix</strong>, both of the Department of Biological Sciences at the University of Pittsburgh.</li>
+</ul>
+<div id="health-and-medical" class="section level3">
+<h3>Health and medical</h3>
+<ul>
+<li><strong><a href="http://www.countyhealthrankings.org/">County Health Rankings &amp; Roadmaps</a></strong>. A source of annual county-level public health data. You can download data by state and year (see <a href="http://www.countyhealthrankings.org/app/minnesota/2017/downloads">Minnesota</a>, for example).</li>
+<li><strong><a href="http://datacenter.kidscount.org/">KIDS COUNT</a></strong>. A source of data on children and families and a project of the Annie E. Casey Foundation. Data is available by year and county/state. You would need to choose and download the variables necessary to answer your question. Topics include:
+<ul>
+<li>Demographics</li>
+<li>Economic Well-Being</li>
+<li>Education</li>
+<li>Family and Community</li>
+<li>Health</li>
+<li>Safety and Risky Behaviors</li>
+</ul></li>
+<li>Other sources of data sets:
+<ul>
+<li><strong><a href="http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota">Minnesota Health Data Sources</a></strong>, a list compiled by County Health Rankings &amp; Roadmaps.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="general-online-data-repositories" class="section level2">
+<h2>General online data repositories</h2>
+<ul>
+<li><strong><a href="http://datadryad.org/">Dryad</a></strong>. A curated, general purpose data repository. You can search through it to find an interesting dataset. Here are two examples:
+<ul>
+<li><strong><a href="http://hdl.handle.net/10255/dryad.170813">Mammal community data from Wen <em>et al.</em> (2018)</a></strong>. A dataset of mammal species found at sites along an elevational gradient on three mountains in China.</li>
+<li><strong><a href="http://hdl.handle.net/10255/dryad.170822">Birth seasonality data from Martinez-Bakker <em>et al.</em> (2014)</a></strong>. A dataset of the number of births per month over the past 100 years in the US and 60 years in the World. Could possible be combined with another dataset to ask an interesting question.</li>
+</ul></li>
+<li><strong><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome Public Datasets</a></strong>. A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone!</li>
+</ul>
+</div>
+<div id="other-useful-datasets" class="section level2">
+<h2>Other useful datasets</h2>
+<div id="datasets-in-r" class="section level3">
+<h3>Datasets in R</h3>
+<p>Many R packages have datasets included.</p>
+</div>
+</div>
+</div>
+
+<div class="footer">
+  <p>Copyright &copy; 2019 Chris Merkord. All rights reserved.</p>
+</div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

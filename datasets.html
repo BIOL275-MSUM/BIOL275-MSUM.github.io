@@ -273,27 +273,89 @@ $(document).ready(function () {
 </div>
 
 
-<div id="datasets" class="section level1">
-<h1>Datasets</h1>
 <p>You may choose one of the following datasets, or choose another publicly available dataset, or use your own dataset, for example if you are involved in an ongoing research project.</p>
+<ul>
+<li><a href="#your-own-dataset">Your own dataset</a></li>
+<li><a href="#ecology-and-evolutionary-biology">Ecology and evolutionary biology</a></li>
+<li><a href="#cellular-and-molecular-biology-and-biochemistry">Cellular and molecular biology and biochemistry</a></li>
+<li><a href="#health-and-medical-sciences">Health and medical sciences</a></li>
+<li><a href="#general-online-data-repositories">General online data repositories</a></li>
+<li><a href="#other-useful-datasets">Other useful datasets</a></li>
+</ul>
 <div id="your-own-dataset" class="section level2">
 <h2>Your own dataset</h2>
 <p>If you are involved in an ongoing research project, for example with a faculty member at MSUM, you may be able to use the data collected as part of that project for your BIOL 275 lab project.</p>
 <p>In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.</p>
 </div>
 <div id="ecology-and-evolutionary-biology" class="section level2">
-<h2>Ecology and Evolutionary Biology</h2>
+<h2>Ecology and evolutionary biology</h2>
+<div id="ebird-data" class="section level3">
+<h3>eBird data</h3>
 <ul>
 <li><strong><a href="https://ebird.org/science">eBird data</a></strong> on bird observations. This is a huge dataset with many possible questions to explore. Possibilities include:
 <ul>
 <li>The relationship between abundance of a species and specific environmental conditions (e.g. climate, land cover)</li>
 <li>The relationship between birding effort and number/diversity of birds observed</li>
 </ul></li>
+</ul>
+<div id="datasets" class="section level4">
+<h4>Datasets</h4>
+<p>eBird Basic Dataset</p>
+</div>
+<div id="workflow" class="section level4">
+<h4>Workflow</h4>
+<p>In general, the process would look like this:</p>
+<ol style="list-style-type: decimal">
+<li>Instructor downloads the entire data set (&gt; 150 GB) and puts it on the Class Share drive</li>
+<li>You use the accompanying R package <a href="https://cornelllabofornithology.github.io/auk/index.html">auk: eBird Data Extraction and Processing in R</a> to:
+<ol style="list-style-type: decimal">
+<li>Extract a subset of the data you are interested in</li>
+<li>Do any necessary filtering</li>
+</ol></li>
+<li>You do additional data tranformation and graphing using <strong>tidyverse</strong> functions.</li>
+</ol>
+<p>The package has a <a href="https://cornelllabofornithology.github.io/auk/articles/auk.html">vignette</a> with quick start guide.</p>
+</div>
+</div>
+<div id="neon" class="section level3">
+<h3>NEON</h3>
+<p>The National Science Foundation’s National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing. The comprehensive data, spatial extent and remote sensing technology provided by NEON will enable a large and diverse user community to tackle new questions at scales not accessible to previous generations of ecologists.</p>
+<p>NEON data is available here: <a href="https://www.neonscience.org/data" class="uri">https://www.neonscience.org/data</a></p>
+<div id="types-of-data" class="section level4">
+<h4>Types of data</h4>
+<ul>
+<li>examples?</li>
+</ul>
+</div>
+<div id="the-data-portal" class="section level4">
+<h4>The Data Portal</h4>
+<p>Users can browse data products and associated documentation and then select time frames and field sites to download the data.</p>
+</div>
+<div id="the-neonutilities-r-package" class="section level4">
+<h4>The neonUtilities R package</h4>
+<p>The package <strong>neonUtilities</strong> allows you to access and download NEON data as well as to work with NEON data downloaded from the portal.</p>
+</div>
+</div>
+<div id="species-distribution-data" class="section level3">
+<h3>Species distribution data</h3>
+<ul>
 <li>The <strong>Botanical Information and Ecology Network</strong> brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you’d probably need to combine it with some other earth observation data like those found below.</li>
-<li><strong><a href="https://lpdaacsvc.cr.usgs.gov/appeears/">The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a></strong> offers a simple and efficient way to access and transform geospatial data from a variety of federal data archives.</li>
-<li>AppEEARS enables users to subset geospatial datasets using spatial, temporal, and band/layer parameters.</li>
-<li>Two types of sample requests are available: point samples for geographic coordinates and area samples for spatial areas via vector polygons.</li>
-<li>There are <a href="https://www.youtube.com/watch?v=thRApFufBq8">handy videos</a> on how to use the system to get data
+<li>GBIF</li>
+</ul>
+</div>
+<div id="geospatial-data" class="section level3">
+<h3>Geospatial data</h3>
+<div id="appears" class="section level4">
+<h4>Appears</h4>
+<p><strong><a href="https://lpdaacsvc.cr.usgs.gov/appeears/">The Application for Extracting and Exploring Analysis Ready Samples (AρρEEARS)</a></strong> offers a simple and efficient way to access and transform geospatial data from a variety of federal data archives.</p>
+<p>AρρEEARS enables users to subset geospatial datasets using spatial, temporal, and band/layer parameters.</p>
+<p>Two types of sample requests are available:</p>
+<ul>
+<li>point samples for geographic coordinates and</li>
+<li>area samples for spatial areas via vector polygons.</li>
+</ul>
+<p>Sample requests submitted to AρρEEARS provide users not only with data values, but also associated quality data values. Interactive visualizations with summary statistics are provided for each sample within the application, which allow users to preview and interact with their samples before downloading their data. Visit the Help page to learn more.</p>
+<p>There are <a href="https://www.youtube.com/watch?v=thRApFufBq8">handy videos</a> on how to use the system to get data.</p>
 <ul>
 <li>Some datasets include:
 <ul>
@@ -307,21 +369,24 @@ $(document).ready(function () {
 <li>Gridded population data</li>
 </ul></li>
 <li>The temporal and spatial range and resolution of these data sets varies.</li>
-<li>You could explore geospatial data by itself, or if you have GPS coordinate for other types of data (e.g. georeferenced specimen or observation data) then you could us AppEARS to extract environmental data associated with those points.</li>
-</ul></li>
-<li>Other geospatial data
-<ul>
-<li><strong><a href="https://www.mrlc.gov/finddata.php">National Land Cover Database</a></strong>. Could possible look at land cover change in a particular area.</li>
-</ul></li>
 </ul>
+<p>You could explore geospatial data by itself, or if you have GPS coordinate for other types of data (e.g. georeferenced specimen or observation data) then you could us AppEARS to extract environmental data associated with those points.</p>
+</div>
+<div id="other-geospatial-data" class="section level4">
+<h4>Other geospatial data</h4>
+<ul>
+<li><strong><a href="https://www.mrlc.gov/finddata.php">National Land Cover Database</a></strong>. Could possibly look at land cover change in a particular area.</li>
+</ul>
+</div>
+</div>
 </div>
 <div id="cellular-and-molecular-biology-and-biochemistry" class="section level2">
 <h2>Cellular and molecular biology and biochemistry</h2>
 <ul>
 <li><strong><a href="https://phagesdb.org/">The Actinobacteriophage Database at PhagesDB.org</a></strong>, a website that collects and shares data, pictures, protocols, and analysis tools associated with the discovery, sequencing, and characterization of <a href="https://phagesdb.org/glossary/#Mycobacteriophage">mycobacteriophages</a>—viruses that infect the <em>Mycobacteria</em> and also other bacterial hosts in the phylum Actinobacteria. It was developed at—and is maintained from—the <strong>Pittsburgh Bacteriophage Institute</strong>, a joint venture of <strong>Dr. Graham Hatfull</strong> and <strong>Dr. Roger Hendrix</strong>, both of the Department of Biological Sciences at the University of Pittsburgh.</li>
 </ul>
-<div id="health-and-medical" class="section level3">
-<h3>Health and medical</h3>
+<div id="health-and-medical-sciences" class="section level3">
+<h3>Health and medical sciences</h3>
 <ul>
 <li><strong><a href="http://www.countyhealthrankings.org/">County Health Rankings &amp; Roadmaps</a></strong>. A source of annual county-level public health data. You can download data by state and year (see <a href="http://www.countyhealthrankings.org/app/minnesota/2017/downloads">Minnesota</a>, for example).</li>
 <li><strong><a href="http://datacenter.kidscount.org/">KIDS COUNT</a></strong>. A source of data on children and families and a project of the Annie E. Casey Foundation. Data is available by year and county/state. You would need to choose and download the variables necessary to answer your question. Topics include:
@@ -356,7 +421,6 @@ $(document).ready(function () {
 <div id="datasets-in-r" class="section level3">
 <h3>Datasets in R</h3>
 <p>Many R packages have datasets included.</p>
-</div>
 </div>
 </div>
 

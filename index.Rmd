@@ -10,6 +10,7 @@ Welcome to the course website for BIOL 275 Quantitative Biology at MSUM.
 
 ## Pages
 
+- [Chi-Square Examples](chi-sq.html)
 - [Lab project guidelines](lab_project.html)
 - [Assignment: GitHub practice](github_practice.html)
 - [Claiming a GitHub Classroom repository](claim_repo.html)

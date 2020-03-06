@@ -1,0 +1,255 @@
+---
+title: "Chi-Square Examples"
+output: html_document
+---
+  
+```{r knitr_init, echo=FALSE, cache=FALSE, warning=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+               cache=TRUE,
+               prompt=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+## Load `tidyverse` package
+
+We will use tidyverse functions for all these examples.
+
+```{r}
+# load packages -----------------------------------------------------------
+library(tidyverse)  # load tidyverse, for working with datasets
+```
+
+## Proportional Model Example
+
+### Goal
+
+Replicate the analysis done in Example 8.1 in The Analysis of Biologica Data (p. 204).
+
+Answer the question: **Do births occur randomly throughout the week?**
+
+H0: the number of births does *not* vary by day of the week.
+Ha: the number of births *does* vary by day of the week.
+
+### Data
+
+Use the data from the Births dataset from the mosaicData package:
+https://vincentarelbundock.github.io/Rdatasets/doc/mosaicData/Births.html
+
+```{r}
+# load the mosaicData package
+library(mosaicData)
+
+# put the dataset in the global environment as a tibble and rename it to lowercase
+births <- as_tibble(Births)
+births
+```
+
+The dataset contains the number of births each day from 1968 to 1988. 
+
+It is a data frame with the following 8 variables:
+
+- `date` Date
+- `births` Number of births on date (integer)
+- `wday` Day of week (ordered factor)
+- `year` Year (integer)
+- `month` Month (integer)
+- `day_of_year` Day of year (integer)
+- `day_of_month` Day of month (integer)
+- `day_of_week` Day of week (integer)
+
+Take a look at the data:
+
+```{r, echo=FALSE}
+DT::datatable(births)
+```
+
+
+### Analysis
+
+#### Summarize data by day of week
+
+The goal is to get a table with day of week as a variable (`yday`) and a
+variable for "number of births".
+
+The `births` variable already has the number of births on a given date. We just
+have to sum those up for each day of the week.
+
+```{r}
+# create frequency table
+ft <- births %>% 
+  group_by(wday) %>% 
+  summarize(births = sum(births))
+```
+
+Now to visualize the data.
+
+If we were using the raw data to make this plot, we would use a barchart, which would do the counting for us.
+
+Because we have already counted the births, we will use a column chart. 
+
+```{r}
+# plot 
+ggplot(ft) +
+  geom_col(aes(x = wday, y = births)) +
+  labs(
+    x = "Day of the week",
+    y = "Frequency",
+    title = "Births 1968-1988"
+  )
+```
+
+### Conduct GOF test
+
+```{r}
+# calcualte expected frequencies
+expected <-
+  ft %>% 
+  mutate(
+    total = sum(births),
+    n_cat = n(),
+    expected = total / n_cat
+  )
+expected
+```
+
+#### Calculate chi-square test statistic and interpret
+
+```{r}
+# calcualte the chi-square for each row
+chi_sq_table <-
+  expected %>% 
+  mutate(
+    chi_sq = ( (births - expected)^2 ) / expected
+  )
+chi_sq_table
+```
+
+Add up the chi-square from each row to get the chi-square test statistic.
+
+At the same time, count the categories and use that to calculate the degrees of freedom (df) and the critical value.
+
+```{r}
+chi_sq_table %>% 
+  summarize(
+    chi_sq_test_stat = sum(chi_sq),
+    n_cat = n(),
+    df = n_cat - 1,
+    alpha = 0.05,
+    crit_val = qchisq(p = 1 - alpha, 
+                      df = df)
+  )
+```
+
+Is the chi-square test statistic greater than the critical value?
+
+If yes, then reject the null hypothesis and accept the alternative hypothesis.
+
+Ha: The number of births *does* vary by day of the week.
+
+### Alternative way to do it
+
+You can also use the `chisq.test` function in R.
+
+To do this, you will a vector of the observered frequencies.
+
+```{r}
+# observered frequencies
+(x <- ft$births)
+```
+
+Use the `chisq.test` function
+
+```{r}
+(Xsq <- chisq.test(x))
+Xsq$observed   # observed counts (same as x)
+Xsq$expected   # expected counts under the null
+Xsq$statistic  # value the chi-squared test statistic
+Xsq$p.value    # p-value for the test
+```
+Instead of comparing the test statistic to a critical value, you compare the
+p-value to your alpha level.
+
+In this case the p-value of 2.2e-16 (0.00000000000000022) is less than our alpha
+value of 0.05 so we reject the null hypothesis.
+
+Note: this assumes the expected proportion for each category is `1/n_cat`. Or 
+1/7 in our case.
+
+If the expected proportion is different, then you would need to provide a second 
+argument `p` that is the same length as `x` which contains the expected 
+proportions.
+
+If you have something other than expected proportions that does not sum to 1,
+for example if you have expected frequencies, then you can use those for `p`
+and add the argument `rescale.p = TRUE`, which will rescale `p` so that it sums
+to 1. It does this by dividing each element of `p` by the sum of `p`.
+
+## Poisson Example
+
+## Contingency Test Example
+
+This is an example of how to conduct the chi-square contingency test shown in
+Example 9.4 in your textbook (p. 246).
+
+While it is possible to use `chisq.test()` to do this, that function requires
+the data to be in a **matrix** data type. In this class, we mostly use 
+**data frames**, and in particular **tibbles**.
+
+Here's how to convert from a data frame to a tibble:
+
+```{r}
+library(infer)
+```
+
+Let's start with our contingency table:
+
+```{r}
+fish <-
+  tribble(
+            ~infection,      ~eaten, ~n_fish,
+          "Uninfected",     "Eaten",       1,
+    "Lightly infected",     "Eaten",      10,
+     "Highly infected",     "Eaten",      37,
+          "Uninfected", "Not Eaten",      49,
+    "Lightly infected", "Not Eaten",      35,
+     "Highly infected", "Not Eaten",       9
+  )
+```
+
+Now using the infer package you can do the chi-square goodness-of-fit test like this:
+
+```{r}
+
+(fish_matrix <- matrix(fish$n_fish, nrow = 2, byrow = TRUE))
+chisq.test(fish_matrix)
+
+```
+
+#### Using raw data
+
+What if your data frame contained the raw data, i.e. 141 rows with each row
+representing a single fish.
+
+Luckily, where there is a need, there is usually a package. Users have created
+the **infer** package to facilitate performing statistical inference using the
+same grammar as the **tidyverse**.
+
+```{r, eval=FALSE}
+# generate the raw data
+fish_observations <-
+  fish %>% 
+  uncount(n_fish) %>% 
+  print()
+
+# do the chi-square test
+fish_observations %>%
+  chisq_test(response = eaten, explanatory = infection)
+```
+

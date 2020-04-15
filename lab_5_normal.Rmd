@@ -1,0 +1,296 @@
+---
+title: "Lab 5: The normal distribution"
+output: html_document
+---
+  
+```{r knitr_init, echo=FALSE, cache=FALSE, warning=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+               cache=TRUE,
+               prompt=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+Background reading: Chapter 10 of Whitlock & Schluter (2018).
+
+## Objectives
+
+Learn how to:
+
+1. [Visualize a normal distribution](#visualize-a-normal-distribution)
+2. [Convert a variable to *Z*-scores](#convert-a-variable-to-z-scores)
+
+## Instructions
+
+1. Open RStudio
+2. Create a new R script for this lab and save it with a name you will recognize later.
+3. Copy the [Template](#template) at the end of this lab and paste it into your script.
+4. Work through the [Practice](#practice) section, running the code provided.
+5. Write your own code and comments to complete the [Assignment](#assignment).
+6. Save your R script.
+7. Go to the Lab 5 assignment in D2L.
+8. Submit your R script. 
+    - Make sure the R script is saved in RStudio before submitting.
+    - Make sure you select the R script not the Rproj file (the blue cube icon)
+    - After submitting, view your submission to make sure it is correct and complete
+
+## Practice
+
+### 1. Visualize a normal distribution
+
+For our first example, let's generate a random sample of 100 measurements from a 
+population that has a normal distribution with a mean of 13.5 and a standard 
+deviation of 2.82 and assign that sample to a variabled named `x`.
+
+```{r}
+# randomly sample a normal distribution
+set.seed(52)
+x <- rnorm(n = 1000, mean = 7.5, sd = 2.82)
+```
+
+You might be wondering about the `set.seed()` function. That ensures that the
+random numbers you generate when running this code will be the same as the ones
+shown here.
+
+Now print `x` to see the numbers you generated. 
+
+```{r, eval=FALSE}
+x    # print x in the console
+```
+Now let's see how well the sample represents the population it was drawn from by
+calculating the mean and standard deviation of the sample.
+
+```{r}
+mean(x)    # calculate the mean
+sd(x)    # calculate the standard deviation
+```
+Those numbers are fairly close to the population parameters we used to generate
+the data (mean = 7.5, sd = 2.82).
+
+But does the sample have a normal distribution? Let's graph it to make sure.
+Remember that an effective way to visualize a single variable is with a 
+histogram.
+
+As always, we will use `ggplot()` for graphing, which means we need to load the
+**tidverse** package. It also means we need to put x in a data frame, because
+the data argument to `ggplot()` must always be a data frame (not a vector). Note
+the use of `geom_vline()` to add a vertical line for the mean value.
+
+```{r, message=FALSE}
+# load the tidyverse package for ggplot2, tibble, and dplyr
+library(tidyverse)
+
+# create a data frame (tibble) to use for plotting
+df <- tibble(x)
+df
+```
+
+```{r plot-histogram}
+# plot a histogram of x
+ggplot(df, aes(x = x)) +
+  geom_histogram(bins = 11) +
+  geom_vline(aes(xintercept = mean(x)), color = "darkred")
+```
+
+Looking at the histogram, you might think that its not particularly bell-shaped
+with that seemingly left-skewed distribution. This kind of outcome is 
+actually common when taking a random sample. Those outlier values below -1 are
+fairly rare and only represent a tiny proportion of the sample. If you sampled
+the same distribution again, you could just as easily have outliers on the other
+end of the distribution, or on both, or no outliers at all. The overall
+shape and center of gravity, however, would be the same.
+
+### 2. Convert a variable to *Z*-scores
+
+To convert a variable to Z-scores, you subtract its mean and divide by its
+standard deviation. This is called ***standardizing*** a variable, or sometimes 
+*scaling* (see note below). The resulting numbers are called with 
+***Z*-scores**.
+
+Remember, the Z distribution has a mean of 0 and a standard deviation of 1. Our
+variable has a mean of about 7.39. 
+
+To get our variable to have a mean of zero, we would need to subtract 7.39 from 
+each value. This is called *centering.*
+
+```{r, echo=FALSE}
+# center x
+x_centered <- x - mean(x)
+
+x_centered[1:20]    # print the first 20 values
+```
+
+Let's check if the mean of the new variable is zero.
+
+```{r}
+mean(x_centered)    # calculate the mean
+```
+
+That's very close to zero. The "e-16" is exponential notation meaning the actual
+mean is about 0.0000000000000001067798, or just about zero. Why is it not zero?
+Basically it's due to how R rounds very small numbers.
+
+Our variable `x` is centered now, but it still has a standard deviation of 2.87.
+
+```{r}
+sd(x_centered)    # calculate the standard deviation
+```
+
+The next step is to *scale* the variable so that it has a standard deviation of 
+1. This can be done by dividing each value by the variable's standard deviation 
+of 2.87.
+
+```{r}
+# scale the variable
+x_scaled <- x_centered / sd(x_centered)
+sd(x_scaled)
+mean(x_scaled)
+```
+
+That's it... you have now scaled the variable `x`. The values f `x_scaled` are
+now called "*Z*-scores". They have a mean of 0 and a standard deviation of 1.
+
+```{r plot-z-scores}
+# plot a histogram of x_scaled
+ggplot(tibble(x_scaled), aes(x = x_scaled)) +
+  geom_histogram(bins = 11) +
+  geom_vline(aes(xintercept = mean(x_scaled)), color = "darkred")
+```
+
+A note on terminology:
+
+Converting a variable to Z-scores is often called "standardizing", but it is
+also sometimes refered to as "scaling". This can be confusing because "scaling"
+can thus refer in the loose sense to the act of standardizing, or in the strict
+sense to dividing by the standard deviation.
+
+On a related note, there is actually a handy function in R that both centers
+and scales (in the strict sense) called. Confusingly the function is called
+`scale()`.
+
+Now you know how to standardize a variable stored as a vector. But what if you
+want to standardize a variable in a data frame? With `dplyr` it's super easy!
+
+```{r}
+# start with data frame and then
+# create a new variable for z-scores
+mutate(df, z = (x - mean(x)) / sd(x))
+```
+
+## Assignment
+
+For the assignmet we will use the `heights` data set in the dslabs package.
+
+The data set contains the height and sex of 1,050 students.
+
+First, install **dslabs** using the Packages tab in RStudio. Then load the `heights`
+data set and turn it into a tibble so it prints nicely.
+
+```{r}
+library(dslabs)
+data("heights")
+h <- as_tibble(heights)
+h
+```
+
+Your assignment is to:
+
+1. Plot the distribution of heights for all students. Use any type of graph that 
+seems appropriate.
+2. Add a comment to your script stating whether the distribution looks normal or 
+not.
+3. Standardize the variable `height` (for all students, not females and males
+separately).
+4. Plot the distribution of Z-scores. Use different aesthetics or facets for 
+male and female students to visualize each group seperately but on the same 
+graph. Review 
+[R4DS Chapter 3 Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html) 
+if needed. If you can't figure out how to do it, create two separate plots, one 
+for female and one for male, for partial credit.
+
+## Template
+
+Copy and paste this template into your R script.
+
+Fill in the missing elements under the "assignment" heading
+
+```{r, eval=FALSE}
+#### Lab 5 Script Template
+
+### Practice ----------------------------------------------
+
+## Objective 1. Visualize a normal distribution -----------
+
+# randomly sample a normal distribution
+set.seed(52)
+x <- rnorm(n = 1000, mean = 7.5, sd = 2.82)
+
+x             # print x in the console
+mean(x)       # calculate the mean
+sd(x)         # calculate the standard deviation
+
+# load the tidyverse package for ggplot2, tibble, and dplyr
+library(tidyverse)
+
+# create a data frame (tibble) to use for plotting
+df <- tibble(x)
+df
+
+# plot a histogram of x
+ggplot(df, aes(x = x)) +
+  geom_histogram(bins = 11) +
+  geom_vline(aes(xintercept = mean(x)), color = "darkred")
+
+
+## Objective 2. Convert a variable to *Z*-scores ----------
+
+# center x
+x_centered <- x - mean(x)
+
+x_centered[1:20]    # print the first 20 values
+mean(x_centered)    # calculate the mean
+sd(x_centered)    # calculate the standard deviation
+
+# scale the variable
+x_scaled <- x_centered / sd(x_centered)
+sd(x_scaled)
+mean(x_scaled)
+
+# plot a histogram of x_scaled
+ggplot(tibble(x_scaled), aes(x = x_scaled)) +
+  geom_histogram(bins = 11) +
+  geom_vline(aes(xintercept = mean(x_scaled)), color = "darkred")
+
+# start with data frame and then
+# create a new variable for z-scores
+mutate(df, z = (x - mean(x)) / sd(x))
+
+
+### Assignment -----------------------------------------
+### ENTER YOUR CODE BELOW
+
+# 1. Plot the distribution of heights for all students. 
+
+
+
+# 2. Does the distribution look normal?  (put 'yes' or 'no' here)
+
+
+
+# 3. Standardize the variable `height`.
+
+
+
+# 4. Plot the distribution of Z-scores.
+
+
+
+```
+

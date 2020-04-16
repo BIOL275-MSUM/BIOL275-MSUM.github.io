@@ -57,13 +57,17 @@ x <- rnorm(n = 1000, mean = 7.5, sd = 2.82)
 
 You might be wondering about the `set.seed()` function. That ensures that the
 random numbers you generate when running this code will be the same as the ones
-shown here.
+shown here. YOU MUST RUN `set.seed()` immediately before any random number
+generator like `rnorm()` to in order to get the same random numbers. If you 
+re-run the code later, always be sure to run `set.seed()` before generating your
+vector of values for `x`.
 
 Now print `x` to see the numbers you generated. 
 
 ```{r, eval=FALSE}
 x    # print x in the console
 ```
+
 Now let's see how well the sample represents the population it was drawn from by
 calculating the mean and standard deviation of the sample.
 
@@ -71,6 +75,11 @@ calculating the mean and standard deviation of the sample.
 mean(x)    # calculate the mean
 sd(x)    # calculate the standard deviation
 ```
+NOTE: If you get any numbers for the mean and standard deviation other than those
+shown above, then it is probably because you didn't generate the same set of
+random numbers as we did here. Re-run the `set.seed()` and `x<-rnorm()` lines 
+above, in that order.
+
 Those numbers are fairly close to the population parameters we used to generate
 the data (mean = 7.5, sd = 2.82).
 

@@ -402,7 +402,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># randomly sample a normal distribution</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">set.seed</span>(<span class="dv">52</span>)</a>
 <a class="sourceLine" id="cb1-3" title="3">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mean =</span> <span class="fl">7.5</span>, <span class="dt">sd =</span> <span class="fl">2.82</span>)</a></code></pre></div>
-<p>You might be wondering about the <code>set.seed()</code> function. That ensures that the random numbers you generate when running this code will be the same as the ones shown here.</p>
+<p>You might be wondering about the <code>set.seed()</code> function. That ensures that the random numbers you generate when running this code will be the same as the ones shown here. YOU MUST RUN <code>set.seed()</code> immediately before any random number generator like <code>rnorm()</code> to in order to get the same random numbers. If you re-run the code later, always be sure to run <code>set.seed()</code> before generating your vector of values for <code>x</code>.</p>
 <p>Now print <code>x</code> to see the numbers you generated.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">x    <span class="co"># print x in the console</span></a></code></pre></div>
 <p>Now let’s see how well the sample represents the population it was drawn from by calculating the mean and standard deviation of the sample.</p>
@@ -410,6 +410,7 @@ $(document).ready(function () {
 <pre><code>[1] 7.393641</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">sd</span>(x)    <span class="co"># calculate the standard deviation</span></a></code></pre></div>
 <pre><code>[1] 2.872776</code></pre>
+<p>NOTE: If you get any numbers for the mean and standard deviation other than those shown above, then it is probably because you didn’t generate the same set of random numbers as we did here. Re-run the <code>set.seed()</code> and <code>x&lt;-rnorm()</code> lines above, in that order.</p>
 <p>Those numbers are fairly close to the population parameters we used to generate the data (mean = 7.5, sd = 2.82).</p>
 <p>But does the sample have a normal distribution? Let’s graph it to make sure. Remember that an effective way to visualize a single variable is with a histogram.</p>
 <p>As always, we will use <code>ggplot()</code> for graphing, which means we need to load the <strong>tidverse</strong> package. It also means we need to put x in a data frame, because the data argument to <code>ggplot()</code> must always be a data frame (not a vector). Note the use of <code>geom_vline()</code> to add a vertical line for the mean value.</p>

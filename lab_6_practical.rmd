@@ -1,0 +1,305 @@
+---
+title: "Lab 6: Comparing means / Lab Practical"
+output: html_document
+---
+  
+```{r knitr_init, echo=FALSE, cache=FALSE, warning=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+               cache=TRUE,
+               prompt=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+Background reading: Chapters 12 of Whitlock & Schluter (2018).
+
+Lab 6 and the lab practical have been combined so you only have to do one
+assignment before the end of the semester.
+
+## Objectives
+
+Learn how to:
+
+1. [Conduct a t-test](#conduct-a-t-test)
+
+Demonstrate your ability to:
+
+1. Wrangle data
+2. Plot data
+3. Estimate a population parameter
+4. Conduct a hypothesis test
+
+## Instructions
+
+1. Open RStudio
+2. Create a new R script for this lab and save it with a name you will recognize later.
+3. Copy the [Template](#template) at the end of this lab and paste it into your script.
+4. Work through the [Practice](#practice) section, running the code provided.
+5. Write your own code and comments to complete the [Assignment](#assignment).
+6. Save your R script.
+7. Go to the *Lab 6 / Lab Practical* assignment in D2L.
+8. Submit your R script. 
+    - Make sure the R script is saved in RStudio before submitting.
+    - Make sure you select the R script not the Rproj file (the blue cube icon)
+    - After submitting, view your submission to make sure it is correct and complete
+
+## Practice
+
+### 1. Conduct a t-test
+
+For this example, we will use the iris dataset in the package datasets. This
+packaged is loaded automatically when R starts, so you already have access to
+it.
+
+Print the iris dataset in the console to see what it looks like:
+
+```{r, eval=FALSE}
+# print iris
+iris
+```
+
+You will notice that it does not have the pretty display of a tibble, but the
+clunky display of a base R data frame.
+
+To make it easier to read, convert it to a tibble. In this case, we can just
+write over the old iris dataset with the new one.
+
+```{r, message=FALSE}
+# turn iris into a tibble
+library(tidyverse)
+iris <- as_tibble(iris)
+iris
+```
+
+Notice that "iris" now shows up in your environment tab.
+
+To remind yourself what's in the iris dataset, you can do some basic information
+gathering:
+
+```{r}
+# look at the dataset
+help("iris")
+glimpse(iris)
+count(iris, Species)
+```
+
+As you can see, iris has 150 observatons (rows) and 5 variables (columns). Each 
+observation represents an individual plant. The **Species** variable has three 
+possible values, one for each species. Each species has 50 observations.
+
+If we wanted to graph the distribution of a variable, for example petal length,
+among the three species we could do something like this:
+
+```{r petal-length, fig.height=4, fig.width=6}
+# density plot of petal lengths by species
+ggplot(iris, aes(x = Petal.Length, color = Species)) +
+  geom_density()
+```
+
+Sometimes, however, we only want to plot a subset of the data. For example, if
+we wanted a histogram of sepal lengths just for species *setosa*, we could
+filter the data before plotting:
+
+```{r setosa-hist, fig.width=4, fig.height=3}
+# filter setosa data
+setosa_data <- filter(iris, Species == "setosa")
+
+# histogram of petal lengths for setosa
+ggplot(setosa_data, aes(x = Petal.Length)) +
+  geom_histogram(bins = 9)
+```
+
+Let's say we wanted to go a step further an calculate the mean petal length.
+
+For this we can use the `mean()` function. The only catch is that the argument
+for the `mean()` function must be a vector (a series of numbers), which we do
+not have. Instead we have a data frame `setosa_data` with a variable.
+
+To extract the variable as a vector we can use the `pull()` function from 
+**dplyr**:
+
+```{r}
+# extract petal lengths for setosa
+setosa_petal_length <- pull(setosa_data, Petal.Length)
+setosa_petal_length
+
+# calculate mean petal length for setosa
+mean(setosa_petal_length)
+```
+
+This ability becomes very useful for a number of statistics functions in base R
+that require vectors not data frames as arguments. For example, the `t.test()`
+function.
+
+Let's test whether the mean petal length for *setosa* flowers is different from
+the mean petal length for *versicolor* flowers.
+
+`t.test()` requires two arguments, `x` and `y`, which should each be a vector of
+numbers. By default, the function will conduct a two-sample t-test assuming
+unequal variances, which is what we want. We already have a vector for `x` in
+`setosa_petal_length`. To get the `y` vector we do the same thing as above:
+
+```{r}
+# filter versicolor data
+versicolor_data <- filter(iris, Species == "versicolor")
+
+# extract petal lengths for versicolor
+versicolor_petal_length <- pull(versicolor_data, Petal.Length)
+```
+
+Now we can use the two vectors in the t-test:
+
+```{r}
+# compare setosa and versicolor petal length
+t.test(x = setosa_petal_length, y = versicolor_petal_length)
+```
+
+In the t-test results you can see the t-statistic, degrees of freedom,
+p-value, and the alternative hypothesis.
+
+Given that the p-value here is much less than 0.05 (it is very close to zero 
+actually), we can reject the null hypothesis and accept the alternative
+hypothesis by default, the difference in means is not equal to 0. Or phrased
+phrased another way, the two means are not equal, they are different.
+
+The t-test results go a step further and also give you the estimates of the
+means for each species (1.462 and 4.260). To get the estimate of the difference
+in petal length, you could subtract one number from the other. Here we
+can see that *versicolor* petals are on average 2.798 mm longer than *setosa*
+petals.
+
+The results also give you a 95% confidence interval for that difference. Here we
+can see that the confidence interval for the difference is about 2.66 to 2.94 
+mm. Does that range include zero? No it does not, which is another way to
+confirm that the difference in means is not equal to zero just as the hypothesis
+test found.
+
+## Assignment
+
+For the assignmet we will use the `gapminder` data set in the **dslabs** 
+package.
+
+
+First, install **dslabs** using the Packages tab in RStudio. Then load the 
+`gapminder` data set and turn it into a tibble so it prints nicely.
+
+```{r, results=FALSE}
+library(dslabs)
+data("gapminder")
+g <- as_tibble(gapminder)
+g
+```
+
+Here is an interactive version of the table you can use to look at it. Note that
+each country is grouped into regions and continents. You can sort the data by
+clicking on the arrows next to column names, and filter by clicking in the box
+below a column name.
+
+```{r echo=FALSE}
+DT::datatable(g, filter = "top", options = list(pageLength = 5))
+```
+
+
+For this assignment, which is a combination of lab 6 and a lab practical, I want 
+you to demonstrate your data wrangling abilities to compare the means of groups.
+
+Your assignment is to:
+
+1. Calculate the mean infant mortality for each continent in the year 2000.
+2. Plot the distribution of life expectancies on each continent in the year 2000.
+3. Conduct a t-test to compare the mean fertility in the year 2000 in the 
+continent "Americas" and another continent of your choice. For example, you 
+could compare the Americas and Europe, or the Americas and Africa. Show your 
+code and state the following:
+    a. What are your null and alternate hypotheses?
+    b. Do the means fertility rates differ?
+    c. What is the 95% confidence interval for the difference in mean fertility
+    rate?
+
+## Template
+
+Copy and paste this template into your R script.
+
+Fill in the missing elements under the "assignment" heading
+
+```{r, eval=FALSE}
+#### Lab 6 / Lab Practical Script Template
+
+### Practice ----------------------------------------------
+
+## Objective 1. Visualize a normal distribution -----------
+
+# turn iris into a tibble
+library(tidyverse)
+iris <- as_tibble(iris)
+iris
+
+# look at the dataset
+help("iris")
+glimpse(iris)
+count(iris, Species)
+
+# density plot of petal lengths by species
+ggplot(iris, aes(x = Petal.Length, color = Species)) +
+  geom_density()
+
+# filter setosa data
+setosa_data <- filter(iris, Species == "setosa")
+
+# histogram of petal lengths for setosa
+ggplot(setosa_data, aes(x = Petal.Length)) +
+  geom_histogram(bins = 9)
+
+# extract petal lengths for setosa
+setosa_petal_length <- pull(setosa_data, Petal.Length)
+setosa_petal_length
+
+# calculate mean petal length for setosa
+mean(setosa_petal_length)
+
+# filter versicolor data
+versicolor_data <- filter(iris, Species == "versicolor")
+
+# extract petal lengths for versicolor
+versicolor_petal_length <- pull(versicolor_data, Petal.Length)
+
+# compare setosa and versicolor petal length
+t.test(x = setosa_petal_length, y = versicolor_petal_length)
+
+
+### Assignment -----------------------------------------
+### ENTER YOUR CODE AND ANSWERS BELOW
+
+# 1. Calculate the mean infant mortality for each continent in the year 2000.
+
+
+
+# 2. Plot the distribution of life expectancies on each continent in 
+#    the year 2000.
+
+
+
+# 3. Conduct a t-test to compare the mean fertility in the year 2000
+#    Compare the Americas with another continent of your choice
+
+# 3a. Alternative hypothesis  Ha = 
+#     Null hypothesis         H0 = 
+
+# 3b. Do the means fertility rates differ? 
+
+
+
+# 3c. What is the 95% confidence interval for the difference in mean 
+#     fertility rate?
+
+
+
+```
+

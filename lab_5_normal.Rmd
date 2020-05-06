@@ -218,7 +218,7 @@ not.
 3. Standardize the variable `height` (for all students, not females and males
 separately).
 4. Plot the distribution of Z-scores. Use different aesthetics or facets for 
-male and female students to visualize each group seperately but on the same 
+male and female students to visualize each group separately but on the same 
 graph. Review 
 [R4DS Chapter 3 Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html) 
 if needed. If you can't figure out how to do it, create two separate plots, one 

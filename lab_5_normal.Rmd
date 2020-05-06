@@ -297,7 +297,8 @@ mutate(df, z = (x - mean(x)) / sd(x))
 
 
 
-# 4. Plot the distribution of Z-scores.
+# 4. Plot the distribution of Z-scores for males and females. Use different
+#    aesthetics or facets for sex, or create separate plots for partial credit.
 
 
 

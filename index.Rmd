@@ -9,8 +9,6 @@ site: bookdown::bookdown_site
 documentclass: book
 ---
 
-Welcome to the course website for Quantitative Biology BIOL 275 at MSUM.
-
 # Welcome {-}
 
 Welcome to the website for *Quantitative Biology BIOL 275 at MSUM*. This site serves as the lab manual for the course.

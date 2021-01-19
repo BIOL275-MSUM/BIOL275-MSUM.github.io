@@ -1,0 +1,51 @@
+# Data visualization
+
+## Objectives
+
+Learn to:
+
+- Graph using ggplot2 package
+- Use an R script
+- Document your R code with comments
+- Transfer code from an R script to an R Markdown document
+- Craft a narrative combining text explanation, code, and graphs
+
+## Introduction
+
+## First Steps
+
+## Aesthetic Mappings
+
+## Facets
+
+## Geometric objects
+
+## Assessment
+
+You will be assessed based on the following rubric:
+
+- GitHub Classroom repository claimed
+- R script
+    - File name is appropriate
+    - Good organization
+        - Code sections make sense
+        - Code goes in correct order, e.g.
+            - load packages before using them
+            - read or load data before using it
+    - Has sufficient comments
+        - At top, explain purpose of the script
+        - Section headings throughout
+        - Each code chunk has a comment
+    - Code for plots works
+- R Markdown document
+    - Correct YAML header
+    - Good organization
+    - Sufficient explanatory text for each figure
+    - Questions answered correctly
+    - Answers marked in bold.
+- Submitted link to repository on D2L
+    
+
+## Acknowledgments
+
+This chapter draws heavily from the corresponding Data visualisation chapter in R for Data Science.

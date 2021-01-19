@@ -17,7 +17,9 @@ Learn to:
 3. Read lab assignment
 4. Run the code in calculator.R
 5. Copy and paste code from calculator.R to assignment.Rmd
+6. Knit the assignment.Rmd document
 6. Commit and push all files to GitHub
+8. Copy the repository URL and paste it into the assignment submission folder on D2L
 
 ## R as a Calculator
 

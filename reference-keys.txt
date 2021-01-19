@@ -4,7 +4,9 @@ install-software
 create-a-github-account
 create-a-new-github-account
 claim-your-repository-on-github
-lab-2-introduction-to-rstudio
+introduction-to-rstudio
+objectives-1
+overview-of-steps
 r-as-a-calculator
 the-rstudio-ide
 the-console-tab
@@ -12,4 +14,5 @@ r-as-a-calculator-1
 assign-values
 the-environment-tab
 functions
-self-assessment
+assignment
+write-r-code

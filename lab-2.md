@@ -1,4 +1,23 @@
-# Lab 2 Introduction to RStudio
+# Introduction to RStudio
+
+## Objectives
+
+Learn to:
+
+- Use the console and source windows in RStudio
+- Write and run code in an R script
+- Document your R code with comments
+- Transfer code from an R script to an R Markdown document
+- Craft a narrative combining text explanation, code, and graphs
+
+## Overview of steps
+
+1. Fill in blanks on README.Rmd
+2. Knit README.Rmd
+3. Read lab assignment
+4. Run the code in calculator.R
+5. Copy and paste code from calculator.R to assignment.Rmd
+6. Commit and push all files to GitHub
 
 ## R as a Calculator
 
@@ -202,7 +221,11 @@ c(mean(k) + 1.96 * sem, mean(k) - 1.96 * sem)
 #> [1] 7.608887 1.471113
 ```
 
-### Self-assessment
+## Assignment
+
+### Write R code
+
+
 
 Imagine you collected a sample of data which consisted of the following values:
 

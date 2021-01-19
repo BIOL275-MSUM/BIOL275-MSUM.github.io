@@ -1,4 +1,3 @@
-get-rstudio
 about-r-and-rstudio
 install-r
 install-rstudio

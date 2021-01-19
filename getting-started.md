@@ -1,6 +1,6 @@
 # (PART) Getting Started {-}
 
-# Get RStudio
+# Get RStudio {-}
 
 Your first task is to choose how you will work with R. To do that, you should understand the difference between R and RStudio, and know what your options are for running RStudio.
 
@@ -42,14 +42,14 @@ RStuio Desktop `RStudio.Version()$version`.
 
 <img src="screenshots/download-rstudio.png" width="75%" style="display: block; margin: auto;" />
 
-## Install Git
+# Install Git
 
 Instructions for installing Git.
 
-### Windows
+## Windows
 
 Instructions for Windows operating system.
 
-### Mac
+## Mac
 
 Instructions for Mac operating system.

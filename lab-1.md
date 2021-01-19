@@ -1,6 +1,6 @@
 # (PART) Lab Assignments {-}
 
-# Lab 1 Hello World!
+# Hello World!
 
 ## Objectives
 

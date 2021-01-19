@@ -1,4 +1,4 @@
-lab-1-hello-world
+hello-world
 objectives
 install-software
 create-a-github-account

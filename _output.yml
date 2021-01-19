@@ -1,7 +1,7 @@
 bookdown::bs4_book:
   theme:
     primary: "#637238"
-    heading_font: "ff-scala-sans-pro, sans-serif"
+    # heading_font: "ff-scala-sans-pro, sans-serif"
   repo: https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io
   includes:
     in_header: [stylesheets.html]

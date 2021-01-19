@@ -4,3 +4,12 @@ install-software
 create-a-github-account
 create-a-new-github-account
 claim-your-repository-on-github
+data-visualization
+objectives-1
+introduction
+first-steps
+aesthetic-mappings
+facets
+geometric-objects
+assessment
+acknowledgments

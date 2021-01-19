@@ -6,6 +6,8 @@ rmd_files: [
   
   "getting-started.Rmd",
   
+  "lab-1.Rmd",
+  
 ]
 
 

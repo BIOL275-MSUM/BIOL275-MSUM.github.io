@@ -5,3 +5,9 @@ install-rstudio
 install-git
 windows
 mac
+lab-1-hello-world
+objectives
+install-software
+create-a-github-account
+create-a-new-github-account
+claim-your-repository-on-github

@@ -1,22 +1,20 @@
+--- 
+knit: "bookdown::render_book"
+title: "Quantitative Biology BIOL 275 at MSUM"
+author: "Chris Merkord"
+date: "`r Sys.Date()`"
+github-repo: BIOL275-MSUM/BIOL275-MSUM.github.io
+description: "Website for the course Quantitative Biology BIOL 275 at MSUM."
+site: bookdown::bookdown_site
+documentclass: book
 ---
-title: "Quantitative Biology"
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Welcome to the course website for Quantitative Biology BIOL 275 at MSUM.
 
-Welcome to the course website for BIOL 275 Quantitative Biology at MSUM.
+# Welcome {-}
 
-## Pages
+Welcome to the website for *Quantitative Biology BIOL 275 at MSUM*. This site serves as the lab manual for the course.
 
-- [Lab 6: Comparing means / Lab Practical](lab_6_practical.html)
-- [Lab 5: The normal distribution](lab_5_normal.html)
-- [Chi-Square Examples](chi-sq.html)
-- [Lab project guidelines](lab_project.html)
-- [Assignment: GitHub practice](github_practice.html)
-- [Claiming a GitHub Classroom repository](claim_repo.html)
-- [Setting up a Personal Laptop](laptop_setup.html)
-- [The RMarkdown to GitHub Pipeline](rmd_pipeline.html)
-- [Github notifications](github_notifications.html)
-- [Lab practical study guide](lab_practical.html)
+## Acknowledgements {-}
+
+This website is hosted by GitHub Pages.

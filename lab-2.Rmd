@@ -4,22 +4,22 @@
 
 Learn to:
 
-- Use the console and source windows in RStudio
-- Write and run code in an R script
-- Document your R code with comments
-- Transfer code from an R script to an R Markdown document
-- Craft a narrative combining text explanation, code, and graphs
+-   Use the console and source windows in RStudio
+-   Write and run code in an R script
+-   Document your R code with comments
+-   Transfer code from an R script to an R Markdown document
+-   Craft a narrative combining text explanation, code, and graphs
 
 ## Overview of steps
 
-1. Fill in blanks on README.Rmd
-2. Knit README.Rmd
-3. Read lab assignment
-4. Run the code in calculator.R
-5. Copy and paste code from calculator.R to assignment.Rmd
-6. Knit the assignment.Rmd document
-6. Commit and push all files to GitHub
-8. Copy the repository URL and paste it into the assignment submission folder on D2L
+1.  Fill in blanks on README.Rmd
+2.  Knit README.Rmd
+3.  Read lab assignment
+4.  Run the code in calculator.R
+5.  Copy and paste code from calculator.R to assignment.Rmd
+6.  Knit the assignment.Rmd document
+7.  Commit and push all files to GitHub
+8.  Copy the repository URL and paste it into the assignment submission folder on D2L
 
 ## R as a Calculator
 
@@ -41,11 +41,15 @@ The Console is where you enter commands (code) for R to interpret.
 
 To give it a try, place your cursor in the Console window by clicking in it. You should see a greater than sign `>` (called the "prompt") with a blinking cursor next to it.
 
-Type the number `2` and press the enter key. Pressing enter is like asking R a question. R will evaluate the code you typed (yes, it's really computer code!) and print the output, the answer to your question, on the screen like this: 
+Type the number `2` and press the enter key. Pressing enter is like asking R a question. R will evaluate the code you typed (yes, it's really computer code!) and print the output, the answer to your question, on the screen like this:
 
     `[1] 2`
 
-<p class="text-success font-weight-bold">Congratulations, you just wrote your first computer program!</p>
+<p class="text-success font-weight-bold">
+
+Congratulations, you just wrote your first computer program!
+
+</p>
 
 The `2` is the answer to your question and the `[1]` indicates that the answer had one part. For the most part you can ignore the number in brackets.
 
@@ -57,7 +61,7 @@ For the rest of this tutorial, we will use the following notation to indicate co
 
 Note that in our examples, we do not show the prompt and we add two hash marks `#>` to indicate lines of output.
 
-<span class="label label-info">Tip</span> If you ever try to type something in the console and nothing happens, it may be because some other pane has RStudio's attention. Click the Console pane and make sure the blinking cursor is showing.
+[Tip]{.label .label-info} If you ever try to type something in the console and nothing happens, it may be because some other pane has RStudio's attention. Click the Console pane and make sure the blinking cursor is showing.
 
 ### R as a calculator
 
@@ -95,7 +99,7 @@ Much like a human brain, R is not only capable of performing calculations, but a
 x <- 2
 ```
 
-Here we have told R to create space in its memory, store the number two there, and name that space "x". Now, whenever we refer to `x`,  R will know we mean `2`.
+Here we have told R to create space in its memory, store the number two there, and name that space "x". Now, whenever we refer to `x`, R will know we mean `2`.
 
 Notice that the above code did not produce any output in the Console. After performing an assignment operation, you need to type the name of the object and press enter. Try printing `x` in the console:
 
@@ -190,57 +194,200 @@ c(mean(k) + 1.96 * sem, mean(k) - 1.96 * sem)
 
 ## Assignment
 
-### Write R code
+In the tutorial above, you learned how to write the R code to take a sample of numbers and estimate its mean, with a 95% confidence interval.
 
-Imagine you collected a sample of data which consisted of the following values:
+For your assignment, you will attempt to replicate this process with a new set of numbers, shown below.
 
-`6.05 4.89 3.32 4.93 5.25 5.04 4.91 2.84 5.60 5.34`
+> `6.05 4.89 3.32 4.93 5.25 5.04 4.91 2.84 5.60 5.34`
 
-Use the skills you have learned to answer the following questions:
+Use the skills you have learned to write code to answer the following questions:
 
-1. What is the sample size?
-2. What is the mean?
-3. What is the median?
-4. What is the standard deviation?
-5. What is the standard error of the mean?
-6. What is the 95% confidence interval? [two values]
+1.  What is the sample size, mean, median, and standard deviation of the sample?
+2.  What is the standard error of the mean?
+3.  What is the 95% confidence interval for the estimate of the mean?
 
-<span class="label label-info">Tip</span> If you plan on using the same object names for the self assessment as you did for the tutorial (for example, `k` and `n`), it might be a good idea to clear your environment first. That way you won't accidentally use the previous value of `n` (`5`) in your self assessment. To do this, click the broom icon in the Environment tab.
+Then write a "report" containing your results.
 
-Once you are done, you can expand the section below to see the correct answers:
+It's probably easiest to approach this assignment as two consecutive steps:
+
+1.  First, write the R code to perform the analysis.
+
+2.  Second, copy that working R code to your lab report document.
+
+Here are more detailed instructions on both these steps.
+
+### Write the code for the analysis
+
+In the R as a Calculator example above, you were asked to type (or copy and paste) R code into an R script and run it. For the assignment, you will need to take that existing R code and edit it.
+
+You have two options for how to do that. You could use the R script you created during the tutorial, or you can start with a fresh script with exactly the code you need. The second option is probably easier.
+
+For convenience, the code used in the example above has been copied into an R script called calculator.R. You can use that code to start your assignment.
+
+**Open the *calculator.R* script by clicking its name in the Files tab (lower right pane).** This will open the script in the source pane (upper left).
+
+To differentiate this analysis from the previous one, let's name our vector of data `x` instead of `k`. Make these changes by hand, or **use the find and replace function** (a magnifying glass icon in source pane). Put "k" (without the quotation marks) in the Find box and "x" in the Replace box. Check the box labeled "Whole words only". Click Find, then click Replace, until there are no more k's in the script. You can also use the Replace All button, but be careful! It's easy to replace things you didn't intend.
+
+Next, find the line of code where you created the vector in the tutorial, which should look like this:
+
+``` {.r}
+x <- c(1, 2, 10, 4.7, 5.0)
+```
+
+In the line of code, replace the five numbers with the set of numbers given above. It's always better to copy and paste those numbers into the code rather than typing (less change of a typo), but don't forget to add the commas between them!
+
+At this point, the code should all work as planned and you are ready to run it. Before you do, it might be a good idea to clear your environment. That way you won't accidentally use the previous value of `n` or `sem` from the tutorial in this new analysis. To do this, click the broom icon in the Environment tab.
+
+Now put your cursor on the first line of code and run it. Press the Run button in the source tab or use the keyboard shortcut Ctrl+Enter (Cmd + Return on a Mac). Continue running all the lines of code. If you get an error or don't get the output you expected in the console, check with a classmate or the instructor.
+
+Compare the answers below to those in your Console tab (lower left pane) to make sure you got the right answers.
 
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#answers" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Show Answers
-  </a>
+
+<a class="btn btn-primary" data-toggle="collapse" href="#answers" role="button" aria-expanded="false" aria-controls="collapseExample"> Show Answers </a>
+
 </p>
+
 <div class="collapse" id="answers">
-  <div class="card card-body">
-1. `10`
-2. `4.817`
-3. `4.985`
-4. `0.9899725`
-5. `0.3130568`
-6. `5.430591 4.203409`
-  </div>
-</div>
+
+::: {.card .card-body}
+1.  Sample size = `10`
+
+2.  Mean = `4.817`
+
+3.  Median = `4.985`
+
+4.  Standard deviation = `0.9899725`
+
+5.  Standard error of the mean = `0.3130568`
+
+6.  Confidence interval = `4.203409 to 5.430591`
+
+    </div>
+:::
 
 Once you are satisfied with your answers, you can move on to the next activity.
 
-### Copy code to the R Markdown document
+### Create your lab report
 
-Open the assignment.Rmd document and look for this part:
+For each lab, you will create a lab report, which will be a Markdown document (.md) that contains text, tables, figures (usually graphs), and optionally some of the code you used to create the figures.
 
-    First, I combine the values into a vector using the `c()` function, assign it to a variable named `x`, and print `x`
-    
-    ```{r vector}
-    
-    ```
+How do you create such a document? The answer is to use an R Markdown (.Rmd) file where you insert the text and R code. RStudio can then "knit" the pieces together and give you a Markdown (.md) document which *is* your lab report.
 
-Copy the code from your R script and paste it in between the two lines that start with three backticks. For example:
+#### Open the lab report template
 
-    First, I combine the values into a vector using the `c()` function, assign it to a variable named `x`, and print `x`
-    
-    ```{r vector}
-    x <- c(1, 2, 3)
-    ```
+Your repository has been seeded with an R Markdown file to use as a template. The file is named **assignment.Rmd**. Your job is to add or edit the contents of that file and knit your actual lab report.
+
+Open the **assignment.Rmd** document by clicking its name in the Files pane. Scroll through it to see the template you have to start with.
+
+#### What's in an R Markdown document?
+
+There are three main components to an R Markdown document:
+
+-   A YAML header
+
+-   Narrative text
+
+-   Chunks of R code that R will run when you "knit" the document to create the lab report. Usually these code chunks will generate text output like what appears in the Console tab when you run code, or figures such as tables or graphs.
+
+Let's look at each component in more depth.
+
+##### YAML header
+
+You will notice some header information at the top, between two sets of three dashes, that looks like this:
+
+``` {.yaml}
+---
+title: "Lab 2 Assignment"
+author: "___"
+date: "`r format(Sys.Date())`"
+output: github_document
+---
+```
+
+When you knit the document, R will use the title as the page title and will put the author and date on the next line.
+
+Notice that instead of writing the date in text, there is some R code. This is called *inline* R code in an R Markdown document. When you want to insert something generated by R into your text, you can use this kind of code. Inline code should start with a backtick and the letter r `` `r `` and end with another backtick `` ` ``. Here is another example of inline code:
+
+> One plus one is `` `r 1+1` ``
+
+When R knits that it will appear as
+
+> One plus one is 2
+
+##### Narrative text
+
+This includes thinks like paragraphs of text, headings, lists, quoted text, etc. Think of this as the body of the report.
+
+This is written in the Markdown language, a simple way to tell places like R and GitHub how it should look on the screen.
+
+You can learn more about how to format your text in Markdown using these resources:
+
+-   In the Go to the **Help** menu in RStudio and select **Markdown Quick Reference**
+
+-   [Basic Syntax](https://www.markdownguide.org/basic-syntax/ "Basic Syntax | Markdown Guide") on the Markdown Guide website
+
+The new version of RStudio (version 1.4) has a very handy WYSIWYG (what you see is what you get) editor for R Markdown which allows you to write R Markdown documents like a word processor like Microsoft Word. To make use of this, download and install the newest version of RStudio.
+
+##### Code Chunks
+
+A code chunk looks like the following:
+
+> ```` {.r}
+> ```{r chunk-name}
+>
+> ```
+> ````
+
+The three backticks ```` ``` ```` tell R to expect a chunk of code.
+
+The curly braces tell R what kind of code to expect, the name of the code chunk, and some options for how to knit it. For example, in the code above, the `r` tells R to expect R code, and `chunk-name` is the name of the code chunk.
+
+Names are not required, but they can be useful. When you try to knit your R Markdown document, any errors will show in the Markdown tab (bottom left pane). Having your code chunks named makes it easier to figure out where the error occurred.
+
+The space in between the closing curly brace and the next three backticks is where the code goes.
+
+Here's an example of a code chunk with actual R code:
+
+> ```` {.r}
+> ```{r print-x}
+> x <- 1    # x gets a value of 1
+> x         # print the value of x
+> ```
+> ````
+
+Anything you can write in an R script, you can write in an R code chunk, including comments as seen above.
+
+#### Edit your lab report
+
+Copy the first lines of code from your calculator.R script and paste it in between the two lines that start with three backticks as seen below.
+
+> ```` {.r}
+> First, I combine the values into a vector using the `c()` function, assign it to a variable named `x`, and print `x`
+>
+> ```{r vector}
+> x <- c(1, 2, 3)
+> ```
+> ````
+
+In your code, of course, `c(1, 2, 3)` will be replaced by your vector of numbers given above.
+
+Check to make sure the chunk runs by clicking the green play button on the right side.
+
+Continue down the R Markdown document, inserting the correct code into each code chunk.
+
+Don't edit the final code chunk that has the code to plot the data in it.
+
+#### Knit the lab report
+
+Save the file and click the knit button to knit the R Markdown document into a Markdown document.
+
+Look at the preview to make sure everything looks okay.
+
+### Commit and Push
+
+Save all your files.
+
+In the Git tab, check the boxes next to all files, commit them, and push to GitHub.
+
+Submit your assignment by copying your repository URL and pasting it into the D2L assignment submission folder.

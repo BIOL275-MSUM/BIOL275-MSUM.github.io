@@ -15,4 +15,13 @@ assign-values
 the-environment-tab
 functions
 assignment
-write-r-code
+write-the-code-for-the-analysis
+create-your-lab-report
+open-the-lab-report-template
+whats-in-an-r-markdown-document
+yaml-header
+narrative-text
+code-chunks
+edit-your-lab-report
+knit-the-lab-report
+commit-and-push

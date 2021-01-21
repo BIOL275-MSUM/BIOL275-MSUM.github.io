@@ -216,7 +216,7 @@ It's probably easiest to approach this assignment as two consecutive steps:
 
 Here are more detailed instructions on both these steps.
 
-### Write the code for the analysis
+## Write the code for the analysis
 
 In the R as a Calculator example above, you were asked to type (or copy and paste) R code into an R script and run it. For the assignment, you will need to take that existing R code and edit it.
 
@@ -268,19 +268,19 @@ Compare the answers below to those in your Console tab (lower left pane) to make
 
 Once you are satisfied with your answers, you can move on to the next activity.
 
-### Create your lab report
+## Create your lab report
 
 For each lab, you will create a lab report, which will be a Markdown document (.md) that contains text, tables, figures (usually graphs), and optionally some of the code you used to create the figures.
 
 How do you create such a document? The answer is to use an R Markdown (.Rmd) file where you insert the text and R code. RStudio can then "knit" the pieces together and give you a Markdown (.md) document which *is* your lab report.
 
-#### Open the lab report template
+### Open the lab report template
 
 Your repository has been seeded with an R Markdown file to use as a template. The file is named **assignment.Rmd**. Your job is to add or edit the contents of that file and knit your actual lab report.
 
 Open the **assignment.Rmd** document by clicking its name in the Files pane. Scroll through it to see the template you have to start with.
 
-#### What's in an R Markdown document?
+### What's in an R Markdown document?
 
 There are three main components to an R Markdown document:
 
@@ -288,11 +288,11 @@ There are three main components to an R Markdown document:
 
 -   Narrative text
 
--   Chunks of R code that R will run when you "knit" the document to create the lab report. Usually these code chunks will generate text output like what appears in the Console tab when you run code, or figures such as tables or graphs.
+-   Chunks of R code that R will run when you "knit" the document
 
 Let's look at each component in more depth.
 
-##### YAML header
+#### YAML header
 
 You will notice some header information at the top, between two sets of three dashes, that looks like this:
 
@@ -315,7 +315,7 @@ When R knits that it will appear as
 
 > One plus one is 2
 
-##### Narrative text
+#### Narrative text
 
 This includes thinks like paragraphs of text, headings, lists, quoted text, etc. Think of this as the body of the report.
 
@@ -329,7 +329,9 @@ You can learn more about how to format your text in Markdown using these resourc
 
 The new version of RStudio (version 1.4) has a very handy WYSIWYG (what you see is what you get) editor for R Markdown which allows you to write R Markdown documents like a word processor like Microsoft Word. To make use of this, download and install the newest version of RStudio.
 
-##### Code Chunks
+#### Code Chunks
+
+Code chunks are bits of R code that are executed when you knit the document. In the resulting Markdown (or other type) of document, the code is replaced by its output, which usually consist of text, tables or figures.
 
 A code chunk looks like the following:
 
@@ -358,7 +360,7 @@ Here's an example of a code chunk with actual R code:
 
 Anything you can write in an R script, you can write in an R code chunk, including comments as seen above.
 
-#### Edit your lab report
+## Add code to R chunks
 
 Copy the first lines of code from your calculator.R script and paste it in between the two lines that start with three backticks as seen below.
 
@@ -378,13 +380,13 @@ Continue down the R Markdown document, inserting the correct code into each code
 
 Don't edit the final code chunk that has the code to plot the data in it.
 
-#### Knit the lab report
+## Knit the lab report
 
 Save the file and click the knit button to knit the R Markdown document into a Markdown document.
 
 Look at the preview to make sure everything looks okay.
 
-### Commit and Push
+## Commit and Push
 
 Save all your files.
 

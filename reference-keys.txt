@@ -7,14 +7,14 @@ claim-your-repository-on-github
 introduction-to-rstudio
 objectives-1
 overview-of-steps
-r-as-a-calculator
+day-1-r-as-a-calculator
 the-rstudio-ide
 the-console-tab
-r-as-a-calculator-1
+r-as-a-calculator
 assign-values
 the-environment-tab
 functions
-assignment
+assignment-overview
 write-the-code-for-the-analysis
 create-your-lab-report
 open-the-lab-report-template
@@ -25,3 +25,8 @@ code-chunks
 add-code-to-r-chunks
 knit-the-lab-report
 commit-and-push
+day-2-project-cleanup-and-peer-review
+project-cleanup
+completion-checklist
+peer-review
+grading-rubric

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Install Git | Quantitative Biology BIOL 275 at MSUM</title>
+<title>Project Options | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -34,12 +34,12 @@
 <li><a class="" href="index.html">Welcome</a></li>
 <li class="book-part">Getting Started</li>
 <li><a class="" href="get-rstudio.html">Get RStudio</a></li>
-<li><a class="active" href="install-git.html">Install Git</a></li>
+<li><a class="" href="install-git.html">Install Git</a></li>
 <li class="book-part">Lab Assignments</li>
 <li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
 <li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
 <li class="book-part">Help</li>
-<li><a class="" href="project-options.html">Project Options</a></li>
+<li><a class="active" href="project-options.html">Project Options</a></li>
 </ul>
 
         <div class="book-extra">
@@ -47,40 +47,56 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="install-git" class="section level1 unnumbered" number="">
-<h1>Install Git<a class="anchor" aria-label="anchor" href="#install-git"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="project-options" class="section level1 unnumbered" number="">
+<h1>Project Options<a class="anchor" aria-label="anchor" href="#project-options"><i class="fas fa-link"></i></a>
 </h1>
-<p>Instructions for installing Git.</p>
-<div id="windows" class="section level2 unnumbered" number="">
-<h2>Windows<a class="anchor" aria-label="anchor" href="#windows"><i class="fas fa-link"></i></a>
-</h2>
-<p>Instructions for Windows operating system.</p>
+<p>Each RStudio project consists of, at a minimum, a directory (aka folder) and an RStudio Project file. This file has the same name as the Project directory and ends with .RProj.</p>
+<p>One of the main purposes of the RProj file is to store the Project Settings.</p>
+<p>You can see the Project Settings in two ways:</p>
+<ul>
+<li><p>Go to Tools &gt; Project Options…</p></li>
+<li><p>In the Files tab, click on the RProj file</p></li>
+</ul>
+<p>Both methods cause a dialog window to pop up showing the project options.</p>
+<div class="figure">
+<img src="screenshots/project-options.PNG" title="Project Options dialog" width="400" alt=""><p class="caption">Project Options dialog</p>
 </div>
-<div id="mac" class="section level2 unnumbered" number="">
-<h2>Mac<a class="anchor" aria-label="anchor" href="#mac"><i class="fas fa-link"></i></a>
-</h2>
-<p>Instructions for Mac operating system.</p>
+<div id="suggested-changes-to-default-settings" class="section level3 unnumbered" number="">
+<h3>Suggested changes to default settings<a class="anchor" aria-label="anchor" href="#suggested-changes-to-default-settings"><i class="fas fa-link"></i></a>
+</h3>
+<p>The main thing is to change the General settings to avoid loading or saving the Project Workspace and avoid saving your History.</p>
+<p>Change the project settings as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the Project Options dialog</p></li>
+<li><p>Select the <strong>General</strong> tab on the left</p></li>
+<li>
+<p>Change the following settings from <strong>(Default)</strong> to <strong>No</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p><strong>Restore .RData into workspace at startup</strong></p></li>
+<li><p><strong>Save workspace to .RData on exit</strong></p></li>
+<li><p><strong>Always save History (even if not saving .RData)</strong></p></li>
+</ol>
+</li>
+<li><p>Click the <strong>OK</strong> button</p></li>
+</ol>
+<p>Note: You may also wish to change your Global Settings in the same way. It is still important, however to change the project settings.</p>
+<p>If your Project is under version control (using Git), then your .RProj file will now show as being modified. You should commit the changes to it and, if the repository is also on GitHub, push the commit. Don’t forget to give a useful commit message like “Change project general settings from default to no”.</p>
 
 </div>
 </div>
-
-
-
   <div class="chapter-nav">
-<div class="prev"><a href="get-rstudio.html">Get RStudio</a></div>
-<div class="next"><a href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></div>
+<div class="prev"><a href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#install-git">Install Git</a></li>
-<li><a class="nav-link" href="#windows">Windows</a></li>
-<li><a class="nav-link" href="#mac">Mac</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li>
+<a class="nav-link" href="#project-options">Project Options</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#suggested-changes-to-default-settings">Suggested changes to default settings</a></li></ul>
+</li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/getting-started.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/getting-started.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/project-options.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/project-options.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

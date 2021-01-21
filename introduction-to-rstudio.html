@@ -38,6 +38,8 @@
 <li class="book-part">Lab Assignments</li>
 <li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
 <li><a class="active" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li class="book-part">Help</li>
+<li><a class="" href="project-options.html">Project Options</a></li>
 </ul>
 
         <div class="book-extra">
@@ -60,26 +62,37 @@
 <li>Document your R code with comments</li>
 <li>Transfer code from an R script to an R Markdown document</li>
 <li>Craft a narrative combining text explanation, code, and graphs</li>
+<li>Collaborate on Issues in GitHub</li>
+<li>Conduct peer review of an assignment</li>
 </ul>
 </div>
 <div id="overview-of-steps" class="section level2" number="2.2">
 <h2>
 <span class="header-section-number">2.2</span> Overview of steps<a class="anchor" aria-label="anchor" href="#overview-of-steps"><i class="fas fa-link"></i></a>
 </h2>
+<p>Day 1</p>
 <ol style="list-style-type: decimal">
 <li>Fill in blanks on README.Rmd</li>
 <li>Knit README.Rmd</li>
 <li>Read lab assignment</li>
-<li>Run the code in calculator.R</li>
-<li>Copy and paste code from calculator.R to assignment.Rmd</li>
+<li>Run the code in calculator.R as you work through the assignment</li>
+<li>Edit the code in calculator.R to use the new data from the self assessment</li>
+<li>Copy and paste your working code from calculator.R into the appropriate code chunks in assignment.Rmd</li>
 <li>Knit the assignment.Rmd document</li>
 <li>Commit and push all files to GitHub</li>
 <li>Copy the repository URL and paste it into the assignment submission folder on D2L</li>
 </ol>
+<p>Day 2</p>
+<ol start="10" style="list-style-type: decimal">
+<li><p>Clean up the project</p></li>
+<li><p>Go through the Completion Checklist</p></li>
+<li><p>Peer review</p></li>
+<li><p>Fix issues identified during peer review</p></li>
+</ol>
 </div>
-<div id="r-as-a-calculator" class="section level2" number="2.3">
+<div id="day-1-r-as-a-calculator" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> R as a Calculator<a class="anchor" aria-label="anchor" href="#r-as-a-calculator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Day 1: R as a Calculator<a class="anchor" aria-label="anchor" href="#day-1-r-as-a-calculator"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this section, you will learn how to use the Console Window to run commands as you perform basic arithmetic operations. You will learn the basics of using functions, and finally learn about creating objects using the assignment operator.</p>
 <div id="the-rstudio-ide" class="section level3" number="2.3.1">
@@ -110,9 +123,9 @@
 <p>Note that in our examples, we do not show the prompt and we add two hash marks <code>#&gt;</code> to indicate lines of output.</p>
 <p><span class="label label-info">Tip</span> If you ever try to type something in the console and nothing happens, it may be because some other pane has RStudio’s attention. Click the Console pane and make sure the blinking cursor is showing.</p>
 </div>
-<div id="r-as-a-calculator-1" class="section level3" number="2.3.3">
+<div id="r-as-a-calculator" class="section level3" number="2.3.3">
 <h3>
-<span class="header-section-number">2.3.3</span> R as a calculator<a class="anchor" aria-label="anchor" href="#r-as-a-calculator-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.3</span> R as a calculator<a class="anchor" aria-label="anchor" href="#r-as-a-calculator"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can think of R as a giant calculator. You type in a series of numbers and operators (<code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code>, etc.), press enter, and it evaluates what you typed and prints the output in the console.</p>
 <p>Give it a try:</p>
@@ -219,9 +232,9 @@
 <span class="co">#&gt; [1] 7.608887 1.471113</span></code></pre></div>
 </div>
 </div>
-<div id="assignment" class="section level2" number="2.4">
+<div id="assignment-overview" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.4</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Assignment Overview<a class="anchor" aria-label="anchor" href="#assignment-overview"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the tutorial above, you learned how to write the R code to take a sample of numbers and estimate its mean, with a 95% confidence interval.</p>
 <p>For your assignment, you will attempt to replicate this process with a new set of numbers, shown below.</p>
@@ -397,12 +410,134 @@
 <p>Save all your files.</p>
 <p>In the Git tab, check the boxes next to all files, commit them, and push to GitHub.</p>
 <p>Submit your assignment by copying your repository URL and pasting it into the D2L assignment submission folder.</p>
+</div>
+<div id="day-2-project-cleanup-and-peer-review" class="section level2" number="2.10">
+<h2>
+<span class="header-section-number">2.10</span> Day 2: Project Cleanup and Peer Review<a class="anchor" aria-label="anchor" href="#day-2-project-cleanup-and-peer-review"><i class="fas fa-link"></i></a>
+</h2>
+<p>In Day 1 of this lab, you created your first full lab report.</p>
+<p>Now that it is done, Day 2 will focus on tidying up a few loose ends in your RStudio Project and peer review of the finished product.</p>
+</div>
+<div id="project-cleanup" class="section level2" number="2.11">
+<h2>
+<span class="header-section-number">2.11</span> Project cleanup<a class="anchor" aria-label="anchor" href="#project-cleanup"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let’s start by ensuring a nice, clean RStudio Project, and tidy Lab Report, and a succinct README. Perform the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Update your lab report</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Open your assignment.Rmd file</p></li>
+<li><p>Add a Session Info heading, text, and R code chunk at the end of the document. The easiest way is to copy and paste that section from your README.Rmd and paste it here. Then edit the R code so it says <code>sessioninfo::session_info()</code> by removing the code <code><a href="https://rdrr.io/r/base/c.html">c("tidyverse")</a></code>. This will ensure that the list of packages produced reflects those actually used in the analysis</p></li>
+<li><p>Knit your assignment.Rmd afterwards</p></li>
+</ol>
+</li>
+<li>
+<p>Update your README</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Open README.Rmd</p></li>
+<li>
+<p>Change the link to <strong>calculator.Rmd</strong> in the <strong>Repository contents</strong> section</p>
+<ol style="list-style-type: decimal">
+<li><p>The part in the square brackets should now say “Lab 2 Report”</p></li>
+<li><p>The part in the parentheses should say “assignment.md”</p></li>
+</ol>
+</li>
+<li><p>Remove the session info heading, text, and R code chunk at the end. This info is better suited for a script that actually does the analysis, your assignment.Rmd</p></li>
+<li><p>Knit your README.Rmd afterwards</p></li>
+</ol>
+</li>
+<li><p>Change your Project Options so they do not automatically save your load or save your project workspace or history on startup or exit. See the <a href="project-options.html" title="Project Options">Project Options</a> help page for instructions.</p></li>
+<li><p>Commit all changes and push to GitHub</p></li>
+</ol>
+</div>
+<div id="completion-checklist" class="section level2" number="2.12">
+<h2>
+<span class="header-section-number">2.12</span> Completion Checklist<a class="anchor" aria-label="anchor" href="#completion-checklist"><i class="fas fa-link"></i></a>
+</h2>
+<p>Before we begin the peer-review process, go through the completion checklist below to make sure your project is ready to be reviewed by your peers.</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Your repository contains the following files</p>
+<ol style="list-style-type: lower-alpha">
+<li>.gitignore file</li>
+<li>README.Rmd</li>
+<li>README.md</li>
+<li>assignment.Rmd</li>
+<li>assignment.md</li>
+<li>calculator.R</li>
+<li>lab-2-YourUserName.RProj</li>
+<li>the image file for the assignment.md (this is in a folder called assignment_files)</li>
+</ol>
+</li>
+<li>
+<p>Your README.md should have the following</p>
+<ol style="list-style-type: lower-alpha">
+<li>Your name in the YAML header item for “author”</li>
+<li>At least two bullets of text under lab objectives</li>
+<li>A link to your Lab 2 Report assignment.md</li>
+<li>NO session info section (it should be removed)</li>
+</ol>
+</li>
+<li>
+<p>Your assignment.md should have the following</p>
+<ol style="list-style-type: lower-alpha">
+<li>Your name in the YAML header item for “author”</li>
+<li>code and output showing the data (x), sample size, mean, median, standard deviation, standard error of the mean, and upper and lower confidence limits</li>
+<li>In the text paragraph about the confidence interval, you replaced “___” with the correct numbers</li>
+<li>NO CODE for the graph, just the graph itself</li>
+<li>Session info</li>
+</ol>
+</li>
+<li><p>General Project options are set to <strong>No</strong>, not <strong>(Default)</strong></p></li>
+</ol>
+</div>
+<div id="peer-review" class="section level2" number="2.13">
+<h2>
+<span class="header-section-number">2.13</span> Peer Review<a class="anchor" aria-label="anchor" href="#peer-review"><i class="fas fa-link"></i></a>
+</h2>
+<p>In your groups, decide who will review who’s projects. Each project should be reviewed by at least two peers.</p>
+<p>Next, create an Issue on GitHub requesting peer review using the following steps</p>
+<ol style="list-style-type: decimal">
+<li>Go to your repository on <a href="https://github.com" class="uri">https://github.com</a>
+</li>
+<li>Click on the Issues button near the top</li>
+<li>Create a new issue (green button)</li>
+<li>For the title, enter “Peer review requested”</li>
+<li>In the boxed labeled “Leave a comment”, tag the people who will review your project. You do this by typing “@” followed by their GitHub username (no space), for example <strong>@chrismerkord</strong>
+</li>
+<li>Submit the issue</li>
+</ol>
+<p>Finally, respond to any peer review requests you receive.</p>
+<ol style="list-style-type: decimal">
+<li><p>Check your notifications to see if you are mentioned in any Issues</p></li>
+<li><p>Provide your review as a Reply to the Issue they tagged you in</p></li>
+<li><p>Go through the Completion Checklist above, noting any issues the person should address. Write those issues in your Reply</p></li>
+<li><p>Be kind in the way you write your review. Try to sound helpful and supportive rather than critical or combative.</p></li>
+<li><p>Give the other person the quality of review you yourself would hope to receive. If you review someone’s project and you both missed something on the completion checklist, that person will lose points.</p></li>
+</ol>
+</div>
+<div id="grading-rubric" class="section level2" number="2.14">
+<h2>
+<span class="header-section-number">2.14</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your instructor will grade your assignment based on the following criteria:</p>
+<ul>
+<li><p>Is the project complete and accurate (see the Completion Checklist above)</p></li>
+<li><p>Have you requested peer review?</p></li>
+<li><p>Have you performed any peer reviews requested of you? If so, did you go through the checklist carefully and find any issues the person needs to address?</p></li>
+<li><p>Have you updated any issues identified during peer review?</p></li>
+</ul>
+<p>Note: according to this rubric, you can lose points twice for missing something in the Completion Checklist: once for not having that item done, and again for not responding to any peer review suggestions.</p>
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></div>
-<div class="empty"></div>
+<div class="next"><a href="project-options.html">Project Options</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -410,16 +545,16 @@
 <li><a class="nav-link" href="#objectives-1"><span class="header-section-number">2.1</span> Objectives</a></li>
 <li><a class="nav-link" href="#overview-of-steps"><span class="header-section-number">2.2</span> Overview of steps</a></li>
 <li>
-<a class="nav-link" href="#r-as-a-calculator"><span class="header-section-number">2.3</span> R as a Calculator</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#day-1-r-as-a-calculator"><span class="header-section-number">2.3</span> Day 1: R as a Calculator</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#the-rstudio-ide"><span class="header-section-number">2.3.1</span> The RStudio IDE</a></li>
 <li><a class="nav-link" href="#the-console-tab"><span class="header-section-number">2.3.2</span> The Console tab</a></li>
-<li><a class="nav-link" href="#r-as-a-calculator-1"><span class="header-section-number">2.3.3</span> R as a calculator</a></li>
+<li><a class="nav-link" href="#r-as-a-calculator"><span class="header-section-number">2.3.3</span> R as a calculator</a></li>
 <li><a class="nav-link" href="#assign-values"><span class="header-section-number">2.3.4</span> Assign values</a></li>
 <li><a class="nav-link" href="#the-environment-tab"><span class="header-section-number">2.3.5</span> The Environment tab</a></li>
 <li><a class="nav-link" href="#functions"><span class="header-section-number">2.3.6</span> Functions</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#assignment"><span class="header-section-number">2.4</span> Assignment</a></li>
+<li><a class="nav-link" href="#assignment-overview"><span class="header-section-number">2.4</span> Assignment Overview</a></li>
 <li><a class="nav-link" href="#write-the-code-for-the-analysis"><span class="header-section-number">2.5</span> Write the code for the analysis</a></li>
 <li>
 <a class="nav-link" href="#create-your-lab-report"><span class="header-section-number">2.6</span> Create your lab report</a><ul class="nav navbar-nav">
@@ -430,6 +565,11 @@
 <li><a class="nav-link" href="#add-code-to-r-chunks"><span class="header-section-number">2.7</span> Add code to R chunks</a></li>
 <li><a class="nav-link" href="#knit-the-lab-report"><span class="header-section-number">2.8</span> Knit the lab report</a></li>
 <li><a class="nav-link" href="#commit-and-push"><span class="header-section-number">2.9</span> Commit and Push</a></li>
+<li><a class="nav-link" href="#day-2-project-cleanup-and-peer-review"><span class="header-section-number">2.10</span> Day 2: Project Cleanup and Peer Review</a></li>
+<li><a class="nav-link" href="#project-cleanup"><span class="header-section-number">2.11</span> Project cleanup</a></li>
+<li><a class="nav-link" href="#completion-checklist"><span class="header-section-number">2.12</span> Completion Checklist</a></li>
+<li><a class="nav-link" href="#peer-review"><span class="header-section-number">2.13</span> Peer Review</a></li>
+<li><a class="nav-link" href="#grading-rubric"><span class="header-section-number">2.14</span> Grading Rubric</a></li>
 </ul>
 
       <div class="book-extra">

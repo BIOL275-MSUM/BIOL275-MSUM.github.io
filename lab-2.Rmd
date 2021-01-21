@@ -9,19 +9,34 @@ Learn to:
 -   Document your R code with comments
 -   Transfer code from an R script to an R Markdown document
 -   Craft a narrative combining text explanation, code, and graphs
+-   Collaborate on Issues in GitHub
+-   Conduct peer review of an assignment
 
 ## Overview of steps
+
+Day 1
 
 1.  Fill in blanks on README.Rmd
 2.  Knit README.Rmd
 3.  Read lab assignment
-4.  Run the code in calculator.R
-5.  Copy and paste code from calculator.R to assignment.Rmd
-6.  Knit the assignment.Rmd document
-7.  Commit and push all files to GitHub
-8.  Copy the repository URL and paste it into the assignment submission folder on D2L
+4.  Run the code in calculator.R as you work through the assignment
+5.  Edit the code in calculator.R to use the new data from the self assessment
+6.  Copy and paste your working code from calculator.R into the appropriate code chunks in assignment.Rmd
+7.  Knit the assignment.Rmd document
+8.  Commit and push all files to GitHub
+9.  Copy the repository URL and paste it into the assignment submission folder on D2L
 
-## R as a Calculator
+Day 2
+
+10. Clean up the project
+
+11. Go through the Completion Checklist
+
+12. Peer review
+
+13. Fix issues identified during peer review
+
+## Day 1: R as a Calculator
 
 In this section, you will learn how to use the Console Window to run commands as you perform basic arithmetic operations. You will learn the basics of using functions, and finally learn about creating objects using the assignment operator.
 
@@ -192,7 +207,7 @@ mean(k) - 1.96 * sem  # lower limit
 c(mean(k) + 1.96 * sem, mean(k) - 1.96 * sem)
 ```
 
-## Assignment
+## Assignment Overview
 
 In the tutorial above, you learned how to write the R code to take a sample of numbers and estimate its mean, with a 95% confidence interval.
 
@@ -337,7 +352,7 @@ A code chunk looks like the following:
 
 > ```` {.r}
 > ```{r chunk-name}
->
+> >
 > ```
 > ````
 
@@ -393,3 +408,110 @@ Save all your files.
 In the Git tab, check the boxes next to all files, commit them, and push to GitHub.
 
 Submit your assignment by copying your repository URL and pasting it into the D2L assignment submission folder.
+
+## Day 2: Project Cleanup and Peer Review
+
+In Day 1 of this lab, you created your first full lab report.
+
+Now that it is done, Day 2 will focus on tidying up a few loose ends in your RStudio Project and peer review of the finished product.
+
+## Project cleanup
+
+Let's start by ensuring a nice, clean RStudio Project, and tidy Lab Report, and a succinct README. Perform the following steps:
+
+1.  Update your lab report
+
+    a.  Open your assignment.Rmd file
+
+    b.  Add a Session Info heading, text, and R code chunk at the end of the document. The easiest way is to copy and paste that section from your README.Rmd and paste it here. Then edit the R code so it says `sessioninfo::session_info()` by removing the code `c("tidyverse")`. This will ensure that the list of packages produced reflects those actually used in the analysis
+
+    c.  Knit your assignment.Rmd afterwards
+
+2.  Update your README
+
+    a.  Open README.Rmd
+
+    b.  Change the link to **calculator.Rmd** in the **Repository contents** section
+
+        1.  The part in the square brackets should now say "Lab 2 Report"
+
+        2.  The part in the parentheses should say "assignment.md"
+
+    c.  Remove the session info heading, text, and R code chunk at the end. This info is better suited for a script that actually does the analysis, your assignment.Rmd
+
+    d.  Knit your README.Rmd afterwards
+
+3.  Change your Project Options so they do not automatically save your load or save your project workspace or history on startup or exit. See the [Project Options](project-options.html "Project Options") help page for instructions.
+
+4.  Commit all changes and push to GitHub
+
+## Completion Checklist
+
+Before we begin the peer-review process, go through the completion checklist below to make sure your project is ready to be reviewed by your peers.
+
+1.  Your repository contains the following files
+
+    a.  .gitignore file
+    b.  README.Rmd
+    c.  README.md
+    d.  assignment.Rmd
+    e.  assignment.md
+    f.  calculator.R
+    g.  lab-2-YourUserName.RProj
+    h.  the image file for the assignment.md (this is in a folder called assignment_files)
+
+2.  Your README.md should have the following
+
+    a.  Your name in the YAML header item for "author"
+    b.  At least two bullets of text under lab objectives
+    c.  A link to your Lab 2 Report assignment.md
+    d.  NO session info section (it should be removed)
+
+3.  Your assignment.md should have the following
+
+    a.  Your name in the YAML header item for "author"
+    b.  code and output showing the data (x), sample size, mean, median, standard deviation, standard error of the mean, and upper and lower confidence limits
+    c.  In the text paragraph about the confidence interval, you replaced "\_\_\_" with the correct numbers
+    d.  NO CODE for the graph, just the graph itself
+    e.  Session info
+
+4.  General Project options are set to **No**, not **(Default)**
+
+## Peer Review
+
+In your groups, decide who will review who's projects. Each project should be reviewed by at least two peers.
+
+Next, create an Issue on GitHub requesting peer review using the following steps
+
+1.  Go to your repository on <https://github.com>
+2.  Click on the Issues button near the top
+3.  Create a new issue (green button)
+4.  For the title, enter "Peer review requested"
+5.  In the boxed labeled "Leave a comment", tag the people who will review your project. You do this by typing "\@" followed by their GitHub username (no space), for example **\@chrismerkord**
+6.  Submit the issue
+
+Finally, respond to any peer review requests you receive.
+
+1.  Check your notifications to see if you are mentioned in any Issues
+
+2.  Provide your review as a Reply to the Issue they tagged you in
+
+3.  Go through the Completion Checklist above, noting any issues the person should address. Write those issues in your Reply
+
+4.  Be kind in the way you write your review. Try to sound helpful and supportive rather than critical or combative.
+
+5.  Give the other person the quality of review you yourself would hope to receive. If you review someone's project and you both missed something on the completion checklist, that person will lose points.
+
+## Grading Rubric
+
+Your instructor will grade your assignment based on the following criteria:
+
+-   Is the project complete and accurate (see the Completion Checklist above)
+
+-   Have you requested peer review?
+
+-   Have you performed any peer reviews requested of you? If so, did you go through the checklist carefully and find any issues the person needs to address?
+
+-   Have you updated any issues identified during peer review?
+
+Note: according to this rubric, you can lose points twice for missing something in the Completion Checklist: once for not having that item done, and again for not responding to any peer review suggestions.

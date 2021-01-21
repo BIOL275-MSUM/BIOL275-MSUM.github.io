@@ -472,8 +472,7 @@ Before we begin the peer-review process, go through the completion checklist bel
     a.  Your name in the YAML header item for "author"
     b.  code and output showing the data (x), sample size, mean, median, standard deviation, standard error of the mean, and upper and lower confidence limits
     c.  In the text paragraph about the confidence interval, you replaced "\_\_\_" with the correct numbers
-    d.  NO CODE for the graph, just the graph itself
-    e.  Session info
+    d.  Session info added at the end
 
 4.  General Project options are set to **No**, not **(Default)**
 

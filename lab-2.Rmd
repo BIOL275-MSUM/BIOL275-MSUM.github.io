@@ -463,9 +463,10 @@ Before we begin the peer-review process, go through the completion checklist bel
 2.  Your README.md should have the following
 
     a.  Your name in the YAML header item for "author"
-    b.  At least two bullets of text under lab objectives
-    c.  A link to your Lab 2 Report assignment.md
-    d.  NO session info section (it should be removed)
+    b.  Removed the line that says "INSTRUCTIONS: REMOVE THIS LINE" that was on the original template
+    c.  At least two bullets of text under lab objectives
+    d.  A link to your Lab 2 Report assignment.md
+    e.  NO session info section (it should be removed)
 
 3.  Your assignment.md should have the following
 

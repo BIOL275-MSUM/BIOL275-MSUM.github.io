@@ -22,6 +22,6 @@ whats-in-an-r-markdown-document
 yaml-header
 narrative-text
 code-chunks
-edit-your-lab-report
+add-code-to-r-chunks
 knit-the-lab-report
 commit-and-push

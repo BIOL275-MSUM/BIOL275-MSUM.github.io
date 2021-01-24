@@ -10,6 +10,7 @@ rmd_files: [
   "lab-2.Rmd",
   
   "project-options.Rmd",
+  "github-notifications.Rmd",
   
 ]
 

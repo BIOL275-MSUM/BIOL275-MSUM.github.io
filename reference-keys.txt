@@ -30,3 +30,7 @@ project-cleanup
 completion-checklist
 peer-review
 grading-rubric
+github-notifications
+subscribing-to-notifications
+notification-methods
+notification-emails

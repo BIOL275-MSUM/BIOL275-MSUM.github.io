@@ -93,9 +93,9 @@
 <p>R has other systems for creating graphs, such as the plotting functions included with base R. At times you may end up searching online for help with you R code. Be sure to add ggplot to any of your search terms so that you end up finding solutions that fit within the requirements of this course.</p>
 <p>The instructions below correspond to sections 1, 2, 3, and 6 in the <a href="https://r4ds.had.co.nz/data-visualisation.html" title="3 Data visualisation | R for Data Science">Data visualisation</a> chapter of your lab manual, <em>R for Data Science</em>. If the steps below do not make sense on their own, please read those sections.</p>
 </div>
-<div id="project-setup" class="section level2" number="3.3">
+<div id="project-setup-1" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">3.3</span> Project Setup<a class="anchor" aria-label="anchor" href="#project-setup"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Project Setup<a class="anchor" aria-label="anchor" href="#project-setup-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:</p>
 <ol style="list-style-type: decimal">
@@ -129,23 +129,22 @@
 <li><p>Click the New File button (upper left) or go to File &gt; New File</p></li>
 <li><p>Select “R script”</p></li>
 <li><p>Immediately save your script with a useful name, for example <code>tutorial-walk-through.R</code></p></li>
-<li>
-<p>Add a new code heading for Load Packages</p>
-<ol style="list-style-type: lower-roman">
-<li><p>Go to <strong>Code &gt; Insert Section…</strong> or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I</p></li>
-<li><p>Type “load packages” and click the <strong>OK</strong> button</p></li>
-<li><p>Type (or copy and paste) <code><a href="http://tidyverse.tidyverse.org">library(tidyverse)</a></code></p></li>
-</ol>
-<p>As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized. Also, don’t forget to add comments (preceded by a <code>#</code>) and blanks lines between code chunks to improve readability</p>
-</li>
+<li><p>Add a new code heading named “load packages”</p></li>
 </ol>
 </li>
 </ol>
-<div id="load-packages" class="section level3" number="3.3.1">
-<h3>
-<span class="header-section-number">3.3.1</span> Load packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
-</h3>
-<p>ggplot2 is one of the core packages in the tidyverse. Load the tidyverse package by running this code:</p>
+</div>
+<div id="load-packages" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Load packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
+</h2>
+<p>ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code heading:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <strong>Code &gt; Insert Section…</strong> or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I</li>
+<li>Type “load packages” in the dialog window and click the <strong>OK</strong> button</li>
+</ol>
+<p>As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized, and makes it easy to jump to code sections. Read more in <a href="code-sections.html">Code Sections</a>.</p>
+<p>Load the tidyverse package by adding this code below the new code section and running it:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>That line of code <strong><em>loads</em></strong> the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, it’s usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.</p>
@@ -160,54 +159,53 @@
 #&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package <em>and</em> function name.</p>
 </div>
-</div>
-<div id="first-steps" class="section level2" number="3.4">
+<div id="first-steps" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">3.4</span> First steps<a class="anchor" aria-label="anchor" href="#first-steps"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> First steps<a class="anchor" aria-label="anchor" href="#first-steps"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="bar-chart" class="section level2" number="3.5">
+<div id="bar-chart" class="section level2" number="3.6">
 <h2>
-<span class="header-section-number">3.5</span> Bar chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6</span> Bar chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
 </h2>
-<div id="use-geom_col-for-summarized-data" class="section level3" number="3.5.1">
+<div id="use-geom_col-for-summarized-data" class="section level3" number="3.6.1">
 <h3>
-<span class="header-section-number">3.5.1</span> Use <code>geom_col()</code> for summarized data<a class="anchor" aria-label="anchor" href="#use-geom_col-for-summarized-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.1</span> Use <code>geom_col()</code> for summarized data<a class="anchor" aria-label="anchor" href="#use-geom_col-for-summarized-data"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="use-geom_bar-for-raw-data" class="section level3" number="3.5.2">
+<div id="use-geom_bar-for-raw-data" class="section level3" number="3.6.2">
 <h3>
-<span class="header-section-number">3.5.2</span> Use <code>geom_bar()</code> for raw data<a class="anchor" aria-label="anchor" href="#use-geom_bar-for-raw-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6.2</span> Use <code>geom_bar()</code> for raw data<a class="anchor" aria-label="anchor" href="#use-geom_bar-for-raw-data"><i class="fas fa-link"></i></a>
 </h3>
 </div>
 </div>
-<div id="histogram" class="section level2" number="3.6">
+<div id="histogram" class="section level2" number="3.7">
 <h2>
-<span class="header-section-number">3.6</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
 </h2>
-<div id="use-geom_histogram-for-raw-data" class="section level3" number="3.6.1">
+<div id="use-geom_histogram-for-raw-data" class="section level3" number="3.7.1">
 <h3>
-<span class="header-section-number">3.6.1</span> Use geom_histogram() for raw data<a class="anchor" aria-label="anchor" href="#use-geom_histogram-for-raw-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.1</span> Use geom_histogram() for raw data<a class="anchor" aria-label="anchor" href="#use-geom_histogram-for-raw-data"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="use-stat_identity-for-summarized-data" class="section level3" number="3.6.2">
+<div id="use-stat_identity-for-summarized-data" class="section level3" number="3.7.2">
 <h3>
-<span class="header-section-number">3.6.2</span> Use stat_identity for summarized data<a class="anchor" aria-label="anchor" href="#use-stat_identity-for-summarized-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.2</span> Use stat_identity for summarized data<a class="anchor" aria-label="anchor" href="#use-stat_identity-for-summarized-data"><i class="fas fa-link"></i></a>
 </h3>
 </div>
 </div>
-<div id="your-assignment" class="section level2" number="3.7">
+<div id="your-assignment" class="section level2" number="3.8">
 <h2>
-<span class="header-section-number">3.7</span> Your assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.8</span> Your assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li><p>Open the R script titled <code>lab-assignment-script.R</code></p></li>
 <li><p>Follow the directions to create an R script that produces the requested figures</p></li>
 </ol>
 </div>
-<div id="your-lab-report" class="section level2" number="3.8">
+<div id="your-lab-report" class="section level2" number="3.9">
 <h2>
-<span class="header-section-number">3.8</span> Your lab report<a class="anchor" aria-label="anchor" href="#your-lab-report"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.9</span> Your lab report<a class="anchor" aria-label="anchor" href="#your-lab-report"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li><p>Open the R script titled <code>lab-assignment-script.R</code></p></li>
@@ -217,9 +215,9 @@
 <li><p>Add text to answer each questions. Make your text bold so it is easily readable.</p></li>
 </ol>
 </div>
-<div id="grading-rubric-1" class="section level2" number="3.9">
+<div id="grading-rubric-1" class="section level2" number="3.10">
 <h2>
-<span class="header-section-number">3.9</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.10</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>You will be assessed based on the following rubric:</p>
 <ul>
@@ -275,25 +273,24 @@
 <li><a class="nav-link" href="#introduction-to-ggplot2"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
 <li><a class="nav-link" href="#objectives-2"><span class="header-section-number">3.1</span> Objectives</a></li>
 <li><a class="nav-link" href="#introduction"><span class="header-section-number">3.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#project-setup-1"><span class="header-section-number">3.3</span> Project Setup</a></li>
+<li><a class="nav-link" href="#load-packages"><span class="header-section-number">3.4</span> Load packages</a></li>
+<li><a class="nav-link" href="#first-steps"><span class="header-section-number">3.5</span> First steps</a></li>
 <li>
-<a class="nav-link" href="#project-setup"><span class="header-section-number">3.3</span> Project Setup</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#load-packages"><span class="header-section-number">3.3.1</span> Load packages</a></li></ul>
-</li>
-<li><a class="nav-link" href="#first-steps"><span class="header-section-number">3.4</span> First steps</a></li>
-<li>
-<a class="nav-link" href="#bar-chart"><span class="header-section-number">3.5</span> Bar chart</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#use-geom_col-for-summarized-data"><span class="header-section-number">3.5.1</span> Use geom_col() for summarized data</a></li>
-<li><a class="nav-link" href="#use-geom_bar-for-raw-data"><span class="header-section-number">3.5.2</span> Use geom_bar() for raw data</a></li>
+<a class="nav-link" href="#bar-chart"><span class="header-section-number">3.6</span> Bar chart</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#use-geom_col-for-summarized-data"><span class="header-section-number">3.6.1</span> Use geom_col() for summarized data</a></li>
+<li><a class="nav-link" href="#use-geom_bar-for-raw-data"><span class="header-section-number">3.6.2</span> Use geom_bar() for raw data</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#histogram"><span class="header-section-number">3.6</span> Histogram</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#use-geom_histogram-for-raw-data"><span class="header-section-number">3.6.1</span> Use geom_histogram() for raw data</a></li>
-<li><a class="nav-link" href="#use-stat_identity-for-summarized-data"><span class="header-section-number">3.6.2</span> Use stat_identity for summarized data</a></li>
+<a class="nav-link" href="#histogram"><span class="header-section-number">3.7</span> Histogram</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#use-geom_histogram-for-raw-data"><span class="header-section-number">3.7.1</span> Use geom_histogram() for raw data</a></li>
+<li><a class="nav-link" href="#use-stat_identity-for-summarized-data"><span class="header-section-number">3.7.2</span> Use stat_identity for summarized data</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#your-assignment"><span class="header-section-number">3.7</span> Your assignment</a></li>
-<li><a class="nav-link" href="#your-lab-report"><span class="header-section-number">3.8</span> Your lab report</a></li>
-<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.9</span> Grading Rubric</a></li>
+<li><a class="nav-link" href="#your-assignment"><span class="header-section-number">3.8</span> Your assignment</a></li>
+<li><a class="nav-link" href="#your-lab-report"><span class="header-section-number">3.9</span> Your lab report</a></li>
+<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.10</span> Grading Rubric</a></li>
 </ul>
 
       <div class="book-extra">

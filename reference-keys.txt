@@ -8,12 +8,14 @@ introduction-to-rstudio
 objectives-1
 overview-of-steps
 day-1-r-as-a-calculator
+project-setup
 the-rstudio-ide
 the-console-tab
 r-as-a-calculator
 assign-values
 the-environment-tab
 functions
+work-from-a-script
 assignment-overview
 write-the-code-for-the-analysis
 create-your-lab-report
@@ -33,7 +35,7 @@ grading-rubric
 introduction-to-ggplot2
 objectives-2
 introduction
-project-setup
+project-setup-1
 load-packages
 first-steps
 bar-chart

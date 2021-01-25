@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>7 Install Git | Quantitative Biology BIOL 275 at MSUM</title>
+<title>6 Install R and RStudio | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -38,8 +38,8 @@
 <li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
 <li class="book-part">Appendices</li>
 <li class="book-part">Getting Started</li>
-<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">6</span> Install R and RStudio</a></li>
-<li><a class="active" href="install-git.html"><span class="header-section-number">7</span> Install Git</a></li>
+<li><a class="active" href="install-r-and-rstudio.html"><span class="header-section-number">6</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">7</span> Install Git</a></li>
 <li class="book-part">Using RStudio</li>
 <li><a class="" href="project-options.html"><span class="header-section-number">9</span> Project Options</a></li>
 <li><a class="" href="code-sections.html"><span class="header-section-number">10</span> Code Sections</a></li>
@@ -52,34 +52,72 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="install-git" class="section level1" number="7">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="install-r-and-rstudio" class="section level1" number="6">
 <h1>
-<span class="header-section-number">7</span> Install Git<a class="anchor" aria-label="anchor" href="#install-git"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Install R and RStudio<a class="anchor" aria-label="anchor" href="#install-r-and-rstudio"><i class="fas fa-link"></i></a>
 </h1>
-<p>Instructions for installing Git.</p>
-<div id="windows" class="section level2" number="7.1">
+<p>Your first task is to choose how you will work with R. To do that, you should understand the difference between R and RStudio, and know what your options are for running RStudio.</p>
+<div id="about-r-and-rstudio" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">7.1</span> Windows<a class="anchor" aria-label="anchor" href="#windows"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> About R and RStudio<a class="anchor" aria-label="anchor" href="#about-r-and-rstudio"><i class="fas fa-link"></i></a>
 </h2>
-<p>Instructions for Windows operating system.</p>
+<p><strong>R</strong> is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. Today, R is the most commonly used software for data analysis in the biological sciences.</p>
+<p>While it is possible to run R by itself, it is more common to run it as part of <strong>RStudio</strong>, a free and open-source integrated development environment (IDE) for R. For most uses, it’s best to use RStudio rather than R directly.</p>
+<p>To get started with RStudio Desktop, you need to first install R, then install RStudio.</p>
 </div>
-<div id="mac" class="section level2" number="7.2">
+<div id="install-r" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">7.2</span> Mac<a class="anchor" aria-label="anchor" href="#mac"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> Install R<a class="anchor" aria-label="anchor" href="#install-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>Instructions for Mac operating system.</p>
-
+<p>You must install R before you install RStudio.</p>
+<p>Directions for installing R:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a>
+</li>
+<li>Under <em>Download and Install R</em>, follow the link for your operating system, Linux, (Mac) OS X, or Windows.
+<img src="screenshots/download-r.png" width="75%" style="display: block; margin: auto;">
+</li>
+<li>If you chose Download R for (Mac) OS X:
+<ol style="list-style-type: lower-alpha">
+<li>Download the binary file. The link will say something like “R-<code><a href="https://rdrr.io/r/base/paste.html">paste0(R.Version()$major, ".", R.Version()$minor)</a></code>.pkg”, but the version number may be different if a newer version has been released.</li>
+<li>Open the file and your Mac will install R. If you are prompted for options during installation, just select the default options.</li>
+</ol>
+</li>
+<li>If you chose Download R for Windows:
+<ol style="list-style-type: lower-alpha">
+<li>Click the link for “base” or “install for the first time”</li>
+<li>Download the installer. The link will say something like “Download R 4.0.3 for Windows”, but the version number may be different if a newer version has been released.</li>
+<li>Open the file and Windows will install R. If you are prompted for options during installation, just select the default options.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="install-rstudio" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Install RStudio<a class="anchor" aria-label="anchor" href="#install-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>Make sure you have installed R before you try to install RStudio.</p>
+<p>Directions for installing RStudio:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://rstudio.com/products/rstudio/download/" class="uri">https://rstudio.com/products/rstudio/download/</a>
+</li>
+<li>Scroll down about two thirds of the page. You will see a heading that says
+RStuio Desktop <code>RStudio.Version()$version</code>.</li>
+<li>Click the big blue button that says “DOWNLOAD STUDIO FOR WINDOWS”</li>
+</ol>
+<div class="inline-figure"><img src="screenshots/download-rstudio.png" width="75%" style="display: block; margin: auto;"></div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="install-r-and-rstudio.html"><span class="header-section-number">6</span> Install R and RStudio</a></div>
-<div class="next"><a href="project-options.html"><span class="header-section-number">9</span> Project Options</a></div>
+<div class="prev"><a href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></div>
+<div class="next"><a href="install-git.html"><span class="header-section-number">7</span> Install Git</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#install-git"><span class="header-section-number">7</span> Install Git</a></li>
-<li><a class="nav-link" href="#windows"><span class="header-section-number">7.1</span> Windows</a></li>
-<li><a class="nav-link" href="#mac"><span class="header-section-number">7.2</span> Mac</a></li>
+<li><a class="nav-link" href="#install-r-and-rstudio"><span class="header-section-number">6</span> Install R and RStudio</a></li>
+<li><a class="nav-link" href="#about-r-and-rstudio"><span class="header-section-number">6.1</span> About R and RStudio</a></li>
+<li><a class="nav-link" href="#install-r"><span class="header-section-number">6.2</span> Install R</a></li>
+<li><a class="nav-link" href="#install-rstudio"><span class="header-section-number">6.3</span> Install RStudio</a></li>
 </ul>
 
       <div class="book-extra">

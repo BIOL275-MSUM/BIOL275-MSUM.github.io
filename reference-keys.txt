@@ -45,7 +45,16 @@ use-stat_identity-for-summarized-data
 your-assignment
 your-lab-report
 grading-rubric-1
-part-help
+part-appendices
+part-getting-started
+install-r-and-rstudio
+about-r-and-rstudio
+install-r
+install-rstudio
+install-git
+windows
+mac
+part-using-rstudio
 project-options
 suggested-changes-to-default-settings
 code-sections
@@ -53,6 +62,7 @@ insert-a-code-section
 showhide-the-document-outline
 jump-to-a-code-section
 other-scripts
+part-git-and-github
 github-notifications
 subscribing-to-notifications
 notification-methods

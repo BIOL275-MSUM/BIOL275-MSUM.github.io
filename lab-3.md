@@ -76,6 +76,8 @@ ggplot2 is one of the core packages in the tidyverse. In the code below, you wil
 
 As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized, and makes it easy to jump to code sections. Read more in [Code Sections](code-sections.html).
 
+For the rest of the lab, you will be copying code from this website and pasting it into your R script (note you will not be pasting any code into an R Markdown document at this stage).
+
 Load the tidyverse package by adding this code below the new code section and running it:
 
 
@@ -101,15 +103,165 @@ When you run the code, you will see a ***message***in the console like this:
 
 The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
 
-## First steps
+## Show data for a categorical variable
 
-## Bar chart
+### Example: tiger data
 
-### Use `geom_col()` for summarized data
+We will use the data from Example 2.2A in your textbook for this activity. The summary from the textbook is as follows:
 
-### Use `geom_bar()` for raw data
+> Conflict between humans and tigers threatens tiger populations, kills people, and reduces public support for conservation. Gurung et al. (2008) investigated causes of human deaths by tigers near the protected area of Chitwan National Park, Nepal. Eighty-eight people were killed by 36 individual tigers between 1979 and 2006, mainly within 1 km of the park edge. Table 2.2-1 lists the main activities of people at the time they were killed. Such information may be helpful to identify activities that increase vulnerability to attack.
 
-## Histogram
+The dataset consists of one table showing the activities of 88 people at the time they were attacked and killed by tigers near Chitwan National Park, Nepal, from 1979 to 2006.
+
+You can view and explore the data using this interactive table:
+
+
+```{=html}
+<div id="htmlwidget-9ec3e5c8c404fe174e4c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9ec3e5c8c404fe174e4c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88],["Disturbing tiger kill","Forest products","Grass/fodder","Fuelwood/timber","Grass/fodder","Forest products","Grass/fodder","Fishing","Fuelwood/timber","Grass/fodder","Forest products","Forest products","Forest products","Grass/fodder","Forest products","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Fishing","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Herding","Grass/fodder","Herding","Grass/fodder","Fishing","Grass/fodder","Grass/fodder","Sleeping in house","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Herding","Fishing","Grass/fodder","Forest products","Forest products","Grass/fodder","Grass/fodder","Forest products","Disturbing tiger kill","Walking","Fishing","Herding","Grass/fodder","Grass/fodder","Sleeping in house","Fishing","Fishing","Toilet","Grass/fodder","Walking","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Disturbing tiger kill","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Forest products","Toilet","Walking","Disturbing tiger kill","Disturbing tiger kill","Sleeping in house","Forest products","Fishing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>person<\/th>\n      <th>activity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+```
+
+This interactive table was actually created using a [DataTables](https://www.htmlwidgets.org/showcase_datatables.html) HTML widget from the R package htmlwidgets. You will learn how to add a table like this to an R Markdown document in a future lab.
+
+### Read the data
+
+For the next step in your R script, you will read the data into R. Create a new code section named "deaths from tigers"
+
+The data for this and other examples from your textbook can be found on the [book website](https://whitlockschluter.zoology.ubc.ca/). It is stored as a comma-separated values file (.csv).
+
+Read the data from the textbook website using the `read_csv()` function, part of the readr package, and assign it to an object named `tiger_data` using the left assignment operator `<-` :
+
+
+```r
+tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv")
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
+#> cols(
+#>   person = col_double(),
+#>   activity = col_character()
+#> )
+```
+
+The message you get in your console tells you how the data in the CSV was parsed (interpretted) when it was read into R. You can ignore it for now.
+
+### View the data
+
+You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it:
+
+
+```r
+tiger_data
+#> # A tibble: 88 x 2
+#>   person activity             
+#>    <dbl> <chr>                
+#> 1      1 Disturbing tiger kill
+#> 2      2 Forest products      
+#> 3      3 Grass/fodder         
+#> 4      4 Fuelwood/timber      
+#> 5      5 Grass/fodder         
+#> 6      6 Forest products      
+#> # … with 82 more rows
+```
+
+Notice that the output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
+
+Each row represents a sample unit, or person. Thus the sample size is 88.
+
+The variables are:
+
+-   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider `person` a ***categorical*** variable.
+
+-   **activity**. the person's activity at the time they were attacked and killed. This is a ***categorical*** variable with a discrete number of possible values.
+
+For our purposes, the only variable of interest is activity. We will not use the person variable.
+
+You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable:
+
+
+```r
+distinct(tiger_data, activity)
+#> # A tibble: 9 x 1
+#>   activity             
+#>   <chr>                
+#> 1 Disturbing tiger kill
+#> 2 Forest products      
+#> 3 Grass/fodder         
+#> 4 Fuelwood/timber      
+#> 5 Fishing              
+#> 6 Herding              
+#> # … with 3 more rows
+```
+
+### Contingency table
+
+If you want to see how many times each value of activity occurs in the data, you can create a contingency table using the `count()` function. Again, the data object is the first argument and the variable name is the second argument.
+
+
+```r
+count(tiger_data, activity)
+#> # A tibble: 9 x 2
+#>   activity                  n
+#> * <chr>                 <int>
+#> 1 Disturbing tiger kill     5
+#> 2 Fishing                   8
+#> 3 Forest products          11
+#> 4 Fuelwood/timber           5
+#> 5 Grass/fodder             44
+#> 6 Herding                   7
+#> # … with 3 more rows
+```
+
+As you can see, this function returns another tibble that has two variables: the original one *activity* and a new one *n*, which represents the number of times the variable occurred in the data.
+
+### Make a bar graph
+
+The distribution of a single categorical variable is best visualized using bar graph (also called a bar chart, barchart, or column graph). In this section, you will learn how to create a bar graph.
+
+ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph.
+
+The first step is to create a new ggplot using the `ggplot()` function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:
+
+
+```r
+ggplot(data = tiger_data)
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+
+When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.
+
+Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn't know which variables to plot or how to display the data.
+
+To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the `geom_bar()` function. You add the geometric object to the canvas using a plus sign like this:
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = activity))
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+
+The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic mapping, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity`
+
+The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook.
+
+Depending on how large your monitor is when you plot this graph, the x-axis tick labels, i.e. the names of the categories of *activity*, may overlap each other. We can fix that by changing an element of the plot's theme:
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = activity)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+
+#### Use summarized data
+
+## Show data for a continuous variable
+
+### Get the data
 
 ### Use geom_histogram() for raw data
 
@@ -118,19 +270,14 @@ The first part tells you which packages are being loaded. You will notice ggplot
 ## Your assignment
 
 1.  Open the R script titled `lab-assignment-script.R`
-
 2.  Follow the directions to create an R script that produces the requested figures
 
 ## Your lab report
 
 1.  Open the R script titled `lab-assignment-script.R`
-
 2.  Your instructor has seeded your repository with an R Markdown document for your lab report, titled lab-report.Rmd. Open this file
-
 3.  Update the YAML header with your name
-
 4.  Copy the code for the requested figures into the appropriate R code chunks
-
 5.  Add text to answer each questions. Make your text bold so it is easily readable.
 
 ## Grading Rubric

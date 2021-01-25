@@ -14,7 +14,7 @@ Code sections have three main uses:
 
 Here is a screenshot of the code sections in action:
 
-![Screenshot of a script with three code sections showing the Document Outline](screenshots/code-sections-r.png)
+![Screenshot of a script with three code sections showing the Document Outline](screenshots/code-sections-r.png){width="100%"}
 
 And here is the code in the script shown in the screenshot above:
 
@@ -55,4 +55,4 @@ Code sections and the Document Outline can also be used in other document types.
 
 For example, when you show the Document Outline for an R Markdown document, it shows you all the headings
 
-![Example of an R Markdown document showing the Document Outline](screenshots/code-sections-rmd.png)
+![Example of an R Markdown document showing the Document Outline](screenshots/code-sections-rmd.png){width="100%"}

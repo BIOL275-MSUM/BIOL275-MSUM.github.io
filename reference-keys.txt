@@ -45,6 +45,9 @@ use-stat_identity-for-summarized-data
 your-assignment
 your-lab-report
 grading-rubric-1
+part-help
+project-options
+suggested-changes-to-default-settings
 github-notifications
 subscribing-to-notifications
 notification-methods

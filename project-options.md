@@ -1,6 +1,6 @@
-# (PART) Help {-}
+# (PART) Help
 
-# Project Options {-}
+# Project Options
 
 Each RStudio project consists of, at a minimum, a directory (aka folder) and an RStudio Project file. This file has the same name as the Project directory and ends with .RProj.
 
@@ -16,7 +16,7 @@ Both methods cause a dialog window to pop up showing the project options.
 
 ![Project Options dialog](screenshots/project-options.PNG "Project Options dialog"){width="400"}
 
-### Suggested changes to default settings {-}
+### Suggested changes to default settings
 
 The main thing is to change the General settings to avoid loading or saving the Project Workspace and avoid saving your History.
 

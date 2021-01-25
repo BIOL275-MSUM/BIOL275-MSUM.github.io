@@ -96,7 +96,7 @@ The first part tells you which packages are being loaded. You will notice ggplot
 
 ## Show data for a categorical variable
 
-### About the data
+### Example: tiger data
 
 We will use the data from Example 2.2A in your textbook for this activity. The summary from the textbook is as follows:
 

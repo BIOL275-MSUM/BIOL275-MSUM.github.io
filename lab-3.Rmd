@@ -84,7 +84,7 @@ library(tidyverse)
 
 That line of code ***loads*** the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example `library(ggplot2)`, it's usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.
 
-When you run the code, you will see a ***message***in the console like this:
+When you run the code, you will see a ***message*** in the console like this:
 
 ```{r run-library-tidyverse, echo=FALSE}
 library(tidyverse)
@@ -112,11 +112,13 @@ DT::datatable(
 )
 ```
 
-This interactive table was actually created using a [DataTables](https://www.htmlwidgets.org/showcase_datatables.html) HTML widget from the R package htmlwidgets. You will learn how to add a table like this to an R Markdown document in a future lab.
+*Note: This interactive table was actually created in R using the [htmlwidgets](https://www.htmlwidgets.org/showcase_datatables.html) package. In a future lab you will learn how to make a table like this.*
 
 ### Read the data
 
-For the next step in your R script, you will read the data into R. Create a new code section named "deaths from tigers"
+The next step in your R script is to read the data into R.
+
+First, create a new [code section](code-section.html) named "deaths from tigers"
 
 The data for this and other examples from your textbook can be found on the [book website](https://whitlockschluter.zoology.ubc.ca/). It is stored as a comma-separated values file (.csv).
 

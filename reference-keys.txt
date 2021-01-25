@@ -48,6 +48,11 @@ grading-rubric-1
 part-help
 project-options
 suggested-changes-to-default-settings
+code-sections
+insert-a-code-section
+showhide-the-document-outline
+jump-to-a-code-section
+other-scripts
 github-notifications
 subscribing-to-notifications
 notification-methods

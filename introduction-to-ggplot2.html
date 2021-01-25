@@ -133,22 +133,21 @@
 <li><p>Click the New File button (upper left) or go to File &gt; New File</p></li>
 <li><p>Select “R script”</p></li>
 <li><p>Immediately save your script with a useful name, for example <code>tutorial-walk-through.R</code></p></li>
-<li><p>Add a new code heading named “load packages”</p></li>
 </ol>
 </li>
 </ol>
+<p>For the rest of the lab, you will copying code from this website and paste it into your R script. <em>Only later, after you have a working R script, will you copy anything into your lab report R Markdown document.</em></p>
 </div>
 <div id="load-packages" class="section level2" number="3.4">
 <h2>
 <span class="header-section-number">3.4</span> Load packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
 </h2>
-<p>ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code heading:</p>
+<p>ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code section. Code sections keep your code organized and makes it easy to jump to specific code sections without scrolling. In a long script, this can be a real time saver. The <a href="code-sections.html">Code Sections</a> chapter has more details, but for now you can just follow these instructions:</p>
 <ol style="list-style-type: decimal">
 <li>Go to <strong>Code &gt; Insert Section…</strong> or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I</li>
 <li>Type “load packages” in the dialog window and click the <strong>OK</strong> button</li>
 </ol>
-<p>As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized, and makes it easy to jump to code sections. Read more in <a href="code-sections.html">Code Sections</a>.</p>
-<p>For the rest of the lab, you will be copying code from this website and pasting it into your R script (note you will not be pasting any code into an R Markdown document at this stage).</p>
+<p>As you work through the tutorials, add other code headings as necessary.</p>
 <p>Load the tidyverse package by adding this code below the new code section and running it:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
@@ -162,7 +161,7 @@
 #&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #&gt; ✖ dplyr::filter() masks stats::filter()
 #&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<p>The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package <em>and</em> function name.</p>
+<p>The first part tells you which packages are being loaded. You will notice ggplot2 is on that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package <em>and</em> function name.</p>
 </div>
 <div id="show-data-for-a-categorical-variable" class="section level2" number="3.5">
 <h2>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>3 Introduction to ggplot2 | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="get-rstudio.html">Get RStudio</a></li>
+<li><a class="" href="install-git.html">Install Git</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="active" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li class="book-part">Help</li>
+<li><a class="" href="project-options.html">Project Options</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">4</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-ggplot2" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Introduction to ggplot2<a class="anchor" aria-label="anchor" href="#introduction-to-ggplot2"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-2" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Learn to:</p>
+<ul>
+<li><p>Load ggplot2 and other tidyverse packages</p></li>
+<li>
+<p>Understand the layered grammar of graphics:</p>
+<ul>
+<li>Create a blank plot using the <code>ggplot()</code> function</li>
+<li>Add geometric objects using the <code>geom_*()</code> family of functions</li>
+<li>Define an aesthetic mapping for a project using the <code>aes()</code> function</li>
+<li>Apply a statistical transformation using the <code>stat_*()</code> family of functions</li>
+<li>Add labels to a ggplot using the <code>labs()</code> function</li>
+</ul>
+</li>
+<li>
+<p>Create a graph showing the distribution of a single variable</p>
+<ul>
+<li>Create a bar chart for a categorical variable using the <code>geom_col()</code> and <code>geom_bar()</code> functions</li>
+<li>Arrange the categories in a bar chart by frequency</li>
+<li>Create a histogram for a numerical variable using the <code>geom_histogram()</code> function</li>
+<li>Choose and set appropriate histogram bin widths</li>
+</ul>
+</li>
+<li><p>Set the image width for an R Markdown code chunk</p></li>
+</ul>
+</div>
+<div id="introduction" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+</h2>
+<p>This lab will introduce you to visualizing data using ggplot2.</p>
+<p>R has other systems for creating graphs, such as the plotting functions included with base R. At times you may end up searching online for help with you R code. Be sure to add ggplot to any of your search terms so that you end up finding solutions that fit within the requirements of this course.</p>
+<p>The instructions below correspond to sections 1, 2, 3, and 6 in the <a href="https://r4ds.had.co.nz/data-visualisation.html" title="3 Data visualisation | R for Data Science">Data visualisation</a> chapter of your lab manual, <em>R for Data Science</em>. If the steps below do not make sense on their own, please read those sections.</p>
+</div>
+<div id="project-setup" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Project Setup<a class="anchor" aria-label="anchor" href="#project-setup"><i class="fas fa-link"></i></a>
+</h2>
+<p>For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Claim your repository</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Go to the course D2L page</p></li>
+<li><p>Find the Content module for this lab</p></li>
+<li>
+<p>Follow the link to claim your repository (repo) on GitHub</p>
+<p><em>Note: this link will not appear until the day of your lab. If you want to get ahead, you can always try reading the <a href="https://r4ds.had.co.nz/data-visualisation.html" title="3 Data visualisation | R for Data Science">Data visualisation</a> chapter ahead of time</em></p>
+</li>
+<li><p>Copy the URL for your newly created repository</p></li>
+</ol>
+</li>
+<li>
+<p>Create a new project</p>
+<ol style="list-style-type: lower-alpha">
+<li>Open RStudio</li>
+<li>Click <strong>New Project…</strong> on the File menu or Project menu (upper right)</li>
+<li>In the dialog window, select Version Control and then Git</li>
+<li>Paste the URL for your repo</li>
+<li>Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word “lab”, the lab number, and your name)</li>
+<li>Click the Browse button and find a good place on your hard drive for this project to live</li>
+<li>Set your Project options. When the project opens, go to Tools &gt; Project Options… and change the first three drop down menus to “No” (see <a href="project-options.html">Project Options</a> for detailed instructions and rationale)</li>
+</ol>
+</li>
+<li>
+<p>Create a new script</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Click the New File button (upper left) or go to File &gt; New File</p></li>
+<li><p>Select “R script”</p></li>
+<li><p>Immediately save your script with a useful name, for example <code>tutorial-walk-through.R</code></p></li>
+<li>
+<p>Add a new code heading for Load Packages</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Go to <strong>Code &gt; Insert Section…</strong> or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I</p></li>
+<li><p>Type “load packages” and click the <strong>OK</strong> button</p></li>
+<li><p>Type (or copy and paste) <code><a href="http://tidyverse.tidyverse.org">library(tidyverse)</a></code></p></li>
+</ol>
+<p>As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized. Also, don’t forget to add comments (preceded by a <code>#</code>) and blanks lines between code chunks to improve readability</p>
+</li>
+</ol>
+</li>
+</ol>
+<div id="load-packages" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Load packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
+</h3>
+<p>ggplot2 is one of the core packages in the tidyverse. Load the tidyverse package by running this code:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<p>That line of code <strong><em>loads</em></strong> the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, it’s usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.</p>
+<p>When you run the code, you will see a <strong><em>message</em></strong>in the console like this:</p>
+<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+#&gt; ✔ tibble  3.0.5     ✔ dplyr   1.0.3
+#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.0
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<p>The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package <em>and</em> function name.</p>
+</div>
+</div>
+<div id="first-steps" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> First steps<a class="anchor" aria-label="anchor" href="#first-steps"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="bar-chart" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> Bar chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
+</h2>
+<div id="use-geom_col-for-summarized-data" class="section level3" number="3.5.1">
+<h3>
+<span class="header-section-number">3.5.1</span> Use <code>geom_col()</code> for summarized data<a class="anchor" aria-label="anchor" href="#use-geom_col-for-summarized-data"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="use-geom_bar-for-raw-data" class="section level3" number="3.5.2">
+<h3>
+<span class="header-section-number">3.5.2</span> Use <code>geom_bar()</code> for raw data<a class="anchor" aria-label="anchor" href="#use-geom_bar-for-raw-data"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="histogram" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+</h2>
+<div id="use-geom_histogram-for-raw-data" class="section level3" number="3.6.1">
+<h3>
+<span class="header-section-number">3.6.1</span> Use geom_histogram() for raw data<a class="anchor" aria-label="anchor" href="#use-geom_histogram-for-raw-data"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="use-stat_identity-for-summarized-data" class="section level3" number="3.6.2">
+<h3>
+<span class="header-section-number">3.6.2</span> Use stat_identity for summarized data<a class="anchor" aria-label="anchor" href="#use-stat_identity-for-summarized-data"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="your-assignment" class="section level2" number="3.7">
+<h2>
+<span class="header-section-number">3.7</span> Your assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Open the R script titled <code>lab-assignment-script.R</code></p></li>
+<li><p>Follow the directions to create an R script that produces the requested figures</p></li>
+</ol>
+</div>
+<div id="your-lab-report" class="section level2" number="3.8">
+<h2>
+<span class="header-section-number">3.8</span> Your lab report<a class="anchor" aria-label="anchor" href="#your-lab-report"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Open the R script titled <code>lab-assignment-script.R</code></p></li>
+<li><p>Your instructor has seeded your repository with an R Markdown document for your lab report, titled lab-report.Rmd. Open this file</p></li>
+<li><p>Update the YAML header with your name</p></li>
+<li><p>Copy the code for the requested figures into the appropriate R code chunks</p></li>
+<li><p>Add text to answer each questions. Make your text bold so it is easily readable.</p></li>
+</ol>
+</div>
+<div id="grading-rubric-1" class="section level2" number="3.9">
+<h2>
+<span class="header-section-number">3.9</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>You will be assessed based on the following rubric:</p>
+<ul>
+<li><p>GitHub Classroom repository claimed</p></li>
+<li>
+<p>R script</p>
+<ul>
+<li>
+<p>Good organization</p>
+<ul>
+<li><p>Code sections make sense</p></li>
+<li>
+<p>Code goes in correct order, e.g.</p>
+<ul>
+<li>load packages before using them</li>
+<li>read or load data before using it</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Has sufficient comments</p>
+<ul>
+<li>At top, explain purpose of the script</li>
+<li>Section headings throughout</li>
+<li>Each code chunk has a comment</li>
+</ul>
+</li>
+<li><p>Code for plots works</p></li>
+</ul>
+</li>
+<li>
+<p>R Markdown document</p>
+<ul>
+<li>Correct YAML header</li>
+<li>Good organization</li>
+<li>Sufficient explanatory text for each figure</li>
+<li>Questions answered correctly</li>
+<li>Answers marked in bold</li>
+</ul>
+</li>
+<li><p>Your lab report has been peer-reviewed at least once</p></li>
+<li><p>Submitted link to repository on D2L</p></li>
+</ul>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></div>
+<div class="next"><a href="project-options.html">Project Options</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-ggplot2"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="nav-link" href="#objectives-2"><span class="header-section-number">3.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#introduction"><span class="header-section-number">3.2</span> Introduction</a></li>
+<li>
+<a class="nav-link" href="#project-setup"><span class="header-section-number">3.3</span> Project Setup</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#load-packages"><span class="header-section-number">3.3.1</span> Load packages</a></li></ul>
+</li>
+<li><a class="nav-link" href="#first-steps"><span class="header-section-number">3.4</span> First steps</a></li>
+<li>
+<a class="nav-link" href="#bar-chart"><span class="header-section-number">3.5</span> Bar chart</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#use-geom_col-for-summarized-data"><span class="header-section-number">3.5.1</span> Use geom_col() for summarized data</a></li>
+<li><a class="nav-link" href="#use-geom_bar-for-raw-data"><span class="header-section-number">3.5.2</span> Use geom_bar() for raw data</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#histogram"><span class="header-section-number">3.6</span> Histogram</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#use-geom_histogram-for-raw-data"><span class="header-section-number">3.6.1</span> Use geom_histogram() for raw data</a></li>
+<li><a class="nav-link" href="#use-stat_identity-for-summarized-data"><span class="header-section-number">3.6.2</span> Use stat_identity for summarized data</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#your-assignment"><span class="header-section-number">3.7</span> Your assignment</a></li>
+<li><a class="nav-link" href="#your-lab-report"><span class="header-section-number">3.8</span> Your lab report</a></li>
+<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.9</span> Grading Rubric</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-3.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-3.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-01-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

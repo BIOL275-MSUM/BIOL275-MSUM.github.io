@@ -4,12 +4,11 @@ new_session: yes
 rmd_files: [
   "index.Rmd",
   
-  "getting-started.Rmd",
-  
   "lab-1.Rmd",
   "lab-2.Rmd",
   "lab-3.Rmd",
   
+  "getting-started.Rmd",
   "project-options.Rmd",
   "code-sections.Rmd",
   "github-notifications.Rmd",

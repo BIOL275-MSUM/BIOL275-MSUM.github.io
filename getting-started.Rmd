@@ -1,10 +1,12 @@
-# (PART) Getting Started {-}
+# (PART) Appendices
 
-# Get RStudio {-}
+# (PART) Getting Started
+
+# Install R and RStudio
 
 Your first task is to choose how you will work with R. To do that, you should understand the difference between R and RStudio, and know what your options are for running RStudio.
 
-## About R and RStudio {-}
+## About R and RStudio
 
 **R** is a programming language and free software environment for statistical computing and graphics supported by the R Foundation for Statistical Computing. Today, R is the most commonly used software for data analysis in the biological sciences.
 
@@ -12,7 +14,7 @@ While it is possible to run R by itself, it is more common to run it as part of 
 
 To get started with RStudio Desktop, you need to first install R, then install RStudio.
 
-## Install R {-}
+## Install R
 
 You must install R before you install RStudio.
 
@@ -31,7 +33,7 @@ knitr::include_graphics("screenshots/download-r.png")
     b. Download the installer. The link will say something like "Download R 4.0.3 for Windows", but the version number may be different if a newer version has been released.
     c. Open the file and Windows will install R. If you are prompted for options during installation, just select the default options.
     
-## Install RStudio {-}
+## Install RStudio
 
 Make sure you have installed R before you try to install RStudio.
 
@@ -46,14 +48,14 @@ RStuio Desktop `RStudio.Version()$version`.
 knitr::include_graphics("screenshots/download-rstudio.png")
 ```
 
-# Install Git {-}
+# Install Git
 
 Instructions for installing Git.
 
-## Windows {-}
+## Windows
 
 Instructions for Windows operating system.
 
-## Mac {-}
+## Mac
 
 Instructions for Mac operating system.

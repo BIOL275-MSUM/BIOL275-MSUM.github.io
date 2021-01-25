@@ -1,4 +1,4 @@
-# (PART) Help
+# (PART) Using RStudio
 
 # Project Options
 

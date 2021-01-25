@@ -106,7 +106,8 @@ The dataset consists of one table showing the activities of 88 people at the tim
 
 You can view and explore the data using this interactive table:
 
-```{r tiger-data-table, echo=FALSE}
+```{r tiger-data-table, echo=FALSE, message=FALSE, warning=FALSE}
+library(DT)
 DT::datatable(
   read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"),
   options = list(pageLength = 5)

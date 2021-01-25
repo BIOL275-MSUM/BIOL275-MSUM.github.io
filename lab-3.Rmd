@@ -65,18 +65,16 @@ For this lab you will work in a new RStudio Project under git version control. H
 
     c.  Immediately save your script with a useful name, for example `tutorial-walk-through.R`
 
-    d.  Add a new code heading named "load packages"
+For the rest of the lab, you will copying code from this website and paste it into your R script. *Only later, after you have a working R script, will you copy anything into your lab report R Markdown document.*
 
 ## Load packages
 
-ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code heading:
+ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code section. Code sections keep your code organized and makes it easy to jump to specific code sections without scrolling. In a long script, this can be a real time saver. The [Code Sections](code-sections.html) chapter has more details, but for now you can just follow these instructions:
 
 1.  Go to **Code \> Insert Section...** or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I
 2.  Type "load packages" in the dialog window and click the **OK** button
 
-As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized, and makes it easy to jump to code sections. Read more in [Code Sections](code-sections.html).
-
-For the rest of the lab, you will be copying code from this website and pasting it into your R script (note you will not be pasting any code into an R Markdown document at this stage).
+As you work through the tutorials, add other code headings as necessary.
 
 Load the tidyverse package by adding this code below the new code section and running it:
 
@@ -92,7 +90,7 @@ When you run the code, you will see a ***message***in the console like this:
 library(tidyverse)
 ```
 
-The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
+The first part tells you which packages are being loaded. You will notice ggplot2 is on that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
 
 ## Show data for a categorical variable
 

@@ -11,6 +11,7 @@ rmd_files: [
   "lab-3.Rmd",
   
   "project-options.Rmd",
+  "code-sections.Rmd",
   "github-notifications.Rmd",
   
 ]

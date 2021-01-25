@@ -16,15 +16,16 @@ Learn to:
 
 Day 1
 
-1.  Fill in blanks on README.Rmd
-2.  Knit README.Rmd
-3.  Read lab assignment
-4.  Run the code in calculator.R as you work through the assignment
-5.  Edit the code in calculator.R to use the new data from the self assessment
-6.  Copy and paste your working code from calculator.R into the appropriate code chunks in assignment.Rmd
-7.  Knit the assignment.Rmd document
-8.  Commit and push all files to GitHub
-9.  Copy the repository URL and paste it into the assignment submission folder on D2L
+1.  Clone the repository for this lab from GitHub
+2.  Fill in blanks on README.Rmd
+3.  Knit README.Rmd
+4.  Read lab assignment
+5.  Run the code in calculator.R as you work through the assignment
+6.  Edit the code in calculator.R to use the new data from the self assessment
+7.  Copy and paste your working code from calculator.R into the appropriate code chunks in assignment.Rmd
+8.  Knit the assignment.Rmd document
+9.  Commit and push all files to GitHub
+10. Copy the repository URL and paste it into the assignment submission folder on D2L
 
 Day 2
 
@@ -39,6 +40,32 @@ Day 2
 ## Day 1: R as a Calculator
 
 In this section, you will learn how to use the Console Window to run commands as you perform basic arithmetic operations. You will learn the basics of using functions, and finally learn about creating objects using the assignment operator.
+
+### Project Setup
+
+For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:
+
+1.  Claim your repository
+
+    a.  Go to the course D2L page
+
+    b.  Find the Content module for this lab
+
+    c.  Follow the link to claim your repository (repo) on GitHub
+
+        *Note: this link will not appear until the day of your lab. If you want to get ahead, you can always try reading the [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html "3 Data visualisation | R for Data Science") chapter ahead of time*
+
+    d.  Copy the URL for your newly created repository
+
+2.  Create a new project
+
+    a.  Open RStudio
+    b.  Click **New Project...** on the File menu or Project menu (upper right)
+    c.  In the dialog window, select Version Control and then Git
+    d.  Paste the URL for your repo
+    e.  Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word "lab", the lab number, and your name)
+    f.  Click the Browse button and find a good place on your hard drive for this project to live
+    g.  Set your Project options. When the project opens, go to Tools \> Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
 
 ### The RStudio IDE
 
@@ -163,7 +190,21 @@ sqrt(9)
 
 A function consists of the name of the function followed by parentheses, with a list of *arguments* inside the parentheses. Some functions take one argument, some take more, and some take none at all.
 
-A very commonly used function is `c()`, the *combine* function. This combines multiple values into what's known as a *vector*:
+## Work from a script
+
+Up to this point, you have been running from the console by typing commands into the console and pressing enter.
+
+For the next section, you will run your code from a script.
+
+In the Files tab (bottom right pane), click the file named calculator.R.
+
+The file will open in a new pane called the *source* pane in the upper left.
+
+You can run code from the script by placing your cursor on a line and clicking the Run button in the source pane toolbar, or by using the keyboard shortcut Ctrl+Enter / Cmd+Return.
+
+Let's continue our exploration of functions in R by looking at the top of the script.
+
+A very commonly used function is `c()`, the *combine* function. This combines multiple values into what's known as a *vector*. Place your cursor on this line of code and run it. The cursor will jump down to the second line automatically after you run the first one. With your cursor on the second line of code, click Run again to run the second line.
 
 ```{r}
 k <- c(1, 2, 10, 4.7, 5.0)

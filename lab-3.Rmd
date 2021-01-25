@@ -65,19 +65,18 @@ For this lab you will work in a new RStudio Project under git version control. H
 
     c.  Immediately save your script with a useful name, for example `tutorial-walk-through.R`
 
-    d.  Add a new code heading for Load Packages
+    d.  Add a new code heading named "load packages"
 
-        i.  Go to **Code \> Insert Section...** or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I
+## Load packages
 
-        ii. Type "load packages" and click the **OK** button
+ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code heading:
 
-        iii. Type (or copy and paste) `library(tidyverse)`
+1.  Go to **Code \> Insert Section...** or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I
+2.  Type "load packages" in the dialog window and click the **OK** button
 
-        As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized. Also, don't forget to add comments (preceded by a `#`) and blanks lines between code chunks to improve readability
+As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized, and makes it easy to jump to code sections. Read more in [Code Sections](code-sections.html).
 
-### Load packages
-
-ggplot2 is one of the core packages in the tidyverse. Load the tidyverse package by running this code:
+Load the tidyverse package by adding this code below the new code section and running it:
 
 ```{r show-library-tidyverse, eval=FALSE}
 library(tidyverse)

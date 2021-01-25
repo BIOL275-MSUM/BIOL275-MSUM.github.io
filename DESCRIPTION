@@ -2,7 +2,10 @@ Package: placeholder
 Type: Book
 Title: Quantitative Biology.
 Version: 0.0.2
-Imports: readxl, tidyverse
+Imports:
+    readxl,
+    tidyverse,
+    DT
 Suggests:
     bookdown,
     bslib,

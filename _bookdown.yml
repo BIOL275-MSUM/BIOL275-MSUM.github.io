@@ -8,6 +8,7 @@ rmd_files: [
   
   "lab-1.Rmd",
   "lab-2.Rmd",
+  "lab-3.Rmd",
   
   "project-options.Rmd",
   "github-notifications.Rmd",

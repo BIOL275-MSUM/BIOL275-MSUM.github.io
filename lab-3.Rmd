@@ -1,0 +1,163 @@
+# Introduction to ggplot2
+
+## Objectives
+
+Learn to:
+
+-   Load ggplot2 and other tidyverse packages
+
+-   Understand the layered grammar of graphics:
+
+    -   Create a blank plot using the `ggplot()` function
+    -   Add geometric objects using the `geom_*()` family of functions
+    -   Define an aesthetic mapping for a project using the `aes()` function
+    -   Apply a statistical transformation using the `stat_*()` family of functions
+    -   Add labels to a ggplot using the `labs()` function
+
+-   Create a graph showing the distribution of a single variable
+
+    -   Create a bar chart for a categorical variable using the `geom_col()` and `geom_bar()` functions
+    -   Arrange the categories in a bar chart by frequency
+    -   Create a histogram for a numerical variable using the `geom_histogram()` function
+    -   Choose and set appropriate histogram bin widths
+
+-   Set the image width for an R Markdown code chunk
+
+## Introduction
+
+This lab will introduce you to visualizing data using ggplot2.
+
+R has other systems for creating graphs, such as the plotting functions included with base R. At times you may end up searching online for help with you R code. Be sure to add ggplot to any of your search terms so that you end up finding solutions that fit within the requirements of this course.
+
+The instructions below correspond to sections 1, 2, 3, and 6 in the [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html "3 Data visualisation | R for Data Science") chapter of your lab manual, *R for Data Science*. If the steps below do not make sense on their own, please read those sections.
+
+## Project Setup
+
+For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:
+
+1.  Claim your repository
+
+    a.  Go to the course D2L page
+
+    b.  Find the Content module for this lab
+
+    c.  Follow the link to claim your repository (repo) on GitHub
+
+        *Note: this link will not appear until the day of your lab. If you want to get ahead, you can always try reading the [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html "3 Data visualisation | R for Data Science") chapter ahead of time*
+
+    d.  Copy the URL for your newly created repository
+
+2.  Create a new project
+
+    a.  Open RStudio
+    b.  Click **New Project...** on the File menu or Project menu (upper right)
+    c.  In the dialog window, select Version Control and then Git
+    d.  Paste the URL for your repo
+    e.  Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word "lab", the lab number, and your name)
+    f.  Click the Browse button and find a good place on your hard drive for this project to live
+    g.  Set your Project options. When the project opens, go to Tools \> Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
+
+3.  Create a new script
+
+    a.  Click the New File button (upper left) or go to File \> New File
+
+    b.  Select "R script"
+
+    c.  Immediately save your script with a useful name, for example `tutorial-walk-through.R`
+
+    d.  Add a new code heading for Load Packages
+
+        i.  Go to **Code \> Insert Section...** or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I
+
+        ii. Type "load packages" and click the **OK** button
+
+        iii. Type (or copy and paste) `library(tidyverse)`
+
+        As you work through the tutorials, add other code headings as necessary. This is crucial for keeping your code clean and organized. Also, don't forget to add comments (preceded by a `#`) and blanks lines between code chunks to improve readability
+
+### Load packages
+
+ggplot2 is one of the core packages in the tidyverse. Load the tidyverse package by running this code:
+
+```{r show-library-tidyverse, eval=FALSE}
+library(tidyverse)
+```
+
+That line of code ***loads*** the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example `library(ggplot2)`, it's usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.
+
+When you run the code, you will see a ***message***in the console like this:
+
+```{r run-library-tidyverse, echo=FALSE}
+library(tidyverse)
+```
+
+The first part tells you which packages are being loaded. You will notice ggplot2 is among that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
+
+## First steps
+
+## Bar chart
+
+### Use `geom_col()` for summarized data
+
+### Use `geom_bar()` for raw data
+
+## Histogram
+
+### Use geom_histogram() for raw data
+
+### Use stat_identity for summarized data
+
+## Your assignment
+
+1.  Open the R script titled `lab-assignment-script.R`
+
+2.  Follow the directions to create an R script that produces the requested figures
+
+## Your lab report
+
+1.  Open the R script titled `lab-assignment-script.R`
+
+2.  Your instructor has seeded your repository with an R Markdown document for your lab report, titled lab-report.Rmd. Open this file
+
+3.  Update the YAML header with your name
+
+4.  Copy the code for the requested figures into the appropriate R code chunks
+
+5.  Add text to answer each questions. Make your text bold so it is easily readable.
+
+## Grading Rubric
+
+You will be assessed based on the following rubric:
+
+-   GitHub Classroom repository claimed
+
+-   R script
+
+    -   Good organization
+
+        -   Code sections make sense
+
+        -   Code goes in correct order, e.g.
+
+            -   load packages before using them
+            -   read or load data before using it
+
+    -   Has sufficient comments
+
+        -   At top, explain purpose of the script
+        -   Section headings throughout
+        -   Each code chunk has a comment
+
+    -   Code for plots works
+
+-   R Markdown document
+
+    -   Correct YAML header
+    -   Good organization
+    -   Sufficient explanatory text for each figure
+    -   Questions answered correctly
+    -   Answers marked in bold
+
+-   Your lab report has been peer-reviewed at least once
+
+-   Submitted link to repository on D2L

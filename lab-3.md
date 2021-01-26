@@ -4,13 +4,13 @@
 
 In this lab, you will learn to:
 
--   Understand the layered grammar of graphics:
+-   Use the layered grammar of graphics:
 
-    -   Create a blank plot using the `ggplot()` function
-    -   Add geometric objects using the `geom_*()` family of functions
-    -   Define an aesthetic mapping for a project using the `aes()` function
-    -   Apply a statistical transformation using the `stat_*()` family of functions
-    -   Add labels to a ggplot using the `labs()` function
+    -   Create a blank graph using the `ggplot()` function
+    -   Add geometric objects to a graph
+    -   Define an aesthetic mapping for a graph
+    -   Add labels to a graph
+    -   Fix some common styling
 
 -   Create a graph showing the distribution of a single variable
 
@@ -240,6 +240,8 @@ When you plot something in RStudio (i.e. when you create a graph), it will appea
 
 Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn't know which variables to plot or how to display the data.
 
+#### Geometric objects and aesthetic mappings
+
 To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the `geom_bar()` function. You add the geometric object to the canvas using a plus sign like this:
 
 
@@ -250,7 +252,22 @@ ggplot(data = tiger_data) +
 
 <img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
-The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity` . Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
+The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis.
+
+How did we know what variable to put on the x-axis in the bar graph? That's determined by the purpose to the graph. For this graph, the purpose is to plot the distribution of the activities of people attacked and killed by tigers. But what is the actual variable we want to graph? For that you need to go back and look at the data itself. Print the data in the console again by typing its name and running the line:
+
+
+```r
+tiger_data
+```
+
+The variables are listed on the second row the of the output. You can see they are named *person* and *activity*. Which one is the variable we want to graph? It is *activity*. So in your aesthetic mapping the code `x = activity` can be translated as "put the activity variable on the x axis".
+
+Any variables you map to an aesthetic must be present in the data, and the variable name must appear exactly as it does in the data.
+
+Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
+
+#### Labels and themes
 
 The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions:
 
@@ -277,7 +294,7 @@ ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = fct_infreq(activity)))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 Second, change color of the columns by adding a `fill` argument to `geom_bar()`. Put a comma after the closing parenthesis of the `aes()` function and add `fill =`. For the fill color, you could try `"red"` or `"darkred"`, but for an exact match use the hex color `"#C5351B"`.
 
@@ -287,7 +304,7 @@ ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B")
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
 Third, add better x- and y-axis labels using the `labs()` function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument `x` sets the x-axis label while the argument `y` sets the y-axis label. The label text itself should appear in quotation marks. The `x` and `y` arguments should be separated by a comma.
 
@@ -298,7 +315,7 @@ ggplot(data = tiger_data) +
   labs(x = "Activity", y = "Frequency (number of people)")
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
 
 Fourth, fix the look of the graph by using:
 
@@ -334,7 +351,7 @@ ggplot(data = tiger_data) +
   )
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 
 Compare your figure to the original above. Not bad! This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
 
@@ -423,7 +440,7 @@ ggplot(data = bird_data) +
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let's try setting the bin width instead of the number of bins:
 
@@ -433,7 +450,7 @@ ggplot(data = bird_data) +
   geom_histogram(mapping = aes(x = abundance), binwidth = 50)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.
 
@@ -444,7 +461,7 @@ ggplot(data = bird_data) +
                  boundary = 0, closed = "left")
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it's obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.
 
@@ -457,7 +474,7 @@ ggplot(data = bird_data) +
                  boundary = 0, closed = "left")
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 And finally, clean it up with some axis labels and styling changes:
 
@@ -478,7 +495,7 @@ ggplot(data = bird_data) +
   )
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Your assignment
 

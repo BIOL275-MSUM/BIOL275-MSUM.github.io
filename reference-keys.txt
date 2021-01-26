@@ -43,6 +43,8 @@ read-the-tiger-data
 view-the-tiger-data
 contingency-table
 make-a-bar-graph
+geometric-objects-and-aesthetic-mappings
+labels-and-themes
 histograms
 example-bird-data
 read-and-view-the-bird-data

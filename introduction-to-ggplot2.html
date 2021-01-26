@@ -67,13 +67,13 @@
 <p>In this lab, you will learn to:</p>
 <ul>
 <li>
-<p>Understand the layered grammar of graphics:</p>
+<p>Use the layered grammar of graphics:</p>
 <ul>
-<li>Create a blank plot using the <code>ggplot()</code> function</li>
-<li>Add geometric objects using the <code>geom_*()</code> family of functions</li>
-<li>Define an aesthetic mapping for a project using the <code>aes()</code> function</li>
-<li>Apply a statistical transformation using the <code>stat_*()</code> family of functions</li>
-<li>Add labels to a ggplot using the <code>labs()</code> function</li>
+<li>Create a blank graph using the <code>ggplot()</code> function</li>
+<li>Add geometric objects to a graph</li>
+<li>Define an aesthetic mapping for a graph</li>
+<li>Add labels to a graph</li>
+<li>Fix some common styling</li>
 </ul>
 </li>
 <li>
@@ -271,12 +271,27 @@
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.</p>
 <p>Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn’t know which variables to plot or how to display the data.</p>
+<div id="geometric-objects-and-aesthetic-mappings" class="section level4" number="3.5.5.1">
+<h4>
+<span class="header-section-number">3.5.5.1</span> Geometric objects and aesthetic mappings<a class="anchor" aria-label="anchor" href="#geometric-objects-and-aesthetic-mappings"><i class="fas fa-link"></i></a>
+</h4>
 <p>To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the <code>geom_bar()</code> function. You add the geometric object to the canvas using a plus sign like this:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">activity</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>The first (and for now, only) argument to <code>geom_bar()</code> is <code>mapping</code>, an aesthetic mapping that tells R which variables in the data table <em>map</em> to which parts of the graph. An aesthetic mapping is defined by the <code>aes()</code> function. <code>geom_bar()</code> requires only one aesthetic, the argument <code>x</code>, which tells R which variable to put on the x axis. We want to put the <em>activity</em> variable on the x axis, so we set <code>x = activity</code> . Put this all together, and the way to add a bars to the graph is <code>geom_bar(mapping = aes(x = activity)</code></p>
+<p>The first (and for now, only) argument to <code>geom_bar()</code> is <code>mapping</code>, an aesthetic mapping that tells R which variables in the data table <em>map</em> to which parts of the graph. An aesthetic mapping is defined by the <code>aes()</code> function. <code>geom_bar()</code> requires only one aesthetic, the argument <code>x</code>, which tells R which variable to put on the x axis.</p>
+<p>How did we know what variable to put on the x-axis in the bar graph? That’s determined by the purpose to the graph. For this graph, the purpose is to plot the distribution of the activities of people attacked and killed by tigers. But what is the actual variable we want to graph? For that you need to go back and look at the data itself. Print the data in the console again by typing its name and running the line:</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tiger_data</span></code></pre></div>
+<p>The variables are listed on the second row the of the output. You can see they are named <em>person</em> and <em>activity</em>. Which one is the variable we want to graph? It is <em>activity</em>. So in your aesthetic mapping the code <code>x = activity</code> can be translated as “put the activity variable on the x axis”.</p>
+<p>Any variables you map to an aesthetic must be present in the data, and the variable name must appear exactly as it does in the data.</p>
+<p>Put this all together, and the way to add a bars to the graph is <code>geom_bar(mapping = aes(x = activity)</code></p>
+</div>
+<div id="labels-and-themes" class="section level4" number="3.5.5.2">
+<h4>
+<span class="header-section-number">3.5.5.2</span> Labels and themes<a class="anchor" aria-label="anchor" href="#labels-and-themes"><i class="fas fa-link"></i></a>
+</h4>
 <p>The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions:</p>
 <ol style="list-style-type: decimal">
 <li><p>The columns should be ordered by height</p></li>
@@ -294,21 +309,21 @@
 </ol>
 <p>Let’s fix each of those issues in turn.</p>
 <p>First, arrange the levels (categories) of activity in descending order by count (i.e. big columns on the left), using a bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The <code>fct_infreq()</code> function changes a variable to factor with the levels defined by how frequently they occur in the data. Inside the <code>aes()</code> function, change <code>x = activity</code> to <code>x = fct_infreq(activity)</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>Second, change color of the columns by adding a <code>fill</code> argument to <code>geom_bar()</code>. Put a comma after the closing parenthesis of the <code>aes()</code> function and add <code>fill =</code>. For the fill color, you could try <code>"red"</code> or <code>"darkred"</code>, but for an exact match use the hex color <code>"#C5351B"</code>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span><span class="op">)</span></code></pre></div>
+  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>Third, add better x- and y-axis labels using the <code>labs()</code> function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument <code>x</code> sets the x-axis label while the argument <code>y</code> sets the y-axis label. The label text itself should appear in quotation marks. The <code>x</code> and <code>y</code> arguments should be separated by a comma.</p>
+<p>Second, change color of the columns by adding a <code>fill</code> argument to <code>geom_bar()</code>. Put a comma after the closing parenthesis of the <code>aes()</code> function and add <code>fill =</code>. For the fill color, you could try <code>"red"</code> or <code>"darkred"</code>, but for an exact match use the hex color <code>"#C5351B"</code>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>Third, add better x- and y-axis labels using the <code>labs()</code> function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument <code>x</code> sets the x-axis label while the argument <code>y</code> sets the y-axis label. The label text itself should appear in quotation marks. The <code>x</code> and <code>y</code> arguments should be separated by a comma.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Activity"</span>, y <span class="op">=</span> <span class="st">"Frequency (number of people)"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Fourth, fix the look of the graph by using:</p>
 <ul>
 <li><p>the <code>width</code> argument of <code>geom_bar()</code> to set make the bars (columns) a bit narrower</p></li>
@@ -324,7 +339,7 @@
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span>, 
            width <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span>
@@ -337,9 +352,10 @@
     axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
     axis.ticks.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Compare your figure to the original above. Not bad! This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.</p>
 <p>Note that you could get pretty close with just the first three lines of code and perhaps the one theme element to rotate the axis text labels.</p>
+</div>
 </div>
 </div>
 <div id="histograms" class="section level2" number="3.6">
@@ -372,7 +388,7 @@
 <span class="header-section-number">3.6.2</span> Read and view the bird data<a class="anchor" aria-label="anchor" href="#read-and-view-the-bird-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>Create a new code section in your script named “bird abundances” and read the data from the textbook website:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bird_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
@@ -401,34 +417,34 @@
 <span class="header-section-number">3.6.3</span> Make a histogram<a class="anchor" aria-label="anchor" href="#make-a-histogram"><i class="fas fa-link"></i></a>
 </h3>
 <p>Like all ggplots, a histogram begins with a blank canvas. Notice that we set the data argument to <code>bird_data</code> this time rather than <code>tiger_data</code>.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span></code></pre></div>
 <p>While we used <code>geom_bar()</code> to create a bar graph, we will use <code>geom_histogram()</code> to create a histogram. The aesthetic mapping, however, is the same. Both require you to map the <code>x</code> argument, i.e. tell R which variable is on the x-axis. Because we are interested in looking at the distribution of abundance, we set the <code>x</code> argument to <code>abundance</code>:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let’s try setting the bin width instead of the number of bins:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.</p>
+<p>You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let’s try setting the bin width instead of the number of bins:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
-                 boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
+  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it’s obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.</p>
-<p>Set the <code>closed</code> argument to <code>"left"</code> to change it so the left edge of the bin is included in the bin, not the right edge. The quick-minded might wonder if that makes the first bin (which includes both zero and 50) wider than the others. In short, I don’t know but it doesn’t matter here because there are no species in the dataset with an abundance of zero.</p>
+<p>The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>And finally, clean it up with some axis labels and styling changes:</p>
+<p>This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it’s obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.</p>
+<p>Set the <code>closed</code> argument to <code>"left"</code> to change it so the left edge of the bin is included in the bin, not the right edge. The quick-minded might wonder if that makes the first bin (which includes both zero and 50) wider than the others. In short, I don’t know but it doesn’t matter here because there are no species in the dataset with an abundance of zero.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
+                 boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>And finally, clean it up with some axis labels and styling changes:</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span>, 
@@ -442,7 +458,7 @@
     axis.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,
     axis.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fu">rel</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;"></div>
 </div>
 </div>
 <div id="your-assignment" class="section level2" number="3.7">
@@ -483,7 +499,7 @@
 <p>The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.</p>
 </blockquote>
 <p>Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">auk</span><span class="op">)</span>                          <span class="co"># load the auk package</span>
 <span class="va">birds</span> <span class="op">&lt;-</span> <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>           <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>

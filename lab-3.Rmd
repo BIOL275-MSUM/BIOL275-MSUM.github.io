@@ -366,7 +366,7 @@ ggplot(data = bird_data) +
 
 And finally, clean it up with some axis labels and styling changes:
 
-```{r, fig.width=4.63, fig.asp=1}
+```{r, fig.width=4.63, fig.asp=1, out.width=50%}
 ggplot(data = bird_data) +
   geom_histogram(mapping = aes(x = abundance), binwidth = 50,
                  boundary = 0, closed = "left", 
@@ -384,7 +384,31 @@ ggplot(data = bird_data) +
 
 ## Your assignment
 
-1.  Open the R script titled `lab-assignment-script.R`
+Your assignment is to demonstrate that you can create bar graphs and histograms using ggplot.
+
+First, create a new R script where you will build the code for your analysis. Keep your script neat with appropriate code sections and descriptive comments throughout. Load the tidyverse package.
+
+### Bar graph
+
+For the bar graph, you
+
+### Histogram
+
+For the histogram, you will use the cruz dataset from the unmarked package. cruz is a table where each observation (row) represents a pixel on a map of Santa Cruz Island in California. Your task is to make a histogram showing the distribution of the *elevation* variable, which gives the elevation of the pixel in meters above sea level, abbreviated m.a.s.l.
+
+To do this, you must load the cruz dataset. You will need to install the unmarked package before you can run the code below. Do not include any code to install the package in the script itself... use the Packages tab to install it. When you read the data, assign it to a new object named `cruz2`, which you will use for your analysis
+
+```{r, eval=FALSE}
+library(unmarked)
+cruz2 <- as_tibble(cruz)
+cruz2
+```
+
+For the bar graph, you wil
+
+For the histogram
+
+1.  Create a new R script for your analysis. Write the code to answer
 2.  Follow the directions to create an R script that produces the requested figures
 
 ## Your lab report

@@ -302,6 +302,8 @@ ggplot(data = tiger_data) +
 
 Fourth, fix the look of the graph by using:
 
+-   Change the `width` of the bars (columns)
+
 -   `scale_y_continuous()` to set the y-axis limits to 0 and 50, with no buffer
 
 -   `theme_classic()` to remove the background color, adds axis lines, and increases the base font size
@@ -315,6 +317,23 @@ Fourth, fix the look of the graph by using:
     -   Make the x-axis text angled and right justified
 
     -   Remove the x-axis tick marks
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B", width = .8) +
+  labs(x = "Activity", y = "Frequency (number of people)") +
+  scale_y_continuous(limits = c(0, 50), expand = expansion(mult = 0)) +
+  theme_classic(base_size = 13) +
+  theme(
+    axis.title = element_text(face = "bold"),
+    axis.text = element_text(color = "black", size = rel(1)),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.ticks.x = element_blank()
+  )
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
 
 Compare your figure to the original above. Not bad! This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
 

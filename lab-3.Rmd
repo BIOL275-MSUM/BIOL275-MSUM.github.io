@@ -273,7 +273,7 @@ The dataset consists of one table showing the abundance of NN species in Organ P
 
 You can view and explore the data using this interactive table:
 
-```{r tiger-data-table, echo=FALSE, message=FALSE, warning=FALSE, class.ouput='p-3'}
+```{r bird-data-table, echo=FALSE, message=FALSE, warning=FALSE, class.ouput='p-3'}
 DT::datatable(
   read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv"),
   options = list(pageLength = 5)

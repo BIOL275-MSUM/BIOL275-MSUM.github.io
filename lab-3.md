@@ -85,7 +85,7 @@ library(tidyverse)
 
 That line of code ***loads*** the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example `library(ggplot2)`, it's usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.
 
-When you run the code, you will see a ***message***in the console like this:
+When you run the code, you will see a ***message*** in the console like this:
 
 
 ```
@@ -119,11 +119,13 @@ You can view and explore the data using this interactive table:
 <script type="application/json" data-for="htmlwidget-9ec3e5c8c404fe174e4c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88],["Disturbing tiger kill","Forest products","Grass/fodder","Fuelwood/timber","Grass/fodder","Forest products","Grass/fodder","Fishing","Fuelwood/timber","Grass/fodder","Forest products","Forest products","Forest products","Grass/fodder","Forest products","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Fishing","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Herding","Grass/fodder","Herding","Grass/fodder","Fishing","Grass/fodder","Grass/fodder","Sleeping in house","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Herding","Fishing","Grass/fodder","Forest products","Forest products","Grass/fodder","Grass/fodder","Forest products","Disturbing tiger kill","Walking","Fishing","Herding","Grass/fodder","Grass/fodder","Sleeping in house","Fishing","Fishing","Toilet","Grass/fodder","Walking","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Disturbing tiger kill","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Forest products","Toilet","Walking","Disturbing tiger kill","Disturbing tiger kill","Sleeping in house","Forest products","Fishing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>person<\/th>\n      <th>activity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
-This interactive table was actually created using a [DataTables](https://www.htmlwidgets.org/showcase_datatables.html) HTML widget from the R package htmlwidgets. You will learn how to add a table like this to an R Markdown document in a future lab.
+*Note: This interactive table was actually created in R using the [htmlwidgets](https://www.htmlwidgets.org/showcase_datatables.html) package. In a future lab you will learn how to make a table like this.*
 
-### Read the data
+### Read the tiger data
 
-For the next step in your R script, you will read the data into R. Create a new code section named "deaths from tigers"
+The next step in your R script is to read the data into R.
+
+First, create a new [code section](code-section.html) named "deaths from tigers"
 
 The data for this and other examples from your textbook can be found on the [book website](https://whitlockschluter.zoology.ubc.ca/). It is stored as a comma-separated values file (.csv).
 
@@ -142,7 +144,7 @@ tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/
 
 The message you get in your console tells you how the data in the CSV was parsed (interpretted) when it was read into R. You can ignore it for now.
 
-### View the data
+### View the tiger data
 
 You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it:
 
@@ -167,9 +169,9 @@ Each row represents a sample unit, or person. Thus the sample size is 88.
 
 The variables are:
 
--   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider `person` a ***categorical*** variable.
+-   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider person a *categorical* variable.
 
--   **activity**. the person's activity at the time they were attacked and killed. This is a ***categorical*** variable with a discrete number of possible values.
+-   **activity**. the person's activity at the time they were attacked and killed. This is a *categorical* variable with a discrete number of possible values.
 
 For our purposes, the only variable of interest is activity. We will not use the person variable.
 

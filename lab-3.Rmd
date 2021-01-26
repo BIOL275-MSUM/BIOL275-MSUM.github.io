@@ -218,11 +218,11 @@ ggplot(data = tiger_data) +
 
 The `forcats::` preceding the function name is just a way of telling R which package the function is in. It's not necessary here, because we already loaded the forcats package, but it serves as a visual reminder to anyone reading the code that it requires the forcats package.
 
-Third, the figure in the textbook features red columns and larger text. This is accomplished by adding a `fill` argument to `geom_bar()` and setting the font-size using the `theme_gray()` function:
+Third, the figure in the textbook features red columns and larger text. These are accomplished by setting the font-size using the `theme_gray()` function and adding a `fill` argument to `geom_bar()`. For the fill color, you could try `"red"` or `"darkred"`, but for an exact match use the hex color `"#C5351B"`:
 
 ```{r, fig.width=5.56, fig.height=5.62}
 ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "darkred") +
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   theme_gray(base_size = 13)
 ```

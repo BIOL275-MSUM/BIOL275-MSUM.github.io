@@ -2,9 +2,7 @@
 
 ## Objectives
 
-Learn to:
-
--   Load ggplot2 and other tidyverse packages
+In this lab, you will learn to:
 
 -   Understand the layered grammar of graphics:
 
@@ -57,7 +55,9 @@ For this lab you will work in a new RStudio Project under git version control. H
     f.  Click the Browse button and find a good place on your hard drive for this project to live
     g.  Set your Project options. When the project opens, go to Tools \> Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
 
-3.  Create a new script
+3.  Open README.Rmd and edit it, replacing triple underscores "\_\_\_" with your text.
+
+4.  Create a new script
 
     a.  Click the New File button (upper left) or go to File \> New File
 
@@ -132,7 +132,7 @@ First, create a new [code section](code-section.html) named "deaths from tigers"
 
 The data for this and other examples from your textbook can be found on the [book website](https://whitlockschluter.zoology.ubc.ca/). It is stored as a comma-separated values file (.csv).
 
-Read the data from the textbook website using the `read_csv()` function, part of the readr package, and assign it to an object named `tiger_data` using the left assignment operator `<-` :
+Read the data from the textbook website using the `read_csv()` function, part of the readr package, and assign it to an object named `tiger_data` using the left assignment operator `<-`. To do that, copy the code in here and paste it into your script. You do not need to follow the link in your web browser or download the data to your computer.
 
 ```{r}
 tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv")
@@ -384,25 +384,37 @@ ggplot(data = bird_data) +
 
 ## Your assignment
 
-Your assignment is to demonstrate that you can create bar graphs and histograms using ggplot.
+### Instructions
 
-First, create a new R script where you will build the code for your analysis. Keep your script neat with appropriate code sections and descriptive comments throughout. Load the tidyverse package.
+Your assignment is to demonstrate that you can create and interpret graphs using ggplot.
 
-Read the intro to each dataset and create the requested graphs *in your R script.*
+1.  First, create a new R script in your lab 3 repository where you will build the code for your analysis. As you add code keep your script neat with appropriate code sections and descriptive comments throughout.
 
-Only *after* you have a working R script should you attempt to complete your lab report. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Some questions may require you to insert an R code chunk and paste in code from your R script.
+2.  Load the tidyverse package.
 
-### Fireflies
+3.  Read the intro to each dataset and create the requested graphs *in your R script.*
 
-Male fireflies of the species *Photinus ignitus* attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.
+4.  *After* you have a working R script, complete your lab report R Markdown document. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Insert R code chunks where necessary and paste in code from your R script.
+
+5.  Knit your README.Rmd and lab-report.Rmd
+
+6.  Commit all changes and push. You can either do this step-by-step as your build your script and R Markdown documents, one file or code chunk at a time, or all at once at the end.
+
+7.  Submit your assignment by copying the URL for your GitHub repository and pasting it into the appropriate Assignment Submission folder on D2L.
+
+### Fireflies data
+
+This comes from Assignment question \#19 in your textbook.
+
+> Male fireflies of the species *Photinus ignitus* attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.
 
 The path to the data is "<https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv>"
 
-**Create a graph depicting the frequency distribution of the 35 mass measurements. It should have legible text and appropriate axis labels.**
+**Create a graph depicting the frequency distribution of mass measurements. It should have legible text and appropriate axis labels.**
 
-### Bird orders
+### Bird orders data
 
-The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.
+> The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.
 
 Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.
 

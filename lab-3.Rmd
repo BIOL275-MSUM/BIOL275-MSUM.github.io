@@ -366,7 +366,7 @@ ggplot(data = bird_data) +
 
 And finally, clean it up with some axis labels and styling changes:
 
-```{r, fig.asp=1, out.width=50%}
+```{r, fig.width=4, fig.asp=1}
 ggplot(data = bird_data) +
   geom_histogram(mapping = aes(x = abundance), binwidth = 50,
                  boundary = 0, closed = "left", 

@@ -145,9 +145,9 @@ Each row represents a sample unit, or person. Thus the sample size is 88.
 
 The variables are:
 
--   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider `person` a ***categorical*** variable.
+-   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider person a *categorical* variable.
 
--   **activity**. the person's activity at the time they were attacked and killed. This is a ***categorical*** variable with a discrete number of possible values.
+-   **activity**. the person's activity at the time they were attacked and killed. This is a *categorical* variable with a discrete number of possible values.
 
 For our purposes, the only variable of interest is activity. We will not use the person variable.
 

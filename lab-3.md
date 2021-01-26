@@ -101,7 +101,9 @@ When you run the code, you will see a ***message*** in the console like this:
 
 The first part tells you which packages are being loaded. You will notice ggplot2 is on that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
 
-## Show data for a categorical variable
+## Bar graphs
+
+Bar graphs are used to show the distribution of a single *categorical* variable.
 
 ### Example: tiger data
 
@@ -119,7 +121,15 @@ You can view and explore the data using this interactive table:
 <script type="application/json" data-for="htmlwidget-9ec3e5c8c404fe174e4c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88],["Disturbing tiger kill","Forest products","Grass/fodder","Fuelwood/timber","Grass/fodder","Forest products","Grass/fodder","Fishing","Fuelwood/timber","Grass/fodder","Forest products","Forest products","Forest products","Grass/fodder","Forest products","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Fishing","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Herding","Grass/fodder","Herding","Grass/fodder","Fishing","Grass/fodder","Grass/fodder","Sleeping in house","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Herding","Fishing","Grass/fodder","Forest products","Forest products","Grass/fodder","Grass/fodder","Forest products","Disturbing tiger kill","Walking","Fishing","Herding","Grass/fodder","Grass/fodder","Sleeping in house","Fishing","Fishing","Toilet","Grass/fodder","Walking","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Disturbing tiger kill","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Forest products","Toilet","Walking","Disturbing tiger kill","Disturbing tiger kill","Sleeping in house","Forest products","Fishing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>person<\/th>\n      <th>activity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
-*Note: This interactive table was actually created in R using the [htmlwidgets](https://www.htmlwidgets.org/showcase_datatables.html) package. In a future lab you will learn how to make a table like this.*
+Each row in the table represents a sample unit, or person. Thus the sample size is 88.
+
+The variables are:
+
+-   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider person a *categorical* variable.
+
+-   **activity**. the person's activity at the time they were attacked and killed. This is a *categorical* variable with a discrete number of possible values.
+
+For our purposes, the only variable of interest is activity. We will not use the person variable.
 
 ### Read the tiger data
 
@@ -164,16 +174,6 @@ tiger_data
 ```
 
 Notice that the output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
-
-Each row represents a sample unit, or person. Thus the sample size is 88.
-
-The variables are:
-
--   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider person a *categorical* variable.
-
--   **activity**. the person's activity at the time they were attacked and killed. This is a *categorical* variable with a discrete number of possible values.
-
-For our purposes, the only variable of interest is activity. We will not use the person variable.
 
 You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable:
 
@@ -225,7 +225,7 @@ The distribution of a single categorical variable is best visualized using bar g
 
 ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph using the tiger data. Your goal is to create a bar graph similar to the one in the textbook in Figure 2.2-1, which looks like this:
 
-![](images/whitlock_2.2-1.jpg){width="400"}
+![](images/whitlock_2.2-1.jpg){.text-center width="400"}
 
 The first step is to create a new ggplot using the `ggplot()` function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:
 
@@ -252,68 +252,107 @@ ggplot(data = tiger_data) +
 
 The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity` . Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
 
-The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions.
+The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions:
 
-First, the x-axis tick labels may overlap each other, depending on how large your monitor is when you plot this graph. We can fix that by using the `theme()` function to change an element of the plot's theme called `axis.text.x`. The `angle` argument sets the angle of rotation, and the `hjust` argument sets the horizontal alignment, with 0 being left aligned, 1 being right aligned, and 0.5 being centered text. The `theme()` layer is added to the existing ggplot code using a `+` sign.
+1.  The columns should be ordered by height
+
+2.  The color should be red
+
+3.  The axis labels "count" and "activity" should be changed to something more informative
+
+4.  Various theme elements could be improved:
+
+    i.  The font size should be larger
+    ii. The axis labels should be bold
+    iii. The axis tick labels (the activity names) should be rotated 45 degrees
+    iv. The axis ticks should be removed
+
+Let's fix each of those issues in turn.
+
+First, arrange the levels (categories) of activity in descending order by count (i.e. big columns on the left), using a bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The `fct_infreq()` function changes a variable to factor with the levels defined by how frequently they occur in the data. Inside the `aes()` function, change `x = activity` to `x = fct_infreq(activity)`.
 
 
 ```r
 ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = activity)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  geom_bar(mapping = aes(x = fct_infreq(activity)))
 ```
 
 <img src="lab-3_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
-Second, the levels (categories) of activity should be arranged in descending order by count (i.e. big columns on the left). We can do that with a little bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The `fct_infreq()` function changes a variable to factor with the levels defined by how frequently they occur in the data.
+Second, change color of the columns by adding a `fill` argument to `geom_bar()`. Put a comma after the closing parenthesis of the `aes()` function and add `fill =`. For the fill color, you could try `"red"` or `"darkred"`, but for an exact match use the hex color `"#C5351B"`.
 
 
 ```r
 ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity))) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B")
 ```
 
 <img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
-The `forcats::` preceding the function name is just a way of telling R which package the function is in. It's not necessary here, because we already loaded the forcats package, but it serves as a visual reminder to anyone reading the code that it requires the forcats package.
-
-Third, the figure in the textbook features red columns and larger text. These are accomplished by setting the font-size using the `theme_gray()` function and adding a `fill` argument to `geom_bar()`. For the fill color, you could try `"red"` or `"darkred"`, but for an exact match use the hex color `"#C5351B"`:
+Third, add better x- and y-axis labels using the `labs()` function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument `x` sets the x-axis label while the argument `y` sets the y-axis label. The label text itself should appear in quotation marks. The `x` and `y` arguments should be separated by a comma.
 
 
 ```r
 ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  theme_gray(base_size = 13)
+  labs(x = "Activity", y = "Frequency (number of people)")
 ```
 
 <img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
-Finally, the axis labels could be improved. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. We can set axis labels with `labs()`. The argument `x =` means set the x axis label to the following text, while `y =` means set the y axis label to the following text. The label text itself should appear in quotation marks.
+Fourth, fix the look of the graph by using:
 
-We can also make the axis labels bold by changing the `axis.title` element using the `theme()` function. Both of these changes are incorporated below:
+-   `scale_y_continuous()` to set the y-axis limits to 0 and 50, with no buffer
+
+-   `theme_classic()` to remove the background color, adds axis lines, and increases the base font size
+
+-   `theme()` to change various other theme elements such as:
+
+    -   Make the axis labels bold
+
+    -   Make the x- and y-axis text black and larger
+
+    -   Make the x-axis text angled and right justified
+
+    -   Remove the x-axis tick marks
+
+Compare your figure to the original above. Not bad! This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
+
+Note that you could get pretty close with just the first three lines of code and perhaps the one theme element to rotate the axis text labels.
+
+## Histograms
+
+Histograms are used to show the distribution of a single numerical variable.
+
+Now that you know the basics creating a ggplot, creating a histogram will require relatively little explanation.
+
+### Example: bird data
+
+We will use the data from Example 2.2B in your textbook for this activity. The summary from the textbook is as follows:
+
+> How many species are common and how many are rare? One way to address this question is to construct a frequency distribution of species abundance. The data in Table 2.2-2 are from a survey of the breeding birds of Organ Pipe Cactus National Monument in southern Arizona, USA. The measurements were extracted from the North American Breeding Bird Survey, a continent-wide data set of estimated bird numbers (Sauer et al. 2003)
+
+The dataset consists of one table showing the abundance of NN species in Organ Pipe National. Monument.
+
+You can view and explore the data using this interactive table:
 
 
-```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "darkred") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title = element_text(face = "bold")) +
-  labs(x = "Activity", y = "Frequency (number of people)")
+```{=html}
+<div id="htmlwidget-81bd36aa3d2a04d42bbc" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-81bd36aa3d2a04d42bbc">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],["Black Vulture","Turkey Vulture","Harris's Hawk","Red-tailed Hawk","American Kestrel","Gambel's Quail","Rock Dove","White-winged Dove","Mourning Dove","Greater Roadrunner","Great Horned Owl","Lesser Nighthawk","Black-chin. Hummingbird","Costa's Hummingbird","Gila Woodpecker","Ladder-back. Woodpecker","Gilded Flicker C","Ash-throated Flycatcher","Brown-crest. Flycatcher","Western Kingbird","Loggerhead Shrike","Bell's Vireo","Common Raven","Purple Martin","Violet-green Swallow","Verdin","Cactus Wren","Canyon Wren","Black-tail. Gnatcatcher","Northern Mockingbird","Curve-billed Thrasher","Phainopepla","Lucy's Warbler","Canyon Towhee","Black-throated Sparrow","Northern Cardinal","Great-tailed Grackle","Bronzed Cowbird","Brown-headed Cowbird","Hooded Oriole","Scott's Oriole","House Finch","House Sparrow"],[64,23,3,16,7,148,7,625,135,1,2,25,1,2,300,15,77,173,128,1,3,10,12,33,23,282,230,2,152,5,173,18,67,2,33,13,1,1,59,4,28,297,14]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>abundance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+Each row in the table represents a sample unit, or person. Thus the sample size is 88.
 
-Compare your figure to the original above.
+The variables are:
 
-Not bad!
+-   **species**. the name of the bird species, a *categorical* variable.
 
-This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
+-   **abundance**. the species's abundance, a *numerical* variable consisting of positive integers.
 
-## Show data for a continuous variable
+For our purposes, the only variable of interest is abundance. We will not use the species variable.
 
-### Get the data
+### Read the bird data
 
 ### Use geom_histogram() for raw data
 

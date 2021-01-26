@@ -108,7 +108,6 @@ You can view and explore the data using this interactive table:
 library(DT)
 DT::datatable(
   read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"),
-  class = 
   options = list(pageLength = 5)
 )
 ```

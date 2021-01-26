@@ -225,24 +225,26 @@
 <p>For our purposes, the only variable of interest is activity. We will not use the person variable.</p>
 <p>You can view a list of distinct values taken by a categorical variable by using the <code>distinct()</code> function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">distinct</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 9 x 1</span>
-<span class="co">#&gt;   activity             </span>
-<span class="co">#&gt;   &lt;chr&gt;                </span>
-<span class="co">#&gt; 1 Disturbing tiger kill</span>
-<span class="co">#&gt; 2 Forest products      </span>
-<span class="co">#&gt; 3 Grass/fodder         </span>
-<span class="co">#&gt; 4 Fuelwood/timber      </span>
-<span class="co">#&gt; 5 Fishing              </span>
-<span class="co">#&gt; 6 Herding              </span>
-<span class="co">#&gt; # … with 3 more rows</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">distinct</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 9 x 1
+#&gt;   activity             
+#&gt;   &lt;chr&gt;                
+#&gt; 1 Disturbing tiger kill
+#&gt; 2 Forest products      
+#&gt; 3 Grass/fodder         
+#&gt; 4 Fuelwood/timber      
+#&gt; 5 Fishing              
+#&gt; 6 Herding              
+#&gt; 7 Sleeping in house    
+#&gt; 8 Walking              
+#&gt; 9 Toilet</code></pre>
 </div>
 <div id="contingency-table" class="section level3" number="3.5.4">
 <h3>
 <span class="header-section-number">3.5.4</span> Contingency table<a class="anchor" aria-label="anchor" href="#contingency-table"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you want to see how many times each value of activity occurs in the data, you can create a contingency table using the <code>count()</code> function. Again, the data object is the first argument and the variable name is the second argument.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">count</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 9 x 2</span>
 <span class="co">#&gt;   activity                  n</span>
@@ -261,31 +263,52 @@
 <span class="header-section-number">3.5.5</span> Make a bar graph<a class="anchor" aria-label="anchor" href="#make-a-bar-graph"><i class="fas fa-link"></i></a>
 </h3>
 <p>The distribution of a single categorical variable is best visualized using bar graph (also called a bar chart, barchart, or column graph). In this section, you will learn how to create a bar graph.</p>
-<p>ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph.</p>
+<p>ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph using the tiger data. Your goal is to create a bar graph similar to the one in the textbook in Figure 2.2-1, which looks like this:</p>
+<div class="inline-figure"><img src="images/whitlock_2.2-1.jpg" width="400"></div>
 <p>The first step is to create a new ggplot using the <code>ggplot()</code> function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.</p>
 <p>Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn’t know which variables to plot or how to display the data.</p>
 <p>To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the <code>geom_bar()</code> function. You add the geometric object to the canvas using a plus sign like this:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">activity</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>The first (and for now, only) argument to <code>geom_bar()</code> is <code>mapping</code>, an aesthetic mapping that tells R which variables in the data table <em>map</em> to which parts of the graph. An aesthetic mapping is defined by the <code>aes()</code> function. <code>geom_bar()</code> requires only one aesthetic mapping, the argument <code>x</code>, which tells R which variable to put on the x axis. We want to put the <em>activity</em> variable on the x axis, so we set <code>x = activity</code></p>
-<p>The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook.</p>
-<p>Depending on how large your monitor is when you plot this graph, the x-axis tick labels, i.e. the names of the categories of <em>activity</em>, may overlap each other. We can fix that by changing an element of the plot’s theme:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>The first (and for now, only) argument to <code>geom_bar()</code> is <code>mapping</code>, an aesthetic mapping that tells R which variables in the data table <em>map</em> to which parts of the graph. An aesthetic mapping is defined by the <code>aes()</code> function. <code>geom_bar()</code> requires only one aesthetic, the argument <code>x</code>, which tells R which variable to put on the x axis. We want to put the <em>activity</em> variable on the x axis, so we set <code>x = activity</code> . Put this all together, and the way to add a bars to the graph is <code>geom_bar(mapping = aes(x = activity)</code></p>
+<p>The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions.</p>
+<p>First, the x-axis tick labels may overlap each other, depending on how large your monitor is when you plot this graph. We can fix that by using the <code>theme()</code> function to change an element of the plot’s theme called <code>axis.text.x</code>. The <code>angle</code> argument sets the angle of rotation, and the <code>hjust</code> argument sets the horizontal alignment, with 0 being left aligned, 1 being right aligned, and 0.5 being centered text. The <code>theme()</code> layer is added to the existing ggplot code using a <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> sign.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">activity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
-<div id="use-summarized-data" class="section level4" number="3.5.5.1">
-<h4>
-<span class="header-section-number">3.5.5.1</span> Use summarized data<a class="anchor" aria-label="anchor" href="#use-summarized-data"><i class="fas fa-link"></i></a>
-</h4>
-</div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>Second, the levels (categories) of activity should be arranged in descending order by count (i.e. big columns on the left). We can do that with a little bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The <code>fct_infreq()</code> function changes a variable to factor with the levels defined by how frequently they occur in the data.</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>The <code>forcats::</code> preceding the function name is just a way of telling R which package the function is in. It’s not necessary here, because we already loaded the forcats package, but it serves as a visual reminder to anyone reading the code that it requires the forcats package.</p>
+<p>Third, the figure in the textbook features red columns. This is accomplished by adding a <code>fill</code> argument to <code>geom_box()</code>. Don’t forget the comma separating the mapping and fill arguments.</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="400" height="405" style="display: block; margin: auto;"></div>
+<p>Finally, the axis labels could be improved. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. We can set axis labels with <code>labs()</code>. The argument <code>x =</code> means set the x axis label to the following text, while <code>y =</code> means set the y axis label to the following text. The label text itself should appear in quotation marks.</p>
+<p>We can also make the axis labels bold by changing the <code>axis.title</code> element using the <code>theme()</code> function. Both of these changes are incorporated below:</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+        axis.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Activity"</span>, y <span class="op">=</span> <span class="st">"Frequency (number of people)"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>Compare your figure to the original above.</p>
+<p>Not bad!</p>
+<p>This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.</p>
 </div>
 </div>
 <div id="show-data-for-a-continuous-variable" class="section level2" number="3.6">

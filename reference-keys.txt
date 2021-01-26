@@ -43,7 +43,6 @@ read-the-tiger-data
 view-the-tiger-data
 contingency-table
 make-a-bar-graph
-use-summarized-data
 show-data-for-a-continuous-variable
 get-the-data
 use-geom_histogram-for-raw-data

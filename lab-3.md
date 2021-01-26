@@ -180,6 +180,10 @@ You can view a list of distinct values taken by a categorical variable by using 
 
 ```r
 distinct(tiger_data, activity)
+```
+
+
+```
 #> # A tibble: 9 x 1
 #>   activity             
 #>   <chr>                
@@ -189,7 +193,9 @@ distinct(tiger_data, activity)
 #> 4 Fuelwood/timber      
 #> 5 Fishing              
 #> 6 Herding              
-#> # … with 3 more rows
+#> 7 Sleeping in house    
+#> 8 Walking              
+#> 9 Toilet
 ```
 
 ### Contingency table
@@ -217,7 +223,9 @@ As you can see, this function returns another tibble that has two variables: the
 
 The distribution of a single categorical variable is best visualized using bar graph (also called a bar chart, barchart, or column graph). In this section, you will learn how to create a bar graph.
 
-ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph.
+ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph using the tiger data. Your goal is to create a bar graph similar to the one in the textbook in Figure 2.2-1, which looks like this:
+
+![](images/whitlock_2.2-1.jpg){width="400"}
 
 The first step is to create a new ggplot using the `ggplot()` function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:
 
@@ -226,7 +234,7 @@ The first step is to create a new ggplot using the `ggplot()` function. The firs
 ggplot(data = tiger_data)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
 
 When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.
 
@@ -240,13 +248,13 @@ ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = activity))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
-The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic mapping, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity`
+The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity` . Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
 
-The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook.
+The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions.
 
-Depending on how large your monitor is when you plot this graph, the x-axis tick labels, i.e. the names of the categories of *activity*, may overlap each other. We can fix that by changing an element of the plot's theme:
+First, the x-axis tick labels may overlap each other, depending on how large your monitor is when you plot this graph. We can fix that by using the `theme()` function to change an element of the plot's theme called `axis.text.x`. The `angle` argument sets the angle of rotation, and the `hjust` argument sets the horizontal alignment, with 0 being left aligned, 1 being right aligned, and 0.5 being centered text. The `theme()` layer is added to the existing ggplot code using a `+` sign.
 
 
 ```r
@@ -255,9 +263,52 @@ ggplot(data = tiger_data) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-3_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
-#### Use summarized data
+Second, the levels (categories) of activity should be arranged in descending order by count (i.e. big columns on the left). We can do that with a little bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The `fct_infreq()` function changes a variable to factor with the levels defined by how frequently they occur in the data.
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = fct_infreq(activity))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+
+The `forcats::` preceding the function name is just a way of telling R which package the function is in. It's not necessary here, because we already loaded the forcats package, but it serves as a visual reminder to anyone reading the code that it requires the forcats package.
+
+Third, the figure in the textbook features red columns. This is accomplished by adding a `fill` argument to `geom_box()`. Don't forget the comma separating the mapping and fill arguments.
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "darkred") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="400" height="405" style="display: block; margin: auto;" />
+
+Finally, the axis labels could be improved. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. We can set axis labels with `labs()`. The argument `x =` means set the x axis label to the following text, while `y =` means set the y axis label to the following text. The label text itself should appear in quotation marks.
+
+We can also make the axis labels bold by changing the `axis.title` element using the `theme()` function. Both of these changes are incorporated below:
+
+
+```r
+ggplot(data = tiger_data) +
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "darkred") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        axis.title = element_text(face = "bold")) +
+  labs(x = "Activity", y = "Frequency (number of people)")
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+
+Compare your figure to the original above.
+
+Not bad!
+
+This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
 
 ## Show data for a continuous variable
 

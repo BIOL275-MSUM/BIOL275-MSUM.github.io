@@ -311,7 +311,7 @@
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Fourth, fix the look of the graph by using:</p>
 <ul>
-<li><p>Change the <code>width</code> of the bars (columns)</p></li>
+<li><p>the <code>width</code> argument of <code>geom_bar()</code> to set make the bars (columns) a bit narrower</p></li>
 <li><p><code>scale_y_continuous()</code> to set the y-axis limits to 0 and 50, with no buffer</p></li>
 <li><p><code>theme_classic()</code> to remove the background color, adds axis lines, and increases the base font size</p></li>
 <li>
@@ -425,22 +425,23 @@
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
+                 boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>And finally, clean it up with some axis labels and styling changes:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span>, 
                  fill <span class="op">=</span> <span class="st">"#C5351B"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Abundance"</span>, y <span class="op">=</span> <span class="st">"Frequency (number of species)"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span>, 
                      expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">600</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme</span><span class="op">(</span>
     axis.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,
     axis.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fu">rel</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;"></div>
-<p>And finally, clean it up with some styling changes:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
-                 boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;"></div>
 </div>
 </div>

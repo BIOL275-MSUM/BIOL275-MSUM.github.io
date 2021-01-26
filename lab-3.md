@@ -302,7 +302,7 @@ ggplot(data = tiger_data) +
 
 Fourth, fix the look of the graph by using:
 
--   Change the `width` of the bars (columns)
+-   the `width` argument of `geom_bar()` to set make the bars (columns) a bit narrower
 
 -   `scale_y_continuous()` to set the y-axis limits to 0 and 50, with no buffer
 
@@ -454,27 +454,28 @@ Set the `closed` argument to `"left"` to change it so the left edge of the bin i
 ```r
 ggplot(data = bird_data) +
   geom_histogram(mapping = aes(x = abundance), binwidth = 50,
+                 boundary = 0, closed = "left")
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+
+And finally, clean it up with some axis labels and styling changes:
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
                  boundary = 0, closed = "left", 
                  fill = "#C5351B", color = "black") +
   labs(x = "Abundance", y = "Frequency (number of species)") +
   scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30), 
                      expand = expansion(mult = 0)) +
   scale_x_continuous(breaks = seq(0, 600, 100)) +
+  theme_classic() +
   theme(
     axis.title = element_text(face = "bold"),
     axis.text = element_text(color = "black", size = rel(1))
   )
-```
-
-<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
-
-And finally, clean it up with some styling changes:
-
-
-```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
-                 boundary = 0, closed = "left")
 ```
 
 <img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />

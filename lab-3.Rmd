@@ -142,7 +142,7 @@ The message you get in your console tells you how the data in the CSV was parsed
 
 ### View the tiger data
 
-You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it:
+You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it. Alternatively, you can copy and paste the code in the code box below, but ONLY INCLUDE THE CODE BELOW, NOT THE OUTPUT LINES PRECEDED BY \#\>
 
 ```{r}
 tiger_data                  # print the data in the console
@@ -150,7 +150,7 @@ tiger_data                  # print the data in the console
 
 The output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
 
-You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable:
+You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable.
 
 ```{r eval=FALSE}
 distinct(tiger_data, activity)
@@ -318,10 +318,9 @@ Each row in the table represents a sample unit, or person. Thus the sample size 
 The variables are:
 
 -   **species**. the name of the bird species, a *categorical* variable.
-
 -   **abundance**. the species's abundance, a *numerical* variable consisting of positive integers.
 
-For our purposes, the only variable of interest is abundance. We will not use the species variable.
+For our purposes, the only variable of interest is *abundance*. We will not use the species variable.
 
 ### Read and view the bird data
 
@@ -336,7 +335,9 @@ bird_data                  # print the data in the console
 
 The output in the console indicates the object is a tibble with 43 observations (rows) and 2 variables (columns): species and abundance.
 
-The variable abundance is numerical, not categorical, so it would not be help to view distinct values, or to create a contingency table showing the number of times each value occurs.
+It also indicates abundance has a data type of \<dbl\>, which is short for double, a numeric value with up to 18 decimal places. In other words, it's *numerical* variable. The species variable, on the other hand, has a data type of \<chr\>, short for character, which means its a categorical variable.
+
+Because abundance is numerical, not categorical, it does not make sense to view its distinct values with \`distinct, or to create a contingency table showing the number of times each value occurs.
 
 So let's get straight to the histogram.
 

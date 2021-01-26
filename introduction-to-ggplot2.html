@@ -449,29 +449,35 @@
 <h2>
 <span class="header-section-number">3.7</span> Your assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
 </h2>
-<ol style="list-style-type: decimal">
-<li>Open the R script titled <code>lab-assignment-script.R</code>
-</li>
-<li>Follow the directions to create an R script that produces the requested figures</li>
-</ol>
+<p>Your assignment is to demonstrate that you can create bar graphs and histograms using ggplot.</p>
+<p>First, create a new R script where you will build the code for your analysis. Keep your script neat with appropriate code sections and descriptive comments throughout. Load the tidyverse package.</p>
+<p>Read the intro to each dataset and create the requested graphs <em>in your R script.</em></p>
+<p>Only <em>after</em> you have a working R script should you attempt to complete your lab report. Open your lab-report.Rmd and replace all triple underscores “___” with your answers. Some questions may require you to insert an R code chunk and paste in code from your R script.</p>
+<div id="fireflies" class="section level3" number="3.7.1">
+<h3>
+<span class="header-section-number">3.7.1</span> Fireflies<a class="anchor" aria-label="anchor" href="#fireflies"><i class="fas fa-link"></i></a>
+</h3>
+<p>Male fireflies of the species <em>Photinus ignitus</em> attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.</p>
+<p>The path to the data is “<a href="https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv" class="uri">https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv</a>”</p>
+<p><strong>Create a graph depicting the frequency distribution of the 35 mass measurements. It should have legible text and appropriate axis labels.</strong></p>
 </div>
-<div id="your-lab-report" class="section level2" number="3.8">
-<h2>
-<span class="header-section-number">3.8</span> Your lab report<a class="anchor" aria-label="anchor" href="#your-lab-report"><i class="fas fa-link"></i></a>
-</h2>
-<ol style="list-style-type: decimal">
-<li>Open the R script titled <code>lab-assignment-script.R</code>
-</li>
-<li>Your instructor has seeded your repository with an R Markdown document for your lab report, titled lab-report.Rmd. Open this file</li>
-<li>Update the YAML header with your name</li>
-<li>Copy the code for the requested figures into the appropriate R code chunks</li>
-<li>Add text to answer each questions. Make your text bold so it is easily readable.</li>
-</ol>
+<div id="bird-orders" class="section level3" number="3.7.2">
+<h3>
+<span class="header-section-number">3.7.2</span> Bird orders<a class="anchor" aria-label="anchor" href="#bird-orders"><i class="fas fa-link"></i></a>
+</h3>
+<p>The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.</p>
+<p>Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">auk</span><span class="op">)</span>                          <span class="co"># load the auk package</span>
+<span class="va">birds</span> <span class="op">&lt;-</span> <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>           <span class="co"># start with the ebird_taxonomy data</span>
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
+<p><strong>Create a graph depicting the distribution of orders in the birds dataset. Sort the orders with the most frequent on the left.</strong></p>
 </div>
-<div id="grading-rubric-1" class="section level2" number="3.9">
-<h2>
-<span class="header-section-number">3.9</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
-</h2>
+<div id="grading-rubric-1" class="section level3" number="3.7.3">
+<h3>
+<span class="header-section-number">3.7.3</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
+</h3>
 <p>You will be assessed based on the following rubric:</p>
 <ul>
 <li><p>GitHub Classroom repository claimed</p></li>
@@ -489,13 +495,13 @@
 <li>read or load data before using it</li>
 </ul>
 </li>
+<li><p>Blank lines between code chunks to make it easy to read</p></li>
 </ul>
 </li>
 <li>
 <p>Has sufficient comments</p>
 <ul>
-<li>At top, explain purpose of the script</li>
-<li>Section headings throughout</li>
+<li>At top, a line explaining purpose of the script</li>
 <li>Each code chunk has a comment</li>
 </ul>
 </li>
@@ -505,16 +511,24 @@
 <li>
 <p>R Markdown document</p>
 <ul>
-<li>Correct YAML header</li>
-<li>Good organization</li>
-<li>Sufficient explanatory text for each figure</li>
-<li>Questions answered correctly</li>
-<li>Answers marked in bold</li>
+<li><p>Correct YAML header</p></li>
+<li><p>Questions answered correctly</p></li>
+<li><p>Code for figures</p></li>
+<li>
+<p>Figures are correct</p>
+<ul>
+<li>Figures look good (text appropriate size, etc)</li>
+<li>Axis labels are correct</li>
 </ul>
 </li>
-<li><p>Your lab report has been peer-reviewed at least once</p></li>
+<li><p>Format of report is not significantly changed from the template (answers are easily distinguished from questions.</p></li>
+</ul>
+</li>
+<li><p>Lab report has been peer-reviewed at least once</p></li>
+<li><p>README is complete and includes links to your peer reviews</p></li>
 <li><p>Submitted link to repository on D2L</p></li>
 </ul>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -544,9 +558,13 @@
 <li><a class="nav-link" href="#make-a-histogram"><span class="header-section-number">3.6.3</span> Make a histogram</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#your-assignment"><span class="header-section-number">3.7</span> Your assignment</a></li>
-<li><a class="nav-link" href="#your-lab-report"><span class="header-section-number">3.8</span> Your lab report</a></li>
-<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.9</span> Grading Rubric</a></li>
+<li>
+<a class="nav-link" href="#your-assignment"><span class="header-section-number">3.7</span> Your assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#fireflies"><span class="header-section-number">3.7.1</span> Fireflies</a></li>
+<li><a class="nav-link" href="#bird-orders"><span class="header-section-number">3.7.2</span> Bird orders</a></li>
+<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.7.3</span> Grading Rubric</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">

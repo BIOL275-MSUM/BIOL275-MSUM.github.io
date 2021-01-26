@@ -4,13 +4,13 @@
 
 In this lab, you will learn to:
 
--   Understand the layered grammar of graphics:
+-   Use the layered grammar of graphics:
 
-    -   Create a blank plot using the `ggplot()` function
-    -   Add geometric objects using the `geom_*()` family of functions
-    -   Define an aesthetic mapping for a project using the `aes()` function
-    -   Apply a statistical transformation using the `stat_*()` family of functions
-    -   Add labels to a ggplot using the `labs()` function
+    -   Create a blank graph using the `ggplot()` function
+    -   Add geometric objects to a graph
+    -   Define an aesthetic mapping for a graph
+    -   Add labels to a graph
+    -   Fix some common styling
 
 -   Create a graph showing the distribution of a single variable
 
@@ -189,6 +189,8 @@ When you plot something in RStudio (i.e. when you create a graph), it will appea
 
 Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn't know which variables to plot or how to display the data.
 
+#### Geometric objects and aesthetic mappings
+
 To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the `geom_bar()` function. You add the geometric object to the canvas using a plus sign like this:
 
 ```{r, fig.width=4.63, fig.asp=1}
@@ -196,7 +198,21 @@ ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = activity))
 ```
 
-The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis. We want to put the *activity* variable on the x axis, so we set `x = activity` . Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
+The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis.
+
+How did we know what variable to put on the x-axis in the bar graph? That's determined by the purpose to the graph. For this graph, the purpose is to plot the distribution of the activities of people attacked and killed by tigers. But what is the actual variable we want to graph? For that you need to go back and look at the data itself. Print the data in the console again by typing its name and running the line:
+
+```{r, eval=FALSE}
+tiger_data
+```
+
+The variables are listed on the second row the of the output. You can see they are named *person* and *activity*. Which one is the variable we want to graph? It is *activity*. So in your aesthetic mapping the code `x = activity` can be translated as "put the activity variable on the x axis".
+
+Any variables you map to an aesthetic must be present in the data, and the variable name must appear exactly as it does in the data.
+
+Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
+
+#### Labels and themes
 
 The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions:
 

@@ -108,13 +108,14 @@ You can view and explore the data using this interactive table:
 library(DT)
 DT::datatable(
   read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"),
+  class = 
   options = list(pageLength = 5)
 )
 ```
 
 *Note: This interactive table was actually created in R using the [htmlwidgets](https://www.htmlwidgets.org/showcase_datatables.html) package. In a future lab you will learn how to make a table like this.*
 
-### Read the data
+### Read the tiger data
 
 The next step in your R script is to read the data into R.
 
@@ -130,7 +131,7 @@ tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/
 
 The message you get in your console tells you how the data in the CSV was parsed (interpretted) when it was read into R. You can ignore it for now.
 
-### View the data
+### View the tiger data
 
 You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it:
 

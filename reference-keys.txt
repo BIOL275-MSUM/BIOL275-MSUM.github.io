@@ -45,9 +45,8 @@ contingency-table
 make-a-bar-graph
 histograms
 example-bird-data
-read-the-bird-data
-use-geom_histogram-for-raw-data
-use-stat_identity-for-summarized-data
+read-and-view-the-bird-data
+make-a-histogram
 your-assignment
 your-lab-report
 grading-rubric-1

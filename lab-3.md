@@ -160,7 +160,7 @@ You will notice that the data itself did not appear in the console. That's becau
 
 
 ```r
-tiger_data
+tiger_data                  # print the data in the console
 #> # A tibble: 88 x 2
 #>   person activity             
 #>    <dbl> <chr>                
@@ -173,7 +173,7 @@ tiger_data
 #> # … with 82 more rows
 ```
 
-Notice that the output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
+The output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
 
 You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable:
 
@@ -321,10 +321,11 @@ Fourth, fix the look of the graph by using:
 
 ```r
 ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B", width = .8) +
+  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B", 
+           width = .8) +
   labs(x = "Activity", y = "Frequency (number of people)") +
   scale_y_continuous(limits = c(0, 50), expand = expansion(mult = 0)) +
-  theme_classic(base_size = 13) +
+  theme_classic(base_size = 12) +
   theme(
     axis.title = element_text(face = "bold"),
     axis.text = element_text(color = "black", size = rel(1)),
@@ -351,7 +352,7 @@ We will use the data from Example 2.2B in your textbook for this activity. The s
 
 > How many species are common and how many are rare? One way to address this question is to construct a frequency distribution of species abundance. The data in Table 2.2-2 are from a survey of the breeding birds of Organ Pipe Cactus National Monument in southern Arizona, USA. The measurements were extracted from the North American Breeding Bird Survey, a continent-wide data set of estimated bird numbers (Sauer et al. 2003)
 
-The dataset consists of one table showing the abundance of NN species in Organ Pipe National. Monument.
+The dataset consists of one table showing the abundance of 43 species in Organ Pipe National. Monument.
 
 You can view and explore the data using this interactive table:
 
@@ -371,11 +372,112 @@ The variables are:
 
 For our purposes, the only variable of interest is abundance. We will not use the species variable.
 
-### Read the bird data
+### Read and view the bird data
 
-### Use geom_histogram() for raw data
+Create a new code section in your script named "bird abundances" and read the data from the textbook website:
 
-### Use stat_identity for summarized data
+
+```r
+bird_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv")
+#> 
+#> ── Column specification ────────────────────────────────────────────────────────
+#> cols(
+#>   species = col_character(),
+#>   abundance = col_double()
+#> )
+
+bird_data                  # print the data in the console
+#> # A tibble: 43 x 2
+#>   species          abundance
+#>   <chr>                <dbl>
+#> 1 Black Vulture           64
+#> 2 Turkey Vulture          23
+#> 3 Harris's Hawk            3
+#> 4 Red-tailed Hawk         16
+#> 5 American Kestrel         7
+#> 6 Gambel's Quail         148
+#> # … with 37 more rows
+```
+
+The output in the console indicates the object is a tibble with 43 observations (rows) and 2 variables (columns): species and abundance.
+
+The variable abundance is numerical, not categorical, so it would not be help to view distinct values, or to create a contingency table showing the number of times each value occurs.
+
+So let's get straight to the histogram.
+
+### Make a histogram
+
+Like all ggplots, a histogram begins with a blank canvas. Notice that we set the data argument to `bird_data` this time rather than `tiger_data`.
+
+
+```r
+ggplot(data = bird_data)
+```
+
+While we used `geom_bar()` to create a bar graph, we will use `geom_histogram()` to create a histogram. The aesthetic mapping, however, is the same. Both require you to map the `x` argument, i.e. tell R which variable is on the x-axis. Because we are interested in looking at the distribution of abundance, we set the `x` argument to `abundance`:
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance))
+#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+
+You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let's try setting the bin width instead of the number of bins:
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance), binwidth = 50)
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+
+The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
+                 boundary = 0, closed = "left")
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+
+This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it's obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.
+
+Set the `closed` argument to `"left"` to change it so the left edge of the bin is included in the bin, not the right edge. The quick-minded might wonder if that makes the first bin (which includes both zero and 50) wider than the others. In short, I don't know but it doesn't matter here because there are no species in the dataset with an abundance of zero.
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
+                 boundary = 0, closed = "left", 
+                 fill = "#C5351B", color = "black") +
+  labs(x = "Abundance", y = "Frequency (number of species)") +
+  scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30), 
+                     expand = expansion(mult = 0)) +
+  scale_x_continuous(breaks = seq(0, 600, 100)) +
+  theme(
+    axis.title = element_text(face = "bold"),
+    axis.text = element_text(color = "black", size = rel(1))
+  )
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+
+And finally, clean it up with some styling changes:
+
+
+```r
+ggplot(data = bird_data) +
+  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
+                 boundary = 0, closed = "left")
+```
+
+<img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Your assignment
 

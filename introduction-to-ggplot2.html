@@ -64,9 +64,8 @@
 <h2>
 <span class="header-section-number">3.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-2"><i class="fas fa-link"></i></a>
 </h2>
-<p>Learn to:</p>
+<p>In this lab, you will learn to:</p>
 <ul>
-<li><p>Load ggplot2 and other tidyverse packages</p></li>
 <li>
 <p>Understand the layered grammar of graphics:</p>
 <ul>
@@ -127,6 +126,7 @@
 <li>Set your Project options. When the project opens, go to Tools &gt; Project Options… and change the first three drop down menus to “No” (see <a href="project-options.html">Project Options</a> for detailed instructions and rationale)</li>
 </ol>
 </li>
+<li><p>Open README.Rmd and edit it, replacing triple underscores “___” with your text.</p></li>
 <li>
 <p>Create a new script</p>
 <ol style="list-style-type: lower-alpha">
@@ -194,7 +194,7 @@
 <p>The next step in your R script is to read the data into R.</p>
 <p>First, create a new <a href="code-section.html">code section</a> named “deaths from tigers”</p>
 <p>The data for this and other examples from your textbook can be found on the <a href="https://whitlockschluter.zoology.ubc.ca/">book website</a>. It is stored as a comma-separated values file (.csv).</p>
-<p>Read the data from the textbook website using the <code>read_csv()</code> function, part of the readr package, and assign it to an object named <code>tiger_data</code> using the left assignment operator <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> :</p>
+<p>Read the data from the textbook website using the <code>read_csv()</code> function, part of the readr package, and assign it to an object named <code>tiger_data</code> using the left assignment operator <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. To do that, copy the code in here and paste it into your script. You do not need to follow the link in your web browser or download the data to your computer.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tiger_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
@@ -449,23 +449,39 @@
 <h2>
 <span class="header-section-number">3.7</span> Your assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
 </h2>
-<p>Your assignment is to demonstrate that you can create bar graphs and histograms using ggplot.</p>
-<p>First, create a new R script where you will build the code for your analysis. Keep your script neat with appropriate code sections and descriptive comments throughout. Load the tidyverse package.</p>
-<p>Read the intro to each dataset and create the requested graphs <em>in your R script.</em></p>
-<p>Only <em>after</em> you have a working R script should you attempt to complete your lab report. Open your lab-report.Rmd and replace all triple underscores “___” with your answers. Some questions may require you to insert an R code chunk and paste in code from your R script.</p>
-<div id="fireflies" class="section level3" number="3.7.1">
+<div id="instructions" class="section level3" number="3.7.1">
 <h3>
-<span class="header-section-number">3.7.1</span> Fireflies<a class="anchor" aria-label="anchor" href="#fireflies"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions"><i class="fas fa-link"></i></a>
 </h3>
-<p>Male fireflies of the species <em>Photinus ignitus</em> attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.</p>
-<p>The path to the data is “<a href="https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv" class="uri">https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv</a>”</p>
-<p><strong>Create a graph depicting the frequency distribution of the 35 mass measurements. It should have legible text and appropriate axis labels.</strong></p>
+<p>Your assignment is to demonstrate that you can create and interpret graphs using ggplot.</p>
+<ol style="list-style-type: decimal">
+<li><p>First, create a new R script in your lab 3 repository where you will build the code for your analysis. As you add code keep your script neat with appropriate code sections and descriptive comments throughout.</p></li>
+<li><p>Load the tidyverse package.</p></li>
+<li><p>Read the intro to each dataset and create the requested graphs <em>in your R script.</em></p></li>
+<li><p><em>After</em> you have a working R script, complete your lab report R Markdown document. Open your lab-report.Rmd and replace all triple underscores “___” with your answers. Insert R code chunks where necessary and paste in code from your R script.</p></li>
+<li><p>Knit your README.Rmd and lab-report.Rmd</p></li>
+<li><p>Commit all changes and push. You can either do this step-by-step as your build your script and R Markdown documents, one file or code chunk at a time, or all at once at the end.</p></li>
+<li><p>Submit your assignment by copying the URL for your GitHub repository and pasting it into the appropriate Assignment Submission folder on D2L.</p></li>
+</ol>
 </div>
-<div id="bird-orders" class="section level3" number="3.7.2">
+<div id="fireflies-data" class="section level3" number="3.7.2">
 <h3>
-<span class="header-section-number">3.7.2</span> Bird orders<a class="anchor" aria-label="anchor" href="#bird-orders"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.2</span> Fireflies data<a class="anchor" aria-label="anchor" href="#fireflies-data"><i class="fas fa-link"></i></a>
 </h3>
+<p>This comes from Assignment question #19 in your textbook.</p>
+<blockquote>
+<p>Male fireflies of the species <em>Photinus ignitus</em> attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.</p>
+</blockquote>
+<p>The path to the data is “<a href="https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv" class="uri">https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv</a>”</p>
+<p><strong>Create a graph depicting the frequency distribution of mass measurements. It should have legible text and appropriate axis labels.</strong></p>
+</div>
+<div id="bird-orders-data" class="section level3" number="3.7.3">
+<h3>
+<span class="header-section-number">3.7.3</span> Bird orders data<a class="anchor" aria-label="anchor" href="#bird-orders-data"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
 <p>The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.</p>
+</blockquote>
 <p>Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">auk</span><span class="op">)</span>                          <span class="co"># load the auk package</span>
@@ -474,9 +490,9 @@
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
 <p><strong>Create a graph depicting the distribution of orders in the birds dataset. Sort the orders with the most frequent on the left.</strong></p>
 </div>
-<div id="grading-rubric-1" class="section level3" number="3.7.3">
+<div id="grading-rubric-1" class="section level3" number="3.7.4">
 <h3>
-<span class="header-section-number">3.7.3</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7.4</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>You will be assessed based on the following rubric:</p>
 <ul>
@@ -560,9 +576,10 @@
 </li>
 <li>
 <a class="nav-link" href="#your-assignment"><span class="header-section-number">3.7</span> Your assignment</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#fireflies"><span class="header-section-number">3.7.1</span> Fireflies</a></li>
-<li><a class="nav-link" href="#bird-orders"><span class="header-section-number">3.7.2</span> Bird orders</a></li>
-<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.7.3</span> Grading Rubric</a></li>
+<li><a class="nav-link" href="#instructions"><span class="header-section-number">3.7.1</span> Instructions</a></li>
+<li><a class="nav-link" href="#fireflies-data"><span class="header-section-number">3.7.2</span> Fireflies data</a></li>
+<li><a class="nav-link" href="#bird-orders-data"><span class="header-section-number">3.7.3</span> Bird orders data</a></li>
+<li><a class="nav-link" href="#grading-rubric-1"><span class="header-section-number">3.7.4</span> Grading Rubric</a></li>
 </ul>
 </li>
 </ul>

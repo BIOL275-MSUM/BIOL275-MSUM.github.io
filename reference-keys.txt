@@ -48,8 +48,9 @@ example-bird-data
 read-and-view-the-bird-data
 make-a-histogram
 your-assignment
-fireflies
-bird-orders
+instructions
+fireflies-data
+bird-orders-data
 grading-rubric-1
 part-appendices
 part-getting-started

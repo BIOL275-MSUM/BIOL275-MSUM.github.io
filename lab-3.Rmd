@@ -388,38 +388,34 @@ Your assignment is to demonstrate that you can create bar graphs and histograms 
 
 First, create a new R script where you will build the code for your analysis. Keep your script neat with appropriate code sections and descriptive comments throughout. Load the tidyverse package.
 
-### Bar graph
+Read the intro to each dataset and create the requested graphs *in your R script.*
 
-For the bar graph, you
+Only *after* you have a working R script should you attempt to complete your lab report. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Some questions may require you to insert an R code chunk and paste in code from your R script.
 
-### Histogram
+### Fireflies
 
-For the histogram, you will use the cruz dataset from the unmarked package. cruz is a table where each observation (row) represents a pixel on a map of Santa Cruz Island in California. Your task is to make a histogram showing the distribution of the *elevation* variable, which gives the elevation of the pixel in meters above sea level, abbreviated m.a.s.l.
+Male fireflies of the species *Photinus ignitus* attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.
 
-To do this, you must load the cruz dataset. You will need to install the unmarked package before you can run the code below. Do not include any code to install the package in the script itself... use the Packages tab to install it. When you read the data, assign it to a new object named `cruz2`, which you will use for your analysis
+The path to the data is "<https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv>"
+
+**Create a graph depicting the frequency distribution of the 35 mass measurements. It should have legible text and appropriate axis labels.**
+
+### Bird orders
+
+The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.
+
+Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.
 
 ```{r, eval=FALSE}
-library(unmarked)
-cruz2 <- as_tibble(cruz)
-cruz2
+library(auk)                          # load the auk package
+birds <- ebird_taxonomy %>%           # start with the ebird_taxonomy data
+  as_tibble() %>%                     # tibbles print better in the console
+  filter(category == "species")       # remove non-species taxa
 ```
 
-For the bar graph, you wil
+**Create a graph depicting the distribution of orders in the birds dataset. Sort the orders with the most frequent on the left.**
 
-For the histogram
-
-1.  Create a new R script for your analysis. Write the code to answer
-2.  Follow the directions to create an R script that produces the requested figures
-
-## Your lab report
-
-1.  Open the R script titled `lab-assignment-script.R`
-2.  Your instructor has seeded your repository with an R Markdown document for your lab report, titled lab-report.Rmd. Open this file
-3.  Update the YAML header with your name
-4.  Copy the code for the requested figures into the appropriate R code chunks
-5.  Add text to answer each questions. Make your text bold so it is easily readable.
-
-## Grading Rubric
+### Grading Rubric
 
 You will be assessed based on the following rubric:
 
@@ -436,10 +432,11 @@ You will be assessed based on the following rubric:
             -   load packages before using them
             -   read or load data before using it
 
+        -   Blank lines between code chunks to make it easy to read
+
     -   Has sufficient comments
 
-        -   At top, explain purpose of the script
-        -   Section headings throughout
+        -   At top, a line explaining purpose of the script
         -   Each code chunk has a comment
 
     -   Code for plots works
@@ -447,11 +444,20 @@ You will be assessed based on the following rubric:
 -   R Markdown document
 
     -   Correct YAML header
-    -   Good organization
-    -   Sufficient explanatory text for each figure
-    -   Questions answered correctly
-    -   Answers marked in bold
 
--   Your lab report has been peer-reviewed at least once
+    -   Questions answered correctly
+
+    -   Code for figures
+
+    -   Figures are correct
+
+        -   Figures look good (text appropriate size, etc)
+        -   Axis labels are correct
+
+    -   Format of report is not significantly changed from the template (answers are easily distinguished from questions.
+
+-   Lab report has been peer-reviewed at least once
+
+-   README is complete and includes links to your peer reviews
 
 -   Submitted link to repository on D2L

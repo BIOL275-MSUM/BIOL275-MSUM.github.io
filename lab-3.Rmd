@@ -218,12 +218,13 @@ ggplot(data = tiger_data) +
 
 The `forcats::` preceding the function name is just a way of telling R which package the function is in. It's not necessary here, because we already loaded the forcats package, but it serves as a visual reminder to anyone reading the code that it requires the forcats package.
 
-Third, the figure in the textbook features red columns. This is accomplished by adding a `fill` argument to `geom_box()`. Don't forget the comma separating the mapping and fill arguments.
+Third, the figure in the textbook features red columns and larger text. This is accomplished by adding a `fill` argument to `geom_bar()` and setting the font-size using the `theme_gray()` function:
 
-```{r, out.width=400, out.height=405}
+```{r, fig.width=5.56, fig.height=5.62}
 ggplot(data = tiger_data) +
   geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "darkred") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme_gray(base_size = 13)
 ```
 
 Finally, the axis labels could be improved. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. We can set axis labels with `labs()`. The argument `x =` means set the x axis label to the following text, while `y =` means set the y axis label to the following text. The label text itself should appear in quotation marks.

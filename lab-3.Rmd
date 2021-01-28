@@ -405,19 +405,27 @@ ggplot(data = bird_data) +
 
 Your assignment is to demonstrate that you can create and interpret graphs using ggplot.
 
-1.  First, create a new R script in your lab 3 repository where you will build the code for your analysis. As you add code keep your script neat with appropriate code sections and descriptive comments throughout.
+1.  First, create a new ***R script*** in your lab 3 repository where you will build the code for your analysis. DO NOT TRY TO WRITE YOUR CODE IN YOUR LAB REPORT RMD. Keep your script neat with code sections and descriptive comments throughout.
 
-2.  Load the tidyverse package.
+2.  Read the intro to each dataset ([Fireflies data], [Bird orders data]) and write the code *in your R script* to perform each analysis requested.
 
-3.  Read the intro to each dataset and create the requested graphs *in your R script.*
+3.  *After* you have a working R script, complete your lab report R Markdown document. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Insert R code chunks where necessary and paste in code from your R script.
 
-4.  *After* you have a working R script, complete your lab report R Markdown document. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Insert R code chunks where necessary and paste in code from your R script.
+4.  Put links to your Lab Report and any R scripts in your README
 
 5.  Knit your README.Rmd and lab-report.Rmd
 
 6.  Commit all changes and push. You can either do this step-by-step as your build your script and R Markdown documents, one file or code chunk at a time, or all at once at the end.
 
-7.  Submit your assignment by copying the URL for your GitHub repository and pasting it into the appropriate Assignment Submission folder on D2L.
+7.  Conduct a round of peer review. Use the [Grading Rubric] below. Put links to any peer review Issues you are involved in (as a reviewer or reviewee) into your Lab Report (There is a section in the template near the bottom).
+
+8.  Make any changes necessitated by peer review. It's usually good to fix any code in your script first, to make sure it works, then copy the new code to your R Markdown document.
+
+9.  Save, knit, commit, and push. Save changes to any scripts, knit any updated Rmd files, commit all changes, and push to GitHub.
+
+10. VERIFY ALL CHANGES ON YOUR REPO ON GITHUB. Look at your README, Lab Report, and any R scripts to make sure your changes actually made it to GitHub. Make sure the links on your README work.
+
+11. Submit your assignment by copying the URL for your GitHub repository and pasting it into the appropriate Assignment Submission folder on D2L.
 
 ### Fireflies data
 

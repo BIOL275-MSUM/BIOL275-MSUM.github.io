@@ -93,7 +93,7 @@ When you run the code, you will see a ***message*** in the console like this:
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
 #> ✔ tibble  3.0.5     ✔ dplyr   1.0.3
 #> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-#> ✔ readr   1.4.0     ✔ forcats 0.5.0
+#> ✔ readr   1.4.0     ✔ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
@@ -530,7 +530,7 @@ The path to the data is `"https://whitlockschluter.zoology.ubc.ca/wp-content/dat
 
 ### Bird orders data
 
-> The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family.
+> The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family. Each observation (row) in the dataset represents a unique bird species.
 
 Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.
 

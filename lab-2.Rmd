@@ -332,7 +332,7 @@ Your repository has been seeded with an R Markdown file to use as a template. Th
 
 Open the **assignment.Rmd** document by clicking its name in the Files pane. Scroll through it to see the template you have to start with.
 
-Before continuing, familiarize yourself with [R Markdown documents](r-markdown-docs.html).
+Before continuing, familiarize yourself with [R Markdown documents](r-markdown-documents.html).
 
 ## Add your R code to your Lab Report
 

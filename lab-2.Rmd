@@ -391,7 +391,6 @@ Let's start by ensuring a nice, clean RStudio Project, and tidy Lab Report, and 
     b.  Change the link to **calculator.Rmd** in the **Repository contents** section
 
         1.  The part in the square brackets should now say "Lab 2 Report"
-
         2.  The part in the parentheses should say "assignment.md"
 
     c.  Remove the session info heading, text, and R code chunk at the end. This info is better suited for a script that actually does the analysis, your assignment.Rmd

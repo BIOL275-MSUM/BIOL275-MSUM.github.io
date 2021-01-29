@@ -29,13 +29,10 @@ Day 1
 
 Day 2
 
-10. Clean up the project
-
-11. Go through the Completion Checklist
-
-12. Peer review
-
-13. Fix issues identified during peer review
+11. Clean up the project
+12. Go through the Completion Checklist
+13. Peer review
+14. Fix issues identified during peer review
 
 ## Day 1: R as a Calculator
 
@@ -267,7 +264,6 @@ Then write a "report" containing your results.
 It's probably easiest to approach this assignment as two consecutive steps:
 
 1.  First, write the R code to perform the analysis.
-
 2.  Second, copy that working R code to your lab report document.
 
 Here are more detailed instructions on both these steps.
@@ -341,9 +337,7 @@ Open the **assignment.Rmd** document by clicking its name in the Files pane. Scr
 There are three main components to an R Markdown document:
 
 -   A YAML header
-
 -   Narrative text
-
 -   Chunks of R code that R will run when you "knit" the document
 
 Let's look at each component in more depth.
@@ -380,7 +374,6 @@ This is written in the Markdown language, a simple way to tell places like R and
 You can learn more about how to format your text in Markdown using these resources:
 
 -   In the Go to the **Help** menu in RStudio and select **Markdown Quick Reference**
-
 -   [Basic Syntax](https://www.markdownguide.org/basic-syntax/ "Basic Syntax | Markdown Guide") on the Markdown Guide website
 
 The new version of RStudio (version 1.4) has a very handy WYSIWYG (what you see is what you get) editor for R Markdown which allows you to write R Markdown documents like a word processor like Microsoft Word. To make use of this, download and install the newest version of RStudio.
@@ -463,9 +456,7 @@ Let's start by ensuring a nice, clean RStudio Project, and tidy Lab Report, and 
 1.  Update your lab report
 
     a.  Open your assignment.Rmd file
-
     b.  Add a Session Info heading, text, and R code chunk at the end of the document. The easiest way is to copy and paste that section from your README.Rmd and paste it here. Then edit the R code so it says `sessioninfo::session_info()` by removing the code `c("tidyverse")`. This will ensure that the list of packages produced reflects those actually used in the analysis
-
     c.  Knit your assignment.Rmd afterwards
 
 2.  Update your README
@@ -534,13 +525,9 @@ Next, create an Issue on GitHub requesting peer review using the following steps
 Finally, respond to any peer review requests you receive.
 
 1.  Check your notifications to see if you are mentioned in any Issues
-
 2.  Provide your review as a Reply to the Issue they tagged you in
-
 3.  Go through the Completion Checklist above, noting any issues the person should address. Write those issues in your Reply
-
 4.  Be kind in the way you write your review. Try to sound helpful and supportive rather than critical or combative.
-
 5.  Give the other person the quality of review you yourself would hope to receive. If you review someone's project and you both missed something on the completion checklist, that person will lose points.
 
 ## Grading Rubric
@@ -548,11 +535,8 @@ Finally, respond to any peer review requests you receive.
 Your instructor will grade your assignment based on the following criteria:
 
 -   Is the project complete and accurate (see the Completion Checklist above)
-
 -   Have you requested peer review?
-
 -   Have you performed any peer reviews requested of you? If so, did you go through the checklist carefully and find any issues the person needs to address?
-
 -   Have you updated any issues identified during peer review?
 
 Note: according to this rubric, you can lose points twice for missing something in the Completion Checklist: once for not having that item done, and again for not responding to any peer review suggestions.

@@ -62,7 +62,7 @@ A code chunk looks like the following:
 
 > ```` {.markdown}
 > ```{r chunk-name, arg1=val1, arg2=val2}
->
+> >
 > ```
 > ````
 

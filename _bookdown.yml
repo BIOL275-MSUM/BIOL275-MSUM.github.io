@@ -11,6 +11,7 @@ rmd_files: [
   "getting-started.Rmd",
   "project-options.Rmd",
   "code-sections.Rmd",
+  "r-markdown-docs.Rmd",
   "github-notifications.Rmd",
   
 ]

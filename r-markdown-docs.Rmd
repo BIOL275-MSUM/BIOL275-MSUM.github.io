@@ -60,31 +60,21 @@ Code chunks are bits of R code that are executed when you knit the document. In 
 
 A code chunk looks like the following:
 
-```` {.markdown eval="FALSE"}
-```{r chunk-name-with-no-spaces, arg1=val1, arg2=val2}
+```` {.markdown}
+```{r chunk-name-with-no-spaces}
 
 ```
 ````
 
-**Blank line.** Always put a blank line before a code chunk to separate it from the preceding text.
+Always put a blank line before a code chunk to separate it from the preceding text, otherwise knitr will think it is just a continuation of the previous content and will not render it correctly.
 
-**Opening backticks.** The three backticks ```` ``` ```` tell R to expect a chunk of code.
+The three backticks at the beginning and end, like this, ```` ``` ```` indicate where the chunk begins and ends.
 
-**Curly braces.** The curly braces tell R what kind of code to expect, the name of the code chunk, and some options for how to knit it. For example, in the code above, the `r` tells R to expect R code, and `chunk-name` is the name of the code chunk.
+Inside the curly braces `{}` the first word indicated what kind of code to expect and the next word is the name of the code chunk, which may not contain spaces. Names are not required, but they can be useful can be useful for advanced knitting options and debugging errors when you try to knit your document. If you don't want to give your chunk a name, just end the curly brackts like this: `{r}`
 
-**Chunk names.** Names are not required, but they can be useful. When you try to knit your R Markdown document, any errors will show in the Markdown tab (bottom left pane). Having your code chunks named makes it easier to figure out where the error occurred. If you don't want to give your chunk a name, just end the curly brackts like this: `{r}`
+Code goes between the beginning and ending lines, for example:
 
-**Chunk arguments.** Optionally, if you want to modify the way the chunk gets turned into code or figures, you can do so with a variety of arguments. For example, the argument `echo=FALSE` will prevent the code from being shown in the output. You can also set argument in RStudio by clicking the gear icon on the right side of a code chunk.
-
-**Code.** The blank line between the closing curly brace and the next three backticks is where the code goes.
-
-**Closing backticks.** The three backticks ```` ``` ```` tell R to end the code chunk.
-
-#### Example code chunk
-
-Here's an example of a code chunk with actual R code:
-
-```` {.markdown eval="FALSE"}
+```` {.markdown}
 ```{r print-x}
 x <- 1    # x gets a value of 1
 x         # print the value of x
@@ -93,13 +83,32 @@ x         # print the value of x
 
 Anything you can write in an R script, you can write in an R code chunk, including comments, as seen above.
 
-#### Running a code chunk
+#### Chunk arguments
 
-You can run a code chunk and preview the output by clicking the green Play button one the right side of the first line of the chunk.
+You can modify the way the chunk gets turned into code or figures using chunk *arguments*.
 
-If the chunk code depends on code in previous chunks being run first, there is another button next to the play button that runs all previous code chunks.
+For example, the argument `eval=FALSE` will prevent R from evaluating the code. In the output document, the code will be shown but no output will be produced.
 
-It is possible to highlight lines of code and run them individually. Troubleshooting code in R chunks, however, is much easier in an R script, so it usually best to develop a working R script first, then copy bits of code from it and paste them into code chunks in your R Markdown document.
+To add a chunk argument, put a comma after the language or chunk name, if there is one, and the name of the argument followed by an equal sign and the value for the argument. Spaces can be added but are not required. Many arguments require TRUE or FALSE as values, and these must be in all caps.
+
+```` {.markdown}
+```{r print-x, eval=FALSE}
+x <- 1    # x gets a value of 1
+x         # print the value of x
+```
+````
+
+An alternative way to set arguments in RStudio is to click the gear icon on the right side of a code chunk.
+
+For more information, read about [Options](https://yihui.org/knitr/options/) on the [knitr](https://yihui.org/knitr/) website.
+
+#### Run a code chunk
+
+You can run code in an R chunk in two ways:
+
+-   Like you do in an R script: place your cursor on a line or highlight several lines and use the keyboard shortcut Ctrl+Enter / Cmd+Return
+
+-   Run the entire chunk: Go to the Run menu in the source window toolbar and select an appropriate option like Run Current Chunk. There are also options for running all previous chunks
 
 ## Knitting
 

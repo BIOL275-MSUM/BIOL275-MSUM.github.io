@@ -92,7 +92,7 @@ For example, the argument `eval=FALSE` will prevent R from evaluating the code. 
 To add a chunk argument, put a comma after the language or chunk name, if there is one, and the name of the argument followed by an equal sign and the value for the argument. Spaces can be added but are not required. Many arguments require TRUE or FALSE as values, and these must be in all caps.
 
 ```` {.markdown}
-```{r print-x, eval=FALSE}
+```{r show-code-only, eval=FALSE}
 x <- 1    # x gets a value of 1
 x         # print the value of x
 ```

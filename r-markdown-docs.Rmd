@@ -60,11 +60,11 @@ Code chunks are bits of R code that are executed when you knit the document. In 
 
 A code chunk looks like the following:
 
-> ```` {.markdown}
-> ```{r chunk-name, arg1=val1, arg2=val2}
->
-> ```
-> ````
+```` {.markdown eval="FALSE"}
+```{r chunk-name-with-no-spaces, arg1=val1, arg2=val2}
+
+```
+````
 
 **Blank line.** Always put a blank line before a code chunk to separate it from the preceding text.
 
@@ -84,12 +84,12 @@ A code chunk looks like the following:
 
 Here's an example of a code chunk with actual R code:
 
-> ```` {.markdown}
-> ```{r print-x}
-> x <- 1    # x gets a value of 1
-> x         # print the value of x
-> ```
-> ````
+```` {.markdown eval="FALSE"}
+```{r print-x}
+x <- 1    # x gets a value of 1
+x         # print the value of x
+```
+````
 
 Anything you can write in an R script, you can write in an R code chunk, including comments, as seen above.
 

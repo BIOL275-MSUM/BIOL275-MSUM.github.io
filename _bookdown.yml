@@ -7,6 +7,7 @@ rmd_files: [
   "lab-1.Rmd",
   "lab-2.Rmd",
   "lab-3.Rmd",
+  "lab-4.Rmd",
   
   "getting-started.Rmd",
   "project-options.Rmd",

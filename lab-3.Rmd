@@ -478,23 +478,23 @@ You will be assessed based on the following rubric:
 
     -   Code for plots works
 
--   R Markdown document
-
-    -   Correct YAML header
+-   Lab Report (lab-report.md)
 
     -   Questions answered correctly
 
-    -   Code for figures
-
-    -   Figures are correct
+    -   The two Figures are correct
 
         -   Figures look good (text appropriate size, etc)
         -   Axis labels are correct
 
     -   Format of report is not significantly changed from the template (answers are easily distinguished from questions.
 
+    -   Links to peer-review Issues included
+
+    -   Session info included
+
 -   Lab report has been peer-reviewed at least once
 
--   README is complete and includes links to your peer reviews
+-   README is complete
 
 -   Submitted link to repository on D2L

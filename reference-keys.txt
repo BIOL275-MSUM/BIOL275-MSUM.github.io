@@ -55,6 +55,7 @@ objectives-3
 introduction-1
 background-reading
 assignment
+student-questions
 part-appendices
 part-getting-started
 install-r-and-rstudio

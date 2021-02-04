@@ -120,6 +120,19 @@
 <li>Using this data, show how many species are in each taxonomic family. Create a bar chart showing the distribution of species by taxonomic family.</li>
 </ol>
 </div>
+<div id="student-questions" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> Student questions<a class="anchor" aria-label="anchor" href="#student-questions"><i class="fas fa-link"></i></a>
+</h2>
+<p>My birds table has &gt; 16,000 rows, not 10,000. What went wrong?</p>
+<p>Answer: be sure to remove any non-species rows first. Use the code from lab 3:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
+  <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>                  <span class="co"># start with the ebird_taxonomy data</span>
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
+
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></div>
@@ -132,6 +145,7 @@
 <li><a class="nav-link" href="#introduction-1"><span class="header-section-number">4.2</span> Introduction</a></li>
 <li><a class="nav-link" href="#background-reading"><span class="header-section-number">4.3</span> Background reading</a></li>
 <li><a class="nav-link" href="#assignment"><span class="header-section-number">4.4</span> Assignment</a></li>
+<li><a class="nav-link" href="#student-questions"><span class="header-section-number">4.5</span> Student questions</a></li>
 </ul>
 
       <div class="book-extra">

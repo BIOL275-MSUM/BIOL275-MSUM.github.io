@@ -26,7 +26,7 @@ Eventually you will read most of [Chapter 5: Data transformation](https://r4ds.h
 
 For today's assignment, you can start by reading Sections 5.1 and 5.2
 
-If you wish, you may try their examples in your own R Script. In that case, don't forget to load the packages as described in [Section 5.1.1 Prerequisites](Chapter 5: Data transformation.).
+If you wish, you may try their examples in your own R Script. In that case, don't forget to load the packages as described in [Section 5.1.1 Prerequisites](Chapter%205:%20Data%20transformation.).
 
 ## Assignment
 

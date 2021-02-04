@@ -91,7 +91,7 @@ When you run the code, you will see a ***message*** in the console like this:
 ```
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#> ✔ tibble  3.0.6     ✔ dplyr   1.0.3
+#> ✔ tibble  3.0.6     ✔ dplyr   1.0.4
 #> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -578,23 +578,23 @@ You will be assessed based on the following rubric:
 
     -   Code for plots works
 
--   R Markdown document
-
-    -   Correct YAML header
+-   Lab Report (lab-report.md)
 
     -   Questions answered correctly
 
-    -   Code for figures
-
-    -   Figures are correct
+    -   The two Figures are correct
 
         -   Figures look good (text appropriate size, etc)
         -   Axis labels are correct
 
     -   Format of report is not significantly changed from the template (answers are easily distinguished from questions.
 
+    -   Links to peer-review Issues included
+
+    -   Session info included
+
 -   Lab report has been peer-reviewed at least once
 
--   README is complete and includes links to your peer reviews
+-   README is complete
 
 -   Submitted link to repository on D2L

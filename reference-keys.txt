@@ -50,6 +50,12 @@ instructions
 fireflies-data
 bird-orders-data
 grading-rubric-1
+subsetting-tables
+objectives-3
+introduction-1
+background-reading
+assignment
+section
 part-appendices
 part-getting-started
 install-r-and-rstudio

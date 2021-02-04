@@ -45,3 +45,17 @@ Now use what you know from previous labs, and what you have learned from today's
 2.  Using this data, show how many species are in each taxonomic order, like you did in Lab 3. Create a bar chart showing the distribution of species by taxonomic order.
 3.  Print a table containing only species in the Order Passeriformes
 4.  Using this data, show how many species are in each taxonomic family. Create a bar chart showing the distribution of species by taxonomic family.
+
+## Student questions
+
+My birds table has > 16,000 rows, not 10,000. What went wrong?
+
+Answer: be sure to remove any non-species rows first. Use the code from lab 3:
+
+```{r, eval=FALSE}
+birds <-                              # create a new table named birds
+  ebird_taxonomy %>%                  # start with the ebird_taxonomy data
+  as_tibble() %>%                     # tibbles print better in the console
+  filter(category == "species")       # remove non-species taxa
+```
+

@@ -20,13 +20,16 @@ You can manipulate tables easily with functions from the `dplyr` package, one of
 
 ## Background reading
 
-Your lab manual, *R for Data Science*, contains detailed instructions on filtering, arranging, and selecting in
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in
 
-Eventually you will read most of [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+Eventually you will read most of [R4DS Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
 
-For today's assignment, you can start by reading Sections 5.1 and 5.2
+For today's assignment, you can start by reading R4DS Sections 5.1 and 5.2
 
-If you wish, you may try their examples in your own R Script. In that case, don't forget to load the packages as described in [Section 5.1.1 Prerequisites](Chapter%205:%20Data%20transformation.).
+If you wish, you may try their examples in your own R Script. In that case, don't forget to:
+
+1.  Install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
+2.  Load the tidyverse and nycflights13 packages as described in [R4DS Section 5.1.1 Prerequisites](https://r4ds.had.co.nz/transform.html#prerequisites-2).
 
 ## Assignment
 
@@ -34,16 +37,11 @@ For your assignment, you will work with the ebird taxonomy table you used in the
 
 1.  Create a new R script named \`assignment.R\` to house your code.
 2.  Load the tidyverse and auk packages
-3.  Read in the ebird taxonomy table
+3.  Read in the eBird taxonomy table
 
 Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks:
 
 1.  Print a table containing only species NOT in the Order Passeriformes
-
 2.  Using this data, show how many species are in each taxonomic order, like you did in Lab 3. Create a bar chart showing the distribution of species by taxonomic order.
-
 3.  Print a table containing only species in the Order Passeriformes
-
 4.  Using this data, show how many species are in each taxonomic family. Create a bar chart showing the distribution of species by taxonomic family.
-
-### 

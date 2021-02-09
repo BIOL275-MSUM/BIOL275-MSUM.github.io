@@ -93,7 +93,7 @@ For example, to take the diamonds data frame and pick only diamonds with a weigh
 filter(diamonds, carat > 2)
 ```
 
-### Intermediate steps
+### Intermediate objects
 
 When you run code to filter a data frame, R returns a new data frame.
 

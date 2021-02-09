@@ -176,7 +176,7 @@ filter(diamonds, !is.na(color))
 
 The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
 
-### Helper functions
+### String helper functions
 
 There are a variety of other functions you can incorporate into your `filter()` function to achieve specific results.
 
@@ -189,6 +189,13 @@ filter(diamonds, str_detect(clarity, "VS"))
 The function itself is the comparison, there is no operator like `==` or `!=`.
 
 The name of the variable you want to look in goes *inside* the `str_detect()` function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.
+
+If you want to pick only values of clarity that *start* or *end* with particular text, you can use the functions `str_starts()` or `str_ends()`. For example:
+
+```{r,eval=FALSE}
+filter(diamonds, str_starts(clarity, "VS"))
+filter(diamonds, str_ends(clarity, "2"))
+```
 
 ## Arrange rows with `arrange()`
 

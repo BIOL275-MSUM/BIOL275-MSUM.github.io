@@ -56,7 +56,7 @@ introduction-1
 prerequisites
 diamonds
 filter-rows-with-filter
-intermediate-steps
+intermediate-objects
 basic-operators
 logical-operators
 and-operator

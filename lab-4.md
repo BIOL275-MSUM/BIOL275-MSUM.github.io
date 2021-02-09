@@ -140,7 +140,7 @@ filter(diamonds, carat > 2)
 #> # … with 1,883 more rows
 ```
 
-### Intermediate steps
+### Intermediate objects
 
 When you run code to filter a data frame, R returns a new data frame.
 

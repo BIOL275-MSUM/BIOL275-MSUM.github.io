@@ -94,16 +94,25 @@ The data type labels need some explanation. Each data type represents a particul
 
 The most common column data you will see in data frames are:
 
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
-|-----------|----------------|------------------------------------------------------------------------------------------------------------------|---------------------|---------------|
++===========+================+==================================================================================================================+=====================+===============+
 | logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | character | `"A"`          | Text; note that `"1"` is still a character data type because of the double quotes                                | categorical nominal | chr           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | factor    | `factor("A")`  | Text with an enumerated list of values; you can see possible values with `levels()`                              | categorical nominal | fct           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | ordered   | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | Date      | `Sys.Date()`   | Date                                                                                                             | numeric discrete    | date          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 
 You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
 
@@ -131,7 +140,9 @@ filter(diamonds, carat > 2)
 #> # … with 1,883 more rows
 ```
 
-When you run the code, R returns a new data frame.
+### Intermediate steps
+
+When you run code to filter a data frame, R returns a new data frame.
 
 If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
 
@@ -266,6 +277,34 @@ filter(diamonds, !is.na(color))
 ```
 
 The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
+
+### Helper functions
+
+There are a variety of other functions you can incorporate into your `filter()` function to achieve specific results.
+
+For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply `==` or `!=`. Let's say you want to find all diamonds with a clarity of `VS1`, `VS2`, `VVS1`, or `VVS2`. You could use the "or" operator, or the "in" operator. But what if you don't even know all the possible clarity values and you just want everything that contains `"VS"` anywhere in the word. There is a string-based helper function `str_detect()` which looks for a particular string of text inside a text variable:
+
+
+```r
+filter(diamonds, str_detect(clarity, "VS"))
+```
+
+```
+#> # A tibble: 29,150 x 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 2 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 3 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> 4 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#> 5 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 6 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#> # … with 29,144 more rows
+```
+
+The function itself is the comparison, there is no operator like `==` or `!=`.
+
+The name of the variable you want to look in goes *inside* the `str_detect()` function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.
 
 ## Arrange rows with `arrange()`
 

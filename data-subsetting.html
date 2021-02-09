@@ -252,6 +252,19 @@
 #&gt; 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
 #&gt; 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
 #&gt; # … with 1,883 more rows</code></pre>
+<p>Now, if you want to filter the <code>big_diamonds</code> object further, you can use it as the data object for another <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function:</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span> <span class="op">&gt;</span> <span class="fl">15000</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1,037 x 10
+#&gt;   carat cut       color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  2.1  Premium   I     SI1      61.5    57 15007  8.25  8.21  5.06
+#&gt; 2  2.02 Premium   G     SI2      63      59 15014  8.05  7.95  5.03
+#&gt; 3  2.05 Very Good F     SI2      61.9    56 15017  8.13  8.18  5.05
+#&gt; 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
+#&gt; 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
+#&gt; 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
+#&gt; # … with 1,031 more rows</code></pre>
 </div>
 <div id="basic-operators" class="section level3" number="4.3.2">
 <h3>
@@ -261,7 +274,7 @@
 <p>Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> and <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code> can be used with any type of variable.</p>
 <p>There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes <code>"</code>.</p>
 <p>Here is an example of using the <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> operator with the <code>cut</code> variable, an ordered factor data type:</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 21,551 x 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -275,7 +288,7 @@
 #&gt; # … with 21,545 more rows</code></pre>
 <p>Note that <code>"Ideal"</code> has double quotes around it. This is to tell R you want to find the literal text string “Ideal”. If you instead wrote <code>cut == Ideal</code> without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.</p>
 <p>Another common errors when you are starting out is to try to use <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> instead of <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>. When you do that, you will get a helpful error message:</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, carat <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; Error: Problem with `filter()` input `..1`.
 #&gt; ✖ Input `..1` is named.
@@ -292,7 +305,7 @@
 <span class="header-section-number">4.3.3.1</span> And operator<a class="anchor" aria-label="anchor" href="#and-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>If you put three or more arguments in your <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an “and” operation. Thus these two lines of code will return identical results:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span>, <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span></code></pre></div>
 </div>
@@ -301,7 +314,7 @@
 <span class="header-section-number">4.3.3.2</span> Or operator<a class="anchor" aria-label="anchor" href="#or-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>For “or” comparisons, you have to use the vertical bar <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> operator. For example, this code will return a table with diamonds having a color of D or E.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"D"</span> <span class="op">|</span> <span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 16,572 x 10
 #&gt;   carat cut     color clarity depth table price     x     y     z
@@ -314,7 +327,7 @@
 #&gt; 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
 #&gt; # … with 16,566 more rows</code></pre>
 <p>This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function and then use the “in” operator <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> like this:</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="not-operator" class="section level4" number="4.3.3.3">
@@ -322,7 +335,7 @@
 <span class="header-section-number">4.3.3.3</span> Not operator<a class="anchor" aria-label="anchor" href="#not-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>“Not” comparisons can be used to pick rows that do not meet a given criteria. The <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code> operator generally should be followed by parentheses <code>()</code> with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color <em>except</em> E:</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="missing-values" class="section level4" number="4.3.3.4">
@@ -330,7 +343,7 @@
 <span class="header-section-number">4.3.3.4</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h4>
 <p>Missing values are a story for a later date! You don’t need to know this yet, but if you find yourself here looking for an answer, you can filter values without a “missing value” for color like this:</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">color</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.</p>
 </div>
@@ -341,7 +354,7 @@
 </h3>
 <p>There are a variety of other functions you can incorporate into your <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function to achieve specific results.</p>
 <p>For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> or <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code>. Let’s say you want to find all diamonds with a clarity of <code>VS1</code>, <code>VS2</code>, <code>VVS1</code>, or <code>VVS2</code>. You could use the “or” operator, or the “in” operator. But what if you don’t even know all the possible clarity values and you just want everything that contains <code>"VS"</code> anywhere in the word. There is a string-based helper function <code>str_detect()</code> which looks for a particular string of text inside a text variable:</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">str_detect</span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 29,150 x 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
@@ -356,7 +369,7 @@
 <p>The function itself is the comparison, there is no operator like <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> or <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code>.</p>
 <p>The name of the variable you want to look in goes <em>inside</em> the <code>str_detect()</code> function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.</p>
 <p>If you want to pick only values of clarity that <em>start</em> or <em>end</em> with particular text, you can use the functions <code>str_starts()</code> or <code>str_ends()</code>. For example:</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">str_starts</span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">str_ends</span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
@@ -368,7 +381,7 @@
 <p>The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.</p>
 <p>The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.</p>
 <p>For example, to sort the <code>diamonds</code> data frame by price:</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">arrange</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -381,7 +394,7 @@
 #&gt; 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
 #&gt; # … with 53,934 more rows</code></pre>
 <p>You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">arrange</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -399,7 +412,7 @@
 <span class="header-section-number">4.4.1</span> Descending order<a class="anchor" aria-label="anchor" href="#descending-order"><i class="fas fa-link"></i></a>
 </h3>
 <p>To sort a variable in descending rather than ascending order, you can wrap the variable name in the <code>desc()</code> function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">arrange</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -421,7 +434,7 @@
 <p>The <code>select()</code> function allows you to select which <em>columns</em> (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.</p>
 <p>The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.</p>
 <p>For example, say you wanted to focus on the variables carat, cut, and color, you could use:</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 3
 #&gt;   carat cut       color
@@ -435,7 +448,7 @@
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Technically, you can also select variables by their position, so <code>select(diamonds, carat, cut, color)</code> is equivalent to <code>select(diamonds, 1, 2, 3)</code></p>
 <p><code>select()</code> can also be used to rearrange the order of columns:</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span>, <span class="va">cut</span>, <span class="va">carat</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 3
 #&gt;   color cut       carat
@@ -448,7 +461,7 @@
 #&gt; 6 J     Very Good 0.24 
 #&gt; # … with 53,934 more rows</code></pre>
 <p>There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon <code><a href="https://rdrr.io/r/base/Colon.html">:</a></code> operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span><span class="op">:</span><span class="va">price</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 7
 #&gt;   carat cut       color clarity depth table price
@@ -465,7 +478,7 @@
 <span class="header-section-number">4.5.1</span> Removing variables<a class="anchor" aria-label="anchor" href="#removing-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometimes its easier to say which variables you <em>don’t</em> want to keep rather than which ones you <em>do</em>. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables <em>except</em> the one you named. For example, to return every row except table, you could do:</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 9
 #&gt;   carat cut       color clarity depth price     x     y     z
@@ -478,7 +491,7 @@
 #&gt; 6 0.24  Very Good J     VVS2     62.8   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>To remove several variables, you can prepend each one with a <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. You can even remove a range of values, but the syntax is quirky. You have to put the <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> before each variable name. For example, to remove x, y, and z variables:</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">x</span><span class="op">:</span><span class="op">-</span><span class="va">y</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="helper-functions" class="section level3" number="4.5.2">
@@ -494,7 +507,7 @@
 <li><p><code>everything()</code> finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.</p></li>
 </ul>
 <p>For example, the following code would move table and price to the front and leave everything else at the end:</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu">ends_with</span><span class="op">(</span><span class="st">"e"</span><span class="op">)</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   table price carat cut       color clarity depth     x     y     z
@@ -513,7 +526,7 @@
 <span class="header-section-number">4.6</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
 </h2>
 <p>For your assignment, you will work with the eBird taxonomy table you used in the previous lab.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
   <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>                  <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>
@@ -544,9 +557,9 @@
 <span class="header-section-number">4.6.2</span> Lab Report<a class="anchor" aria-label="anchor" href="#lab-report"><i class="fas fa-link"></i></a>
 </h3>
 <p>After you have crafted working R code in your R script, <em>then</em> you should create your lab report using R Markdown. Create a blank R Markdown document. Add a heading titled “Lab 4 Report”, your name, and the date. Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should <em>print</em> a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span>
 <span class="va">bang</span></code></pre></div>
 <p>Next finish you lab report by adding a session info section and knitting the document. Add a README file to your repo with links to your script and lab report and knit the README. Commit all files and push to GitHub. Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again. Finally, submit the URL of your repo to D2L for grading.</p>
@@ -602,7 +615,7 @@
 </h2>
 <p>My birds table has &gt; 16,000 rows, not 10,000. What went wrong?</p>
 <p>Answer: be sure to remove any non-species rows first. Use the code from lab 3:</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
   <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>                  <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>

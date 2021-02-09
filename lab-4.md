@@ -171,6 +171,26 @@ big_diamonds
 #> # … with 1,883 more rows
 ```
 
+Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
+
+
+```r
+filter(big_diamonds, price > 15000)
+```
+
+```
+#> # A tibble: 1,037 x 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.1  Premium   I     SI1      61.5    57 15007  8.25  8.21  5.06
+#> 2  2.02 Premium   G     SI2      63      59 15014  8.05  7.95  5.03
+#> 3  2.05 Very Good F     SI2      61.9    56 15017  8.13  8.18  5.05
+#> 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
+#> 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
+#> 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
+#> # … with 1,031 more rows
+```
+
 ### Basic Operators
 
 The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).

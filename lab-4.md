@@ -1,4 +1,4 @@
-# Subsetting tables
+# Data subsetting
 
 ## Objectives
 
@@ -82,33 +82,367 @@ The data type labels need some explanation. Each data type represents a particul
 
 The most common column data you will see in data frames are:
 
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
-|-----------|----------------|------------------------------------------------------------------------------------------------------------------|---------------------|---------------|
++===========+================+==================================================================================================================+=====================+===============+
 | logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | character | `"A"`          | Text; note that `"1"` is still a character data type because of the double quotes                                | categorical nominal | chr           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | factor    | `factor("A")`  | Text with an enumerated list of values; you can see possible values with `levels()`                              | categorical nominal | fct           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | ordered   | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | Date      | `Sys.Date()`   | Date                                                                                                             | numeric discrete    | date          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 | POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 
-You can read more about data types in the (Column data types)[<https://tibble.tidyverse.org/articles/types.html>] vignette in the tibble package.
+You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
 
-## Background reading
+## Filter rows with `filter()`
 
-Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html)
+The `filter()` function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.
 
-For today's assignment, you should start by reading R4DS Sections 5.1 and 5.2
+For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:
 
-If you wish, you may try their examples in your own R Script. In that case, don't forget to:
 
-1.  Install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
-2.  Load the tidyverse and nycflights13 packages as described in [R4DS Section 5.1.1 Prerequisites](https://r4ds.had.co.nz/transform.html#prerequisites-2).
+```r
+filter(diamonds, carat > 2)
+#> # A tibble: 1,889 x 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # … with 1,883 more rows
+```
+
+When you run the code, R returns a new data frame.
+
+If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
+
+
+```r
+big_diamonds <- filter(diamonds, carat > 2)
+```
+
+When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
+
+
+```r
+big_diamonds
+#> # A tibble: 1,889 x 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # … with 1,883 more rows
+```
+
+### Basic Operators
+
+The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).
+
+Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while `==` and `!=` can be used with any type of variable.
+
+There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes `"`.
+
+Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
+
+
+```r
+filter(diamonds, cut == "Ideal")
+#> # A tibble: 21,551 x 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.23 Ideal J     VS1      62.8    56   340  3.93  3.9   2.46
+#> 3  0.31 Ideal J     SI2      62.2    54   344  4.35  4.37  2.71
+#> 4  0.3  Ideal I     SI2      62      54   348  4.31  4.34  2.68
+#> 5  0.33 Ideal I     SI2      61.8    55   403  4.49  4.51  2.78
+#> 6  0.33 Ideal I     SI2      61.2    56   403  4.49  4.5   2.75
+#> # … with 21,545 more rows
+```
+
+Note that `"Ideal"` has double quotes around it. This is to tell R you want to find the literal text string "Ideal". If you instead wrote `cut == Ideal` without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.
+
+Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
+
+
+```r
+filter(diamonds, carat = 2)
+#> Error: Problem with `filter()` input `..1`.
+#> ✖ Input `..1` is named.
+#> ℹ This usually means that you've used `=` instead of `==`.
+#> ℹ Did you mean `carat == 2`?
+```
+
+### Logical Operators
+
+In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the vertical bar `|` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the ampersand `&` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
+
+#### And operator
+
+If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
+
+
+```r
+filter(diamonds, carat > 2, price < 6000)
+filter(diamonds, carat > 2 & price < 6000)
+```
+
+#### Or operator
+
+For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
+
+
+```r
+filter(diamonds, color == "D" | color == "E")
+#> # A tibble: 16,572 x 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good    E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.22 Fair    E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 5  0.2  Premium E     SI2      60.2    62   345  3.79  3.75  2.27
+#> 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
+#> # … with 16,566 more rows
+```
+
+This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
+
+
+```r
+filter(diamonds, color %in% c("D", "E"))
+```
+
+#### Not operator
+
+"Not" comparisons can be used to pick rows that do not meet a given criteria. The `!` operator generally should be followed by parentheses `()` with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color *except* E:
+
+
+```r
+filter(diamonds, !(color == "E"))
+```
+
+#### Missing values
+
+Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
+
+
+```r
+filter(diamonds, !is.na(color))
+```
+
+The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
+
+## Arrange rows with `arrange()`
+
+The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.
+
+The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
+
+For example, to sort the `diamonds` data frame by price:
+
+
+```r
+arrange(diamonds, cut)
+#> # A tibble: 53,940 x 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.86 Fair  E     SI2      55.1    69  2757  6.45  6.33  3.52
+#> 3  0.96 Fair  F     SI2      66.3    62  2759  6.27  5.95  4.07
+#> 4  0.7  Fair  F     VS2      64.5    57  2762  5.57  5.53  3.58
+#> 5  0.7  Fair  F     VS2      65.3    55  2762  5.63  5.58  3.66
+#> 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
+#> # … with 53,934 more rows
+```
+
+You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
+
+
+```r
+arrange(diamonds, cut, price)
+#> # A tibble: 53,940 x 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.25 Fair  E     VS1      55.2    64   361  4.21  4.23  2.33
+#> 3  0.23 Fair  G     VVS2     61.4    66   369  3.87  3.91  2.39
+#> 4  0.27 Fair  E     VS1      66.4    58   371  3.99  4.02  2.66
+#> 5  0.3  Fair  J     VS2      64.8    58   416  4.24  4.16  2.72
+#> 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
+#> # … with 53,934 more rows
+```
+
+If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using `levels()` . For example `levels(diamonds$cut)` .
+
+### Descending order
+
+To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
+
+
+```r
+arrange(diamonds, cut, desc(price))
+#> # A tibble: 53,940 x 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.01 Fair  G     SI1      70.6    64 18574  7.43  6.64  4.69
+#> 2  2.02 Fair  H     VS2      64.5    57 18565  8     7.95  5.14
+#> 3  4.5  Fair  J     I1       65.8    58 18531 10.2  10.2   6.72
+#> 4  2    Fair  G     VS2      67.6    58 18515  7.65  7.61  5.16
+#> 5  2.51 Fair  H     SI2      64.7    57 18308  8.44  8.5   5.48
+#> 6  3.01 Fair  I     SI2      65.8    56 18242  8.99  8.94  5.9 
+#> # … with 53,934 more rows
+```
+
+Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.
+
+## Select columns with `select()`
+
+The `select()` function allows you to select which *columns* (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.
+
+The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.
+
+For example, say you wanted to focus on the variables carat, cut, and color, you could use:
+
+
+```r
+select(diamonds, carat, cut, color)
+#> # A tibble: 53,940 x 3
+#>   carat cut       color
+#>   <dbl> <ord>     <ord>
+#> 1 0.23  Ideal     E    
+#> 2 0.21  Premium   E    
+#> 3 0.23  Good      E    
+#> 4 0.290 Premium   I    
+#> 5 0.31  Good      J    
+#> 6 0.24  Very Good J    
+#> # … with 53,934 more rows
+```
+
+Technically, you can also select variables by their position, so `select(diamonds, carat, cut, color)` is equivalent to `select(diamonds, 1, 2, 3)`
+
+`select()` can also be used to rearrange the order of columns:
+
+
+```r
+select(diamonds, color, cut, carat)
+#> # A tibble: 53,940 x 3
+#>   color cut       carat
+#>   <ord> <ord>     <dbl>
+#> 1 E     Ideal     0.23 
+#> 2 E     Premium   0.21 
+#> 3 E     Good      0.23 
+#> 4 I     Premium   0.290
+#> 5 J     Good      0.31 
+#> 6 J     Very Good 0.24 
+#> # … with 53,934 more rows
+```
+
+There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
+
+
+```r
+select(diamonds, carat:price)
+#> # A tibble: 53,940 x 7
+#>   carat cut       color clarity depth table price
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>
+#> 1 0.23  Ideal     E     SI2      61.5    55   326
+#> 2 0.21  Premium   E     SI1      59.8    61   326
+#> 3 0.23  Good      E     VS1      56.9    65   327
+#> 4 0.290 Premium   I     VS2      62.4    58   334
+#> 5 0.31  Good      J     SI2      63.3    58   335
+#> 6 0.24  Very Good J     VVS2     62.8    57   336
+#> # … with 53,934 more rows
+```
+
+### Removing variables
+
+Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
+
+
+```r
+select(diamonds, -table)
+#> # A tibble: 53,940 x 9
+#>   carat cut       color clarity depth price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <int> <dbl> <dbl> <dbl>
+#> 1 0.23  Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#> 2 0.21  Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#> 3 0.23  Good      E     VS1      56.9   327  4.05  4.07  2.31
+#> 4 0.290 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#> 5 0.31  Good      J     SI2      63.3   335  4.34  4.35  2.75
+#> 6 0.24  Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
+
+To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
+
+
+```r
+select(diamonds, -x:-y)
+```
+
+#### `select()` helper functions
+
+Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
+
+There are several functions that can be used within `select()` :
+
+-   `starts_with("abc")` finds all columns whose name starts with "abc"
+
+-   `ends_with("abc")` finds all columns whose name ends with "abc"
+
+-   `contains("abc")` finds all columns whose name contains "abc"
+
+-   `everything()` finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.
+
+For example, the following code would move table and price to the front and leave everything else at the end:
+
+
+```r
+select(diamonds, ends_with("e"), everything())
+#> # A tibble: 53,940 x 10
+#>   table price carat cut       color clarity depth     x     y     z
+#>   <dbl> <int> <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl>
+#> 1    55   326 0.23  Ideal     E     SI2      61.5  3.95  3.98  2.43
+#> 2    61   326 0.21  Premium   E     SI1      59.8  3.89  3.84  2.31
+#> 3    65   327 0.23  Good      E     VS1      56.9  4.05  4.07  2.31
+#> 4    58   334 0.290 Premium   I     VS2      62.4  4.2   4.23  2.63
+#> 5    58   335 0.31  Good      J     SI2      63.3  4.34  4.35  2.75
+#> 6    57   336 0.24  Very Good J     VVS2     62.8  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
 
 ## Assignment
 
-For your assignment, you will work with the ebird taxonomy table you used in the previous lab.
+For your assignment, you will work with the eBird taxonomy table you used in the previous lab.
+
+
+```r
+birds <-                              # create a new table named birds
+  ebird_taxonomy %>%                  # start with the ebird_taxonomy data
+  as_tibble() %>%                     # tibbles print better in the console
+  filter(category == "species")       # remove non-species taxa
+```
+
+You will create both an R script (.R) and an R Markdown document (.Rmd). You will
+
+### R script
 
 1.  Create a new R script named \`assignment.R\` to house your code.
 2.  Load the tidyverse and auk packages
@@ -116,14 +450,75 @@ For your assignment, you will work with the ebird taxonomy table you used in the
 
 Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks:
 
-1.  Print a table containing only species NOT in the Order Passeriformes
-2.  Using this data, show how many species are in each taxonomic order, like you did in Lab 3. Create a bar chart showing the distribution of species by taxonomic order.
-3.  Print a table containing only species in the Order Passeriformes
-4.  Using this data, show how many species are in each taxonomic family. Create a bar chart showing the distribution of species by taxonomic family.
+1.  Print a table containing only species NOT in the Order Passeriformes. Include all columns.
+2.  Print a table containing only species in the Order Passeriformes. Include all columns.
+3.  Print a table containing all species. Only the variables Species Code, Scientific Name, and Common Name should be in the final table.
+4.  Print a table with all species in the Order Passeriformes whose common name starts with the word "Common". Species should be in reverse taxonomic order (taxon_order variable). Only the variables Species Code, Scientific Name, and Common Name should be in the final table.
+5.  Print a table containing species with "Warbler" in the common name. Include all columns.
+6.  Print a table with two columns: `family` and `n`, the number of species in that family whose name contains "Warbler"
+7.  Extra credit: print a table with all species whose common name contains a color. You can get partial credit if you have some but not all. If you have *any* species which do not have a color in their name, you will get no extra credit even if you have some species that do have a color in their name, so be careful.
+
+### Lab Report
+
+After you have crafted working R code in your R script, *then* you should create your lab report using R Markdown. Create a blank R Markdown document. Add a heading titled "Lab 4 Report", your name, and the date. Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should *print* a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:
+
+
+```r
+filter(foo, bar == "baz")
+```
+
+
+```r
+bang <- filter(foo, bar == "baz")
+bang
+```
+
+Next finish you lab report by adding a session info section and knitting the document. Add a README file to your repo with links to your script and lab report and knit the README. Commit all files and push to GitHub. Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again. Finally, submit the URL of your repo to D2L for grading.
+
+See the previous lab for more details on the steps listed above.
+
+## Grading Rubric
+
+You will be assessed based on the following rubric:
+
+-   GitHub Classroom repository claimed
+
+-   R script
+
+    -   Good organization and comments
+
+        -   Code sections make sense
+
+        -   Code goes in correct order, e.g.
+
+            -   load packages before using them
+            -   read or load data before using it
+
+        -   Blank lines between code chunks to make it easy to read
+
+        -   Comment at top of script explaining purpose of the script
+
+        -   Each code chunk has a comment
+
+        -   It is obvious which code chunks answer which questions
+
+    -   Code for tables works
+
+-   Lab Report (lab-report.md)
+
+    -   Questions answered correctly
+    -   Links to peer-review Issues included
+    -   Session info included
+
+-   Lab report has been peer-reviewed at least once
+
+-   README is complete
+
+-   Submitted link to repository on D2L
 
 ## Student questions
 
-My birds table has > 16,000 rows, not 10,000. What went wrong?
+My birds table has \> 16,000 rows, not 10,000. What went wrong?
 
 Answer: be sure to remove any non-species rows first. Use the code from lab 3:
 
@@ -135,3 +530,13 @@ birds <-                              # create a new table named birds
   filter(category == "species")       # remove non-species taxa
 ```
 
+## Further reading
+
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+
+You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
+
+If you do want to read the chapter and try their examples in your own R Script then don't forget to:
+
+1.  Install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
+2.  Load the tidyverse and nycflights13 packages as described in [R4DS Section 5.1.1 Prerequisites](https://r4ds.had.co.nz/transform.html#prerequisites-2).

@@ -60,8 +60,10 @@ Code chunks are bits of R code that are executed when you knit the document. In 
 
 A code chunk looks like the following:
 
-```` {.markdown}
+````
+```{r chunk-name-with-no-spaces}
 
+```
 ````
 
 Always put a blank line before a code chunk to separate it from the preceding text, otherwise knitr will think it is just a continuation of the previous content and will not render it correctly.
@@ -72,12 +74,10 @@ Inside the curly braces `{}` the first word indicated what kind of code to expec
 
 Code goes between the beginning and ending lines, for example:
 
-```` {.markdown}
-
-```r
+````
+```{r print-x}
 x <- 1    # x gets a value of 1
 x         # print the value of x
-#> [1] 1
 ```
 ````
 
@@ -91,9 +91,8 @@ For example, the argument `eval=FALSE` will prevent R from evaluating the code. 
 
 To add a chunk argument, put a comma after the language or chunk name, if there is one, and the name of the argument followed by an equal sign and the value for the argument. Spaces can be added but are not required. Many arguments require TRUE or FALSE as values, and these must be in all caps.
 
-```` {.markdown}
-
-```r
+````
+```{r show-code-only, eval=FALSE}
 x <- 1    # x gets a value of 1
 x         # print the value of x
 ```

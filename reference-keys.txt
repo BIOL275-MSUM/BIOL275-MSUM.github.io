@@ -63,12 +63,12 @@ and-operator
 or-operator
 not-operator
 missing-values
-helper-functions
+string-helper-functions
 arrange-rows-with-arrange
 descending-order
 select-columns-with-select
 removing-variables
-helper-functions-1
+helper-functions
 assignment
 r-script
 lab-report

@@ -244,7 +244,7 @@ To remove several variables, you can prepend each one with a `-`. You can even r
 select(diamonds, -x:-y)
 ```
 
-#### `select()` helper functions
+### Helper functions
 
 Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
 

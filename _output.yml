@@ -5,6 +5,7 @@ bookdown::bs4_book:
   repo: https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io
   includes:
     in_header: [stylesheets.html]
+  css: style.css
 
 bookdown::gitbook:
   includes:

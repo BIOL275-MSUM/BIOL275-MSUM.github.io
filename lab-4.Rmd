@@ -12,7 +12,7 @@ In this lab, you will learn to:
 
 Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.
 
-You can manipulate tables easily with functions from the `dplyr` package, one of the core members of the `tidyverse`.
+You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.
 
 -   Pick rows by their values using `filter()`
 -   Reorder rows using `arrange()`

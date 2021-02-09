@@ -81,18 +81,7 @@ The most common column data you will see in data frames are:
 | POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
 +-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
 
-You can read more about data types in the (Column data types)[<https://tibble.tidyverse.org/articles/types.html>] vignette in the tibble package.
-
-## Background reading
-
-Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html)
-
-For today's assignment, you should start by reading R4DS Sections 5.1 and 5.2
-
-If you wish, you may try their examples in your own R Script. In that case, don't forget to:
-
-1.  Install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
-2.  Load the tidyverse and nycflights13 packages as described in [R4DS Section 5.1.1 Prerequisites](https://r4ds.had.co.nz/transform.html#prerequisites-2).
+You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
 
 ## Filter rows with `filter()`
 
@@ -372,3 +361,14 @@ birds <-                              # create a new table named birds
   as_tibble() %>%                     # tibbles print better in the console
   filter(category == "species")       # remove non-species taxa
 ```
+
+## Further reading
+
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+
+You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
+
+If you do want to read the chapter and try their examples in your own R Script then don't forget to:
+
+1.  Install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
+2.  Load the tidyverse and nycflights13 packages as described in [R4DS Section 5.1.1 Prerequisites](https://r4ds.had.co.nz/transform.html#prerequisites-2).

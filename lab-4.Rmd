@@ -4,9 +4,9 @@
 
 In this lab, you will learn to:
 
--   Remove rows based on their values
+-   Pick rows based on their values
 -   Reorder rows based on their values
--   Remove columns based on their names
+-   Pick columns based on their names
 
 ## Introduction
 

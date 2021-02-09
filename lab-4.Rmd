@@ -109,6 +109,12 @@ When you run this line of code, note that there is no output in the console. R g
 big_diamonds
 ```
 
+Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
+
+```{r}
+filter(big_diamonds, price > 15000)
+```
+
 ### Basic Operators
 
 The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).

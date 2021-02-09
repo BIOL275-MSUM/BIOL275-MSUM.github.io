@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary: "#637238"
+    primary: "#4287f5"
     # heading_font: "ff-scala-sans-pro, sans-serif"
   repo: https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io
   includes:

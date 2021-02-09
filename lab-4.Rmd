@@ -122,7 +122,7 @@ filter(diamonds, carat = 2)
 
 ### Logical Operators
 
-In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the vertical bar `|` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the ampersand `&` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
+In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the ampersand `&` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the vertical bar `|` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
 
 #### And operator
 

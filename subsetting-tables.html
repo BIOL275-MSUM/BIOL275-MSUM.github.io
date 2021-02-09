@@ -7,8 +7,8 @@
 <title>4 Subsetting tables | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9000/tabs.js"></script><script src="libs/bs3compat-0.2.4.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9001/tabs.js"></script><script src="libs/bs3compat-0.2.4.9001/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.17/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
@@ -68,9 +68,9 @@
 </h2>
 <p>In this lab, you will learn to:</p>
 <ul>
-<li>Remove rows based on their values</li>
+<li>Pick rows based on their values</li>
 <li>Reorder rows based on their values</li>
-<li>Remove columns based on their names</li>
+<li>Pick columns based on their names</li>
 </ul>
 </div>
 <div id="introduction-1" class="section level2" number="4.2">
@@ -78,7 +78,7 @@
 <span class="header-section-number">4.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.</p>
-<p>You can manipulate tables easily with functions from the <code>dplyr</code> package, one of the core members of the <code>tidyverse</code>.</p>
+<p>You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.</p>
 <ul>
 <li>Pick rows by their values using <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>
 </li>
@@ -87,14 +87,138 @@
 <li>Pick columns by name using <code>select()</code>
 </li>
 </ul>
+<div id="prerequisites" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of package.</p>
+<p>In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the <code>diamonds</code> dataset from the ggplot2 package. This lab will use the diamonds to show examples of filtering, arranging, and selecting.</p>
+<p>Load the tidyverse package:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4</span>
+<span class="co">#&gt; ✔ tibble  3.0.6     ✔ dplyr   1.0.4</span>
+<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.1</span>
+<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></code></pre></div>
+</div>
+<div id="diamonds" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> <code>diamonds</code><a class="anchor" aria-label="anchor" href="#diamonds"><i class="fas fa-link"></i></a>
+</h3>
+<p>You will explore basic dplyr functions using the <code>diamonds</code> data frame, found in the ggplot package.</p>
+<p>This data frame contains data on almost 54,000 diamonds, including price and other attributes.</p>
+<p>First, take a look at <code>diamonds</code> by printing it in the console:</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># print diamonds in the console</span>
+<span class="va">diamonds</span>
+<span class="co">#&gt; # A tibble: 53,940 x 10</span>
+<span class="co">#&gt;   carat cut       color clarity depth table price     x     y     z</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span>
+<span class="co">#&gt; 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span>
+<span class="co">#&gt; 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span>
+<span class="co">#&gt; 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span>
+<span class="co">#&gt; 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span>
+<span class="co">#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span>
+<span class="co">#&gt; # … with 53,934 more rows</span></code></pre></div>
+<p>Familiarize yourself with the variables in the data frame by looking at the help page for <code>diamonds</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></code></pre></div>
+<p>You can also get their by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).</p>
+<p>If you get a message starting with “No documentation” or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 yet, either directly or by loading the tidyverse package. Load it and try again.</p>
+<p>The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).</p>
+<p>Note that when you printed <code>diamonds</code> in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled <code>&lt;dbl&gt;</code> , one numeric discrete variable labeled <code>&lt;int&gt;</code>, and three categorical ordinal variables labeled <code>&lt;ord&gt;</code>.</p>
+<p>The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).</p>
+<p>The most common column data you will see in data frames are:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="6%">
+<col width="9%">
+<col width="64%">
+<col width="11%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th>Data type</th>
+<th>Example</th>
+<th>Description</th>
+<th>4-way clasification</th>
+<th>Column header</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>logical</td>
+<td><code>TRUE</code></td>
+<td>Logical values (true or false)</td>
+<td>categorical nominal</td>
+<td>lgl</td>
+</tr>
+<tr class="even">
+<td>integer</td>
+<td><code>1L</code></td>
+<td>Positive or negative whole number. The “L” is so R knows it’s not a double</td>
+<td>numeric discrete</td>
+<td>int</td>
+</tr>
+<tr class="odd">
+<td>double</td>
+<td><code>1.5</code></td>
+<td>Decimal numbers</td>
+<td>numeric continuous</td>
+<td>dbl</td>
+</tr>
+<tr class="even">
+<td>character</td>
+<td><code>"A"</code></td>
+<td>Text; note that <code>"1"</code> is still a character data type because of the double quotes</td>
+<td>categorical nominal</td>
+<td>chr</td>
+</tr>
+<tr class="odd">
+<td>factor</td>
+<td><code><a href="https://rdrr.io/r/base/factor.html">factor("A")</a></code></td>
+<td>Text with an enumerated list of values; you can see possible values with <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>
+</td>
+<td>categorical nominal</td>
+<td>fct</td>
+</tr>
+<tr class="even">
+<td>ordered</td>
+<td><code><a href="https://rdrr.io/r/base/factor.html">ordered("A")</a></code></td>
+<td>Text with an enumerated list of values which have an inherent order; you can see possible values with <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>
+</td>
+<td>categorical ordinal</td>
+<td>ord</td>
+</tr>
+<tr class="odd">
+<td>Date</td>
+<td><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code></td>
+<td>Date</td>
+<td>numeric discrete</td>
+<td>date</td>
+</tr>
+<tr class="even">
+<td>POSIXt</td>
+<td><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code></td>
+<td>Date plus time</td>
+<td>numeric continuous</td>
+<td>dttm</td>
+</tr>
+</tbody>
+</table></div>
+<p>You can read more about data types in the (Column data types)[<a href="https://tibble.tidyverse.org/articles/types.html" class="uri">https://tibble.tidyverse.org/articles/types.html</a>] vignette in the tibble package.</p>
+</div>
 </div>
 <div id="background-reading" class="section level2" number="4.3">
 <h2>
 <span class="header-section-number">4.3</span> Background reading<a class="anchor" aria-label="anchor" href="#background-reading"><i class="fas fa-link"></i></a>
 </h2>
-<p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on filtering, arranging, and selecting in</p>
-<p>Eventually you will read most of <a href="https://r4ds.had.co.nz/transform.html">R4DS Chapter 5: Data transformation</a>.</p>
-<p>For today’s assignment, you can start by reading R4DS Sections 5.1 and 5.2</p>
+<p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on filtering, arranging, and selecting in <a href="https://r4ds.had.co.nz/transform.html">Chapter 5: Data transformation</a></p>
+<p>For today’s assignment, you should start by reading R4DS Sections 5.1 and 5.2</p>
 <p>If you wish, you may try their examples in your own R Script. In that case, don’t forget to:</p>
 <ol style="list-style-type: decimal">
 <li>Install the nycflights13 package as described in <a href="https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages">R4DS Section 1.4.4 Other Packages</a>
@@ -126,7 +250,7 @@
 </h2>
 <p>My birds table has &gt; 16,000 rows, not 10,000. What went wrong?</p>
 <p>Answer: be sure to remove any non-species rows first. Use the code from lab 3:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
   <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>                  <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>
@@ -142,7 +266,12 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#subsetting-tables"><span class="header-section-number">4</span> Subsetting tables</a></li>
 <li><a class="nav-link" href="#objectives-3"><span class="header-section-number">4.1</span> Objectives</a></li>
-<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">4.2</span> Introduction</a></li>
+<li>
+<a class="nav-link" href="#introduction-1"><span class="header-section-number">4.2</span> Introduction</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">4.2.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#diamonds"><span class="header-section-number">4.2.2</span> diamonds</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#background-reading"><span class="header-section-number">4.3</span> Background reading</a></li>
 <li><a class="nav-link" href="#assignment"><span class="header-section-number">4.4</span> Assignment</a></li>
 <li><a class="nav-link" href="#student-questions"><span class="header-section-number">4.5</span> Student questions</a></li>
@@ -163,7 +292,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-04.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

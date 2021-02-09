@@ -53,6 +53,8 @@ grading-rubric-1
 subsetting-tables
 objectives-3
 introduction-1
+prerequisites
+diamonds
 background-reading
 assignment
 student-questions

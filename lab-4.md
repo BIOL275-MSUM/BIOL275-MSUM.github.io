@@ -4,27 +4,102 @@
 
 In this lab, you will learn to:
 
--   Remove rows based on their values
+-   Pick rows based on their values
 -   Reorder rows based on their values
--   Remove columns based on their names
+-   Pick columns based on their names
 
 ## Introduction
 
 Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.
 
-You can manipulate tables easily with functions from the `dplyr` package, one of the core members of the `tidyverse`.
+You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.
 
 -   Pick rows by their values using `filter()`
 -   Reorder rows using `arrange()`
 -   Pick columns by name using `select()`
 
+### Prerequisites
+
+In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of package.
+
+In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the `diamonds` dataset from the ggplot2 package. This lab will use the diamonds to show examples of filtering, arranging, and selecting.
+
+Load the tidyverse package:
+
+
+```r
+library(tidyverse)
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+#> ✔ tibble  3.0.6     ✔ dplyr   1.0.4
+#> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+#> ✔ readr   1.4.0     ✔ forcats 0.5.1
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
+```
+
+### `diamonds`
+
+You will explore basic dplyr functions using the `diamonds` data frame, found in the ggplot package.
+
+This data frame contains data on almost 54,000 diamonds, including price and other attributes.
+
+First, take a look at `diamonds` by printing it in the console:
+
+
+```r
+# print diamonds in the console
+diamonds
+#> # A tibble: 53,940 x 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#> 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
+
+Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
+
+
+```r
+help(diamonds)
+```
+
+You can also get their by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).
+
+If you get a message starting with "No documentation" or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 yet, either directly or by loading the tidyverse package. Load it and try again.
+
+The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).
+
+Note that when you printed `diamonds` in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled `<dbl>` , one numeric discrete variable labeled `<int>`, and three categorical ordinal variables labeled `<ord>`.
+
+The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).
+
+The most common column data you will see in data frames are:
+
+| Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
+|-----------|----------------|------------------------------------------------------------------------------------------------------------------|---------------------|---------------|
+| logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
+| integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
+| double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
+| character | `"A"`          | Text; note that `"1"` is still a character data type because of the double quotes                                | categorical nominal | chr           |
+| factor    | `factor("A")`  | Text with an enumerated list of values; you can see possible values with `levels()`                              | categorical nominal | fct           |
+| ordered   | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord           |
+| Date      | `Sys.Date()`   | Date                                                                                                             | numeric discrete    | date          |
+| POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
+
+You can read more about data types in the (Column data types)[<https://tibble.tidyverse.org/articles/types.html>] vignette in the tibble package.
+
 ## Background reading
 
-Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html)
 
-Eventually you will read most of [R4DS Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
-
-For today's assignment, you can start by reading R4DS Sections 5.1 and 5.2
+For today's assignment, you should start by reading R4DS Sections 5.1 and 5.2
 
 If you wish, you may try their examples in your own R Script. In that case, don't forget to:
 

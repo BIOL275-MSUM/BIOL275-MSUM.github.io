@@ -151,16 +151,16 @@
 </ol>
 <p>As you work through the tutorials, add other code headings as necessary.</p>
 <p>Load the tidyverse package by adding this code below the new code section and running it:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>That line of code <strong><em>loads</em></strong> the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code>, it’s usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.</p>
 <p>When you run the code, you will see a <strong><em>message</em></strong> in the console like this:</p>
-<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
 #&gt; ✔ tibble  3.0.6     ✔ dplyr   1.0.4
 #&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.1
-#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
+<pre><code>#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #&gt; ✖ dplyr::filter() masks stats::filter()
 #&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>The first part tells you which packages are being loaded. You will notice ggplot2 is on that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package <em>and</em> function name.</p>
@@ -197,14 +197,14 @@
 <p>First, create a new <a href="code-section.html">code section</a> named “deaths from tigers”</p>
 <p>The data for this and other examples from your textbook can be found on the <a href="https://whitlockschluter.zoology.ubc.ca/">book website</a>. It is stored as a comma-separated values file (.csv).</p>
 <p>Read the data from the textbook website using the <code>read_csv()</code> function, part of the readr package, and assign it to an object named <code>tiger_data</code> using the left assignment operator <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. To do that, copy the code in here and paste it into your script. You do not need to follow the link in your web browser or download the data to your computer.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tiger_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   person = col_double(),</span>
-<span class="co">#&gt;   activity = col_character()</span>
-<span class="co">#&gt; )</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tiger_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   person = col_double(),
+#&gt;   activity = col_character()
+#&gt; )</code></pre>
 <p>The message you get in your console tells you how the data in the CSV was parsed (interpretted) when it was read into R. You can ignore it for now.</p>
 </div>
 <div id="view-the-tiger-data" class="section level3" number="3.5.3">
@@ -212,21 +212,21 @@
 <span class="header-section-number">3.5.3</span> View the tiger data<a class="anchor" aria-label="anchor" href="#view-the-tiger-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>You will notice that the data itself did not appear in the console. That’s because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it. Alternatively, you can copy and paste the code in the code box below, but ONLY INCLUDE THE CODE BELOW, NOT THE OUTPUT LINES PRECEDED BY #&gt;</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tiger_data</span>                  <span class="co"># print the data in the console</span>
-<span class="co">#&gt; # A tibble: 88 x 2</span>
-<span class="co">#&gt;   person activity             </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;                </span>
-<span class="co">#&gt; 1      1 Disturbing tiger kill</span>
-<span class="co">#&gt; 2      2 Forest products      </span>
-<span class="co">#&gt; 3      3 Grass/fodder         </span>
-<span class="co">#&gt; 4      4 Fuelwood/timber      </span>
-<span class="co">#&gt; 5      5 Grass/fodder         </span>
-<span class="co">#&gt; 6      6 Forest products      </span>
-<span class="co">#&gt; # … with 82 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tiger_data</span>                  <span class="co"># print the data in the console</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 88 x 2
+#&gt;   person activity             
+#&gt;    &lt;dbl&gt; &lt;chr&gt;                
+#&gt; 1      1 Disturbing tiger kill
+#&gt; 2      2 Forest products      
+#&gt; 3      3 Grass/fodder         
+#&gt; 4      4 Fuelwood/timber      
+#&gt; 5      5 Grass/fodder         
+#&gt; 6      6 Forest products      
+#&gt; # … with 82 more rows</code></pre>
 <p>The output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).</p>
 <p>You can view a list of distinct values taken by a categorical variable by using the <code>distinct()</code> function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">distinct</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 9 x 1
 #&gt;   activity             
@@ -246,18 +246,18 @@
 <span class="header-section-number">3.5.4</span> Contingency table<a class="anchor" aria-label="anchor" href="#contingency-table"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you want to see how many times each value of activity occurs in the data, you can create a contingency table using the <code>count()</code> function. Again, the data object is the first argument and the variable name is the second argument.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">count</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 9 x 2</span>
-<span class="co">#&gt;   activity                  n</span>
-<span class="co">#&gt; * &lt;chr&gt;                 &lt;int&gt;</span>
-<span class="co">#&gt; 1 Disturbing tiger kill     5</span>
-<span class="co">#&gt; 2 Fishing                   8</span>
-<span class="co">#&gt; 3 Forest products          11</span>
-<span class="co">#&gt; 4 Fuelwood/timber           5</span>
-<span class="co">#&gt; 5 Grass/fodder             44</span>
-<span class="co">#&gt; 6 Herding                   7</span>
-<span class="co">#&gt; # … with 3 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">count</span><span class="op">(</span><span class="va">tiger_data</span>, <span class="va">activity</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 9 x 2
+#&gt;   activity                  n
+#&gt; * &lt;chr&gt;                 &lt;int&gt;
+#&gt; 1 Disturbing tiger kill     5
+#&gt; 2 Fishing                   8
+#&gt; 3 Forest products          11
+#&gt; 4 Fuelwood/timber           5
+#&gt; 5 Grass/fodder             44
+#&gt; 6 Herding                   7
+#&gt; # … with 3 more rows</code></pre>
 <p>As you can see, this function returns another tibble that has two variables: the original one <em>activity</em> and a new one <em>n</em>, which represents the number of times the variable occurred in the data.</p>
 </div>
 <div id="make-a-bar-graph" class="section level3" number="3.5.5">
@@ -268,7 +268,7 @@
 <p>ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph using the tiger data. Your goal is to create a bar graph similar to the one in the textbook in Figure 2.2-1, which looks like this:</p>
 <div class="inline-figure"><img src="images/whitlock_2.2-1.jpg" class="text-center" width="400"></div>
 <p>The first step is to create a new ggplot using the <code>ggplot()</code> function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.</p>
@@ -278,13 +278,13 @@
 <span class="header-section-number">3.5.5.1</span> Geometric objects and aesthetic mappings<a class="anchor" aria-label="anchor" href="#geometric-objects-and-aesthetic-mappings"><i class="fas fa-link"></i></a>
 </h4>
 <p>To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the <code>geom_bar()</code> function. You add the geometric object to the canvas using a plus sign like this:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">activity</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The first (and for now, only) argument to <code>geom_bar()</code> is <code>mapping</code>, an aesthetic mapping that tells R which variables in the data table <em>map</em> to which parts of the graph. An aesthetic mapping is defined by the <code>aes()</code> function. <code>geom_bar()</code> requires only one aesthetic, the argument <code>x</code>, which tells R which variable to put on the x axis.</p>
 <p>How did we know what variable to put on the x-axis in the bar graph? That’s determined by the purpose to the graph. For this graph, the purpose is to plot the distribution of the activities of people attacked and killed by tigers. But what is the actual variable we want to graph? For that you need to go back and look at the data itself. Print the data in the console again by typing its name and running the line:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tiger_data</span></code></pre></div>
 <p>The variables are listed on the second row the of the output. You can see they are named <em>person</em> and <em>activity</em>. Which one is the variable we want to graph? It is <em>activity</em>. So in your aesthetic mapping the code <code>x = activity</code> can be translated as “put the activity variable on the x axis”.</p>
 <p>Any variables you map to an aesthetic must be present in the data, and the variable name must appear exactly as it does in the data.</p>
@@ -311,17 +311,17 @@
 </ol>
 <p>Let’s fix each of those issues in turn.</p>
 <p>First, arrange the levels (categories) of activity in descending order by count (i.e. big columns on the left), using a bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The <code>fct_infreq()</code> function changes a variable to factor with the levels defined by how frequently they occur in the data. Inside the <code>aes()</code> function, change <code>x = activity</code> to <code>x = fct_infreq(activity)</code>.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Second, change color of the columns by adding a <code>fill</code> argument to <code>geom_bar()</code>. Put a comma after the closing parenthesis of the <code>aes()</code> function and add <code>fill =</code>. For the fill color, you could try <code>"red"</code> or <code>"darkred"</code>, but for an exact match use the hex color <code>"#C5351B"</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Third, add better x- and y-axis labels using the <code>labs()</code> function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument <code>x</code> sets the x-axis label while the argument <code>y</code> sets the y-axis label. The label text itself should appear in quotation marks. The <code>x</code> and <code>y</code> arguments should be separated by a comma.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Activity"</span>, y <span class="op">=</span> <span class="st">"Frequency (number of people)"</span><span class="op">)</span></code></pre></div>
@@ -341,7 +341,7 @@
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">tiger_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_bar</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">fct_infreq</span><span class="op">(</span><span class="va">activity</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#C5351B"</span>, 
            width <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span>
@@ -392,26 +392,26 @@
 <span class="header-section-number">3.6.2</span> Read and view the bird data<a class="anchor" aria-label="anchor" href="#read-and-view-the-bird-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>Create a new code section in your script named “bird abundances” and read the data from the textbook website:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bird_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv"</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   species = col_character(),</span>
-<span class="co">#&gt;   abundance = col_double()</span>
-<span class="co">#&gt; )</span>
-
-<span class="va">bird_data</span>                  <span class="co"># print the data in the console</span>
-<span class="co">#&gt; # A tibble: 43 x 2</span>
-<span class="co">#&gt;   species          abundance</span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Black Vulture           64</span>
-<span class="co">#&gt; 2 Turkey Vulture          23</span>
-<span class="co">#&gt; 3 Harris's Hawk            3</span>
-<span class="co">#&gt; 4 Red-tailed Hawk         16</span>
-<span class="co">#&gt; 5 American Kestrel         7</span>
-<span class="co">#&gt; 6 Gambel's Quail         148</span>
-<span class="co">#&gt; # … with 37 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bird_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; cols(
+#&gt;   species = col_character(),
+#&gt;   abundance = col_double()
+#&gt; )</code></pre>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bird_data</span>                  <span class="co"># print the data in the console</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 43 x 2
+#&gt;   species          abundance
+#&gt;   &lt;chr&gt;                &lt;dbl&gt;
+#&gt; 1 Black Vulture           64
+#&gt; 2 Turkey Vulture          23
+#&gt; 3 Harris's Hawk            3
+#&gt; 4 Red-tailed Hawk         16
+#&gt; 5 American Kestrel         7
+#&gt; 6 Gambel's Quail         148
+#&gt; # … with 37 more rows</code></pre>
 <p>The output in the console indicates the object is a tibble with 43 observations (rows) and 2 variables (columns): species and abundance.</p>
 <p>It also indicates abundance has a data type of &lt;dbl&gt;, which is short for double, a numeric value with up to 18 decimal places. In other words, it’s <em>numerical</em> variable. The species variable, on the other hand, has a data type of &lt;chr&gt;, short for character, which means its a categorical variable.</p>
 <p>Because abundance is numerical, not categorical, it does not make sense to view its distinct values with `distinct, or to create a contingency table showing the number of times each value occurs.</p>
@@ -422,34 +422,34 @@
 <span class="header-section-number">3.6.3</span> Make a histogram<a class="anchor" aria-label="anchor" href="#make-a-histogram"><i class="fas fa-link"></i></a>
 </h3>
 <p>Like all ggplots, a histogram begins with a blank canvas. Notice that we set the data argument to <code>bird_data</code> this time rather than <code>tiger_data</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span></code></pre></div>
 <p>While we used <code>geom_bar()</code> to create a bar graph, we will use <code>geom_histogram()</code> to create a histogram. The aesthetic mapping, however, is the same. Both require you to map the <code>x</code> argument, i.e. tell R which variable is on the x-axis. Because we are interested in looking at the distribution of abundance, we set the <code>x</code> argument to <code>abundance</code>:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
+  <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let’s try setting the bin width instead of the number of bins:</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it’s obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.</p>
 <p>Set the <code>closed</code> argument to <code>"left"</code> to change it so the left edge of the bin is included in the bin, not the right edge. The quick-minded might wonder if that makes the first bin (which includes both zero and 50) wider than the others. In short, I don’t know but it doesn’t matter here because there are no species in the dataset with an abundance of zero.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>And finally, clean it up with some axis labels and styling changes:</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">bird_data</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">abundance</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">50</span>,
                  boundary <span class="op">=</span> <span class="fl">0</span>, closed <span class="op">=</span> <span class="st">"left"</span>, 
@@ -508,7 +508,7 @@
 <p>The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family. Each observation (row) in the dataset represents a unique bird species.</p>
 </blockquote>
 <p>Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">auk</span><span class="op">)</span>                          <span class="co"># load the auk package</span>
 <span class="va">birds</span> <span class="op">&lt;-</span> <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>           <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>

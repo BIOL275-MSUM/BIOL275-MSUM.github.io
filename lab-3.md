@@ -90,10 +90,16 @@ When you run the code, you will see a ***message*** in the console like this:
 
 ```
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+```
+
+```
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
 #> ✔ tibble  3.0.6     ✔ dplyr   1.0.4
 #> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
+```
+
+```
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
@@ -144,6 +150,9 @@ Read the data from the textbook website using the `read_csv()` function, part of
 
 ```r
 tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv")
+```
+
+```
 #> 
 #> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
@@ -161,6 +170,9 @@ You will notice that the data itself did not appear in the console. That's becau
 
 ```r
 tiger_data                  # print the data in the console
+```
+
+```
 #> # A tibble: 88 x 2
 #>   person activity             
 #>    <dbl> <chr>                
@@ -205,6 +217,9 @@ If you want to see how many times each value of activity occurs in the data, you
 
 ```r
 count(tiger_data, activity)
+```
+
+```
 #> # A tibble: 9 x 2
 #>   activity                  n
 #> * <chr>                 <int>
@@ -395,14 +410,22 @@ Create a new code section in your script named "bird abundances" and read the da
 
 ```r
 bird_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv")
+```
+
+```
 #> 
 #> ── Column specification ────────────────────────────────────────────────────────
 #> cols(
 #>   species = col_character(),
 #>   abundance = col_double()
 #> )
+```
 
+```r
 bird_data                  # print the data in the console
+```
+
+```
 #> # A tibble: 43 x 2
 #>   species          abundance
 #>   <chr>                <dbl>
@@ -438,6 +461,9 @@ While we used `geom_bar()` to create a bar graph, we will use `geom_histogram()`
 ```r
 ggplot(data = bird_data) +
   geom_histogram(mapping = aes(x = abundance))
+```
+
+```
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 

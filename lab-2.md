@@ -95,6 +95,9 @@ For the rest of this tutorial, we will use the following notation to indicate co
 
 ```r
 1
+```
+
+```
 #> [1] 1
 ```
 
@@ -111,12 +114,33 @@ Give it a try:
 
 ```r
 2 + 2
+```
+
+```
 #> [1] 4
+```
+
+```r
 4 - 1
+```
+
+```
 #> [1] 3
+```
+
+```r
 2 * 3
+```
+
+```
 #> [1] 6
+```
+
+```r
 7 / 3
+```
+
+```
 #> [1] 2.333333
 ```
 
@@ -125,8 +149,17 @@ R uses standard MDAS order of precedence for operators: multiply, then divide, t
 
 ```r
 2 + 2 * 3
+```
+
+```
 #> [1] 8
+```
+
+```r
 (2 + 2) * 3
+```
+
+```
 #> [1] 12
 ```
 
@@ -135,6 +168,9 @@ You can use exponentials like this:
 
 ```r
 3^2    # three squared is nine
+```
+
+```
 #> [1] 9
 ```
 
@@ -156,6 +192,9 @@ Notice that the above code did not produce any output in the Console. After perf
 
 ```r
 x
+```
+
+```
 #> [1] 2
 ```
 
@@ -164,6 +203,9 @@ You can now use `x` anywhere in your code, and R will always know what you mean:
 
 ```r
 x * 5
+```
+
+```
 #> [1] 10
 ```
 
@@ -185,7 +227,13 @@ And you can use as many of these objects as you want in the same bit of code:
 
 ```r
 y / x
+```
+
+```
 #> [1] 3.5
+```
+
+```r
 z <- y + (x / 2)
 ```
 
@@ -200,6 +248,9 @@ Some mathematical operations have no operator. For these you must use what is kn
 
 ```r
 sqrt(9)
+```
+
+```
 #> [1] 3
 ```
 
@@ -225,6 +276,9 @@ A very commonly used function is `c()`, the *combine* function. This combines mu
 ```r
 k <- c(1, 2, 10, 4.7, 5.0)
 k
+```
+
+```
 #> [1]  1.0  2.0 10.0  4.7  5.0
 ```
 
@@ -233,6 +287,9 @@ There are some functions that take vectors as arguments. For example, the the `l
 
 ```r
 length(k)
+```
+
+```
 #> [1] 5
 ```
 
@@ -241,10 +298,25 @@ Useful mathematical functions include:
 
 ```r
 median(k)  # median value
+```
+
+```
 #> [1] 4.7
+```
+
+```r
 mean(k)    # mean value
+```
+
+```
 #> [1] 4.54
+```
+
+```r
 sd(k)      # standard deviation
+```
+
+```
 #> [1] 3.501143
 ```
 
@@ -253,6 +325,9 @@ You can even nest functions. In the example below, the `c()` function is evaluat
 
 ```r
 length(c(1, 2, 10, 4.7, 5.0)) # nested function
+```
+
+```
 #> [1] 5
 ```
 
@@ -262,9 +337,18 @@ Combining several of these features together, you can calculate the standard err
 ```r
 n <- length(k) # sample size
 n
+```
+
+```
 #> [1] 5
+```
+
+```r
 sem <- sd(k) / sqrt(n) # standard error of the mean
 sem
+```
+
+```
 #> [1] 1.565759
 ```
 
@@ -273,10 +357,25 @@ Once you have calculated the SEM you can use it to estimate the upper and lower 
 
 ```r
 mean(k) + 1.96 * sem  # upper limit
+```
+
+```
 #> [1] 7.608887
+```
+
+```r
 mean(k) - 1.96 * sem  # lower limit
+```
+
+```
 #> [1] 1.471113
+```
+
+```r
 c(mean(k) + 1.96 * sem, mean(k) - 1.96 * sem)
+```
+
+```
 #> [1] 7.608887 1.471113
 ```
 

@@ -29,11 +29,20 @@ Load the tidyverse package:
 
 ```r
 library(tidyverse)
+```
+
+```
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+```
+
+```
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
 #> ✔ tibble  3.0.6     ✔ dplyr   1.0.4
 #> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
+```
+
+```
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
@@ -51,6 +60,9 @@ First, take a look at `diamonds` by printing it in the console:
 ```r
 # print diamonds in the console
 diamonds
+```
+
+```
 #> # A tibble: 53,940 x 10
 #>   carat cut       color clarity depth table price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -113,6 +125,9 @@ For example, to take the diamonds data frame and pick only diamonds with a weigh
 
 ```r
 filter(diamonds, carat > 2)
+```
+
+```
 #> # A tibble: 1,889 x 10
 #>   carat cut     color clarity depth table price     x     y     z
 #>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -139,6 +154,9 @@ When you run this line of code, note that there is no output in the console. R g
 
 ```r
 big_diamonds
+```
+
+```
 #> # A tibble: 1,889 x 10
 #>   carat cut     color clarity depth table price     x     y     z
 #>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -164,6 +182,9 @@ Here is an example of using the `==` operator with the `cut` variable, an ordere
 
 ```r
 filter(diamonds, cut == "Ideal")
+```
+
+```
 #> # A tibble: 21,551 x 10
 #>   carat cut   color clarity depth table price     x     y     z
 #>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -183,6 +204,9 @@ Another common errors when you are starting out is to try to use `=` instead of 
 
 ```r
 filter(diamonds, carat = 2)
+```
+
+```
 #> Error: Problem with `filter()` input `..1`.
 #> ✖ Input `..1` is named.
 #> ℹ This usually means that you've used `=` instead of `==`.
@@ -210,6 +234,9 @@ For "or" comparisons, you have to use the vertical bar `|` operator. For example
 
 ```r
 filter(diamonds, color == "D" | color == "E")
+```
+
+```
 #> # A tibble: 16,572 x 10
 #>   carat cut     color clarity depth table price     x     y     z
 #>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -260,6 +287,9 @@ For example, to sort the `diamonds` data frame by price:
 
 ```r
 arrange(diamonds, cut)
+```
+
+```
 #> # A tibble: 53,940 x 10
 #>   carat cut   color clarity depth table price     x     y     z
 #>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -277,6 +307,9 @@ You can see that even within Fair cut diamonds, there is still considerable vari
 
 ```r
 arrange(diamonds, cut, price)
+```
+
+```
 #> # A tibble: 53,940 x 10
 #>   carat cut   color clarity depth table price     x     y     z
 #>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -298,6 +331,9 @@ To sort a variable in descending rather than ascending order, you can wrap the v
 
 ```r
 arrange(diamonds, cut, desc(price))
+```
+
+```
 #> # A tibble: 53,940 x 10
 #>   carat cut   color clarity depth table price     x     y     z
 #>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -323,6 +359,9 @@ For example, say you wanted to focus on the variables carat, cut, and color, you
 
 ```r
 select(diamonds, carat, cut, color)
+```
+
+```
 #> # A tibble: 53,940 x 3
 #>   carat cut       color
 #>   <dbl> <ord>     <ord>
@@ -342,6 +381,9 @@ Technically, you can also select variables by their position, so `select(diamond
 
 ```r
 select(diamonds, color, cut, carat)
+```
+
+```
 #> # A tibble: 53,940 x 3
 #>   color cut       carat
 #>   <ord> <ord>     <dbl>
@@ -359,6 +401,9 @@ There is also a shorthand for selecting many variables that appear consecutively
 
 ```r
 select(diamonds, carat:price)
+```
+
+```
 #> # A tibble: 53,940 x 7
 #>   carat cut       color clarity depth table price
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>
@@ -378,6 +423,9 @@ Sometimes its easier to say which variables you *don't* want to keep rather than
 
 ```r
 select(diamonds, -table)
+```
+
+```
 #> # A tibble: 53,940 x 9
 #>   carat cut       color clarity depth price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <int> <dbl> <dbl> <dbl>
@@ -416,6 +464,9 @@ For example, the following code would move table and price to the front and leav
 
 ```r
 select(diamonds, ends_with("e"), everything())
+```
+
+```
 #> # A tibble: 53,940 x 10
 #>   table price carat cut       color clarity depth     x     y     z
 #>   <dbl> <int> <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl>

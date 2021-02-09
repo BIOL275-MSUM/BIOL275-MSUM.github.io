@@ -397,7 +397,7 @@ To remove several variables, you can prepend each one with a `-`. You can even r
 select(diamonds, -x:-y)
 ```
 
-#### `select()` helper functions
+### Helper functions
 
 Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
 
@@ -440,13 +440,13 @@ birds <-                              # create a new table named birds
   filter(category == "species")       # remove non-species taxa
 ```
 
-You will create both an R script (.R) and an R Markdown document (.Rmd). You will
+Begin by creating an R script.
 
 ### R script
 
 1.  Create a new R script named \`assignment.R\` to house your code.
-2.  Load the tidyverse and auk packages
-3.  Read in the eBird taxonomy table
+2.  In your script, load the tidyverse and auk packages
+3.  In your script, read in the eBird taxonomy table
 
 Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks:
 

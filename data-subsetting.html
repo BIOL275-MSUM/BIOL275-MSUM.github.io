@@ -450,10 +450,11 @@
 <p>To remove several variables, you can prepend each one with a <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. You can even remove a range of values, but the syntax is quirky. You have to put the <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> before each variable name. For example, to remove x, y, and z variables:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">x</span><span class="op">:</span><span class="op">-</span><span class="va">y</span><span class="op">)</span></code></pre></div>
-<div id="select-helper-functions" class="section level4" number="4.5.1.1">
-<h4>
-<span class="header-section-number">4.5.1.1</span> <code>select()</code> helper functions<a class="anchor" aria-label="anchor" href="#select-helper-functions"><i class="fas fa-link"></i></a>
-</h4>
+</div>
+<div id="helper-functions" class="section level3" number="4.5.2">
+<h3>
+<span class="header-section-number">4.5.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
+</h3>
 <p>Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.</p>
 <p>There are several functions that can be used within <code>select()</code> :</p>
 <ul>
@@ -477,7 +478,6 @@
 <span class="co">#&gt; # … with 53,934 more rows</span></code></pre></div>
 </div>
 </div>
-</div>
 <div id="assignment" class="section level2" number="4.6">
 <h2>
 <span class="header-section-number">4.6</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
@@ -488,15 +488,15 @@
   <span class="va">ebird_taxonomy</span> <span class="op">%&gt;%</span>                  <span class="co"># start with the ebird_taxonomy data</span>
   <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                     <span class="co"># tibbles print better in the console</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
-<p>You will create both an R script (.R) and an R Markdown document (.Rmd). You will</p>
+<p>Begin by creating an R script.</p>
 <div id="r-script" class="section level3" number="4.6.1">
 <h3>
 <span class="header-section-number">4.6.1</span> R script<a class="anchor" aria-label="anchor" href="#r-script"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>Create a new R script named `assignment.R` to house your code.</li>
-<li>Load the tidyverse and auk packages</li>
-<li>Read in the eBird taxonomy table</li>
+<li>In your script, load the tidyverse and auk packages</li>
+<li>In your script, read in the eBird taxonomy table</li>
 </ol>
 <p>Now use what you know from previous labs, and what you have learned from today’s lab, to perform the following data manipulation tasks:</p>
 <ol style="list-style-type: decimal">
@@ -616,7 +616,10 @@
 <a class="nav-link" href="#arrange-rows-with-arrange"><span class="header-section-number">4.4</span> Arrange rows with arrange()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#descending-order"><span class="header-section-number">4.4.1</span> Descending order</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#select-columns-with-select"><span class="header-section-number">4.5</span> Select columns with select()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#removing-variables"><span class="header-section-number">4.5.1</span> Removing variables</a></li></ul>
+<a class="nav-link" href="#select-columns-with-select"><span class="header-section-number">4.5</span> Select columns with select()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#removing-variables"><span class="header-section-number">4.5.1</span> Removing variables</a></li>
+<li><a class="nav-link" href="#helper-functions"><span class="header-section-number">4.5.2</span> Helper functions</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#assignment"><span class="header-section-number">4.6</span> Assignment</a><ul class="nav navbar-nav">

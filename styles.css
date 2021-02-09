@@ -14,6 +14,14 @@
   font-style: normal;
 }
 
-div.sourceCode > pre .copy button {
+
+/* hide the copy button and only show it when hovering over code not output */
+/* from here: https://github.com/rstudio/bookdown/issues/1040 */
+
+pre .copy button {
   visibility: hidden;
+}
+
+div.sourceCode:hover > pre .copy button {
+  visibility: visible;
 }

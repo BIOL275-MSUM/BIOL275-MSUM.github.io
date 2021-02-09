@@ -26,7 +26,7 @@ In addition to getting us access to dplyr packages, loading the tidyverse packag
 
 Load the tidyverse package:
 
-```{r}
+```{r load-tidyverse}
 library(tidyverse)
 ```
 
@@ -38,14 +38,14 @@ This data frame contains data on almost 54,000 diamonds, including price and oth
 
 First, take a look at `diamonds` by printing it in the console:
 
-```{r}
+```{r print-diamonds}
 # print diamonds in the console
 diamonds
 ```
 
 Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
 
-```{r}
+```{r help-diamonds, eval=FALSE}
 help(diamonds)
 ```
 
@@ -97,13 +97,13 @@ When you run the code, R returns a new data frame.
 
 If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
 
-```{r}
+```{r filter-assign}
 big_diamonds <- filter(diamonds, carat > 2)
 ```
 
 When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
 
-```{r, eval=FALSE}
+```{r print-assigned}
 big_diamonds
 ```
 
@@ -117,7 +117,7 @@ There is one major difference between comparisons of numeric (integer and double
 
 Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
 
-```{r}
+```{r filter-chr}
 filter(diamonds, cut == "Ideal")
 ```
 
@@ -125,7 +125,7 @@ Note that `"Ideal"` has double quotes around it. This is to tell R you want to f
 
 Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
 
-```{r}
+```{r filter-error, error=TRUE}
 filter(diamonds, carat = 2)
 ```
 
@@ -137,7 +137,7 @@ In computer language, the expression for meeting multiple criteria simultaneousl
 
 If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
 
-```{r, eval=FALSE}
+```{r filter-and, eval=FALSE}
 filter(diamonds, carat > 2, price < 6000)
 filter(diamonds, carat > 2 & price < 6000)
 ```
@@ -146,13 +146,13 @@ filter(diamonds, carat > 2 & price < 6000)
 
 For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
 
-```{r, eval=FALSE}
+```{r filter-or}
 filter(diamonds, color == "D" | color == "E")
 ```
 
 This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
 
-```{r, eval=FALSE}
+```{r filter-in, eval=FALSE}
 filter(diamonds, color %in% c("D", "E"))
 ```
 
@@ -168,7 +168,7 @@ filter(diamonds, !(color == "E"))
 
 Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
 
-```{r, eval=FALSE}
+```{r filter-not-na, eval=FALSE}
 filter(diamonds, !is.na(color))
 ```
 
@@ -182,13 +182,13 @@ The first argument is the data frame to sort. Subsequent arguments are the names
 
 For example, to sort the `diamonds` data frame by price:
 
-```{r}
+```{r arrange-1}
 arrange(diamonds, cut)
 ```
 
 You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
 
-```{r}
+```{r arrange-2}
 arrange(diamonds, cut, price)
 ```
 
@@ -198,7 +198,7 @@ If you sort a character (text) variable, it will sort alphabetically. If you sor
 
 To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
 
-```{r}
+```{r arrange-3}
 arrange(diamonds, cut, desc(price))
 ```
 
@@ -212,7 +212,7 @@ The first argument is the name of the data frame. The subsequent arguments are t
 
 For example, say you wanted to focus on the variables carat, cut, and color, you could use:
 
-```{r}
+```{r select-1}
 select(diamonds, carat, cut, color)
 ```
 
@@ -220,13 +220,13 @@ Technically, you can also select variables by their position, so `select(diamond
 
 `select()` can also be used to rearrange the order of columns:
 
-```{r}
+```{r select-2}
 select(diamonds, color, cut, carat)
 ```
 
 There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
 
-```{r}
+```{r select-3}
 select(diamonds, carat:price)
 ```
 
@@ -234,13 +234,13 @@ select(diamonds, carat:price)
 
 Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
 
-```{r}
+```{r select-remove}
 select(diamonds, -table)
 ```
 
 To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
 
-```{r, eval=FALSE}
+```{r select-remove-range, eval=FALSE}
 select(diamonds, -x:-y)
 ```
 
@@ -260,7 +260,7 @@ There are several functions that can be used within `select()` :
 
 For example, the following code would move table and price to the front and leave everything else at the end:
 
-```{r}
+```{r select-everything}
 select(diamonds, ends_with("e"), everything())
 ```
 

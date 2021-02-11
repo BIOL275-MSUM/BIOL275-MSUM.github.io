@@ -37,7 +37,7 @@ bar-graphs
 example-tiger-data
 read-the-tiger-data
 view-the-tiger-data
-contingency-table
+frequency-table
 make-a-bar-graph
 geometric-objects-and-aesthetic-mappings
 labels-and-themes

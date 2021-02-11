@@ -210,9 +210,9 @@ distinct(tiger_data, activity)
 #> 9 Toilet
 ```
 
-### Contingency table
+### Frequency table
 
-If you want to see how many times each value of activity occurs in the data, you can create a contingency table using the `count()` function. Again, the data object is the first argument and the variable name is the second argument.
+If you want to see how many times each value of activity occurs in the data, you can create a frequency table using the `count()` function. Again, the data object is the first argument and the variable name is the second argument.
 
 
 ```r

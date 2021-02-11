@@ -71,6 +71,7 @@ removing-variables
 helper-functions
 assignment
 r-script
+questions
 lab-report
 grading-rubric-2
 student-questions

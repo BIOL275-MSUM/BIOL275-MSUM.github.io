@@ -347,9 +347,11 @@ After you have crafted working R code in your R script, *then* you should create
 
 5.  Knit the document
 
-6.  Commit all files and push to GitHub. Conduct your peer reviews
+6.  Commit all files and push to GitHub
 
-7.  Add links to peer reviews to your lab report, commit, and push again
+7.  ~~Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again~~
+
+    [UPDATE: No peer review required for this lab]{.text-warning}
 
 8.  Submit the URL of your repo to D2L for grading
 
@@ -382,15 +384,23 @@ You will be assessed based on the following rubric:
 
     -   Code for tables works
 
--   Lab Report (lab-report.md)
+-   Lab Report (README.md)
 
     -   Questions answered correctly
-    -   Links to peer-review Issues included
+
+    -   ~~Links to peer-review Issues included~~
+
+        [UPDATE: No peer review required for this lab]{.text-warning}
+
     -   Session info included
 
--   Lab report has been peer-reviewed at least once
+-   ~~Lab report has been peer-reviewed at least once~~
 
--   README is complete
+    [UPDATE: No peer review required for this lab]{.text-warning}
+
+-   ~~README is complete~~
+
+    [UPDATE: Your README and Lab Report can be the same document, named README.Rmd ]{.text-warning}
 
 -   Submitted link to repository on D2L
 

@@ -312,7 +312,9 @@ Begin by creating an R script.
 2.  In your script, load the tidyverse and auk packages
 3.  In your script, read in the eBird taxonomy table
 
-Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks:
+### Questions
+
+Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks. Suggestion: for each question, put a comment like `# question 1` on the line before, so you can read your script more easily.
 
 1.  Print a table containing only species NOT in the Order Passeriformes. Include all columns.
 2.  Print a table containing only species in the Order Passeriformes. Include all columns.

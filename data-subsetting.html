@@ -556,14 +556,25 @@
 <h3>
 <span class="header-section-number">4.6.2</span> Lab Report<a class="anchor" aria-label="anchor" href="#lab-report"><i class="fas fa-link"></i></a>
 </h3>
-<p>After you have crafted working R code in your R script, <em>then</em> you should create your lab report using R Markdown. Create a blank R Markdown document. Add a heading titled “Lab 4 Report”, your name, and the date. Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should <em>print</em> a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:</p>
+<p>After you have crafted working R code in your R script, <em>then</em> you should create your lab report using R Markdown</p>
+<ol style="list-style-type: decimal">
+<li><p>Create an R Markdown document README.Rmd (you won’t have a separate Rmd for the lab report in this lab)</p></li>
+<li><p>Add the <a href="r-markdown-documents.html#yaml-header">YAML header</a>. Change the title to “Lab 4”</p></li>
+<li>
+<p>Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should <em>print</em> a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:</p>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span>
 <span class="va">bang</span></code></pre></div>
-<p>Next finish you lab report by adding a session info section and knitting the document. Add a README file to your repo with links to your script and lab report and knit the README. Commit all files and push to GitHub. Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again. Finally, submit the URL of your repo to D2L for grading.</p>
-<p>See the previous lab for more details on the steps listed above.</p>
+</li>
+<li><p>Adding a session info section. You do <em>not</em> need a link to your R script in the lab report</p></li>
+<li><p>Knit the document</p></li>
+<li><p>Commit all files and push to GitHub. Conduct your peer reviews</p></li>
+<li><p>Add links to peer reviews to your lab report, commit, and push again</p></li>
+<li><p>Submit the URL of your repo to D2L for grading</p></li>
+</ol>
+<p>See the previous lab for more details on the steps listed above</p>
 </div>
 </div>
 <div id="grading-rubric-2" class="section level2" number="4.7">
@@ -692,7 +703,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-09.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

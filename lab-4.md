@@ -569,22 +569,36 @@ Now use what you know from previous labs, and what you have learned from today's
 
 ### Lab Report
 
-After you have crafted working R code in your R script, *then* you should create your lab report using R Markdown. Create a blank R Markdown document. Add a heading titled "Lab 4 Report", your name, and the date. Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should *print* a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:
+After you have crafted working R code in your R script, *then* you should create your lab report using R Markdown
 
+1.  Create an R Markdown document README.Rmd (you won't have a separate Rmd for the lab report in this lab)
 
-```r
-filter(foo, bar == "baz")
-```
+2.  Add the [YAML header](r-markdown-documents.html#yaml-header). Change the title to "Lab 4"
 
+3.  Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should *print* a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:
 
-```r
-bang <- filter(foo, bar == "baz")
-bang
-```
+    
+    ```r
+    filter(foo, bar == "baz")
+    ```
 
-Next finish you lab report by adding a session info section and knitting the document. Add a README file to your repo with links to your script and lab report and knit the README. Commit all files and push to GitHub. Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again. Finally, submit the URL of your repo to D2L for grading.
+    
+    ```r
+    bang <- filter(foo, bar == "baz")
+    bang
+    ```
 
-See the previous lab for more details on the steps listed above.
+4.  Adding a session info section. You do *not* need a link to your R script in the lab report
+
+5.  Knit the document
+
+6.  Commit all files and push to GitHub. Conduct your peer reviews
+
+7.  Add links to peer reviews to your lab report, commit, and push again
+
+8.  Submit the URL of your repo to D2L for grading
+
+See the previous lab for more details on the steps listed above
 
 ## Grading Rubric
 

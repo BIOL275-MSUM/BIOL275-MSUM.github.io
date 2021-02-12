@@ -1,5 +1,11 @@
 # Session info
 
+```{css, echo=FALSE}
+pre .copy button {
+  visibility: visible;
+}
+```
+
 Information about your R session  can help other users recreate your analyses or diagnose any errors you may be encountering.
 
 The `session_info()` function in the sessioninfo package provides information about the version of R you are running, your operating system, and the list of packages you have loaded, with version numbers.

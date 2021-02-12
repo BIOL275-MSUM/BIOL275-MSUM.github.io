@@ -1,7 +1,7 @@
 # Session info
 
 <style type="text/css">
-pre .copy button {
+main div pre .copy button {
   visibility: visible;
 }
 </style>

@@ -1,5 +1,11 @@
 # Session info
 
+<style type="text/css">
+pre .copy button {
+  visibility: visible;
+}
+</style>
+
 Information about your R session  can help other users recreate your analyses or diagnose any errors you may be encountering.
 
 The `session_info()` function in the sessioninfo package provides information about the version of R you are running, your operating system, and the list of packages you have loaded, with version numbers.
@@ -11,10 +17,6 @@ You can share such information in an R Markdown document with code like this:
 sessioninfo::session_info()
 ```
 ````
-
-    `​``{r  session-info2}
-    sessioninfo::session_info()
-    ```
 
 In the code above, the double colons tell R to look for the `session_info()` function within the sessioninfo package, so you do not need to load the sessioninfo package. 
 

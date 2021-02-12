@@ -12,10 +12,6 @@ sessioninfo::session_info()
 ```
 ````
 
-    `​``{r  session-info2}
-    sessioninfo::session_info()
-    ```
-
 In the code above, the double colons tell R to look for the `session_info()` function within the sessioninfo package, so you do not need to load the sessioninfo package. 
 
 You do, however, need to have the sessioninfo package installed on your machine. To do that, you can run this code in your console just once (do not put it in your R or Rmd scripts):

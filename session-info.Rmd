@@ -1,7 +1,7 @@
 # Session info
 
 ```{css, echo=FALSE}
-pre .copy button {
+main div pre .copy button {
   visibility: visible;
 }
 ```

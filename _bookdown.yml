@@ -13,6 +13,7 @@ rmd_files: [
   "project-options.Rmd",
   "code-sections.Rmd",
   "r-markdown-docs.Rmd",
+  "session-info.Rmd",
   "github-notifications.Rmd",
   
 ]

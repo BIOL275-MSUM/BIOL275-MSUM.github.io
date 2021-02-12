@@ -343,7 +343,7 @@ After you have crafted working R code in your R script, *then* you should create
     bang
     ```
 
-4.  Adding a session info section. You do *not* need a link to your R script in the lab report
+4.  Add a [session info](session-info.html) section. You do *not* need a link to your R script in the lab report
 
 5.  Knit the document
 
@@ -400,7 +400,7 @@ You will be assessed based on the following rubric:
 
 -   ~~README is complete~~
 
-    [UPDATE: Your README and Lab Report can be the same document, named README.Rmd ]{.text-warning}
+    [UPDATE: Your README and Lab Report can be the same document, named README.Rmd]{.text-warning}
 
 -   Submitted link to repository on D2L
 

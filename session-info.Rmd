@@ -1,5 +1,12 @@
 # Session info
 
+<!-- 
+The code chunk example below requires strange formatting to get it to show
+That formatting causes the copy button to be hidden
+This next css code chunk makes the copy button visible
+I'm still not sure how to make it visible only on hover
+-->
+
 ```{css, echo=FALSE}
 main div pre .copy button {
   visibility: visible;

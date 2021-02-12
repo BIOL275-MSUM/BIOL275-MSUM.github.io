@@ -6,17 +6,15 @@ The `session_info()` function in the sessioninfo package provides information ab
 
 You can share such information in an R Markdown document with code like this:
 
-```{r}`
+````
 ```{r session-info}
 sessioninfo::session_info()
 ```
 ````
 
-```{markdown}`
-```{r session-info}
-sessioninfo::session_info()
-```
-````
+    `​``{r  session-info2}
+    sessioninfo::session_info()
+    ```
 
 In the code above, the double colons tell R to look for the `session_info()` function within the sessioninfo package, so you do not need to load the sessioninfo package. 
 

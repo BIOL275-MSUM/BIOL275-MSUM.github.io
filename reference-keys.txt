@@ -102,6 +102,7 @@ parts-of-a-code-chunk
 chunk-arguments
 run-a-code-chunk
 knitting
+session-info
 part-git-and-github
 github-notifications
 subscribing-to-notifications

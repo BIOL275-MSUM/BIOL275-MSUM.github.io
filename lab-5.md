@@ -183,6 +183,21 @@ summarize(diamonds, mean_carat = mean(carat))
 #> 1      0.798
 ```
 
+You can calculate multiple summary statistics at the same time by providing a comma-separated list of name-value pairs. Because the line starts getting long, this example has each argument on its own line, but it would work just fine if everything was on the same line.
+
+
+```r
+summarize(
+  diamonds, 
+  mean_carat = mean(carat), 
+  sd_carat = sd(carat)
+)
+```
+
+### Summary functions
+
+There are a wide variety
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

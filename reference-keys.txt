@@ -85,6 +85,7 @@ rename-variables-with-rename
 create-new-variables-with-mutate
 mutate-an-existing-variable
 summarize-a-data-set-with-summarize
+summary-functions
 assignment-1
 questions-1
 lab-report-1

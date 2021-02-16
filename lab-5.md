@@ -222,6 +222,27 @@ summarize(diamonds, sampl_size = n())
 #> 1      53940
 ```
 
+### Combine functions and equations
+
+When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the `price` variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:
+
+
+```r
+summarize(
+  diamonds, 
+  sem = mean(price) / sqrt(n())
+)
+```
+
+```
+#> # A tibble: 1 x 1
+#>     sem
+#>   <dbl>
+#> 1  16.9
+```
+
+Notice that the equation for standard error (sem) above uses both the `mean()` function and the `n()` function.
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

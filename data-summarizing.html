@@ -250,6 +250,22 @@
 #&gt;        &lt;int&gt;
 #&gt; 1      53940</code></pre>
 </div>
+<div id="combine-functions-and-equations" class="section level3" number="5.5.2">
+<h3>
+<span class="header-section-number">5.5.2</span> Combine functions and equations<a class="anchor" aria-label="anchor" href="#combine-functions-and-equations"><i class="fas fa-link"></i></a>
+</h3>
+<p>When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the <code>price</code> variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:</p>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">summarize</span><span class="op">(</span>
+  <span class="va">diamonds</span>, 
+  sem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1 x 1
+#&gt;     sem
+#&gt;   &lt;dbl&gt;
+#&gt; 1  16.9</code></pre>
+<p>Notice that the equation for standard error (sem) above uses both the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function and the <code>n()</code> function.</p>
+</div>
 </div>
 <div id="assignment-1" class="section level2" number="5.6">
 <h2>
@@ -259,7 +275,7 @@
 <p>For your assignment, you will work with the famous Edgar Anderson <code>iris</code> data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from ach of 3 species of iris. The species are <em>Iris setosa</em>, <em>versicolor</em>, and <em>virginica</em>.</p>
 <p>You can print <code>iris</code> in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in a user-friendly manner. To have it print more nicely, turn it into a tibble first.</p>
 <p>Add this to your script:</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># so it prints a little nicer</span></code></pre></div>
 <p>Note that when you do this, iris will now show up in your Environment tab.</p>
 <div id="questions-1" class="section level3" number="5.6.1">
@@ -373,7 +389,10 @@
 <a class="nav-link" href="#create-new-variables-with-mutate"><span class="header-section-number">5.4</span> Create new variables with mutate()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#mutate-an-existing-variable"><span class="header-section-number">5.4.1</span> mutate() an existing variable</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#summarize-a-data-set-with-summarize"><span class="header-section-number">5.5</span> Summarize a data set with summarize()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#summary-functions"><span class="header-section-number">5.5.1</span> Summary functions</a></li></ul>
+<a class="nav-link" href="#summarize-a-data-set-with-summarize"><span class="header-section-number">5.5</span> Summarize a data set with summarize()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-functions"><span class="header-section-number">5.5.1</span> Summary functions</a></li>
+<li><a class="nav-link" href="#combine-functions-and-equations"><span class="header-section-number">5.5.2</span> Combine functions and equations</a></li>
+</ul>
 </li>
 <li>
 <a class="nav-link" href="#assignment-1"><span class="header-section-number">5.6</span> Assignment</a><ul class="nav navbar-nav">

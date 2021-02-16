@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 Data summarization | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9001/tabs.js"></script><script src="libs/bs3compat-0.2.4.9001/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.17/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="active" href="data-summarization.html"><span class="header-section-number">5</span> Data summarization</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">8</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">9</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">11</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">12</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">13</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">14</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">16</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-summarization" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Data summarization<a class="anchor" aria-label="anchor" href="#data-summarization"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-4" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lab, you will learn to:</p>
+<ul>
+<li><p>Rename variables</p></li>
+<li><p>Create new variables</p></li>
+<li><p>Summarize a dataset</p></li>
+<li><p>Summarize a dataset by groups</p></li>
+<li>
+<p>Visualize the relationship between variables</p>
+<ul>
+<li>Numerical and categorical variable</li>
+<li>Two numerical variables</li>
+<li>Three variables</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="introduction-2" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lab you</p>
+<ul>
+<li>Pick rows by their values using <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>
+</li>
+<li>Reorder rows using <code>arrange()</code>
+</li>
+<li>Pick columns by name using <code>select()</code>
+</li>
+</ul>
+<div id="prerequisites-1" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this lab you will use functions from the dplyr and ggplot2 packages. While you could load those packages individually, in this course you are encouraged to always load the entire tidyverse set of packages.</p>
+<p>Load the tidyverse package:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>    <span class="co"># load the tidyverse package</span></code></pre></div>
+<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+#&gt; ✔ tibble  3.0.6     ✔ dplyr   1.0.4
+#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
+<pre><code>#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="diamonds-1" class="section level3" number="5.2.2">
+<h3>
+<span class="header-section-number">5.2.2</span> <code>diamonds</code><a class="anchor" aria-label="anchor" href="#diamonds-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the <code>diamonds</code> dataset from the ggplot2 package. This lab will use the <code>diamonds</code> dataset to show examples of renaming, mutating, and summarizing.</p>
+<p>You can read more about the <code>diamonds</code> dataset in the previous lab, <a href="data-subsetting.html">Data subsetting</a>.</p>
+</div>
+</div>
+<div id="rename-variables-with-rename" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Rename variables with <code>rename()</code><a class="anchor" aria-label="anchor" href="#rename-variables-with-rename"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code>rename()</code> function allows you to rename variables in a data frame. The first argument to <code>rename()</code> is the data frame. The other arguments specify which variables to rename, with the format <code>new_name = old_name</code>.</p>
+<p>For example, say you want to rename the <code>x</code>, <code>y</code>, and <code>z</code> variables to <code>length</code>, <code>width</code>, and <code>height</code>:</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rename</span><span class="op">(</span><span class="va">diamonds</span>, length <span class="op">=</span> <span class="va">x</span>, width <span class="op">=</span> <span class="va">y</span>, height <span class="op">=</span> <span class="va">z</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 x 10
+#&gt;   carat cut       color clarity depth table price length width height
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326   3.95  3.98   2.43
+#&gt; 2 0.21  Premium   E     SI1      59.8    61   326   3.89  3.84   2.31
+#&gt; 3 0.23  Good      E     VS1      56.9    65   327   4.05  4.07   2.31
+#&gt; 4 0.290 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
+#&gt; 5 0.31  Good      J     SI2      63.3    58   335   4.34  4.35   2.75
+#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
+#&gt; # … with 53,934 more rows</code></pre>
+<p>Note the lack of quotes around the names of the data frame, the new variable names or the old variables names</p>
+<p>The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">rename</span><span class="op">(</span>
+  <span class="va">diamonds</span>, 
+  length <span class="op">=</span> <span class="va">x</span>, 
+  width <span class="op">=</span> <span class="va">y</span>, 
+  height <span class="op">=</span> <span class="va">z</span>
+<span class="op">)</span></code></pre></div>
+<p>This makes the code more readable. Just make sure you have commas after each argument except the last, and don’t forget the closing parenthesis on its own line</p>
+</div>
+<div id="create-new-variables-with-mutate" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Create new variables with <code>mutate()</code><a class="anchor" aria-label="anchor" href="#create-new-variables-with-mutate"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code>mutate()</code> function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to <code>mutate()</code> is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination thereof.</p>
+<p>To make viewing the new variables easier, first select a subset of variables from the <code>diamonds</code> data set using <code>select()</code> and give the new data frame the name <code>d2</code>:</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">price</span><span class="op">)</span>
+<span class="va">d2</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 x 2
+#&gt;   carat price
+#&gt;   &lt;dbl&gt; &lt;int&gt;
+#&gt; 1 0.23    326
+#&gt; 2 0.21    326
+#&gt; 3 0.23    327
+#&gt; 4 0.290   334
+#&gt; 5 0.31    335
+#&gt; 6 0.24    336
+#&gt; # … with 53,934 more rows</code></pre>
+<p>Now use the new data frame <code>d2</code> to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named <code>ppc</code> (“price per carat”):</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">mutate</span><span class="op">(</span><span class="va">d2</span>, ppc <span class="op">=</span> <span class="va">price</span> <span class="op">/</span> <span class="va">carat</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 x 3
+#&gt;   carat price   ppc
+#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+#&gt; 1 0.23    326 1417.
+#&gt; 2 0.21    326 1552.
+#&gt; 3 0.23    327 1422.
+#&gt; 4 0.290   334 1152.
+#&gt; 5 0.31    335 1081.
+#&gt; 6 0.24    336 1400 
+#&gt; # … with 53,934 more rows</code></pre>
+<p>You can also use functions to create new variables.</p>
+<div id="mutate-an-existing-variable" class="section level3" number="5.4.1">
+<h3>
+<span class="header-section-number">5.4.1</span> <code>mutate()</code> an existing variable<a class="anchor" aria-label="anchor" href="#mutate-an-existing-variable"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="assignment-1" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>First, create a new R script (not Rmd) and load the tidyverse package.</p>
+<p>For your assignment, you will work with the famous Edgar Anderson <code>iris</code> data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from ach of 3 species of iris. The species are <em>Iris setosa</em>, <em>versicolor</em>, and <em>virginica</em>.</p>
+<p>You can print <code>iris</code> in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in a user-friendly manner. To have it print more nicely, turn it into a tibble first.</p>
+<p>Add this to your script:</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># so it prints a little nicer</span></code></pre></div>
+<p>Note that when you do this, iris will now show up in your Environment tab.</p>
+<div id="questions-1" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> Questions<a class="anchor" aria-label="anchor" href="#questions-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now use what you know from previous labs, and what you have learned from today’s lab, to perform the following data manipulation tasks. Suggestion: for each question, put a comment like <code># question 1</code> on the line before, so you can read your script more easily.</p>
+<ol style="list-style-type: decimal">
+<li><p>Rename each variable so that it is all lower-case and uses an underscore <code>_</code> instead of a period <code>.</code> in the name (the recommended coding style in the <a href="https://style.tidyverse.org/syntax.html">tidyverse style guide</a>). Print the resulting table.</p></li>
+<li><p>Convert the four numerical variables from mm to cm by multiplying by 10. Print the resulting table.</p></li>
+<li><p>Calculate sepal area and petal area (area is equal to length multiplied by width). Print a table with <em>only</em> the variables sepal area, petal area, and species.</p></li>
+<li>
+<p>Calculate the following statistics for the <em>entire dataset</em> from the sepal length variable and print the resulting table:</p>
+<ol style="list-style-type: lower-alpha">
+<li>sample size</li>
+<li>maximum value</li>
+<li>minimum value</li>
+<li>range</li>
+<li>median</li>
+<li>first quartile (q1)</li>
+<li>third quartile (q2)</li>
+<li>inter-quartile range (iqr)</li>
+</ol>
+</li>
+<li>
+<p>Calculate the following statistics for each species from the petal width variable and print the resulting table:</p>
+<ol style="list-style-type: lower-alpha">
+<li>sample size</li>
+<li>mean</li>
+<li>standard deviation</li>
+<li>variance</li>
+<li>standard error of the mean</li>
+<li>approximate 95% confidence interval</li>
+</ol>
+</li>
+<li><p>Visualize the relationship between petal length and species using a strip plot.</p></li>
+<li><p>Starting with the previous graph, add the mean and 95% confidence interval for each species</p></li>
+<li><p>Visualize the relationship between petal length, petal width, and species using a scatterplot. Map the two numerical variables to the x and y axes and map species to the color and shape aesthetics.</p></li>
+</ol>
+</div>
+<div id="lab-report-1" class="section level3" number="5.5.2">
+<h3>
+<span class="header-section-number">5.5.2</span> Lab Report<a class="anchor" aria-label="anchor" href="#lab-report-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>After you have crafted working R code in your R script, <em>then</em> you should create your lab report using R Markdown</p>
+<ol style="list-style-type: decimal">
+<li><p>Create an R Markdown document README.Rmd (you won’t have a separate Rmd for the lab report in this lab)</p></li>
+<li><p>Add the <a href="r-markdown-documents.html#yaml-header">YAML header</a>. Change the title to “Lab 5”</p></li>
+<li><p>Copy the eight questions above and paste them in as text. Don’t make each question its own heading; if you want headings, just label them Question 1, Question 2, etc.</p></li>
+<li>
+<p>Add a code chunk after each question. Each chunk should either <em>print</em> a data frame or <em>plot</em> a graph, depending on what the question is asking for.</p>
+<p>You may create new objects with the assignment operator if you like.</p>
+</li>
+<li><p>Add a section containing your <a href="session-info.html">session info</a></p></li>
+<li><p>Knit the document</p></li>
+<li><p>Commit all files and push to GitHub</p></li>
+<li><p>Submit the URL of your repo to D2L for grading</p></li>
+</ol>
+<p>See the previous lab for more details on the steps listed above</p>
+</div>
+</div>
+<div id="grading-rubric-3" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>You will be assessed based on the following rubric:</p>
+<ol style="list-style-type: decimal">
+<li><p>GitHub Classroom repository claimed</p></li>
+<li>
+<p>Lab Report (README.md)</p>
+<ol style="list-style-type: lower-alpha">
+<li>YAML header is correct</li>
+<li>Has an introductory sentence or paragraph explaining what the lab report is for</li>
+<li>Questions answered correctly</li>
+<li>Session info included</li>
+</ol>
+</li>
+<li><p>Submitted link to repository on D2L</p></li>
+</ol>
+</div>
+<div id="further-reading-1" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on mutating, grouping, and summarizing in <a href="https://r4ds.had.co.nz/transform.html">Chapter 5: Data transformation</a>.</p>
+<p>You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.</p>
+<p>If you do want to read the chapter and try their examples in your own R Script then don’t forget to:</p>
+<ol style="list-style-type: decimal">
+<li>Install the nycflights13 package as described in <a href="https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages">R4DS Section 1.4.4 Other Packages</a>
+</li>
+<li>Load the tidyverse and nycflights13 packages as described in <a href="https://r4ds.had.co.nz/transform.html#prerequisites-2">R4DS Section 5.1.1 Prerequisites</a>.</li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></div>
+<div class="next"><a href="install-r-and-rstudio.html"><span class="header-section-number">8</span> Install R and RStudio</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-summarization"><span class="header-section-number">5</span> Data summarization</a></li>
+<li><a class="nav-link" href="#objectives-4"><span class="header-section-number">5.1</span> Objectives</a></li>
+<li>
+<a class="nav-link" href="#introduction-2"><span class="header-section-number">5.2</span> Introduction</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prerequisites-1"><span class="header-section-number">5.2.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#diamonds-1"><span class="header-section-number">5.2.2</span> diamonds</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#rename-variables-with-rename"><span class="header-section-number">5.3</span> Rename variables with rename()</a></li>
+<li>
+<a class="nav-link" href="#create-new-variables-with-mutate"><span class="header-section-number">5.4</span> Create new variables with mutate()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#mutate-an-existing-variable"><span class="header-section-number">5.4.1</span> mutate() an existing variable</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#assignment-1"><span class="header-section-number">5.5</span> Assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#questions-1"><span class="header-section-number">5.5.1</span> Questions</a></li>
+<li><a class="nav-link" href="#lab-report-1"><span class="header-section-number">5.5.2</span> Lab Report</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#grading-rubric-3"><span class="header-section-number">5.6</span> Grading Rubric</a></li>
+<li><a class="nav-link" href="#further-reading-1"><span class="header-section-number">5.7</span> Further reading</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-5.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-5.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Data subsetting
+# Data summarization
 
 ## Objectives
 
@@ -68,6 +68,23 @@ rename(
 This makes the code more readable. Just make sure you have commas after each argument except the last, and don't forget the closing parenthesis on its own line
 
 ## Create new variables with `mutate()` 
+
+The `mutate()` function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to `mutate()` is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination thereof.
+
+To make viewing the new variables easier, first select a subset of variables from the `diamonds` data set using `select()` and give the new data frame the name `d2`:
+
+```{r mutate-select}
+d2 <- select(diamonds, carat, price)
+d2
+```
+
+Now use the new data frame `d2` to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named `ppc` ("price per carat"):
+
+```{r mutate1}
+mutate(d2, ppc = price / carat)
+```
+
+You can also use functions to create new variables.
 
 ### `mutate()` an existing variable
 

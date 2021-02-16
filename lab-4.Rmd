@@ -22,7 +22,7 @@ You can manipulate tables easily with functions from the dplyr package, one of t
 
 In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of package.
 
-In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the `diamonds` dataset from the ggplot2 package. This lab will use the diamonds to show examples of filtering, arranging, and selecting.
+In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the `diamonds` dataset from the ggplot2 package. This lab will use the `diamonds` dataset to show examples of filtering, arranging, and selecting.
 
 Load the tidyverse package:
 

@@ -1,4 +1,4 @@
-# Data summarization
+# Data summarizing
 
 ## Objectives
 

@@ -143,6 +143,19 @@ summarize(
 
 Notice that the equation for standard error (sem) above uses both the `mean()` function and the `n()` function.
 
+Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
+
+```{r summarize-multiple}
+summarize(
+  diamonds, 
+  mean_p = mean(price),
+  sampl_size = n(),
+  sem = mean_p / sqrt(sampl_size),
+  ci_upper = mean + 2 * sem,
+  ci_lower = mean - 2 * sem
+)
+```
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

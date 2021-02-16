@@ -127,7 +127,7 @@ For each of those functions, you must put the name of the variable you want to s
 There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
 
 ```{r summarize-n}
-summarize(sampl_size = n())
+summarize(diamonds, sampl_size = n())
 ```
 
 ## Assignment

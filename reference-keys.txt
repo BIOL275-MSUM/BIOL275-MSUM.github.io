@@ -84,6 +84,7 @@ diamonds-1
 rename-variables-with-rename
 create-new-variables-with-mutate
 mutate-an-existing-variable
+summarize-a-data-set-with-summarize
 assignment-1
 questions-1
 lab-report-1

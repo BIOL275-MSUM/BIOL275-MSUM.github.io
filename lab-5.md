@@ -167,6 +167,22 @@ mutate(diamonds, price = price * 1.27)
 #> # … with 53,934 more rows
 ```
 
+## Summarize a data set with `summarize()`
+
+You can summarize a data set using the `summarize()` function. Like other dplyr functions, the first argument to `summarize()` is a data frame. Additional arguments are name-value pairs, just like with `mutate()`. Values are set using various summary functions such as `mean()` or `sd()` (standard deviation). The difference is that whereas `mutate()` returns a data frame with the same number of rows as the input data frame, `summarize()` returns a data frame with only one row, and the only variables in the new data frame are the ones you named in `summarize()`. For example, to calculate the mean value of the `carat` variable, the code would look like this:
+
+
+```r
+summarize(diamonds, mean_carat = mean(carat))
+```
+
+```
+#> # A tibble: 1 x 1
+#>   mean_carat
+#>        <dbl>
+#> 1      0.798
+```
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

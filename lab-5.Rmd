@@ -136,7 +136,7 @@ Now use what you know from previous labs, and what you have learned from today's
 
 1.  Rename each variable so that it is all lower-case and uses an underscore `_` instead of a period `.` in the name (the recommended coding style in the [tidyverse style guide](https://style.tidyverse.org/syntax.html)). Print the resulting table.
 
-2.  Convert the four numerical variables from mm to cm by multiplying by 10. Print the resulting table.
+2.  Convert the four numerical variables from mm to cm by dividing by 10. Print the resulting table.
 
 3.  Calculate sepal area and petal area (area is equal to length multiplied by width). Print a table with *only* the variables sepal area, petal area, and species.
 

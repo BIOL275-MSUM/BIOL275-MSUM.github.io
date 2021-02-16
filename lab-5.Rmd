@@ -157,7 +157,7 @@ Notice that the equation for standard error (sem) above uses both the `mean()` f
 
 Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
 
-```{r summarize-multiple}
+```{r summarize-ci}
 summarize(
   diamonds, 
   mean_p = mean(price),

@@ -124,10 +124,22 @@ There are a wide variety of functions you can use to summarize a variable. Here 
 
 For each of those functions, you must put the name of the variable you want to summarize *inside* the given function as the first argument.
 
+#### Sample size
+
 There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
 
 ```{r summarize-n}
 summarize(diamonds, sampl_size = n())
+```
+
+#### Quantiles
+
+Some summary functions require one or more arguments in addition to the name of the variable to summarize.
+
+One example is the `quantile()` function, whose `probs` argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable `carat`, you can use the quantile function with the argument of `probs = 0.25`:
+
+```{r summarize-quantile}
+summarize(diamonds, q1 = quantile(carat, probs = 0.25))
 ```
 
 ### Combine functions and equations

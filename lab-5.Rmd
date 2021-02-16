@@ -84,9 +84,13 @@ Now use the new data frame `d2` to calculate the price per carat for each diamon
 mutate(d2, ppc = price / carat)
 ```
 
-You can also use functions to create new variables.
-
 ### `mutate()` an existing variable
+
+You do not have to create an entirely new variable when using `mutate()`. For example, let's say you wanted to convert the price from US Dollars (USD) to Canadian Dollars (CAD). The current exchange rate is about 1 USD to 1.27 CAD. You can change the existing price variable by setting the new variable name to be the same as the old variable name:
+
+```{r mutate-cad}
+mutate(diamonds, price = price * 1.27)
+```
 
 ## Assignment
 

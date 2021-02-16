@@ -76,7 +76,7 @@ lab-report
 grading-rubric-2
 student-questions
 further-reading
-data-summarization
+data-summarizing
 objectives-4
 introduction-2
 prerequisites-1

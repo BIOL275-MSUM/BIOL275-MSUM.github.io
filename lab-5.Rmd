@@ -168,6 +168,31 @@ summarize(
 )
 ```
 
+## Summarize a data set by groups
+
+In the previous section you learned how to use `summarize()` combined with a summary functions such as `mean()` and `sd()` to calculate statistics for all observations (rows) in a data set.
+
+A common goal in data transformation, however, is to calculate statistics for *groups* of observations rather than all observations together. For example, in a university course with two sections, you may want to calculate mean scores for each section instead of the class as a whole.
+
+The `group_by()` function combined with the `summarize()` function lets you calculated summary statistics for groups of observations. The groups are identified by a categorical variable called the grouping variable, while the statistics are calculated from one or more other variables.
+
+For example, let's explore how the mean price varies with the cut of a diamond in the `diamonds` data set.
+
+In the first step, you use `group_by()` to produced a grouped data frame. Like other dplyr verbs, the first argument to `group_by()` is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the `cut` variable and assign the resulting grouped data frame a new name, `diamonds_grouped`:
+
+```{r}
+diamonds_grouped <- group_by(diamonds, cut)
+diamonds_grouped
+```
+
+The only difference in the output from printing the ungrouped `diamonds` table is the second line of the output, which now says `# Groups:   cut [5]`. That's saying the table is grouped by the `cut` variable and there are five groups (the five possible values of `cut`).
+
+The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:
+
+```{r}
+summarize(diamonds_grouped, mean_price = mean(price))
+```
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

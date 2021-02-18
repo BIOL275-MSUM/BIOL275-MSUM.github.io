@@ -197,7 +197,7 @@ summarize(diamonds_grouped, mean_price = mean(price))
 
 First, create a new R script (not Rmd) and load the tidyverse package.
 
-For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from ach of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
+For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
 
 You can print `iris` in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in a user-friendly manner. To have it print more nicely, turn it into a tibble first.
 

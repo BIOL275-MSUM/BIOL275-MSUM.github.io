@@ -149,11 +149,11 @@ When summarizing, you can use both functions and mathematical operators when cre
 ```{r summarize-combine}
 summarize(
   diamonds, 
-  sem = mean(price) / sqrt(n())
+  sem = sd(price) / sqrt(n())
 )
 ```
 
-Notice that the equation for standard error (sem) above uses both the `mean()` function and the `n()` function.
+Notice that the equation for standard error (sem) above uses both the `sd()` function and the `n()` function.
 
 Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
 
@@ -161,8 +161,9 @@ Alternative, you could summarize the mean and sample size first and then use tho
 summarize(
   diamonds, 
   mean_p = mean(price),
+  sd_p = sd(price),
   sampl_size = n(),
-  sem = mean_p / sqrt(sampl_size),
+  sem = sd_p / sqrt(sampl_size),
   ci_upper_limit = mean_p + 1.96 * sem,
   ci_lower_limit = mean_p - 1.96 * sem
 )
@@ -265,7 +266,7 @@ summarize(diamonds_grouped, mean_price = mean(price))
 
 Let's expand that a bit to include upper and lower confidence limits:
 
-```{r}
+```{r price-summary}
 price_summary <-
   summarize(
     diamonds_grouped, 
@@ -279,12 +280,13 @@ price_summary
 
 Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
 
-```{r}
+```{r jitter}
 ggplot(data = diamonds) +
   geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
   geom_crossbar(
     data = price_summary, 
-    mapping = aes(x = cut, y = mean_price, ymax = upper_limit, ymin = lower_limit),
+    mapping = aes(x = cut, y = mean_price, ymax = ci_upper_limit, 
+                  ymin = ci_lower_limit),
     color = "red"
   )
 ```

@@ -539,7 +539,7 @@ Now use what you know from previous labs, and what you have learned from today's
     g.  third quartile (q2)
     h.  inter-quartile range (iqr)
 
-5.  Calculate the following statistics for each species from the petal width variable and print the resulting table:
+5.  Calculate the following statistics [for each species]{.ul} from the **petal width** variable and print the resulting table:
 
     a.  sample size
     b.  mean
@@ -548,7 +548,7 @@ Now use what you know from previous labs, and what you have learned from today's
     e.  standard error of the mean
     f.  approximate 95% confidence interval
 
-6.  Visualize the relationship between petal length and species using a strip plot.
+6.  Visualize the relationship between **petal width** and **species** using a strip plot.
 
 7.  Starting with the previous graph, add the mean and 95% confidence interval for each species
 

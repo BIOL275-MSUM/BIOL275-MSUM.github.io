@@ -265,7 +265,7 @@ summarize(diamonds_grouped, mean_price = mean(price))
 
 Let's expand that a bit to include upper and lower confidence limits:
 
-```{r, eval=FALSE}
+```{r}
 price_summary <-
   summarize(
     diamonds_grouped, 

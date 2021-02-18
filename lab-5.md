@@ -199,7 +199,7 @@ summarize(
 There are a wide variety of functions you can use to summarize a variable. Here are some examples:
 
 -   `max()` - maximum value
--   `max()` - minimum value
+-   `min()` - minimum value
 -   `median()` - median value
 -   `mode()` mode
 -   `sd()` standard deviation
@@ -250,7 +250,7 @@ When summarizing, you can use both functions and mathematical operators when cre
 ```r
 summarize(
   diamonds, 
-  sem = mean(price) / sqrt(n())
+  sem = sd(price) / sqrt(n())
 )
 ```
 
@@ -258,10 +258,10 @@ summarize(
 #> # A tibble: 1 x 1
 #>     sem
 #>   <dbl>
-#> 1  16.9
+#> 1  17.2
 ```
 
-Notice that the equation for standard error (sem) above uses both the `mean()` function and the `n()` function.
+Notice that the equation for standard error (sem) above uses both the `sd()` function and the `n()` function.
 
 Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
 
@@ -270,18 +270,19 @@ Alternative, you could summarize the mean and sample size first and then use tho
 summarize(
   diamonds, 
   mean_p = mean(price),
+  sd_p = sd(price),
   sampl_size = n(),
-  sem = mean_p / sqrt(sampl_size),
-  ci_upper = mean_p + 2 * sem,
-  ci_lower = mean_p - 2 * sem
+  sem = sd_p / sqrt(sampl_size),
+  ci_upper_limit = mean_p + 1.96 * sem,
+  ci_lower_limit = mean_p - 1.96 * sem
 )
 ```
 
 ```
-#> # A tibble: 1 x 5
-#>   mean_p sampl_size   sem ci_upper ci_lower
-#>    <dbl>      <int> <dbl>    <dbl>    <dbl>
-#> 1  3933.      53940  16.9    3967.    3899.
+#> # A tibble: 1 x 6
+#>   mean_p  sd_p sampl_size   sem ci_upper_limit ci_lower_limit
+#>    <dbl> <dbl>      <int> <dbl>          <dbl>          <dbl>
+#> 1  3933. 3989.      53940  17.2          3966.          3899.
 ```
 
 ## Summarize a data set by groups
@@ -431,21 +432,21 @@ price_summary <-
     diamonds_grouped, 
     mean_price = mean(price),
     sem = sd(price) / sqrt(n()),
-    upper_limit = mean_price + 1.96 * sem,
-    lower_limit = mean_price - 1.96 * sem
+    ci_upper_limit = mean_price + 1.96 * sem,
+    ci_lower_limit = mean_price - 1.96 * sem
   )
 price_summary
 ```
 
 ```
 #> # A tibble: 5 x 5
-#>   cut       mean_price   sem upper_limit lower_limit
-#> * <ord>          <dbl> <dbl>       <dbl>       <dbl>
-#> 1 Fair           4359.  88.7       4533.       4185.
-#> 2 Good           3929.  52.6       4032.       3826.
-#> 3 Very Good      3982.  35.8       4052.       3912.
-#> 4 Premium        4584.  37.0       4657.       4512.
-#> 5 Ideal          3458.  25.9       3508.       3407.
+#>   cut       mean_price   sem ci_upper_limit ci_lower_limit
+#> * <ord>          <dbl> <dbl>          <dbl>          <dbl>
+#> 1 Fair           4359.  88.7          4533.          4185.
+#> 2 Good           3929.  52.6          4032.          3826.
+#> 3 Very Good      3982.  35.8          4052.          3912.
+#> 4 Premium        4584.  37.0          4657.          4512.
+#> 5 Ideal          3458.  25.9          3508.          3407.
 ```
 
 Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
@@ -456,12 +457,13 @@ ggplot(data = diamonds) +
   geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
   geom_crossbar(
     data = price_summary, 
-    mapping = aes(x = cut, y = mean_price, ymax = upper_limit, ymin = lower_limit),
+    mapping = aes(x = cut, y = mean_price, ymax = ci_upper_limit, 
+                  ymin = ci_lower_limit),
     color = "red"
   )
 ```
 
-<img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-5_files/figure-html/jitter-1.png" width="70%" style="display: block; margin: auto;" />
 
 The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
 
@@ -477,7 +479,7 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price))
 ```
 
-<img src="lab-5_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-5_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 Looking at the graph it is clear that as the weight of the diamond increases, so does the price.
 
@@ -497,7 +499,7 @@ ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
 ```
 
-<img src="lab-5_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Assignment
 

@@ -229,7 +229,7 @@
 <li>
 <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> - maximum value</li>
 <li>
-<code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> - minimum value</li>
+<code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> - minimum value</li>
 <li>
 <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> - median value</li>
 <li>
@@ -276,27 +276,28 @@
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">summarize</span><span class="op">(</span>
   <span class="va">diamonds</span>, 
-  sem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  sem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1 x 1
 #&gt;     sem
 #&gt;   &lt;dbl&gt;
-#&gt; 1  16.9</code></pre>
-<p>Notice that the equation for standard error (sem) above uses both the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function and the <code>n()</code> function.</p>
+#&gt; 1  17.2</code></pre>
+<p>Notice that the equation for standard error (sem) above uses both the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function and the <code>n()</code> function.</p>
 <p>Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:</p>
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">summarize</span><span class="op">(</span>
   <span class="va">diamonds</span>, 
   mean_p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
+  sd_p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
   sampl_size <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
-  sem <span class="op">=</span> <span class="va">mean_p</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sampl_size</span><span class="op">)</span>,
-  ci_upper <span class="op">=</span> <span class="va">mean_p</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">sem</span>,
-  ci_lower <span class="op">=</span> <span class="va">mean_p</span> <span class="op">-</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">sem</span>
+  sem <span class="op">=</span> <span class="va">sd_p</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sampl_size</span><span class="op">)</span>,
+  ci_upper_limit <span class="op">=</span> <span class="va">mean_p</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>,
+  ci_lower_limit <span class="op">=</span> <span class="va">mean_p</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>
 <span class="op">)</span></code></pre></div>
-<pre><code>#&gt; # A tibble: 1 x 5
-#&gt;   mean_p sampl_size   sem ci_upper ci_lower
-#&gt;    &lt;dbl&gt;      &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1  3933.      53940  16.9    3967.    3899.</code></pre>
+<pre><code>#&gt; # A tibble: 1 x 6
+#&gt;   mean_p  sd_p sampl_size   sem ci_upper_limit ci_lower_limit
+#&gt;    &lt;dbl&gt; &lt;dbl&gt;      &lt;int&gt; &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+#&gt; 1  3933. 3989.      53940  17.2          3966.          3899.</code></pre>
 </div>
 </div>
 <div id="summarize-a-data-set-by-groups" class="section level2" number="5.6">
@@ -398,28 +399,29 @@
     <span class="va">diamonds_grouped</span>, 
     mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
     sem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
-    upper_limit <span class="op">=</span> <span class="va">mean_price</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>,
-    lower_limit <span class="op">=</span> <span class="va">mean_price</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>
+    ci_upper_limit <span class="op">=</span> <span class="va">mean_price</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>,
+    ci_lower_limit <span class="op">=</span> <span class="va">mean_price</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>
   <span class="op">)</span>
 <span class="va">price_summary</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 5 x 5
-#&gt;   cut       mean_price   sem upper_limit lower_limit
-#&gt; * &lt;ord&gt;          &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-#&gt; 1 Fair           4359.  88.7       4533.       4185.
-#&gt; 2 Good           3929.  52.6       4032.       3826.
-#&gt; 3 Very Good      3982.  35.8       4052.       3912.
-#&gt; 4 Premium        4584.  37.0       4657.       4512.
-#&gt; 5 Ideal          3458.  25.9       3508.       3407.</code></pre>
+#&gt;   cut       mean_price   sem ci_upper_limit ci_lower_limit
+#&gt; * &lt;ord&gt;          &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+#&gt; 1 Fair           4359.  88.7          4533.          4185.
+#&gt; 2 Good           3929.  52.6          4032.          3826.
+#&gt; 3 Very Good      3982.  35.8          4052.          3912.
+#&gt; 4 Premium        4584.  37.0          4657.          4512.
+#&gt; 5 Ideal          3458.  25.9          3508.          3407.</code></pre>
 <p>Now that you have the summary statistics, add the means to the graph using the <code>geom_crossbar()</code> function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for <code>geom_crossbar()</code> are <code>y</code>, <code>ymin</code>, and <code>ymax</code>. Setting the color to red will make the crossbars stand out against the black raw data points.</p>
 <div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_jitter</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_crossbar</span><span class="op">(</span>
     data <span class="op">=</span> <span class="va">price_summary</span>, 
-    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">mean_price</span>, ymax <span class="op">=</span> <span class="va">upper_limit</span>, ymin <span class="op">=</span> <span class="va">lower_limit</span><span class="op">)</span>,
+    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">mean_price</span>, ymax <span class="op">=</span> <span class="va">ci_upper_limit</span>, 
+                  ymin <span class="op">=</span> <span class="va">ci_lower_limit</span><span class="op">)</span>,
     color <span class="op">=</span> <span class="st">"red"</span>
   <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/jitter-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see <a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">Vertical intervals: lines, crossbars &amp; errorbars</a> on the <a href="https://ggplot2.tidyverse.org/reference/index.html">Reference</a> page of the <a href="https://ggplot2.tidyverse.org/index.html">ggplot2 website</a>.</p>
 </div>
 </div>
@@ -432,7 +434,7 @@
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Looking at the graph it is clear that as the weight of the diamond increases, so does the price.</p>
 <div id="plotting-three-variables" class="section level3" number="5.8.1">
 <h3>
@@ -445,7 +447,7 @@
 <div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span>, color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
 </div>
 </div>
 <div id="assignment-1" class="section level2" number="5.9">

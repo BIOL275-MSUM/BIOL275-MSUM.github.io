@@ -291,6 +291,34 @@ ggplot(data = diamonds) +
 
 The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
 
+## Visualize two numerical variables
+
+The most basic type of graph for visualizing the relationship between two numerical variables is the scatterplot. The `geom_point()` function can be used to add points two a graph. When it is used with numerical variables for the `x` and `y` aesthetics, the result is a scatterplot.
+
+For example, the following graph shows the relationship between carat and price:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price))
+```
+
+Looking at the graph it is clear that as the weight of the diamond increases, so does the price.
+
+### Plotting three variables
+
+In order to more fully explore the relationships between multiple variables, it is sometimes useful the visualize them at the same time. For example, what if you wanted to see how cut, price, and carat are related?
+
+One way to do this might be to use `facet_wrap()` to create a separate scatterplot for each cut.
+
+A common alternative is to add a third aesthetic to the plot to differentiate points in some other way than by their x and y coordinates. These aesthetics include color, size, shape, and alpha for points, and linetype for lines.
+
+The following code plots the same scatterplot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.
+
+```{r}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
+```
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

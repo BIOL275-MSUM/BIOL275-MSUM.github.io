@@ -163,8 +163,8 @@ summarize(
   mean_p = mean(price),
   sampl_size = n(),
   sem = mean_p / sqrt(sampl_size),
-  ci_upper = mean_p + 2 * sem,
-  ci_lower = mean_p - 2 * sem
+  ci_upper_limit = mean_p + 1.96 * sem,
+  ci_lower_limit = mean_p - 1.96 * sem
 )
 ```
 
@@ -271,8 +271,8 @@ price_summary <-
     diamonds_grouped, 
     mean_price = mean(price),
     sem = sd(price) / sqrt(n()),
-    upper_limit = mean_price + 1.96 * sem,
-    lower_limit = mean_price - 1.96 * sem
+    ci_upper_limit = mean_price + 1.96 * sem,
+    ci_lower_limit = mean_price - 1.96 * sem
   )
 price_summary
 ```

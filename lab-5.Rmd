@@ -163,8 +163,8 @@ summarize(
   mean_p = mean(price),
   sampl_size = n(),
   sem = mean_p / sqrt(sampl_size),
-  ci_upper = mean + 2 * sem,
-  ci_lower = mean - 2 * sem
+  ci_upper = mean_p + 2 * sem,
+  ci_lower = mean_p - 2 * sem
 )
 ```
 

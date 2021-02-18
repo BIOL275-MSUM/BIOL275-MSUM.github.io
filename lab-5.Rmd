@@ -67,7 +67,7 @@ rename(
 
 This makes the code more readable. Just make sure you have commas after each argument except the last, and don't forget the closing parenthesis on its own line
 
-## Create new variables with `mutate()` 
+## Create new variables with `mutate()`
 
 The `mutate()` function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to `mutate()` is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination thereof.
 

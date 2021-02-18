@@ -100,7 +100,7 @@ rename(
 
 This makes the code more readable. Just make sure you have commas after each argument except the last, and don't forget the closing parenthesis on its own line
 
-## Create new variables with `mutate()` 
+## Create new variables with `mutate()`
 
 The `mutate()` function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to `mutate()` is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination thereof.
 
@@ -208,6 +208,8 @@ There are a wide variety of functions you can use to summarize a variable. Here 
 
 For each of those functions, you must put the name of the variable you want to summarize *inside* the given function as the first argument.
 
+#### Sample size
+
 There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
 
 
@@ -220,6 +222,24 @@ summarize(diamonds, sampl_size = n())
 #>   sampl_size
 #>        <int>
 #> 1      53940
+```
+
+#### Quantiles
+
+Some summary functions require one or more arguments in addition to the name of the variable to summarize.
+
+One example is the `quantile()` function, whose `probs` argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable `carat`, you can use the quantile function with the argument of `probs = 0.25`:
+
+
+```r
+summarize(diamonds, q1 = quantile(carat, probs = 0.25))
+```
+
+```
+#> # A tibble: 1 x 1
+#>      q1
+#>   <dbl>
+#> 1   0.4
 ```
 
 ### Combine functions and equations
@@ -243,11 +263,247 @@ summarize(
 
 Notice that the equation for standard error (sem) above uses both the `mean()` function and the `n()` function.
 
+Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
+
+
+```r
+summarize(
+  diamonds, 
+  mean_p = mean(price),
+  sampl_size = n(),
+  sem = mean_p / sqrt(sampl_size),
+  ci_upper = mean_p + 2 * sem,
+  ci_lower = mean_p - 2 * sem
+)
+```
+
+```
+#> # A tibble: 1 x 5
+#>   mean_p sampl_size   sem ci_upper ci_lower
+#>    <dbl>      <int> <dbl>    <dbl>    <dbl>
+#> 1  3933.      53940  16.9    3967.    3899.
+```
+
+## Summarize a data set by groups
+
+In the previous section you learned how to use `summarize()` combined with a summary functions such as `mean()` and `sd()` to calculate statistics for all observations (rows) in a data set.
+
+A common goal in data transformation, however, is to calculate statistics for *groups* of observations rather than all observations together. For example, in a university course with two sections, you may want to calculate mean scores for each section instead of the class as a whole.
+
+The `group_by()` function combined with the `summarize()` function lets you calculated summary statistics for groups of observations. The groups are identified by a categorical variable called the grouping variable, while the statistics are calculated from one or more other variables.
+
+For example, let's explore how the mean price varies with the cut of a diamond in the `diamonds` data set.
+
+In the first step, you use `group_by()` to produced a grouped data frame. Like other dplyr verbs, the first argument to `group_by()` is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the `cut` variable and assign the resulting grouped data frame a new name, `diamonds_grouped`:
+
+
+```r
+diamonds_grouped <- group_by(diamonds, cut)
+diamonds_grouped
+```
+
+```
+#> # A tibble: 53,940 x 10
+#> # Groups:   cut [5]
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#> 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
+
+The only difference in the output from printing the ungrouped `diamonds` table is the second line of the output, which now says `# Groups:   cut [5]`. That's saying the table is grouped by the `cut` variable and there are five groups (the five possible values of `cut`).
+
+The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:
+
+
+```r
+summarize(diamonds_grouped, mean_price = mean(price))
+```
+
+```
+#> # A tibble: 5 x 2
+#>   cut       mean_price
+#> * <ord>          <dbl>
+#> 1 Fair           4359.
+#> 2 Good           3929.
+#> 3 Very Good      3982.
+#> 4 Premium        4584.
+#> 5 Ideal          3458.
+```
+
+## Visualize a categorical and numerical variable
+
+In the Introduction to ggplot2 lab, you [learned how to create a histogram](https://biol275-msum.github.io/introduction-to-ggplot2.html#histograms) to visualize the distribution of a single numerical variable. But what if you want to look at how *two* variables are related? For example, say you want to visualize the relationship between the cut and price of diamonds we summarized in the previous example.
+
+Here you will learn two ways to visualize the joint distribution of a numerical variable and a categorical variable:
+
+1.  Multiple histograms
+2.  Strip plots
+
+### Multiple histograms
+
+A common way of comparing multiple distributions is to create a single graph with multiple histograms, one for each variable or subset of observations.
+
+The `facet_wrap()` function in ggplot2 allows you to take a plot and split it up into multiple plots based on some categorical variable. The first argument to `facet_wrap()` is an expression of the form `~ var_name` where `var_name` is the name of the grouping variable.
+
+First, let's start by graphing the distribution of the `price` variable without regard to cut. We will set the number of bin width to 500 (dollars)
+
+
+```r
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500)
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+
+Interestingly, the distribution appears to be bimodal, with the second, smaller mode around 4500.
+
+Now lets plot the same graph but add the `facet_wrap()` function. Remember to add a plus sign `+` at the end of the `geom_histogram()` so R knows you are trying add another layer to the graph:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut)
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+
+The resulting plot now has five small graphs, called facets in tidyverse lingo, each labeled with the value of `cut` it represents.
+
+A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the *distribution* of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the `scales` argument to `facet_wrap()`:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut, scales = "free_y")
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+
+The `scales` argument can be set to `"free_y"`, `"free_x"`, or `"free"` to allow both axes to vary.
+
+Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which can be used to specify how many rows or columns the resulting facets should form. With histograms, it's common to put them all in one column so you can compare the shape of the distributions more easily.
+
+### Strip plots
+
+Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the `geom_jitter()` function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price))
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+
+As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the `shape` argument to `geom_jitter()`. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the `alpha` argument to something low like 0.1 indicating 10% opacity.
+
+
+```r
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1)
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+
+One nice thing about strip plots is that they make it easy to view the both the raw data *and* summary statistics such as the means and confidence intervals.
+
+The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:
+
+
+```r
+summarize(diamonds_grouped, mean_price = mean(price))
+```
+
+Let's expand that a bit to include upper and lower confidence limits:
+
+
+```r
+price_summary <-
+  summarize(
+    diamonds_grouped, 
+    mean_price = mean(price),
+    sem = sd(price) / sqrt(n()),
+    upper_limit = mean_price + 1.96 * sem,
+    lower_limit = mean_price - 1.96 * sem
+  )
+price_summary
+```
+
+```
+#> # A tibble: 5 x 5
+#>   cut       mean_price   sem upper_limit lower_limit
+#> * <ord>          <dbl> <dbl>       <dbl>       <dbl>
+#> 1 Fair           4359.  88.7       4533.       4185.
+#> 2 Good           3929.  52.6       4032.       3826.
+#> 3 Very Good      3982.  35.8       4052.       3912.
+#> 4 Premium        4584.  37.0       4657.       4512.
+#> 5 Ideal          3458.  25.9       3508.       3407.
+```
+
+Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
+
+
+```r
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
+  geom_crossbar(
+    data = price_summary, 
+    mapping = aes(x = cut, y = mean_price, ymax = upper_limit, ymin = lower_limit),
+    color = "red"
+  )
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+
+The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
+
+## Visualize two numerical variables
+
+The most basic type of graph for visualizing the relationship between two numerical variables is the scatterplot. The `geom_point()` function can be used to add points two a graph. When it is used with numerical variables for the `x` and `y` aesthetics, the result is a scatterplot.
+
+For example, the following graph shows the relationship between carat and price:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price))
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+
+Looking at the graph it is clear that as the weight of the diamond increases, so does the price.
+
+### Plotting three variables
+
+In order to more fully explore the relationships between multiple variables, it is sometimes useful the visualize them at the same time. For example, what if you wanted to see how cut, price, and carat are related?
+
+One way to do this might be to use `facet_wrap()` to create a separate scatterplot for each cut.
+
+A common alternative is to add a third aesthetic to the plot to differentiate points in some other way than by their x and y coordinates. These aesthetics include color, size, shape, and alpha for points, and linetype for lines.
+
+The following code plots the same scatterplot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.
+
+
+```r
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.
 
-For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from ach of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
+For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
 
 You can print `iris` in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in a user-friendly manner. To have it print more nicely, turn it into a tibble first.
 

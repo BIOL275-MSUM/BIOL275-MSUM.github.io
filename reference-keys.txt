@@ -86,7 +86,15 @@ create-new-variables-with-mutate
 mutate-an-existing-variable
 summarize-a-data-set-with-summarize
 summary-functions
+sample-size
+quantiles
 combine-functions-and-equations
+summarize-a-data-set-by-groups
+visualize-a-categorical-and-numerical-variable
+multiple-histograms
+strip-plots
+visualize-two-numerical-variables
+plotting-three-variables
 assignment-1
 questions-1
 lab-report-1

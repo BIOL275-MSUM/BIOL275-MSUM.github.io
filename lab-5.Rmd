@@ -238,6 +238,59 @@ ggplot(data = diamonds) +
 The `scales` argument can be set to `"free_y"`, `"free_x"`, or `"free"` to allow both axes to vary.
 
 Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which can be used to specify how many rows or columns the resulting facets should form. With histograms, it's common to put them all in one column so you can compare the shape of the distributions more easily.
+
+### Strip plots
+
+Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the `geom_jitter()` function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price))
+```
+
+As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the `shape` argument to `geom_jitter()`. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the `alpha` argument to something low like 0.1 indicating 10% opacity.
+
+```{r}
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1)
+```
+
+One nice thing about strip plots is that they make it easy to view the both the raw data *and* summary statistics such as the means and confidence intervals.
+
+The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:
+
+```{r, eval=FALSE}
+summarize(diamonds_grouped, mean_price = mean(price))
+```
+
+Let's expand that a bit to include upper and lower confidence limits:
+
+```{r, eval=FALSE}
+price_summary <-
+  summarize(
+    diamonds_grouped, 
+    mean_price = mean(price),
+    sem = sd(price) / sqrt(n()),
+    upper_limit = mean_price + 1.96 * sem,
+    lower_limit = mean_price - 1.96 * sem
+  )
+price_summary
+```
+
+Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
+
+```{r}
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
+  geom_crossbar(
+    data = price_summary, 
+    mapping = aes(x = cut, y = mean_price, ymax = upper_limit, ymin = lower_limit),
+    color = "red"
+  )
+```
+
+The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
+
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

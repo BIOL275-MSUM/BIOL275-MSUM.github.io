@@ -193,6 +193,51 @@ The next step is to summarize the grouped data frame, just like you summarized t
 summarize(diamonds_grouped, mean_price = mean(price))
 ```
 
+## Visualize a categorical and numerical variable
+
+In the Introduction to ggplot2 lab, you [learned how to create a histogram](https://biol275-msum.github.io/introduction-to-ggplot2.html#histograms) to visualize the distribution of a single numerical variable. But what if you want to look at how *two* variables are related? For example, say you want to visualize the relationship between the cut and price of diamonds we summarized in the previous example.
+
+Here you will learn two ways to visualize the joint distribution of a numerical variable and a categorical variable:
+
+1.  Multiple histograms
+2.  Strip plots
+
+### Multiple histograms
+
+A common way of comparing multiple distributions is to create a single graph with multiple histograms, one for each variable or subset of observations.
+
+The `facet_wrap()` function in ggplot2 allows you to take a plot and split it up into multiple plots based on some categorical variable. The first argument to `facet_wrap()` is an expression of the form `~ var_name` where `var_name` is the name of the grouping variable.
+
+First, let's start by graphing the distribution of the `price` variable without regard to cut. We will set the number of bin width to 500 (dollars)
+
+```{r}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500)
+```
+
+Interestingly, the distribution appears to be bimodal, with the second, smaller mode around 4500.
+
+Now lets plot the same graph but add the `facet_wrap()` function. Remember to add a plus sign `+` at the end of the `geom_histogram()` so R knows you are trying add another layer to the graph:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut)
+```
+
+The resulting plot now has five small graphs, called facets in tidyverse lingo, each labeled with the value of `cut` it represents.
+
+A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the *distribution* of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the `scales` argument to `facet_wrap()`:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut, scales = "free_y")
+```
+
+The `scales` argument can be set to `"free_y"`, `"free_x"`, or `"free"` to allow both axes to vary.
+
+Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which can be used to specify how many rows or columns the resulting facets should form. With histograms, it's common to put them all in one column so you can compare the shape of the distributions more easily.
 ## Assignment
 
 First, create a new R script (not Rmd) and load the tidyverse package.

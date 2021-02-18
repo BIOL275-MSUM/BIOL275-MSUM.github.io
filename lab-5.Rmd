@@ -115,7 +115,7 @@ summarize(
 There are a wide variety of functions you can use to summarize a variable. Here are some examples:
 
 -   `max()` - maximum value
--   `max()` - minimum value
+-   `min()` - minimum value
 -   `median()` - median value
 -   `mode()` mode
 -   `sd()` standard deviation

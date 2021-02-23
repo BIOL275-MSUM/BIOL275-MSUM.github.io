@@ -107,12 +107,11 @@ assignment-1---question
 assignment-2---abstract
 how-to-write-an-abstract
 data-import-tips
-section
-public-health-data-sets
 data-sets
 your-own-dataset
 species-occurrence-data
 environmental-data
+public-health-data-sets
 geospatial-data
 appears
 other-geospatial-data

@@ -48,6 +48,16 @@ Write the abstract in first person future tense, for example "I will..."
 
 For more information about how to write an abstract, see <https://www.mnstate.edu/sac/preparing-presentation.aspx>
 
+### How to write a title
+
+Now that you have an abstract, it needs a title.
+
+The title should be a single phrase or sentence, between 6 and 12 words long (this is flexible).
+
+It should include important keywords related to your question, so that someone reading the title would have a good idea what the poster is about.
+
+The title could be generic such as "the relationship between X and Y", or a declarative statement like in the example below. The title can omit some of the details included in the Question.
+
 ## Data Import Tips
 
 Where to store your data?

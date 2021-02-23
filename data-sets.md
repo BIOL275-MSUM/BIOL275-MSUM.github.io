@@ -33,6 +33,8 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
     -   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
 
+## COVID-19 data
+
 ## Geospatial data
 
 ### Appears

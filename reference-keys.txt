@@ -106,12 +106,14 @@ purpose
 assignment-1---question
 assignment-2---abstract
 how-to-write-an-abstract
+how-to-write-a-title
 data-import-tips
 data-sets
 your-own-dataset
 species-occurrence-data
 environmental-data
 public-health-data-sets
+covid-19-data
 geospatial-data
 appears
 other-geospatial-data

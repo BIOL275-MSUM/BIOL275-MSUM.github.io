@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>6 EDA Project Instructions | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9002/tabs.js"></script><script src="libs/bs3compat-0.2.4.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.17/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="active" href="eda-project-instructions.html"><span class="header-section-number">6</span> EDA Project Instructions</a></li>
+<li><a class="" href="section.html"><span class="header-section-number">7</span></a></li>
+<li><a class="" href="data-sets.html"><span class="header-section-number">8</span> Data sets</a></li>
+<li><a class="" href="public-health-data-sets-1.html"><span class="header-section-number">9</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">10</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">13</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">14</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">16</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">17</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">18</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">19</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">21</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="eda-project-instructions" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> EDA Project Instructions<a class="anchor" aria-label="anchor" href="#eda-project-instructions"><i class="fas fa-link"></i></a>
+</h1>
+<div id="overview" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+</h2>
+<p>A major part of the lab will be to perform your own exploratory data analysis in R.</p>
+<p>You will choose a dataset to use and a question to answer. You will present your results to the class and at the <a href="https://www.mnstate.edu/sac/">MSUM’s Andrew B. Conteh Student Academic Conference (SAC)</a> in April (application deadline is Feb. 25).</p>
+</div>
+<div id="purpose" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Purpose<a class="anchor" aria-label="anchor" href="#purpose"><i class="fas fa-link"></i></a>
+</h2>
+<p>The purpose of the lab project is for you to practice working with real data, exploring data sets to answer a question that interests <em>you</em>, and communicating the results.</p>
+</div>
+<div id="assignment-1---question" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Assignment #1 - Question<a class="anchor" aria-label="anchor" href="#assignment-1---question"><i class="fas fa-link"></i></a>
+</h2>
+<p>This assignment is due Thursday February 25.</p>
+<ol style="list-style-type: decimal">
+<li><p>Find a partner with similar interests</p></li>
+<li>
+<p>Choose a <a href="data-sets.html">data set</a></p>
+<ol style="list-style-type: decimal">
+<li>For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.</li>
+</ol>
+</li>
+<li><p>Develop a question</p></li>
+</ol>
+</div>
+<div id="assignment-2---abstract" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Assignment #2 - Abstract<a class="anchor" aria-label="anchor" href="#assignment-2---abstract"><i class="fas fa-link"></i></a>
+</h2>
+<p>This assignment is due by Thursday, February 25.</p>
+<p>Your abstract must be submitted to the SAC website by Sunday, February 28.</p>
+<div id="how-to-write-an-abstract" class="section level3" number="6.4.1">
+<h3>
+<span class="header-section-number">6.4.1</span> How to write an abstract<a class="anchor" aria-label="anchor" href="#how-to-write-an-abstract"><i class="fas fa-link"></i></a>
+</h3>
+<p>Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 specific sentences to include, although your abstract can vary from this pattern depending on the nature of your question.</p>
+<ul>
+<li><p>Two sentences of background explaining the “system”. For example, if you are exploring the risk factors associated with diabetes, you might start by explaining what diabetes is, how you get it, and what other studies have found regarding risk factors.</p></li>
+<li><p>One sentence laying out your question.</p></li>
+<li><p>One sentence saying which data set you will use, and where it came from.</p></li>
+<li><p>One or two sentence describing what you plan to do (i.e. which variables will you compare) to answer your question. Unless you have a good reason not to, you should probably use the phrase “exploratory data analysis” somewhere in here.</p></li>
+<li><p>One sentence about the conclusions you might draw based on your results, the contribution this might make towards science, how a decision-maker might use this information, or some other way of explaining how your expected results might be used.</p></li>
+</ul>
+<p>Write the abstract in first person future tense, for example “I will…”</p>
+<p>For more information about how to write an abstract, see <a href="https://www.mnstate.edu/sac/preparing-presentation.aspx" class="uri">https://www.mnstate.edu/sac/preparing-presentation.aspx</a></p>
+</div>
+</div>
+<div id="data-import-tips" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Data Import Tips<a class="anchor" aria-label="anchor" href="#data-import-tips"><i class="fas fa-link"></i></a>
+</h2>
+<p>Where to store your data?</p>
+<ul>
+<li><p>ALWAYS in your project folder, never elsewhere on your computer</p></li>
+<li><p>Create a folder named <code>data</code></p></li>
+<li><p>Add <code>data/</code> to your gitignore file</p></li>
+<li>
+<p>download data files and save them into your <code>data/</code> folder</p>
+<ul>
+<li>you can download manually (point and click in browser). if so, write the link to the data source in your README so its easy to find</li>
+<li>you can download programatically with <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> function</li>
+</ul>
+</li>
+</ul>
+<p>Importing your data</p>
+<ul>
+<li><p>never edit your raw data file. instead, read it as is and clean it up in R</p></li>
+<li>
+<p>use read_csv() or readxl::read_excel()</p>
+<ul>
+<li>do NOT use read.csv()</li>
+<li>readxl package is installed with tidyverse, but not loaded</li>
+<li>you have to load it yourself: library(readxl)</li>
+<li>path argument: type "" put cursor in between and hit tab to autocomplete</li>
+</ul>
+</li>
+<li><p>read_excel() has a <code>sheet</code> argument to choose which sheet</p></li>
+<li>
+<p>R puts back ticks around non-standard column names eg <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> is a backtick, its on the upper left of the keyboard</p>
+<ul>
+<li>standard names have only letters, numbers, <code>_</code> and <code>.</code>
+</li>
+<li>any name with special characters or starts with a number is considered non-standard.</li>
+<li>its a good idea to rename these columns</li>
+</ul>
+</li>
+<li><p>You can rename columns during import with the col_names argument to <code>read_*()</code> or using <code><a href="https://dplyr.tidyverse.org/reference/rename.html">dplyr::rename()</a></code></p></li>
+<li><p>You can skip rows using the skip argument to <code>read_*()</code></p></li>
+<li><p>When you play with <code>skip</code> argument, sometimes you need to change the <code>col_names</code> argument too</p></li>
+<li><p>You can read only a set number of rows using the <code>n_max</code> argument</p></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></div>
+<div class="next"><a href="section.html"><span class="header-section-number">7</span></a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#eda-project-instructions"><span class="header-section-number">6</span> EDA Project Instructions</a></li>
+<li><a class="nav-link" href="#overview"><span class="header-section-number">6.1</span> Overview</a></li>
+<li><a class="nav-link" href="#purpose"><span class="header-section-number">6.2</span> Purpose</a></li>
+<li><a class="nav-link" href="#assignment-1---question"><span class="header-section-number">6.3</span> Assignment #1 - Question</a></li>
+<li>
+<a class="nav-link" href="#assignment-2---abstract"><span class="header-section-number">6.4</span> Assignment #2 - Abstract</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#how-to-write-an-abstract"><span class="header-section-number">6.4.1</span> How to write an abstract</a></li></ul>
+</li>
+<li><a class="nav-link" href="#data-import-tips"><span class="header-section-number">6.5</span> Data Import Tips</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/eda-project.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/eda-project.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-02-23.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

@@ -13,7 +13,7 @@ rmd_files: [
   "eda-project.Rmd",
   "data-sets.Rmd",
   "data-public-health.Rmd",
-  "data-ebird.Rmd",
+  "data-ebird2.Rmd",
   
   "getting-started.Rmd",
   "project-options.Rmd",

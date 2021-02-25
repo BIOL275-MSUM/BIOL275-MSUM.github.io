@@ -108,6 +108,13 @@ assignment-2---abstract
 how-to-write-an-abstract
 how-to-write-a-title
 data-import-tips
+sac-presentation
+application
+before-you-begin
+application-process
+after-you-submit
+poster-format
+presenting-at-the-sac
 data-sets
 your-own-dataset
 species-occurrence-data

@@ -8,7 +8,9 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
 ## Species occurrence data
 
--   [**eBird data**](https://ebird.org/science) on bird observations. This is a huge dataset with many possible questions to explore. Challenge level: Difficult
+-   eBird data on bird observations. This is a huge dataset with many possible questions to explore. Challenge level: Difficult
+
+    -   See the [eBird data](data-ebird2.html) page for more details.
 
 -   The **Botanical Information and Ecology Network** brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you'd probably need to combine it with some other earth observation data like those found below. Challenge level: Moderate
 
@@ -43,7 +45,11 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
     -   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
 
-## COVID-19 data
+## Epidemioogical data
+
+COVID-19 data
+
+-   [The COVID Tracking Project](https://covidtracking.com/)
 
 ## Geospatial data
 

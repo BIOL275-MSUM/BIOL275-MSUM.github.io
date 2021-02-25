@@ -120,7 +120,7 @@ your-own-dataset
 species-occurrence-data
 environmental-data
 public-health-data-sets
-covid-19-data
+epidemioogical-data
 geospatial-data
 appears
 other-geospatial-data

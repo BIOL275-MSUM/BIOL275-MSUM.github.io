@@ -43,7 +43,7 @@ library(tidyverse)    # load the tidyverse package
 
 ```
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#> ✔ tibble  3.0.6     ✔ dplyr   1.0.4
+#> ✔ tibble  3.1.0     ✔ dplyr   1.0.4
 #> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
 ```

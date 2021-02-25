@@ -9,8 +9,16 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 ## Species occurrence data
 
 -   [**eBird data**](https://ebird.org/science) on bird observations. This is a huge dataset with many possible questions to explore. Challenge level: Difficult
+
 -   The **Botanical Information and Ecology Network** brings together data on plant distribution, abundance, and traits, with the goal of predicting and mitigating the effects of climate change on plant species and communities. You can download geolocated observations and trait data, but you'd probably need to combine it with some other earth observation data like those found below. Challenge level: Moderate
+
+    -   [BIEN package](https://cran.r-project.org/web/packages/BIEN/vignettes/BIEN_tutorial.html)
+
 -   [iNaturalist](https://www.inaturalist.org/). Challenge level: Easy
+
+    -   [iNaturalist](https://www.inaturalist.org/) website
+    -   [rinat package](https://docs.ropensci.org/rinat/)
+
 -   [GBIF](https://www.gbif.org/). Global Biodiversity Information Facility. Geolocated occurrence data for all species worldwide, aggregated from many other data sources. Challenge level: Moderate
 
 ## Environmental data

@@ -21,6 +21,8 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
 -   [GBIF](https://www.gbif.org/). Global Biodiversity Information Facility. Geolocated occurrence data for all species worldwide, aggregated from many other data sources. Challenge level: Moderate
 
+    -   [rgbif package](https://github.com/ropensci/rgbif) on GitHub - read the intro on the README for more links to vignettes, reference, articles, and a published paper
+
 ## Environmental data
 
 -   [NEON](https://www.neonscience.org/data). The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing. The comprehensive data, spatial extent and remote sensing technology provided by NEON will enable a large and diverse user community to tackle new questions at scales not accessible to previous generations of ecologists. Challenge level: Difficult

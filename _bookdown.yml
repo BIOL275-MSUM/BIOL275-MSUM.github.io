@@ -11,6 +11,7 @@ rmd_files: [
   "lab-5.Rmd",
   
   "eda-project.Rmd",
+  "eda-sac.Rmd",
   "data-sets.Rmd",
   "data-public-health.Rmd",
   "data-ebird2.Rmd",

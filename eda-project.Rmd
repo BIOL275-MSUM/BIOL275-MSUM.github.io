@@ -30,6 +30,8 @@ This assignment is due by Thursday, February 25.
 
 Your abstract must be submitted to the SAC website by Sunday, February 28.
 
+See the [SAC Presentation](sac-presentation.html) guidelines for detailed application instructions.
+
 ### How to write an abstract
 
 Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 specific sentences to include, although your abstract can vary from this pattern depending on the nature of your question.

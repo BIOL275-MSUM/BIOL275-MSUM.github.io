@@ -12,25 +12,23 @@ You will choose a dataset to use and a question to answer. You will present your
 
 The purpose of the lab project is for you to practice working with real data, exploring data sets to answer a question that interests *you*, and communicating the results.
 
-## Assignment \#1 - Question
-
-This assignment is due Thursday February 25.
-
-1.  Find a partner with similar interests
-
-2.  Choose a [data set](data-sets.html)
-
-    1.  For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.
-
-3.  Develop a question
-
-## Assignment \#2 - Abstract
+## Assignment \#1 - SAC Abstract submission
 
 This assignment is due by Thursday, February 25.
 
-Your abstract must be submitted to the SAC website by Sunday, February 28.
+Your abstract must be submitted to the SAC website by Sunday, February 28. See the [SAC Presentation](sac-presentation.html) guidelines for detailed application instructions.
 
-See the [SAC Presentation](sac-presentation.html) guidelines for detailed application instructions.
+To complete this assignment, you will:
+
+1.  Choose a [data set](data-sets.html)
+
+    1.  For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.
+
+2.  Develop a question
+
+3.  Write a 100-250 word abstract (see below for tips)
+
+4.  Write a title (see below for tips)
 
 ### How to write an abstract
 
@@ -61,6 +59,8 @@ It should include important keywords related to your question, so that someone r
 The title could be generic such as "the relationship between X and Y", or a declarative statement like in the example below. The title can omit some of the details included in the Question.
 
 ## Data Import Tips
+
+This info will be useful when you get to the stage of importing data (after your SAC abstract has been submitted).
 
 Where to store your data?
 

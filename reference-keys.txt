@@ -103,8 +103,7 @@ further-reading-1
 eda-project-instructions
 overview
 purpose
-assignment-1---question
-assignment-2---abstract
+assignment-1---sac-abstract-submission
 how-to-write-an-abstract
 how-to-write-a-title
 data-import-tips

@@ -14,7 +14,9 @@ The application deadline will not be extended for any reason.
 
 ### Before you begin
 
-Before you begin the application process, you should assemble all the required information and have it ready to copy and paste into the application form. The application form will time out after 30 minutes, so if you do not complete it within that time, your information will be lost and you will have to start over.
+Before you begin the application process, you should read the [Exploratory Data Analysis Project](eda-project-instructions.html) instructions, choose the data set you will work with for the project, and write your abstract and title.
+
+Assemble all the required information and have it ready to copy and paste into the application form. The application form will time out after 30 minutes, so if you do not complete it within that time, your information will be lost and you will have to start over.
 
 You will need the following:
 

@@ -100,7 +100,7 @@ questions-1
 lab-report-1
 grading-rubric-3
 further-reading-1
-eda-project-instructions
+eda-project
 overview
 purpose
 assignment-1---sac-abstract-submission

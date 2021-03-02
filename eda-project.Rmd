@@ -1,6 +1,6 @@
 # (PART) EDA Project {.unnumbered}
 
-# EDA Project Instructions
+# EDA Project
 
 ## Overview
 

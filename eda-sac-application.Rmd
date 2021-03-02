@@ -1,10 +1,10 @@
-# SAC Presentation
+# SAC Application
 
 You will present the results of your [Exploratory Data Analysis Project](eda-project-instructions.html) at Minnesota State University Moorhead's [Andrew B. Conteh Student Academic Conference (SAC)](https://www2.mnstate.edu/sac/).
 
 The purpose of the SAC is to showcase the work and talent of MSUM students through presentations, posters and creative works at a one day conference held at MSUM each April. The SAC provides student researchers with an opportunity to present their work to faculty, administration, peers and the community in a formal academic setting.
 
-## Application
+## Assignment: Submit your application
 
 The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/SAC/form/index).
 

@@ -16,7 +16,7 @@ The purpose of the lab project is for you to practice working with real data, ex
 
 This assignment is due by Thursday, February 25.
 
-Your abstract must be submitted to the SAC website by Sunday, February 28. See the [SAC Presentation](sac-presentation.html) guidelines for detailed application instructions.
+Your abstract must be submitted to the SAC website by Sunday, February 28. See the [SAC Application](sac-application.html) guidelines for detailed application instructions.
 
 To complete this assignment, you will:
 

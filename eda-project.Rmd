@@ -12,53 +12,39 @@ You will choose a dataset to use and a question to answer. You will present your
 
 The purpose of the lab project is for you to practice working with real data, exploring data sets to answer a question that interests *you*, and communicating the results.
 
-## Assignment \#1 - SAC Abstract submission
+## Choose a project
 
-This assignment is due by Thursday, February 25.
+### Data sets
 
-Your abstract must be submitted to the SAC website by Sunday, February 28. See the [SAC Application](sac-application.html) guidelines for detailed application instructions.
+The first step in your EDA project is to choose one or more data sets you will explore.
 
-To complete this assignment, you will:
+For help in finding, learning about, and accessing data sets, see [Data Sets](data-sets.html).
 
-1.  Choose a [data set](data-sets.html)
+For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.
 
-    1.  For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.
+### Question
 
-2.  Develop a question
+The second step in your EDA project is to develop a broad question or concept that can be answered or explored with your data sets.
 
-3.  Write a 100-250 word abstract (see below for tips)
+For example, if you are interested in the field of public health, your over-arching question might be something like "How do environmental risk factors affect cardiovascular diseases?"
 
-4.  Write a title (see below for tips)
+During the course of your exploratory data analysis you will gradually form more specific questions. These questions are will be phrased in terms of the variables and observations that comprise your data sets, and each will have a definite answer in the form of a visualization or statistical analysis. Following the diabetes example, your more specific questions might include the following:
 
-### How to write an abstract
+-   How did diabetes prevalence vary among states in 2019?
+-   How did diabetes prevalence vary among racial or ethnic groups in Minnesota in 2019?
+-   What is the correlation between annual diabetes prevalence and the proportion of the population covered by medical insurance in Clay County, Minnesota from 2010-2019?
 
-Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 specific sentences to include, although your abstract can vary from this pattern depending on the nature of your question.
+Your general question will provide the overall direction of your project, while new specific questions will arise through the course of the exploratory analysis.
 
--   Two sentences of background explaining the "system". For example, if you are exploring the risk factors associated with diabetes, you might start by explaining what diabetes is, how you get it, and what other studies have found regarding risk factors.
+You may not end up including all specific questions in your final EDA Project Poster, depending on how interesting or applicable the results were for each one.
 
--   One sentence laying out your question.
+## Assignments
 
--   One sentence saying which data set you will use, and where it came from.
+1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by Sunday, February 28, 2021
 
--   One or two sentence describing what you plan to do (i.e. which variables will you compare) to answer your question. Unless you have a good reason not to, you should probably use the phrase "exploratory data analysis" somewhere in here.
+## Project Management
 
--   One sentence about the conclusions you might draw based on your results, the contribution this might make towards science, how a decision-maker might use this information, or some other way of explaining how your expected results might be used.
-
-Write the abstract in first person future tense, for example "I will..."
-
-For more information about how to write an abstract, see <https://www.mnstate.edu/sac/preparing-presentation.aspx>
-
-### How to write a title
-
-Now that you have an abstract, it needs a title.
-
-The title should be a single phrase or sentence, between 6 and 12 words long (this is flexible).
-
-It should include important keywords related to your question, so that someone reading the title would have a good idea what the poster is about.
-
-The title could be generic such as "the relationship between X and Y", or a declarative statement like in the example below. The title can omit some of the details included in the Question.
-
-## Data Import Tips
+### Data Import Tips
 
 This info will be useful when you get to the stage of importing data (after your SAC abstract has been submitted).
 

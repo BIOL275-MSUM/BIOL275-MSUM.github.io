@@ -4,6 +4,36 @@ You will present the results of your [Exploratory Data Analysis Project](eda-pro
 
 The purpose of the SAC is to showcase the work and talent of MSUM students through presentations, posters and creative works at a one day conference held at MSUM each April. The SAC provides student researchers with an opportunity to present their work to faculty, administration, peers and the community in a formal academic setting.
 
+## Overview
+
+### How to write an abstract
+
+Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 specific sentences to include, although your abstract can vary from this pattern depending on the nature of your question.
+
+-   Two sentences of background explaining the "system". For example, if you are exploring the risk factors associated with diabetes, you might start by explaining what diabetes is, how you get it, and what other studies have found regarding risk factors.
+
+-   One sentence laying out your question.
+
+-   One sentence saying which data set you will use, and where it came from.
+
+-   One or two sentence describing what you plan to do (i.e. which variables will you compare) to answer your question. Unless you have a good reason not to, you should probably use the phrase "exploratory data analysis" somewhere in here.
+
+-   One sentence about the conclusions you might draw based on your results, the contribution this might make towards science, how a decision-maker might use this information, or some other way of explaining how your expected results might be used.
+
+Write the abstract in first person future tense, for example "I will..."
+
+For more information about how to write an abstract, see [<https://www.mnstate.edu/sac/preparing-presentation.aspx>](https://www.mnstate.edu/sac/preparing-presentation.aspx){.uri}
+
+### How to write a title
+
+Now that you have an abstract, it needs a title.
+
+The title should be a single phrase or sentence, between 6 and 12 words long (this is flexible).
+
+It should include important keywords related to your question, so that someone reading the title would have a good idea what the poster is about.
+
+The title could be generic such as "the relationship between X and Y", or a declarative statement like in the example below. The title can omit some of the details included in the Question.
+
 ## Assignment: Submit your application
 
 The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/SAC/form/index).

@@ -44,6 +44,16 @@ You may not end up including all specific questions in your final EDA Project Po
 
 ## Project Management
 
+### GitHub repository
+
+Your EDA project will have its own GitHub repository which will include:
+
+1.  Your data analysis R scripts
+
+2.  README.Rmd containing the text and code to create your final poster
+
+3.  README.md containing your final poster. This document is what you will present at the SAC
+
 ### Data Import Tips
 
 This info will be useful when you get to the stage of importing data (after your SAC abstract has been submitted).

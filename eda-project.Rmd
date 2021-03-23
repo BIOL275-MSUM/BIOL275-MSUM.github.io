@@ -42,6 +42,18 @@ You may not end up including all specific questions in your final EDA Project Po
 
 1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by Sunday, February 28, 2021
 
+2.  Preliminary Methods and Results
+
+    a.  Add a basic outline for your README, including level 2 headings for **Abstract**, **Introduction**, **Methods**, **Results**, **Discussion**, **Literature Cited**, and **References**.
+
+    b.  Add level 3 headings under Methods for the following sections:
+
+        i.  **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
+
+        ii. Data Preparation. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
+
+    c.  Request peer review by **March 25**; complete peer review and respond to changes by **March 30**. Submit to the D2L assignment the link to the peer review of your own project by March 30. You will be graded on your methods section and on the quality of your the peer review(s) you provide to others.
+
 ## Project Management
 
 ### GitHub repository

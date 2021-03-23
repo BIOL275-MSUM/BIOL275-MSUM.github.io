@@ -43,8 +43,8 @@ library(tidyverse)    # load the tidyverse package
 
 ```
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.0     ✔ dplyr   1.0.4
-#> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+#> ✔ tibble  3.1.0     ✔ dplyr   1.0.5
+#> ✔ tidyr   1.1.3     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
 ```
 
@@ -329,7 +329,7 @@ summarize(diamonds_grouped, mean_price = mean(price))
 ```
 #> # A tibble: 5 x 2
 #>   cut       mean_price
-#> * <ord>          <dbl>
+#>   <ord>          <dbl>
 #> 1 Fair           4359.
 #> 2 Good           3929.
 #> 3 Very Good      3982.
@@ -441,7 +441,7 @@ price_summary
 ```
 #> # A tibble: 5 x 5
 #>   cut       mean_price   sem ci_upper_limit ci_lower_limit
-#> * <ord>          <dbl> <dbl>          <dbl>          <dbl>
+#>   <ord>          <dbl> <dbl>          <dbl>          <dbl>
 #> 1 Fair           4359.  88.7          4533.          4185.
 #> 2 Good           3929.  52.6          4032.          3826.
 #> 3 Very Good      3982.  35.8          4052.          3912.

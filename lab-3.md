@@ -94,8 +94,8 @@ When you run the code, you will see a ***message*** in the console like this:
 
 ```
 #> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.0     ✔ dplyr   1.0.4
-#> ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+#> ✔ tibble  3.1.0     ✔ dplyr   1.0.5
+#> ✔ tidyr   1.1.3     ✔ stringr 1.4.0
 #> ✔ readr   1.4.0     ✔ forcats 0.5.1
 ```
 
@@ -222,7 +222,7 @@ count(tiger_data, activity)
 ```
 #> # A tibble: 9 x 2
 #>   activity                  n
-#> * <chr>                 <int>
+#>   <chr>                 <int>
 #> 1 Disturbing tiger kill     5
 #> 2 Fishing                   8
 #> 3 Forest products          11

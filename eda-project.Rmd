@@ -54,15 +54,19 @@ You may not end up including all specific questions in your final EDA Project Po
 
     c.  Request peer review by **March 25**; complete peer review and respond to changes by **March 30**. Submit to the D2L assignment the link to the peer review of your own project by March 30. You will be graded on your methods section and on the quality of your the peer review(s) you provide to others.
 
-## Citations
+## References
 
-Your literature cited section should include the full citation for each source cited in the text of your poster.
+You should have a section titled "References" containing a list of references you cite in your poster.
+
+Entries in the References section are commonly called "end citations", while citations in the text of your poster are called "in-text citations". Each each in-text citation should have a corresponding end citation and vice versa.
 
 There are three types of references you may cite:
 
 1.  **Primary literature**. Published peer-reviewed journal articles. Articles from the popular press (e.g. a magazine, blog, or news website) should not be used.
 2.  **Data sources**. Where you obtained your data from.
 3.  **Software**. Including R, RStudio, and any R packages you used.
+
+Each
 
 ### Citing software
 

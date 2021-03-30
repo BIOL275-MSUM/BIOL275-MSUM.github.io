@@ -54,6 +54,62 @@ You may not end up including all specific questions in your final EDA Project Po
 
     c.  Request peer review by **March 25**; complete peer review and respond to changes by **March 30**. Submit to the D2L assignment the link to the peer review of your own project by March 30. You will be graded on your methods section and on the quality of your the peer review(s) you provide to others.
 
+## Citations
+
+Your literature cited section should include the full citation for each source cited in the text of your poster.
+
+There are three types of references you may cite:
+
+1.  **Primary literature**. Published peer-reviewed journal articles. Articles from the popular press (e.g. a magazine, blog, or news website) should not be used.
+2.  **Data sources**. Where you obtained your data from.
+3.  **Software**. Including R, RStudio, and any R packages you used.
+
+### Citing software
+
+R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:
+
+```{r}
+citation()
+```
+
+Always give the version of R and RStudio you are using. In the text of your methods, you would say something like "I used R Version 4.0.3 (R Core Team 2021)"
+
+To find your version of R type:
+
+```{r}
+R.Version()
+```
+
+The citation and version number for RStudio can be found like this:
+
+```{r}
+RStudio.Version()
+```
+
+Citations for R packages can be found like this:
+
+```{r}
+citation("dplyr")
+```
+
+You should any non-base packages you use. For example, cite any of the tidyverse package (tibble, dplyr, tidyr, forcats, lubridate, readr), but do not cite the tidyverse package itself.
+
+If you use a special package for reading in data, cite is, e.g. readxl.
+
+If you read data from online using a special package, cite it too, e.g. rgbif, rinat, BIEN, auk.
+
+### End citation format
+
+Use the format defined by the Council of Science Editors.
+
+### In-text citation format
+
+In-text citations should be given in the Name-Year format. Examples:
+
+1.  One author: (Merkord 2021)
+2.  Two authors: (Merkord and Merkord 2021)
+3.  Three authors: (Merkord et al. 2021)
+
 ## Project Management
 
 ### GitHub repository

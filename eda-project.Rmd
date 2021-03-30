@@ -66,8 +66,6 @@ There are three types of references you may cite:
 2.  **Data sources**. Where you obtained your data from.
 3.  **Software**. Including R, RStudio, and any R packages you used.
 
-Each
-
 ### Citing software
 
 R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:

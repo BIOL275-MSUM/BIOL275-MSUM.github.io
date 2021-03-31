@@ -84,7 +84,7 @@ R.Version()
 
 The citation and version number for RStudio can be found like this:
 
-```{r}
+```{r rstudio-citation, eval=FALSE}
 RStudio.Version()
 ```
 

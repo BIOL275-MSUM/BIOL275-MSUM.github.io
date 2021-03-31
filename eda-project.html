@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>6 EDA Project | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9002/tabs.js"></script><script src="libs/bs3compat-0.2.4.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
@@ -133,13 +133,145 @@
 </li>
 </ol>
 </div>
-<div id="project-management" class="section level2" number="6.5">
+<div id="references" class="section level2" number="6.5">
 <h2>
-<span class="header-section-number">6.5</span> Project Management<a class="anchor" aria-label="anchor" href="#project-management"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h2>
-<div id="github-repository" class="section level3" number="6.5.1">
+<p>You should have a section titled “References” containing a list of references you cite in your poster.</p>
+<p>Entries in the References section are commonly called “end citations”, while citations in the text of your poster are called “in-text citations”. Each each in-text citation should have a corresponding end citation and vice versa.</p>
+<p>There are three types of references you may cite:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Primary literature</strong>. Published peer-reviewed journal articles. Articles from the popular press (e.g. a magazine, blog, or news website) should not be used.</li>
+<li>
+<strong>Data sources</strong>. Where you obtained your data from.</li>
+<li>
+<strong>Software</strong>. Including R, RStudio, and any R packages you used.</li>
+</ol>
+<div id="citing-software" class="section level3" number="6.5.1">
 <h3>
-<span class="header-section-number">6.5.1</span> GitHub repository<a class="anchor" aria-label="anchor" href="#github-repository"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5.1</span> Citing software<a class="anchor" aria-label="anchor" href="#citing-software"><i class="fas fa-link"></i></a>
+</h3>
+<p>R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:</p>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; To cite R in publications use:
+#&gt; 
+#&gt;   R Core Team (2020). R: A language and environment for statistical
+#&gt;   computing. R Foundation for Statistical Computing, Vienna, Austria.
+#&gt;   URL https://www.R-project.org/.
+#&gt; 
+#&gt; A BibTeX entry for LaTeX users is
+#&gt; 
+#&gt;   @Manual{,
+#&gt;     title = {R: A Language and Environment for Statistical Computing},
+#&gt;     author = {{R Core Team}},
+#&gt;     organization = {R Foundation for Statistical Computing},
+#&gt;     address = {Vienna, Austria},
+#&gt;     year = {2020},
+#&gt;     url = {https://www.R-project.org/},
+#&gt;   }
+#&gt; 
+#&gt; We have invested a lot of time and effort in creating R, please cite it
+#&gt; when using it for data analysis. See also 'citation("pkgname")' for
+#&gt; citing R packages.</code></pre>
+<p>Always give the version of R and RStudio you are using. In the text of your methods, you would say something like “I used R Version 4.0.3 (R Core Team 2021)”</p>
+<p>To find your version of R type:</p>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Version.html">R.Version</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; $platform
+#&gt; [1] "x86_64-pc-linux-gnu"
+#&gt; 
+#&gt; $arch
+#&gt; [1] "x86_64"
+#&gt; 
+#&gt; $os
+#&gt; [1] "linux-gnu"
+#&gt; 
+#&gt; $system
+#&gt; [1] "x86_64, linux-gnu"
+#&gt; 
+#&gt; $status
+#&gt; [1] ""
+#&gt; 
+#&gt; $major
+#&gt; [1] "4"
+#&gt; 
+#&gt; $minor
+#&gt; [1] "0.2"
+#&gt; 
+#&gt; $year
+#&gt; [1] "2020"
+#&gt; 
+#&gt; $month
+#&gt; [1] "06"
+#&gt; 
+#&gt; $day
+#&gt; [1] "22"
+#&gt; 
+#&gt; $`svn rev`
+#&gt; [1] "78730"
+#&gt; 
+#&gt; $language
+#&gt; [1] "R"
+#&gt; 
+#&gt; $version.string
+#&gt; [1] "R version 4.0.2 (2020-06-22)"
+#&gt; 
+#&gt; $nickname
+#&gt; [1] "Taking Off Again"</code></pre>
+<p>The citation and version number for RStudio can be found like this:</p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">RStudio.Version</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Citations for R packages can be found like this:</p>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; To cite package 'dplyr' in publications use:
+#&gt; 
+#&gt;   Hadley Wickham, Romain François, Lionel Henry and Kirill Müller
+#&gt;   (2021). dplyr: A Grammar of Data Manipulation. R package version
+#&gt;   1.0.5. https://CRAN.R-project.org/package=dplyr
+#&gt; 
+#&gt; A BibTeX entry for LaTeX users is
+#&gt; 
+#&gt;   @Manual{,
+#&gt;     title = {dplyr: A Grammar of Data Manipulation},
+#&gt;     author = {Hadley Wickham and Romain François and Lionel Henry and Kirill Müller},
+#&gt;     year = {2021},
+#&gt;     note = {R package version 1.0.5},
+#&gt;     url = {https://CRAN.R-project.org/package=dplyr},
+#&gt;   }</code></pre>
+<p>You should any non-base packages you use. For example, cite any of the tidyverse package (tibble, dplyr, tidyr, forcats, lubridate, readr), but do not cite the tidyverse package itself.</p>
+<p>If you use a special package for reading in data, cite is, e.g. readxl.</p>
+<p>If you read data from online using a special package, cite it too, e.g. rgbif, rinat, BIEN, auk.</p>
+</div>
+<div id="end-citation-format" class="section level3" number="6.5.2">
+<h3>
+<span class="header-section-number">6.5.2</span> End citation format<a class="anchor" aria-label="anchor" href="#end-citation-format"><i class="fas fa-link"></i></a>
+</h3>
+<p>Use the format defined by the Council of Science Editors.</p>
+</div>
+<div id="in-text-citation-format" class="section level3" number="6.5.3">
+<h3>
+<span class="header-section-number">6.5.3</span> In-text citation format<a class="anchor" aria-label="anchor" href="#in-text-citation-format"><i class="fas fa-link"></i></a>
+</h3>
+<p>In-text citations should be given in the Name-Year format. Examples:</p>
+<ol style="list-style-type: decimal">
+<li>One author: (Merkord 2021)</li>
+<li>Two authors: (Merkord and Merkord 2021)</li>
+<li>Three authors: (Merkord et al. 2021)</li>
+</ol>
+</div>
+</div>
+<div id="project-management" class="section level2" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> Project Management<a class="anchor" aria-label="anchor" href="#project-management"><i class="fas fa-link"></i></a>
+</h2>
+<div id="github-repository" class="section level3" number="6.6.1">
+<h3>
+<span class="header-section-number">6.6.1</span> GitHub repository<a class="anchor" aria-label="anchor" href="#github-repository"><i class="fas fa-link"></i></a>
 </h3>
 <p>Your EDA project will have its own GitHub repository which will include:</p>
 <ol style="list-style-type: decimal">
@@ -148,9 +280,9 @@
 <li><p>README.md containing your final poster. This document is what you will present at the SAC</p></li>
 </ol>
 </div>
-<div id="data-import-tips" class="section level3" number="6.5.2">
+<div id="data-import-tips" class="section level3" number="6.6.2">
 <h3>
-<span class="header-section-number">6.5.2</span> Data Import Tips<a class="anchor" aria-label="anchor" href="#data-import-tips"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.6.2</span> Data Import Tips<a class="anchor" aria-label="anchor" href="#data-import-tips"><i class="fas fa-link"></i></a>
 </h3>
 <p>This info will be useful when you get to the stage of importing data (after your SAC abstract has been submitted).</p>
 <p>Where to store your data?</p>
@@ -213,9 +345,16 @@
 </li>
 <li><a class="nav-link" href="#assignments"><span class="header-section-number">6.4</span> Assignments</a></li>
 <li>
-<a class="nav-link" href="#project-management"><span class="header-section-number">6.5</span> Project Management</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#github-repository"><span class="header-section-number">6.5.1</span> GitHub repository</a></li>
-<li><a class="nav-link" href="#data-import-tips"><span class="header-section-number">6.5.2</span> Data Import Tips</a></li>
+<a class="nav-link" href="#references"><span class="header-section-number">6.5</span> References</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#citing-software"><span class="header-section-number">6.5.1</span> Citing software</a></li>
+<li><a class="nav-link" href="#end-citation-format"><span class="header-section-number">6.5.2</span> End citation format</a></li>
+<li><a class="nav-link" href="#in-text-citation-format"><span class="header-section-number">6.5.3</span> In-text citation format</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#project-management"><span class="header-section-number">6.6</span> Project Management</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#github-repository"><span class="header-section-number">6.6.1</span> GitHub repository</a></li>
+<li><a class="nav-link" href="#data-import-tips"><span class="header-section-number">6.6.2</span> Data Import Tips</a></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +374,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-03-23.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-03-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

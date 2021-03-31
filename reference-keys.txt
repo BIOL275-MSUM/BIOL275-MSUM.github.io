@@ -107,6 +107,10 @@ choose-a-project
 data-sets
 question
 assignments
+references
+citing-software
+end-citation-format
+in-text-citation-format
 project-management
 github-repository
 data-import-tips

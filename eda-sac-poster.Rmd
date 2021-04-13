@@ -85,3 +85,61 @@ To switch to the visual editor, open your README.Rmd file and click the gear ico
 The Visual Editor requires RStudio version 1.4 or later. You can check your RStudio version by running `RStudio.Version()` . If you don't have it, update RStudio by installing the newest version.
 
 If you don't want to use the Visual Editor, you can always format your poster using RMarkdown syntax. See [R Markdown Documents](r-markdown-documents.html) for more info.
+
+## References
+
+You should have a section titled "References" containing a list of references you cite in your poster.
+
+Entries in the References section are commonly called "end citations", while citations in the text of your poster are called "in-text citations". Each each in-text citation should have a corresponding end citation and vice versa.
+
+There are three types of references you may cite:
+
+1.  **Primary literature**. Published peer-reviewed journal articles. Articles from the popular press (e.g. a magazine, blog, or news website) should not be used.
+2.  **Data sources**. Where you obtained your data from.
+3.  **Software**. Including R, RStudio, and any R packages you used.
+
+### Citing software
+
+R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:
+
+```{r}
+citation()
+```
+
+Always give the version of R and RStudio you are using. In the text of your methods, you would say something like "I used R Version 4.0.3 (R Core Team 2021)"
+
+To find your version of R type:
+
+```{r}
+R.Version()
+```
+
+The citation and version number for RStudio can be found like this:
+
+```{r rstudio-citation, eval=FALSE}
+RStudio.Version()
+```
+
+Citations for R packages can be found like this:
+
+```{r}
+citation("dplyr")
+```
+
+You should any non-base packages you use. For example, cite any of the tidyverse package (tibble, dplyr, tidyr, forcats, lubridate, readr), but do not cite the tidyverse package itself.
+
+If you use a special package for reading in data, cite is, e.g. readxl.
+
+If you read data from online using a special package, cite it too, e.g. rgbif, rinat, BIEN, auk.
+
+### End citation format
+
+Use the format defined by the Council of Science Editors.
+
+### In-text citation format
+
+In-text citations should be given in the Name-Year format. Examples:
+
+1.  One author: (Merkord 2021)
+2.  Two authors: (Merkord and Merkord 2021)
+3.  Three authors: (Merkord et al. 2021)

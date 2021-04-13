@@ -1,0 +1,87 @@
+# SAC Poster
+
+## Elements
+
+Your poster should contain the following elements:
+
+-   Heading information
+
+    -   MSUM logo
+
+    -   Your project title
+
+    -   Your name, the names of any coauthors, and your instructor's name
+
+    -   The affiliation of each author (department, university, and address). You only need to give each unique affiliation once.
+
+    -   The following headings:
+
+        -   Abstract
+
+        -   Introduction
+
+        -   Methods
+
+        -   Results
+
+        -   Discussion
+
+        -   References
+
+        -   Acknowledgments (if necessary)
+
+## Template
+
+To create your poster, you should create a README.Rmd. Use the following template as guide to get you started.
+
+````
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+<img src="https://www2.mnstate.edu/uploadedImages/Content/Marketing/logos/MSUM_Signature_Vert_Color.jpg" alt="MSUM logo" width="200" style="float:right">
+
+# PROJECT TITLE
+
+AUTHOR NAMES
+
+Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, MN 56563 USA
+
+## Abstract
+
+ABSTRACT
+
+## Methods
+
+METHODS
+
+## Results
+
+RESULTS
+
+## Discussion
+
+DISCUSSION
+
+## References
+
+- REFERENCE 1
+- REFERENCE 2
+- REFERENCE 3
+- ETC.
+
+````
+
+## Visual Editor
+
+Once you have a template, the easiest way to write and style your poster is to use the Visual Editor. This allows you to use common text editor buttons to format your text, insert code chunks, images, and links, and more.
+
+To switch to the visual editor, open your README.Rmd file and click the gear icon at the top of the source pane. Check "Use Visual Editor".
+
+The Visual Editor requires RStudio version 1.4 or later. You can check your RStudio version by running `RStudio.Version()` . If you don't have it, update RStudio by installing the newest version.
+
+If you don't want to use the Visual Editor, you can always format your poster using RMarkdown syntax. See [R Markdown Documents](r-markdown-documents.html) for more info.

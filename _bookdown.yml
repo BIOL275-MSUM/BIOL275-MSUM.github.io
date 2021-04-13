@@ -12,6 +12,7 @@ rmd_files: [
   
   "eda-project.Rmd",
   "eda-sac-application.Rmd",
+  "eda-sac-poster.Rmd",
   "data-sets.Rmd",
   "data-public-health.Rmd",
   "data-ebird2.Rmd",

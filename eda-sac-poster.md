@@ -42,6 +42,8 @@ Your poster should contain the following elements:
 
 To create your poster, you should create a README.Rmd. Use the following template as guide to get you started.
 
+The BOLD WORDS in the template below are placeholders that you should replace with your own text.
+
 ````
 ---
 output: github_document
@@ -62,6 +64,10 @@ Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue Sou
 ## Abstract
 
 ABSTRACT
+
+## Introduction
+
+INTRODUCTION
 
 ## Methods
 

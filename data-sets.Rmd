@@ -4,7 +4,7 @@
 
 If you are involved in an ongoing research project, for example with a faculty member at MSUM, you may be able to use the data collected as part of that project for your BIOL 275 lab project.
 
-In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
+In order for you to choose your own dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
 
 ## Species occurrence data
 
@@ -45,7 +45,7 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
     -   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
 
-## Epidemioogical data
+## Epidemiological data
 
 COVID-19 data
 

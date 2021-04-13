@@ -30,6 +30,14 @@ Your poster should contain the following elements:
 
         -   Acknowledgments (if necessary)
 
+## Format and Style
+
+- Use a [scientific writing style](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/bes2.1258).
+
+- Keep sentences fairly short.
+
+- Don't put more than about three sentences per paragraph. This makes it easier to read in an online format.
+
 ## Template
 
 To create your poster, you should create a README.Rmd. Use the following template as guide to get you started.
@@ -85,6 +93,50 @@ To switch to the visual editor, open your README.Rmd file and click the gear ico
 The Visual Editor requires RStudio version 1.4 or later. You can check your RStudio version by running `RStudio.Version()` . If you don't have it, update RStudio by installing the newest version.
 
 If you don't want to use the Visual Editor, you can always format your poster using RMarkdown syntax. See [R Markdown Documents](r-markdown-documents.html) for more info.
+
+## Introduction
+
+Your introduction should:
+
+- Provide relevant background information
+
+- Clearly identify the problem or question you plan to address
+
+- State the wider implications for answering this question
+
+- Cite relevant information
+
+- Include helpful images or diagrams
+
+## Methods
+
+The methods section should include paragraphs related to:
+
+- **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
+
+- **Data Preparation**. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
+
+- Citations should include:
+
+    - R
+    - RStudio
+    - any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
+    - any R packages you used to access data
+
+
+## Results
+
+Your results should contain short paragraphs describing the patterns you found in your data, each followed by a corresponding graph.
+
+- Do not show any code, just figures
+
+- Explain what each figure shows, not what it is. For example, instead of saying a figure is a histogram, say that it shows that the variable in question has a normal distribution and give the approximate mean and standard deviation.
+
+## Discussion
+
+The discussoin should interpret your results and tie them back to the literature and the information gap you identified in the introduction.
+
+You should state the implications of what you found, and what follow-up steps could be undertaken.
 
 ## References
 

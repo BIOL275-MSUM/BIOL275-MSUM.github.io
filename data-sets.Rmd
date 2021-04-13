@@ -6,6 +6,16 @@ If you are involved in an ongoing research project, for example with a faculty m
 
 In order for you to choose your own dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
 
+## Biological trait data
+
+-   Life History and Lifespan data
+
+    -   [AnAge: The Animal Ageing and Longevity Database](https://genomics.senescence.info/species/index.html)
+
+        -   The dataset is available for download on the website
+        -   Data can be accessed in R via the [hagr](https://github.com/datawookie/hagr) package
+        -   The author published a blog introducing the package: [{hagr} Databsae of Animal Ageing and Longevity 2021-04-12](https://datawookie.dev/blog/2021/04/hagr-database-of-animal-ageing-and-longevity/)
+
 ## Species occurrence data
 
 -   eBird data on bird observations. This is a huge dataset with many possible questions to explore. Challenge level: Difficult

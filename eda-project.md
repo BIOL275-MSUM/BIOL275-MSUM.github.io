@@ -44,7 +44,7 @@ You may not end up including all specific questions in your final EDA Project Po
 
 2.  Preliminary Methods and Results
 
-    a.  Add a basic outline for your README, including level 2 headings for **Abstract**, **Introduction**, **Methods**, **Results**, **Discussion**, **Literature Cited**, and **References**.
+    a.  Add a basic outline for your README, including level 2 headings for **Abstract**, **Introduction**, **Methods**, **Results**, **Discussion**, and **References**.
 
     b.  Add level 3 headings under Methods for the following sections:
 

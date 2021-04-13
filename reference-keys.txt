@@ -124,6 +124,10 @@ application-process
 after-you-submit
 poster-format
 presenting-at-the-sac
+sac-poster
+elements
+template
+visual-editor
 data-sets-1
 your-own-dataset
 biological-trait-data

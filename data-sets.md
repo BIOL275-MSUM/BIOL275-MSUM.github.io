@@ -4,7 +4,22 @@
 
 If you are involved in an ongoing research project, for example with a faculty member at MSUM, you may be able to use the data collected as part of that project for your BIOL 275 lab project.
 
-In order for you to choose your owsn dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
+In order for you to choose your own dataset, it must be approved by the instructor first. In general, it needs to have enough data to be able to answer an interesting question.
+
+## Biological trait data
+
+-   Life History and Lifespan data
+
+    -   [AnAge: The Animal Ageing and Longevity Database](https://genomics.senescence.info/species/index.html)
+
+        -   The dataset is available for download on the website
+        -   Data can be accessed in R via the [hagr](https://github.com/datawookie/hagr) package
+        -   The author published a blog introducing the package: [{hagr} Databsae of Animal Ageing and Longevity 2021-04-12](https://datawookie.dev/blog/2021/04/hagr-database-of-animal-ageing-and-longevity/)
+
+-   Morphological trait data
+
+    -   [ATLANTIC BIRD TRAITS: a data set of bird morphological traits from the Atlantic forests of South America](https://doi.org/10.1002/ecy.2647)
+    -   [ATLANTIC MAMMAL TRAITS: a data set of morphological traits of mammals in the Atlantic Forest of South America](https://doi.org/10.1002/ecy.2106)
 
 ## Species occurrence data
 
@@ -45,7 +60,7 @@ In order for you to choose your owsn dataset, it must be approved by the instruc
 
     -   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
 
-## Epidemioogical data
+## Epidemiological data
 
 COVID-19 data
 
@@ -91,7 +106,7 @@ You could explore geospatial data by itself, or if you have GPS coordinate for o
 
 -   [**The Actinobacteriophage Database at PhagesDB.org**](https://phagesdb.org/), a website that collects and shares data, pictures, protocols, and analysis tools associated with the discovery, sequencing, and characterization of [mycobacteriophages](https://phagesdb.org/glossary/#Mycobacteriophage)---viruses that infect the *Mycobacteria* and also other bacterial hosts in the phylum Actinobacteria. It was developed at---and is maintained from---the **Pittsburgh Bacteriophage Institute**, a joint venture of **Dr. Graham Hatfull** and **Dr. Roger Hendrix**, both of the Department of Biological Sciences at the University of Pittsburgh.
 
-## General online data repositories
+## Online data repositories
 
 -   [**Dryad**](http://datadryad.org/). A curated, general purpose data repository. You can search through it to find an interesting dataset. Here are two examples (but you should find your own):
 
@@ -99,6 +114,8 @@ You could explore geospatial data by itself, or if you have GPS coordinate for o
     -   [Birth seasonality data from Martinez-Bakker *et al.* (2014)](http://hdl.handle.net/10255/dryad.170822). A dataset of the number of births per month over the past 100 years in the US and 60 years in the World. Could possible be combined with another dataset to ask an interesting question.
 
 -   [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets). A topic-centric list of high-quality open datasets in public domains. By everyone, for everyone!
+
+-   [ATLANTIC: Data Papers from a biodiversity hotspot](https://esajournals.onlinelibrary.wiley.com/doi/toc/10.1002/(ISSN)1939-9170.AtlanticPapers). Datasets include: Mammals, Mammal traits, Bats, Nonvolant mammals, Small mammals, Primates, Birds, Bird traits, Amphibians, Butterflies, Epiphytes, Frugivory, Camera traps
 
 ## Datasets in R
 

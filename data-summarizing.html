@@ -139,12 +139,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut       color clarity depth table price length width height
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326   3.95  3.98   2.43
-#&gt; 2 0.21  Premium   E     SI1      59.8    61   326   3.89  3.84   2.31
-#&gt; 3 0.23  Good      E     VS1      56.9    65   327   4.05  4.07   2.31
-#&gt; 4 0.290 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
-#&gt; 5 0.31  Good      J     SI2      63.3    58   335   4.34  4.35   2.75
-#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326   3.95  3.98   2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326   3.89  3.84   2.31
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327   4.05  4.07   2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335   4.34  4.35   2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Note the lack of quotes around the names of the data frame, the new variable names or the old variables names</p>
 <p>The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:</p>
@@ -169,12 +169,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 2
 #&gt;   carat price
 #&gt;   &lt;dbl&gt; &lt;int&gt;
-#&gt; 1 0.23    326
-#&gt; 2 0.21    326
-#&gt; 3 0.23    327
-#&gt; 4 0.290   334
-#&gt; 5 0.31    335
-#&gt; 6 0.24    336
+#&gt; 1  0.23   326
+#&gt; 2  0.21   326
+#&gt; 3  0.23   327
+#&gt; 4  0.29   334
+#&gt; 5  0.31   335
+#&gt; 6  0.24   336
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Now use the new data frame <code>d2</code> to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named <code>ppc</code> (“price per carat”):</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
@@ -182,12 +182,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 3
 #&gt;   carat price   ppc
 #&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-#&gt; 1 0.23    326 1417.
-#&gt; 2 0.21    326 1552.
-#&gt; 3 0.23    327 1422.
-#&gt; 4 0.290   334 1152.
-#&gt; 5 0.31    335 1081.
-#&gt; 6 0.24    336 1400 
+#&gt; 1  0.23   326 1417.
+#&gt; 2  0.21   326 1552.
+#&gt; 3  0.23   327 1422.
+#&gt; 4  0.29   334 1152.
+#&gt; 5  0.31   335 1081.
+#&gt; 6  0.24   336 1400 
 #&gt; # … with 53,934 more rows</code></pre>
 <div id="mutate-an-existing-variable" class="section level3" number="5.4.1">
 <h3>
@@ -199,12 +199,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5    55  414.  3.95  3.98  2.43
-#&gt; 2 0.21  Premium   E     SI1      59.8    61  414.  3.89  3.84  2.31
-#&gt; 3 0.23  Good      E     VS1      56.9    65  415.  4.05  4.07  2.31
-#&gt; 4 0.290 Premium   I     VS2      62.4    58  424.  4.2   4.23  2.63
-#&gt; 5 0.31  Good      J     SI2      63.3    58  425.  4.34  4.35  2.75
-#&gt; 6 0.24  Very Good J     VVS2     62.8    57  427.  3.94  3.96  2.48
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55  414.  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8    61  414.  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9    65  415.  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4    58  424.  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3    58  425.  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57  427.  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 </div>
 </div>
@@ -322,12 +322,12 @@
 #&gt; # Groups:   cut [5]
 #&gt;   carat cut       color clarity depth table price     x     y     z
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-#&gt; 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-#&gt; 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#&gt; 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#&gt; 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>The only difference in the output from printing the ungrouped <code>diamonds</code> table is the second line of the output, which now says <code># Groups:   cut [5]</code>. That’s saying the table is grouped by the <code>cut</code> variable and there are five groups (the five possible values of <code>cut</code>).</p>
 <p>The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:</p>
@@ -621,7 +621,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-03-31.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-04-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

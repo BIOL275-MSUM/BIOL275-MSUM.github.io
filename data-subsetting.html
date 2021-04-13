@@ -126,12 +126,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-#&gt; 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-#&gt; 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#&gt; 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#&gt; 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Familiarize yourself with the variables in the data frame by looking at the help page for <code>diamonds</code>:</p>
 <div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
@@ -367,12 +367,12 @@
 <pre><code>#&gt; # A tibble: 29,150 x 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#&gt; 2 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#&gt; 3 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-#&gt; 4 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
-#&gt; 5 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
-#&gt; 6 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#&gt; 1  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 2  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#&gt; 3  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#&gt; 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#&gt; 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#&gt; 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
 #&gt; # … with 29,144 more rows</code></pre>
 <p>The function itself is the comparison, there is no operator like <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code> or <code><a href="https://rdrr.io/r/base/Comparison.html">!=</a></code>.</p>
 <p>The name of the variable you want to look in goes <em>inside</em> the <code>str_detect()</code> function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.</p>
@@ -447,12 +447,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 3
 #&gt;   carat cut       color
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt;
-#&gt; 1 0.23  Ideal     E    
-#&gt; 2 0.21  Premium   E    
-#&gt; 3 0.23  Good      E    
-#&gt; 4 0.290 Premium   I    
-#&gt; 5 0.31  Good      J    
-#&gt; 6 0.24  Very Good J    
+#&gt; 1  0.23 Ideal     E    
+#&gt; 2  0.21 Premium   E    
+#&gt; 3  0.23 Good      E    
+#&gt; 4  0.29 Premium   I    
+#&gt; 5  0.31 Good      J    
+#&gt; 6  0.24 Very Good J    
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Technically, you can also select variables by their position, so <code>select(diamonds, carat, cut, color)</code> is equivalent to <code>select(diamonds, 1, 2, 3)</code></p>
 <p><code>select()</code> can also be used to rearrange the order of columns:</p>
@@ -461,12 +461,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 3
 #&gt;   color cut       carat
 #&gt;   &lt;ord&gt; &lt;ord&gt;     &lt;dbl&gt;
-#&gt; 1 E     Ideal     0.23 
-#&gt; 2 E     Premium   0.21 
-#&gt; 3 E     Good      0.23 
-#&gt; 4 I     Premium   0.290
-#&gt; 5 J     Good      0.31 
-#&gt; 6 J     Very Good 0.24 
+#&gt; 1 E     Ideal      0.23
+#&gt; 2 E     Premium    0.21
+#&gt; 3 E     Good       0.23
+#&gt; 4 I     Premium    0.29
+#&gt; 5 J     Good       0.31
+#&gt; 6 J     Very Good  0.24
 #&gt; # … with 53,934 more rows</code></pre>
 <p>There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon <code><a href="https://rdrr.io/r/base/Colon.html">:</a></code> operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
@@ -474,12 +474,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 7
 #&gt;   carat cut       color clarity depth table price
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5    55   326
-#&gt; 2 0.21  Premium   E     SI1      59.8    61   326
-#&gt; 3 0.23  Good      E     VS1      56.9    65   327
-#&gt; 4 0.290 Premium   I     VS2      62.4    58   334
-#&gt; 5 0.31  Good      J     SI2      63.3    58   335
-#&gt; 6 0.24  Very Good J     VVS2     62.8    57   336
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336
 #&gt; # … with 53,934 more rows</code></pre>
 <div id="removing-variables" class="section level3" number="4.5.1">
 <h3>
@@ -491,12 +491,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 9
 #&gt;   carat cut       color clarity depth price     x     y     z
 #&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0.23  Ideal     E     SI2      61.5   326  3.95  3.98  2.43
-#&gt; 2 0.21  Premium   E     SI1      59.8   326  3.89  3.84  2.31
-#&gt; 3 0.23  Good      E     VS1      56.9   327  4.05  4.07  2.31
-#&gt; 4 0.290 Premium   I     VS2      62.4   334  4.2   4.23  2.63
-#&gt; 5 0.31  Good      J     SI2      63.3   335  4.34  4.35  2.75
-#&gt; 6 0.24  Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#&gt; 1  0.23 Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9   327  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>To remove several variables, you can prepend each one with a <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>. You can even remove a range of values, but the syntax is quirky. You have to put the <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> before each variable name. For example, to remove x, y, and z variables:</p>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
@@ -520,12 +520,12 @@
 <pre><code>#&gt; # A tibble: 53,940 x 10
 #&gt;   table price carat cut       color clarity depth     x     y     z
 #&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    55   326 0.23  Ideal     E     SI2      61.5  3.95  3.98  2.43
-#&gt; 2    61   326 0.21  Premium   E     SI1      59.8  3.89  3.84  2.31
-#&gt; 3    65   327 0.23  Good      E     VS1      56.9  4.05  4.07  2.31
-#&gt; 4    58   334 0.290 Premium   I     VS2      62.4  4.2   4.23  2.63
-#&gt; 5    58   335 0.31  Good      J     SI2      63.3  4.34  4.35  2.75
-#&gt; 6    57   336 0.24  Very Good J     VVS2     62.8  3.94  3.96  2.48
+#&gt; 1    55   326  0.23 Ideal     E     SI2      61.5  3.95  3.98  2.43
+#&gt; 2    61   326  0.21 Premium   E     SI1      59.8  3.89  3.84  2.31
+#&gt; 3    65   327  0.23 Good      E     VS1      56.9  4.05  4.07  2.31
+#&gt; 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
+#&gt; 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
+#&gt; 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 </div>
 </div>
@@ -729,7 +729,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-03-31.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2021-04-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

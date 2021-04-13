@@ -66,12 +66,12 @@ diamonds
 #> # A tibble: 53,940 x 10
 #>   carat cut       color clarity depth table price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-#> 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-#> 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-#> 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#> 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#> 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-#> 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 #> # … with 53,934 more rows
 ```
 
@@ -313,12 +313,12 @@ filter(diamonds, str_detect(clarity, "VS"))
 #> # A tibble: 29,150 x 10
 #>   carat cut       color clarity depth table price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-#> 1 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-#> 2 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-#> 3 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-#> 4 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
-#> 5 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
-#> 6 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#> 1  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 2  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 3  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#> 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
 #> # … with 29,144 more rows
 ```
 
@@ -423,12 +423,12 @@ select(diamonds, carat, cut, color)
 #> # A tibble: 53,940 x 3
 #>   carat cut       color
 #>   <dbl> <ord>     <ord>
-#> 1 0.23  Ideal     E    
-#> 2 0.21  Premium   E    
-#> 3 0.23  Good      E    
-#> 4 0.290 Premium   I    
-#> 5 0.31  Good      J    
-#> 6 0.24  Very Good J    
+#> 1  0.23 Ideal     E    
+#> 2  0.21 Premium   E    
+#> 3  0.23 Good      E    
+#> 4  0.29 Premium   I    
+#> 5  0.31 Good      J    
+#> 6  0.24 Very Good J    
 #> # … with 53,934 more rows
 ```
 
@@ -445,12 +445,12 @@ select(diamonds, color, cut, carat)
 #> # A tibble: 53,940 x 3
 #>   color cut       carat
 #>   <ord> <ord>     <dbl>
-#> 1 E     Ideal     0.23 
-#> 2 E     Premium   0.21 
-#> 3 E     Good      0.23 
-#> 4 I     Premium   0.290
-#> 5 J     Good      0.31 
-#> 6 J     Very Good 0.24 
+#> 1 E     Ideal      0.23
+#> 2 E     Premium    0.21
+#> 3 E     Good       0.23
+#> 4 I     Premium    0.29
+#> 5 J     Good       0.31
+#> 6 J     Very Good  0.24
 #> # … with 53,934 more rows
 ```
 
@@ -465,12 +465,12 @@ select(diamonds, carat:price)
 #> # A tibble: 53,940 x 7
 #>   carat cut       color clarity depth table price
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>
-#> 1 0.23  Ideal     E     SI2      61.5    55   326
-#> 2 0.21  Premium   E     SI1      59.8    61   326
-#> 3 0.23  Good      E     VS1      56.9    65   327
-#> 4 0.290 Premium   I     VS2      62.4    58   334
-#> 5 0.31  Good      J     SI2      63.3    58   335
-#> 6 0.24  Very Good J     VVS2     62.8    57   336
+#> 1  0.23 Ideal     E     SI2      61.5    55   326
+#> 2  0.21 Premium   E     SI1      59.8    61   326
+#> 3  0.23 Good      E     VS1      56.9    65   327
+#> 4  0.29 Premium   I     VS2      62.4    58   334
+#> 5  0.31 Good      J     SI2      63.3    58   335
+#> 6  0.24 Very Good J     VVS2     62.8    57   336
 #> # … with 53,934 more rows
 ```
 
@@ -487,12 +487,12 @@ select(diamonds, -table)
 #> # A tibble: 53,940 x 9
 #>   carat cut       color clarity depth price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <int> <dbl> <dbl> <dbl>
-#> 1 0.23  Ideal     E     SI2      61.5   326  3.95  3.98  2.43
-#> 2 0.21  Premium   E     SI1      59.8   326  3.89  3.84  2.31
-#> 3 0.23  Good      E     VS1      56.9   327  4.05  4.07  2.31
-#> 4 0.290 Premium   I     VS2      62.4   334  4.2   4.23  2.63
-#> 5 0.31  Good      J     SI2      63.3   335  4.34  4.35  2.75
-#> 6 0.24  Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#> 1  0.23 Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
 #> # … with 53,934 more rows
 ```
 
@@ -528,12 +528,12 @@ select(diamonds, ends_with("e"), everything())
 #> # A tibble: 53,940 x 10
 #>   table price carat cut       color clarity depth     x     y     z
 #>   <dbl> <int> <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl>
-#> 1    55   326 0.23  Ideal     E     SI2      61.5  3.95  3.98  2.43
-#> 2    61   326 0.21  Premium   E     SI1      59.8  3.89  3.84  2.31
-#> 3    65   327 0.23  Good      E     VS1      56.9  4.05  4.07  2.31
-#> 4    58   334 0.290 Premium   I     VS2      62.4  4.2   4.23  2.63
-#> 5    58   335 0.31  Good      J     SI2      63.3  4.34  4.35  2.75
-#> 6    57   336 0.24  Very Good J     VVS2     62.8  3.94  3.96  2.48
+#> 1    55   326  0.23 Ideal     E     SI2      61.5  3.95  3.98  2.43
+#> 2    61   326  0.21 Premium   E     SI1      59.8  3.89  3.84  2.31
+#> 3    65   327  0.23 Good      E     VS1      56.9  4.05  4.07  2.31
+#> 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
+#> 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
+#> 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
 #> # … with 53,934 more rows
 ```
 

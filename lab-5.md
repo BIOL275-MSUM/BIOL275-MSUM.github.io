@@ -38,7 +38,7 @@ library(tidyverse)    # load the tidyverse package
 ```
 
 ```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ```
 
 ```

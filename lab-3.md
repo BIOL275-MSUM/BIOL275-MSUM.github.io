@@ -89,7 +89,7 @@ When you run the code, you will see a ***message*** in the console like this:
 
 
 ```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ```
 
 ```

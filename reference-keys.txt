@@ -125,6 +125,7 @@ elements
 format-and-style
 template
 visual-editor
+images
 introduction-3
 methods
 results

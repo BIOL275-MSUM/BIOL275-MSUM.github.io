@@ -57,9 +57,15 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
 # PROJECT TITLE
 
+Presentation ID: 1234 [replace 1234 with your ID#]
+
 AUTHOR NAMES
 
 Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, MN 56563 USA
+
+Presented at the MSUM 23rd Online Student Acadmic Conference
+
+Submit a survey for this presentation:  https://mnstate.co1.qualtrics.com/jfe/form/SV_eFMAwF72JZIoeSq
 
 ## Abstract
 
@@ -100,6 +106,29 @@ The Visual Editor requires RStudio version 1.4 or later. You can check your RStu
 
 If you don't want to use the Visual Editor, you can always format your poster using RMarkdown syntax. See [R Markdown Documents](r-markdown-documents.html) for more info.
 
+## Images
+
+You can add images to your markdown document in various ways. The easiest is to insert a line of HTML code right in your Rmd script. You need to provide an image source and a width (in pixels) that you want the image to be displayed at.
+
+If your image is located online, then your source would be the image URL:
+
+``` {.html}
+<img src="https://your-image-url.png" width="400">
+```
+
+If you saved the image to your RStudio project directory, then your source would be the image name:
+
+``` {.html}
+<img src="image.png" width="100" height="100">
+```
+
+If you saved the image to a directory (folder) within your RStudio project directory, then your source would be the relative path followed by the image name:
+
+``` {.html}
+<img src="images/image.png" width="100" height="100">
+```
+
+
 ## Introduction
 
 Your introduction should:
@@ -128,6 +157,7 @@ The methods section should include paragraphs related to:
     - RStudio
     - any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
     - any R packages you used to access data
+    - the source of your data. 
 
 
 ## Results

@@ -57,9 +57,15 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
 # PROJECT TITLE
 
+Presentation ID: 1234 [replace 1234 with your ID#]
+
 AUTHOR NAMES
 
 Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, MN 56563 USA
+
+Presented at the MSUM 23rd Online Student Acadmic Conference
+
+Submit a survey for this presentation:  https://mnstate.co1.qualtrics.com/jfe/form/SV_eFMAwF72JZIoeSq
 
 ## Abstract
 
@@ -128,6 +134,7 @@ The methods section should include paragraphs related to:
     - RStudio
     - any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
     - any R packages you used to access data
+    - the source of your data. 
 
 
 ## Results

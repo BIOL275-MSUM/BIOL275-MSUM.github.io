@@ -119,13 +119,13 @@ If your image is located online, then your source would be the image URL:
 If you saved the image to your RStudio project directory, then your source would be the image name:
 
 ``` {.html}
-<img src="image.png" width="100" height="100">
+<img src="image.png" width="400">
 ```
 
 If you saved the image to a directory (folder) within your RStudio project directory, then your source would be the relative path followed by the image name:
 
 ``` {.html}
-<img src="images/image.png" width="100" height="100">
+<img src="images/image.png" width="400">
 ```
 
 

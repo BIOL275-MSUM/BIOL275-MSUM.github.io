@@ -1,0 +1,71 @@
+# Comparing means
+
+## Objectives
+
+In this lab, you will learn to:
+
+-   Compare the means of two groups using a two-sample t-test
+-   Compare the means of two or more groups using a one-way ANOVA
+
+## Introduction
+
+A two-sample t-test compares the means of a numerical variable from two separate groups. An ANOVA compares the means of a numerical variable from more than two groups.
+
+In each of these tests, group membership can be thought of as a categorical variable.
+
+The basic ANOVA can be extended to more complicated scenarios. For example, a two-way ANOVA estimates how the means of a numerical variable vary in response to two categorical variables. This lab only deals with one-way ANOVAs.
+
+## Data
+
+For this lab, we will use the `penguins` dataset from the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html) package.
+
+### Installation
+
+You can install the release version of palmerpenguins from CRAN using the Packages tab in RStudio or with:
+
+```{r install-palmerpenguins, eval=FALSE}
+install.packages("palmerpenguins")
+```
+
+This only needs to be done once on your computer, so it's best not to put this in your R script. If you do put it in, prefix it with a comment so it does not run each time your run through your script:
+
+```{r comment-install}
+# install.packages("palmerpenguins")
+```
+
+Then load the package. While you're at it, go ahead and load the tidyverse too, because we will also use that in this lab:
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+While not required to access the data, it is nice to see the dataset in your Environment. You can load the `penguins` dataset with:
+
+```{r load-data}
+data("penguins")
+```
+
+You should now see two datasets in your Environment, `penguins` and `penguins_raw`. For this lab we will use `penguins` only. The details for each dataset will not be shown in the Environment tab until you use them (see the next section), a result of something called lazy-loading, which prevents the dataset from taking up memory until you need to use it.
+
+### About the data
+
+The dataset `penguins` contains data for 344 penguins, of 3 different species, collected from 3 islands in the Palmer Archipelago, Antarctica.
+
+```{r head-penguins}
+head(penguins)
+```
+
+```{r structure-penguins}
+str(penguins)
+```
+
+The three species of penguins include Chinstrap, Gentoo, and Adelie.
+
+<img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" width="50%"/>
+
+For each penguin (i.e. row, i.e. observation, i.e. case), has measurements for bill length (mm), bill depth (mm), flipper length (mm), body mass (g), sex (male or female), and year (2007, 2008, 2009).
+
+Bill length, or more specifically culmen lenght, is the distance from the tip of the bill to the base of the upper mandible. Bill depth is the distance from the top of the bill to the bottom at the base of the bill.
+
+<img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" width="50%"/>

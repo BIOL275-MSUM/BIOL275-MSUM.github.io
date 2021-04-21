@@ -5,15 +5,10 @@
 In this lab, you will learn to:
 
 -   Rename variables
-
 -   Create new variables
-
 -   Summarize a dataset
-
 -   Summarize a dataset by groups
-
 -   Visualize the relationship between variables
-
     -   Numerical and categorical variable
     -   Two numerical variables
     -   Three variables

@@ -298,7 +298,11 @@
 <li>the estimated mean for each group</li>
 </ul>
 <p>In this case, the <span class="math inline">\(P\)</span>-value is <code>1.914e-15</code>, which is scientific notation for 0.000000000000001914. If we choose an alpha level of <span class="math inline">\(\alpha=0.05\)</span>, then <span class="math inline">\(P &lt; \alpha\)</span>, so we can reject the null hypothesis and accept the alternative hypothesis by default.</p>
-<p>Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13–1.77). The difference is statistically significant (<span class="math inline">\(t = -8.928\)</span>, <span class="math inline">\(df = 143.15\)</span>, <span class="math inline">\(p = 1.914e-15\)</span>).</p>
+<p>You can find the difference in the two means like this:</p>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/unname.html">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">ttest_results</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 1.450685</code></pre>
+<p>To conclude: Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13–1.77). The difference is statistically significant (<span class="math inline">\(t = -8.928\)</span>, <span class="math inline">\(df = 143.15\)</span>, <span class="math inline">\(p = 1.914e-15\)</span>).</p>
 </div>
 </div>
 <div id="assignment-2" class="section level2" number="6.6">

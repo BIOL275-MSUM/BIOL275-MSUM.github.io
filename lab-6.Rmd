@@ -211,7 +211,8 @@ Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The d
 
 1.  Claim your GitHub repository for this lab.
 2.  Conduct your analyses in an R script.
-3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub for grading.
+3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub.
+4.  Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.
 
 ### Question
 

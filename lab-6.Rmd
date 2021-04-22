@@ -233,9 +233,9 @@ The data is provided in your GitHub repository.
 
 For each question below, write a sentence answering the question *and* show the code you used to come up with the answer, if applicable.
 
-A.  What is the difference in the mean number of species upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means. Show your code and write a sentence giving your answer
-B.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
-C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.
+A.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
+B.  What is the difference in the mean numbers of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means?
+C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met (hint: a histogram for each group).
 
 ## References
 

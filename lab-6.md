@@ -252,7 +252,8 @@ Now we can use the function `t.test()` to conduct the t-test. The first argument
 
 
 ```r
-t.test(formula = bill_depth_mm ~ sex, data = adelie_bill_depth)
+ttest_results <- t.test(formula = bill_depth_mm ~ sex, data = adelie_bill_depth)
+ttest_results
 ```
 
 ```
@@ -304,7 +305,7 @@ The data is provided in your GitHub repository.
 
 For each question below, write a sentence answering the question *and* show the code you used to come up with the answer, if applicable.
 
-A.  What is the mean difference in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer
+A.  What is the difference in the mean number of species upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means. Show your code and write a sentence giving your answer
 B.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
 C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.
 

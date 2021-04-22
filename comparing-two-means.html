@@ -273,7 +273,8 @@
 <p>The null hypothesis would be that the mean bill depths of females and males are equal. The alternative hypothesis would be that the mean bill depths of females are males are not equal.</p>
 <p>Now we can use the function <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> to conduct the t-test. The first argument will be a formula specifying how the variables are related. The numerical (response) variable should go first, followed by a tilde <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>, then the categorical (explanatory) variable. The other required argument is the name of the dataset.</p>
 <div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">bill_depth_mm</span> <span class="op">~</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">adelie_bill_depth</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">ttest_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">bill_depth_mm</span> <span class="op">~</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">adelie_bill_depth</span><span class="op">)</span>
+<span class="va">ttest_results</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  Welch Two Sample t-test
 #&gt; 
@@ -325,7 +326,7 @@
 <p>The data is provided in your GitHub repository.</p>
 <p>For each question below, write a sentence answering the question <em>and</em> show the code you used to come up with the answer, if applicable.</p>
 <ol style="list-style-type: upper-alpha">
-<li>What is the mean difference in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer</li>
+<li>What is the difference in the mean number of species upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means. Show your code and write a sentence giving your answer</li>
 <li>Test the hypothesis that the tributaries have no effect on the number of species of electric fish.</li>
 <li>State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.</li>
 </ol>

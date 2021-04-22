@@ -5,7 +5,8 @@ Version: 0.0.3
 Imports:
     readxl,
     tidyverse,
-    DT
+    DT,
+    palmerpenguins
 Suggests:
     bookdown,
     bslib,

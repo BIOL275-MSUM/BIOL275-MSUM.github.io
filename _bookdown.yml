@@ -9,6 +9,7 @@ rmd_files: [
   "lab-3.Rmd",
   "lab-4.Rmd",
   "lab-5.Rmd",
+  "lab-6.Rmd",
   
   "eda-project.Rmd",
   "eda-sac-application.Rmd",

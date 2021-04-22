@@ -228,14 +228,11 @@ Here we can see that the confidence intervals for our estimates of the mean bill
 adelie_bill_depth %>% 
   ggplot(aes(x = sex, y = bill_depth_mm)) +
   geom_jitter(aes(color = sex), 
-              shape = 16, size = 3, 
-              alpha = 0.3, width = 0.4) +
+              shape = 16, alpha = 0.3, width = 0.4) +
   geom_errorbar(aes(y = mean, ymax = upper, ymin = lower), 
-                data = adelie_bill_depth_summary, 
-                width = .1, size = .8) +
+                data = adelie_bill_depth_summary, width = .1) +
   geom_point(aes(y = mean), 
-             data = adelie_bill_depth_summary, 
-             size = 3) +
+             data = adelie_bill_depth_summary) +
   scale_color_manual(values = c("darkorange","cyan4")) +
   theme_minimal() +
   guides(color = "none")
@@ -292,7 +289,8 @@ Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The d
 
 1.  Claim your GitHub repository for this lab.
 2.  Conduct your analyses in an R script.
-3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub for grading.
+3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub.
+4.  Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.
 
 ### Question
 
@@ -306,7 +304,7 @@ The data is provided in your GitHub repository.
 
 For each question below, write a sentence answering the question *and* show the code you used to come up with the answer, if applicable.
 
-A.  What is the mean different in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer
+A.  What is the mean difference in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer
 B.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
 C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.
 

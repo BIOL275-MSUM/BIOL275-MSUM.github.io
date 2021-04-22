@@ -254,14 +254,11 @@
 <code class="sourceCode R"><span class="va">adelie_bill_depth</span> <span class="op">%&gt;%</span> 
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sex</span>, y <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>, 
-              shape <span class="op">=</span> <span class="fl">16</span>, size <span class="op">=</span> <span class="fl">3</span>, 
-              alpha <span class="op">=</span> <span class="fl">0.3</span>, width <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span>
+              shape <span class="op">=</span> <span class="fl">16</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>, width <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_errorbar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">mean</span>, ymax <span class="op">=</span> <span class="va">upper</span>, ymin <span class="op">=</span> <span class="va">lower</span><span class="op">)</span>, 
-                data <span class="op">=</span> <span class="va">adelie_bill_depth_summary</span>, 
-                width <span class="op">=</span> <span class="fl">.1</span>, size <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span>
+                data <span class="op">=</span> <span class="va">adelie_bill_depth_summary</span>, width <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span>, 
-             data <span class="op">=</span> <span class="va">adelie_bill_depth_summary</span>, 
-             size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
+             data <span class="op">=</span> <span class="va">adelie_bill_depth_summary</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkorange"</span>,<span class="st">"cyan4"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">guides</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></code></pre></div>
@@ -314,7 +311,8 @@
 <ol style="list-style-type: decimal">
 <li>Claim your GitHub repository for this lab.</li>
 <li>Conduct your analyses in an R script.</li>
-<li>When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub for grading.</li>
+<li>When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub.</li>
+<li>Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.</li>
 </ol>
 </div>
 <div id="question" class="section level3" number="6.6.2">
@@ -327,7 +325,7 @@
 <p>The data is provided in your GitHub repository.</p>
 <p>For each question below, write a sentence answering the question <em>and</em> show the code you used to come up with the answer, if applicable.</p>
 <ol style="list-style-type: upper-alpha">
-<li>What is the mean different in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer</li>
+<li>What is the mean difference in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer</li>
 <li>Test the hypothesis that the tributaries have no effect on the number of species of electric fish.</li>
 <li>State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.</li>
 </ol>

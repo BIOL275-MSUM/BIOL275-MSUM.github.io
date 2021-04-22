@@ -204,7 +204,13 @@ The output shows several things:
 
 In this case, the $P$-value is `1.914e-15`, which is scientific notation for 0.000000000000001914. If we choose an alpha level of $\alpha=0.05$, then $P < \alpha$, so we can reject the null hypothesis and accept the alternative hypothesis by default.
 
-Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
+You can find the difference in the two means like this:
+
+```{r difference}
+unname(diff(ttest_results$estimate))
+```
+
+To conclude: Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
 
 ## Assignment
 

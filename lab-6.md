@@ -1,0 +1,315 @@
+# Comparing two means
+
+## Objectives
+
+In this lab, you will learn to:
+
+-   Estimate the mean and confidence interval of a numerical variable for two groups
+-   Plot the distribution of a numerical variable for two groups
+-   Compare the means of two groups using a two-sample t-test
+
+## Introduction
+
+A two-sample t-test compares the means of a numerical variable from two separate groups. An ANOVA compares the means of a numerical variable from more than two groups.
+
+In each of these tests, group membership can be thought of as a categorical variable.
+
+The basic ANOVA can be extended to more complicated scenarios. For example, a two-way ANOVA estimates how the means of a numerical variable vary in response to two categorical variables. This lab only deals with one-way ANOVAs.
+
+## Data
+
+For this lab, we will use the `penguins` dataset from the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html) package (Horst et al. 2020).
+
+### Installation
+
+You can install the release version of palmerpenguins from CRAN using the Packages tab in RStudio or with:
+
+
+```r
+install.packages("palmerpenguins")
+```
+
+This only needs to be done once on your computer, so it's best not to put this in your R script. If you do put it in, prefix it with a comment so it does not run each time your run through your script:
+
+
+```r
+# install.packages("palmerpenguins")
+```
+
+Then load the package. While you're at it, go ahead and load the tidyverse too, because we will also use that in this lab:
+
+
+```r
+library(tidyverse)
+library(palmerpenguins)
+```
+
+While not required to access the data, it is nice to see the dataset in your Environment. You can load the `penguins` dataset with:
+
+
+```r
+data("penguins")
+```
+
+You should now see two datasets in your Environment, `penguins` and `penguins_raw`. For this lab we will use `penguins` only. The details for each dataset will not be shown in the Environment tab until you use them (see the next section), a result of something called lazy-loading, which prevents the dataset from taking up memory until you need to use it.
+
+### About the data
+
+The dataset `penguins` contains data for 344 penguins, of 3 different species, collected from 3 islands in the Palmer Archipelago, Antarctica.
+
+
+```r
+head(penguins)
+```
+
+```
+#> # A tibble: 6 x 8
+#>   species island bill_length_mm bill_depth_mm flipper_length_… body_mass_g sex  
+#>   <fct>   <fct>           <dbl>         <dbl>            <int>       <int> <fct>
+#> 1 Adelie  Torge…           39.1          18.7              181        3750 male 
+#> 2 Adelie  Torge…           39.5          17.4              186        3800 fema…
+#> 3 Adelie  Torge…           40.3          18                195        3250 fema…
+#> 4 Adelie  Torge…           NA            NA                 NA          NA <NA> 
+#> 5 Adelie  Torge…           36.7          19.3              193        3450 fema…
+#> 6 Adelie  Torge…           39.3          20.6              190        3650 male 
+#> # … with 1 more variable: year <int>
+```
+
+The three islands include Torgersen, Biscoe, and Dream while the three species of penguins include Chinstrap, Gentoo, and Adelie.
+
+<img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" width="50%"/>
+
+For each penguin (i.e. row, i.e. observation, i.e. case), has measurements for bill length (mm), bill depth (mm), flipper length (mm), body mass (g), sex (male or female), and year (2007, 2008, 2009).
+
+Bill length, or more specifically culmen lenght, is the distance from the tip of the bill to the base of the upper mandible. Bill depth is the distance from the top of the bill to the bottom at the base of the bill.
+
+<img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png" width="50%"/>
+
+Looking at the structure of the dataset, you can see that species, island, and sex are factors, bill_length_mm and bill_depth_mm are doubles, and the other variables are integers.
+
+
+```r
+str(penguins)
+```
+
+```
+#> tibble[,8] [344 × 8] (S3: tbl_df/tbl/data.frame)
+#>  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+#>  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+#>  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+#>  $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+#>  $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+#>  $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+#>  $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+#>  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
+```
+
+## Sexual dimorphism
+
+Many bird species show a pattern of sexual dimorphism, with males averaging larger than females. In some groups, however, many species show reverse sexual dimorphism, with females averaging larger than males. This is most common in birds of prey including Falconiformes (falcons), Strigiformes (owls), and Accipitriformes (hawks, eagles, kites, etc.).
+
+The term "bird of prey" is a somewhat ambiguous term for species that primarily hunt and feed on vertebrates. Penguins fit that description, but have not historically been considered "birds of prey".
+
+Let's explore the penguins dataset to see if there is evidence of either type of sexual dimorphism in these species:
+
+
+```r
+penguins %>% 
+  select(
+    species,
+    sex,
+    bill_length_mm, 
+    bill_depth_mm, 
+    flipper_length_mm, 
+    body_mass_g
+  ) %>% 
+  pivot_longer(
+    col = where(is.numeric),
+    names_to = "variable", 
+    values_to = "value"
+  ) %>% 
+  filter(complete.cases(.)) %>% 
+  ggplot(mapping = aes(x = sex, y = value)) +
+  geom_jitter(aes(color = sex)) +
+  facet_grid(variable ~ species, scales = "free_y", switch = "y") +
+  labs(y = NULL) +
+  guides(color = "none") +
+  theme_minimal() +
+  theme(strip.placement = "outside")
+```
+
+<img src="lab-6_files/figure-html/strip-chart-sex-1.png" width="70%" style="display: block; margin: auto;" />
+
+There certainly appears to be some difference between males and females, at least for some morphological characteristics and species.
+
+## Adelie bill depth
+
+Let's dig in an look more closely at one variable and one species: Adelie Penguins and bill depth.
+
+
+```r
+adelie_bill_depth <-
+  penguins %>% 
+  filter(species == "Adelie") %>% 
+  select(sex, bill_depth_mm) %>% 
+  filter(complete.cases(.)) %>% 
+  print()
+```
+
+```
+#> # A tibble: 146 x 2
+#>   sex    bill_depth_mm
+#>   <fct>          <dbl>
+#> 1 male            18.7
+#> 2 female          17.4
+#> 3 female          18  
+#> 4 female          19.3
+#> 5 male            20.6
+#> 6 female          17.8
+#> # … with 140 more rows
+```
+
+As you can see, there are 146 Adelie penguins in the dataset.
+
+### Distribution of bill depths
+
+Next, let's see how the variable bill depth is distributed in each sex:
+
+
+```r
+adelie_bill_depth %>% 
+  ggplot(aes(x = bill_depth_mm)) +
+  geom_histogram(
+    aes(fill = sex), 
+    bins = 15, 
+    alpha = 0.5, 
+    position = "identity"
+  ) +
+  scale_fill_manual(values = c("darkorange","cyan4")) +
+  theme_minimal()
+```
+
+<img src="lab-6_files/figure-html/adelie-bill-depth-histogram-1.png" width="70%" style="display: block; margin: auto;" />
+
+The distributions are not perfectly normal, but the general hump shape is close enough that we should feel comfortable assuming they are normally distributed for the purpose of estimating population parameters and conducting hypothesis tests.
+
+### Mean and confidence interval
+
+Next we will estimate the mean bill depth for each sex and put a 95% confidence interval around those estimates:
+
+
+```r
+adelie_bill_depth_summary <-
+  adelie_bill_depth %>% 
+  group_by(sex) %>% 
+  summarize(
+    n = n(),
+    mean = mean(bill_depth_mm),
+    sd = sd(bill_depth_mm),
+    sem = sd/sqrt(n),
+    upper = mean + 1.96 * sem,
+    lower = mean - 1.96 * sem
+  ) %>% 
+  print()
+```
+
+```
+#> # A tibble: 2 x 7
+#>   sex        n  mean    sd   sem upper lower
+#>   <fct>  <int> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 female    73  17.6 0.943 0.110  17.8  17.4
+#> 2 male      73  19.1 1.02  0.119  19.3  18.8
+```
+
+Here we can see that the confidence intervals for our estimates of the mean bill depth for each each sex do not overlap. To make it more clear, let's plot it:
+
+
+```r
+adelie_bill_depth %>% 
+  ggplot(aes(x = sex, y = bill_depth_mm)) +
+  geom_jitter(aes(color = sex), 
+              shape = 16, size = 3, 
+              alpha = 0.3, width = 0.4) +
+  geom_errorbar(aes(y = mean, ymax = upper, ymin = lower), 
+                data = adelie_bill_depth_summary, 
+                width = .1, size = .8) +
+  geom_point(aes(y = mean), 
+             data = adelie_bill_depth_summary, 
+             size = 3) +
+  scale_color_manual(values = c("darkorange","cyan4")) +
+  theme_minimal() +
+  guides(color = "none")
+```
+
+<img src="lab-6_files/figure-html/adelie-bill-depth-means-1.png" width="70%" style="display: block; margin: auto;" />
+
+The non-overlapping confidence intervals can be seen clearly in the above figure.
+
+### $t$-test
+
+To compare the means using a hypothesis test, we can use a two-sample t-test.
+
+The null hypothesis would be that the mean bill depths of females and males are equal. The alternative hypothesis would be that the mean bill depths of females are males are not equal.
+
+Now we can use the function `t.test()` to conduct the t-test. The first argument will be a formula specifying how the variables are related. The numerical (response) variable should go first, followed by a tilde `~`, then the categorical (explanatory) variable. The other required argument is the name of the dataset.
+
+
+```r
+t.test(formula = bill_depth_mm ~ sex, data = adelie_bill_depth)
+```
+
+```
+#> 
+#> 	Welch Two Sample t-test
+#> 
+#> data:  bill_depth_mm by sex
+#> t = -8.928, df = 143.15, p-value = 1.914e-15
+#> alternative hypothesis: true difference in means is not equal to 0
+#> 95 percent confidence interval:
+#>  -1.77187 -1.12950
+#> sample estimates:
+#> mean in group female   mean in group male 
+#>             17.62192             19.07260
+```
+
+The output shows several things:
+
+-   the two variables involved
+-   the test statistic $t$
+-   the degrees of freedom
+-   the $P$-value
+-   the alternative hypothesis
+-   the 95% confidence interval of the *difference* in the two means
+-   the estimated mean for each group
+
+In this case, the $P$-value is `1.914e-15`, which is scientific notation for 0.000000000000001914. If we choose an alpha level of $\alpha=0.05$, then $P < \alpha$, so we can reject the null hypothesis and accept the alternative hypothesis by default.
+
+Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
+
+## Assignment
+
+### Instructions
+
+1.  Claim your GitHub repository for this lab.
+2.  Conduct your analyses in an R script.
+3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub for grading.
+
+### Question
+
+This question is taken from your textbook:
+
+Researchers studying the number of electric fish species living in various parts of the Amazon basin were interested in whether the presence of tributaries affected the local number of electric fish species in the main rivers (Fernandes et al. 2004).
+
+They counted the number of electric fish species above and below the entrance point of a major tributary at 12 different river locations.
+
+The data is provided in your GitHub repository.
+
+For each question below, write a sentence answering the question *and* show the code you used to come up with the answer, if applicable.
+
+A.  What is the mean different in the number of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this mean difference. Show your code and write a sentence giving your answer
+B.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
+C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met.
+
+## References
+
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <https://allisonhorst.github.io/palmerpenguins/>

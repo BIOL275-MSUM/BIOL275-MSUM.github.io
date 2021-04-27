@@ -4,9 +4,10 @@
 
 In this lab, you will learn to:
 
--   Estimate the mean and confidence interval of a numerical variable for two groups
--   Plot the distribution of a numerical variable for two groups
+-   Estimate the mean and confidence interval of a numerical variable for two or more groups
+-   Plot the distribution of a numerical variable for two or more groups
 -   Compare the means of two groups using a two-sample t-test
+-   Compare the means of three or more groups using an ANOVA
 
 ## Introduction
 
@@ -75,7 +76,7 @@ head(penguins)
 #> # … with 1 more variable: year <int>
 ```
 
-The three islands include Torgersen, Biscoe, and Dream while the three species of penguins include Chinstrap, Gentoo, and Adelie.
+The three islands include Torgersen, Biscoe, and Dream while the three species of penguins include Chinstrap, Gentoo, and Adélie.
 
 <img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" width="50%"/>
 
@@ -104,7 +105,9 @@ str(penguins)
 #>  $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
 ```
 
-## Sexual dimorphism
+## Compare two groups
+
+### Sexual dimorphism
 
 Many bird species show a pattern of sexual dimorphism, with males averaging larger than females. In some groups, however, many species show reverse sexual dimorphism, with females averaging larger than males. This is most common in birds of prey including Falconiformes (falcons), Strigiformes (owls), and Accipitriformes (hawks, eagles, kites, etc.).
 
@@ -142,9 +145,9 @@ penguins %>%
 
 There certainly appears to be some difference between males and females, at least for some morphological characteristics and species.
 
-## Adelie bill depth
+### Adélie bill depth
 
-Let's dig in an look more closely at one variable and one species: Adelie Penguins and bill depth.
+Let's dig in an look more closely at one variable and one species: Adélie Penguins and bill depth.
 
 
 ```r
@@ -169,9 +172,9 @@ adelie_bill_depth <-
 #> # … with 140 more rows
 ```
 
-As you can see, there are 146 Adelie penguins in the dataset.
+As you can see, there are 146 Adélie penguins in the dataset.
 
-### Distribution of bill depths
+### Distribution of bill depths by sex
 
 Next, let's see how the variable bill depth is distributed in each sex:
 
@@ -193,7 +196,7 @@ adelie_bill_depth %>%
 
 The distributions are not perfectly normal, but the general hump shape is close enough that we should feel comfortable assuming they are normally distributed for the purpose of estimating population parameters and conducting hypothesis tests.
 
-### Mean and confidence interval
+### Mean bill depth by sex
 
 Next we will estimate the mean bill depth for each sex and put a 95% confidence interval around those estimates:
 
@@ -293,7 +296,136 @@ unname(diff(ttest_results$estimate))
 #> [1] 1.450685
 ```
 
-To conclude: Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
+To conclude: Female Adélie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
+
+## Compare three groups
+
+### Distribution of bill depths by species
+
+For the next exercise, we will compare the mean bill depth among three groups: the three species of penguins. First, let's look at the distribution of bill depths for each species:
+
+
+```r
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm)) +
+  geom_histogram(
+    aes(fill = species), 
+    bins = 15, 
+    alpha = 0.5, 
+    position = "identity",
+    na.rm = TRUE
+  ) +
+  scale_fill_manual(values = c("darkorange", "darkorchid", "cyan4")) +
+  theme_minimal()
+```
+
+<img src="lab-6_files/figure-html/bill-depth-species-histogram-1.png" width="70%" style="display: block; margin: auto;" />
+
+It certainly appears that Gentoo Penguins have shorter bills than the other two species.
+
+### Mean bill depth by species
+
+Next, we will estimate the mean bill depth for each species and put a confidence interval around each estimate:
+
+
+```r
+bill_depth_means <-
+  penguins %>% 
+  filter(!is.na(bill_depth_mm)) %>%      # remove missing values
+  group_by(species) %>% 
+  summarize(
+    mean = mean(bill_depth_mm),
+    sd = sd(bill_depth_mm),
+    n = n(),
+    sem = sd / sqrt(n),
+    upper = mean + 1.96 * sem,
+    lower = mean - 1.96 * sem
+  ) %>% 
+  print()
+```
+
+```
+#> # A tibble: 3 x 7
+#>   species    mean    sd     n    sem upper lower
+#>   <fct>     <dbl> <dbl> <int>  <dbl> <dbl> <dbl>
+#> 1 Adelie     18.3 1.22    151 0.0990  18.5  18.2
+#> 2 Chinstrap  18.4 1.14     68 0.138   18.7  18.2
+#> 3 Gentoo     15.0 0.981   123 0.0885  15.2  14.8
+```
+
+And here are those means and confidence intervals plotted over the raw data:
+
+
+```r
+ggplot(data = penguins, aes(x = species, y = bill_depth_mm)) +
+  geom_jitter(aes(color = species),
+              width = 0.1,
+              alpha = 0.7,
+              show.legend = FALSE,
+              na.rm = TRUE) +
+  geom_errorbar(aes(y = mean, ymin = lower, ymax = upper), 
+                data = bill_depth_means,
+                width = .1, position = position_nudge(.3)) +
+  geom_point(aes(y = mean), data = bill_depth_means,
+             position = position_nudge(.3)) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+<img src="lab-6_files/figure-html/bill-depth-jitter-1.png" width="70%" style="display: block; margin: auto;" />
+
+The graph, which depicts the mean 95% confidence interval for the bill depth of each species, indicates there is likely a statistically significant difference between the means.
+
+### ANOVA
+
+To test this hypothesis, we can use a one-way ANOVA, which tests for differences among the means of multiple groups.
+
+The hypotheses for an ANOVA can be state like this:
+
+-   $H_0$: the mean bill depth is equal among all species
+-   $H_A$: At least one bill depth is different from the others
+
+The `aov()` function fits an analysis of variance model to the data. The first argument is the formula specifying how the variables are related, just like the $t$-test, with the numerical response variable, a tilde, and the categorical explanatory variable. The other argument is the data frame.
+
+
+```r
+aov_bill_depth_species <-
+  aov(bill_depth_mm ~ species, data = penguins)
+aov_bill_depth_species
+```
+
+```
+#> Call:
+#>    aov(formula = bill_depth_mm ~ species, data = penguins)
+#> 
+#> Terms:
+#>                  species Residuals
+#> Sum of Squares  903.9672  425.8673
+#> Deg. of Freedom        2       339
+#> 
+#> Residual standard error: 1.120824
+#> Estimated effects may be unbalanced
+#> 2 observations deleted due to missingness
+```
+
+Printing the results of the ANOVA, as seen above, gives you some information about the test, but using the `summary()` function gives you more details:
+
+
+```r
+summary(aov_bill_depth_species)
+```
+
+```
+#>              Df Sum Sq Mean Sq F value Pr(>F)    
+#> species       2  904.0   452.0   359.8 <2e-16 ***
+#> Residuals   339  425.9     1.3                   
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 2 observations deleted due to missingness
+```
+
+ANOVA works by comparing the variance within groups to the variance between groups. The test statistic is the $F$-ratio, where $F=MS_{groups}/MS_{error}$. Under the null hypothesis, F would be close to 1, while under the alternative hypothesis F would be greater than 1. The $P$-value represents the probability of obtaining an F-ratio as great as or greater than the one you obtained. If the $P$-value is greater than your alpha level, you can reject the null hypothesis.
+
+In this case, the $P$-value of `2e-16` is below a any alpha level we might choose, so we can reject the null hypothesis and conclude that the mean bill depth for at least one species is different from the means for the other species.
 
 ## Assignment
 
@@ -304,7 +436,9 @@ To conclude: Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13-
 3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub.
 4.  Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.
 
-### Question
+### Questions
+
+### $t$-test question
 
 This question is taken from your textbook:
 
@@ -319,6 +453,8 @@ For each question below, write a sentence answering the question *and* show the 
 A.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
 B.  What is the difference in the mean numbers of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means?
 C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met (hint: a histogram for each group).
+
+### ANOVA question
 
 ## References
 

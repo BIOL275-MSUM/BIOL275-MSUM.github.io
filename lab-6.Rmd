@@ -299,7 +299,7 @@ Printing the results of the ANOVA, as seen above, gives you some information abo
 summary(aov_bill_depth_species)
 ```
 
-ANOVA works by comparing the variance within groups to the variance between groups. The test statistic is the $F$-ratio, where $F=MS_{groups}/MS_{error}$. Under the null hypothesis, F would be close to 1, while under the alternative hypothesis F would be greater than 1. The $P$-value represents the probability of obtaining an F-ratio as great as or greater than the one you obtained. If the $P$-value is greater than your alpha level, you can reject the null hypothesis.
+ANOVA works by comparing the variance within groups to the variance between groups. The test statistic is the $F$-ratio, where $F=MS_{groups}/MS_{error}$. Under the null hypothesis, F would be close to 1, while under the alternative hypothesis F would be greater than 1. The $P$-value represents the probability of obtaining an F-ratio as great as or greater than the one you obtained. If the $P$-value is less than your alpha level, you can reject the null hypothesis.
 
 In this case, the $P$-value of `2e-16` is below a any alpha level we might choose, so we can reject the null hypothesis and conclude that the mean bill depth for at least one species is different from the means for the other species.
 

@@ -57,7 +57,7 @@ The dataset `penguins` contains data for 344 penguins, of 3 different species, c
 head(penguins)
 ```
 
-The three islands include Torgersen, Biscoe, and Dream while the three species of penguins include Chinstrap, Gentoo, and Adelie.
+The three islands include Torgersen, Biscoe, and Dream while the three species of penguins include Chinstrap, Gentoo, and Adélie.
 
 <img src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" width="50%"/>
 
@@ -108,20 +108,20 @@ penguins %>%
 
 There certainly appears to be some difference between males and females, at least for some morphological characteristics and species.
 
-## Adelie bill depth
+## Adélie bill depth
 
-Let's dig in an look more closely at one variable and one species: Adelie Penguins and bill depth.
+Let's dig in an look more closely at one variable and one species: Adélie Penguins and bill depth.
 
 ```{r adelie-bill-depth}
 adelie_bill_depth <-
   penguins %>% 
-  filter(species == "Adelie") %>% 
+  filter(species == "Adélie") %>% 
   select(sex, bill_depth_mm) %>% 
   filter(complete.cases(.)) %>% 
   print()
 ```
 
-As you can see, there are 146 Adelie penguins in the dataset.
+As you can see, there are 146 Adélie penguins in the dataset.
 
 ### Distribution of bill depths
 
@@ -210,7 +210,7 @@ You can find the difference in the two means like this:
 unname(diff(ttest_results$estimate))
 ```
 
-To conclude: Female Adelie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
+To conclude: Female Adélie Penguins are 1.45 mm shorter than males (95% CI 1.13--1.77). The difference is statistically significant ($t = -8.928$, $df = 143.15$, $p = 1.914e-15$).
 
 ## Assignment
 

@@ -414,7 +414,7 @@
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 2 observations deleted due to missingness</code></pre>
-<p>ANOVA works by comparing the variance within groups to the variance between groups. The test statistic is the <span class="math inline">\(F\)</span>-ratio, where <span class="math inline">\(F=MS_{groups}/MS_{error}\)</span>. Under the null hypothesis, F would be close to 1, while under the alternative hypothesis F would be greater than 1. The <span class="math inline">\(P\)</span>-value represents the probability of obtaining an F-ratio as great as or greater than the one you obtained. If the <span class="math inline">\(P\)</span>-value is greater than your alpha level, you can reject the null hypothesis.</p>
+<p>ANOVA works by comparing the variance within groups to the variance between groups. The test statistic is the <span class="math inline">\(F\)</span>-ratio, where <span class="math inline">\(F=MS_{groups}/MS_{error}\)</span>. Under the null hypothesis, F would be close to 1, while under the alternative hypothesis F would be greater than 1. The <span class="math inline">\(P\)</span>-value represents the probability of obtaining an F-ratio as great as or greater than the one you obtained. If the <span class="math inline">\(P\)</span>-value is less than your alpha level, you can reject the null hypothesis.</p>
 <p>In this case, the <span class="math inline">\(P\)</span>-value of <code>2e-16</code> is below a any alpha level we might choose, so we can reject the null hypothesis and conclude that the mean bill depth for at least one species is different from the means for the other species.</p>
 </div>
 </div>

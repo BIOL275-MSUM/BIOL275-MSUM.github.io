@@ -118,7 +118,7 @@ Let's dig in an look more closely at one variable and one species: Adélie Pengu
 ```{r adelie-bill-depth}
 adelie_bill_depth <-
   penguins %>% 
-  filter(species == "Adélie") %>% 
+  filter(species == "Adelie") %>% 
   select(sex, bill_depth_mm) %>% 
   filter(complete.cases(.)) %>% 
   print()

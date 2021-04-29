@@ -1,4 +1,4 @@
-# Comparing two means
+# Comparing means
 
 ## Objectives
 

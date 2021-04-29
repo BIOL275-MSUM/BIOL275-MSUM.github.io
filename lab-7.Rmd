@@ -59,7 +59,7 @@ lm_body_flipper <-
 summary(lm_body_flipper)
 ```
 
-The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 50 mm increase in flipper length, there is a corresponding 1 g increase in body mass.
+The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 1 mm increase in flipper length, there is a corresponding 50 g increase in body mass.
 
 Is the slope significantly different from zero? The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.
 

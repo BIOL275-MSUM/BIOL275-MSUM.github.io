@@ -46,7 +46,7 @@ There certainly appears to be some relationship between the two variables.
 You can calculate the correlation between the two variables with:
 
 ```{r correlation}
-cor(penguins$body_mass_g, penguins$bill_length_mm, use = "complete.obs")
+cor(penguins$body_mass_g, penguins$flipper_length_mm, use = "complete.obs")
 ```
 
 ## Linear regression

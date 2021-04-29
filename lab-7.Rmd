@@ -75,15 +75,6 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_smooth(method = "lm", size = 2, color = "blue")
 ```
 
-## Plot residuals
-
-Create a residual plot for the linear regression:
-
-```{r residual-plot}
-ggplot(lm_mass_flipper, aes(x = .fitted, y = .resid)) + 
-  geom_point()
-```
-
 ## Assignment
 
 ### Instructions

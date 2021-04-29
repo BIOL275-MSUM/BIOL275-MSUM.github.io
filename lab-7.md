@@ -55,11 +55,11 @@ You can calculate the correlation between the two variables with:
 
 
 ```r
-cor(penguins$body_mass_g, penguins$bill_length_mm, use = "complete.obs")
+cor(penguins$body_mass_g, penguins$flipper_length_mm, use = "complete.obs")
 ```
 
 ```
-#> [1] 0.5951098
+#> [1] 0.8712018
 ```
 
 ## Linear regression

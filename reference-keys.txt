@@ -100,7 +100,7 @@ questions-1
 lab-report-1
 grading-rubric-3
 further-reading-1
-comparing-two-means
+comparing-means
 objectives-5
 introduction-3
 data
@@ -118,9 +118,6 @@ mean-bill-depth-by-species
 anova
 assignment-2
 instructions-1
-questions-2
-t-test-question
-anova-question
 references
 eda-project
 overview

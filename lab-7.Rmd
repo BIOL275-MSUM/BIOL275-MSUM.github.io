@@ -41,6 +41,14 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 There certainly appears to be some relationship between the two variables.
 
+## Correlation
+
+You can calculate the correlation between the two variables with:
+
+```{r correlation}
+cor(penguins$body_mass_g, penguins$bill_length_mm, use = "complete.obs")
+```
+
 ## Linear regression
 
 To fit a linear regression model to the data:
@@ -65,6 +73,15 @@ Adding the regression line for a linear model is fairly straightforward in ggplo
 ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(size = 2) +
   geom_smooth(method = "lm", size = 2, color = "blue")
+```
+
+## Plot residuals
+
+Create a residual plot for the linear regression:
+
+```{r residual-plot}
+ggplot(lm_mass_flipper, aes(x = .fitted, y = .resid)) + 
+  geom_point()
 ```
 
 ## Assignment

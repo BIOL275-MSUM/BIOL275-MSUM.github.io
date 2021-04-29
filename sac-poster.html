@@ -183,11 +183,11 @@ DISCUSSION
 </h2>
 <p>You can add images to your markdown document in various ways. The easiest is to insert a line of HTML code right in your Rmd script. You need to provide an image source and a width (in pixels) that you want the image to be displayed at.</p>
 <p>If your image is located online, then your source would be the image URL:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb215-1"><a href="sac-poster.html#cb215-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"https://your-image-url.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb211-1"><a href="sac-poster.html#cb211-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"https://your-image-url.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
 <p>If you saved the image to your RStudio project directory, then your source would be the image name:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb216-1"><a href="sac-poster.html#cb216-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"image.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb212-1"><a href="sac-poster.html#cb212-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"image.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
 <p>If you saved the image to a directory (folder) within your RStudio project directory, then your source would be the relative path followed by the image name:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb217-1"><a href="sac-poster.html#cb217-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"images/image.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb213-1"><a href="sac-poster.html#cb213-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">"images/image.png"</span><span class="ot"> width=</span><span class="st">"400"</span><span class="kw">&gt;</span></span></code></pre></div>
 </div>
 <div id="introduction-5" class="section level2" number="10.6">
 <h2>
@@ -259,7 +259,7 @@ DISCUSSION
 <span class="header-section-number">10.10.1</span> Citing software<a class="anchor" aria-label="anchor" href="#citing-software"><i class="fas fa-link"></i></a>
 </h3>
 <p>R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; To cite R in publications use:
@@ -284,7 +284,7 @@ DISCUSSION
 #&gt; citing R packages.</code></pre>
 <p>Always give the version of R and RStudio you are using. In the text of your methods, you would say something like “I used R Version 4.0.3 (R Core Team 2021)”</p>
 <p>To find your version of R type:</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Version.html">R.Version</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; $platform
 #&gt; [1] "x86_64-pc-linux-gnu"
@@ -328,10 +328,10 @@ DISCUSSION
 #&gt; $nickname
 #&gt; [1] "Taking Off Again"</code></pre>
 <p>The citation and version number for RStudio can be found like this:</p>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">RStudio.Version</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Citations for R packages can be found like this:</p>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; To cite package 'dplyr' in publications use:

@@ -23,26 +23,6 @@ If you have the palmerpenguins package installed, all you need to do is load the
 
 ```r
 library(tidyverse)
-```
-
-```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-#> ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.1     ✔ dplyr   1.0.5
-#> ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-#> ✔ readr   1.4.0     ✔ forcats 0.5.1
-```
-
-```
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(palmerpenguins)
 data("penguins")
 ```
@@ -115,7 +95,7 @@ summary(lm_body_flipper)
 #> F-statistic:  1071 on 1 and 340 DF,  p-value: < 2.2e-16
 ```
 
-The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 50 mm increase in flipper length, there is a corresponding 1 g increase in body mass.
+The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 1 mm increase in flipper length, there is a corresponding 50 g increase in body mass.
 
 Is the slope significantly different from zero? The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.
 

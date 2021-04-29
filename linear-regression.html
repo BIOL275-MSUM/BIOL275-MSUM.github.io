@@ -98,17 +98,8 @@
 <p>Instructions for installing and loading the data, and a description of the data, can be found on the lab tutorial <a href="comparing-means.html">Comparing Means</a>.</p>
 <p>If you have the palmerpenguins package installed, all you need to do is load the packages and the data:</p>
 <div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>#&gt; ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-#&gt; ✔ tibble  3.1.1     ✔ dplyr   1.0.5
-#&gt; ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
-<pre><code>#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#&gt; ✖ dplyr::filter() masks stats::filter()
-#&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"penguins"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="visualize-two-numerical-variables-1" class="section level2" number="7.4">
@@ -121,7 +112,7 @@
 </h3>
 <p>A common way to explore the relationship between two numerical variables is to graph them using a scatterplot. In the ggplot, this is accomplished using <code>geom_point()</code>.</p>
 <p>Let’s explore the penguins dataset to see if there is evidence of a relationship between body mass and flipper length in the 344 penguins that comprise the dataset:</p>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
@@ -134,7 +125,7 @@
 <span class="header-section-number">7.5</span> Correlation<a class="anchor" aria-label="anchor" href="#correlation"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can calculate the correlation between the two variables with:</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, <span class="va">penguins</span><span class="op">$</span><span class="va">bill_length_mm</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1] 0.5951098</code></pre>
 </div>
@@ -143,7 +134,7 @@
 <span class="header-section-number">7.6</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>To fit a linear regression model to the data:</p>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lm_body_flipper</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_body_flipper</span><span class="op">)</span></code></pre></div>
@@ -166,7 +157,7 @@
 #&gt;   (2 observations deleted due to missingness)
 #&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 
 #&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 50 mm increase in flipper length, there is a corresponding 1 g increase in body mass.</p>
+<p>The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 1 mm increase in flipper length, there is a corresponding 50 g increase in body mass.</p>
 <p>Is the slope significantly different from zero? The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.</p>
 <p>In addition, the R-squared value of 0.759 indicates that flipper length explains 76% of the variation in body mass. That is a very strong relationship.</p>
 </div>
@@ -175,7 +166,7 @@
 <span class="header-section-number">7.7</span> Add regression line<a class="anchor" aria-label="anchor" href="#add-regression-line"><i class="fas fa-link"></i></a>
 </h2>
 <p>Adding the regression line for a linear model is fairly straightforward in ggplot:</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>

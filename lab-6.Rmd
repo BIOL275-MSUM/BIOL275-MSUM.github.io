@@ -307,30 +307,21 @@ In this case, the $P$-value of `2e-16` is below a any alpha level we might choos
 
 ### Instructions
 
-1.  Claim your GitHub repository for this lab.
-2.  Conduct your analyses in an R script.
-3.  When you are satisfied, copy the R code to your Rmd file, knit the document, commit everything, and push it to GitHub.
-4.  Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.
+1.  Claim your repository for this lab using the GitHub Classrooms link posted on D2L.
 
-### Questions
+    -   Your new repository will be created using this repository as a template: <https://github.com/BIOL275-MSUM/lab-6-template>
+    -   The template repository has the necessary scripts and data files to get you started
+    -   You do not need to create any new files
 
-### $t$-test question
+2.  Create a new RStudio project by cloning the repository from GitHub
 
-This question is taken from your textbook:
+3.  Read the questions on your README (you can also [read them on the template file on GitHub](https://github.com/BIOL275-MSUM/lab-6-template#readme))
 
-Researchers studying the number of electric fish species living in various parts of the Amazon basin were interested in whether the presence of tributaries affected the local number of electric fish species in the main rivers (Fernandes et al. 2004).
+4.  Fill out the R script to complete your analysis
 
-They counted the number of electric fish species above and below the entrance point of a major tributary at 12 different river locations.
+5.  When you are satisfied, copy the R code to your README file, knit the document, commit everything, and push it to GitHub.
 
-The data is provided in your GitHub repository.
-
-For each question below, write a sentence answering the question *and* show the code you used to come up with the answer, if applicable.
-
-A.  Test the hypothesis that the tributaries have no effect on the number of species of electric fish.
-B.  What is the difference in the mean numbers of species between areas upstream and downstream of a tributary? What is the 95% confidence interval of this difference in means?
-C.  State the assumptions that you had to make to complete parts (A) and (B). Create a graph to assess whether one of those assumptions was met (hint: a histogram for each group).
-
-### ANOVA question
+6.  Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.
 
 ## References
 

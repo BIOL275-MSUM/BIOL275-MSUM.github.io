@@ -125,6 +125,7 @@ introduction-4
 data-1
 visualize-two-numerical-variables-1
 scatterplot
+correlation
 linear-regression-1
 add-regression-line
 assignment-3

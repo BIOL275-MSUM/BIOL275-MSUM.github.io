@@ -69,6 +69,19 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 There certainly appears to be some relationship between the two variables.
 
+## Correlation
+
+You can calculate the correlation between the two variables with:
+
+
+```r
+cor(penguins$body_mass_g, penguins$bill_length_mm, use = "complete.obs")
+```
+
+```
+#> [1] 0.5951098
+```
+
 ## Linear regression
 
 To fit a linear regression model to the data:

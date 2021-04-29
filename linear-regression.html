@@ -129,12 +129,21 @@
 <p>There certainly appears to be some relationship between the two variables.</p>
 </div>
 </div>
-<div id="linear-regression-1" class="section level2" number="7.5">
+<div id="correlation" class="section level2" number="7.5">
 <h2>
-<span class="header-section-number">7.5</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5</span> Correlation<a class="anchor" aria-label="anchor" href="#correlation"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can calculate the correlation between the two variables with:</p>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, <span class="va">penguins</span><span class="op">$</span><span class="va">bill_length_mm</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.5951098</code></pre>
+</div>
+<div id="linear-regression-1" class="section level2" number="7.6">
+<h2>
+<span class="header-section-number">7.6</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>To fit a linear regression model to the data:</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lm_body_flipper</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_body_flipper</span><span class="op">)</span></code></pre></div>
@@ -161,12 +170,12 @@
 <p>Is the slope significantly different from zero? The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.</p>
 <p>In addition, the R-squared value of 0.759 indicates that flipper length explains 76% of the variation in body mass. That is a very strong relationship.</p>
 </div>
-<div id="add-regression-line" class="section level2" number="7.6">
+<div id="add-regression-line" class="section level2" number="7.7">
 <h2>
-<span class="header-section-number">7.6</span> Add regression line<a class="anchor" aria-label="anchor" href="#add-regression-line"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.7</span> Add regression line<a class="anchor" aria-label="anchor" href="#add-regression-line"><i class="fas fa-link"></i></a>
 </h2>
 <p>Adding the regression line for a linear model is fairly straightforward in ggplot:</p>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
@@ -175,13 +184,13 @@
 <pre><code>#&gt; Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="lab-7_files/figure-html/regression-line-1.png" width="70%" style="display: block; margin: auto;"></div>
 </div>
-<div id="assignment-3" class="section level2" number="7.7">
+<div id="assignment-3" class="section level2" number="7.8">
 <h2>
-<span class="header-section-number">7.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
 </h2>
-<div id="instructions-2" class="section level3" number="7.7.1">
+<div id="instructions-2" class="section level3" number="7.8.1">
 <h3>
-<span class="header-section-number">7.7.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.8.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-2"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>
@@ -201,9 +210,9 @@
 </ol>
 </div>
 </div>
-<div id="references-1" class="section level2" number="7.8">
+<div id="references-1" class="section level2" number="7.9">
 <h2>
-<span class="header-section-number">7.8</span> References<a class="anchor" aria-label="anchor" href="#references-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.9</span> References<a class="anchor" aria-label="anchor" href="#references-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></p>
 
@@ -225,12 +234,13 @@
 <li>
 <a class="nav-link" href="#visualize-two-numerical-variables-1"><span class="header-section-number">7.4</span> Visualize two numerical variables</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scatterplot"><span class="header-section-number">7.4.1</span> Scatterplot</a></li></ul>
 </li>
-<li><a class="nav-link" href="#linear-regression-1"><span class="header-section-number">7.5</span> Linear regression</a></li>
-<li><a class="nav-link" href="#add-regression-line"><span class="header-section-number">7.6</span> Add regression line</a></li>
+<li><a class="nav-link" href="#correlation"><span class="header-section-number">7.5</span> Correlation</a></li>
+<li><a class="nav-link" href="#linear-regression-1"><span class="header-section-number">7.6</span> Linear regression</a></li>
+<li><a class="nav-link" href="#add-regression-line"><span class="header-section-number">7.7</span> Add regression line</a></li>
 <li>
-<a class="nav-link" href="#assignment-3"><span class="header-section-number">7.7</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#instructions-2"><span class="header-section-number">7.7.1</span> Instructions</a></li></ul>
+<a class="nav-link" href="#assignment-3"><span class="header-section-number">7.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#instructions-2"><span class="header-section-number">7.8.1</span> Instructions</a></li></ul>
 </li>
-<li><a class="nav-link" href="#references-1"><span class="header-section-number">7.8</span> References</a></li>
+<li><a class="nav-link" href="#references-1"><span class="header-section-number">7.9</span> References</a></li>
 </ul>
 
       <div class="book-extra">

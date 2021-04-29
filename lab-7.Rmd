@@ -20,7 +20,7 @@ Instructions for installing and loading the data, and a description of the data,
 
 If you have the palmerpenguins package installed, all you need to do is load the packages and the data:
 
-```{r load-packages}
+```{r load-packages, message=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 data("penguins")

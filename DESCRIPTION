@@ -3,12 +3,12 @@ Type: Book
 Title: Quantitative Biology.
 Version: 0.0.4
 Imports:
+    bookdown,
     readxl,
     tidyverse,
     DT,
     palmerpenguins
 Suggests:
-    bookdown,
     bslib,
     downlit,
     jsonlite,

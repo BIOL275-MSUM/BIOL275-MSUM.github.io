@@ -62,7 +62,7 @@ For this lab you will work in a new RStudio Project under git version control. H
     d.  Paste the URL for your repo
     e.  Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word "lab", the lab number, and your name)
     f.  Click the Browse button and find a good place on your hard drive for this project to live
-    g.  Set your Project options. When the project opens, go to Tools \> Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
+    g.  Set your Project options. When the project opens, go to Tools > Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
 
 ### The RStudio IDE
 
@@ -282,7 +282,7 @@ To differentiate this analysis from the previous one, let's name our vector of d
 
 Next, find the line of code where you created the vector in the tutorial, which should look like this:
 
-``` {.r}
+``` r
 x <- c(1, 2, 10, 4.7, 5.0)
 ```
 
@@ -337,14 +337,6 @@ Before continuing, familiarize yourself with [R Markdown documents](r-markdown-d
 ## Add your R code to your Lab Report
 
 Copy the first lines of code from your calculator.R script and paste it in between the two lines that start with three backticks as seen below.
-
-> ```` {.markdown}
-> First, I combine the values into a vector using the `c()` function, assign it to a variable named `x`, and print `x`
->
-> ```{r vector}
-> x <- c(1, 2, 3)
-> ```
-> ````
 
 In your code, of course, `c(1, 2, 3)` will be replaced by your vector of numbers given above.
 

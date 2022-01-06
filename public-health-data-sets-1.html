@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>12 Public health data sets | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="Various government and non-profit organizations collect, organize, and make available data sets related to public health.  12.1 National Center for Health Statistics...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="12 Public health data sets | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Various government and non-profit organizations collect, organize, and make available data sets related to public health.  12.1 National Center for Health Statistics...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12 Public health data sets | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="Various government and non-profit organizations collect, organize, and make available data sets related to public health.  12.1 National Center for Health Statistics...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.20/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li><a class="" href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">7</span> Linear regression</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="sac-poster.html"><span class="header-section-number">10</span> SAC Poster</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="active" href="public-health-data-sets-1.html"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">16</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">17</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">19</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="public-health-data-sets-1" class="section level1">
+<h1>
+<span class="header-section-number">12</span> Public health data sets<a class="anchor" aria-label="anchor" href="#public-health-data-sets-1"><i class="fas fa-link"></i></a>
+</h1>
+<p>Various government and non-profit organizations collect, organize, and make available data sets related to public health.</p>
+<div id="national-center-for-health-statistics" class="section level2">
+<h2>
+<span class="header-section-number">12.1</span> National Center for Health Statistics<a class="anchor" aria-label="anchor" href="#national-center-for-health-statistics"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://www.cdc.gov/nchs/data_access/ftp_data.htm" class="uri">https://www.cdc.gov/nchs/data_access/ftp_data.htm</a></p>
+<p>The National Center for Health Statistics (NCHS) offers downloadable public-use data files through the Centers for Disease Control and Prevention’s (CDC) FTP file server. Users of this service have access to <a href="ftp://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets">data sets</a>, <a href="ftp://ftp.cdc.gov/pub/Health_Statistics/NCHS/Dataset_Documentation">documentation</a>, and <a href="ftp://ftp.cdc.gov/pub/Health_Statistics/NCHS/Survey_Questionnaires">questionnaires</a> from NCHS surveys and data collection systems. Downloading instructions are available in “readme” files.</p>
+<p>Users of NCHS public-use data files must comply with <a href="https://www.cdc.gov/nchs/data_access/restrictions.htm">data use restrictions</a> to ensure that the information will be used solely for statistical analysis or reporting purposes.</p>
+</div>
+<div id="county-health-rankings-roadmaps" class="section level2">
+<h2>
+<span class="header-section-number">12.2</span> County Health Rankings &amp; Roadmaps<a class="anchor" aria-label="anchor" href="#county-health-rankings-roadmaps"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="http://www.countyhealthrankings.org/">County Health Rankings &amp; Roadmaps</a> provides annual county-level public health data.</p>
+<p>You can download data by state and year (for example, see <a href="http://www.countyhealthrankings.org/app/minnesota/2017/downloads">Minnesota</a>.</p>
+</div>
+<div id="kids-count" class="section level2">
+<h2>
+<span class="header-section-number">12.3</span> KIDS COUNT<a class="anchor" aria-label="anchor" href="#kids-count"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="http://datacenter.kidscount.org/">KIDS COUNT</a> provides county- and state-level data on children and families and a project of the Annie E. Casey Foundation.</p>
+<p>Data is available by year and county/state.</p>
+<p>You would need to choose and download the variables necessary to answer your question. Topics include:</p>
+<ul>
+<li>Demographics</li>
+<li>Economic Well-Being</li>
+<li>Education</li>
+<li>Family and Community</li>
+<li>Health</li>
+<li>Safety and Risky Behaviors</li>
+</ul>
+</div>
+<div id="links-to-other-data-sets" class="section level2">
+<h2>
+<span class="header-section-number">12.4</span> Links to other data sets<a class="anchor" aria-label="anchor" href="#links-to-other-data-sets"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<a href="http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota"><strong>Minnesota Health Data Sources</strong></a>, a list compiled by County Health Rankings &amp; Roadmaps.</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></div>
+<div class="next"><a href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#public-health-data-sets-1"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="nav-link" href="#national-center-for-health-statistics"><span class="header-section-number">12.1</span> National Center for Health Statistics</a></li>
+<li><a class="nav-link" href="#county-health-rankings-roadmaps"><span class="header-section-number">12.2</span> County Health Rankings &amp; Roadmaps</a></li>
+<li><a class="nav-link" href="#kids-count"><span class="header-section-number">12.3</span> KIDS COUNT</a></li>
+<li><a class="nav-link" href="#links-to-other-data-sets"><span class="header-section-number">12.4</span> Links to other data sets</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/data-public-health.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/data-public-health.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Data subsetting | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names  4.2 Introduction Working with tabular data...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="4 Data subsetting | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names  4.2 Introduction Working with tabular data...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Data subsetting | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names  4.2 Introduction Working with tabular data...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.20/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="active" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li><a class="" href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">7</span> Linear regression</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="sac-poster.html"><span class="header-section-number">10</span> SAC Poster</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="" href="public-health-data-sets-1.html"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">16</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">17</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">19</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-subsetting" class="section level1">
+<h1>
+<span class="header-section-number">4</span> Data subsetting<a class="anchor" aria-label="anchor" href="#data-subsetting"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-3" class="section level2">
+<h2>
+<span class="header-section-number">4.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lab, you will learn to:</p>
+<ul>
+<li>Pick rows based on their values</li>
+<li>Reorder rows based on their values</li>
+<li>Pick columns based on their names</li>
+</ul>
+</div>
+<div id="introduction-1" class="section level2">
+<h2>
+<span class="header-section-number">4.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.</p>
+<p>You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.</p>
+<ul>
+<li>Pick rows by their values using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>
+</li>
+<li>Reorder rows using <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>
+</li>
+<li>Pick columns by name using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>
+</li>
+</ul>
+<div id="prerequisites" class="section level3">
+<h3>
+<span class="header-section-number">4.2.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of package.</p>
+<p>In addition to getting us access to dplyr packages, loading the tidyverse package also lets us access the <code>diamonds</code> dataset from the ggplot2 package. This lab will use the <code>diamonds</code> dataset to show examples of filtering, arranging, and selecting.</p>
+<p>Load the tidyverse package:</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>#&gt; ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+#&gt; ✔ tibble  3.1.6     ✔ dplyr   1.0.7
+#&gt; ✔ tidyr   1.1.4     ✔ stringr 1.4.0
+#&gt; ✔ readr   2.1.1     ✔ forcats 0.5.1</code></pre>
+<pre><code>#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="diamonds" class="section level3">
+<h3>
+<span class="header-section-number">4.2.2</span> <code>diamonds</code><a class="anchor" aria-label="anchor" href="#diamonds"><i class="fas fa-link"></i></a>
+</h3>
+<p>You will explore basic dplyr functions using the <code>diamonds</code> data frame, found in the ggplot package.</p>
+<p>This data frame contains data on almost 54,000 diamonds, including price and other attributes.</p>
+<p>First, take a look at <code>diamonds</code> by printing it in the console:</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># print diamonds in the console</span>
+<span class="va">diamonds</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 10
+#&gt;   carat cut       color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#&gt; # … with 53,934 more rows</code></pre>
+<p>Familiarize yourself with the variables in the data frame by looking at the help page for <code>diamonds</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></code></pre></div>
+<p>You can also get their by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).</p>
+<p>If you get a message starting with “No documentation” or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 yet, either directly or by loading the tidyverse package. Load it and try again.</p>
+<p>The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).</p>
+<p>Note that when you printed <code>diamonds</code> in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled <code>&lt;dbl&gt;</code> , one numeric discrete variable labeled <code>&lt;int&gt;</code>, and three categorical ordinal variables labeled <code>&lt;ord&gt;</code>.</p>
+<p>The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).</p>
+<p>The most common column data you will see in data frames are:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="6%">
+<col width="9%">
+<col width="63%">
+<col width="12%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th>Data type</th>
+<th>Example</th>
+<th>Description</th>
+<th>4-way clasification</th>
+<th>Column header</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>logical</td>
+<td><code>TRUE</code></td>
+<td>Logical values (true or false)</td>
+<td>categorical nominal</td>
+<td>lgl</td>
+</tr>
+<tr class="even">
+<td>integer</td>
+<td><code>1L</code></td>
+<td>Positive or negative whole number. The “L” is so R knows it’s not a double</td>
+<td>numeric discrete</td>
+<td>int</td>
+</tr>
+<tr class="odd">
+<td>double</td>
+<td><code>1.5</code></td>
+<td>Decimal numbers</td>
+<td>numeric continuous</td>
+<td>dbl</td>
+</tr>
+<tr class="even">
+<td>character</td>
+<td><code>"A"</code></td>
+<td>Text; note that <code>"1"</code> is still a character data type because of the double quotes</td>
+<td>categorical nominal</td>
+<td>chr</td>
+</tr>
+<tr class="odd">
+<td>factor</td>
+<td><code>factor("A")</code></td>
+<td>Text with an enumerated list of values; you can see possible values with <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>
+</td>
+<td>categorical nominal</td>
+<td>fct</td>
+</tr>
+<tr class="even">
+<td>ordered</td>
+<td><code>ordered("A")</code></td>
+<td>Text with an enumerated list of values which have an inherent order; you can see possible values with <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code>
+</td>
+<td>categorical ordinal</td>
+<td>ord</td>
+</tr>
+<tr class="odd">
+<td>Date</td>
+<td><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code></td>
+<td>Date</td>
+<td>numeric discrete</td>
+<td>date</td>
+</tr>
+<tr class="even">
+<td>POSIXt</td>
+<td><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code></td>
+<td>Date plus time</td>
+<td>numeric continuous</td>
+<td>dttm</td>
+</tr>
+</tbody>
+</table></div>
+<p>You can read more about data types in the <a href="https://tibble.tidyverse.org/articles/types.html">Column data types</a> vignette in the tibble package.</p>
+</div>
+</div>
+<div id="filter-rows-with-filter" class="section level2">
+<h2>
+<span class="header-section-number">4.3</span> Filter rows with <code>filter()</code><a class="anchor" aria-label="anchor" href="#filter-rows-with-filter"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.</p>
+<p>For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1,889 × 10
+#&gt;   carat cut     color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#&gt; 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#&gt; 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#&gt; 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#&gt; 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#&gt; 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#&gt; # … with 1,883 more rows</code></pre>
+<div id="intermediate-objects" class="section level3">
+<h3>
+<span class="header-section-number">4.3.1</span> Intermediate objects<a class="anchor" aria-label="anchor" href="#intermediate-objects"><i class="fas fa-link"></i></a>
+</h3>
+<p>When you run code to filter a data frame, R returns a new data frame.</p>
+<p>If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator <code>&lt;-</code></p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<p>When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">big_diamonds</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1,889 × 10
+#&gt;   carat cut     color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#&gt; 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#&gt; 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#&gt; 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#&gt; 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#&gt; 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#&gt; # … with 1,883 more rows</code></pre>
+<p>Now, if you want to filter the <code>big_diamonds</code> object further, you can use it as the data object for another <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function:</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span> <span class="op">&gt;</span> <span class="fl">15000</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 1,037 × 10
+#&gt;   carat cut       color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  2.1  Premium   I     SI1      61.5    57 15007  8.25  8.21  5.06
+#&gt; 2  2.02 Premium   G     SI2      63      59 15014  8.05  7.95  5.03
+#&gt; 3  2.05 Very Good F     SI2      61.9    56 15017  8.13  8.18  5.05
+#&gt; 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
+#&gt; 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
+#&gt; 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
+#&gt; # … with 1,031 more rows</code></pre>
+</div>
+<div id="basic-operators" class="section level3">
+<h3>
+<span class="header-section-number">4.3.2</span> Basic Operators<a class="anchor" aria-label="anchor" href="#basic-operators"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <code>&gt;</code> symbol is known as an “operator”. These are special characters you use to compare things in R. Some of the basic operators include <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>==</code> (equals), and <code>!=</code> (not equals).</p>
+<p>Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while <code>==</code> and <code>!=</code> can be used with any type of variable.</p>
+<p>There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes <code>"</code>.</p>
+<p>Here is an example of using the <code>==</code> operator with the <code>cut</code> variable, an ordered factor data type:</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21,551 × 10
+#&gt;   carat cut   color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.23 Ideal E     SI2      61.5    55   326  3.95  3.98  2.43
+#&gt; 2  0.23 Ideal J     VS1      62.8    56   340  3.93  3.9   2.46
+#&gt; 3  0.31 Ideal J     SI2      62.2    54   344  4.35  4.37  2.71
+#&gt; 4  0.3  Ideal I     SI2      62      54   348  4.31  4.34  2.68
+#&gt; 5  0.33 Ideal I     SI2      61.8    55   403  4.49  4.51  2.78
+#&gt; 6  0.33 Ideal I     SI2      61.2    56   403  4.49  4.5   2.75
+#&gt; # … with 21,545 more rows</code></pre>
+<p>Note that <code>"Ideal"</code> has double quotes around it. This is to tell R you want to find the literal text string “Ideal”. If you instead wrote <code>cut == Ideal</code> without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.</p>
+<p>Another common errors when you are starting out is to try to use <code>=</code> instead of <code>==</code>. When you do that, you will get a helpful error message:</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, carat <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Error: Problem with `filter()` input `..1`.
+#&gt; ✖ Input `..1` is named.
+#&gt; ℹ This usually means that you've used `=` instead of `==`.
+#&gt; ℹ Did you mean `carat == 2`?</code></pre>
+</div>
+<div id="logical-operators" class="section level3">
+<h3>
+<span class="header-section-number">4.3.3</span> Logical Operators<a class="anchor" aria-label="anchor" href="#logical-operators"><i class="fas fa-link"></i></a>
+</h3>
+<p>In computer language, the expression for meeting multiple criteria simultaneously is called “and” and uses the ampersand <code>&amp;</code> operator. The expression for meeting either one criteria or the other, or both, is called “or” and is denoted using the vertical bar <code>|</code> operator. Finally, the expression for not meeting a criteria is called “not” and is denoted with the exclamation point <code>!</code> operator.</p>
+<div id="and-operator" class="section level4">
+<h4>
+<span class="header-section-number">4.3.3.1</span> And operator<a class="anchor" aria-label="anchor" href="#and-operator"><i class="fas fa-link"></i></a>
+</h4>
+<p>If you put three or more arguments in your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an “and” operation. Thus these two lines of code will return identical results:</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span>, <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="or-operator" class="section level4">
+<h4>
+<span class="header-section-number">4.3.3.2</span> Or operator<a class="anchor" aria-label="anchor" href="#or-operator"><i class="fas fa-link"></i></a>
+</h4>
+<p>For “or” comparisons, you have to use the vertical bar <code>|</code> operator. For example, this code will return a table with diamonds having a color of D or E.</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"D"</span> <span class="op">|</span> <span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 16,572 × 10
+#&gt;   carat cut     color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good    E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 4  0.22 Fair    E     VS2      65.1    61   337  3.87  3.78  2.49
+#&gt; 5  0.2  Premium E     SI2      60.2    62   345  3.79  3.75  2.27
+#&gt; 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
+#&gt; # … with 16,566 more rows</code></pre>
+<p>This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function and then use the “in” operator <code>%in%</code> like this:</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="not-operator" class="section level4">
+<h4>
+<span class="header-section-number">4.3.3.3</span> Not operator<a class="anchor" aria-label="anchor" href="#not-operator"><i class="fas fa-link"></i></a>
+</h4>
+<p>“Not” comparisons can be used to pick rows that do not meet a given criteria. The <code>!</code> operator generally should be followed by parentheses <code>()</code> with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color <em>except</em> E:</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="missing-values" class="section level4">
+<h4>
+<span class="header-section-number">4.3.3.4</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
+</h4>
+<p>Missing values are a story for a later date! You don’t need to know this yet, but if you find yourself here looking for an answer, you can filter values without a “missing value” for color like this:</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">color</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.</p>
+</div>
+</div>
+<div id="string-helper-functions" class="section level3">
+<h3>
+<span class="header-section-number">4.3.4</span> String helper functions<a class="anchor" aria-label="anchor" href="#string-helper-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are a variety of other functions you can incorporate into your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function to achieve specific results.</p>
+<p>For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply <code>==</code> or <code>!=</code>. Let’s say you want to find all diamonds with a clarity of <code>VS1</code>, <code>VS2</code>, <code>VVS1</code>, or <code>VVS2</code>. You could use the “or” operator, or the “in” operator. But what if you don’t even know all the possible clarity values and you just want everything that contains <code>"VS"</code> anywhere in the word. There is a string-based helper function <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> which looks for a particular string of text inside a text variable:</p>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 29,150 × 10
+#&gt;   carat cut       color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#&gt; 2  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#&gt; 3  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#&gt; 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#&gt; 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#&gt; 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#&gt; # … with 29,144 more rows</code></pre>
+<p>The function itself is the comparison, there is no operator like <code>==</code> or <code>!=</code>.</p>
+<p>The name of the variable you want to look in goes <em>inside</em> the <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.</p>
+<p>If you want to pick only values of clarity that <em>start</em> or <em>end</em> with particular text, you can use the functions <code><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_starts()</a></code> or <code><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_ends()</a></code>. For example:</p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_starts</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_ends</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="arrange-rows-with-arrange" class="section level2">
+<h2>
+<span class="header-section-number">4.4</span> Arrange rows with <code>arrange()</code><a class="anchor" aria-label="anchor" href="#arrange-rows-with-arrange"><i class="fas fa-link"></i></a>
+</h2>
+<p>The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.</p>
+<p>The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.</p>
+<p>For example, to sort the <code>diamonds</code> data frame by price:</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 10
+#&gt;   carat cut   color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#&gt; 2  0.86 Fair  E     SI2      55.1    69  2757  6.45  6.33  3.52
+#&gt; 3  0.96 Fair  F     SI2      66.3    62  2759  6.27  5.95  4.07
+#&gt; 4  0.7  Fair  F     VS2      64.5    57  2762  5.57  5.53  3.58
+#&gt; 5  0.7  Fair  F     VS2      65.3    55  2762  5.63  5.58  3.66
+#&gt; 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
+#&gt; # … with 53,934 more rows</code></pre>
+<p>You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:</p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 10
+#&gt;   carat cut   color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#&gt; 2  0.25 Fair  E     VS1      55.2    64   361  4.21  4.23  2.33
+#&gt; 3  0.23 Fair  G     VVS2     61.4    66   369  3.87  3.91  2.39
+#&gt; 4  0.27 Fair  E     VS1      66.4    58   371  3.99  4.02  2.66
+#&gt; 5  0.3  Fair  J     VS2      64.8    58   416  4.24  4.16  2.72
+#&gt; 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
+#&gt; # … with 53,934 more rows</code></pre>
+<p>If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> . For example <code>levels(diamonds$cut)</code> .</p>
+<div id="descending-order" class="section level3">
+<h3>
+<span class="header-section-number">4.4.1</span> Descending order<a class="anchor" aria-label="anchor" href="#descending-order"><i class="fas fa-link"></i></a>
+</h3>
+<p>To sort a variable in descending rather than ascending order, you can wrap the variable name in the <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 10
+#&gt;   carat cut   color clarity depth table price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  2.01 Fair  G     SI1      70.6    64 18574  7.43  6.64  4.69
+#&gt; 2  2.02 Fair  H     VS2      64.5    57 18565  8     7.95  5.14
+#&gt; 3  4.5  Fair  J     I1       65.8    58 18531 10.2  10.2   6.72
+#&gt; 4  2    Fair  G     VS2      67.6    58 18515  7.65  7.61  5.16
+#&gt; 5  2.51 Fair  H     SI2      64.7    57 18308  8.44  8.5   5.48
+#&gt; 6  3.01 Fair  I     SI2      65.8    56 18242  8.99  8.94  5.9 
+#&gt; # … with 53,934 more rows</code></pre>
+<p>Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.</p>
+</div>
+</div>
+<div id="select-columns-with-select" class="section level2">
+<h2>
+<span class="header-section-number">4.5</span> Select columns with <code>select()</code><a class="anchor" aria-label="anchor" href="#select-columns-with-select"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function allows you to select which <em>columns</em> (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.</p>
+<p>The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.</p>
+<p>For example, say you wanted to focus on the variables carat, cut, and color, you could use:</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 3
+#&gt;   carat cut       color
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt;
+#&gt; 1  0.23 Ideal     E    
+#&gt; 2  0.21 Premium   E    
+#&gt; 3  0.23 Good      E    
+#&gt; 4  0.29 Premium   I    
+#&gt; 5  0.31 Good      J    
+#&gt; 6  0.24 Very Good J    
+#&gt; # … with 53,934 more rows</code></pre>
+<p>Technically, you can also select variables by their position, so <code>select(diamonds, carat, cut, color)</code> is equivalent to <code>select(diamonds, 1, 2, 3)</code></p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> can also be used to rearrange the order of columns:</p>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span>, <span class="va">cut</span>, <span class="va">carat</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 3
+#&gt;   color cut       carat
+#&gt;   &lt;ord&gt; &lt;ord&gt;     &lt;dbl&gt;
+#&gt; 1 E     Ideal      0.23
+#&gt; 2 E     Premium    0.21
+#&gt; 3 E     Good       0.23
+#&gt; 4 I     Premium    0.29
+#&gt; 5 J     Good       0.31
+#&gt; 6 J     Very Good  0.24
+#&gt; # … with 53,934 more rows</code></pre>
+<p>There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon <code>:</code> operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span><span class="op">:</span><span class="va">price</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 7
+#&gt;   carat cut       color clarity depth table price
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt; 1  0.23 Ideal     E     SI2      61.5    55   326
+#&gt; 2  0.21 Premium   E     SI1      59.8    61   326
+#&gt; 3  0.23 Good      E     VS1      56.9    65   327
+#&gt; 4  0.29 Premium   I     VS2      62.4    58   334
+#&gt; 5  0.31 Good      J     SI2      63.3    58   335
+#&gt; 6  0.24 Very Good J     VVS2     62.8    57   336
+#&gt; # … with 53,934 more rows</code></pre>
+<div id="removing-variables" class="section level3">
+<h3>
+<span class="header-section-number">4.5.1</span> Removing variables<a class="anchor" aria-label="anchor" href="#removing-variables"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometimes its easier to say which variables you <em>don’t</em> want to keep rather than which ones you <em>do</em>. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables <em>except</em> the one you named. For example, to return every row except table, you could do:</p>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">table</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 9
+#&gt;   carat cut       color clarity depth price     x     y     z
+#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  0.23 Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#&gt; 2  0.21 Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#&gt; 3  0.23 Good      E     VS1      56.9   327  4.05  4.07  2.31
+#&gt; 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#&gt; 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
+#&gt; 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#&gt; # … with 53,934 more rows</code></pre>
+<p>To remove several variables, you can prepend each one with a <code>-</code>. You can even remove a range of values, but the syntax is quirky. You have to put the <code>-</code> before each variable name. For example, to remove x, y, and z variables:</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">x</span><span class="op">:</span><span class="op">-</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="helper-functions" class="section level3">
+<h3>
+<span class="header-section-number">4.5.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.</p>
+<p>There are several functions that can be used within <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> :</p>
+<ul>
+<li><p><code>starts_with("abc")</code> finds all columns whose name starts with “abc”</p></li>
+<li><p><code>ends_with("abc")</code> finds all columns whose name ends with “abc”</p></li>
+<li><p><code>contains("abc")</code> finds all columns whose name contains “abc”</p></li>
+<li><p><code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.</p></li>
+</ul>
+<p>For example, the following code would move table and price to the front and leave everything else at the end:</p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"e"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 53,940 × 10
+#&gt;   table price carat cut       color clarity depth     x     y     z
+#&gt;   &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1    55   326  0.23 Ideal     E     SI2      61.5  3.95  3.98  2.43
+#&gt; 2    61   326  0.21 Premium   E     SI1      59.8  3.89  3.84  2.31
+#&gt; 3    65   327  0.23 Good      E     VS1      56.9  4.05  4.07  2.31
+#&gt; 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
+#&gt; 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
+#&gt; 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
+#&gt; # … with 53,934 more rows</code></pre>
+</div>
+</div>
+<div id="assignment" class="section level2">
+<h2>
+<span class="header-section-number">4.6</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+</h2>
+<p>For your assignment, you will work with the eBird taxonomy table you used in the previous lab.</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
+  <span class="va">ebird_taxonomy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                  <span class="co"># start with the ebird_taxonomy data</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                     <span class="co"># tibbles print better in the console</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
+<p>Begin by creating an R script.</p>
+<div id="r-script" class="section level3">
+<h3>
+<span class="header-section-number">4.6.1</span> R script<a class="anchor" aria-label="anchor" href="#r-script"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Create a new R script named `assignment.R` to house your code.</li>
+<li>In your script, load the tidyverse and auk packages</li>
+<li>In your script, read in the eBird taxonomy table</li>
+</ol>
+</div>
+<div id="questions" class="section level3">
+<h3>
+<span class="header-section-number">4.6.2</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now use what you know from previous labs, and what you have learned from today’s lab, to perform the following data manipulation tasks. Suggestion: for each question, put a comment like <code># question 1</code> on the line before, so you can read your script more easily.</p>
+<ol style="list-style-type: decimal">
+<li>Print a table containing only species NOT in the Order Passeriformes. Include all columns.</li>
+<li>Print a table containing only species in the Order Passeriformes. Include all columns.</li>
+<li>Print a table containing all species. Only the variables Species Code, Scientific Name, and Common Name should be in the final table.</li>
+<li>Print a table with all species in the Order Passeriformes whose common name starts with the word “Common”. Species should be in reverse taxonomic order (taxon_order variable). Only the variables Species Code, Scientific Name, and Common Name should be in the final table.</li>
+<li>Print a table containing species with “Warbler” in the common name. Include all columns.</li>
+<li>Using the species found in the previous step (with “Warbler” in their name), print a <a href="https://biol275-msum.github.io/introduction-to-ggplot2.html#frequency-table">frequency table</a> for the <code>family</code> variable. You should end up with a table with two columns: <code>family</code> and <code>n</code>.</li>
+<li>Extra credit: print a table with all species whose common name contains a color. You can get partial credit if you have some but not all. If you have <em>any</em> species which do not have a color in their name, you will get no extra credit even if you have some species that do have a color in their name, so be careful.</li>
+</ol>
+</div>
+<div id="lab-report" class="section level3">
+<h3>
+<span class="header-section-number">4.6.3</span> Lab Report<a class="anchor" aria-label="anchor" href="#lab-report"><i class="fas fa-link"></i></a>
+</h3>
+<p>After you have crafted working R code in your R script, <em>then</em> you should create your lab report using R Markdown</p>
+<ol style="list-style-type: decimal">
+<li><p>Create an R Markdown document README.Rmd (you won’t have a separate Rmd for the lab report in this lab)</p></li>
+<li><p>Add the <a href="r-markdown-documents.html#yaml-header">YAML header</a>. Change the title to “Lab 4”</p></li>
+<li>
+<p>Copy the six (or seven if you do the extra credit) questions above and paste them in as text. Then add an R code chunk after each question. Each chunk should <em>print</em> a data frame. You may create new objects with the assignment operator if you like. For example, these two code chunks would both print a data frame, and would both be an acceptable answer:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bang</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">foo</span>, <span class="va">bar</span> <span class="op">==</span> <span class="st">"baz"</span><span class="op">)</span>
+<span class="va">bang</span></code></pre></div>
+</li>
+<li><p>Add a <a href="session-info.html">session info</a> section. You do <em>not</em> need a link to your R script in the lab report</p></li>
+<li><p>Knit the document</p></li>
+<li><p>Commit all files and push to GitHub</p></li>
+<li>
+<p><del>Conduct your peer reviews. Add links to peer reviews to your lab report, commit, and push again</del></p>
+<p><span class="text-warning">UPDATE: No peer review required for this lab</span></p>
+</li>
+<li><p>Submit the URL of your repo to D2L for grading</p></li>
+</ol>
+<p>See the previous lab for more details on the steps listed above</p>
+</div>
+</div>
+<div id="grading-rubric-2" class="section level2">
+<h2>
+<span class="header-section-number">4.7</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>You will be assessed based on the following rubric:</p>
+<ul>
+<li><p>GitHub Classroom repository claimed</p></li>
+<li>
+<p>R script</p>
+<ul>
+<li>
+<p>Good organization and comments</p>
+<ul>
+<li><p>Code sections make sense</p></li>
+<li>
+<p>Code goes in correct order, e.g.</p>
+<ul>
+<li>load packages before using them</li>
+<li>read or load data before using it</li>
+</ul>
+</li>
+<li><p>Blank lines between code chunks to make it easy to read</p></li>
+<li><p>Comment at top of script explaining purpose of the script</p></li>
+<li><p>Each code chunk has a comment</p></li>
+<li><p>It is obvious which code chunks answer which questions</p></li>
+</ul>
+</li>
+<li><p>Code for tables works</p></li>
+</ul>
+</li>
+<li>
+<p>Lab Report (README.md)</p>
+<ul>
+<li><p>Questions answered correctly</p></li>
+<li>
+<p><del>Links to peer-review Issues included</del></p>
+<p><span class="text-warning">UPDATE: No peer review required for this lab</span></p>
+</li>
+<li><p>Session info included</p></li>
+</ul>
+</li>
+<li>
+<p><del>Lab report has been peer-reviewed at least once</del></p>
+<p><span class="text-warning">UPDATE: No peer review required for this lab</span></p>
+</li>
+<li>
+<p><del>README is complete</del></p>
+<p><span class="text-warning">UPDATE: Your README and Lab Report can be the same document, named README.Rmd</span></p>
+</li>
+<li><p>Submitted link to repository on D2L</p></li>
+</ul>
+</div>
+<div id="student-questions" class="section level2">
+<h2>
+<span class="header-section-number">4.8</span> Student questions<a class="anchor" aria-label="anchor" href="#student-questions"><i class="fas fa-link"></i></a>
+</h2>
+<p>My birds table has &gt; 16,000 rows, not 10,000. What went wrong?</p>
+<p>Answer: be sure to remove any non-species rows first. Use the code from lab 3:</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birds</span> <span class="op">&lt;-</span>                              <span class="co"># create a new table named birds</span>
+  <span class="va">ebird_taxonomy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                  <span class="co"># start with the ebird_taxonomy data</span>
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>                     <span class="co"># tibbles print better in the console</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">category</span> <span class="op">==</span> <span class="st">"species"</span><span class="op">)</span>       <span class="co"># remove non-species taxa</span></code></pre></div>
+</div>
+<div id="further-reading" class="section level2">
+<h2>
+<span class="header-section-number">4.9</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on filtering, arranging, and selecting in <a href="https://r4ds.had.co.nz/transform.html">Chapter 5: Data transformation</a>.</p>
+<p>You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.</p>
+<p>If you do want to read the chapter and try their examples in your own R Script then don’t forget to:</p>
+<ol style="list-style-type: decimal">
+<li>Install the nycflights13 package as described in <a href="https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages">R4DS Section 1.4.4 Other Packages</a>
+</li>
+<li>Load the tidyverse and nycflights13 packages as described in <a href="https://r4ds.had.co.nz/transform.html#prerequisites-2">R4DS Section 5.1.1 Prerequisites</a>.</li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></div>
+<div class="next"><a href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-subsetting"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="nav-link" href="#objectives-3"><span class="header-section-number">4.1</span> Objectives</a></li>
+<li>
+<a class="nav-link" href="#introduction-1"><span class="header-section-number">4.2</span> Introduction</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">4.2.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#diamonds"><span class="header-section-number">4.2.2</span> diamonds</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#filter-rows-with-filter"><span class="header-section-number">4.3</span> Filter rows with filter()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intermediate-objects"><span class="header-section-number">4.3.1</span> Intermediate objects</a></li>
+<li><a class="nav-link" href="#basic-operators"><span class="header-section-number">4.3.2</span> Basic Operators</a></li>
+<li><a class="nav-link" href="#logical-operators"><span class="header-section-number">4.3.3</span> Logical Operators</a></li>
+<li><a class="nav-link" href="#string-helper-functions"><span class="header-section-number">4.3.4</span> String helper functions</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#arrange-rows-with-arrange"><span class="header-section-number">4.4</span> Arrange rows with arrange()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#descending-order"><span class="header-section-number">4.4.1</span> Descending order</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#select-columns-with-select"><span class="header-section-number">4.5</span> Select columns with select()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#removing-variables"><span class="header-section-number">4.5.1</span> Removing variables</a></li>
+<li><a class="nav-link" href="#helper-functions"><span class="header-section-number">4.5.2</span> Helper functions</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#assignment"><span class="header-section-number">4.6</span> Assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-script"><span class="header-section-number">4.6.1</span> R script</a></li>
+<li><a class="nav-link" href="#questions"><span class="header-section-number">4.6.2</span> Questions</a></li>
+<li><a class="nav-link" href="#lab-report"><span class="header-section-number">4.6.3</span> Lab Report</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#grading-rubric-2"><span class="header-section-number">4.7</span> Grading Rubric</a></li>
+<li><a class="nav-link" href="#student-questions"><span class="header-section-number">4.8</span> Student questions</a></li>
+<li><a class="nav-link" href="#further-reading"><span class="header-section-number">4.9</span> Further reading</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-4.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-4.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

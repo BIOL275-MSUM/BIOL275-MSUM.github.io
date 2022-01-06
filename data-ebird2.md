@@ -1,0 +1,24 @@
+# eBird data sets
+
+## Datasets
+
+-   eBird Basic Dataset
+
+-   eBird Reference Dataset
+
+## Workflow
+
+In general, the process would look like this:
+
+1.  Instructor downloads the entire data set (\> 150 GB) and extracts the portion you need.
+
+2.  You put your data into your project folder.
+
+3.  You use the accompanying R package [auk: eBird Data Extraction and Processing in R](https://cornelllabofornithology.github.io/auk/index.html) to:
+
+    1.  Extract a subset of the data you are interested in
+    2.  Do any necessary filtering
+
+4.  You do additional data transformation and graphing using **tidyverse** functions.
+
+The package has a [vignette](https://cornelllabofornithology.github.io/auk/articles/auk.html) with quick start guide.

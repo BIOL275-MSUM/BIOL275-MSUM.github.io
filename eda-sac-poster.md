@@ -1,0 +1,323 @@
+# SAC Poster
+
+## Elements
+
+Your poster should contain the following elements:
+
+-   Heading information
+
+    -   MSUM logo
+
+    -   Your project title
+
+    -   Your name, the names of any coauthors, and your instructor's name
+
+    -   The affiliation of each author (department, university, and address). You only need to give each unique affiliation once.
+
+    -   The following headings:
+
+        -   Abstract
+
+        -   Introduction
+
+        -   Methods
+
+        -   Results
+
+        -   Discussion
+
+        -   References
+
+        -   Acknowledgments (if necessary)
+
+## Format and Style
+
+- Use a [scientific writing style](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/bes2.1258).
+
+- Keep sentences fairly short.
+
+- Don't put more than about three sentences per paragraph. This makes it easier to read in an online format.
+
+## Template
+
+To create your poster, you should create a README.Rmd. Use the following template as guide to get you started.
+
+The BOLD WORDS in the template below are placeholders that you should replace with your own text.
+
+````
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+<img src="https://www2.mnstate.edu/uploadedImages/Content/Marketing/logos/MSUM_Signature_Vert_Color.jpg" alt="MSUM logo" width="200" style="float:right">
+
+# PROJECT TITLE
+
+Presentation ID: 1234 [replace 1234 with your ID#]
+
+AUTHOR NAMES
+
+Biosciences Department, Minnesota State University Moorhead, 1104 7th Avenue South, Moorhead, MN 56563 USA
+
+Presented at the MSUM 23rd Online Student Acadmic Conference
+
+Submit a survey for this presentation:  https://mnstate.co1.qualtrics.com/jfe/form/SV_eFMAwF72JZIoeSq
+
+## Abstract
+
+ABSTRACT
+
+## Introduction
+
+INTRODUCTION
+
+## Methods
+
+METHODS
+
+## Results
+
+RESULTS
+
+## Discussion
+
+DISCUSSION
+
+## References
+
+- REFERENCE 1
+- REFERENCE 2
+- REFERENCE 3
+- ETC.
+
+````
+
+## Visual Editor
+
+Once you have a template, the easiest way to write and style your poster is to use the Visual Editor. This allows you to use common text editor buttons to format your text, insert code chunks, images, and links, and more.
+
+To switch to the visual editor, open your README.Rmd file and click the gear icon at the top of the source pane. Check "Use Visual Editor".
+
+The Visual Editor requires RStudio version 1.4 or later. You can check your RStudio version by running `RStudio.Version()` . If you don't have it, update RStudio by installing the newest version.
+
+If you don't want to use the Visual Editor, you can always format your poster using RMarkdown syntax. See [R Markdown Documents](r-markdown-documents.html) for more info.
+
+## Images
+
+You can add images to your markdown document in various ways. The easiest is to insert a line of HTML code right in your Rmd script. You need to provide an image source and a width (in pixels) that you want the image to be displayed at.
+
+If your image is located online, then your source would be the image URL:
+
+``` {.html}
+<img src="https://your-image-url.png" width="400">
+```
+
+If you saved the image to your RStudio project directory, then your source would be the image name:
+
+``` {.html}
+<img src="image.png" width="400">
+```
+
+If you saved the image to a directory (folder) within your RStudio project directory, then your source would be the relative path followed by the image name:
+
+``` {.html}
+<img src="images/image.png" width="400">
+```
+
+
+## Introduction
+
+Your introduction should:
+
+- Provide relevant background information
+
+- Clearly identify the problem or question you plan to address
+
+- State the wider implications for answering this question
+
+- Cite relevant information
+
+- Include helpful images or diagrams
+
+## Methods
+
+The methods section should include paragraphs related to:
+
+- **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
+
+- **Data Preparation**. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
+
+- Citations should include:
+
+    - R
+    - RStudio
+    - any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
+    - any R packages you used to access data
+    - the source of your data. 
+
+
+## Results
+
+Your results should contain short paragraphs describing the patterns you found in your data, each followed by a corresponding graph.
+
+- Do not show any code, just figures
+
+- Explain what each figure shows, not what it is. For example, instead of saying a figure is a histogram, say that it shows that the variable in question has a normal distribution and give the approximate mean and standard deviation.
+
+## Discussion
+
+The discussoin should interpret your results and tie them back to the literature and the information gap you identified in the introduction.
+
+You should state the implications of what you found, and what follow-up steps could be undertaken.
+
+## References
+
+You should have a section titled "References" containing a list of references you cite in your poster.
+
+Entries in the References section are commonly called "end citations", while citations in the text of your poster are called "in-text citations". Each each in-text citation should have a corresponding end citation and vice versa.
+
+There are three types of references you may cite:
+
+1.  **Primary literature**. Published peer-reviewed journal articles. Articles from the popular press (e.g. a magazine, blog, or news website) should not be used.
+2.  **Data sources**. Where you obtained your data from.
+3.  **Software**. Including R, RStudio, and any R packages you used.
+
+### Citing software
+
+R makes it easy to cite software by giving you the citations to use. You can find full citations for R using:
+
+
+```r
+citation()
+```
+
+```
+#> 
+#> To cite R in publications use:
+#> 
+#>   R Core Team (2021). R: A language and environment for statistical
+#>   computing. R Foundation for Statistical Computing, Vienna, Austria.
+#>   URL https://www.R-project.org/.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {R: A Language and Environment for Statistical Computing},
+#>     author = {{R Core Team}},
+#>     organization = {R Foundation for Statistical Computing},
+#>     address = {Vienna, Austria},
+#>     year = {2021},
+#>     url = {https://www.R-project.org/},
+#>   }
+#> 
+#> We have invested a lot of time and effort in creating R, please cite it
+#> when using it for data analysis. See also 'citation("pkgname")' for
+#> citing R packages.
+```
+
+Always give the version of R and RStudio you are using. In the text of your methods, you would say something like "I used R Version 4.0.3 (R Core Team 2021)"
+
+To find your version of R type:
+
+
+```r
+R.Version()
+```
+
+```
+#> $platform
+#> [1] "x86_64-pc-linux-gnu"
+#> 
+#> $arch
+#> [1] "x86_64"
+#> 
+#> $os
+#> [1] "linux-gnu"
+#> 
+#> $system
+#> [1] "x86_64, linux-gnu"
+#> 
+#> $status
+#> [1] ""
+#> 
+#> $major
+#> [1] "4"
+#> 
+#> $minor
+#> [1] "1.2"
+#> 
+#> $year
+#> [1] "2021"
+#> 
+#> $month
+#> [1] "11"
+#> 
+#> $day
+#> [1] "01"
+#> 
+#> $`svn rev`
+#> [1] "81115"
+#> 
+#> $language
+#> [1] "R"
+#> 
+#> $version.string
+#> [1] "R version 4.1.2 (2021-11-01)"
+#> 
+#> $nickname
+#> [1] "Bird Hippie"
+```
+
+The citation and version number for RStudio can be found like this:
+
+
+```r
+RStudio.Version()
+```
+
+Citations for R packages can be found like this:
+
+
+```r
+citation("dplyr")
+```
+
+```
+#> 
+#> To cite package 'dplyr' in publications use:
+#> 
+#>   Hadley Wickham, Romain François, Lionel Henry and Kirill Müller
+#>   (2021). dplyr: A Grammar of Data Manipulation.
+#>   https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {dplyr: A Grammar of Data Manipulation},
+#>     author = {Hadley Wickham and Romain François and Lionel Henry and Kirill Müller},
+#>     year = {2021},
+#>     note = {https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr},
+#>   }
+```
+
+You should any non-base packages you use. For example, cite any of the tidyverse package (tibble, dplyr, tidyr, forcats, lubridate, readr), but do not cite the tidyverse package itself.
+
+If you use a special package for reading in data, cite is, e.g. readxl.
+
+If you read data from online using a special package, cite it too, e.g. rgbif, rinat, BIEN, auk.
+
+### End citation format
+
+Use the format defined by the Council of Science Editors.
+
+### In-text citation format
+
+In-text citations should be given in the Name-Year format. Examples:
+
+1.  One author: (Merkord 2021)
+2.  Two authors: (Merkord and Merkord 2021)
+3.  Three authors: (Merkord et al. 2021)

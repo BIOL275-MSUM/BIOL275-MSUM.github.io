@@ -1,0 +1,36 @@
+# Session info
+
+<!-- 
+The code chunk example below requires strange formatting to get it to show
+That formatting causes the copy button to be hidden
+This next css code chunk makes the copy button visible
+I'm still not sure how to make it visible only on hover
+-->
+
+<style type="text/css">
+main div pre .copy button {
+  visibility: visible;
+}
+</style>
+
+Information about your R session  can help other users recreate your analyses or diagnose any errors you may be encountering.
+
+The `session_info()` function in the sessioninfo package provides information about the version of R you are running, your operating system, and the list of packages you have loaded, with version numbers.
+
+You can share such information in an R Markdown document with code like this:
+
+````
+```{r session-info}
+sessioninfo::session_info()
+```
+````
+
+In the code above, the double colons tell R to look for the `session_info()` function within the sessioninfo package, so you do not need to load the sessioninfo package. 
+
+You do, however, need to have the sessioninfo package installed on your machine. To do that, you can run this code in your console just once (do not put it in your R or Rmd scripts):
+
+
+```r
+install.packages("sessioninfo")
+```
+

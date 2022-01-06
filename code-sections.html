@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>20 Code Sections | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="RStudio provides a useful tool called code sections. A code section is a special comment that ends in at least four trailing dashes (-), pound signs (#), or equal signs (=). Code sections have...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="20 Code Sections | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="RStudio provides a useful tool called code sections. A code section is a special comment that ends in at least four trailing dashes (-), pound signs (#), or equal signs (=). Code sections have...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20 Code Sections | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="RStudio provides a useful tool called code sections. A code section is a special comment that ends in at least four trailing dashes (-), pound signs (#), or equal signs (=). Code sections have...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.20/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li><a class="" href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">7</span> Linear regression</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="sac-poster.html"><span class="header-section-number">10</span> SAC Poster</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="" href="public-health-data-sets-1.html"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">16</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">17</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">19</span> Project Options</a></li>
+<li><a class="active" href="code-sections.html"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="code-sections" class="section level1">
+<h1>
+<span class="header-section-number">20</span> Code Sections<a class="anchor" aria-label="anchor" href="#code-sections"><i class="fas fa-link"></i></a>
+</h1>
+<p>RStudio provides a useful tool called code sections.</p>
+<p>A code section is a special comment that ends in at least four trailing dashes (-), pound signs (#), or equal signs (=).</p>
+<p>Code sections have three main uses:</p>
+<ul>
+<li><p>They visual separate and identify major sections of code, making your script more readable.</p></li>
+<li><p>They are used to create the Document Outline. You can jump directly to a code section by clicking on its name in the Document Outline.</p></li>
+<li><p>You can jump directly to a section using the Jump To menu in the bottom left corner of the source pane.</p></li>
+</ul>
+<p>Here is a screenshot of the code sections in action:</p>
+<div class="figure">
+<img src="screenshots/code-sections-r.png" style="width:100.0%" alt=""><p class="caption">Screenshot of a script with three code sections showing the Document Outline</p>
+</div>
+<p>And here is the code in the script shown in the screenshot above:</p>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## This script shows an example of using comments to create a document outline</span>
+
+<span class="co"># load packages -----------------------------------------------------------</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+
+
+<span class="co"># read data ---------------------------------------------------------------</span>
+
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">read_xl</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span>
+
+
+<span class="co"># plot data --------------------------------------------------------------</span>
+
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div id="insert-a-code-section" class="section level2">
+<h2>
+<span class="header-section-number">20.1</span> Insert a code section<a class="anchor" aria-label="anchor" href="#insert-a-code-section"><i class="fas fa-link"></i></a>
+</h2>
+<p>To insert a code section in an R script, do one of the following:</p>
+<ul>
+<li>Use the Insert Section… dialog under the Code menu</li>
+<li>Use the keyboard shortcut Ctrl+Shift+R / Cmd+Shift+R</li>
+<li>Add four or more dashes (-) or pound signs (#) at the end of a comment</li>
+</ul>
+<p>For readability, add a blank line above and below each code section comment</p>
+</div>
+<div id="showhide-the-document-outline" class="section level2">
+<h2>
+<span class="header-section-number">20.2</span> Show/hide the Document Outline<a class="anchor" aria-label="anchor" href="#showhide-the-document-outline"><i class="fas fa-link"></i></a>
+</h2>
+<p>The document outline appears on the right side of the source pane</p>
+<p>To toggle the Document Outline on or off, do one of the following:</p>
+<ul>
+<li>Click the Document Outline button on the right side of the source pane toolbar. It looks like four offset horizontal lines</li>
+<li>Use the keyboard Shortcut Ctrl-Shift+O / Cmd+Shift+O</li>
+</ul>
+</div>
+<div id="jump-to-a-code-section" class="section level2">
+<h2>
+<span class="header-section-number">20.3</span> Jump to a code section<a class="anchor" aria-label="anchor" href="#jump-to-a-code-section"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can jump to any code section quickly by doing one of the following:</p>
+<ul>
+<li>Show Document Outline and click a heading</li>
+<li>Click the Jump To menu and select a heading</li>
+</ul>
+<p>As your scripts become longer, code sections become more useful.</p>
+</div>
+<div id="other-scripts" class="section level2">
+<h2>
+<span class="header-section-number">20.4</span> Other scripts<a class="anchor" aria-label="anchor" href="#other-scripts"><i class="fas fa-link"></i></a>
+</h2>
+<p>Code sections and the Document Outline can also be used in other document types.</p>
+<p>For example, when you show the Document Outline for an R Markdown document, it shows you all the headings</p>
+<div class="figure">
+<img src="screenshots/code-sections-rmd.png" style="width:100.0%" alt=""><p class="caption">Example of an R Markdown document showing the Document Outline</p>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="project-options.html"><span class="header-section-number">19</span> Project Options</a></div>
+<div class="next"><a href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#code-sections"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="nav-link" href="#insert-a-code-section"><span class="header-section-number">20.1</span> Insert a code section</a></li>
+<li><a class="nav-link" href="#showhide-the-document-outline"><span class="header-section-number">20.2</span> Show/hide the Document Outline</a></li>
+<li><a class="nav-link" href="#jump-to-a-code-section"><span class="header-section-number">20.3</span> Jump to a code section</a></li>
+<li><a class="nav-link" href="#other-scripts"><span class="header-section-number">20.4</span> Other scripts</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/code-sections.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/code-sections.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

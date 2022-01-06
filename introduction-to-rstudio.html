@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Introduction to RStudio | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="2.1 Objectives Learn to: Use the console and source windows in RStudio Write and run code in an R script Document your R code with comments Transfer code from an R script to an R Markdown document...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="2 Introduction to RStudio | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Objectives Learn to: Use the console and source windows in RStudio Write and run code in an R script Document your R code with comments Transfer code from an R script to an R Markdown document...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Introduction to RStudio | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="2.1 Objectives Learn to: Use the console and source windows in RStudio Write and run code in an R script Document your R code with comments Transfer code from an R script to an R Markdown document...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.20/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="active" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li><a class="" href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></li>
+<li><a class="" href="linear-regression.html"><span class="header-section-number">7</span> Linear regression</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="sac-poster.html"><span class="header-section-number">10</span> SAC Poster</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="" href="public-health-data-sets-1.html"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">16</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">17</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">19</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-rstudio" class="section level1">
+<h1>
+<span class="header-section-number">2</span> Introduction to RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-rstudio"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-1" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Learn to:</p>
+<ul>
+<li>Use the console and source windows in RStudio</li>
+<li>Write and run code in an R script</li>
+<li>Document your R code with comments</li>
+<li>Transfer code from an R script to an R Markdown document</li>
+<li>Craft a narrative combining text explanation, code, and graphs</li>
+<li>Collaborate on Issues in GitHub</li>
+<li>Conduct peer review of an assignment</li>
+</ul>
+</div>
+<div id="overview-of-steps" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Overview of steps<a class="anchor" aria-label="anchor" href="#overview-of-steps"><i class="fas fa-link"></i></a>
+</h2>
+<p>Day 1</p>
+<ol style="list-style-type: decimal">
+<li>Clone the repository for this lab from GitHub</li>
+<li>Fill in blanks on README.Rmd</li>
+<li>Knit README.Rmd</li>
+<li>Read lab assignment</li>
+<li>Run the code in calculator.R as you work through the assignment</li>
+<li>Edit the code in calculator.R to use the new data from the self assessment</li>
+<li>Copy and paste your working code from calculator.R into the appropriate code chunks in assignment.Rmd</li>
+<li>Knit the assignment.Rmd document</li>
+<li>Commit and push all files to GitHub</li>
+<li>Copy the repository URL and paste it into the assignment submission folder on D2L</li>
+</ol>
+<p>Day 2</p>
+<ol start="11" style="list-style-type: decimal">
+<li>Clean up the project</li>
+<li>Go through the Completion Checklist</li>
+<li>Peer review</li>
+<li>Fix issues identified during peer review</li>
+</ol>
+</div>
+<div id="day-1-r-as-a-calculator" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Day 1: R as a Calculator<a class="anchor" aria-label="anchor" href="#day-1-r-as-a-calculator"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this section, you will learn how to use the Console Window to run commands as you perform basic arithmetic operations. You will learn the basics of using functions, and finally learn about creating objects using the assignment operator.</p>
+<div id="project-setup" class="section level3">
+<h3>
+<span class="header-section-number">2.3.1</span> Project Setup<a class="anchor" aria-label="anchor" href="#project-setup"><i class="fas fa-link"></i></a>
+</h3>
+<p>For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Claim your repository</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Go to the course D2L page</p></li>
+<li><p>Find the Content module for this lab</p></li>
+<li>
+<p>Follow the link to claim your repository (repo) on GitHub</p>
+<p><em>Note: this link will not appear until the day of your lab. If you want to get ahead, you can always try reading the <a href="https://r4ds.had.co.nz/data-visualisation.html" title="3 Data visualisation | R for Data Science">Data visualisation</a> chapter ahead of time</em></p>
+</li>
+<li><p>Copy the URL for your newly created repository</p></li>
+</ol>
+</li>
+<li>
+<p>Create a new project</p>
+<ol style="list-style-type: lower-alpha">
+<li>Open RStudio</li>
+<li>Click <strong>New Project…</strong> on the File menu or Project menu (upper right)</li>
+<li>In the dialog window, select Version Control and then Git</li>
+<li>Paste the URL for your repo</li>
+<li>Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word “lab”, the lab number, and your name)</li>
+<li>Click the Browse button and find a good place on your hard drive for this project to live</li>
+<li>Set your Project options. When the project opens, go to Tools &gt; Project Options… and change the first three drop down menus to “No” (see <a href="project-options.html">Project Options</a> for detailed instructions and rationale)</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="the-rstudio-ide" class="section level3">
+<h3>
+<span class="header-section-number">2.3.2</span> The RStudio IDE<a class="anchor" aria-label="anchor" href="#the-rstudio-ide"><i class="fas fa-link"></i></a>
+</h3>
+<p>When you first open RStudio, you will see a window with three panes, the left pane will be on a tab named <strong>Console</strong>, the upper right pane will be on a tab named <strong>Environment</strong>, and the bottom right pane will be on a tab named <strong>Files</strong>, like this:</p>
+<div class="inline-figure"><img src="screenshots/rstudio_ide_1.png" width="75%" style="display: block; margin: auto;"></div>
+<p>For now we will use the Console and Environment tabs.</p>
+</div>
+<div id="the-console-tab" class="section level3">
+<h3>
+<span class="header-section-number">2.3.3</span> The Console tab<a class="anchor" aria-label="anchor" href="#the-console-tab"><i class="fas fa-link"></i></a>
+</h3>
+<p>The Console is where you enter commands (code) for R to interpret.</p>
+<p>To give it a try, place your cursor in the Console window by clicking in it. You should see a greater than sign <code>&gt;</code> (called the “prompt”) with a blinking cursor next to it.</p>
+<p>Type the number <code>2</code> and press the enter key. Pressing enter is like asking R a question. R will evaluate the code you typed (yes, it’s really computer code!) and print the output, the answer to your question, on the screen like this:</p>
+<pre><code>`[1] 2`</code></pre>
+<p class="text-success font-weight-bold">
+</p>
+<p>Congratulations, you just wrote your first computer program!</p>
+
+<p>The <code>2</code> is the answer to your question and the <code>[1]</code> indicates that the answer had one part. For the most part you can ignore the number in brackets.</p>
+<p>For the rest of this tutorial, we will use the following notation to indicate code that you should type into the console, and what the output should look like:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span></code></pre></div>
+<pre><code>#&gt; [1] 1</code></pre>
+<p>Note that in our examples, we do not show the prompt and we add two hash marks <code>#&gt;</code> to indicate lines of output.</p>
+<p><span class="label label-info">Tip</span> If you ever try to type something in the console and nothing happens, it may be because some other pane has RStudio’s attention. Click the Console pane and make sure the blinking cursor is showing.</p>
+</div>
+<div id="r-as-a-calculator" class="section level3">
+<h3>
+<span class="header-section-number">2.3.4</span> R as a calculator<a class="anchor" aria-label="anchor" href="#r-as-a-calculator"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can think of R as a giant calculator. You type in a series of numbers and operators (<code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, etc.), press enter, and it evaluates what you typed and prints the output in the console.</p>
+<p>Give it a try:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
+<pre><code>#&gt; [1] 4</code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">4</span> <span class="op">-</span> <span class="fl">1</span></code></pre></div>
+<pre><code>#&gt; [1] 3</code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">*</span> <span class="fl">3</span></code></pre></div>
+<pre><code>#&gt; [1] 6</code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">7</span> <span class="op">/</span> <span class="fl">3</span></code></pre></div>
+<pre><code>#&gt; [1] 2.333333</code></pre>
+<p>R uses standard MDAS order of precedence for operators: multiply, then divide, then add, then subtract. To change the order of operations you can use parentheses:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="fl">3</span></code></pre></div>
+<pre><code>#&gt; [1] 8</code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fl">3</span></code></pre></div>
+<pre><code>#&gt; [1] 12</code></pre>
+<p>You can use exponentials like this:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">3</span><span class="op">^</span><span class="fl">2</span>    <span class="co"># three squared is nine</span></code></pre></div>
+<pre><code>#&gt; [1] 9</code></pre>
+<p>Any text following a hash tag (pound sign) is ignored, which allows you to include comments in your code as seen above.</p>
+</div>
+<div id="assign-values" class="section level3">
+<h3>
+<span class="header-section-number">2.3.5</span> Assign values<a class="anchor" aria-label="anchor" href="#assign-values"><i class="fas fa-link"></i></a>
+</h3>
+<p>Much like a human brain, R is not only capable of performing calculations, but also of remembering things, of storing them for later. This is accomplished using the <em>assignment</em> operator <code>&lt;-</code> like this:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">2</span></code></pre></div>
+<p>Here we have told R to create space in its memory, store the number two there, and name that space “x”. Now, whenever we refer to <code>x</code>, R will know we mean <code>2</code>.</p>
+<p>Notice that the above code did not produce any output in the Console. After performing an assignment operation, you need to type the name of the object and press enter. Try printing <code>x</code> in the console:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span></code></pre></div>
+<pre><code>#&gt; [1] 2</code></pre>
+<p>You can now use <code>x</code> anywhere in your code, and R will always know what you mean:</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">*</span> <span class="fl">5</span></code></pre></div>
+<pre><code>#&gt; [1] 10</code></pre>
+</div>
+<div id="the-environment-tab" class="section level3">
+<h3>
+<span class="header-section-number">2.3.6</span> The Environment tab<a class="anchor" aria-label="anchor" href="#the-environment-tab"><i class="fas fa-link"></i></a>
+</h3>
+<p>You may also have noticed that when you ran the assignment command, the <em>Environment</em> pane changed. Instead of saying “Environment is empty”, it now has a list of values, with one named “x”.</p>
+<div class="inline-figure"><img src="screenshots/rstudio_environ_ba.png" width="75%" style="display: block; margin: auto;"></div>
+<p>Try it again and watch how the environment changes:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">7</span></code></pre></div>
+<p>And you can use as many of these objects as you want in the same bit of code:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">y</span> <span class="op">/</span> <span class="va">x</span></code></pre></div>
+<pre><code>#&gt; [1] 3.5</code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">+</span> <span class="op">(</span><span class="va">x</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<p>Try switching the Environment tab from List view to Grid view by clicking the word List.</p>
+<p>To remove all the objects from the environment, you can click the broom button. If you switch to Grid view you can have the option of only removing the checked objects.</p>
+</div>
+<div id="functions" class="section level3">
+<h3>
+<span class="header-section-number">2.3.7</span> Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Some mathematical operations have no operator. For these you must use what is known as a <strong>function</strong>. For example, to take a square root:</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 3</code></pre>
+<p>A function consists of the name of the function followed by parentheses, with a list of <em>arguments</em> inside the parentheses. Some functions take one argument, some take more, and some take none at all.</p>
+</div>
+</div>
+<div id="work-from-a-script" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> Work from a script<a class="anchor" aria-label="anchor" href="#work-from-a-script"><i class="fas fa-link"></i></a>
+</h2>
+<p>Up to this point, you have been running from the console by typing commands into the console and pressing enter.</p>
+<p>For the next section, you will run your code from a script.</p>
+<p>In the Files tab (bottom right pane), click the file named calculator.R.</p>
+<p>The file will open in a new pane called the <em>source</em> pane in the upper left.</p>
+<p>You can run code from the script by placing your cursor on a line and clicking the Run button in the source pane toolbar, or by using the keyboard shortcut Ctrl+Enter / Cmd+Return.</p>
+<p>Let’s continue our exploration of functions in R by looking at the top of the script.</p>
+<p>A very commonly used function is <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>, the <em>combine</em> function. This combines multiple values into what’s known as a <em>vector</em>. Place your cursor on this line of code and run it. The cursor will jump down to the second line automatically after you run the first one. With your cursor on the second line of code, click Run again to run the second line.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">4.7</span>, <span class="fl">5.0</span><span class="op">)</span>
+<span class="va">k</span></code></pre></div>
+<pre><code>#&gt; [1]  1.0  2.0 10.0  4.7  5.0</code></pre>
+<p>There are some functions that take vectors as arguments. For example, the the <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function returns the number of elements, or length, of a vector object.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
+<p>Useful mathematical functions include:</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>  <span class="co"># median value</span></code></pre></div>
+<pre><code>#&gt; [1] 4.7</code></pre>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>    <span class="co"># mean value</span></code></pre></div>
+<pre><code>#&gt; [1] 4.54</code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span>      <span class="co"># standard deviation</span></code></pre></div>
+<pre><code>#&gt; [1] 3.501143</code></pre>
+<p>You can even nest functions. In the example below, the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function is evaluated first, and its value is used as the argument for the length function.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">4.7</span>, <span class="fl">5.0</span><span class="op">)</span><span class="op">)</span> <span class="co"># nested function</span></code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
+<p>Combining several of these features together, you can calculate the standard error of the mean (SEM) and a confidence interval around the mean for any set of numbers:</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="co"># sample size</span>
+<span class="va">n</span></code></pre></div>
+<pre><code>#&gt; [1] 5</code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sem</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="co"># standard error of the mean</span>
+<span class="va">sem</span></code></pre></div>
+<pre><code>#&gt; [1] 1.565759</code></pre>
+<p>Once you have calculated the SEM you can use it to estimate the upper and lower limits of a 95% confidence interval like this:</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>  <span class="co"># upper limit</span></code></pre></div>
+<pre><code>#&gt; [1] 7.608887</code></pre>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>  <span class="co"># lower limit</span></code></pre></div>
+<pre><code>#&gt; [1] 1.471113</code></pre>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sem</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 7.608887 1.471113</code></pre>
+</div>
+<div id="assignment-overview" class="section level2">
+<h2>
+<span class="header-section-number">2.5</span> Assignment Overview<a class="anchor" aria-label="anchor" href="#assignment-overview"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the tutorial above, you learned how to write the R code to take a sample of numbers and estimate its mean, with a 95% confidence interval.</p>
+<p>For your assignment, you will attempt to replicate this process with a new set of numbers, shown below.</p>
+<blockquote>
+<p><code>6.05 4.89 3.32 4.93 5.25 5.04 4.91 2.84 5.60 5.34</code></p>
+</blockquote>
+<p>Use the skills you have learned to write code to answer the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is the sample size, mean, median, and standard deviation of the sample?</li>
+<li>What is the standard error of the mean?</li>
+<li>What is the 95% confidence interval for the estimate of the mean?</li>
+</ol>
+<p>Then write a “report” containing your results.</p>
+<p>It’s probably easiest to approach this assignment as two consecutive steps:</p>
+<ol style="list-style-type: decimal">
+<li>First, write the R code to perform the analysis.</li>
+<li>Second, copy that working R code to your lab report document.</li>
+</ol>
+<p>Here are more detailed instructions on both these steps.</p>
+</div>
+<div id="write-the-code-for-the-analysis" class="section level2">
+<h2>
+<span class="header-section-number">2.6</span> Write the code for the analysis<a class="anchor" aria-label="anchor" href="#write-the-code-for-the-analysis"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the R as a Calculator example above, you were asked to type (or copy and paste) R code into an R script and run it. For the assignment, you will need to take that existing R code and edit it.</p>
+<p>You have two options for how to do that. You could use the R script you created during the tutorial, or you can start with a fresh script with exactly the code you need. The second option is probably easier.</p>
+<p>For convenience, the code used in the example above has been copied into an R script called calculator.R. You can use that code to start your assignment.</p>
+<p><strong>Open the <em>calculator.R</em> script by clicking its name in the Files tab (lower right pane).</strong> This will open the script in the source pane (upper left).</p>
+<p>To differentiate this analysis from the previous one, let’s name our vector of data <code>x</code> instead of <code>k</code>. Make these changes by hand, or <strong>use the find and replace function</strong> (a magnifying glass icon in source pane). Put “k” (without the quotation marks) in the Find box and “x” in the Replace box. Check the box labeled “Whole words only”. Click Find, then click Replace, until there are no more k’s in the script. You can also use the Replace All button, but be careful! It’s easy to replace things you didn’t intend.</p>
+<p>Next, find the line of code where you created the vector in the tutorial, which should look like this:</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">4.7</span>, <span class="fl">5.0</span><span class="op">)</span></code></pre></div>
+<p>In the line of code, replace the five numbers with the set of numbers given above. It’s always better to copy and paste those numbers into the code rather than typing (less change of a typo), but don’t forget to add the commas between them!</p>
+<p>At this point, the code should all work as planned and you are ready to run it. Before you do, it might be a good idea to clear your environment. That way you won’t accidentally use the previous value of <code>n</code> or <code>sem</code> from the tutorial in this new analysis. To do this, click the broom icon in the Environment tab.</p>
+<p>Now put your cursor on the first line of code and run it. Press the Run button in the source tab or use the keyboard shortcut Ctrl+Enter (Cmd + Return on a Mac). Continue running all the lines of code. If you get an error or don’t get the output you expected in the console, check with a classmate or the instructor.</p>
+<p>Compare the answers below to those in your Console tab (lower left pane) to make sure you got the right answers.</p>
+<p>
+</p>
+<p><a class="btn btn-primary" data-toggle="collapse" href="#answers" role="button" aria-expanded="false" aria-controls="collapseExample"> Show Answers </a></p>
+
+<div class="collapse" id="answers">
+
+<div class="card card-body">
+<ol style="list-style-type: decimal">
+<li><p>Sample size = <code>10</code></p></li>
+<li><p>Mean = <code>4.817</code></p></li>
+<li><p>Median = <code>4.985</code></p></li>
+<li><p>Standard deviation = <code>0.9899725</code></p></li>
+<li><p>Standard error of the mean = <code>0.3130568</code></p></li>
+<li>
+<p>Confidence interval = <code>4.203409 to 5.430591</code></p>
+</li>
+</ol>
+</div>
+
+</div>
+<p>Once you are satisfied with your answers, you can move on to the next activity.</p>
+</div>
+<div id="create-your-lab-report" class="section level2">
+<h2>
+<span class="header-section-number">2.7</span> Create your lab report<a class="anchor" aria-label="anchor" href="#create-your-lab-report"><i class="fas fa-link"></i></a>
+</h2>
+<p>For each lab, you will create a lab report, which will be a Markdown document (.md) that contains text, tables, figures (usually graphs), and optionally some of the code you used to create the figures.</p>
+<p>How do you create such a document? The answer is to use an R Markdown (.Rmd) file where you insert the text and R code. RStudio can then “knit” the pieces together and give you a Markdown (.md) document which <em>is</em> your lab report.</p>
+<div id="open-the-lab-report-template" class="section level3">
+<h3>
+<span class="header-section-number">2.7.1</span> Open the lab report template<a class="anchor" aria-label="anchor" href="#open-the-lab-report-template"><i class="fas fa-link"></i></a>
+</h3>
+<p>Your repository has been seeded with an R Markdown file to use as a template. The file is named <strong>assignment.Rmd</strong>. Your job is to add or edit the contents of that file and knit your actual lab report.</p>
+<p>Open the <strong>assignment.Rmd</strong> document by clicking its name in the Files pane. Scroll through it to see the template you have to start with.</p>
+<p>Before continuing, familiarize yourself with <a href="r-markdown-documents.html">R Markdown documents</a>.</p>
+</div>
+</div>
+<div id="add-your-r-code-to-your-lab-report" class="section level2">
+<h2>
+<span class="header-section-number">2.8</span> Add your R code to your Lab Report<a class="anchor" aria-label="anchor" href="#add-your-r-code-to-your-lab-report"><i class="fas fa-link"></i></a>
+</h2>
+<p>Copy the first lines of code from your calculator.R script and paste it in between the two lines that start with three backticks as seen below.</p>
+<p>In your code, of course, <code>c(1, 2, 3)</code> will be replaced by your vector of numbers given above.</p>
+<p>Check to make sure the chunk runs by clicking the green play button on the right side.</p>
+<p>Continue down the R Markdown document, inserting the correct code into each code chunk.</p>
+<p>Don’t edit the final code chunk that has the code to plot the data in it.</p>
+</div>
+<div id="knit-the-lab-report" class="section level2">
+<h2>
+<span class="header-section-number">2.9</span> Knit the lab report<a class="anchor" aria-label="anchor" href="#knit-the-lab-report"><i class="fas fa-link"></i></a>
+</h2>
+<p>Save the file and click the knit button to knit the R Markdown document into a Markdown document.</p>
+<p>Look at the preview to make sure everything looks okay.</p>
+</div>
+<div id="commit-and-push" class="section level2">
+<h2>
+<span class="header-section-number">2.10</span> Commit and Push<a class="anchor" aria-label="anchor" href="#commit-and-push"><i class="fas fa-link"></i></a>
+</h2>
+<p>Save all your files.</p>
+<p>In the Git tab, check the boxes next to all files, commit them, and push to GitHub.</p>
+<p>Submit your assignment by copying your repository URL and pasting it into the D2L assignment submission folder.</p>
+</div>
+<div id="day-2-project-cleanup-and-peer-review" class="section level2">
+<h2>
+<span class="header-section-number">2.11</span> Day 2: Project Cleanup and Peer Review<a class="anchor" aria-label="anchor" href="#day-2-project-cleanup-and-peer-review"><i class="fas fa-link"></i></a>
+</h2>
+<p>In Day 1 of this lab, you created your first full lab report.</p>
+<p>Now that it is done, Day 2 will focus on tidying up a few loose ends in your RStudio Project and peer review of the finished product.</p>
+</div>
+<div id="project-cleanup" class="section level2">
+<h2>
+<span class="header-section-number">2.12</span> Project cleanup<a class="anchor" aria-label="anchor" href="#project-cleanup"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let’s start by ensuring a nice, clean RStudio Project, and tidy Lab Report, and a succinct README. Perform the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Update your lab report</p>
+<ol style="list-style-type: lower-alpha">
+<li>Open your assignment.Rmd file</li>
+<li>Add a Session Info heading, text, and R code chunk at the end of the document. The easiest way is to copy and paste that section from your README.Rmd and paste it here. Then edit the R code so it says <code><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">sessioninfo::session_info()</a></code> by removing the code <code>c("tidyverse")</code>. This will ensure that the list of packages produced reflects those actually used in the analysis</li>
+<li>Knit your assignment.Rmd afterwards</li>
+</ol>
+</li>
+<li>
+<p>Update your README</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Open README.Rmd</p></li>
+<li>
+<p>Change the link to <strong>calculator.Rmd</strong> in the <strong>Repository contents</strong> section</p>
+<ol style="list-style-type: decimal">
+<li>The part in the square brackets should now say “Lab 2 Report”</li>
+<li>The part in the parentheses should say “assignment.md”</li>
+</ol>
+</li>
+<li><p>Remove the session info heading, text, and R code chunk at the end. This info is better suited for a script that actually does the analysis, your assignment.Rmd</p></li>
+<li><p>Knit your README.Rmd afterwards</p></li>
+</ol>
+</li>
+<li><p>Change your Project Options so they do not automatically save your load or save your project workspace or history on startup or exit. See the <a href="project-options.html" title="Project Options">Project Options</a> help page for instructions.</p></li>
+<li><p>Commit all changes and push to GitHub</p></li>
+</ol>
+</div>
+<div id="completion-checklist" class="section level2">
+<h2>
+<span class="header-section-number">2.13</span> Completion Checklist<a class="anchor" aria-label="anchor" href="#completion-checklist"><i class="fas fa-link"></i></a>
+</h2>
+<p>Before we begin the peer-review process, go through the completion checklist below to make sure your project is ready to be reviewed by your peers.</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Your repository contains the following files</p>
+<ol style="list-style-type: lower-alpha">
+<li>.gitignore file</li>
+<li>README.Rmd</li>
+<li>README.md</li>
+<li>assignment.Rmd</li>
+<li>assignment.md</li>
+<li>calculator.R</li>
+<li>lab-2-YourUserName.RProj</li>
+<li>the image file for the assignment.md (this is in a folder called assignment_files)</li>
+</ol>
+</li>
+<li>
+<p>Your README.md should have the following</p>
+<ol style="list-style-type: lower-alpha">
+<li>Your name in the YAML header item for “author”</li>
+<li>Removed the line that says “INSTRUCTIONS: REMOVE THIS LINE” that was on the original template</li>
+<li>At least two bullets of text under lab objectives</li>
+<li>A link to your Lab 2 Report assignment.md</li>
+<li>NO session info section (it should be removed)</li>
+</ol>
+</li>
+<li>
+<p>Your assignment.md should have the following</p>
+<ol style="list-style-type: lower-alpha">
+<li>Your name in the YAML header item for “author”</li>
+<li>code and output showing the data (x), sample size, mean, median, standard deviation, standard error of the mean, and upper and lower confidence limits</li>
+<li>In the text paragraph about the confidence interval, you replaced “___” with the correct numbers</li>
+<li>Session info added at the end</li>
+</ol>
+</li>
+<li><p>General Project options are set to <strong>No</strong>, not <strong>(Default)</strong></p></li>
+</ol>
+</div>
+<div id="peer-review" class="section level2">
+<h2>
+<span class="header-section-number">2.14</span> Peer Review<a class="anchor" aria-label="anchor" href="#peer-review"><i class="fas fa-link"></i></a>
+</h2>
+<p>In your groups, decide who will review who’s projects. Each project should be reviewed by at least two peers.</p>
+<p>Next, create an Issue on GitHub requesting peer review using the following steps</p>
+<ol style="list-style-type: decimal">
+<li>Go to your repository on <a href="https://github.com" class="uri">https://github.com</a>
+</li>
+<li>Click on the Issues button near the top</li>
+<li>Create a new issue (green button)</li>
+<li>For the title, enter “Peer review requested”</li>
+<li>In the boxed labeled “Leave a comment”, tag the people who will review your project. You do this by typing “@” followed by their GitHub username (no space), for example <strong>@chrismerkord</strong>
+</li>
+<li>Submit the issue</li>
+</ol>
+<p>Finally, respond to any peer review requests you receive.</p>
+<ol style="list-style-type: decimal">
+<li>Check your notifications to see if you are mentioned in any Issues</li>
+<li>Provide your review as a Reply to the Issue they tagged you in</li>
+<li>Go through the Completion Checklist above, noting any issues the person should address. Write those issues in your Reply</li>
+<li>Be kind in the way you write your review. Try to sound helpful and supportive rather than critical or combative.</li>
+<li>Give the other person the quality of review you yourself would hope to receive. If you review someone’s project and you both missed something on the completion checklist, that person will lose points.</li>
+</ol>
+</div>
+<div id="grading-rubric" class="section level2">
+<h2>
+<span class="header-section-number">2.15</span> Grading Rubric<a class="anchor" aria-label="anchor" href="#grading-rubric"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your instructor will grade your assignment based on the following criteria:</p>
+<ul>
+<li>Is the project complete and accurate (see the Completion Checklist above)</li>
+<li>Have you requested peer review?</li>
+<li>Have you performed any peer reviews requested of you? If so, did you go through the checklist carefully and find any issues the person needs to address?</li>
+<li>Have you updated any issues identified during peer review?</li>
+</ul>
+<p>Note: according to this rubric, you can lose points twice for missing something in the Completion Checklist: once for not having that item done, and again for not responding to any peer review suggestions.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></div>
+<div class="next"><a href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-rstudio"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="nav-link" href="#objectives-1"><span class="header-section-number">2.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#overview-of-steps"><span class="header-section-number">2.2</span> Overview of steps</a></li>
+<li>
+<a class="nav-link" href="#day-1-r-as-a-calculator"><span class="header-section-number">2.3</span> Day 1: R as a Calculator</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#project-setup"><span class="header-section-number">2.3.1</span> Project Setup</a></li>
+<li><a class="nav-link" href="#the-rstudio-ide"><span class="header-section-number">2.3.2</span> The RStudio IDE</a></li>
+<li><a class="nav-link" href="#the-console-tab"><span class="header-section-number">2.3.3</span> The Console tab</a></li>
+<li><a class="nav-link" href="#r-as-a-calculator"><span class="header-section-number">2.3.4</span> R as a calculator</a></li>
+<li><a class="nav-link" href="#assign-values"><span class="header-section-number">2.3.5</span> Assign values</a></li>
+<li><a class="nav-link" href="#the-environment-tab"><span class="header-section-number">2.3.6</span> The Environment tab</a></li>
+<li><a class="nav-link" href="#functions"><span class="header-section-number">2.3.7</span> Functions</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#work-from-a-script"><span class="header-section-number">2.4</span> Work from a script</a></li>
+<li><a class="nav-link" href="#assignment-overview"><span class="header-section-number">2.5</span> Assignment Overview</a></li>
+<li><a class="nav-link" href="#write-the-code-for-the-analysis"><span class="header-section-number">2.6</span> Write the code for the analysis</a></li>
+<li>
+<a class="nav-link" href="#create-your-lab-report"><span class="header-section-number">2.7</span> Create your lab report</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#open-the-lab-report-template"><span class="header-section-number">2.7.1</span> Open the lab report template</a></li></ul>
+</li>
+<li><a class="nav-link" href="#add-your-r-code-to-your-lab-report"><span class="header-section-number">2.8</span> Add your R code to your Lab Report</a></li>
+<li><a class="nav-link" href="#knit-the-lab-report"><span class="header-section-number">2.9</span> Knit the lab report</a></li>
+<li><a class="nav-link" href="#commit-and-push"><span class="header-section-number">2.10</span> Commit and Push</a></li>
+<li><a class="nav-link" href="#day-2-project-cleanup-and-peer-review"><span class="header-section-number">2.11</span> Day 2: Project Cleanup and Peer Review</a></li>
+<li><a class="nav-link" href="#project-cleanup"><span class="header-section-number">2.12</span> Project cleanup</a></li>
+<li><a class="nav-link" href="#completion-checklist"><span class="header-section-number">2.13</span> Completion Checklist</a></li>
+<li><a class="nav-link" href="#peer-review"><span class="header-section-number">2.14</span> Peer Review</a></li>
+<li><a class="nav-link" href="#grading-rubric"><span class="header-section-number">2.15</span> Grading Rubric</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

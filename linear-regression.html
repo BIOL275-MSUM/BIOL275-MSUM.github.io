@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>7 Linear regression | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="7.1 Objectives In this lab, you will learn to: Visualize the relationship between two numerical variables using a scatterplot Fit a linear model to show how one numerical variable varies with...">
+<meta name="generator" content="bookdown 0.24.4 with bs4_book()">
+<meta property="og:title" content="7 Linear regression | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Objectives In this lab, you will learn to: Visualize the relationship between two numerical variables using a scatterplot Fit a linear model to show how one numerical variable varies with...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 Linear regression | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="7.1 Objectives In this lab, you will learn to: Visualize the relationship between two numerical variables using a scatterplot Fit a linear model to show how one numerical variable varies with...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.20/datatables.js"></script><link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="hello-world.html"><span class="header-section-number">1</span> Hello World!</a></li>
+<li><a class="" href="introduction-to-rstudio.html"><span class="header-section-number">2</span> Introduction to RStudio</a></li>
+<li><a class="" href="introduction-to-ggplot2.html"><span class="header-section-number">3</span> Introduction to ggplot2</a></li>
+<li><a class="" href="data-subsetting.html"><span class="header-section-number">4</span> Data subsetting</a></li>
+<li><a class="" href="data-summarizing.html"><span class="header-section-number">5</span> Data summarizing</a></li>
+<li><a class="" href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></li>
+<li><a class="active" href="linear-regression.html"><span class="header-section-number">7</span> Linear regression</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="sac-poster.html"><span class="header-section-number">10</span> SAC Poster</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="" href="public-health-data-sets-1.html"><span class="header-section-number">12</span> Public health data sets</a></li>
+<li><a class="" href="ebird-data-sets.html"><span class="header-section-number">13</span> eBird data sets</a></li>
+<li class="book-part">Appendices</li>
+<li class="book-part">Getting Started</li>
+<li><a class="" href="install-r-and-rstudio.html"><span class="header-section-number">16</span> Install R and RStudio</a></li>
+<li><a class="" href="install-git.html"><span class="header-section-number">17</span> Install Git</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">19</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">20</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">21</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="linear-regression" class="section level1">
+<h1>
+<span class="header-section-number">7</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-6" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lab, you will learn to:</p>
+<ul>
+<li>Visualize the relationship between two numerical variables using a scatterplot</li>
+<li>Fit a linear model to show how one numerical variable varies with another</li>
+<li>Add a regression line to a scatterplot</li>
+</ul>
+</div>
+<div id="introduction-4" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>Linear regression allows you to understand how much a numerical response variable varies per unit change in a numerical explanatory variable.</p>
+</div>
+<div id="data-1" class="section level2">
+<h2>
+<span class="header-section-number">7.3</span> Data<a class="anchor" aria-label="anchor" href="#data-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>For this lab, we will use the <code>penguins</code> dataset from the <a href="https://allisonhorst.github.io/palmerpenguins/index.html">palmerpenguins</a> package (Horst et al. 2020).</p>
+<p>Instructions for installing and loading the data, and a description of the data, can be found on the lab tutorial <a href="comparing-means.html">Comparing Means</a>.</p>
+<p>If you have the palmerpenguins package installed, all you need to do is load the packages and the data:</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"penguins"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="visualize-two-numerical-variables-1" class="section level2">
+<h2>
+<span class="header-section-number">7.4</span> Visualize two numerical variables<a class="anchor" aria-label="anchor" href="#visualize-two-numerical-variables-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="scatterplot" class="section level3">
+<h3>
+<span class="header-section-number">7.4.1</span> Scatterplot<a class="anchor" aria-label="anchor" href="#scatterplot"><i class="fas fa-link"></i></a>
+</h3>
+<p>A common way to explore the relationship between two numerical variables is to graph them using a scatterplot. In the ggplot, this is accomplished using <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>.</p>
+<p>Let’s explore the penguins dataset to see if there is evidence of a relationship between body mass and flipper length in the 344 penguins that comprise the dataset:</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="inline-figure"><img src="lab-7_files/figure-html/scatterplot-1.png" width="70%" style="display: block; margin: auto;"></div>
+<p>There certainly appears to be some relationship between the two variables.</p>
+</div>
+</div>
+<div id="correlation" class="section level2">
+<h2>
+<span class="header-section-number">7.5</span> Correlation<a class="anchor" aria-label="anchor" href="#correlation"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can calculate the correlation between the two variables with:</p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, <span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.8712018</code></pre>
+</div>
+<div id="linear-regression-1" class="section level2">
+<h2>
+<span class="header-section-number">7.6</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>To fit a linear regression model to the data:</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lm_body_flipper</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_body_flipper</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -1058.80  -259.27   -26.88   247.33  1288.69 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)       -5780.831    305.815  -18.90   &lt;2e-16 ***
+#&gt; flipper_length_mm    49.686      1.518   32.72   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 394.3 on 340 degrees of freedom
+#&gt;   (2 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 
+#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The Y-intercept and slope can be found under the heading Coefficients. They are -5780.831 and 49.686, respectively. That means that for every 1 mm increase in flipper length, there is a corresponding 50 g increase in body mass.</p>
+<p>Is the slope significantly different from zero? The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.</p>
+<p>In addition, the R-squared value of 0.759 indicates that flipper length explains 76% of the variation in body mass. That is a very strong relationship.</p>
+</div>
+<div id="add-regression-line" class="section level2">
+<h2>
+<span class="header-section-number">7.7</span> Add regression line<a class="anchor" aria-label="anchor" href="#add-regression-line"><i class="fas fa-link"></i></a>
+</h2>
+<p>Adding the regression line for a linear model is fairly straightforward in ggplot:</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguins</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span>, y <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>#&gt; Warning: Removed 2 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>#&gt; Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="inline-figure"><img src="lab-7_files/figure-html/regression-line-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="assignment-3" class="section level2">
+<h2>
+<span class="header-section-number">7.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
+</h2>
+<div id="instructions-2" class="section level3">
+<h3>
+<span class="header-section-number">7.8.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-2"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<p>Claim your repository for this lab using the GitHub Classrooms link posted on D2L.</p>
+<ul>
+<li>Your new repository will be created using this repository as a template: <a href="https://github.com/BIOL275-MSUM/lab-7-template" class="uri">https://github.com/BIOL275-MSUM/lab-7-template</a>
+</li>
+<li>The template repository has the necessary scripts and data files to get you started</li>
+<li>You do not need to create any new files</li>
+</ul>
+</li>
+<li><p>Create a new RStudio project by cloning the repository from GitHub</p></li>
+<li><p>Read the questions on your README (you can also <a href="https://github.com/BIOL275-MSUM/lab-7-template#readme">read them on the template file on GitHub</a>)</p></li>
+<li><p>Fill out the R script to complete your analysis</p></li>
+<li><p>When you are satisfied, copy the R code to your README file, knit the document, commit everything, and push it to GitHub.</p></li>
+<li><p>Submit the link to your GitHub repo to the D2L assignment box for this lab so it can be graded.</p></li>
+</ol>
+</div>
+</div>
+<div id="references-1" class="section level2">
+<h2>
+<span class="header-section-number">7.9</span> References<a class="anchor" aria-label="anchor" href="#references-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="comparing-means.html"><span class="header-section-number">6</span> Comparing means</a></div>
+<div class="next"><a href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">7</span> Linear regression</a></li>
+<li><a class="nav-link" href="#objectives-6"><span class="header-section-number">7.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#introduction-4"><span class="header-section-number">7.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#data-1"><span class="header-section-number">7.3</span> Data</a></li>
+<li>
+<a class="nav-link" href="#visualize-two-numerical-variables-1"><span class="header-section-number">7.4</span> Visualize two numerical variables</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#scatterplot"><span class="header-section-number">7.4.1</span> Scatterplot</a></li></ul>
+</li>
+<li><a class="nav-link" href="#correlation"><span class="header-section-number">7.5</span> Correlation</a></li>
+<li><a class="nav-link" href="#linear-regression-1"><span class="header-section-number">7.6</span> Linear regression</a></li>
+<li><a class="nav-link" href="#add-regression-line"><span class="header-section-number">7.7</span> Add regression line</a></li>
+<li>
+<a class="nav-link" href="#assignment-3"><span class="header-section-number">7.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#instructions-2"><span class="header-section-number">7.8.1</span> Instructions</a></li></ul>
+</li>
+<li><a class="nav-link" href="#references-1"><span class="header-section-number">7.9</span> References</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-7.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-7.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

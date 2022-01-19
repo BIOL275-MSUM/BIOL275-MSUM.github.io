@@ -24,6 +24,8 @@ rmd_files: [
   "code-sections.Rmd",
   "r-markdown-docs.Rmd",
   "session-info.Rmd",
+  
+  "git-and-github.Rmd",
   "github-notifications.Rmd",
   
 ]

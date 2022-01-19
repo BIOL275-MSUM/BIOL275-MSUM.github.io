@@ -214,6 +214,15 @@ run-a-code-chunk
 knitting
 session-info
 part-git-and-github
+about-git-and-github
+git
+what-is-git
+why-use-git
+how-git-works
+github
+what-is-github
+why-use-github
+github-classroom
 github-notifications
 subscribing-to-notifications
 notification-methods

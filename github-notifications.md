@@ -1,5 +1,3 @@
-# (PART) Git and GitHub
-
 # GitHub Notifications
 
 Your peers will leave you reviews on GitHub and your instructor give you feedback there. It is important that you receive notifications of these events.

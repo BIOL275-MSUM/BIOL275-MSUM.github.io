@@ -1,6 +1,6 @@
 # (PART) Appendices
 
-# (PART) Laptop Setup
+# Laptop Setup
 
 Most students use the computers in the lab room to complete their labs. These computers already have all the necessary software installed, so you don't have to do anything to get started.
 

@@ -1,10 +1,10 @@
 # (PART) Appendices
 
-# (PART) Personal Computer Setup
+# (PART) Laptop Setup
 
 Most students use the computers in the lab room to complete their labs. These computers already have all the necessary software installed, so you don't have to do anything to get started.
 
-Some students may want to work on their own personal computer instead of, or in addition to, the lab computers. If that is the case, you have two basic options:
+Some students may want to work on their own personal laptop or desktop computer instead of, or in addition to, the lab computers. If that is the case, you have two basic options:
 
 -   Install the software on your machine, including R, RStudio, and Git; see the next three sections for instructions.
 
@@ -56,7 +56,7 @@ On the Git webiste, go to [Download for Windows](https://git-scm.com/download/wi
 
 #### Installing on macOS
 
-See the instructions at in the Git documentation Chapter [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+See the instructions at in the Git documentation [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## Options 2:  Use RStudio Cloud
 
@@ -66,7 +66,7 @@ You have to create a free account, and you get about 30 hrs a month for free usi
 
 ## Introduce yourself to Git
 
-Whether you install the software yourself or use RStudio Cloud, you will need to introduce yourself to Git before you can make a commit.
+Whether you install the software yourself or use RStudio Cloud, you will need to introduce yourself to Git before you can make a commit. Quick instructions are provided below. For more detailed instructions, see the Git documentation [1.6 Getting Started - First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
 
 First, open a Git command line in one of the following three ways (the first is the easiest):
 

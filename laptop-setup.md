@@ -1,4 +1,4 @@
-# (PART) Appendices
+# (PART) Appendices {-}
 
 # Laptop Setup
 

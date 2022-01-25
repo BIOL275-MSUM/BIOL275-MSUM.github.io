@@ -24,7 +24,6 @@ assignment
 questions
 submission
 further-reading
-part-appendices
 laptop-setup
 option-1-install-software
 install-r

@@ -1,642 +1,631 @@
-# Introduction to ggplot2
+# Lab 3: Data subsetting
 
 ## Objectives
 
 In this lab, you will learn to:
 
--   Use the layered grammar of graphics:
+-   Pick rows based on their values
+-   Reorder rows based on their values
+-   Pick columns based on their names
 
-    -   Create a blank graph using the `ggplot()` function
-    -   Add geometric objects to a graph
-    -   Define an aesthetic mapping for a graph
-    -   Add labels to a graph
-    -   Fix some common styling
+## Getting Started
 
--   Create a graph showing the distribution of a single variable
+Your instructor has created a blank repository for you using GitHub Classroom.
 
-    -   Create a bar chart for a categorical variable using the `geom_col()` and `geom_bar()` functions
-    -   Arrange the categories in a bar chart by frequency
-    -   Create a histogram for a numerical variable using the `geom_histogram()` function
-    -   Choose and set appropriate histogram bin widths
+1.  Go to the course D2L page
 
--   Set the image width for an R Markdown code chunk
+2.  Navigate to the Lab 3 module
+
+3.  Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL
+
+4.  Clone the repository to your machine:
+
+    1.  In RStudio, create a New Project
+
+    2.  Select the Version Control option, then GitHub
+
+    3.  Paste the URL you copied, and press tab to autocomplete the directory name
+
+    4.  Select a parent directory in which to place your new project folder, probably either `~` or `~/R`.
+
+    5.  Click OK.
+
+5.  Once RStudio has started, double-check your Global Options as described in Lab 1.
+
+6.  Double-check that RStudio is talking to GitHub:
+
+    1.  Go to the Git tab
+
+    2.  Click the "Push" button
+
+    3.  In the dialog window that pops up, you should get a message saying "Everything is up to date"
+
+    4.  If you get a different message, talk to your instructor.
+
+    5.  If RStudio prompts you for credentials, follow the method you learned in Lab 1 (use your GitHub username and a Personal Access Token)
+
+7.  Make your first commit:
+
+    1.  In the Git tab, check the box next to the two files `.gitignore` and `*.Rproj` to stage them for adding them to the repository.
+
+    2.  Click the "Commit" button
+
+    3.  Enter a commit message such as "Create a new RStudio project"
+
+    4.  Click Commit to submit the commit
+
+    5.  Click Push to push the commit to GitHub
+
+8.  Open the two R scripts provided to you:
+
+    1.  Select the Files tab in the bottom right pane
+
+    2.  Click `diamonds-example.R` to open it; this is where you should paste and tweak example code from the tutorial below
+
+    3.  Click `penguins-assignment.R` to open it; this is where you will type (or paste and modify) code to complete the assignment.
 
 ## Introduction
 
-This lab will introduce you to visualizing data using ggplot2.
+Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.
 
-R has other systems for creating graphs, such as the plotting functions included with base R. At times you may end up searching online for help with you R code. Be sure to add ggplot to any of your search terms so that you end up finding solutions that fit within the requirements of this course.
+You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.
 
-The instructions below correspond to sections 1, 2, 3, and 6 in the [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html "3 Data visualisation | R for Data Science") chapter of your lab manual, *R for Data Science*. If the steps below do not make sense on their own, please read those sections.
+-   Pick rows by their values using `filter()`
+-   Reorder rows using `arrange()`
+-   Pick columns by name using `select()`
 
-## Project Setup
+### Prerequisites
 
-For this lab you will work in a new RStudio Project under git version control. Here are the steps you should follow to set up your Project:
+In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of packages.
 
-1.  Claim your repository
+In addition to loading the dplyr package for you, loading the tidyverse package also lets you access the `diamonds` dataset from the ggplot2 package. This lab will use the `diamonds` dataset to show examples of filtering, arranging, and selecting.
 
-    a.  Go to the course D2L page
-
-    b.  Find the Content module for this lab
-
-    c.  Follow the link to claim your repository (repo) on GitHub
-
-        *Note: this link will not appear until the day of your lab. If you want to get ahead, you can always try reading the [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html "3 Data visualisation | R for Data Science") chapter ahead of time*
-
-    d.  Copy the URL for your newly created repository
-
-2.  Create a new project
-
-    a.  Open RStudio
-    b.  Click **New Project...** on the File menu or Project menu (upper right)
-    c.  In the dialog window, select Version Control and then Git
-    d.  Paste the URL for your repo
-    e.  Hit tab to autofill the Directory name field. If it does not autofill, then type in the name of your repository as best you can (include the word "lab", the lab number, and your name)
-    f.  Click the Browse button and find a good place on your hard drive for this project to live
-    g.  Set your Project options. When the project opens, go to Tools \> Project Options... and change the first three drop down menus to "No" (see [Project Options](project-options.html) for detailed instructions and rationale)
-
-3.  Open README.Rmd and edit it, replacing triple underscores "\_\_\_" with your text.
-
-4.  Create a new script
-
-    a.  Click the New File button (upper left) or go to File \> New File
-
-    b.  Select "R script"
-
-    c.  Immediately save your script with a useful name, for example `tutorial-walk-through.R`
-
-For the rest of the lab, you will copying code from this website and paste it into your R script. *Only later, after you have a working R script, will you copy anything into your lab report R Markdown document.*
-
-## Load packages
-
-ggplot2 is one of the core packages in the tidyverse. In the code below, you will load the ggplot2 package and other tidyverse packages. Before you do, get your script off to a nice start by adding a code section. Code sections keep your code organized and makes it easy to jump to specific code sections without scrolling. In a long script, this can be a real time saver. The [Code Sections](code-sections.html) chapter has more details, but for now you can just follow these instructions:
-
-1.  Go to **Code \> Insert Section...** or use the keyboard shortcut Ctrl+Shift+I / Cmd+Shift+I
-2.  Type "load packages" in the dialog window and click the **OK** button
-
-As you work through the tutorials, add other code headings as necessary.
-
-Load the tidyverse package by adding this code below the new code section and running it:
+Copy this code to your `diamonds-example.R` script and run it t load the tidyverse package:
 
 
 ```r
 library(tidyverse)
 ```
 
-That line of code ***loads*** the tidyverse package and the eight core packages within the tidyverse, one of which is ggplot2. The vast majority of your data science needs can be met with those eight packages. While it is possible to load each package individually, for example `library(ggplot2)`, it's usually better to load the tidyverse package because its not often that you only want to use one of the packages in the tidyverse.
+### `diamonds`
 
-When you run the code, you will see a ***message*** in the console like this:
+You will explore basic dplyr functions using the `diamonds` data frame, found in the ggplot package.
 
+This data frame contains data on almost 54,000 diamonds, including price and other attributes.
 
-```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-#> ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.6     ✔ dplyr   1.0.7
-#> ✔ tidyr   1.1.4     ✔ stringr 1.4.0
-#> ✔ readr   2.1.1     ✔ forcats 0.5.1
-```
-
-```
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-```
-
-The first part tells you which packages are being loaded. You will notice ggplot2 is on that list. The second part of the message tells you which tidyverse functions conflict with (and override) other functions. Usually those other functions are from base R, but they could also be functions from other packages you had already loaded. If you ever want to use a package that has been overridden with another package, you have to refer to it explicitly by its package *and* function name.
-
-## Bar graphs
-
-Bar graphs are used to show the distribution of a single *categorical* variable.
-
-### Example: tiger data
-
-We will use the data from Example 2.2A in your textbook for this activity. The summary from the textbook is as follows:
-
-> Conflict between humans and tigers threatens tiger populations, kills people, and reduces public support for conservation. Gurung et al. (2008) investigated causes of human deaths by tigers near the protected area of Chitwan National Park, Nepal. Eighty-eight people were killed by 36 individual tigers between 1979 and 2006, mainly within 1 km of the park edge. Table 2.2-1 lists the main activities of people at the time they were killed. Such information may be helpful to identify activities that increase vulnerability to attack.
-
-The dataset consists of one table showing the activities of 88 people at the time they were attacked and killed by tigers near Chitwan National Park, Nepal, from 1979 to 2006.
-
-You can view and explore the data using this interactive table:
-
-
-```{=html}
-<div id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88],["Disturbing tiger kill","Forest products","Grass/fodder","Fuelwood/timber","Grass/fodder","Forest products","Grass/fodder","Fishing","Fuelwood/timber","Grass/fodder","Forest products","Forest products","Forest products","Grass/fodder","Forest products","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Fishing","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Herding","Grass/fodder","Herding","Grass/fodder","Fishing","Grass/fodder","Grass/fodder","Sleeping in house","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Herding","Fishing","Grass/fodder","Forest products","Forest products","Grass/fodder","Grass/fodder","Forest products","Disturbing tiger kill","Walking","Fishing","Herding","Grass/fodder","Grass/fodder","Sleeping in house","Fishing","Fishing","Toilet","Grass/fodder","Walking","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Fuelwood/timber","Grass/fodder","Disturbing tiger kill","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Herding","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Grass/fodder","Forest products","Toilet","Walking","Disturbing tiger kill","Disturbing tiger kill","Sleeping in house","Forest products","Fishing"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>person<\/th>\n      <th>activity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-```
-
-Each row in the table represents a sample unit, or person. Thus the sample size is 88.
-
-The variables are:
-
--   **person**. a number from 1 to 88 identifying which person the data pertains to. While this variable contains a number, it is incorrect to call it a numeric variable. The number was not measured, and it cannot have mathematical functions applied to it such as calculating the mean. The value is really no different than a person's name, which would consist of text. Therefore it is best to consider person a *categorical* variable.
-
--   **activity**. the person's activity at the time they were attacked and killed. This is a *categorical* variable with a discrete number of possible values.
-
-For our purposes, the only variable of interest is activity. We will not use the person variable.
-
-### Read the tiger data
-
-The next step in your R script is to read the data into R.
-
-First, create a new [code section](code-section.html) named "deaths from tigers"
-
-The data for this and other examples from your textbook can be found on the [book website](https://whitlockschluter.zoology.ubc.ca/). It is stored as a comma-separated values file (.csv).
-
-Read the data from the textbook website using the `read_csv()` function, part of the readr package, and assign it to an object named `tiger_data` using the left assignment operator `<-`. To do that, copy the code in here and paste it into your script. You do not need to follow the link in your web browser or download the data to your computer.
+First, take a look at `diamonds` by printing it in the console:
 
 
 ```r
-tiger_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2aDeathsFromTigers.csv")
+# print diamonds in the console
+diamonds
 ```
 
 ```
-#> Rows: 88 Columns: 2
+#> # A tibble: 53,940 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> # … with 53,934 more rows
 ```
 
-```
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr (1): activity
-#> dbl (1): person
-```
-
-```
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-The message you get in your console tells you how the data in the CSV was parsed (interpretted) when it was read into R. You can ignore it for now.
-
-### View the tiger data
-
-You will notice that the data itself did not appear in the console. That's because we assigned it to an object but did not print it. To print the data in the console, type the name of the object into your R script and run it. Alternatively, you can copy and paste the code in the code box below, but ONLY INCLUDE THE CODE BELOW, NOT THE OUTPUT LINES PRECEDED BY \#\>
+Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
 
 
 ```r
-tiger_data                  # print the data in the console
+help(diamonds) # method 1
+??diamonds     # method 2
 ```
 
-```
-#> # A tibble: 88 × 2
-#>   person activity             
-#>    <dbl> <chr>                
-#> 1      1 Disturbing tiger kill
-#> 2      2 Forest products      
-#> 3      3 Grass/fodder         
-#> 4      4 Fuelwood/timber      
-#> 5      5 Grass/fodder         
-#> 6      6 Forest products      
-#> # … with 82 more rows
-```
+You can also get there by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).
 
-The output in the console indicates the object is a tibble (a tidyverse name for a table of data) with 88 observations (rows) and 2 variables (columns).
+If you get a message starting with "No documentation" or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 package yet, either directly or by loading the tidyverse package. Load it and try again.
 
-You can view a list of distinct values taken by a categorical variable by using the `distinct()` function, which returns a table of distinct values taken by the variable. The first argument to the function is the name of the data, the second argument is the name of the variable.
+The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).
+
+Note that when you printed `diamonds` in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled `<dbl>` , one numeric discrete variable labeled `<int>`, and three categorical ordinal variables labeled `<ord>`.
+
+The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).
+
+The most common column data you will see in data frames are:
+
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
++===========+================+==================================================================================================================+=====================+===============+
+| logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| character | `"A"`          | Text; note that `"1"` is still a character data type because of the double quotes                                | categorical nominal | chr           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| factor    | `factor("A")`  | Text with an enumerated list of values; you can see possible values with `levels()`                              | categorical nominal | fct           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| ordered   | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| Date      | `Sys.Date()`   | Date                                                                                                             | numeric discrete    | date          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+
+You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
+
+## Filter rows with `filter()`
+
+The `filter()` function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.
+
+For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:
 
 
 ```r
-distinct(tiger_data, activity)
+filter(diamonds, carat > 2)
 ```
 
-
 ```
-#> # A tibble: 9 × 1
-#>   activity             
-#>   <chr>                
-#> 1 Disturbing tiger kill
-#> 2 Forest products      
-#> 3 Grass/fodder         
-#> 4 Fuelwood/timber      
-#> 5 Fishing              
-#> 6 Herding              
-#> 7 Sleeping in house    
-#> 8 Walking              
-#> 9 Toilet
+#> # A tibble: 1,889 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # … with 1,883 more rows
 ```
 
-### Frequency table
+### Intermediate objects
 
-If you want to see how many times each value of activity occurs in the data, you can create a frequency table using the `count()` function. Again, the data object is the first argument and the variable name is the second argument.
+When you run code to filter a data frame, R returns a new data frame.
+
+If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
 
 
 ```r
-count(tiger_data, activity)
+big_diamonds <- filter(diamonds, carat > 2)
 ```
 
-```
-#> # A tibble: 9 × 2
-#>   activity                  n
-#>   <chr>                 <int>
-#> 1 Disturbing tiger kill     5
-#> 2 Fishing                   8
-#> 3 Forest products          11
-#> 4 Fuelwood/timber           5
-#> 5 Grass/fodder             44
-#> 6 Herding                   7
-#> # … with 3 more rows
-```
-
-As you can see, this function returns another tibble that has two variables: the original one *activity* and a new one *n*, which represents the number of times the variable occurred in the data.
-
-### Make a bar graph
-
-The distribution of a single categorical variable is best visualized using bar graph (also called a bar chart, barchart, or column graph). In this section, you will learn how to create a bar graph.
-
-ggplot uses a layered approach to building a graph. You will learn more about what this means as you build your first graph using the tiger data. Your goal is to create a bar graph similar to the one in the textbook in Figure 2.2-1, which looks like this:
-
-![](images/whitlock_2.2-1.jpg){.text-center width="400"}
-
-The first step is to create a new ggplot using the `ggplot()` function. The first (and for now, only) argument is the data argument. You should set it to the data object you created above. Now run the code:
+When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
 
 
 ```r
-ggplot(data = tiger_data)
+big_diamonds
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 1,889 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # … with 1,883 more rows
+```
 
-When you plot something in RStudio (i.e. when you create a graph), it will appear in the Plots tab in the lower right pane.
-
-Look at the Plots tab. What do you see? At first you may think it is a blank screen, but actually it is a gray box representing the empty plot. At this point, R knows you want to plot the tiger data, but it doesn't know which variables to plot or how to display the data.
-
-#### Geometric objects and aesthetic mappings
-
-To display the data, we need to add a geometric object. In this case, because we want a bar graph, we will use the `geom_bar()` function. You add the geometric object to the canvas using a plus sign like this:
+Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
 
 
 ```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = activity))
+filter(big_diamonds, price > 15000)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 1,037 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.1  Premium   I     SI1      61.5    57 15007  8.25  8.21  5.06
+#> 2  2.02 Premium   G     SI2      63      59 15014  8.05  7.95  5.03
+#> 3  2.05 Very Good F     SI2      61.9    56 15017  8.13  8.18  5.05
+#> 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
+#> 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
+#> 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
+#> # … with 1,031 more rows
+```
 
-The first (and for now, only) argument to `geom_bar()` is `mapping`, an aesthetic mapping that tells R which variables in the data table *map* to which parts of the graph. An aesthetic mapping is defined by the `aes()` function. `geom_bar()` requires only one aesthetic, the argument `x`, which tells R which variable to put on the x axis.
+### Basic Operators
 
-How did we know what variable to put on the x-axis in the bar graph? That's determined by the purpose to the graph. For this graph, the purpose is to plot the distribution of the activities of people attacked and killed by tigers. But what is the actual variable we want to graph? For that you need to go back and look at the data itself. Print the data in the console again by typing its name and running the line:
+The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).
+
+Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while `==` and `!=` can be used with any type of variable.
+
+There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes `"`.
+
+Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
 
 
 ```r
-tiger_data
+filter(diamonds, cut == "Ideal")
 ```
 
-The variables are listed on the second row the of the output. You can see they are named *person* and *activity*. Which one is the variable we want to graph? It is *activity*. So in your aesthetic mapping the code `x = activity` can be translated as "put the activity variable on the x axis".
+```
+#> # A tibble: 21,551 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.23 Ideal J     VS1      62.8    56   340  3.93  3.9   2.46
+#> 3  0.31 Ideal J     SI2      62.2    54   344  4.35  4.37  2.71
+#> 4  0.3  Ideal I     SI2      62      54   348  4.31  4.34  2.68
+#> 5  0.33 Ideal I     SI2      61.8    55   403  4.49  4.51  2.78
+#> 6  0.33 Ideal I     SI2      61.2    56   403  4.49  4.5   2.75
+#> # … with 21,545 more rows
+```
 
-Any variables you map to an aesthetic must be present in the data, and the variable name must appear exactly as it does in the data.
+Note that `"Ideal"` has double quotes around it. This is to tell R you want to find the literal text string "Ideal". If you instead wrote `cut == Ideal` without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.
 
-Put this all together, and the way to add a bars to the graph is `geom_bar(mapping = aes(x = activity)`
-
-#### Labels and themes
-
-The result figure, shown above, should look similar to the one in Figure 2.2-1 of your textbook. With a couple of notable exceptions:
-
-1.  The columns should be ordered by height
-
-2.  The color should be red
-
-3.  The axis labels "count" and "activity" should be changed to something more informative
-
-4.  Various theme elements could be improved:
-
-    i.  The font size should be larger
-    ii. The axis labels should be bold
-    iii. The axis tick labels (the activity names) should be rotated 45 degrees
-    iv. The axis ticks should be removed
-
-Let's fix each of those issues in turn.
-
-First, arrange the levels (categories) of activity in descending order by count (i.e. big columns on the left), using a bit of wizardry from the forcats package, one of the core packages in the tidyverse that was loaded when you loaded the tidyverse package. The `fct_infreq()` function changes a variable to factor with the levels defined by how frequently they occur in the data. Inside the `aes()` function, change `x = activity` to `x = fct_infreq(activity)`.
+Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
 
 
 ```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)))
+filter(diamonds, carat = 2)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> Error: Problem with `filter()` input `..1`.
+#> ✖ Input `..1` is named.
+#> ℹ This usually means that you've used `=` instead of `==`.
+#> ℹ Did you mean `carat == 2`?
+```
 
-Second, change color of the columns by adding a `fill` argument to `geom_bar()`. Put a comma after the closing parenthesis of the `aes()` function and add `fill =`. For the fill color, you could try `"red"` or `"darkred"`, but for an exact match use the hex color `"#C5351B"`.
+### Logical Operators
+
+In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the ampersand `&` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the vertical bar `|` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
+
+#### And operator
+
+If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
 
 
 ```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B")
+filter(diamonds, carat > 2, price < 6000)
+filter(diamonds, carat > 2 & price < 6000)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
+#### Or operator
 
-Third, add better x- and y-axis labels using the `labs()` function. Axis labels should start with capital letters and, for numeric variables, should include the units of measurement in parentheses. The argument `x` sets the x-axis label while the argument `y` sets the y-axis label. The label text itself should appear in quotation marks. The `x` and `y` arguments should be separated by a comma.
+For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
 
 
 ```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B") +
-  labs(x = "Activity", y = "Frequency (number of people)")
+filter(diamonds, color == "D" | color == "E")
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 16,572 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good    E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.22 Fair    E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 5  0.2  Premium E     SI2      60.2    62   345  3.79  3.75  2.27
+#> 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
+#> # … with 16,566 more rows
+```
 
-Fourth, fix the look of the graph by using:
-
--   the `width` argument of `geom_bar()` to set make the bars (columns) a bit narrower
-
--   `scale_y_continuous()` to set the y-axis limits to 0 and 50, with no buffer
-
--   `theme_classic()` to remove the background color, adds axis lines, and increases the base font size
-
--   `theme()` to change various other theme elements such as:
-
-    -   Make the axis labels bold
-
-    -   Make the x- and y-axis text black and larger
-
-    -   Make the x-axis text angled and right justified
-
-    -   Remove the x-axis tick marks
+This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
 
 
 ```r
-ggplot(data = tiger_data) +
-  geom_bar(mapping = aes(x = fct_infreq(activity)), fill = "#C5351B", 
-           width = .8) +
-  labs(x = "Activity", y = "Frequency (number of people)") +
-  scale_y_continuous(limits = c(0, 50), expand = expansion(mult = 0)) +
-  theme_classic(base_size = 12) +
-  theme(
-    axis.title = element_text(face = "bold"),
-    axis.text = element_text(color = "black", size = rel(1)),
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    axis.ticks.x = element_blank()
-  )
+filter(diamonds, color %in% c("D", "E"))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+#### Not operator
 
-Compare your figure to the original above. Not bad! This one, however, can be inserted into any document at any size and resolution. And most importantly, your code documents how you created the graph, ensuring the figure could be reproduced by anyone.
-
-Note that you could get pretty close with just the first three lines of code and perhaps the one theme element to rotate the axis text labels.
-
-## Histograms
-
-Histograms are used to show the distribution of a single numerical variable.
-
-Now that you know the basics creating a ggplot, creating a histogram will require relatively little explanation.
-
-### Example: bird data
-
-We will use the data from Example 2.2B in your textbook for this activity. The summary from the textbook is as follows:
-
-> How many species are common and how many are rare? One way to address this question is to construct a frequency distribution of species abundance. The data in Table 2.2-2 are from a survey of the breeding birds of Organ Pipe Cactus National Monument in southern Arizona, USA. The measurements were extracted from the North American Breeding Bird Survey, a continent-wide data set of estimated bird numbers (Sauer et al. 2003)
-
-The dataset consists of one table showing the abundance of 43 species in Organ Pipe National. Monument.
-
-You can view and explore the data using this interactive table:
-
-
-```{=html}
-<div id="htmlwidget-e5c8c404fe174e4c81bd" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e5c8c404fe174e4c81bd">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],["Black Vulture","Turkey Vulture","Harris's Hawk","Red-tailed Hawk","American Kestrel","Gambel's Quail","Rock Dove","White-winged Dove","Mourning Dove","Greater Roadrunner","Great Horned Owl","Lesser Nighthawk","Black-chin. Hummingbird","Costa's Hummingbird","Gila Woodpecker","Ladder-back. Woodpecker","Gilded Flicker C","Ash-throated Flycatcher","Brown-crest. Flycatcher","Western Kingbird","Loggerhead Shrike","Bell's Vireo","Common Raven","Purple Martin","Violet-green Swallow","Verdin","Cactus Wren","Canyon Wren","Black-tail. Gnatcatcher","Northern Mockingbird","Curve-billed Thrasher","Phainopepla","Lucy's Warbler","Canyon Towhee","Black-throated Sparrow","Northern Cardinal","Great-tailed Grackle","Bronzed Cowbird","Brown-headed Cowbird","Hooded Oriole","Scott's Oriole","House Finch","House Sparrow"],[64,23,3,16,7,148,7,625,135,1,2,25,1,2,300,15,77,173,128,1,3,10,12,33,23,282,230,2,152,5,173,18,67,2,33,13,1,1,59,4,28,297,14]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>species<\/th>\n      <th>abundance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-```
-
-Each row in the table represents a sample unit, or person. Thus the sample size is 88.
-
-The variables are:
-
--   **species**. the name of the bird species, a *categorical* variable.
--   **abundance**. the species's abundance, a *numerical* variable consisting of positive integers.
-
-For our purposes, the only variable of interest is *abundance*. We will not use the species variable.
-
-### Read and view the bird data
-
-Create a new code section in your script named "bird abundances" and read the data from the textbook website:
+"Not" comparisons can be used to pick rows that do not meet a given criteria. The `!` operator generally should be followed by parentheses `()` with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color *except* E:
 
 
 ```r
-bird_data <- read_csv("https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02e2bDesertBirdAbundance.csv")
+filter(diamonds, !(color == "E"))
 ```
 
-```
-#> Rows: 43 Columns: 2
-```
+#### Missing values
 
-```
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr (1): species
-#> dbl (1): abundance
-```
-
-```
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
-bird_data                  # print the data in the console
-```
-
-```
-#> # A tibble: 43 × 2
-#>   species          abundance
-#>   <chr>                <dbl>
-#> 1 Black Vulture           64
-#> 2 Turkey Vulture          23
-#> 3 Harris's Hawk            3
-#> 4 Red-tailed Hawk         16
-#> 5 American Kestrel         7
-#> 6 Gambel's Quail         148
-#> # … with 37 more rows
-```
-
-The output in the console indicates the object is a tibble with 43 observations (rows) and 2 variables (columns): species and abundance.
-
-It also indicates abundance has a data type of \<dbl\>, which is short for double, a numeric value with up to 18 decimal places. In other words, it's *numerical* variable. The species variable, on the other hand, has a data type of \<chr\>, short for character, which means its a categorical variable.
-
-Because abundance is numerical, not categorical, it does not make sense to view its distinct values with \`distinct, or to create a contingency table showing the number of times each value occurs.
-
-So let's get straight to the histogram.
-
-### Make a histogram
-
-Like all ggplots, a histogram begins with a blank canvas. Notice that we set the data argument to `bird_data` this time rather than `tiger_data`.
+Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
 
 
 ```r
-ggplot(data = bird_data)
+filter(diamonds, !is.na(color))
 ```
 
-While we used `geom_bar()` to create a bar graph, we will use `geom_histogram()` to create a histogram. The aesthetic mapping, however, is the same. Both require you to map the `x` argument, i.e. tell R which variable is on the x-axis. Because we are interested in looking at the distribution of abundance, we set the `x` argument to `abundance`:
+The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
+
+### String helper functions
+
+There are a variety of other functions you can incorporate into your `filter()` function to achieve specific results.
+
+For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply `==` or `!=`. Let's say you want to find all diamonds with a clarity of `VS1`, `VS2`, `VVS1`, or `VVS2`. You could use the "or" operator, or the "in" operator. But what if you don't even know all the possible clarity values and you just want everything that contains `"VS"` anywhere in the word. There is a string-based helper function `str_detect()` which looks for a particular string of text inside a text variable:
 
 
 ```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance))
+filter(diamonds, str_detect(clarity, "VS"))
 ```
 
 ```
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+#> # A tibble: 29,150 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 2  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 3  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#> 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#> # … with 29,144 more rows
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+The function itself is the comparison, there is no operator like `==` or `!=`.
 
-You will see a message in your console warning you that R used the default number of bins, which is 30. The one in your textbook uses bins that fall on the number 0, 50, 100, etc. Let's try setting the bin width instead of the number of bins:
+The name of the variable you want to look in goes *inside* the `str_detect()` function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.
+
+If you want to pick only values of clarity that *start* or *end* with particular text, you can use the functions `str_starts()` or `str_ends()`. For example:
 
 
 ```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance), binwidth = 50)
+filter(diamonds, str_starts(clarity, "VS"))
+filter(diamonds, str_ends(clarity, "2"))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+## Arrange rows with `arrange()`
 
-The number of bins looks better, but it appears the first bin is centered around zero rather than starting at zero. You can fix this with the boundary argument, which tells R where one of the bin boundaries is (all other boundaries can be inferred from that because the bin width is also set). Thus the boundaries will be 0, 50, 100, etc.
+The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.
+
+The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
+
+For example, to sort the `diamonds` data frame by price:
 
 
 ```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
-                 boundary = 0, closed = "left")
+arrange(diamonds, cut)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.86 Fair  E     SI2      55.1    69  2757  6.45  6.33  3.52
+#> 3  0.96 Fair  F     SI2      66.3    62  2759  6.27  5.95  4.07
+#> 4  0.7  Fair  F     VS2      64.5    57  2762  5.57  5.53  3.58
+#> 5  0.7  Fair  F     VS2      65.3    55  2762  5.63  5.58  3.66
+#> 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
+#> # … with 53,934 more rows
+```
 
-This looks better, but not quite right. If you look at the raw data, you will see one data point for Gila woodpecker with an abundance of 300. Looking at this figure, it's obvious that the value is being included in the bin to the left of 300 rather than the one to the right. In other words, the bins are 250-299, 300-349. We really want them to be 250-300 and 301-350.
-
-Set the `closed` argument to `"left"` to change it so the left edge of the bin is included in the bin, not the right edge. The quick-minded might wonder if that makes the first bin (which includes both zero and 50) wider than the others. In short, I don't know but it doesn't matter here because there are no species in the dataset with an abundance of zero.
+You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
 
 
 ```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
-                 boundary = 0, closed = "left")
+arrange(diamonds, cut, price)
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.25 Fair  E     VS1      55.2    64   361  4.21  4.23  2.33
+#> 3  0.23 Fair  G     VVS2     61.4    66   369  3.87  3.91  2.39
+#> 4  0.27 Fair  E     VS1      66.4    58   371  3.99  4.02  2.66
+#> 5  0.3  Fair  J     VS2      64.8    58   416  4.24  4.16  2.72
+#> 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
+#> # … with 53,934 more rows
+```
 
-And finally, clean it up with some axis labels and styling changes:
+If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using `levels()` . For example `levels(diamonds$cut)` .
+
+### Descending order
+
+To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
 
 
 ```r
-ggplot(data = bird_data) +
-  geom_histogram(mapping = aes(x = abundance), binwidth = 50,
-                 boundary = 0, closed = "left", 
-                 fill = "#C5351B", color = "black") +
-  labs(x = "Abundance", y = "Frequency (number of species)") +
-  scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30), 
-                     expand = expansion(mult = 0)) +
-  scale_x_continuous(breaks = seq(0, 600, 100)) +
-  theme_classic() +
-  theme(
-    axis.title = element_text(face = "bold"),
-    axis.text = element_text(color = "black", size = rel(1))
-  )
+arrange(diamonds, cut, desc(price))
 ```
 
-<img src="lab-3_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.01 Fair  G     SI1      70.6    64 18574  7.43  6.64  4.69
+#> 2  2.02 Fair  H     VS2      64.5    57 18565  8     7.95  5.14
+#> 3  4.5  Fair  J     I1       65.8    58 18531 10.2  10.2   6.72
+#> 4  2    Fair  G     VS2      67.6    58 18515  7.65  7.61  5.16
+#> 5  2.51 Fair  H     SI2      64.7    57 18308  8.44  8.5   5.48
+#> 6  3.01 Fair  I     SI2      65.8    56 18242  8.99  8.94  5.9 
+#> # … with 53,934 more rows
+```
 
-## Your assignment
+Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.
 
-### Instructions
+## Select columns with `select()`
 
-Your assignment is to demonstrate that you can create and interpret graphs using ggplot.
+The `select()` function allows you to select which *columns* (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.
 
-1.  First, create a new ***R script*** in your lab 3 repository where you will build the code for your analysis. DO NOT TRY TO WRITE YOUR CODE IN YOUR LAB REPORT RMD. Keep your script neat with code sections and descriptive comments throughout.
+The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.
 
-2.  Read the intro to each dataset ([Fireflies data], [Bird orders data]) and write the code *in your R script* to perform each analysis requested.
-
-3.  *After* you have a working R script, complete your lab report R Markdown document. Open your lab-report.Rmd and replace all triple underscores "\_\_\_" with your answers. Insert R code chunks where necessary and paste in code from your R script.
-
-4.  Put links to your Lab Report and any R scripts in your README
-
-5.  Knit your README.Rmd and lab-report.Rmd
-
-6.  Commit all changes and push. You can either do this step-by-step as your build your script and R Markdown documents, one file or code chunk at a time, or all at once at the end.
-
-7.  Conduct a round of peer review. Use the [Grading Rubric] below. Put links to any peer review Issues you are involved in (as a reviewer or reviewee) into your Lab Report (There is a section in the template near the bottom).
-
-8.  Make any changes necessitated by peer review. It's usually good to fix any code in your script first, to make sure it works, then copy the new code to your R Markdown document.
-
-9.  Save, knit, commit, and push. Save changes to any scripts, knit any updated Rmd files, commit all changes, and push to GitHub.
-
-10. VERIFY ALL CHANGES ON YOUR REPO ON GITHUB. Look at your README, Lab Report, and any R scripts to make sure your changes actually made it to GitHub. Make sure the links on your README work.
-
-11. Submit your assignment by copying the URL for your GitHub repository and pasting it into the appropriate Assignment Submission folder on D2L.
-
-### Fireflies data
-
-This comes from Assignment question \#19 in your textbook.
-
-> Male fireflies of the species *Photinus ignitus* attract females with pulses of light. Flashes of longer duration seem to attract the most females. During mating, the male transfers a spermatophore to the female. Besides containing sperm, the spermatophore is rich in protein that is distributed by the female to her fertilized eggs. The data below are measurements of spermatophore mass (in mg) of 35 males (Cratsley and Lewis 2003). This question comes from your textbook.
-
-The path to the data is `"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter02/chap02q19FireflySpermatophoreMass.csv"`
-
-**Create a graph depicting the frequency distribution of mass measurements. It should have legible text and appropriate axis labels.**
-
-### Bird orders data
-
-> The ebird_taxonomy dataset in the auk package is a simplified version of the taxonomy used by eBird. This taxonomy is based on the Clements Checklist. The dataset contains all known species of birds and their taxonomic order and family. Each observation (row) in the dataset represents a unique bird species.
-
-Add this code to your script to load the auk package and create a data object named birds, which you will use for your analysis.
+For example, say you wanted to focus on the variables carat, cut, and color, you could use:
 
 
 ```r
-library(auk)                          # load the auk package
-birds <- ebird_taxonomy %>%           # start with the ebird_taxonomy data
-  as_tibble() %>%                     # tibbles print better in the console
-  filter(category == "species")       # remove non-species taxa
+select(diamonds, carat, cut, color)
 ```
 
-**Create a graph depicting the distribution of orders in the birds dataset. Sort the orders with the most frequent on the left.**
+```
+#> # A tibble: 53,940 × 3
+#>   carat cut       color
+#>   <dbl> <ord>     <ord>
+#> 1  0.23 Ideal     E    
+#> 2  0.21 Premium   E    
+#> 3  0.23 Good      E    
+#> 4  0.29 Premium   I    
+#> 5  0.31 Good      J    
+#> 6  0.24 Very Good J    
+#> # … with 53,934 more rows
+```
 
-### Grading Rubric
+Technically, you can also select variables by their position, so `select(diamonds, carat, cut, color)` is equivalent to `select(diamonds, 1, 2, 3)`
 
-You will be assessed based on the following rubric:
+`select()` can also be used to rearrange the order of columns:
 
--   GitHub Classroom repository claimed
 
--   R script
+```r
+select(diamonds, color, cut, carat)
+```
 
-    -   Good organization
+```
+#> # A tibble: 53,940 × 3
+#>   color cut       carat
+#>   <ord> <ord>     <dbl>
+#> 1 E     Ideal      0.23
+#> 2 E     Premium    0.21
+#> 3 E     Good       0.23
+#> 4 I     Premium    0.29
+#> 5 J     Good       0.31
+#> 6 J     Very Good  0.24
+#> # … with 53,934 more rows
+```
 
-        -   Code sections make sense
+There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
 
-        -   Code goes in correct order, e.g.
 
-            -   load packages before using them
-            -   read or load data before using it
+```r
+select(diamonds, carat:price)
+```
 
-        -   Blank lines between code chunks to make it easy to read
+```
+#> # A tibble: 53,940 × 7
+#>   carat cut       color clarity depth table price
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>
+#> 1  0.23 Ideal     E     SI2      61.5    55   326
+#> 2  0.21 Premium   E     SI1      59.8    61   326
+#> 3  0.23 Good      E     VS1      56.9    65   327
+#> 4  0.29 Premium   I     VS2      62.4    58   334
+#> 5  0.31 Good      J     SI2      63.3    58   335
+#> 6  0.24 Very Good J     VVS2     62.8    57   336
+#> # … with 53,934 more rows
+```
 
-    -   Has sufficient comments
+### Removing variables
 
-        -   At top, a line explaining purpose of the script
-        -   Each code chunk has a comment
+Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
 
-    -   Code for plots works
 
--   Lab Report (lab-report.md)
+```r
+select(diamonds, -table)
+```
 
-    -   Questions answered correctly
+```
+#> # A tibble: 53,940 × 9
+#>   carat cut       color clarity depth price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
 
-    -   The two Figures are correct
+To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
 
-        -   Figures look good (text appropriate size, etc)
-        -   Axis labels are correct
 
-    -   Format of report is not significantly changed from the template (answers are easily distinguished from questions.
+```r
+select(diamonds, -x:-y)
+```
 
-    -   Links to peer-review Issues included
+### Helper functions
 
-    -   Session info included
+Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
 
--   Lab report has been peer-reviewed at least once
+There are several functions that can be used within `select()` :
 
--   README is complete
+-   `starts_with("abc")` finds all columns whose name starts with "abc"
 
--   Submitted link to repository on D2L
+-   `ends_with("abc")` finds all columns whose name ends with "abc"
+
+-   `contains("abc")` finds all columns whose name contains "abc"
+
+-   `everything()` finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.
+
+For example, the following code would move table and price to the front and leave everything else at the end:
+
+
+```r
+select(diamonds, ends_with("e"), everything())
+```
+
+```
+#> # A tibble: 53,940 × 10
+#>   table price carat cut       color clarity depth     x     y     z
+#>   <dbl> <int> <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl>
+#> 1    55   326  0.23 Ideal     E     SI2      61.5  3.95  3.98  2.43
+#> 2    61   326  0.21 Premium   E     SI1      59.8  3.89  3.84  2.31
+#> 3    65   327  0.23 Good      E     VS1      56.9  4.05  4.07  2.31
+#> 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
+#> 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
+#> 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
+#> # … with 53,934 more rows
+```
+
+## Assignment
+
+Open your `penguins-assignment.R` script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.
+
+For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.
+
+Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.
+
+Begin by loading the palmerpenguins package in your R script:
+
+
+```r
+library(palmerpenguins)
+penguins
+```
+
+### Questions
+
+Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks.
+
+Put a comment like `# question 1` on the line before each code chunk, so you (and I) can read your script more easily.
+
+1.  Print the penguins dataset
+2.  Filter penguins to include only Gentoo penguins
+3.  Filter penguins to include everything except Gentoo penguins
+4.  Filter penguins to include only penguins on Bisco Island.
+5.  Filter penguins to include only Adelie Penguins on Biscoe Island.
+6.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm.
+7.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm and flipper lengths less than 196 mm.
+8.  Filter penguins to include only observations with a missing value (`NA`) for bill length
+9.  Arrange all penguins by body mass
+10. Arrange all penguins by decreasing flipper length
+11. Select only the columns species and sex
+12. Select the column species and all columns that begin with "bill\_" using the `starts_with()` helper function
+13. Select all columns except those ending with "\_mm"
+14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
+
+## Submission
+
+When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
+
+Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.
+
+## Further reading
+
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+
+You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
+
+If you do want to read the chapter and try their examples in your own R Script then don't forget to install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
+
+1.  

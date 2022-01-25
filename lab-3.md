@@ -30,21 +30,9 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
     5.  Click OK.
 
-5.  Once RStudio has started, double-check your Global Options as described in Lab 1.
+5.  Once RStudio has started, double-check your Global Options as described in Lab 1. (don't save .RData or .Rhistory files, and don't auto-load them on startup)
 
-6.  Double-check that RStudio is talking to GitHub:
-
-    1.  Go to the Git tab
-
-    2.  Click the "Push" button
-
-    3.  In the dialog window that pops up, you should get a message saying "Everything is up to date"
-
-    4.  If you get a different message, talk to your instructor.
-
-    5.  If RStudio prompts you for credentials, follow the method you learned in Lab 1 (use your GitHub username and a Personal Access Token)
-
-7.  Make your first commit:
+6.  Make your first commit:
 
     1.  In the Git tab, check the box next to the two files `.gitignore` and `*.Rproj` to stage them for adding them to the repository.
 
@@ -56,13 +44,13 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
     5.  Click Push to push the commit to GitHub
 
-8.  Open the two R scripts provided to you:
+        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 1 (use your GitHub username and a Personal Access Token for the password)
 
-    1.  Select the Files tab in the bottom right pane
+7.  Create two new R scripts:
 
-    2.  Click `diamonds-example.R` to open it; this is where you should paste and tweak example code from the tutorial below
+    1.  One to use for the diamonds tutorial, which you can call `diamonds-example.R`
 
-    3.  Click `penguins-assignment.R` to open it; this is where you will type (or paste and modify) code to complete the assignment.
+    2.  One to use for the penguins assignment, which you can call `penguins-assignment.R`
 
 ## Introduction
 

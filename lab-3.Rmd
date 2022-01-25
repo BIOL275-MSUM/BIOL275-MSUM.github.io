@@ -56,13 +56,11 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
     5.  Click Push to push the commit to GitHub
 
-8.  Open the two R scripts provided to you:
+8.  Create two new R scripts:
 
-    1.  Select the Files tab in the bottom right pane
+    1.  One to use for the diamonds tutorial, which you can call `diamonds-example.R`
 
-    2.  Click `diamonds-example.R` to open it; this is where you should paste and tweak example code from the tutorial below
-
-    3.  Click `penguins-assignment.R` to open it; this is where you will type (or paste and modify) code to complete the assignment.
+    2.  One to use for the penguins assignment, which you can call `penguins-assignment.R`
 
 ## Introduction
 

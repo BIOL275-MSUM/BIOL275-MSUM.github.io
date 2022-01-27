@@ -420,7 +420,7 @@
 </h2>
 <p>The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.</p>
 <p>The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.</p>
-<p>For example, to sort the <code>diamonds</code> data frame by price:</p>
+<p>For example, to sort the <code>diamonds</code> data frame by cut:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
@@ -561,20 +561,49 @@
 #&gt; # … with 53,934 more rows</code></pre>
 </div>
 </div>
+<div id="combine-multiple-operations-with-the-pipe" class="section level2">
+<h2>
+<span class="header-section-number">3.7</span> Combine multiple operations with the pipe<a class="anchor" aria-label="anchor" href="#combine-multiple-operations-with-the-pipe"><i class="fas fa-link"></i></a>
+</h2>
+<p>Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row? For example, let’s say you want to perform the following actions with the diamonds dataset:</p>
+<ol style="list-style-type: decimal">
+<li><p>Pick only diamonds with a weight of 2 or more carats</p></li>
+<li><p>Sort the diamonds by price</p></li>
+<li><p>Select only the variables variables carat, cut, and price</p></li>
+</ol>
+<p>One solution is to do each step one at a time, creating intermediate objects along the way:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">sorted_big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sorted_big_diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>Another option is to nest each function inside the other:</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>, <span class="va">price</span><span class="op">)</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>It works, but it is hard to read and interpret.</p>
+<p>A more elegant solution is to use the special pipe operator <code>%&gt;%</code> introduced in the magrittr package and included in the tidyverse:</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe. It’s like saying “take this thing, then do this to it, then do this to it”</p>
+<p>Pipes can make your code much simpler, shorter, and easier to read.</p>
+<p>You can get a better overview of using pipes, and more examples, in the <a href="https://r4ds.had.co.nz/pipes.html">Pipes</a> chapter in R for Data Science.</p>
+</div>
 <div id="assignment" class="section level2">
 <h2>
-<span class="header-section-number">3.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
 </h2>
 <p>Open your <code>penguins-assignment.R</code> script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.</p>
 <p>For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.</p>
 <p>Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.</p>
 <p>Begin by loading the palmerpenguins package in your R script:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
 <span class="va">penguins</span></code></pre></div>
 <div id="questions" class="section level3">
 <h3>
-<span class="header-section-number">3.7.1</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.8.1</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now use what you know from previous labs, and what you have learned from today’s lab, to perform the following data manipulation tasks.</p>
 <p>Put a comment like <code># question 1</code> on the line before each code chunk, so you (and I) can read your script more easily.</p>
@@ -598,14 +627,14 @@
 </div>
 <div id="submission" class="section level2">
 <h2>
-<span class="header-section-number">3.8</span> Submission<a class="anchor" aria-label="anchor" href="#submission"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.9</span> Submission<a class="anchor" aria-label="anchor" href="#submission"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.</p>
 <p>Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.</p>
 </div>
 <div id="further-reading" class="section level2">
 <h2>
-<span class="header-section-number">3.9</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.10</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading"><i class="fas fa-link"></i></a>
 </h2>
 <p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on filtering, arranging, and selecting in <a href="https://r4ds.had.co.nz/transform.html">Chapter 5: Data transformation</a>.</p>
 <p>You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.</p>
@@ -650,11 +679,12 @@
 <li><a class="nav-link" href="#helper-functions"><span class="header-section-number">3.6.2</span> Helper functions</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#combine-multiple-operations-with-the-pipe"><span class="header-section-number">3.7</span> Combine multiple operations with the pipe</a></li>
 <li>
-<a class="nav-link" href="#assignment"><span class="header-section-number">3.7</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions"><span class="header-section-number">3.7.1</span> Questions</a></li></ul>
+<a class="nav-link" href="#assignment"><span class="header-section-number">3.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions"><span class="header-section-number">3.8.1</span> Questions</a></li></ul>
 </li>
-<li><a class="nav-link" href="#submission"><span class="header-section-number">3.8</span> Submission</a></li>
-<li><a class="nav-link" href="#further-reading"><span class="header-section-number">3.9</span> Further reading</a></li>
+<li><a class="nav-link" href="#submission"><span class="header-section-number">3.9</span> Submission</a></li>
+<li><a class="nav-link" href="#further-reading"><span class="header-section-number">3.10</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -672,7 +702,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-25.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-01-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -20,6 +20,7 @@ descending-order
 select-columns-with-select
 removing-variables
 helper-functions
+combine-multiple-operations-with-the-pipe
 assignment
 questions
 submission

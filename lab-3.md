@@ -368,7 +368,7 @@ The arrange() function will allow you to sort the rows in a data frame based on 
 
 The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
 
-For example, to sort the `diamonds` data frame by price:
+For example, to sort the `diamonds` data frame by cut:
 
 
 ```r
@@ -564,6 +564,50 @@ select(diamonds, ends_with("e"), everything())
 #> 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
 #> # … with 53,934 more rows
 ```
+
+## Combine multiple operations with the pipe
+
+Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row? For example, let's say you want to perform the following actions with the diamonds dataset:
+
+1.  Pick only diamonds with a weight of 2 or more carats
+
+2.  Sort the diamonds by price
+
+3.  Select only the variables variables carat, cut, and price
+
+One solution is to do each step one at a time, creating intermediate objects along the way:
+
+
+```r
+big_diamonds <- filter(diamonds, carat >= 2)
+sorted_big_diamonds <- arrange(big_diamonds, price)
+select(sorted_big_diamonds, carat, cut, price)
+```
+
+Another option is to nest each function inside the other:
+
+
+```r
+select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
+```
+
+It works, but it is hard to read and interpret.
+
+A more elegant solution is to use the special pipe operator `%>%` introduced in the magrittr package and included in the tidyverse:
+
+
+```r
+diamonds %>% 
+  filter(carat >= 2) %>% 
+  arrange(price) %>% 
+  select(carat, cut, price)
+```
+
+The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe. It's like saying "take this thing, then do this to it, then do this to it"
+
+Pipes can make your code much simpler, shorter, and easier to read.
+
+You can get a better overview of using pipes, and more examples, in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in R for Data Science.
 
 ## Assignment
 

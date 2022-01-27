@@ -338,6 +338,49 @@ For example, the following code would move table and price to the front and leav
 select(diamonds, ends_with("e"), everything())
 ```
 
+## Combine multiple operations with the pipe
+
+Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row? For example, let's say you want to perform the following actions with the diamonds dataset:
+
+1.  Pick only diamonds with a weight of 2 or more carats
+
+2.  Sort the diamonds by price
+
+3.  Select only the variables variables carat, cut, and price
+
+One solution is to do each step one at a time, creating intermediate objects along the way:
+
+```{r pipe-example-intermediate, eval=FALSE}
+big_diamonds <- filter(diamonds, carat >= 2)
+sorted_big_diamonds <- arrange(big_diamonds, price)
+select(sorted_big_diamonds, carat, cut, price)
+```
+
+Another option is to nest each function inside the other:
+
+```{r pipe-example-nested, eval=FALSE}
+
+select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
+```
+
+It works, but it is hard to read and interpret.
+
+A more elegant solution is to use the special pipe operator `%>%` introduced in the magrittr package and included in the tidyverse:
+
+```{r pipe-example-piped, eval=FALSE}
+
+diamonds %>% 
+  filter(carat >= 2) %>% 
+  arrange(price) %>% 
+  select(carat, cut, price)
+```
+
+The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe. It's like saying "take this thing, then do this to it, then do this to it"
+
+Pipes can make your code much simpler, shorter, and easier to read.
+
+You can get a better overview of using pipes, and more examples, in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in R for Data Science.
+
 ## Assignment
 
 Open your `penguins-assignment.R` script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.
@@ -372,9 +415,7 @@ Put a comment like `# question 1` on the line before each code chunk, so you (an
 11. Select only the columns species and sex
 12. Select the column species and all columns that begin with "bill\_" using the `starts_with()` helper function
 13. Select all columns except those ending with "\_mm"
-14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order. \
-    \
-    See the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in R for Data Science for an introduction to pipes.
+14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
 
 ## Submission
 

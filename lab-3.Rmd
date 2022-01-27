@@ -372,7 +372,9 @@ Put a comment like `# question 1` on the line before each code chunk, so you (an
 11. Select only the columns species and sex
 12. Select the column species and all columns that begin with "bill\_" using the `starts_with()` helper function
 13. Select all columns except those ending with "\_mm"
-14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
+14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order. \
+    \
+    See the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in R for Data Science for an introduction to pipes.
 
 ## Submission
 

@@ -617,12 +617,12 @@ For this assignment you will work with the Palmer Penguins dataset you used in t
 
 Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.
 
-Begin by loading the palmerpenguins package in your R script:
+Begin by loading the tidyverse and palmerpenguins package in your R script:
 
 
 ```r
+library(tidyverse)
 library(palmerpenguins)
-penguins
 ```
 
 ### Questions

@@ -254,7 +254,7 @@ The arrange() function will allow you to sort the rows in a data frame based on 
 
 The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
 
-For example, to sort the `diamonds` data frame by price:
+For example, to sort the `diamonds` data frame by cut:
 
 ```{r arrange-1}
 arrange(diamonds, cut)

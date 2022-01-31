@@ -25,7 +25,7 @@ assignment
 questions
 submission
 further-reading
-data-summarizing
+lab-4-data-summarizing
 objectives-1
 introduction-1
 packages

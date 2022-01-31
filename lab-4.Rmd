@@ -1,4 +1,4 @@
-# Data summarizing
+# Lab 4: Data summarizing
 
 ## Objectives
 

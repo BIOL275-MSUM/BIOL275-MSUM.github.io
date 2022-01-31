@@ -658,6 +658,4 @@ Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on 
 
 You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
 
-If you do want to read the chapter and try their examples in your own R Script then don't forget to install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages)
-
-1.  
+If you do want to read the chapter and try their examples in your own R Script then don't forget to install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages).

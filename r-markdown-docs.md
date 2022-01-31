@@ -24,7 +24,7 @@ You will notice some header information at the top, between two sets of three da
 ---
 title: "Lab 2 Assignment"
 author: "___"
-date: "2022-01-27"
+date: "2022-01-31"
 output: github_document
 ---
 ```

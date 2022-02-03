@@ -373,7 +373,7 @@ Note that when you do this, iris will now show up in your Environment tab.
 
 Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks. For each question, put a comment like `# question 1` on the line before, so you can read your script more easily, and follow each answer with a blank line to improve readability.
 
-For each answer, you can simply print the resulting table. You do not need to assign it a name. Some questions have more than one part, e.g. you need to use multiple dplyr functions in a row. You may use intermediate objects for this, but you are encouraged to try [combining multiple operations with the pipe](Combine multiple operations with the pipe).
+For each answer, you can simply print the resulting table. You do not need to assign it a name. Some questions have more than one part, e.g. you need to use multiple dplyr functions in a row. You may use intermediate objects for this, but you are encouraged to try [combining multiple operations with the pipe](Combine%20multiple%20operations%20with%20the%20pipe).
 
 1.  Rename each variable so that it is all lower-case and uses an underscore `_` instead of a period `.` in the name (the recommended coding style in the [tidyverse style guide](https://style.tidyverse.org/syntax.html))
 
@@ -409,29 +409,11 @@ For each answer, you can simply print the resulting table. You do not need to as
 
 8.  Visualize the relationship between petal length, petal width, and species using a scatter plot. Map the two numerical variables to the x and y axes and map species to the color and shape aesthetics.
 
-### Lab Report
+### Submission
 
-After you have crafted working R code in your R script, *then* you should create your lab report using R Markdown
+When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
 
-1.  Create an R Markdown document README.Rmd (you won't have a separate Rmd for the lab report in this lab)
-
-2.  Add the [YAML header](r-markdown-documents.html#yaml-header). Change the title to "Lab 5"
-
-3.  Copy the eight questions above and paste them in as text. Don't make each question its own heading; if you want headings, just label them Question 1, Question 2, etc.
-
-4.  Add a code chunk after each question. Each chunk should either *print* a data frame or *plot* a graph, depending on what the question is asking for.
-
-    You may create new objects with the assignment operator if you like.
-
-5.  Add a section containing your [session info](session-info.html)
-
-6.  Knit the document
-
-7.  Commit all files and push to GitHub
-
-8.  Submit the URL of your repo to D2L for grading
-
-See the previous lab for more details on the steps listed above
+Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.
 
 ## Submission
 

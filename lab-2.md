@@ -21,7 +21,7 @@ Learn how to:
 
 ## Assignment
 
-1.  Familiarize yourself with version control by reading \@ref(about-git-and-github).
+1.  Familiarize yourself with version control by reading [About Git and GitHub].
 
 2.  [Introduce yourself to Git] on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first [Install Git] on it.
 

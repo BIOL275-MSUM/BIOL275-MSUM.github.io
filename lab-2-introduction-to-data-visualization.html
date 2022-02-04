@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Lab 2: Introduction to data visualization | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="2.1 Objectives Learn how to: Create a scatter plot using the ggplot2 package: Create a ggplot Specify aesthetic mappings Add points Split into facets  Work with GitHub Claim a repository on GitHub...">
+<meta name="generator" content="bookdown 0.24.9 with bs4_book()">
+<meta property="og:title" content="2 Lab 2: Introduction to data visualization | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Objectives Learn how to: Create a scatter plot using the ggplot2 package: Create a ggplot Specify aesthetic mappings Add points Split into facets  Work with GitHub Claim a repository on GitHub...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Lab 2: Introduction to data visualization | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="2.1 Objectives Learn how to: Create a scatter plot using the ggplot2 package: Create a ggplot Specify aesthetic mappings Add points Split into facets  Work with GitHub Claim a repository on GitHub...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="lab-1.html"><span class="header-section-number">1</span> Lab 1</a></li>
+<li><a class="active" href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></li>
+<li><a class="" href="lab-3-data-subsetting.html"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></li>
+<li><a class="" href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="laptop-setup.html"><span class="header-section-number">5</span> Laptop Setup</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">7</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">8</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">9</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">10</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">12</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">13</span> GitHub Notifications</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-2-introduction-to-data-visualization" class="section level1">
+<h1>
+<span class="header-section-number">2</span> Lab 2: Introduction to data visualization<a class="anchor" aria-label="anchor" href="#lab-2-introduction-to-data-visualization"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives"><i class="fas fa-link"></i></a>
+</h2>
+<p>Learn how to:</p>
+<ol style="list-style-type: decimal">
+<li>
+<p>Create a scatter plot using the ggplot2 package:</p>
+<ul>
+<li>Create a ggplot</li>
+<li>Specify aesthetic mappings</li>
+<li>Add points</li>
+<li>Split into facets</li>
+</ul>
+</li>
+<li>
+<p>Work with GitHub</p>
+<ul>
+<li>Claim a repository on GitHub classroom</li>
+<li>Create an RStudio Project using the Version Control &gt; GitHub option</li>
+<li>Set up your Git username and password</li>
+<li>Stage and commit changes to a local Git repository</li>
+<li>View a Project’s past commits</li>
+</ul>
+</li>
+</ol>
+<p>Assignment</p>
+<ol style="list-style-type: decimal">
+<li><p>Familiarize yourself with version control by reading <span class="math display">\[About Git and GitHub\]</span>.</p></li>
+<li><p><span class="math display">\[Introduce yourself to Git\]</span> on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first <span class="math display">\[Install Git\]</span> on it.</p></li>
+<li><p>Go to GitHub <a href="https://github.com/" class="uri">https://github.com/</a> and Sign Up for an account.</p></li>
+<li><p>Claim your GitHub repository for Lab 2 by following the link posted on D2L. Be sure your new project is open in RStudio before continuing. After claiming the repository, copy the repository link (or copy the URL in the browser window).</p></li>
+<li>
+<p>Create a new RStudio project, this time using the Version Control option instead of the New Project option. Select GitHub, then paste the link to your repository when asked. When complete, RStudio should have your lab 2 Project open, and the Git tab in the upper right should be present. If not, ask for help.</p>
+<p>If a dialog window opens asking you to enter your GitHub username and password, do this:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Click “Cancel” on that window</p></li>
+<li><p>This will cause another dialog window to appear asking for just your GitHub Username. Enter it and press Enter.</p></li>
+<li>
+<p>This will cause another dialog window to appear asking for your GitHub password. Do not enter it. Instead, enter a Personal Access Token (PAT):</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Go to the Personal Access Tokens page in your GitHub Settings: <a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a></p></li>
+<li><p>Generate a new token by clicking the button “Generate new token”</p></li>
+<li><p>The PAT will only be good for the computer you use it on. If you move to another computer later you will have to repeat this process and generate a new token. For this token, enter a <strong>Note</strong> describing which computer and which type of access you are granting. For example: “CB 200 Computer 193827 repo access”.</p></li>
+<li><p>Set the expiration date. I recommend setting a custom date near the end of the semester.</p></li>
+<li><p>Select the scope by checking the “repo” box. This means the PAT will grant full control of your repositories, which is what you want RStudio to have.</p></li>
+<li><p>Scroll down and click the green <strong>Generate token</strong> button.</p></li>
+<li><p>On the next screen, copy the token that is generated.</p></li>
+<li><p>Go back to the RStudio dialog window asking you for your GitHub password. Paste the PAT you just copied into the password field and press Enter.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>In RStudio, install the tidyverse and palmerpenguins packages. You may use the Install button in the Packages tab in RStudio, or use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function, but if you use code, do so in the console. <em>Do not</em> include the install code in your R script. If you have previously installed a package (e.g. in a previous lab), you do not need to install it again. Check the Packages tab if you are unsure whether either of these packages is installed.</p></li>
+<li><p>Create two new R scripts, one for the examples and one for your assignment. Save them with the names <code>examples.R</code> and <code>assignment.R</code></p></li>
+<li><p>Familiarize yourself with the R for Data Science book by Hadley Wickham and Garrett Grolemund <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a> by <em>skimming</em> the Welcome and Chapters 1 and 2</p></li>
+<li><p>Read <a href="https://r4ds.had.co.nz/data-visualisation.html">Chapter 3: Data visualization</a>. As you read each chapter, feel free to copy code from the book into your <code>examples.R</code> script. That script isn’t part of the assignment, but you may find it useful to have code there to look at, copy, modify, etc.</p></li>
+<li>
+<p>After you read each chapter, there will be an accompanying assignment using the penguins table in the palmerpenguins dataset. You should write (and run) the code necessary to answer each question. Precede the code for each question with a comment and the question number; for example:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># question 9</span>
+<span class="va">code_for_question_9</span></code></pre></div>
+</li>
+<li>
+<p>After reading section 3.1:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Add code to your R script to load the tidyverse package. While you’re add it, add another line of code to load the palmerpenguins package.</p></li>
+<li><p>Run those lines of code. From now on, assume that any code you write you should also run.</p></li>
+</ol>
+</li>
+<li>
+<p>After Section 3.2:</p>
+<ol style="list-style-type: lower-alpha">
+<li>
+<p>Print the penguins table in the console (write penguins in the script, then run that line). Look at the output to remind yourself what the variables (columns) are. If you want, you can open the data in the data viewer using <code>View(penguins)</code>. Answer the following questions:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>How many rows are in penguins? __________________</p></li>
+<li><p>How many columns are in penguins? _______________</p></li>
+</ol>
+</li>
+<li>
+<p>Run <code>ggplot2(data = penguins)</code></p>
+<ol style="list-style-type: lower-roman">
+<li>What do you see? _____________________________________________________________________________</li>
+</ol>
+</li>
+<li>
+<p>Create a scatterplot that compares penguin body mass and flipper length.</p>
+<ol style="list-style-type: lower-roman">
+<li>Have your partner initial here to confirm you did it correctly _________</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>After Section 3.3:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Create the same scatterplot, but give each species its own color  ___________</p></li>
+<li><p>Create the same scatterplot, but give each species its own color and each island its own shape _________________</p></li>
+</ol>
+</li>
+<li><p>Read section 3.4, but answer no questions.</p></li>
+<li>
+<p>Read Section 3.5, then:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Copy the code you used for the previous question (with aesthetic mappings for color and shape).</p></li>
+<li><p>Create a new scatterplot with the same aesthetics, but use <code>facet_wrap()</code> to put each species on its own facet, with only one row of graphs (<code>nrow=1</code>) ________</p></li>
+<li><p>Create a new scatterplot with the same aesthetics, but use <code>facet_grid()</code> to put each island and species on its own graph ________</p></li>
+</ol>
+</li>
+<li><p>Clean up your assignment.R script so it is pleasant to read. Each command (or series of related commands) should have a comment preceding it, and a blank line above and below it.</p></li>
+<li><p>Save your scripts.</p></li>
+<li>
+<p>Commit the changes to your scripts:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Go to the Git tab in RStudio (upper right pane)</p></li>
+<li><p>Check the box next to each file listed</p></li>
+<li><p>Click the “Commit” button. Make your window bigger if you can’t read which button is the commit button.</p></li>
+<li><p>In the dialog, enter a message in the commit message box. A good commit describe what changes are being made in the files you are committing and is usually written in present tense. For example, a good commit message would be “Create project files and add example and assignment scripts”.</p></li>
+<li><p>Click the “Commit” button</p></li>
+</ol>
+</li>
+<li>
+<p>Push the commit to GitHub:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Click the Push button (up arrow) on the Git tab</p></li>
+<li><p>Check the repository on GitHub to see if it updated</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="submission" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Submission<a class="anchor" aria-label="anchor" href="#submission"><i class="fas fa-link"></i></a>
+</h2>
+<p>When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.</p>
+<p>Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-1.html"><span class="header-section-number">1</span> Lab 1</a></div>
+<div class="next"><a href="lab-3-data-subsetting.html"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-2-introduction-to-data-visualization"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></li>
+<li><a class="nav-link" href="#objectives"><span class="header-section-number">2.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#submission"><span class="header-section-number">2.2</span> Submission</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-02-04.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

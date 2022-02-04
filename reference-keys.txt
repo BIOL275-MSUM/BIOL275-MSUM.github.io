@@ -1,7 +1,9 @@
 lab-1
-lab-2
-lab-3-data-subsetting
+lab-2-introduction-to-data-visualization
 objectives
+submission
+lab-3-data-subsetting
+objectives-1
 getting-started
 introduction
 prerequisites
@@ -23,10 +25,10 @@ helper-functions
 combine-multiple-operations-with-the-pipe
 assignment
 questions
-submission
+submission-1
 further-reading
 lab-4-data-summarizing
-objectives-1
+objectives-2
 introduction-1
 packages
 diamonds-data
@@ -47,8 +49,8 @@ visualize-two-numerical-variables
 plotting-three-variables
 assignment-1
 questions-1
-submission-1
 submission-2
+submission-3
 further-reading-1
 laptop-setup
 option-1-install-software

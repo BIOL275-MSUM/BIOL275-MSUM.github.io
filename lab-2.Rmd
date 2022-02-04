@@ -19,11 +19,11 @@ Learn how to:
     -   Stage and commit changes to a local Git repository
     -   View a Project's past commits
 
-Assignment
+## Assignment
 
-1.  Familiarize yourself with version control by reading \[About Git and GitHub\].
+1.  Familiarize yourself with version control by reading \@ref(about-git-and-github).
 
-2.  \[Introduce yourself to Git\] on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first \[Install Git\] on it.
+2.  [Introduce yourself to Git] on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first [Install Git] on it.
 
 3.  Go to GitHub <https://github.com/> and Sign Up for an account.
 

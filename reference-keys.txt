@@ -1,6 +1,7 @@
 lab-1
 lab-2-introduction-to-data-visualization
 objectives
+assignment
 submission
 lab-3-data-subsetting
 objectives-1
@@ -23,7 +24,7 @@ select-columns-with-select
 removing-variables
 helper-functions
 combine-multiple-operations-with-the-pipe
-assignment
+assignment-1
 questions
 submission-1
 further-reading
@@ -47,7 +48,7 @@ multiple-histograms
 strip-plots
 visualize-two-numerical-variables
 plotting-three-variables
-assignment-1
+assignment-2
 questions-1
 submission-2
 submission-3

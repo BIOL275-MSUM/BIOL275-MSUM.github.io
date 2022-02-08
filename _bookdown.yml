@@ -9,6 +9,8 @@ rmd_files: [
   "lab-3.Rmd",
   "lab-4.Rmd",
   
+  "data-sets.Rmd",
+  
   "laptop-setup.Rmd",
   "project-options.Rmd",
   "code-sections.Rmd",

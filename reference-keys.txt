@@ -23,7 +23,10 @@ descending-order
 select-columns-with-select
 removing-variables
 helper-functions
-combine-multiple-operations-with-the-pipe
+combine-multiple-operations
+create-intermediate-objects
+nest-functions
+use-the-pipe
 assignment-1
 questions
 submission-1

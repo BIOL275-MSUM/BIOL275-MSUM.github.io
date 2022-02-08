@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Lab 3: Data subsetting | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations with the pipe  3.2...">
+<meta name="description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
 <meta name="generator" content="bookdown 0.24.9 with bs4_book()">
 <meta property="og:title" content="3 Lab 3: Data subsetting | Quantitative Biology BIOL 275 at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations with the pipe  3.2...">
+<meta property="og:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Lab 3: Data subsetting | Quantitative Biology BIOL 275 at MSUM">
-<meta name="twitter:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations with the pipe  3.2...">
+<meta name="twitter:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -76,7 +76,7 @@
 <li>Pick rows based on their values</li>
 <li>Reorder rows based on their values</li>
 <li>Pick columns based on their names</li>
-<li>Combine multiple operations with the pipe</li>
+<li>Combine multiple operations</li>
 </ul>
 </div>
 <div id="getting-started" class="section level2">
@@ -564,34 +564,70 @@
 #&gt; # … with 53,934 more rows</code></pre>
 </div>
 </div>
-<div id="combine-multiple-operations-with-the-pipe" class="section level2">
+<div id="combine-multiple-operations" class="section level2">
 <h2>
-<span class="header-section-number">3.7</span> Combine multiple operations with the pipe<a class="anchor" aria-label="anchor" href="#combine-multiple-operations-with-the-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7</span> Combine multiple operations<a class="anchor" aria-label="anchor" href="#combine-multiple-operations"><i class="fas fa-link"></i></a>
 </h2>
-<p>Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row? For example, let’s say you want to perform the following actions with the diamonds dataset:</p>
+<p>Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row?</p>
+<p>You have three basic options:</p>
+<ul>
+<li>Create intermediate objects</li>
+<li>Nest functions</li>
+<li>Use the pipe</li>
+</ul>
+<p>Let’s use an example to illustrate each option. For this example, let’s say you want to perform the following actions with the diamonds dataset:</p>
 <ol style="list-style-type: decimal">
-<li><p>Pick only diamonds with a weight of 2 or more carats</p></li>
-<li><p>Sort the diamonds by price</p></li>
-<li><p>Select only the variables variables carat, cut, and price</p></li>
+<li>Pick only diamonds with a weight of 2 or more carats</li>
+<li>Sort the diamonds by price</li>
+<li>Select only the variables variables carat, cut, and price</li>
 </ol>
-<p>One solution is to do each step one at a time, creating intermediate objects along the way:</p>
+<div id="create-intermediate-objects" class="section level3">
+<h3>
+<span class="header-section-number">3.7.1</span> Create intermediate objects<a class="anchor" aria-label="anchor" href="#create-intermediate-objects"><i class="fas fa-link"></i></a>
+</h3>
+<p>One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator <code>&lt;-</code>. In our example, this might look something like:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">sorted_big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sorted_big_diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
-<p>Another option is to nest each function inside the other:</p>
+<p>One drawback to this approach is that it leaves two intermediate objects cluttering up your environment, neither of which you need. You could either leave them, or remove them using <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code>.</p>
+<p>Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>, <span class="va">price</span><span class="op">)</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
-<p>It works, but it is hard to read and interpret.</p>
-<p>A more elegant solution is to use the special pipe operator <code>%&gt;%</code> introduced in the magrittr package and included in the tidyverse:</p>
+<code class="sourceCode R"><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">price</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>The code is a lot smaller, but it is less understandable at a glance, and you still have intermediate objects left behind.</p>
+<p>You might be tempted to just overwrite the existing diamonds dataset with the new one:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">price</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>The issue here is that you no longer have your original diamonds dataset. If you do not mind that, then this is a decent solution. You might use this option if you want to clean up a dataset after reading it from a file, for example to rename unweildy variables or deal with missing values.</p>
+<p>What if you need to use the original diamonds dataset again? Of course, it didn’t disappear, and you can still access it by specifying the package <code><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">ggplot2::diamonds</a></code> or by removing diamonds from your global environment <code>rm(diamonds)</code>. But overall, this isn’t an ideal solution.</p>
+</div>
+<div id="nest-functions" class="section level3">
+<h3>
+<span class="header-section-number">3.7.2</span> Nest functions<a class="anchor" aria-label="anchor" href="#nest-functions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Another option is to nest each function inside the other:</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>, <span class="va">price</span><span class="op">)</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
+<p>It works, but it is hard to read and interpret at a glance.</p>
+</div>
+<div id="use-the-pipe" class="section level3">
+<h3>
+<span class="header-section-number">3.7.3</span> Use the pipe<a class="anchor" aria-label="anchor" href="#use-the-pipe"><i class="fas fa-link"></i></a>
+</h3>
+<p>A more elegant solution is to use the special pipe operator <code>%&gt;%</code> introduced in the magrittr package. Using the pipe, <code>x %&gt;% f()</code> is equivalent to <code>f(x)</code>. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.</p>
+<p>Using this option, we could do:</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
-<p>The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe. It’s like saying “take this thing, then do this to it, then do this to it”</p>
-<p>Pipes can make your code much simpler, shorter, and easier to read.</p>
-<p>You can get a better overview of using pipes, and more examples, in the <a href="https://r4ds.had.co.nz/pipes.html">Pipes</a> chapter in R for Data Science.</p>
+<p>The pipe is like saying “take this thing, then do this to it, then do this to it”. Pipes can make your code simpler, shorter, and easier to read.</p>
+<p>You can find a more complete discussion in the <a href="https://r4ds.had.co.nz/pipes.html">Pipes</a> chapter in <em>R for Data Science.</em></p>
+</div>
 </div>
 <div id="assignment-1" class="section level2">
 <h2>
@@ -601,7 +637,7 @@
 <p>For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.</p>
 <p>Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.</p>
 <p>Begin by loading the tidyverse and palmerpenguins package in your R script:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></code></pre></div>
 <div id="questions" class="section level3">
@@ -677,7 +713,13 @@
 <li><a class="nav-link" href="#helper-functions"><span class="header-section-number">3.6.2</span> Helper functions</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#combine-multiple-operations-with-the-pipe"><span class="header-section-number">3.7</span> Combine multiple operations with the pipe</a></li>
+<li>
+<a class="nav-link" href="#combine-multiple-operations"><span class="header-section-number">3.7</span> Combine multiple operations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#create-intermediate-objects"><span class="header-section-number">3.7.1</span> Create intermediate objects</a></li>
+<li><a class="nav-link" href="#nest-functions"><span class="header-section-number">3.7.2</span> Nest functions</a></li>
+<li><a class="nav-link" href="#use-the-pipe"><span class="header-section-number">3.7.3</span> Use the pipe</a></li>
+</ul>
+</li>
 <li>
 <a class="nav-link" href="#assignment-1"><span class="header-section-number">3.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions"><span class="header-section-number">3.8.1</span> Questions</a></li></ul>
 </li>

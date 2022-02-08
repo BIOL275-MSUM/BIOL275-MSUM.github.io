@@ -7,7 +7,7 @@ In this lab, you will learn to:
 -   Pick rows based on their values
 -   Reorder rows based on their values
 -   Pick columns based on their names
--   Combine multiple operations with the pipe
+-   Combine multiple operations
 
 ## Getting Started
 
@@ -566,17 +566,25 @@ select(diamonds, ends_with("e"), everything())
 #> # … with 53,934 more rows
 ```
 
-## Combine multiple operations with the pipe
+## Combine multiple operations
 
-Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row? For example, let's say you want to perform the following actions with the diamonds dataset:
+Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row?
+
+You have three basic options:
+
+-   Create intermediate objects
+-   Nest functions
+-   Use the pipe
+
+Let's use an example to illustrate each option. For this example, let's say you want to perform the following actions with the diamonds dataset:
 
 1.  Pick only diamonds with a weight of 2 or more carats
-
 2.  Sort the diamonds by price
-
 3.  Select only the variables variables carat, cut, and price
 
-One solution is to do each step one at a time, creating intermediate objects along the way:
+### Create intermediate objects
+
+One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator `<-`. In our example, this might look something like:
 
 
 ```r
@@ -585,6 +593,34 @@ sorted_big_diamonds <- arrange(big_diamonds, price)
 select(sorted_big_diamonds, carat, cut, price)
 ```
 
+One drawback to this approach is that it leaves two intermediate objects cluttering up your environment, neither of which you need. You could either leave them, or remove them using `rm()`.
+
+Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:
+
+
+```r
+x1 <- filter(diamonds, carat >= 2)
+x2 <- arrange(x1, price)
+select(x2, carat, cut, price)
+```
+
+The code is a lot smaller, but it is less understandable at a glance, and you still have intermediate objects left behind.
+
+You might be tempted to just overwrite the existing diamonds dataset with the new one:
+
+
+```r
+diamonds <- filter(diamonds, carat >= 2)
+diamonds <- arrange(diamonds, price)
+select(diamonds, carat, cut, price)
+```
+
+The issue here is that you no longer have your original diamonds dataset. If you do not mind that, then this is a decent solution. You might use this option if you want to clean up a dataset after reading it from a file, for example to rename unweildy variables or deal with missing values.
+
+What if you need to use the original diamonds dataset again? Of course, it didn't disappear, and you can still access it by specifying the package `ggplot2::diamonds` or by removing diamonds from your global environment `rm(diamonds)`. But overall, this isn't an ideal solution.
+
+### Nest functions
+
 Another option is to nest each function inside the other:
 
 
@@ -592,9 +628,13 @@ Another option is to nest each function inside the other:
 select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
 ```
 
-It works, but it is hard to read and interpret.
+It works, but it is hard to read and interpret at a glance.
 
-A more elegant solution is to use the special pipe operator `%>%` introduced in the magrittr package and included in the tidyverse:
+### Use the pipe
+
+A more elegant solution is to use the special pipe operator `%>%` introduced in the magrittr package. Using the pipe, `x %>% f()` is equivalent to `f(x)`. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.
+
+Using this option, we could do:
 
 
 ```r
@@ -604,11 +644,9 @@ diamonds %>%
   select(carat, cut, price)
 ```
 
-The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe. It's like saying "take this thing, then do this to it, then do this to it"
+The pipe is like saying "take this thing, then do this to it, then do this to it". Pipes can make your code simpler, shorter, and easier to read.
 
-Pipes can make your code much simpler, shorter, and easier to read.
-
-You can get a better overview of using pipes, and more examples, in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in R for Data Science.
+You can find a more complete discussion in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in *R for Data Science.*
 
 ## Assignment
 

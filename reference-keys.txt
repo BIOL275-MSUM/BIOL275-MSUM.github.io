@@ -59,6 +59,7 @@ further-reading-1
 eda-project
 overview
 purpose
+examples
 choose-a-project
 data-sets
 question
@@ -66,6 +67,7 @@ assignments
 project-management
 github-repository
 data-import-tips
+references
 sac-application
 overview-1
 how-to-write-an-abstract

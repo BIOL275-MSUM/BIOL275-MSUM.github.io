@@ -16,6 +16,20 @@ The purpose of the EDA project is for you to practice working with real data to 
 
 The goal of the EDA is to generate hypotheses that could be explored in future projects, not to test hypotheses. EDA is a valuable tool for hypothesis generation: you visualize the data and look for patters, generate hypotheses about the processes that led to those patterns, further explore the data to look for deeper patterns, and finally end up with a list of testable hypotheses one could pursue to answer your question.
 
+## Examples
+
+There are many examples of exploratory data analyses available online. If you want to see an exploratory analysis in R from start to finish, see the following examples:
+
+-   Wickham and Grolemund [-@wickham2022] explain what an exploratory data analysis is and explore the diamonds data set in the ggplot2 package.
+
+-   De Gouveia [-@degouveia2020] explores the Behavioral Risk Factor Surveillance System dataset to answer several research questions:
+
+    -   Does the access of health care influence the 'general health' of the population and can we infer a relation (association) between 'general health' the physical exercise a person performs?
+
+    -   which state has the highest obesity rate in the US and what is the distribution troughout the United states in 2013?
+
+    -   Is there a relation between BMI and an 'age group' and can we infere a relation (association) between the BMI of age groups and their nutrition behavior as well as pysical activity pattern?
+
 ## Choose a project
 
 ### Data sets
@@ -103,3 +117,5 @@ Importing your data
 -   When you play with `skip` argument, sometimes you need to change the `col_names` argument too
 
 -   You can read only a set number of rows using the `n_max` argument
+
+## References

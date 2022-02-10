@@ -50,6 +50,8 @@ In order for you to choose your own dataset, it must be approved by the instruct
 
 ## Public health data sets
 
+-   [Global Health Data Exchange](http://ghdx.healthdata.org/). A comprehensive catalog of data sets including surveys, censuses, vital statistics, and other health-related data.
+
 -   [National Center for Health Statistics](https://www.cdc.gov/nchs/data_access/ftp_data.htm). Data sets, documentation, and questionnaires from NCHS data collection systems.
 
 -   [County Health Rankings & Roadmaps](http://www.countyhealthrankings.org/). A source of annual county-level public health data. You can download data by state and year (see [Minnesota](http://www.countyhealthrankings.org/app/minnesota/2017/downloads), for example).

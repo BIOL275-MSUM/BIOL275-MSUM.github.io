@@ -4,13 +4,17 @@
 
 ## Overview
 
-A major part of the lab will be to perform your own exploratory data analysis in R.
+A major part of the lab will be to perform your own exploratory data analysis (EDA) in R.
 
-You will choose a dataset to use and a question to answer. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is Feb. 25).
+You will work in groups of two or three.
+
+Your group will choose a general topic to explore, find one or more datasets to use, and conduct an exploratory analysis of that data. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is Feb. 25, 2022).
 
 ## Purpose
 
-The purpose of the lab project is for you to practice working with real data, exploring data sets to answer a question that interests *you*, and communicating the results.
+The purpose of the EDA project is for you to practice working with real data to answer a **question** that interests *you* and communicate the results to a wide audience.
+
+The goal of the EDA is to generate hypotheses that could be explored in future projects, not to test hypotheses. EDA is a valuable tool for hypothesis generation: you visualize the data and look for patters, generate hypotheses about the processes that led to those patterns, further explore the data to look for deeper patterns, and finally end up with a list of testable hypotheses one could pursue to answer your question.
 
 ## Choose a project
 
@@ -20,7 +24,7 @@ The first step in your EDA project is to choose one or more data sets you will e
 
 For help in finding, learning about, and accessing data sets, see [Data Sets](data-sets.html).
 
-For some questions, you may need to use multiple datasets. For example you may combine county level health data with county level environmental data from different datasets.
+For many questions, you may need to use multiple data sets. For example you may combine county level health data with county level environmental data from different data sets.
 
 ### Question
 
@@ -40,19 +44,9 @@ You may not end up including all specific questions in your final EDA Project Po
 
 ## Assignments
 
-1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by Sunday, February 28, 2021
+1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by the assignment deadline posted on D2L. The hard deadline for submission to the SAC is listed on the SAC website.
 
-2.  Preliminary Methods and Results
-
-    a.  Add a basic outline for your README (use this [Template](sac-poster.html#Template) to get you started)
-
-    b.  Your Methods section should include information about:
-
-        i.  **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
-
-        ii. Data Preparation. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
-
-    c.  Request peer review by **March 25**; complete peer review and respond to changes by **March 30**. Submit to the D2L assignment the link to the peer review of your own project by March 30. You will be graded on your methods section and on the quality of your the peer review(s) you provide to others.
+Other assignments will be added here and on D2L throughout the semester. Your two main deliverables will be a GitHub repository containing a version of your project poster in markdown format, and a physical poster you will present at the Student Academic Conference in April.
 
 ## Project Management
 
@@ -64,7 +58,7 @@ Your EDA project will have its own GitHub repository which will include:
 
 2.  README.Rmd containing the text and code to create your final poster
 
-3.  README.md containing your final poster. This document is what you will present at the SAC
+3.  README.md containing your final "poster". This document is what you will present at the SAC
 
 ### Data Import Tips
 

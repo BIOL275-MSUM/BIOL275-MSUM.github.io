@@ -7,6 +7,8 @@ github-repo: BIOL275-MSUM/BIOL275-MSUM.github.io
 description: "Website for the course Quantitative Biology BIOL 275 at MSUM."
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: references.bib
+csl: council-of-science-editors-author-date.csl
 ---
 
 # Welcome {-}

@@ -91,9 +91,9 @@
 </h2>
 <p>There are many examples of exploratory data analyses available online. If you want to see an exploratory analysis in R from start to finish, see the following examples:</p>
 <ul>
-<li><p>Wickham and Grolemund <span class="citation">(2022)</span> explain what an exploratory data analysis is and explore the diamonds data set in the ggplot2 package.</p></li>
+<li><p>Wickham and Grolemund <span class="citation">(<a href="github-notifications.html#ref-wickham2022" role="doc-biblioref">2022</a>)</span> explain what an exploratory data analysis is and explore the diamonds data set in the ggplot2 package.</p></li>
 <li>
-<p>De Gouveia <span class="citation">(2020)</span> explores the Behavioral Risk Factor Surveillance System dataset to answer several research questions:</p>
+<p>De Gouveia <span class="citation">(<a href="github-notifications.html#ref-degouveia2020" role="doc-biblioref">2020</a>)</span> explores the Behavioral Risk Factor Surveillance System dataset to answer several research questions:</p>
 <ul>
 <li><p>Does the access of health care influence the ‘general health’ of the population and can we infer a relation (association) between ‘general health’ the physical exercise a person performs?</p></li>
 <li><p>which state has the highest obesity rate in the US and what is the distribution troughout the United states in 2013?</p></li>
@@ -177,17 +177,19 @@
 <ul>
 <li><p>never edit your raw data file. instead, read it as is and clean it up in R</p></li>
 <li>
-<p>use read_csv() or readxl::read_excel()</p>
+<p>use <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> or <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code></p>
 <ul>
-<li>do NOT use read.csv()</li>
+<li>do NOT use <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>
+</li>
 <li>readxl package is installed with tidyverse, but not loaded</li>
-<li>you have to load it yourself: library(readxl)</li>
+<li>you have to load it yourself: <code><a href="https://readxl.tidyverse.org">library(readxl)</a></code>
+</li>
 <li>path argument: type "" put cursor in between and hit tab to autocomplete</li>
 </ul>
 </li>
 <li><p>read_excel() has a <code>sheet</code> argument to choose which sheet</p></li>
 <li>
-<p>R puts back ticks around non-standard column names eg <code>-</code> is a backtick, its on the upper left of the keyboard</p>
+<p>R puts back ticks around non-standard column names eg <code>`</code> is a backtick, its on the upper left of the keyboard</p>
 <ul>
 <li>standard names have only letters, numbers, <code>_</code> and <code>.</code>
 </li>

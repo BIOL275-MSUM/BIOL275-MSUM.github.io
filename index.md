@@ -9,6 +9,7 @@ site: bookdown::bookdown_site
 documentclass: book
 bibliography: references.bib
 csl: council-of-science-editors-author-date.csl
+link-citations: yes
 ---
 
 # Welcome {-}

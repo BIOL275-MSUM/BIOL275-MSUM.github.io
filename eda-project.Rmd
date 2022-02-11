@@ -99,16 +99,16 @@ Importing your data
 
 -   never edit your raw data file. instead, read it as is and clean it up in R
 
--   use read_csv() or readxl::read_excel()
+-   use `read_csv()` or `readxl::read_excel()`
 
-    -   do NOT use read.csv()
+    -   do NOT use `read.csv()`
     -   readxl package is installed with tidyverse, but not loaded
-    -   you have to load it yourself: library(readxl)
+    -   you have to load it yourself: `library(readxl)`
     -   path argument: type "" put cursor in between and hit tab to autocomplete
 
 -   read_excel() has a `sheet` argument to choose which sheet
 
--   R puts back ticks around non-standard column names eg `-` is a backtick, its on the upper left of the keyboard
+-   R puts back ticks around non-standard column names eg `` ` `` is a backtick, its on the upper left of the keyboard
 
     -   standard names have only letters, numbers, `_` and `.`
     -   any name with special characters or starts with a number is considered non-standard.

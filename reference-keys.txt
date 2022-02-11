@@ -67,7 +67,6 @@ assignments
 project-management
 github-repository
 data-import-tips
-references
 sac-application
 overview-1
 how-to-write-an-abstract

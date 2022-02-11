@@ -22,6 +22,8 @@ rmd_files: [
   "git-and-github.Rmd",
   "github-notifications.Rmd",
   
+  "references.Rmd"
+  
 ]
 
 

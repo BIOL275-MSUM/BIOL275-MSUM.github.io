@@ -117,5 +117,3 @@ Importing your data
 -   When you play with `skip` argument, sometimes you need to change the `col_names` argument too
 
 -   You can read only a set number of rows using the `n_max` argument
-
-## References

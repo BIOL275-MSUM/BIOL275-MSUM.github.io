@@ -1,7 +1,3 @@
----
-bibliography: references.bib
----
-
 # (PART) EDA Project {.unnumbered}
 
 # EDA Project

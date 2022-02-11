@@ -50,9 +50,13 @@ In order for you to choose your own dataset, it must be approved by the instruct
 
 ## Public health data sets
 
-Many data sets for the USA can be found at the [National Center for Health Statistics](https://www.cdc.gov/nchs/data_access/ftp_data.htm), which includes data sets, documentation, and questionnaires from NCHS data collection systems. Some of these are included in the table below, but there are many more than what is given here.
+Many data sets for the USA can be found at:
 
-For some datasets you download the entire dataset, for others you choose which spatial area (e.g. which state) and which time period (e.g. which years) you want to download. For some data sets, there may be R packages to help you access or process the data.
+-   [National Center for Health Statistics](https://www.cdc.gov/nchs/data_access/ftp_data.htm). Includes data sets, documentation, and questionnaires from NCHS data collection systems. Some of these are included in the table below, but there are many more than what is given here.
+
+Quite a bit of health data may be downloaded at:
+
+-   [CDC WONDER](https://wonder.cdc.gov/). You choose the dataset, which variables to include, and download it.
 
 | Dataset                                                                                                                                                                       | Description                                                                                                                                                        | Spatial Coverage | Spatial Resolution | Temporal Coverage | Temporal Resolution |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|--------------------|-------------------|---------------------|

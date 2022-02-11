@@ -50,17 +50,20 @@ In order for you to choose your own dataset, it must be approved by the instruct
 
 ## Public health data sets
 
+Many data sets for the USA can be found at the [National Center for Health Statistics](https://www.cdc.gov/nchs/data_access/ftp_data.htm), which includes data sets, documentation, and questionnaires from NCHS data collection systems. Some of these are included in the table below, but there are many more than what is given here.
+
+For some datasets you download the entire dataset, for others you choose which spatial area (e.g. which state) and which time period (e.g. which years) you want to download. For some data sets, there may be R packages to help you access or process the data.
+
+| Dataset                                                                                                                                                                       | Description                                                                                                                                                        | Spatial Coverage | Spatial Resolution | Temporal Coverage | Temporal Resolution |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|--------------------|-------------------|---------------------|
+| [Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data](https://chronicdata.cdc.gov/Behavioral-Risk-Factors/Behavioral-Risk-Factor-Surveillance-System-BRFSS-P/) | Prevalance data based on telephone surveys                                                                                                                         | USA              | State              | 2011-present      | Yearly              |
+| [County Health Rankings & Roadmaps](http://www.countyhealthrankings.org/)                                                                                                     | You can download data by state and year (see [Minnesota](http://www.countyhealthrankings.org/app/minnesota/2017/downloads), for example)                           | USA              | State, County      |                   | Yearly              |
+| [KIDS COUNT](http://datacenter.kidscount.org/)                                                                                                                                | A source of data on children and families and a project of the Annie E. Casey Foundation. You choose and download the variables necessary to answer your question. | USA              | State, County      |                   | Yearly              |
+
+Other pages that provide lists of available data sets:
+
 -   [Global Health Data Exchange](http://ghdx.healthdata.org/). A comprehensive catalog of data sets including surveys, censuses, vital statistics, and other health-related data.
-
--   [National Center for Health Statistics](https://www.cdc.gov/nchs/data_access/ftp_data.htm). Data sets, documentation, and questionnaires from NCHS data collection systems.
-
--   [County Health Rankings & Roadmaps](http://www.countyhealthrankings.org/). A source of annual county-level public health data. You can download data by state and year (see [Minnesota](http://www.countyhealthrankings.org/app/minnesota/2017/downloads), for example).
-
--   [KIDS COUNT](http://datacenter.kidscount.org/). A source of data on children and families and a project of the Annie E. Casey Foundation. Data is available by year and county/state. You would need to choose and download the variables necessary to answer your question. Topics include:
-
--   Other sources of data sets:
-
-    -   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
+-   [Minnesota Health Data Sources](http://www.countyhealthrankings.org/using-the-rankings-data/finding-more-data/minnesota), a list compiled by County Health Rankings & Roadmaps.
 
 ## Epidemiological data
 

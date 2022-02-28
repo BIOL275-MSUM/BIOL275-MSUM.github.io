@@ -7,7 +7,7 @@
 <title>3 Lab 3: Data subsetting | Quantitative Biology BIOL 275 at MSUM</title>
 <meta name="author" content="Chris Merkord">
 <meta name="description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
-<meta name="generator" content="bookdown 0.24.9 with bs4_book()">
+<meta name="generator" content="bookdown 0.24.10 with bs4_book()">
 <meta property="og:title" content="3 Lab 3: Data subsetting | Quantitative Biology BIOL 275 at MSUM">
 <meta property="og:type" content="book">
 <meta property="og:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
@@ -150,6 +150,14 @@
 <p>Copy this code to your <code>diamonds-example.R</code> script and run it t load the tidyverse package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>#&gt; ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+#&gt; ✔ tibble  3.1.6     ✔ dplyr   1.0.8
+#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
+<pre><code>#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div id="diamonds" class="section level3">
 <h3>
@@ -158,7 +166,7 @@
 <p>You will explore basic dplyr functions using the <code>diamonds</code> data frame, found in the ggplot package.</p>
 <p>This data frame contains data on almost 54,000 diamonds, including price and other attributes.</p>
 <p>First, take a look at <code>diamonds</code> by printing it in the console:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># print diamonds in the console</span>
 <span class="va">diamonds</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
@@ -172,7 +180,7 @@
 #&gt; 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Familiarize yourself with the variables in the data frame by looking at the help page for <code>diamonds</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span> <span class="co"># method 1</span>
 <span class="op">?</span><span class="op">?</span><span class="va">diamonds</span>     <span class="co"># method 2</span></code></pre></div>
 <p>You can also get there by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).</p>
@@ -266,7 +274,7 @@
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.</p>
 <p>For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1,889 × 10
 #&gt;   carat cut     color clarity depth table price     x     y     z
@@ -284,10 +292,10 @@
 </h3>
 <p>When you run code to filter a data frame, R returns a new data frame.</p>
 <p>If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator <code>&lt;-</code></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p>When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">big_diamonds</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1,889 × 10
 #&gt;   carat cut     color clarity depth table price     x     y     z
@@ -300,7 +308,7 @@
 #&gt; 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
 #&gt; # … with 1,883 more rows</code></pre>
 <p>Now, if you want to filter the <code>big_diamonds</code> object further, you can use it as the data object for another <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span> <span class="op">&gt;</span> <span class="fl">15000</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1,037 × 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
@@ -321,7 +329,7 @@
 <p>Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while <code>==</code> and <code>!=</code> can be used with any type of variable.</p>
 <p>There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes <code>"</code>.</p>
 <p>Here is an example of using the <code>==</code> operator with the <code>cut</code> variable, an ordered factor data type:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 21,551 × 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -335,10 +343,10 @@
 #&gt; # … with 21,545 more rows</code></pre>
 <p>Note that <code>"Ideal"</code> has double quotes around it. This is to tell R you want to find the literal text string “Ideal”. If you instead wrote <code>cut == Ideal</code> without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.</p>
 <p>Another common errors when you are starting out is to try to use <code>=</code> instead of <code>==</code>. When you do that, you will get a helpful error message:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, carat <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; Error: Problem with `filter()` input `..1`.
-#&gt; ✖ Input `..1` is named.
+<pre><code>#&gt; Error in `filter()`:
+#&gt; ! We detected a named input.
 #&gt; ℹ This usually means that you've used `=` instead of `==`.
 #&gt; ℹ Did you mean `carat == 2`?</code></pre>
 </div>
@@ -352,7 +360,7 @@
 <span class="header-section-number">3.4.3.1</span> And operator<a class="anchor" aria-label="anchor" href="#and-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>If you put three or more arguments in your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an “and” operation. Thus these two lines of code will return identical results:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span>, <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span></code></pre></div>
 </div>
@@ -361,7 +369,7 @@
 <span class="header-section-number">3.4.3.2</span> Or operator<a class="anchor" aria-label="anchor" href="#or-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>For “or” comparisons, you have to use the vertical bar <code>|</code> operator. For example, this code will return a table with diamonds having a color of D or E.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"D"</span> <span class="op">|</span> <span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 16,572 × 10
 #&gt;   carat cut     color clarity depth table price     x     y     z
@@ -374,7 +382,7 @@
 #&gt; 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
 #&gt; # … with 16,566 more rows</code></pre>
 <p>This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function and then use the “in” operator <code>%in%</code> like this:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="not-operator" class="section level4">
@@ -382,7 +390,7 @@
 <span class="header-section-number">3.4.3.3</span> Not operator<a class="anchor" aria-label="anchor" href="#not-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>“Not” comparisons can be used to pick rows that do not meet a given criteria. The <code>!</code> operator generally should be followed by parentheses <code>()</code> with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color <em>except</em> E:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="missing-values" class="section level4">
@@ -390,7 +398,7 @@
 <span class="header-section-number">3.4.3.4</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h4>
 <p>Missing values are a story for a later date! You don’t need to know this yet, but if you find yourself here looking for an answer, you can filter values without a “missing value” for color like this:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">color</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.</p>
 </div>
@@ -401,7 +409,7 @@
 </h3>
 <p>There are a variety of other functions you can incorporate into your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function to achieve specific results.</p>
 <p>For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply <code>==</code> or <code>!=</code>. Let’s say you want to find all diamonds with a clarity of <code>VS1</code>, <code>VS2</code>, <code>VVS1</code>, or <code>VVS2</code>. You could use the “or” operator, or the “in” operator. But what if you don’t even know all the possible clarity values and you just want everything that contains <code>"VS"</code> anywhere in the word. There is a string-based helper function <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> which looks for a particular string of text inside a text variable:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 29,150 × 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
@@ -416,7 +424,7 @@
 <p>The function itself is the comparison, there is no operator like <code>==</code> or <code>!=</code>.</p>
 <p>The name of the variable you want to look in goes <em>inside</em> the <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.</p>
 <p>If you want to pick only values of clarity that <em>start</em> or <em>end</em> with particular text, you can use the functions <code><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_starts()</a></code> or <code><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_ends()</a></code>. For example:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_starts</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"VS"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_ends</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
@@ -428,7 +436,7 @@
 <p>The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.</p>
 <p>The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.</p>
 <p>For example, to sort the <code>diamonds</code> data frame by cut:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -441,7 +449,7 @@
 #&gt; 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
 #&gt; # … with 53,934 more rows</code></pre>
 <p>You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -459,7 +467,7 @@
 <span class="header-section-number">3.5.1</span> Descending order<a class="anchor" aria-label="anchor" href="#descending-order"><i class="fas fa-link"></i></a>
 </h3>
 <p>To sort a variable in descending rather than ascending order, you can wrap the variable name in the <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   carat cut   color clarity depth table price     x     y     z
@@ -481,7 +489,7 @@
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function allows you to select which <em>columns</em> (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.</p>
 <p>The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.</p>
 <p>For example, say you wanted to focus on the variables carat, cut, and color, you could use:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 3
 #&gt;   carat cut       color
@@ -495,7 +503,7 @@
 #&gt; # … with 53,934 more rows</code></pre>
 <p>Technically, you can also select variables by their position, so <code>select(diamonds, carat, cut, color)</code> is equivalent to <code>select(diamonds, 1, 2, 3)</code></p>
 <p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> can also be used to rearrange the order of columns:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span>, <span class="va">cut</span>, <span class="va">carat</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 3
 #&gt;   color cut       carat
@@ -508,7 +516,7 @@
 #&gt; 6 J     Very Good  0.24
 #&gt; # … with 53,934 more rows</code></pre>
 <p>There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon <code>:</code> operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span><span class="op">:</span><span class="va">price</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 7
 #&gt;   carat cut       color clarity depth table price
@@ -525,7 +533,7 @@
 <span class="header-section-number">3.6.1</span> Removing variables<a class="anchor" aria-label="anchor" href="#removing-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometimes its easier to say which variables you <em>don’t</em> want to keep rather than which ones you <em>do</em>. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables <em>except</em> the one you named. For example, to return every row except table, you could do:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 9
 #&gt;   carat cut       color clarity depth price     x     y     z
@@ -538,7 +546,7 @@
 #&gt; 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
 #&gt; # … with 53,934 more rows</code></pre>
 <p>To remove several variables, you can prepend each one with a <code>-</code>. You can even remove a range of values, but the syntax is quirky. You have to put the <code>-</code> before each variable name. For example, to remove x, y, and z variables:</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">x</span><span class="op">:</span><span class="op">-</span><span class="va">y</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="helper-functions" class="section level3">
@@ -554,7 +562,7 @@
 <li><p><code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.</p></li>
 </ul>
 <p>For example, the following code would move table and price to the front and leave everything else at the end:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">ends_with</a></span><span class="op">(</span><span class="st">"e"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   table price carat cut       color clarity depth     x     y     z
@@ -590,19 +598,19 @@
 <span class="header-section-number">3.7.1</span> Create intermediate objects<a class="anchor" aria-label="anchor" href="#create-intermediate-objects"><i class="fas fa-link"></i></a>
 </h3>
 <p>One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator <code>&lt;-</code>. In our example, this might look something like:</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">sorted_big_diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">big_diamonds</span>, <span class="va">price</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sorted_big_diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <p>One drawback to this approach is that it leaves two intermediate objects cluttering up your environment, neither of which you need. You could either leave them, or remove them using <code><a href="https://rdrr.io/r/base/rm.html">rm()</a></code>.</p>
 <p>Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">price</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <p>The code is a lot smaller, but it is less understandable at a glance, and you still have intermediate objects left behind.</p>
 <p>You might be tempted to just overwrite the existing diamonds dataset with the new one:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">diamonds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">price</span><span class="op">)</span>
 <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -614,7 +622,7 @@
 <span class="header-section-number">3.7.2</span> Nest functions<a class="anchor" aria-label="anchor" href="#nest-functions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Another option is to nest each function inside the other:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>, <span class="va">price</span><span class="op">)</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <p>It works, but it is hard to read and interpret at a glance.</p>
 </div>
@@ -624,7 +632,7 @@
 </h3>
 <p>A more elegant solution is to use the special pipe operator <code>%&gt;%</code> introduced in the magrittr package. Using the pipe, <code>x %&gt;% f()</code> is equivalent to <code>f(x)</code>. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.</p>
 <p>Using this option, we could do:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
@@ -641,7 +649,7 @@
 <p>For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.</p>
 <p>Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.</p>
 <p>Begin by loading the tidyverse and palmerpenguins package in your R script:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></code></pre></div>
 <div id="questions" class="section level3">
@@ -746,7 +754,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-02-11.</p>
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-02-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

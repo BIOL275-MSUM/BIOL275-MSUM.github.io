@@ -84,6 +84,7 @@ species-occurrence-data
 environmental-data
 public-health-data-sets
 epidemiological-data
+covid-19-data
 geospatial-data
 appears
 other-geospatial-data

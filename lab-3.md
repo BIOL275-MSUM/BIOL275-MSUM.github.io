@@ -76,6 +76,23 @@ Copy this code to your `diamonds-example.R` script and run it t load the tidyver
 library(tidyverse)
 ```
 
+```
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+```
+
+```
+#> ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+#> ✔ tibble  3.1.6     ✔ dplyr   1.0.8
+#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+#> ✔ readr   2.1.2     ✔ forcats 0.5.1
+```
+
+```
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
+```
+
 ### `diamonds`
 
 You will explore basic dplyr functions using the `diamonds` data frame, found in the ggplot package.
@@ -258,8 +275,8 @@ filter(diamonds, carat = 2)
 ```
 
 ```
-#> Error: Problem with `filter()` input `..1`.
-#> ✖ Input `..1` is named.
+#> Error in `filter()`:
+#> ! We detected a named input.
 #> ℹ This usually means that you've used `=` instead of `==`.
 #> ℹ Did you mean `carat == 2`?
 ```

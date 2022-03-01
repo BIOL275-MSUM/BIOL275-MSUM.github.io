@@ -30,6 +30,23 @@ There are many examples of exploratory data analyses available online. If you wa
 
     -   Is there a relation between BMI and an 'age group' and can we infere a relation (association) between the BMI of age groups and their nutrition behavior as well as pysical activity pattern?
 
+## Timeline
+
+You will receive several weeks of in-class time during lab to work on your EDA Project.
+
+-   During week 6, you will choose your project. There are at least three approaches to this:
+
+    1.  You select a data set and proposing some questions to explore within it,
+    2.  You select an interesting topic and look for relevant data sets you can bring to bear on the subject
+    3.  You provide your own question and data set, for example from a research project you are working on, or
+    4.  Some combination of these.
+
+-   During week 7 you will create a GitHub repository for your project. Your first addition will be a README file containing your project title and abstract.
+
+-   During week 8 your instructor will provide feedback on the abstract, which you will incorporate into a revised abstract and then [submit an application to the Student Academic Conference](sac-application.html).
+
+-   In subsequent weeks, we will take *some* time to work on the project, but you are also expected to work on it outside of class.
+
 ## Choose a project
 
 ### Data sets
@@ -56,25 +73,47 @@ Your general question will provide the overall direction of your project, while 
 
 You may not end up including all specific questions in your final EDA Project Poster, depending on how interesting or applicable the results were for each one.
 
-## Assignments
+## Create a repository for your project
 
-1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by the assignment deadline posted on D2L. The hard deadline for submission to the SAC is listed on the SAC website.
+One member of your group should [create a new repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) on GitHub. Name the repository using your last names, the year, and "EDA Project", for example: "MacArthur and Wilson 2022 EDA Project". While creating the project, choose to make it public and initialize it with a README file.
 
-Other assignments will be added here and on D2L throughout the semester. Your two main deliverables will be a GitHub repository containing a version of your project poster in markdown format, and a physical poster you will present at the Student Academic Conference in April.
+Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this\*.
 
-## Project Management
 
-### GitHub repository
+```md
+# MacArthur and Wilson 2022 EDA Project
 
-Your EDA project will have its own GitHub repository which will include:
+## An equilibrium theory of insular zoogeography*
 
-1.  Your data analysis R scripts
+by Robert MacArthur and E. O. Wilson
 
-2.  README.Rmd containing the text and code to create your final poster
+An exploratory data analysis for BIOL 275 Quantitative Biology at Minnesota State University Moorhead. Instructor: Chris Merkord
 
-3.  README.md containing your final "poster". This document is what you will present at the SAC
+### Abstract
 
-### Data Import Tips
+A graphical equilibrium model, balancing immigration and extinction rates of species, has been developed which appears fully consistent with the fauna-area curves and the distance effect seen in land and freshwater bird faunas of the Indo-Australian islands. The establishment of the equilibrium condition allows the development of a more precise zoogeographic theory than hitherto possible. 
+
+One new and non-obvious prediction can be made from the model which is immediately verifiable from existing data, that the number of species increases with area more rapidly on far islands than on near ones. Similarly, the number of species on large islands decreases with distance faster than does the number of species on small islands.
+
+As groups of islands pass from the unsaturated to saturated conditions, the variance-to-mean ratio should change from unity to about one-half. When the faunal buildup reaches 90% of the equilibrium number, the extinction rate in species/year should equal 2.303 times the variance divided by the time (in years) required to reach the 90% level. The implications of this relation are discussed with reference to the Krakatau faunas, where the buildup rate is known.
+
+A "radiation zone," in which the rate of intra-archipelagic exchange of autochthonous species approaches or exceeds extraarchipelagic immigration toward the outer limits of the taxon's range, is predicted as still another consequence of the equilibrium condition. This condition seems to be fulfilled by conventional information but cannot be rigorously tested with the existing data.
+
+Where faunas are at or near equilibrium, it should be possible to devise indirect estimates of the actual immigration and extinction rates, as well as of the times required to reach equilibrium. It should also be possible to estimate the mean dispersal distance of propagules overseas from the zoogeographic data. Mathematical models have been constructed to these ends and certain applications suggested.
+
+The main purpose of the paper is to express the criteria and implications of the equilibrium condition, without extending them for the present beyond the Indo-Australian bird faunas.
+```
+
+\*Note: this is not a real abstract, it is meant only as an example for how to format your abstract.
+
+Your EDA project will have its own GitHub repository which will eventually include:
+
+1.  An R project file (.Rproj) and .gitignore file
+2.  Your data analysis R scripts
+3.  README.Rmd containing the text and code to create your final poster
+4.  README.md containing your final "poster". This document will contain the same text, tables, graphs, and other figures as the poster you present at the Student Academic Conference.
+
+## Data Import Tips
 
 This info will be useful when you get to the stage of importing data (after your SAC abstract has been submitted).
 
@@ -117,3 +156,9 @@ Importing your data
 -   When you play with `skip` argument, sometimes you need to change the `col_names` argument too
 
 -   You can read only a set number of rows using the `n_max` argument
+
+## Assignments
+
+1.  [SAC Application](sac-application.html) - Submit your application to the SAC website by the assignment deadline posted on D2L. The hard deadline for submission to the SAC is listed on the SAC website.
+
+Other assignments will be added here and on D2L throughout the semester. Your two main deliverables will be a GitHub repository containing a version of your project poster in markdown format, and a physical poster you will present at the Student Academic Conference in April.

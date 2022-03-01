@@ -60,13 +60,13 @@ eda-project
 overview
 purpose
 examples
+timeline
 choose-a-project
 data-sets
 question
-assignments
-project-management
-github-repository
+create-a-repository-for-your-project
 data-import-tips
+assignments
 sac-application
 overview-1
 how-to-write-an-abstract

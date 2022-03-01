@@ -58,14 +58,14 @@ further-reading-1
 lab-5-frequency-data
 objectives-3
 getting-started-1
-proportional-probability-model
+example-1-proportional-probability-model
 read-the-data
 make-a-bar-chart
 fix-the-factor-levels
 make-a-better-bar-chart
 create-a-frequency-table
 chi2-goodness-of-fit-test
-poisson-probability-model
+example-2-poisson-probability-model
 read-the-data-1
 bar-chart
 frequency-table

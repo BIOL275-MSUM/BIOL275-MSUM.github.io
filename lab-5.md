@@ -9,16 +9,22 @@ In this lab, you will learn to:
 
 ## Getting started
 
-Go to D2L and follow the link to claim your Lab 6 repository from GitHub Classroom.
+1.  Go to D2L and follow the link to claim your Lab 5 repository from GitHub Classroom.
 
-Create four scripts:
+2.  Clone the repository to your computer using RStudio
 
--   **proportional.R** (for the first example problem)
--   **poisson.R** (for the second example problem)
--   **cats.R** (for the first assignment problem)
--   **truffles.R** (for the second assignment problem)
+3.  Install the tidyverse package
 
-## Proportional probability model
+4.  Create four scripts:
+
+    a.  **proportional.R** (for the first example problem)
+    b.  **poisson.R** (for the second example problem)
+    c.  **cats.R** (for the first assignment problem)
+    d.  **truffles.R** (for the second assignment problem)
+
+5.  Work your way through the two examples in the tutorial below.
+
+## Example 1: Proportional probability model
 
 Chapter 8, Section 2 of Whitlock & Schulter (2020) introduced you to the idea of the proportional probability model using an example about the number of births on days of the week.
 
@@ -236,9 +242,11 @@ Thus, your interpretation would be:
 
 If you were writing a paper in APA format, you would write:
 
-> The proportion of births differed by day of the week, $\chi^2(6,N=50)=15.057$ , $p=0.020$.
+> The proportion of births differed by day of the week, $\chi^2(6,N=350)=15.057$ , $p=0.020$.
 
-## Poisson probability model
+The number 350 comes from the sample size of the data set you used, and the 6 refers to the degrees of freedom.
+
+## Example 2: Poisson probability model
 
 Chapter 8, Section 5 of Whitlock & Schluter (2022) contained an example of using a $\chi^2$ goodness-of-fit test to tell whether extinctions occur randomly in the geologic record. The null distribution in this case was that the number of extinctions in 76 blocks of time showed a Poisson distribution.
 

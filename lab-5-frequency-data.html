@@ -86,9 +86,13 @@
 <h2>
 <span class="header-section-number">5.2</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Go to D2L and follow the link to claim your Lab 6 repository from GitHub Classroom.</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to D2L and follow the link to claim your Lab 5 repository from GitHub Classroom.</p></li>
+<li><p>Clone the repository to your computer using RStudio</p></li>
+<li><p>Install the tidyverse package</p></li>
+<li>
 <p>Create four scripts:</p>
-<ul>
+<ol style="list-style-type: lower-alpha">
 <li>
 <strong>proportional.R</strong> (for the first example problem)</li>
 <li>
@@ -97,11 +101,14 @@
 <strong>cats.R</strong> (for the first assignment problem)</li>
 <li>
 <strong>truffles.R</strong> (for the second assignment problem)</li>
-</ul>
+</ol>
+</li>
+<li><p>Work your way through the two examples in the tutorial below.</p></li>
+</ol>
 </div>
-<div id="proportional-probability-model" class="section level2">
+<div id="example-1-proportional-probability-model" class="section level2">
 <h2>
-<span class="header-section-number">5.3</span> Proportional probability model<a class="anchor" aria-label="anchor" href="#proportional-probability-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Example 1: Proportional probability model<a class="anchor" aria-label="anchor" href="#example-1-proportional-probability-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Chapter 8, Section 2 of Whitlock &amp; Schulter (2020) introduced you to the idea of the proportional probability model using an example about the number of births on days of the week.</p>
 <p>Below, you will see how the question can be worked in R using the tidyverse functions you learned in previous labs. The authors of the textbook also provide <a href="https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html">code using mostly base R functions</a>, but for this lab you should use tidyverse functions.</p>
@@ -248,13 +255,14 @@
 </blockquote>
 <p>If you were writing a paper in APA format, you would write:</p>
 <blockquote>
-<p>The proportion of births differed by day of the week, <span class="math inline">\(\chi^2(6,N=50)=15.057\)</span> , <span class="math inline">\(p=0.020\)</span>.</p>
+<p>The proportion of births differed by day of the week, <span class="math inline">\(\chi^2(6,N=350)=15.057\)</span> , <span class="math inline">\(p=0.020\)</span>.</p>
 </blockquote>
+<p>The number 350 comes from the sample size of the data set you used, and the 6 refers to the degrees of freedom.</p>
 </div>
 </div>
-<div id="poisson-probability-model" class="section level2">
+<div id="example-2-poisson-probability-model" class="section level2">
 <h2>
-<span class="header-section-number">5.4</span> Poisson probability model<a class="anchor" aria-label="anchor" href="#poisson-probability-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Example 2: Poisson probability model<a class="anchor" aria-label="anchor" href="#example-2-poisson-probability-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Chapter 8, Section 5 of Whitlock &amp; Schluter (2022) contained an example of using a <span class="math inline">\(\chi^2\)</span> goodness-of-fit test to tell whether extinctions occur randomly in the geologic record. The null distribution in this case was that the number of extinctions in 76 blocks of time showed a Poisson distribution.</p>
 <p>As with the previous example, Whitlock &amp; Schluter provide code to perform this analysis, using base R functions, <a href="https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html">on the book website</a>.</p>
@@ -622,7 +630,7 @@
 <li><a class="nav-link" href="#objectives-3"><span class="header-section-number">5.1</span> Objectives</a></li>
 <li><a class="nav-link" href="#getting-started-1"><span class="header-section-number">5.2</span> Getting started</a></li>
 <li>
-<a class="nav-link" href="#proportional-probability-model"><span class="header-section-number">5.3</span> Proportional probability model</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#example-1-proportional-probability-model"><span class="header-section-number">5.3</span> Example 1: Proportional probability model</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#read-the-data"><span class="header-section-number">5.3.1</span> Read the data</a></li>
 <li><a class="nav-link" href="#make-a-bar-chart"><span class="header-section-number">5.3.2</span> Make a bar chart</a></li>
 <li><a class="nav-link" href="#fix-the-factor-levels"><span class="header-section-number">5.3.3</span> Fix the factor levels</a></li>
@@ -632,7 +640,7 @@
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#poisson-probability-model"><span class="header-section-number">5.4</span> Poisson probability model</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#example-2-poisson-probability-model"><span class="header-section-number">5.4</span> Example 2: Poisson probability model</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#read-the-data-1"><span class="header-section-number">5.4.1</span> Read the data</a></li>
 <li><a class="nav-link" href="#bar-chart"><span class="header-section-number">5.4.2</span> Bar Chart</a></li>
 <li><a class="nav-link" href="#frequency-table"><span class="header-section-number">5.4.3</span> Frequency table</a></li>

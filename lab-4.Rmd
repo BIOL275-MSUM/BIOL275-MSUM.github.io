@@ -415,12 +415,6 @@ When you have completed the questions listed above, save your files, commit your
 
 Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.
 
-## Submission
-
-When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
-
-Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.
-
 ## Further reading
 
 Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on mutating, grouping, and summarizing in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).

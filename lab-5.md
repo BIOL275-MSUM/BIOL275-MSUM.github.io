@@ -1,4 +1,4 @@
-# Lab 5: Fitting probability models to frequency data
+# Lab 5: Frequency data
 
 ## Objectives
 

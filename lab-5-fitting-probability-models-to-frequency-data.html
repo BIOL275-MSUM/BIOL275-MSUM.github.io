@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 Lab 5: Fitting probability models to frequency data | Quantitative Biology BIOL 275 at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="5.1 Objectives In this lab, you will learn to: Test whether frequency data fits a proportional probability model Test whether frequency data fits a Poisson probability model  5.2 Getting started...">
+<meta name="generator" content="bookdown 0.24.10 with bs4_book()">
+<meta property="og:title" content="5 Lab 5: Fitting probability models to frequency data | Quantitative Biology BIOL 275 at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="5.1 Objectives In this lab, you will learn to: Test whether frequency data fits a proportional probability model Test whether frequency data fits a Poisson probability model  5.2 Getting started...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 Lab 5: Fitting probability models to frequency data | Quantitative Biology BIOL 275 at MSUM">
+<meta name="twitter:description" content="5.1 Objectives In this lab, you will learn to: Test whether frequency data fits a proportional probability model Test whether frequency data fits a Poisson probability model  5.2 Getting started...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Quantitative Biology BIOL 275 at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="lab-1.html"><span class="header-section-number">1</span> Lab 1</a></li>
+<li><a class="" href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></li>
+<li><a class="" href="lab-3-data-subsetting.html"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></li>
+<li><a class="" href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></li>
+<li><a class="active" href="lab-5-fitting-probability-models-to-frequency-data.html"><span class="header-section-number">5</span> Lab 5: Fitting probability models to frequency data</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">6</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">7</span> SAC Application</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">8</span> Data sets</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="laptop-setup.html"><span class="header-section-number">9</span> Laptop Setup</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">11</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">12</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">13</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">14</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">16</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">17</span> GitHub Notifications</a></li>
+<li><a class="" href="references.html"><span class="header-section-number">18</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-5-fitting-probability-models-to-frequency-data" class="section level1">
+<h1>
+<span class="header-section-number">5</span> Lab 5: Fitting probability models to frequency data<a class="anchor" aria-label="anchor" href="#lab-5-fitting-probability-models-to-frequency-data"><i class="fas fa-link"></i></a>
+</h1>
+<div id="objectives-3" class="section level2">
+<h2>
+<span class="header-section-number">5.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lab, you will learn to:</p>
+<ol style="list-style-type: decimal">
+<li>Test whether frequency data fits a proportional probability model</li>
+<li>Test whether frequency data fits a Poisson probability model</li>
+</ol>
+</div>
+<div id="getting-started-1" class="section level2">
+<h2>
+<span class="header-section-number">5.2</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Go to D2L and follow the link to claim your Lab 6 repository from GitHub Classroom.</p>
+<p>Create four scripts:</p>
+<ul>
+<li>
+<strong>proportional.R</strong> (for the first example problem)</li>
+<li>
+<strong>poisson.R</strong> (for the second example problem)</li>
+<li>
+<strong>cats.R</strong> (for the first assignment problem)</li>
+<li>
+<strong>truffles.R</strong> (for the second assignment problem)</li>
+</ul>
+</div>
+<div id="proportional-probability-model" class="section level2">
+<h2>
+<span class="header-section-number">5.3</span> Proportional probability model<a class="anchor" aria-label="anchor" href="#proportional-probability-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>Chapter 8, Section 2 of Whitlock &amp; Schulter (2020) introduced you to the idea of the proportional probability model using an example about the number of births on days of the week.</p>
+<p>Below, you will see how the question can be worked in R using the tidyverse functions you learned in previous labs. The authors of the textbook also provide <a href="https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html">code using mostly base R functions</a>, but for this lab you should use tidyverse functions.</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<div id="read-the-data" class="section level3">
+<h3>
+<span class="header-section-number">5.3.1</span> Read the data<a class="anchor" aria-label="anchor" href="#read-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>First read the data using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> from the readr package (as opposed to the base function <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>):</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"http://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08e1DayOfBirth.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Rows: 350 Columns: 1
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr (1): day
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_data</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 350 × 1
+#&gt;   day   
+#&gt;   &lt;chr&gt; 
+#&gt; 1 Sunday
+#&gt; 2 Sunday
+#&gt; 3 Sunday
+#&gt; 4 Sunday
+#&gt; 5 Sunday
+#&gt; 6 Sunday
+#&gt; # … with 344 more rows</code></pre>
+<p>The data set is a random sample of babies born in 1999 in the United States. As you can see, the data set contains 350 rows, each representing a baby. The only column is <code>day</code>, a categorical variable which contains the day of the week on which the baby was born.</p>
+</div>
+<div id="make-a-bar-chart" class="section level3">
+<h3>
+<span class="header-section-number">5.3.2</span> Make a bar chart<a class="anchor" aria-label="anchor" href="#make-a-bar-chart"><i class="fas fa-link"></i></a>
+</h3>
+<p>As with most data sets, the first order of business is to explore the data. We can start by looking at the distribution of the <code>day</code> variable using a bar chart:</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">birth_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">day</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/birth-day-bar-chart-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="fix-the-factor-levels" class="section level3">
+<h3>
+<span class="header-section-number">5.3.3</span> Fix the factor levels<a class="anchor" aria-label="anchor" href="#fix-the-factor-levels"><i class="fas fa-link"></i></a>
+</h3>
+<p>When we read the data, R didn’t know what kind of variable <code>day</code> was, so it played it conservatively and treated it as character (<code>chr</code>) data, which has no inherent order or enumerated list of possible values. When we plot the variable, ggplot simply puts them in alphabetical order.</p>
+<p>What we need to do is change the <code>day</code> variable so that it is a factor (<code>fct</code>) data type with enumerated values in a particular order. The first step is to create a vector with the days of the week in the correct order:</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">days_of_week</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>, 
+                  <span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span><span class="op">)</span>
+<span class="va">days_of_week</span></code></pre></div>
+<pre><code>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
+#&gt; [7] "Sunday"</code></pre>
+<p>Then we can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to create a new variable using <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>, and use a little tidyverse magic from the forcats and stringr packages to shorten the day names for easier viewing. Let’s call the new variable <code>day_fct</code> and <code>day_short</code>.</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_data</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    <span class="va">birth_data</span>, 
+    day_fct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">day</span>, levels <span class="op">=</span> <span class="va">days_of_week</span><span class="op">)</span>,
+    day_short <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relabel.html">fct_relabel</a></span><span class="op">(</span><span class="va">day_fct</span>, <span class="va">str_sub</span>, start <span class="op">=</span> <span class="fl">1</span>, end <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="va">birth_data</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 350 × 3
+#&gt;   day    day_fct day_short
+#&gt;   &lt;chr&gt;  &lt;fct&gt;   &lt;fct&gt;    
+#&gt; 1 Sunday Sunday  Sun      
+#&gt; 2 Sunday Sunday  Sun      
+#&gt; 3 Sunday Sunday  Sun      
+#&gt; 4 Sunday Sunday  Sun      
+#&gt; 5 Sunday Sunday  Sun      
+#&gt; 6 Sunday Sunday  Sun      
+#&gt; # … with 344 more rows</code></pre>
+<p>Notice the data types listed under the variable names. When you have a factor variable in your data set, you can find out what the levels are using the levels function.</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">birth_data</span><span class="op">$</span><span class="va">day_fct</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
+#&gt; [7] "Sunday"</code></pre>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">birth_data</span><span class="op">$</span><span class="va">day_short</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"</code></pre>
+<p>Changing character variables to factors is common in R when you are working with categorical data, so you should become familiar with the <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function. To learn more about dealing with factors in R, see the chapter <a href="https://r4ds.had.co.nz/factors.html">Factors</a> in <em>R for Data Science</em>. In the example above, abbreviating the week names was fun, but it’s not something you are expected to learn and apply on your own.</p>
+</div>
+<div id="make-a-better-bar-chart" class="section level3">
+<h3>
+<span class="header-section-number">5.3.4</span> Make a better bar chart<a class="anchor" aria-label="anchor" href="#make-a-better-bar-chart"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now we’re ready to plot the data again. All we need to do is swap <code>x = day</code> with <code>x = day_short</code>.</p>
+<p>This time, let’s also change the y-axis label to “Frequency” and remove the x-axis label altogether as it’s pretty obvious what it represents. To give it a little spice, we can set the fill color to MSUM red <code>"#a6192e"</code>.</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">birth_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">day_short</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#a6192e"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Frequency"</span>, x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/birth-day-bar-chart-2-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="create-a-frequency-table" class="section level3">
+<h3>
+<span class="header-section-number">5.3.5</span> Create a frequency table<a class="anchor" aria-label="anchor" href="#create-a-frequency-table"><i class="fas fa-link"></i></a>
+</h3>
+<p>The other common method of visualizing frequency data for a categorical variable is with a frequency table. This is quite easy with the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function in the dplyr package.</p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_freq_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">birth_data</span>, <span class="va">day_fct</span><span class="op">)</span>
+<span class="va">birth_freq_table</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 7 × 2
+#&gt;   day_fct       n
+#&gt;   &lt;fct&gt;     &lt;int&gt;
+#&gt; 1 Monday       41
+#&gt; 2 Tuesday      63
+#&gt; 3 Wednesday    63
+#&gt; 4 Thursday     47
+#&gt; 5 Friday       56
+#&gt; 6 Saturday     47
+#&gt; # … with 1 more row</code></pre>
+</div>
+<div id="chi2-goodness-of-fit-test" class="section level3">
+<h3>
+<span class="header-section-number">5.3.6</span> <span class="math inline">\(\chi^2\)</span> goodness-of-fit test<a class="anchor" aria-label="anchor" href="#chi2-goodness-of-fit-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>The next step is to conduct a <span class="math inline">\(\chi^2\)</span> goodness-of-fit test, which can be done with the <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> function. You can see how Whitlock &amp; Schluter answer the question using base R functions <a href="https://whitlockschluter.zoology.ubc.ca/r-code/rcode08">on the book website</a>. Luckily, there is always a tidyverse way to do things. With some inspiration from <a href="http://ritsokiguess.site/docs/2018/04/12/tidy-chi-squared-testing/">Tidy chi-square testing</a> by Ken on the <em>R, it’s okay I guess</em> blog, here is one way to do it.</p>
+<p>First, you need the observed frequencies:</p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_freqs</span> <span class="op">&lt;-</span> <span class="va">birth_freq_table</span><span class="op">$</span><span class="va">n</span>
+<span class="va">birth_freqs</span></code></pre></div>
+<pre><code>#&gt; [1] 41 63 63 47 56 47 33</code></pre>
+<p>Second, you need a vector of expected probabilities, which if you will recall from the example is:</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">birth_probs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">52</span>, <span class="fl">52</span>, <span class="fl">52</span>, <span class="fl">53</span>, <span class="fl">52</span>, <span class="fl">52</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span>
+<span class="va">birth_probs</span></code></pre></div>
+<pre><code>#&gt; [1] 0.1424658 0.1424658 0.1424658 0.1424658 0.1452055 0.1424658 0.1424658</code></pre>
+<p>Next, you conduct the <span class="math inline">\(\chi^2\)</span> goodness-of-fit test:</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">birth_freqs</span>, p <span class="op">=</span> <span class="va">birth_probs</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt;  Chi-squared test for given probabilities
+#&gt; 
+#&gt; data:  birth_freqs
+#&gt; X-squared = 15.057, df = 6, p-value = 0.01982</code></pre>
+<p>The final step is to interpret your results. If you were conducting this analysis by calculator, you might have calculated the test statistic yourself and looked up a critical value from a statistical table to compare it to.</p>
+<p>In R, you can get the exact <span class="math inline">\(P\)</span>-value quite easily, so all you need to do is compare the <span class="math inline">\(P\)</span>-value to the <span class="math inline">\(\alpha\)</span>-level of your choice, which in this case will be 0.05.</p>
+<p>Thus, your interpretation would be:</p>
+<blockquote>
+<p>Because the <span class="math inline">\(P\)</span>-value of 0.02 is less than the <span class="math inline">\(\alpha\)</span>-level of 0.05, I reject the null hypothesis. Therefore, births do not fit a proportional model.</p>
+</blockquote>
+<p>If you were writing a paper in APA format, you would write:</p>
+<blockquote>
+<p>The proportion of births differed by day of the week, <span class="math inline">\(\chi^2(6,N=50)=15.057\)</span> , <span class="math inline">\(p=0.020\)</span>.</p>
+</blockquote>
+</div>
+</div>
+<div id="poisson-probability-model" class="section level2">
+<h2>
+<span class="header-section-number">5.4</span> Poisson probability model<a class="anchor" aria-label="anchor" href="#poisson-probability-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>Chapter 8, Section 5 of Whitlock &amp; Schluter (2022) contained an example of using a <span class="math inline">\(\chi^2\)</span> goodness-of-fit test to tell whether extinctions occur randomly in the geologic record. The null distribution in this case was that the number of extinctions in 76 blocks of time showed a Poisson distribution.</p>
+<p>As with the previous example, Whitlock &amp; Schluter provide code to perform this analysis, using base R functions, <a href="https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html">on the book website</a>.</p>
+<p>Here you can see how to approach this question in R using tidyverse functions.</p>
+<div id="read-the-data-1" class="section level3">
+<h3>
+<span class="header-section-number">5.4.1</span> Read the data<a class="anchor" aria-label="anchor" href="#read-the-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extinct_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"http://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08e6MassExtinctions.csv"</span><span class="op">)</span>
+<span class="va">extinct_data</span></code></pre></div>
+<p>There are 76 time periods. The variable <code>numberOfExtinctions</code> gives the number of extinctions in that time period.</p>
+<p>Before we go on, let’s rename that unruly variable <code>numberOfExtinctions</code> so it matches our usual snake_case style:</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extinct_data</span> <span class="op">&lt;-</span> 
+  <span class="va">extinct_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>n_extinct <span class="op">=</span> <span class="va">numberOfExtinctions</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="bar-chart" class="section level3">
+<h3>
+<span class="header-section-number">5.4.2</span> Bar Chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
+</h3>
+<p>Starting with the raw data, we can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> to visualize the distribution of the <code>n_extinct</code> variable as a bar chart.</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">extinct_data</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n_extinct</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#a6192e"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Frequency"</span>, x <span class="op">=</span> <span class="st">"Number of Extinctions"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/extinct-bar-chart-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="frequency-table" class="section level3">
+<h3>
+<span class="header-section-number">5.4.3</span> Frequency table<a class="anchor" aria-label="anchor" href="#frequency-table"><i class="fas fa-link"></i></a>
+</h3>
+<p>Create a frequency table using <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code>. This time, use the print function to force R to print all rows, not just the first 10 (the default for tibbles). <code>Inf</code> means infinity, so <code>n = Inf</code> means print all the rows.</p>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extinct_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">n_extinct</span>, name <span class="op">=</span> <span class="st">"observed_freq"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 14 × 2
+#&gt;    n_extinct observed_freq
+#&gt;        &lt;dbl&gt;         &lt;int&gt;
+#&gt;  1         1            13
+#&gt;  2         2            15
+#&gt;  3         3            16
+#&gt;  4         4             7
+#&gt;  5         5            10
+#&gt;  6         6             4
+#&gt;  7         7             2
+#&gt;  8         8             1
+#&gt;  9         9             2
+#&gt; 10        10             1
+#&gt; 11        11             1
+#&gt; 12        14             1
+#&gt; 13        16             2
+#&gt; 14        20             1</code></pre>
+<p>Note that some numbers of extinctions are missing because no block of time had that number of extinctions. These include 0, 12, 13, 15, 17, 18, 19, and anything above 20.</p>
+<p>Before we can continue, we should add these missing categories, which is fairly easy with the <code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> function from tidyr.</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extinct_freq_table</span> <span class="op">&lt;-</span>
+  <span class="va">extinct_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">n_extinct</span>, name <span class="op">=</span> <span class="st">"observed_freq"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span><span class="op">(</span>
+    n_extinct <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">20</span>, 
+    fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>observed_freq <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 2
+#&gt;    n_extinct observed_freq
+#&gt;        &lt;dbl&gt;         &lt;int&gt;
+#&gt;  1         0             0
+#&gt;  2         1            13
+#&gt;  3         2            15
+#&gt;  4         3            16
+#&gt;  5         4             7
+#&gt;  6         5            10
+#&gt;  7         6             4
+#&gt;  8         7             2
+#&gt;  9         8             1
+#&gt; 10         9             2
+#&gt; 11        10             1
+#&gt; 12        11             1
+#&gt; 13        12             0
+#&gt; 14        13             0
+#&gt; 15        14             1
+#&gt; 16        15             0
+#&gt; 17        16             2
+#&gt; 18        17             0
+#&gt; 19        18             0
+#&gt; 20        19             0
+#&gt; 21        20             1</code></pre>
+<p><code><a href="https://tidyr.tidyverse.org/reference/complete.html">complete()</a></code> needs two arguments here. First, a vector of numbers containing all possible values of <code>n_extinct</code>. We could have done this with the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, for example <code>c(0, 1, …, 19, 20)</code>, but <code>0:20</code> is a shorthand for this.</p>
+<p>The bit at the end, <code>fill = list(observed_freq = 0)</code>, tells R to put a zero for <code>observed_freq</code> whenever it adds a new row.</p>
+</div>
+<div id="estimate-the-mean" class="section level3">
+<h3>
+<span class="header-section-number">5.4.4</span> Estimate the mean<a class="anchor" aria-label="anchor" href="#estimate-the-mean"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are a couple of ways to accomplish this:</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># tidyverse method</span>
+<span class="va">mean_extinct</span> <span class="op">&lt;-</span>
+  <span class="va">extinct_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n_extinct</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span>
+<span class="va">mean_extinct</span></code></pre></div>
+<pre><code>#&gt; [1] 4.210526</code></pre>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># dollar sign method</span>
+<span class="va">mean_extinct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extinct_data</span><span class="op">$</span><span class="va">n_extinct</span><span class="op">)</span>
+<span class="va">mean_extinct</span></code></pre></div>
+<pre><code>#&gt; [1] 4.210526</code></pre>
+</div>
+<div id="expected-frequencies" class="section level3">
+<h3>
+<span class="header-section-number">5.4.5</span> Expected frequencies<a class="anchor" aria-label="anchor" href="#expected-frequencies"><i class="fas fa-link"></i></a>
+</h3>
+<p>Calculate the expected frequencies under the null distribution, a Poisson distribution, using the estimated mean. Here we will do this for the categories we have, up to 20 extinctions, but remember there is a non-zero probability of having 21 extinctions, or 22, or 23, etc. We will calculate those later.</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">expected_proportions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">20</span>, lambda <span class="op">=</span> <span class="va">mean_extinct</span><span class="op">)</span>
+<span class="va">expected_proportions</span></code></pre></div>
+<pre><code>#&gt;  [1] 1.483856e-02 6.247813e-02 1.315329e-01 1.846076e-01 1.943238e-01
+#&gt;  [6] 1.636411e-01 1.148358e-01 6.907419e-02 3.635484e-02 1.700811e-02
+#&gt; [11] 7.161310e-03 2.741171e-03 9.618145e-04 3.115189e-04 9.368989e-05
+#&gt; [16] 2.629892e-05 6.920767e-06 1.714122e-06 4.009642e-07 8.885633e-08
+#&gt; [21] 1.870660e-08</code></pre>
+<p>We can add these to the frequency distribution with:</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">extinct_freq_table</span> <span class="op">&lt;-</span>
+  <span class="va">extinct_freq_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    expected_prop <span class="op">=</span> <span class="va">expected_proportions</span>, <span class="co"># add proportions</span>
+    expected_freq <span class="op">=</span> <span class="va">expected_prop</span> <span class="op">*</span> <span class="fl">76</span>    <span class="co"># calculate frequencies</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 4
+#&gt;    n_extinct observed_freq expected_prop expected_freq
+#&gt;        &lt;dbl&gt;         &lt;int&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+#&gt;  1         0             0  0.0148          1.13      
+#&gt;  2         1            13  0.0625          4.75      
+#&gt;  3         2            15  0.132          10.0       
+#&gt;  4         3            16  0.185          14.0       
+#&gt;  5         4             7  0.194          14.8       
+#&gt;  6         5            10  0.164          12.4       
+#&gt;  7         6             4  0.115           8.73      
+#&gt;  8         7             2  0.0691          5.25      
+#&gt;  9         8             1  0.0364          2.76      
+#&gt; 10         9             2  0.0170          1.29      
+#&gt; 11        10             1  0.00716         0.544     
+#&gt; 12        11             1  0.00274         0.208     
+#&gt; 13        12             0  0.000962        0.0731    
+#&gt; 14        13             0  0.000312        0.0237    
+#&gt; 15        14             1  0.0000937       0.00712   
+#&gt; 16        15             0  0.0000263       0.00200   
+#&gt; 17        16             2  0.00000692      0.000526  
+#&gt; 18        17             0  0.00000171      0.000130  
+#&gt; 19        18             0  0.000000401     0.0000305 
+#&gt; 20        19             0  0.0000000889    0.00000675
+#&gt; 21        20             1  0.0000000187    0.00000142</code></pre>
+<p>Note that we added the expected proportions, and then calculated the expected number of extinctions by multiplying the expected proportions by 76, the number of time blocks.</p>
+</div>
+<div id="graph-expected-frequencies" class="section level3">
+<h3>
+<span class="header-section-number">5.4.6</span> Graph expected frequencies<a class="anchor" aria-label="anchor" href="#graph-expected-frequencies"><i class="fas fa-link"></i></a>
+</h3>
+<p>For this, we can’t use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>, which counts the observations for us, because we have to use the frequency table in which they are already counted. The solution is to use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col()</a></code> (col is short for column) instead.</p>
+<p>Then we can add a <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code> for the expected frequencies.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">extinct_freq_table</span>,
+       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n_extinct</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">observed_freq</span><span class="op">)</span>, fill <span class="op">=</span> <span class="st">"#a6192e"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">expected_freq</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Frequency"</span>, x <span class="op">=</span> <span class="st">"Number of Extinctions"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="lab-5_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="chi2-goodness-of-fit-test-1" class="section level3">
+<h3>
+<span class="header-section-number">5.4.7</span> <span class="math inline">\(\chi^2\)</span> goodness-of-fit test<a class="anchor" aria-label="anchor" href="#chi2-goodness-of-fit-test-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>We have everything we need to conduct a <span class="math inline">\(\chi^2\)</span> goodness-of-fit test in our frequency table, namely the observed and expected frequencies for each number of extinctions. The problem is that some categories have frequencies less than 1, and there are too many categories with frequencies less than 5.</p>
+<p>To resolve this, we can combine some categories. Before we can do that, we need to convert <code>n_extinct</code> to a factor data type. Let’s create a new tibble to hold this frequency table of combined categories.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">combined_freq_table</span> <span class="op">&lt;-</span>
+  <span class="va">extinct_freq_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">expected_prop</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>n_extinct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">n_extinct</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 3
+#&gt;   n_extinct observed_freq expected_freq
+#&gt;   &lt;fct&gt;             &lt;int&gt;         &lt;dbl&gt;
+#&gt; 1 0                     0          1.13
+#&gt; 2 1                    13          4.75
+#&gt; 3 2                    15         10.0 
+#&gt; 4 3                    16         14.0 
+#&gt; 5 4                     7         14.8 
+#&gt; 6 5                    10         12.4 
+#&gt; # … with 15 more rows</code></pre>
+<p>Note that we also dropped the <code>expected_prop</code> variable, which we no longer need.</p>
+<p>Now we can modify <code>n_extinct</code> so it contains the new factor levels:</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">combined_freq_table</span> <span class="op">&lt;-</span> 
+  <span class="va">combined_freq_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>n_extinct <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_collapse.html">fct_collapse</a></span><span class="op">(</span>
+    <span class="va">n_extinct</span>,
+    `0 or 1` <span class="op">=</span> <span class="st">"0"</span>,
+    `0 or 1` <span class="op">=</span> <span class="st">"1"</span>,
+    `2` <span class="op">=</span> <span class="st">"2"</span>,
+    `3` <span class="op">=</span> <span class="st">"3"</span>,
+    `4` <span class="op">=</span> <span class="st">"4"</span>,
+    `5` <span class="op">=</span> <span class="st">"5"</span>,
+    `6` <span class="op">=</span> <span class="st">"6"</span>,
+    `7` <span class="op">=</span> <span class="st">"7"</span>,
+    other_level <span class="op">=</span> <span class="st">"8 or more"</span>,
+  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 21 × 3
+#&gt;   n_extinct observed_freq expected_freq
+#&gt;   &lt;fct&gt;             &lt;int&gt;         &lt;dbl&gt;
+#&gt; 1 0 or 1                0          1.13
+#&gt; 2 0 or 1               13          4.75
+#&gt; 3 2                    15         10.0 
+#&gt; 4 3                    16         14.0 
+#&gt; 5 4                     7         14.8 
+#&gt; 6 5                    10         12.4 
+#&gt; # … with 15 more rows</code></pre>
+<p>Note that the new factor level names are surrounded by backticks, not single quotes. The backticks are necessary because the new values start with numbers or special characters. If our new values had names that started with letters, the backticks would be unnecessary. See <code>??fct_collapse</code> for an example.</p>
+<p>There one more issue to solve. The frequency table above should have expected frequencies that add up to 76, but it doesn’t:</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">missing_probabilities</span> <span class="op">&lt;-</span> <span class="fl">76</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">combined_freq_table</span><span class="op">$</span><span class="va">expected_freq</span><span class="op">)</span>
+<span class="va">missing_probabilities</span></code></pre></div>
+<pre><code>#&gt; [1] 3.516995e-07</code></pre>
+<p>That’s because we did not calculate probabilities for categories larger than 20 extinctions. Those probabilities are small, but we still want to include them. So let’s add a new row that includes those:</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">combined_freq_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://tibble.tidyverse.org/reference/add_row.html">add_row</a></span><span class="op">(</span>
+    n_extinct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="st">"8 or more"</span><span class="op">)</span>,
+    observed_freq <span class="op">=</span> <span class="fl">0</span>,
+    expected_freq <span class="op">=</span> <span class="va">missing_probabilities</span>,
+    .before <span class="op">=</span> <span class="fl">1</span>
+  <span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 22 × 3
+#&gt;   n_extinct observed_freq expected_freq
+#&gt;   &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;
+#&gt; 1 8 or more             0   0.000000352
+#&gt; 2 0 or 1                0   1.13       
+#&gt; 3 0 or 1               13   4.75       
+#&gt; 4 2                    15  10.0        
+#&gt; 5 3                    16  14.0        
+#&gt; 6 4                     7  14.8        
+#&gt; # … with 16 more rows</code></pre>
+<p>Now we can use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> to add up the observed and expected frequencies for our newly combined categories. Before we do, however, there is an issue we must solve.</p>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">combined_freq_table</span> <span class="op">&lt;-</span>
+  <span class="va">combined_freq_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">n_extinct</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
+    observed_freq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">observed_freq</span><span class="op">)</span>,
+    expected_freq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">expected_freq</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 8 × 3
+#&gt;   n_extinct observed_freq expected_freq
+#&gt;   &lt;fct&gt;             &lt;int&gt;         &lt;dbl&gt;
+#&gt; 1 0 or 1               13          5.88
+#&gt; 2 2                    15         10.0 
+#&gt; 3 3                    16         14.0 
+#&gt; 4 4                     7         14.8 
+#&gt; 5 5                    10         12.4 
+#&gt; 6 6                     4          8.73
+#&gt; # … with 2 more rows</code></pre>
+<p>And finally, we can conduct the <span class="math inline">\(\chi^2\)</span> goodness-of-fit test!</p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">combined_freq_table</span><span class="op">$</span><span class="va">observed_freq</span>,
+           p <span class="op">=</span> <span class="va">combined_freq_table</span><span class="op">$</span><span class="va">expected_freq</span> <span class="op">/</span> <span class="fl">76</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Warning in chisq.test(x = combined_freq_table$observed_freq, p =
+#&gt; combined_freq_table$expected_freq/76): Chi-squared approximation may be
+#&gt; incorrect</code></pre>
+<pre><code>#&gt; 
+#&gt;  Chi-squared test for given probabilities
+#&gt; 
+#&gt; data:  combined_freq_table$observed_freq
+#&gt; X-squared = 23.95, df = 7, p-value = 0.001163</code></pre>
+<p>The warning here is caused by the fact that one of the expected frequencies is less than 5. However, we have been careful not to violate the assumptions of the <span class="math inline">\(\chi^2\)</span> goodness-of-fit test (no expected frequencies less than 1, no more than 20% of categories with expected frequencies less than 5).</p>
+<p>Looking at the results, you will notice that it shows the test was conducted with 7 degrees of freedom.</p>
+<p>Recall from lecture that degrees of freedom are calculated as:</p>
+<p><span class="math inline">\(df=n-1-(\operatorname{number of parameters estimated})\)</span></p>
+<p>And in this example, we esimated the mean <span class="math inline">\(\mu\)</span> from the sample, so <span class="math inline">\((\operatorname{number of parameters estimated})\)</span> would be 1. Thus, with <span class="math inline">\(n=8\)</span> categories, <span class="math inline">\(df=8-1-1=6\)</span>.</p>
+<p>The solution is to grab the <span class="math inline">\(\chi^2\)</span> test statistic from the results of the test and calculate the <span class="math inline">\(P\)</span>-value using <span class="math inline">\(df=6\)</span> with the <code><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq()</a></code> function like this:</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">chisq_results</span> <span class="op">&lt;-</span>                                <span class="co"># save the results</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">combined_freq_table</span><span class="op">$</span><span class="va">observed_freq</span>,
+    p <span class="op">=</span> <span class="va">combined_freq_table</span><span class="op">$</span><span class="va">expected_freq</span><span class="op">/</span><span class="fl">76</span>
+  <span class="op">)</span>
+
+<span class="va">test_statistic</span> <span class="op">&lt;-</span> <span class="va">chisq_results</span><span class="op">$</span><span class="va">statistic</span>       <span class="co"># get the test statistic</span>
+
+<span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">test_statistic</span>, df <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>   <span class="co"># get the real p-value</span>
+<span class="va">p_value</span></code></pre></div>
+<pre><code>#&gt;    X-squared 
+#&gt; 0.0005334917</code></pre>
+<p>Finally, interpret the results of the test:</p>
+<blockquote>
+<p>Because the <span class="math inline">\(P\)</span>-value of 5.310^{-4} is less than the <span class="math inline">\(\alpha\)</span>-level of 0.05, I reject the null hypothesis. Therefore, the number of extinctions do not occur randomly in time.</p>
+</blockquote>
+<p>If you were writing a paper in APA format, you would write:</p>
+<blockquote>
+<p>The number of extinctions do not occur randomly in time, <span class="math inline">\(\chi^2(6,N=76)=23.95\)</span>, <span class="math inline">\(p= 0.00053\)</span>.</p>
+</blockquote>
+</div>
+</div>
+<div id="assignment-3" class="section level2">
+<h2>
+<span class="header-section-number">5.5</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Claim your repository for Lab 6 on GitHub Classroom using the link on D2L.</p>
+<div id="question-1---cats" class="section level3">
+<h3>
+<span class="header-section-number">5.5.1</span> Question 1 - Cats<a class="anchor" aria-label="anchor" href="#question-1---cats"><i class="fas fa-link"></i></a>
+</h3>
+<blockquote>
+<p>Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).</p>
+<p>In an article published in the Journal of the American Veterinary Medical Association, Whitney and Mehlhaff (1987) presented results on the injury rates of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high‑rise syndrome (FHRS).</p>
+<p>A more recent study of FHRS included data on the month in which each of 119 cats fell (Vnuk et al. 2004). The data are in the accompanying table.</p>
+<p><strong>Can you infer that the rate of cat falling varies between months of the year?</strong></p>
+</blockquote>
+<p>Carry out the goodness‑of‑fit test using the significance level <span class="math inline">\(\alpha=0.05\)</span>. Use the methods shown in this lab (show your code). In your R script, add code comments with text stating the null and alternative hypotheses and reporting your results in APA format.</p>
+<p>The data are stored at:</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"https://whitlockschluter3e.zoology.ubc.ca/Data/chapter08/chap08q19FallingCatsByMonth.csv"</span></code></pre></div>
+</div>
+<div id="question-2---truffles" class="section level3">
+<h3>
+<span class="header-section-number">5.5.2</span> Question 2 - Truffles<a class="anchor" aria-label="anchor" href="#question-2---truffles"><i class="fas fa-link"></i></a>
+</h3>
+<p>Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).</p>
+<blockquote>
+<p>Truffles are a great delicacy, sending thousands of mushroom hunters into the forest each fall to find them. A set of plots of equal size in an old‑growth forest in Northern California was surveyed to count the number of truffles (Waters et al. 1997).</p>
+<p><strong>Are truffles randomly located around the forest?</strong></p>
+</blockquote>
+<p>Carry out the goodness‑of‑fit test using the significance level <span class="math inline">\(\alpha=0.05\)</span>. Use the methods shown in this lab (show your code). In your R script, add code comments with text stating the null and alternative hypotheses and reporting your results in APA format.</p>
+<p>The data are stored at:</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="st">"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08q16Truffles.csv"</span></code></pre></div>
+</div>
+<div id="submission-3" class="section level3">
+<h3>
+<span class="header-section-number">5.5.3</span> Submission<a class="anchor" aria-label="anchor" href="#submission-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.</p>
+<p>Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.</p>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></div>
+<div class="next"><a href="eda-project.html"><span class="header-section-number">6</span> EDA Project</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-5-fitting-probability-models-to-frequency-data"><span class="header-section-number">5</span> Lab 5: Fitting probability models to frequency data</a></li>
+<li><a class="nav-link" href="#objectives-3"><span class="header-section-number">5.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#getting-started-1"><span class="header-section-number">5.2</span> Getting started</a></li>
+<li>
+<a class="nav-link" href="#proportional-probability-model"><span class="header-section-number">5.3</span> Proportional probability model</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#read-the-data"><span class="header-section-number">5.3.1</span> Read the data</a></li>
+<li><a class="nav-link" href="#make-a-bar-chart"><span class="header-section-number">5.3.2</span> Make a bar chart</a></li>
+<li><a class="nav-link" href="#fix-the-factor-levels"><span class="header-section-number">5.3.3</span> Fix the factor levels</a></li>
+<li><a class="nav-link" href="#make-a-better-bar-chart"><span class="header-section-number">5.3.4</span> Make a better bar chart</a></li>
+<li><a class="nav-link" href="#create-a-frequency-table"><span class="header-section-number">5.3.5</span> Create a frequency table</a></li>
+<li><a class="nav-link" href="#chi2-goodness-of-fit-test"><span class="header-section-number">5.3.6</span> \(\chi^2\) goodness-of-fit test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#poisson-probability-model"><span class="header-section-number">5.4</span> Poisson probability model</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#read-the-data-1"><span class="header-section-number">5.4.1</span> Read the data</a></li>
+<li><a class="nav-link" href="#bar-chart"><span class="header-section-number">5.4.2</span> Bar Chart</a></li>
+<li><a class="nav-link" href="#frequency-table"><span class="header-section-number">5.4.3</span> Frequency table</a></li>
+<li><a class="nav-link" href="#estimate-the-mean"><span class="header-section-number">5.4.4</span> Estimate the mean</a></li>
+<li><a class="nav-link" href="#expected-frequencies"><span class="header-section-number">5.4.5</span> Expected frequencies</a></li>
+<li><a class="nav-link" href="#graph-expected-frequencies"><span class="header-section-number">5.4.6</span> Graph expected frequencies</a></li>
+<li><a class="nav-link" href="#chi2-goodness-of-fit-test-1"><span class="header-section-number">5.4.7</span> \(\chi^2\) goodness-of-fit test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#assignment-3"><span class="header-section-number">5.5</span> Assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#question-1---cats"><span class="header-section-number">5.5.1</span> Question 1 - Cats</a></li>
+<li><a class="nav-link" href="#question-2---truffles"><span class="header-section-number">5.5.2</span> Question 2 - Truffles</a></li>
+<li><a class="nav-link" href="#submission-3"><span class="header-section-number">5.5.3</span> Submission</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-5.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-5.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Quantitative Biology BIOL 275 at MSUM</strong>" was written by Chris Merkord. It was last built on 2022-03-01.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

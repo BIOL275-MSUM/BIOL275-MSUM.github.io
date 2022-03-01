@@ -169,7 +169,7 @@ Starting with the raw data, we can use `geom_bar()` to visualize the distributio
 
 ```{r extinct-bar-chart}
 ggplot(data = extinct_data) +
-  geom_bar(mapping = aes(x = numberOfExtinctions), fill = "#a6192e") +
+  geom_bar(mapping = aes(x = n_extinct), fill = "#a6192e") +
   labs(y = "Frequency", x = "Number of Extinctions")
 ```
 

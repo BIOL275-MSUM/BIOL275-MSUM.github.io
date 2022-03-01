@@ -659,8 +659,8 @@ Claim your repository for Lab 6 on GitHub Classroom using the link on D2L.
 
 ### Question 1 - Cats
 
-> Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).
->
+Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).
+
 > In an article published in the Journal of the American Veterinary Medical Association, Whitney and Mehlhaff (1987) presented results on the injury rates of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high‑rise syndrome (FHRS).
 >
 > A more recent study of FHRS included data on the month in which each of 119 cats fell (Vnuk et al. 2004). The data are in the accompanying table.

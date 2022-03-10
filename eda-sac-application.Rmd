@@ -1,6 +1,8 @@
 # SAC Application
 
-NOTE: these instructions are from 2021 and will be updated for 2022 soon. The main difference will be that in 2022 you will complete your project in teams of 2-3 students rather than individually.
+::: text-muted
+2022 Instructions
+:::
 
 You will present the results of your [Exploratory Data Analysis Project](eda-project-instructions.html) at Minnesota State University Moorhead's [Andrew B. Conteh Student Academic Conference (SAC)](https://www2.mnstate.edu/sac/).
 
@@ -24,7 +26,7 @@ Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 s
 
 Write the abstract in first person future tense, for example "I will..."
 
-For more information about how to write an abstract, see [<https://www.mnstate.edu/sac/preparing-presentation.aspx>](https://www.mnstate.edu/sac/preparing-presentation.aspx){.uri}
+For more information about how to write an abstract, see [\<https://www.mnstate.edu/sac/preparing-presentation.aspx>](https://www.mnstate.edu/sac/preparing-presentation.aspx){.uri}
 
 ### How to write a title
 
@@ -40,19 +42,21 @@ The title could be generic such as "the relationship between X and Y", or a decl
 
 The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/SAC/form/index).
 
-Applications for the 2021 SAC are due [Sunday February 28, 2021.]{.text-danger}
+Applications for the 2022 SAC are due [Friday March 11, 2022.]{.text-danger}
 
-The application deadline will not be extended for any reason.
+If you do not submit your application by the deadline, you will be unable to participate in the SAC, which will negatively impact your course grade.
 
 ### Before you begin
 
 Before you begin the application process, you should read the [Exploratory Data Analysis Project](eda-project-instructions.html) instructions, choose the data set you will work with for the project, and write your abstract and title.
 
+[Your title and abstract should be approved by your instructor before you submit your application.]{.text-warning}
+
 Assemble all the required information and have it ready to copy and paste into the application form. The application form will time out after 30 minutes, so if you do not complete it within that time, your information will be lost and you will have to start over.
 
 You will need the following:
 
-1.  Your Dragon ID
+1.  The Dragon ID of everyone in your group, and whether each is an honor student or graduate student
 
 2.  Title (already written, spell checked, and approved by your mentor)
 
@@ -71,17 +75,21 @@ You will need the following:
 
 ### Application process
 
+Only one person in your group should submit the application.
+
 1.  Go to the online application form: <https://my.mnstate.edu/SAC/form/index>
 
 2.  Read the guidelines, check the box, and click the Apply Now button
 
-3.  Enter your student information
+3.  Add your student information for each group member
 
-    1.  Your **Dragon ID**
+    1.  Enter your your **Dragon ID**
 
     2.  Will this person be presenting? Select **Yes**
 
     3.  Click the **Add Student** to List button
+
+    4.  Repeat for each additional person in the group, or any other students who will be coauthors on the poster (for example, others from your research group if you are part of a larger team outside of class)
 
 4.  Enter the presentation **title** (copy and paste from your pre-written title)
 
@@ -99,9 +107,13 @@ You will need the following:
 
     -   If you have other faculty mentors, click the Add Additional Mentor button
 
-10. Special Requests: copy and paste the following into the text box:
+10. ::: text-warning
+    Special Requests: copy and paste the following into the text box:
+    :::
 
+    ::: text-primary
     *This presentation is for BIOL 275 Quantitative Biology. Please group it with other presentations for that course.*
+    :::
 
 11. Click the **Submit** button
 
@@ -111,14 +123,4 @@ By submitting this application you authorize the Student Academic Conference to 
 
 Print the confirmation screen as a PDF, or print the confirmation email you receive as a PDF.
 
-Submit the PDF on D2L under the SAC Abstract assignment submission, due by Sunday, February 28, 2021.
-
-## Poster Format
-
-The poster will be in the form of a GitHub Repository with a README, which will contain the content of the poster.
-
-More information will be provided later on the format and content of the README.
-
-## Presenting at the SAC
-
-More information will be provided later on presenting your poster at the SAC on April 22.
+Submit the PDF on D2L under the SAC Abstract assignment submission, due by Friday, March 11, 2022.

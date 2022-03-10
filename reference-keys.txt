@@ -96,8 +96,6 @@ assignment-submit-your-application
 before-you-begin
 application-process
 after-you-submit
-poster-format
-presenting-at-the-sac
 data-sets-1
 your-own-dataset
 biological-trait-data

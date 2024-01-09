@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>3 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM</title>
+<title>4 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
+<meta name="description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  4.2 Getting Started...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="3 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM">
+<meta property="og:title" content="4 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
+<meta property="og:description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  4.2 Getting Started...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="3.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  3.2 Getting Started...">
+<meta name="twitter:title" content="4 Lab 3: Data subsetting | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="4.1 Objectives In this lab, you will learn to: Pick rows based on their values Reorder rows based on their values Pick columns based on their names Combine multiple operations  4.2 Getting Started...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9000/transition.js"></script><script src="libs/bs3compat-0.6.1.9000/tabs.js"></script><script src="libs/bs3compat-0.6.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,10 +68,10 @@
 <li><a class="" href="index.html">Welcome</a></li>
 <li class="book-part">Lab Assignments</li>
 <li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
-<li><a class="" href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></li>
-<li><a class="active" href="lab-3-data-subsetting.html"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></li>
-<li><a class="" href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></li>
-<li><a class="" href="lab-5-frequency-data.html"><span class="header-section-number">5</span> Lab 5: Frequency data</a></li>
+<li><a class="" href="lab-2-rstudio-projects.html"><span class="header-section-number">2</span> Lab 2: RStudio Projects</a></li>
+<li><a class="" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
+<li><a class="active" href="lab-3-data-subsetting.html"><span class="header-section-number">4</span> Lab 3: Data subsetting</a></li>
+<li><a class="" href="lab-5-data-summarizing.html"><span class="header-section-number">5</span> Lab 5: Data summarizing</a></li>
 <li class="book-part">EDA Project</li>
 <li><a class="" href="eda-project.html"><span class="header-section-number">6</span> EDA Project</a></li>
 <li><a class="" href="sac-application.html"><span class="header-section-number">7</span> SAC Application</a></li>
@@ -94,13 +94,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-3-data-subsetting" class="section level1" number="3">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-3-data-subsetting" class="section level1" number="4">
 <h1>
-<span class="header-section-number">3</span> Lab 3: Data subsetting<a class="anchor" aria-label="anchor" href="#lab-3-data-subsetting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> Lab 3: Data subsetting<a class="anchor" aria-label="anchor" href="#lab-3-data-subsetting"><i class="fas fa-link"></i></a>
 </h1>
-<div id="objectives-2" class="section level2" number="3.1">
+<div id="objectives-2" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">3.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this lab, you will learn to:</p>
 <ul>
@@ -110,9 +110,9 @@
 <li>Combine multiple operations</li>
 </ul>
 </div>
-<div id="getting-started" class="section level2" number="3.2">
+<div id="getting-started" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">3.2</span> Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"><i class="fas fa-link"></i></a>
 </h2>
 <p>Your instructor has created a blank repository for you using GitHub Classroom.</p>
 <ol style="list-style-type: decimal">
@@ -154,9 +154,9 @@
 </li>
 </ol>
 </div>
-<div id="introduction" class="section level2" number="3.3">
+<div id="introduction" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">3.3</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
 <p>Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.</p>
 <p>You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.</p>
@@ -168,9 +168,9 @@
 <li>Pick columns by name using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>
 </li>
 </ul>
-<div id="prerequisites" class="section level3" number="3.3.1">
+<div id="prerequisites" class="section level3" number="4.3.1">
 <h3>
-<span class="header-section-number">3.3.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.1</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
 </h3>
 <p>In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of packages.</p>
 <p>In addition to loading the dplyr package for you, loading the tidyverse package also lets you access the <code>diamonds</code> dataset from the ggplot2 package. This lab will use the <code>diamonds</code> dataset to show examples of filtering, arranging, and selecting.</p>
@@ -188,9 +188,9 @@
 #&gt; ✖ dplyr::lag()    masks stats::lag()
 #&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div id="diamonds" class="section level3" number="3.3.2">
+<div id="diamonds" class="section level3" number="4.3.2">
 <h3>
-<span class="header-section-number">3.3.2</span> <code>diamonds</code><a class="anchor" aria-label="anchor" href="#diamonds"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3.2</span> <code>diamonds</code><a class="anchor" aria-label="anchor" href="#diamonds"><i class="fas fa-link"></i></a>
 </h3>
 <p>You will explore basic dplyr functions using the <code>diamonds</code> data frame, found in the ggplot package.</p>
 <p>This data frame contains data on almost 54,000 diamonds, including price and other attributes.</p>
@@ -297,9 +297,9 @@
 <p>You can read more about data types in the <a href="https://tibble.tidyverse.org/articles/types.html">Column data types</a> vignette in the tibble package.</p>
 </div>
 </div>
-<div id="filter-rows-with-filter" class="section level2" number="3.4">
+<div id="filter-rows-with-filter" class="section level2" number="4.4">
 <h2>
-<span class="header-section-number">3.4</span> Filter rows with <code>filter()</code><a class="anchor" aria-label="anchor" href="#filter-rows-with-filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4</span> Filter rows with <code>filter()</code><a class="anchor" aria-label="anchor" href="#filter-rows-with-filter"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.</p>
 <p>For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:</p>
@@ -315,9 +315,9 @@
 #&gt; 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
 #&gt; 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
 #&gt; # ℹ 1,883 more rows</code></pre>
-<div id="intermediate-objects" class="section level3" number="3.4.1">
+<div id="intermediate-objects" class="section level3" number="4.4.1">
 <h3>
-<span class="header-section-number">3.4.1</span> Intermediate objects<a class="anchor" aria-label="anchor" href="#intermediate-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.1</span> Intermediate objects<a class="anchor" aria-label="anchor" href="#intermediate-objects"><i class="fas fa-link"></i></a>
 </h3>
 <p>When you run code to filter a data frame, R returns a new data frame.</p>
 <p>If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator <code>&lt;-</code></p>
@@ -350,9 +350,9 @@
 #&gt; 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
 #&gt; # ℹ 1,031 more rows</code></pre>
 </div>
-<div id="basic-operators" class="section level3" number="3.4.2">
+<div id="basic-operators" class="section level3" number="4.4.2">
 <h3>
-<span class="header-section-number">3.4.2</span> Basic Operators<a class="anchor" aria-label="anchor" href="#basic-operators"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.2</span> Basic Operators<a class="anchor" aria-label="anchor" href="#basic-operators"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>&gt;</code> symbol is known as an “operator”. These are special characters you use to compare things in R. Some of the basic operators include <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>==</code> (equals), and <code>!=</code> (not equals).</p>
 <p>Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while <code>==</code> and <code>!=</code> can be used with any type of variable.</p>
@@ -379,23 +379,23 @@
 #&gt; ℹ This usually means that you've used `=` instead of `==`.
 #&gt; ℹ Did you mean `carat == 2`?</code></pre>
 </div>
-<div id="logical-operators" class="section level3" number="3.4.3">
+<div id="logical-operators" class="section level3" number="4.4.3">
 <h3>
-<span class="header-section-number">3.4.3</span> Logical Operators<a class="anchor" aria-label="anchor" href="#logical-operators"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3</span> Logical Operators<a class="anchor" aria-label="anchor" href="#logical-operators"><i class="fas fa-link"></i></a>
 </h3>
 <p>In computer language, the expression for meeting multiple criteria simultaneously is called “and” and uses the ampersand <code>&amp;</code> operator. The expression for meeting either one criteria or the other, or both, is called “or” and is denoted using the vertical bar <code>|</code> operator. Finally, the expression for not meeting a criteria is called “not” and is denoted with the exclamation point <code>!</code> operator.</p>
-<div id="and-operator" class="section level4" number="3.4.3.1">
+<div id="and-operator" class="section level4" number="4.4.3.1">
 <h4>
-<span class="header-section-number">3.4.3.1</span> And operator<a class="anchor" aria-label="anchor" href="#and-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.1</span> And operator<a class="anchor" aria-label="anchor" href="#and-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>If you put three or more arguments in your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an “and” operation. Thus these two lines of code will return identical results:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span>, <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">price</span> <span class="op">&lt;</span> <span class="fl">6000</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="or-operator" class="section level4" number="3.4.3.2">
+<div id="or-operator" class="section level4" number="4.4.3.2">
 <h4>
-<span class="header-section-number">3.4.3.2</span> Or operator<a class="anchor" aria-label="anchor" href="#or-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.2</span> Or operator<a class="anchor" aria-label="anchor" href="#or-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>For “or” comparisons, you have to use the vertical bar <code>|</code> operator. For example, this code will return a table with diamonds having a color of D or E.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
@@ -414,17 +414,17 @@
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">color</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="not-operator" class="section level4" number="3.4.3.3">
+<div id="not-operator" class="section level4" number="4.4.3.3">
 <h4>
-<span class="header-section-number">3.4.3.3</span> Not operator<a class="anchor" aria-label="anchor" href="#not-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.3</span> Not operator<a class="anchor" aria-label="anchor" href="#not-operator"><i class="fas fa-link"></i></a>
 </h4>
 <p>“Not” comparisons can be used to pick rows that do not meet a given criteria. The <code>!</code> operator generally should be followed by parentheses <code>()</code> with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color <em>except</em> E:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">!</span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="missing-values" class="section level4" number="3.4.3.4">
+<div id="missing-values" class="section level4" number="4.4.3.4">
 <h4>
-<span class="header-section-number">3.4.3.4</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3.4</span> Missing values<a class="anchor" aria-label="anchor" href="#missing-values"><i class="fas fa-link"></i></a>
 </h4>
 <p>Missing values are a story for a later date! You don’t need to know this yet, but if you find yourself here looking for an answer, you can filter values without a “missing value” for color like this:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -432,9 +432,9 @@
 <p>The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.</p>
 </div>
 </div>
-<div id="string-helper-functions" class="section level3" number="3.4.4">
+<div id="string-helper-functions" class="section level3" number="4.4.4">
 <h3>
-<span class="header-section-number">3.4.4</span> String helper functions<a class="anchor" aria-label="anchor" href="#string-helper-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.4</span> String helper functions<a class="anchor" aria-label="anchor" href="#string-helper-functions"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are a variety of other functions you can incorporate into your <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function to achieve specific results.</p>
 <p>For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply <code>==</code> or <code>!=</code>. Let’s say you want to find all diamonds with a clarity of <code>VS1</code>, <code>VS2</code>, <code>VVS1</code>, or <code>VVS2</code>. You could use the “or” operator, or the “in” operator. But what if you don’t even know all the possible clarity values and you just want everything that contains <code>"VS"</code> anywhere in the word. There is a string-based helper function <code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> which looks for a particular string of text inside a text variable:</p>
@@ -458,9 +458,9 @@
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html">str_ends</a></span><span class="op">(</span><span class="va">clarity</span>, <span class="st">"2"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="arrange-rows-with-arrange" class="section level2" number="3.5">
+<div id="arrange-rows-with-arrange" class="section level2" number="4.5">
 <h2>
-<span class="header-section-number">3.5</span> Arrange rows with <code>arrange()</code><a class="anchor" aria-label="anchor" href="#arrange-rows-with-arrange"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.5</span> Arrange rows with <code>arrange()</code><a class="anchor" aria-label="anchor" href="#arrange-rows-with-arrange"><i class="fas fa-link"></i></a>
 </h2>
 <p>The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.</p>
 <p>The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.</p>
@@ -491,9 +491,9 @@
 #&gt; 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
 #&gt; # ℹ 53,934 more rows</code></pre>
 <p>If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> . For example <code>levels(diamonds$cut)</code> .</p>
-<div id="descending-order" class="section level3" number="3.5.1">
+<div id="descending-order" class="section level3" number="4.5.1">
 <h3>
-<span class="header-section-number">3.5.1</span> Descending order<a class="anchor" aria-label="anchor" href="#descending-order"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.5.1</span> Descending order<a class="anchor" aria-label="anchor" href="#descending-order"><i class="fas fa-link"></i></a>
 </h3>
 <p>To sort a variable in descending rather than ascending order, you can wrap the variable name in the <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -511,9 +511,9 @@
 <p>Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.</p>
 </div>
 </div>
-<div id="select-columns-with-select" class="section level2" number="3.6">
+<div id="select-columns-with-select" class="section level2" number="4.6">
 <h2>
-<span class="header-section-number">3.6</span> Select columns with <code>select()</code><a class="anchor" aria-label="anchor" href="#select-columns-with-select"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.6</span> Select columns with <code>select()</code><a class="anchor" aria-label="anchor" href="#select-columns-with-select"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function allows you to select which <em>columns</em> (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.</p>
 <p>The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.</p>
@@ -557,9 +557,9 @@
 #&gt; 5  0.31 Good      J     SI2      63.3    58   335
 #&gt; 6  0.24 Very Good J     VVS2     62.8    57   336
 #&gt; # ℹ 53,934 more rows</code></pre>
-<div id="removing-variables" class="section level3" number="3.6.1">
+<div id="removing-variables" class="section level3" number="4.6.1">
 <h3>
-<span class="header-section-number">3.6.1</span> Removing variables<a class="anchor" aria-label="anchor" href="#removing-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.6.1</span> Removing variables<a class="anchor" aria-label="anchor" href="#removing-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometimes its easier to say which variables you <em>don’t</em> want to keep rather than which ones you <em>do</em>. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables <em>except</em> the one you named. For example, to return every row except table, you could do:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
@@ -578,9 +578,9 @@
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="op">-</span><span class="va">x</span><span class="op">:</span><span class="op">-</span><span class="va">y</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="helper-functions" class="section level3" number="3.6.2">
+<div id="helper-functions" class="section level3" number="4.6.2">
 <h3>
-<span class="header-section-number">3.6.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.6.2</span> Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.</p>
 <p>There are several functions that can be used within <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> :</p>
@@ -605,9 +605,9 @@
 #&gt; # ℹ 53,934 more rows</code></pre>
 </div>
 </div>
-<div id="combine-multiple-operations" class="section level2" number="3.7">
+<div id="combine-multiple-operations" class="section level2" number="4.7">
 <h2>
-<span class="header-section-number">3.7</span> Combine multiple operations<a class="anchor" aria-label="anchor" href="#combine-multiple-operations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7</span> Combine multiple operations<a class="anchor" aria-label="anchor" href="#combine-multiple-operations"><i class="fas fa-link"></i></a>
 </h2>
 <p>Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row?</p>
 <p>You have three basic options:</p>
@@ -622,9 +622,9 @@
 <li>Sort the diamonds by price</li>
 <li>Select only the variables variables carat, cut, and price</li>
 </ol>
-<div id="create-intermediate-objects" class="section level3" number="3.7.1">
+<div id="create-intermediate-objects" class="section level3" number="4.7.1">
 <h3>
-<span class="header-section-number">3.7.1</span> Create intermediate objects<a class="anchor" aria-label="anchor" href="#create-intermediate-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.1</span> Create intermediate objects<a class="anchor" aria-label="anchor" href="#create-intermediate-objects"><i class="fas fa-link"></i></a>
 </h3>
 <p>One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator <code>&lt;-</code>. In our example, this might look something like:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
@@ -646,18 +646,18 @@
 <p>The issue here is that you no longer have your original diamonds dataset. If you do not mind that, then this is a decent solution. You might use this option if you want to clean up a dataset after reading it from a file, for example to rename unwieldy variables or deal with missing values.</p>
 <p>What if you need to use the original diamonds dataset again? Of course, it didn’t disappear, and you can still access it by specifying the package <code><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">ggplot2::diamonds</a></code> or by removing diamonds from your global environment <code>rm(diamonds)</code>. But overall, this isn’t an ideal solution.</p>
 </div>
-<div id="nest-functions" class="section level3" number="3.7.2">
+<div id="nest-functions" class="section level3" number="4.7.2">
 <h3>
-<span class="header-section-number">3.7.2</span> Nest functions<a class="anchor" aria-label="anchor" href="#nest-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.2</span> Nest functions<a class="anchor" aria-label="anchor" href="#nest-functions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Another option is to nest each function inside the other:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span>, <span class="va">price</span><span class="op">)</span>, <span class="va">carat</span>, <span class="va">cut</span>, <span class="va">price</span><span class="op">)</span></span></code></pre></div>
 <p>It works, but it is hard to read and interpret at a glance.</p>
 </div>
-<div id="use-the-pipe" class="section level3" number="3.7.3">
+<div id="use-the-pipe" class="section level3" number="4.7.3">
 <h3>
-<span class="header-section-number">3.7.3</span> Use the pipe<a class="anchor" aria-label="anchor" href="#use-the-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7.3</span> Use the pipe<a class="anchor" aria-label="anchor" href="#use-the-pipe"><i class="fas fa-link"></i></a>
 </h3>
 <p>A more elegant solution is to use the special pipe operator <code>%&gt;%</code> introduced in the magrittr package. Using the pipe, <code>x %&gt;% f()</code> is equivalent to <code>f(x)</code>. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.</p>
 <p>Using this option, we could do:</p>
@@ -670,9 +670,9 @@
 <p>You can find a more complete discussion in the <a href="https://r4ds.had.co.nz/pipes.html">Pipes</a> chapter in <em>R for Data Science.</em></p>
 </div>
 </div>
-<div id="assignment-2" class="section level2" number="3.8">
+<div id="assignment-3" class="section level2" number="4.8">
 <h2>
-<span class="header-section-number">3.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Open your <code>penguins-assignment.R</code> script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.</p>
 <p>For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.</p>
@@ -681,9 +681,9 @@
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
-<div id="questions" class="section level3" number="3.8.1">
+<div id="questions" class="section level3" number="4.8.1">
 <h3>
-<span class="header-section-number">3.8.1</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8.1</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now use what you know from previous labs, and what you have learned from today’s lab, to perform the following data manipulation tasks.</p>
 <p>Put a comment like <code># question 1</code> on the line before each code chunk, so you (and I) can read your script more easily.</p>
@@ -705,16 +705,16 @@
 </ol>
 </div>
 </div>
-<div id="submission-1" class="section level2" number="3.9">
+<div id="submission-1" class="section level2" number="4.9">
 <h2>
-<span class="header-section-number">3.9</span> Submission<a class="anchor" aria-label="anchor" href="#submission-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.9</span> Submission<a class="anchor" aria-label="anchor" href="#submission-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.</p>
 <p>Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.</p>
 </div>
-<div id="further-reading" class="section level2" number="3.10">
+<div id="further-reading" class="section level2" number="4.10">
 <h2>
-<span class="header-section-number">3.10</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.10</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading"><i class="fas fa-link"></i></a>
 </h2>
 <p>Your lab manual, <em>R for Data Science</em> (R4DS), contains detailed instructions on filtering, arranging, and selecting in <a href="https://r4ds.had.co.nz/transform.html">Chapter 5: Data transformation</a>.</p>
 <p>You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.</p>
@@ -723,55 +723,55 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></div>
-<div class="next"><a href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></div>
+<div class="prev"><a href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></div>
+<div class="next"><a href="lab-5-data-summarizing.html"><span class="header-section-number">5</span> Lab 5: Data summarizing</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lab-3-data-subsetting"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></li>
-<li><a class="nav-link" href="#objectives-2"><span class="header-section-number">3.1</span> Objectives</a></li>
-<li><a class="nav-link" href="#getting-started"><span class="header-section-number">3.2</span> Getting Started</a></li>
+<li><a class="nav-link" href="#lab-3-data-subsetting"><span class="header-section-number">4</span> Lab 3: Data subsetting</a></li>
+<li><a class="nav-link" href="#objectives-2"><span class="header-section-number">4.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#getting-started"><span class="header-section-number">4.2</span> Getting Started</a></li>
 <li>
-<a class="nav-link" href="#introduction"><span class="header-section-number">3.3</span> Introduction</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">3.3.1</span> Prerequisites</a></li>
-<li><a class="nav-link" href="#diamonds"><span class="header-section-number">3.3.2</span> diamonds</a></li>
+<a class="nav-link" href="#introduction"><span class="header-section-number">4.3</span> Introduction</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">4.3.1</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#diamonds"><span class="header-section-number">4.3.2</span> diamonds</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#filter-rows-with-filter"><span class="header-section-number">3.4</span> Filter rows with filter()</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#intermediate-objects"><span class="header-section-number">3.4.1</span> Intermediate objects</a></li>
-<li><a class="nav-link" href="#basic-operators"><span class="header-section-number">3.4.2</span> Basic Operators</a></li>
-<li><a class="nav-link" href="#logical-operators"><span class="header-section-number">3.4.3</span> Logical Operators</a></li>
-<li><a class="nav-link" href="#string-helper-functions"><span class="header-section-number">3.4.4</span> String helper functions</a></li>
+<a class="nav-link" href="#filter-rows-with-filter"><span class="header-section-number">4.4</span> Filter rows with filter()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intermediate-objects"><span class="header-section-number">4.4.1</span> Intermediate objects</a></li>
+<li><a class="nav-link" href="#basic-operators"><span class="header-section-number">4.4.2</span> Basic Operators</a></li>
+<li><a class="nav-link" href="#logical-operators"><span class="header-section-number">4.4.3</span> Logical Operators</a></li>
+<li><a class="nav-link" href="#string-helper-functions"><span class="header-section-number">4.4.4</span> String helper functions</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#arrange-rows-with-arrange"><span class="header-section-number">3.5</span> Arrange rows with arrange()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#descending-order"><span class="header-section-number">3.5.1</span> Descending order</a></li></ul>
+<a class="nav-link" href="#arrange-rows-with-arrange"><span class="header-section-number">4.5</span> Arrange rows with arrange()</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#descending-order"><span class="header-section-number">4.5.1</span> Descending order</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#select-columns-with-select"><span class="header-section-number">3.6</span> Select columns with select()</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#removing-variables"><span class="header-section-number">3.6.1</span> Removing variables</a></li>
-<li><a class="nav-link" href="#helper-functions"><span class="header-section-number">3.6.2</span> Helper functions</a></li>
+<a class="nav-link" href="#select-columns-with-select"><span class="header-section-number">4.6</span> Select columns with select()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#removing-variables"><span class="header-section-number">4.6.1</span> Removing variables</a></li>
+<li><a class="nav-link" href="#helper-functions"><span class="header-section-number">4.6.2</span> Helper functions</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#combine-multiple-operations"><span class="header-section-number">3.7</span> Combine multiple operations</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#create-intermediate-objects"><span class="header-section-number">3.7.1</span> Create intermediate objects</a></li>
-<li><a class="nav-link" href="#nest-functions"><span class="header-section-number">3.7.2</span> Nest functions</a></li>
-<li><a class="nav-link" href="#use-the-pipe"><span class="header-section-number">3.7.3</span> Use the pipe</a></li>
+<a class="nav-link" href="#combine-multiple-operations"><span class="header-section-number">4.7</span> Combine multiple operations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#create-intermediate-objects"><span class="header-section-number">4.7.1</span> Create intermediate objects</a></li>
+<li><a class="nav-link" href="#nest-functions"><span class="header-section-number">4.7.2</span> Nest functions</a></li>
+<li><a class="nav-link" href="#use-the-pipe"><span class="header-section-number">4.7.3</span> Use the pipe</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#assignment-2"><span class="header-section-number">3.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions"><span class="header-section-number">3.8.1</span> Questions</a></li></ul>
+<a class="nav-link" href="#assignment-3"><span class="header-section-number">4.8</span> Assignment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions"><span class="header-section-number">4.8.1</span> Questions</a></li></ul>
 </li>
-<li><a class="nav-link" href="#submission-1"><span class="header-section-number">3.9</span> Submission</a></li>
-<li><a class="nav-link" href="#further-reading"><span class="header-section-number">3.10</span> Further reading</a></li>
+<li><a class="nav-link" href="#submission-1"><span class="header-section-number">4.9</span> Submission</a></li>
+<li><a class="nav-link" href="#further-reading"><span class="header-section-number">4.10</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-3.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-3.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-4.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-4.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -791,34 +791,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

@@ -1,40 +1,79 @@
-# Lab 4: Data summarizing
+# Lab 3: Data subsetting
 
 ## Objectives
 
 In this lab, you will learn to:
 
--   Rename variables
+-   Pick rows based on their values
+-   Reorder rows based on their values
+-   Pick columns based on their names
+-   Combine multiple operations
 
--   Create new variables
+## Getting Started
 
--   Summarize a dataset as a whole or by groups
+Your instructor has created a blank repository for you using GitHub Classroom.
 
--   Visualize the relationship between variables
+1.  Go to the course D2L page
 
-    -   One numerical and one categorical variable
-    -   Two numerical variables
-    -   Three variables
+2.  Navigate to the Lab 3 module
+
+3.  Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL
+
+4.  Clone the repository to your machine:
+
+    1.  In RStudio, create a New Project
+
+    2.  Select the Version Control option, then GitHub
+
+    3.  Paste the URL you copied, and press tab to autocomplete the directory name
+
+    4.  Select a parent directory in which to place your new project folder, probably either `~` or `~/R`.
+
+    5.  Click OK.
+
+5.  Once RStudio has started, double-check your Global Options as described in Lab 1. (don't save .RData or .Rhistory files, and don't auto-load them on startup)
+
+6.  Make your first commit:
+
+    1.  In the Git tab, check the box next to the two files `.gitignore` and `*.Rproj` to stage them for adding them to the repository.
+
+    2.  Click the "Commit" button
+
+    3.  Enter a commit message such as "Create a new RStudio project"
+
+    4.  Click Commit to submit the commit
+
+    5.  Click Push to push the commit to GitHub
+
+        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 1 (use your GitHub username and a Personal Access Token for the password)
+
+7.  Create two new R scripts:
+
+    1.  One to use for the diamonds tutorial, which you can call `diamonds-example.R`
+
+    2.  One to use for the penguins assignment, which you can call `penguins-assignment.R`
 
 ## Introduction
 
-Visualizing data is a key step in the data science workflow, but it is rarely the first step. Sometimes you only need part of a dataset to answer your question, which is why the previous lab, [Data subsetting](data-subsetting.html), introduced you to methods for extracting a subset of observations or variables from a table. At other times, you may need to create new variables from the original ones, or you may need to calculate summary statistic for a dataset or for groups within a dataset. This lab will introduce you to methods for that using the `diamonds` dataset from the **ggplot2** package and new functions from the **dplyr** package.
+Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.
 
-In this lab you will:
+You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.
 
--   Rename variables with `rename()`
--   Create new variables with mutate `mutate()`
--   Summarize a dataset with `group_by()` and `summarize()`
+-   Pick rows by their values using `filter()`
+-   Reorder rows using `arrange()`
+-   Pick columns by name using `select()`
 
-### Packages
+### Prerequisites
 
-In this lab you will use functions and datasets from the **dplyr** and **ggplot2** packages. While you could load those packages individually, in this course you are encouraged to always load the entire **tidyverse** set of packages.
+In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of packages.
 
-Load the **tidyverse** package:
+In addition to loading the dplyr package for you, loading the tidyverse package also lets you access the `diamonds` dataset from the ggplot2 package. This lab will use the `diamonds` dataset to show examples of filtering, arranging, and selecting.
+
+Copy this code to your `diamonds-example.R` script and run it t load the tidyverse package:
 
 
 ```r
-library(tidyverse)    # load the tidyverse package
+library(tidyverse)
 ```
 
 ```
@@ -50,260 +89,22 @@ library(tidyverse)    # load the tidyverse package
 #> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-### `diamonds` data
+### `diamonds`
 
-In addition to getting us access to dplyr packages, loading the **tidyverse** package also lets us access the `diamonds` dataset from the **ggplot2** package. This lab will use the `diamonds` dataset to show examples of renaming, mutating, summarizing, and graphing.
+You will explore basic dplyr functions using the `diamonds` data frame, found in the ggplot package.
 
-You can read more about the `diamonds` dataset in the previous lab, [Data subsetting](data-subsetting.html).
+This data frame contains data on almost 54,000 diamonds, including price and other attributes.
 
-## Rename variables with `rename()`
-
-The `rename()` function allows you to rename variables in a data frame. The first argument to `rename()` is the data frame. The other arguments specify which variables to rename, with the format `new_name = old_name`.
-
-For example, say you want to rename the `x`, `y`, and `z` variables to `length`, `width`, and `height`:
+First, take a look at `diamonds` by printing it in the console:
 
 
 ```r
-rename(diamonds, length = x, width = y, height = z)
+# print diamonds in the console
+diamonds
 ```
 
 ```
 #> # A tibble: 53,940 × 10
-#>   carat cut       color clarity depth table price length width height
-#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>  <dbl> <dbl>  <dbl>
-#> 1  0.23 Ideal     E     SI2      61.5    55   326   3.95  3.98   2.43
-#> 2  0.21 Premium   E     SI1      59.8    61   326   3.89  3.84   2.31
-#> 3  0.23 Good      E     VS1      56.9    65   327   4.05  4.07   2.31
-#> 4  0.29 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
-#> 5  0.31 Good      J     SI2      63.3    58   335   4.34  4.35   2.75
-#> 6  0.24 Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
-#> # ℹ 53,934 more rows
-```
-
-Note the lack of quotes around the names of the data frame, the new variable names or the old variables names
-
-The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:
-
-
-```r
-rename(
-  diamonds, 
-  length = x, 
-  width = y, 
-  height = z
-)
-```
-
-This makes the code more readable. Just be sure you have commas after each argument except the last, and don't forget the closing parenthesis on its own line
-
-## Create new variables with `mutate()`
-
-The `mutate()` function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to `mutate()` is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination of both.
-
-Let's do an example using the diamonds dataset. To make viewing the new variables easier, first select a subset of variables from the `diamonds` data set using `select()` and give the new data frame the name `d2`:
-
-
-```r
-# select the variables of interest
-d2 <- select(diamonds, carat, price)
-d2
-```
-
-```
-#> # A tibble: 53,940 × 2
-#>   carat price
-#>   <dbl> <int>
-#> 1  0.23   326
-#> 2  0.21   326
-#> 3  0.23   327
-#> 4  0.29   334
-#> 5  0.31   335
-#> 6  0.24   336
-#> # ℹ 53,934 more rows
-```
-
-Now use the new data frame `d2` to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named `ppc` ("price per carat"):
-
-
-```r
-# example of creating price per carat (ppc)
-mutate(d2, ppc = price / carat)
-```
-
-```
-#> # A tibble: 53,940 × 3
-#>   carat price   ppc
-#>   <dbl> <int> <dbl>
-#> 1  0.23   326 1417.
-#> 2  0.21   326 1552.
-#> 3  0.23   327 1422.
-#> 4  0.29   334 1152.
-#> 5  0.31   335 1081.
-#> 6  0.24   336 1400 
-#> # ℹ 53,934 more rows
-```
-
-### `mutate()` an existing variable
-
-You do not have to create an entirely new variable when using `mutate()`. For example, let's say you wanted to convert the price from US Dollars (USD) to Canadian Dollars (CAD). The current exchange rate is about 1 USD to 1.27 CAD. You can overwrite the existing price variable by setting the new variable name to be the same as the old variable name:
-
-
-```r
-mutate(diamonds, price = price * 1.27)
-```
-
-```
-#> # A tibble: 53,940 × 10
-#>   carat cut       color clarity depth table price     x     y     z
-#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1  0.23 Ideal     E     SI2      61.5    55  414.  3.95  3.98  2.43
-#> 2  0.21 Premium   E     SI1      59.8    61  414.  3.89  3.84  2.31
-#> 3  0.23 Good      E     VS1      56.9    65  415.  4.05  4.07  2.31
-#> 4  0.29 Premium   I     VS2      62.4    58  424.  4.2   4.23  2.63
-#> 5  0.31 Good      J     SI2      63.3    58  425.  4.34  4.35  2.75
-#> 6  0.24 Very Good J     VVS2     62.8    57  427.  3.94  3.96  2.48
-#> # ℹ 53,934 more rows
-```
-
-## Summarize a data set with `summarize()`
-
-You can summarize a data set using the `summarize()` function. Like other dplyr functions, the first argument to `summarize()` is the data frame. Additional arguments are name-value pairs, just like with `mutate()`. Values are set using various summary functions such as `mean()` or `sd()` (standard deviation). The difference is that whereas `mutate()` returns a data frame with the same number of rows as the input data frame, `summarize()` returns a data frame with only one row, and the only variables in the new data frame are the ones you named in `summarize()`. For example, to calculate the mean value of the `carat` variable, the code would look like this:
-
-
-```r
-summarize(diamonds, mean_carat = mean(carat))
-```
-
-```
-#> # A tibble: 1 × 1
-#>   mean_carat
-#>        <dbl>
-#> 1      0.798
-```
-
-You can calculate multiple summary statistics at the same time by providing a comma-separated list of name-value pairs. Because the line starts getting long, this example has each argument on its own line, but it would work just fine if everything was on the same line.
-
-
-```r
-summarize(
-  diamonds,
-  mean_carat = mean(carat), 
-  sd_carat = sd(carat)
-)
-```
-
-### Summary functions
-
-There are a wide variety of functions you can use to summarize a variable. Here are some examples:
-
--   `max()` - maximum value
--   `min()` - minimum value
--   `median()` - median value
--   `mode()` mode
--   `sd()` standard deviation
--   `var()` variance
--   `IQR()` interquartile range
-
-For each of those functions, you must put the name of the variable you want to summarize *inside* the given function as the first argument.
-
-#### Sample size
-
-There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
-
-
-```r
-summarize(diamonds, sampl_size = n())
-```
-
-```
-#> # A tibble: 1 × 1
-#>   sampl_size
-#>        <int>
-#> 1      53940
-```
-
-#### Quantiles
-
-Some summary functions require one or more arguments in addition to the name of the variable to summarize.
-
-One example is the `quantile()` function, whose `probs` argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable `carat`, you can use the quantile function with the argument of `probs = 0.25`:
-
-
-```r
-summarize(diamonds, q1 = quantile(carat, probs = 0.25))
-```
-
-```
-#> # A tibble: 1 × 1
-#>      q1
-#>   <dbl>
-#> 1   0.4
-```
-
-### Combine functions and equations
-
-When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the `price` variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:
-
-
-```r
-summarize(
-  diamonds, 
-  sem = sd(price) / sqrt(n())
-)
-```
-
-```
-#> # A tibble: 1 × 1
-#>     sem
-#>   <dbl>
-#> 1  17.2
-```
-
-Notice that the equation for standard error (sem) above uses both the `sd()` function and the `n()` function.
-
-Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
-
-
-```r
-summarize(
-  diamonds, 
-  mean_p = mean(price),
-  sd_p = sd(price),
-  sampl_size = n(),
-  sem = sd_p / sqrt(sampl_size),
-  ci_upper_limit = mean_p + 1.96 * sem,
-  ci_lower_limit = mean_p - 1.96 * sem
-)
-```
-
-```
-#> # A tibble: 1 × 6
-#>   mean_p  sd_p sampl_size   sem ci_upper_limit ci_lower_limit
-#>    <dbl> <dbl>      <int> <dbl>          <dbl>          <dbl>
-#> 1  3933. 3989.      53940  17.2          3966.          3899.
-```
-
-## Summarize a data set by groups
-
-In the previous section you learned how to use `summarize()` combined with a summary functions such as `mean()` and `sd()` to calculate statistics for all observations (rows) in a data set.
-
-A common goal in data transformation, however, is to calculate statistics for *groups* of observations rather than all observations together. For example, in a university course with two sections, you may want to calculate mean scores for each section instead of the class as a whole.
-
-The `group_by()` function combined with the `summarize()` function lets you calculated summary statistics for groups of observations. The groups are identified by a categorical variable called the grouping variable, while the statistics are calculated from one or more other variables.
-
-For example, let's explore how the mean price varies with the cut of a diamond in the `diamonds` data set.
-
-In the first step, you use `group_by()` to produced a grouped data frame. Like other dplyr verbs, the first argument to `group_by()` is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the `cut` variable and assign the resulting grouped data frame a new name, `diamonds_grouped`:
-
-
-```r
-diamonds_grouped <- group_by(diamonds, cut)
-diamonds_grouped
-```
-
-```
-#> # A tibble: 53,940 × 10
-#> # Groups:   cut [5]
 #>   carat cut       color clarity depth table price     x     y     z
 #>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
 #> 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
@@ -315,328 +116,589 @@ diamonds_grouped
 #> # ℹ 53,934 more rows
 ```
 
-The only difference in the output from printing the ungrouped `diamonds` table is the second line of the output, which now says `# Groups:   cut [5]`. That's saying the table is grouped by the `cut` variable and there are five groups (the five possible values of `cut`).
-
-The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:
+Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
 
 
 ```r
-summarize(diamonds_grouped, mean_price = mean(price))
+help(diamonds) # method 1
+??diamonds     # method 2
+```
+
+You can also get there by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).
+
+If you get a message starting with "No documentation" or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 package yet, either directly or by loading the tidyverse package. Load it and try again.
+
+The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).
+
+Note that when you printed `diamonds` in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled `<dbl>` , one numeric discrete variable labeled `<int>`, and three categorical ordinal variables labeled `<ord>`.
+
+The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).
+
+The most common column data you will see in data frames are:
+
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
++===========+================+==================================================================================================================+=====================+===============+
+| logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| character | `"A"`          | Text; note that `"1"` is still a character data type because of the double quotes                                | categorical nominal | chr           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| factor    | `factor("A")`  | Text with an enumerated list of values; you can see possible values with `levels()`                              | categorical nominal | fct           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| ordered   | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord           |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| Date      | `Sys.Date()`   | Date                                                                                                             | numeric discrete    | date          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+| POSIXt    | `Sys.time()`   | Date plus time                                                                                                   | numeric continuous  | dttm          |
++-----------+----------------+------------------------------------------------------------------------------------------------------------------+---------------------+---------------+
+
+You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
+
+## Filter rows with `filter()`
+
+The `filter()` function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.
+
+For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:
+
+
+```r
+filter(diamonds, carat > 2)
 ```
 
 ```
-#> # A tibble: 5 × 2
-#>   cut       mean_price
-#>   <ord>          <dbl>
-#> 1 Fair           4359.
-#> 2 Good           3929.
-#> 3 Very Good      3982.
-#> 4 Premium        4584.
-#> 5 Ideal          3458.
+#> # A tibble: 1,889 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # ℹ 1,883 more rows
 ```
 
-## Quick contingency tables
+### Intermediate objects
 
-Counting the number of observations by group is a fairly common task, especially when you are exploring your data interactively in an R session (e.g. by typing commands into the console). One way to do this would be to use a grouped summary and the `n()` function as described above, for example:
+When you run code to filter a data frame, R returns a new data frame.
+
+If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
+
+
+```r
+big_diamonds <- filter(diamonds, carat > 2)
+```
+
+When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
+
+
+```r
+big_diamonds
+```
+
+```
+#> # A tibble: 1,889 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.06 Premium J     I1       61.2    58  5203  8.1   8.07  4.95
+#> 2  2.14 Fair    J     I1       69.4    57  5405  7.74  7.7   5.36
+#> 3  2.15 Fair    J     I1       65.5    57  5430  8.01  7.95  5.23
+#> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
+#> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
+#> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
+#> # ℹ 1,883 more rows
+```
+
+Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
+
+
+```r
+filter(big_diamonds, price > 15000)
+```
+
+```
+#> # A tibble: 1,037 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.1  Premium   I     SI1      61.5    57 15007  8.25  8.21  5.06
+#> 2  2.02 Premium   G     SI2      63      59 15014  8.05  7.95  5.03
+#> 3  2.05 Very Good F     SI2      61.9    56 15017  8.13  8.18  5.05
+#> 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
+#> 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
+#> 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
+#> # ℹ 1,031 more rows
+```
+
+### Basic Operators
+
+The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).
+
+Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while `==` and `!=` can be used with any type of variable.
+
+There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes `"`.
+
+Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
+
+
+```r
+filter(diamonds, cut == "Ideal")
+```
+
+```
+#> # A tibble: 21,551 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.23 Ideal J     VS1      62.8    56   340  3.93  3.9   2.46
+#> 3  0.31 Ideal J     SI2      62.2    54   344  4.35  4.37  2.71
+#> 4  0.3  Ideal I     SI2      62      54   348  4.31  4.34  2.68
+#> 5  0.33 Ideal I     SI2      61.8    55   403  4.49  4.51  2.78
+#> 6  0.33 Ideal I     SI2      61.2    56   403  4.49  4.5   2.75
+#> # ℹ 21,545 more rows
+```
+
+Note that `"Ideal"` has double quotes around it. This is to tell R you want to find the literal text string "Ideal". If you instead wrote `cut == Ideal` without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.
+
+Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
+
+
+```r
+filter(diamonds, carat = 2)
+```
+
+```
+#> Error in `filter()`:
+#> ! We detected a named input.
+#> ℹ This usually means that you've used `=` instead of `==`.
+#> ℹ Did you mean `carat == 2`?
+```
+
+### Logical Operators
+
+In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the ampersand `&` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the vertical bar `|` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
+
+#### And operator
+
+If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
+
+
+```r
+filter(diamonds, carat > 2, price < 6000)
+filter(diamonds, carat > 2 & price < 6000)
+```
+
+#### Or operator
+
+For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
+
+
+```r
+filter(diamonds, color == "D" | color == "E")
+```
+
+```
+#> # A tibble: 16,572 × 10
+#>   carat cut     color clarity depth table price     x     y     z
+#>   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good    E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.22 Fair    E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 5  0.2  Premium E     SI2      60.2    62   345  3.79  3.75  2.27
+#> 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
+#> # ℹ 16,566 more rows
+```
+
+This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
+
+
+```r
+filter(diamonds, color %in% c("D", "E"))
+```
+
+#### Not operator
+
+"Not" comparisons can be used to pick rows that do not meet a given criteria. The `!` operator generally should be followed by parentheses `()` with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color *except* E:
+
+
+```r
+filter(diamonds, !(color == "E"))
+```
+
+#### Missing values
+
+Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
+
+
+```r
+filter(diamonds, !is.na(color))
+```
+
+The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
+
+### String helper functions
+
+There are a variety of other functions you can incorporate into your `filter()` function to achieve specific results.
+
+For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply `==` or `!=`. Let's say you want to find all diamonds with a clarity of `VS1`, `VS2`, `VVS1`, or `VVS2`. You could use the "or" operator, or the "in" operator. But what if you don't even know all the possible clarity values and you just want everything that contains `"VS"` anywhere in the word. There is a string-based helper function `str_detect()` which looks for a particular string of text inside a text variable:
+
+
+```r
+filter(diamonds, str_detect(clarity, "VS"))
+```
+
+```
+#> # A tibble: 29,150 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 2  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 3  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+#> 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
+#> # ℹ 29,144 more rows
+```
+
+The function itself is the comparison, there is no operator like `==` or `!=`.
+
+The name of the variable you want to look in goes *inside* the `str_detect()` function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.
+
+If you want to pick only values of clarity that *start* or *end* with particular text, you can use the functions `str_starts()` or `str_ends()`. For example:
+
+
+```r
+filter(diamonds, str_starts(clarity, "VS"))
+filter(diamonds, str_ends(clarity, "2"))
+```
+
+## Arrange rows with `arrange()`
+
+The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.
+
+The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
+
+For example, to sort the `diamonds` data frame by cut:
+
+
+```r
+arrange(diamonds, cut)
+```
+
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.86 Fair  E     SI2      55.1    69  2757  6.45  6.33  3.52
+#> 3  0.96 Fair  F     SI2      66.3    62  2759  6.27  5.95  4.07
+#> 4  0.7  Fair  F     VS2      64.5    57  2762  5.57  5.53  3.58
+#> 5  0.7  Fair  F     VS2      65.3    55  2762  5.63  5.58  3.66
+#> 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
+#> # ℹ 53,934 more rows
+```
+
+You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
+
+
+```r
+arrange(diamonds, cut, price)
+```
+
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.22 Fair  E     VS2      65.1    61   337  3.87  3.78  2.49
+#> 2  0.25 Fair  E     VS1      55.2    64   361  4.21  4.23  2.33
+#> 3  0.23 Fair  G     VVS2     61.4    66   369  3.87  3.91  2.39
+#> 4  0.27 Fair  E     VS1      66.4    58   371  3.99  4.02  2.66
+#> 5  0.3  Fair  J     VS2      64.8    58   416  4.24  4.16  2.72
+#> 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
+#> # ℹ 53,934 more rows
+```
+
+If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using `levels()` . For example `levels(diamonds$cut)` .
+
+### Descending order
+
+To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
+
+
+```r
+arrange(diamonds, cut, desc(price))
+```
+
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut   color clarity depth table price     x     y     z
+#>   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  2.01 Fair  G     SI1      70.6    64 18574  7.43  6.64  4.69
+#> 2  2.02 Fair  H     VS2      64.5    57 18565  8     7.95  5.14
+#> 3  4.5  Fair  J     I1       65.8    58 18531 10.2  10.2   6.72
+#> 4  2    Fair  G     VS2      67.6    58 18515  7.65  7.61  5.16
+#> 5  2.51 Fair  H     SI2      64.7    57 18308  8.44  8.5   5.48
+#> 6  3.01 Fair  I     SI2      65.8    56 18242  8.99  8.94  5.9 
+#> # ℹ 53,934 more rows
+```
+
+Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.
+
+## Select columns with `select()`
+
+The `select()` function allows you to select which *columns* (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.
+
+The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.
+
+For example, say you wanted to focus on the variables carat, cut, and color, you could use:
+
+
+```r
+select(diamonds, carat, cut, color)
+```
+
+```
+#> # A tibble: 53,940 × 3
+#>   carat cut       color
+#>   <dbl> <ord>     <ord>
+#> 1  0.23 Ideal     E    
+#> 2  0.21 Premium   E    
+#> 3  0.23 Good      E    
+#> 4  0.29 Premium   I    
+#> 5  0.31 Good      J    
+#> 6  0.24 Very Good J    
+#> # ℹ 53,934 more rows
+```
+
+Technically, you can also select variables by their position, so `select(diamonds, carat, cut, color)` is equivalent to `select(diamonds, 1, 2, 3)`
+
+`select()` can also be used to rearrange the order of columns:
+
+
+```r
+select(diamonds, color, cut, carat)
+```
+
+```
+#> # A tibble: 53,940 × 3
+#>   color cut       carat
+#>   <ord> <ord>     <dbl>
+#> 1 E     Ideal      0.23
+#> 2 E     Premium    0.21
+#> 3 E     Good       0.23
+#> 4 I     Premium    0.29
+#> 5 J     Good       0.31
+#> 6 J     Very Good  0.24
+#> # ℹ 53,934 more rows
+```
+
+There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
+
+
+```r
+select(diamonds, carat:price)
+```
+
+```
+#> # A tibble: 53,940 × 7
+#>   carat cut       color clarity depth table price
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>
+#> 1  0.23 Ideal     E     SI2      61.5    55   326
+#> 2  0.21 Premium   E     SI1      59.8    61   326
+#> 3  0.23 Good      E     VS1      56.9    65   327
+#> 4  0.29 Premium   I     VS2      62.4    58   334
+#> 5  0.31 Good      J     SI2      63.3    58   335
+#> 6  0.24 Very Good J     VVS2     62.8    57   336
+#> # ℹ 53,934 more rows
+```
+
+### Removing variables
+
+Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
+
+
+```r
+select(diamonds, -table)
+```
+
+```
+#> # A tibble: 53,940 × 9
+#>   carat cut       color clarity depth price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
+#> # ℹ 53,934 more rows
+```
+
+To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
+
+
+```r
+select(diamonds, -x:-y)
+```
+
+### Helper functions
+
+Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
+
+There are several functions that can be used within `select()` :
+
+-   `starts_with("abc")` finds all columns whose name starts with "abc"
+
+-   `ends_with("abc")` finds all columns whose name ends with "abc"
+
+-   `contains("abc")` finds all columns whose name contains "abc"
+
+-   `everything()` finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.
+
+For example, the following code would move table and price to the front and leave everything else at the end:
+
+
+```r
+select(diamonds, ends_with("e"), everything())
+```
+
+```
+#> # A tibble: 53,940 × 10
+#>   table price carat cut       color clarity depth     x     y     z
+#>   <dbl> <int> <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl>
+#> 1    55   326  0.23 Ideal     E     SI2      61.5  3.95  3.98  2.43
+#> 2    61   326  0.21 Premium   E     SI1      59.8  3.89  3.84  2.31
+#> 3    65   327  0.23 Good      E     VS1      56.9  4.05  4.07  2.31
+#> 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
+#> 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
+#> 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
+#> # ℹ 53,934 more rows
+```
+
+## Combine multiple operations
+
+Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row?
+
+You have three basic options:
+
+-   Create intermediate objects
+-   Nest functions
+-   Use the pipe
+
+Let's use an example to illustrate each option. For this example, let's say you want to perform the following actions with the diamonds dataset:
+
+1.  Pick only diamonds with a weight of 2 or more carats
+2.  Sort the diamonds by price
+3.  Select only the variables variables carat, cut, and price
+
+### Create intermediate objects
+
+One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator `<-`. In our example, this might look something like:
+
+
+```r
+big_diamonds <- filter(diamonds, carat >= 2)
+sorted_big_diamonds <- arrange(big_diamonds, price)
+select(sorted_big_diamonds, carat, cut, price)
+```
+
+One drawback to this approach is that it leaves two intermediate objects cluttering up your environment, neither of which you need. You could either leave them, or remove them using `rm()`.
+
+Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:
+
+
+```r
+x1 <- filter(diamonds, carat >= 2)
+x2 <- arrange(x1, price)
+select(x2, carat, cut, price)
+```
+
+The code is a lot smaller, but it is less understandable at a glance, and you still have intermediate objects left behind.
+
+You might be tempted to just overwrite the existing diamonds dataset with the new one:
+
+
+```r
+diamonds <- filter(diamonds, carat >= 2)
+diamonds <- arrange(diamonds, price)
+select(diamonds, carat, cut, price)
+```
+
+The issue here is that you no longer have your original diamonds dataset. If you do not mind that, then this is a decent solution. You might use this option if you want to clean up a dataset after reading it from a file, for example to rename unwieldy variables or deal with missing values.
+
+What if you need to use the original diamonds dataset again? Of course, it didn't disappear, and you can still access it by specifying the package `ggplot2::diamonds` or by removing diamonds from your global environment `rm(diamonds)`. But overall, this isn't an ideal solution.
+
+### Nest functions
+
+Another option is to nest each function inside the other:
+
+
+```r
+select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
+```
+
+It works, but it is hard to read and interpret at a glance.
+
+### Use the pipe
+
+A more elegant solution is to use the special pipe operator `%>%` introduced in the magrittr package. Using the pipe, `x %>% f()` is equivalent to `f(x)`. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.
+
+Using this option, we could do:
 
 
 ```r
 diamonds %>% 
-  group_by(cut) %>% 
-  summarize(n = n())
+  filter(carat >= 2) %>% 
+  arrange(price) %>% 
+  select(carat, cut, price)
 ```
 
-```
-#> # A tibble: 5 × 2
-#>   cut           n
-#>   <ord>     <int>
-#> 1 Fair       1610
-#> 2 Good       4906
-#> 3 Very Good 12082
-#> 4 Premium   13791
-#> 5 Ideal     21551
-```
+The pipe is like saying "take this thing, then do this to it, then do this to it". Pipes can make your code simpler, shorter, and easier to read.
 
-Because it is such a common task, dplyr includes a special function `count()` to do just that but in fewer commands:
-
-
-```r
-count(diamonds, cut)
-```
-
-```
-#> # A tibble: 5 × 2
-#>   cut           n
-#>   <ord>     <int>
-#> 1 Fair       1610
-#> 2 Good       4906
-#> 3 Very Good 12082
-#> 4 Premium   13791
-#> 5 Ideal     21551
-```
-
-You can also do this to create a quick contingency table for multiple variables:
-
-
-```r
-distinct(diamonds, cut, clarity)
-```
-
-```
-#> # A tibble: 40 × 2
-#>   cut       clarity
-#>   <ord>     <ord>  
-#> 1 Ideal     SI2    
-#> 2 Premium   SI1    
-#> 3 Good      VS1    
-#> 4 Premium   VS2    
-#> 5 Good      SI2    
-#> 6 Very Good VVS2   
-#> # ℹ 34 more rows
-```
-
-If you just want to see the distinct values (levels) of a categorical variable, or the combinations of values for two or more categorical variables in a dataset, but you don't need the counts, there is an even simpler function `distinct()` for that:
-
-
-```r
-distinct(diamonds, cut)
-```
-
-```
-#> # A tibble: 5 × 1
-#>   cut      
-#>   <ord>    
-#> 1 Ideal    
-#> 2 Premium  
-#> 3 Good     
-#> 4 Very Good
-#> 5 Fair
-```
-
-The functions `count()` and `distinct()` are useful when you want to get a quick handle on your categorical variables.
-
-## Visualize a categorical and numerical variable
-
-In the Introduction to ggplot2 lab, you [learned how to create a histogram](https://biol275-msum.github.io/introduction-to-ggplot2.html#histograms) to visualize the distribution of a single numerical variable. But what if you want to look at how *two* variables are related? For example, say you want to visualize the relationship between the cut and price of diamonds we summarized in the previous example.
-
-Here you will learn two ways to visualize the joint distribution of a numerical variable and a categorical variable:
-
-1.  Multiple histograms
-2.  Strip plots
-
-### Multiple histograms
-
-A common way of comparing multiple distributions is to create a single graph with multiple histograms, one for each variable or subset of observations.
-
-The `facet_wrap()` function in ggplot2 allows you to take a plot and split it up into multiple plots based on some categorical variable. The first argument to `facet_wrap()` is an expression of the form `~ var_name` where `var_name` is the name of the grouping variable.
-
-First, let's start by graphing the distribution of the `price` variable without regard to cut. We will set the number of bin width to 500 (dollars)
-
-
-```r
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = price), binwidth = 500)
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
-
-Interestingly, the distribution appears to be bimodal, with the second, smaller mode around 4500.
-
-Now lets plot the same graph but add the `facet_wrap()` function. Remember to add a plus sign `+` at the end of the `geom_histogram()` so R knows you are trying add another layer to the graph:
-
-
-```r
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = price), binwidth = 500) +
-  facet_wrap(~ cut)
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
-
-The resulting plot now has five small graphs, called facets in tidyverse lingo, each labeled with the value of `cut` it represents.
-
-A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the *distribution* of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the `scales` argument to `facet_wrap()`:
-
-
-```r
-ggplot(data = diamonds) +
-  geom_histogram(mapping = aes(x = price), binwidth = 500) +
-  facet_wrap(~ cut, scales = "free_y")
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
-
-The `scales` argument can be set to `"free_y"`, `"free_x"`, or `"free"` to allow both axes to vary.
-
-Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which can be used to specify how many rows or columns the resulting facets should form. With histograms, it's common to put them all in one column so you can compare the shape of the distributions more easily.
-
-### Strip plots
-
-Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the `geom_jitter()` function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:
-
-
-```r
-ggplot(data = diamonds) +
-  geom_jitter(mapping = aes(x = cut, y = price))
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
-
-As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the `shape` argument to `geom_jitter()`. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the `alpha` argument to something low like 0.1 indicating 10% opacity.
-
-
-```r
-ggplot(data = diamonds) +
-  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1)
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
-
-One nice thing about strip plots is that they make it easy to view the both the raw data *and* summary statistics such as the means and confidence intervals.
-
-The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:
-
-
-```r
-summarize(diamonds_grouped, mean_price = mean(price))
-```
-
-Let's expand that a bit to include upper and lower confidence limits:
-
-
-```r
-price_summary <-
-  summarize(
-    diamonds_grouped, 
-    mean_price = mean(price),
-    sem = sd(price) / sqrt(n()),
-    ci_upper_limit = mean_price + 1.96 * sem,
-    ci_lower_limit = mean_price - 1.96 * sem
-  )
-price_summary
-```
-
-```
-#> # A tibble: 5 × 5
-#>   cut       mean_price   sem ci_upper_limit ci_lower_limit
-#>   <ord>          <dbl> <dbl>          <dbl>          <dbl>
-#> 1 Fair           4359.  88.7          4533.          4185.
-#> 2 Good           3929.  52.6          4032.          3826.
-#> 3 Very Good      3982.  35.8          4052.          3912.
-#> 4 Premium        4584.  37.0          4657.          4512.
-#> 5 Ideal          3458.  25.9          3508.          3407.
-```
-
-Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
-
-
-```r
-ggplot(data = diamonds) +
-  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
-  geom_crossbar(
-    data = price_summary, 
-    mapping = aes(x = cut, y = mean_price, ymax = ci_upper_limit, 
-                  ymin = ci_lower_limit),
-    color = "red"
-  )
-```
-
-<img src="lab-4_files/figure-html/jitter-1.png" width="70%" style="display: block; margin: auto;" />
-
-The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
-
-## Visualize two numerical variables
-
-The most basic type of graph for visualizing the relationship between two numerical variables is the scatterplot. The `geom_point()` function can be used to add points two a graph. When it is used with numerical variables for the `x` and `y` aesthetics, the result is a scatterplot.
-
-For example, the following graph shows the relationship between carat and price:
-
-
-```r
-ggplot(data = diamonds) +
-  geom_point(mapping = aes(x = carat, y = price))
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
-
-Looking at the graph it is clear that as the weight of the diamond increases, so does the price.
-
-### Plotting three variables
-
-In order to more fully explore the relationships between multiple variables, it is sometimes useful the visualize them at the same time. For example, what if you wanted to see how cut, price, and carat are related?
-
-One way to do this might be to use `facet_wrap()` to create a separate scatter plot for each cut.
-
-A common alternative is to add a third aesthetic to the plot to differentiate points in some other way than by their x and y coordinates. These aesthetics include `color`, `size`, `shape`, and `alpha` for points, and `linetype` for lines. See the ggplot2 documentation on [Aesthetic specifications](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html) for examples.
-
-The following code plots the same scatter plot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.
-
-
-```r
-ggplot(data = diamonds) +
-  geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
-```
-
-<img src="lab-4_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+You can find a more complete discussion in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in *R for Data Science.*
 
 ## Assignment
 
-First, create a new R script named `assignment.R`. At the top of the script, add code to load the tidyverse package.
+Open your `penguins-assignment.R` script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.
 
-For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
+For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.
 
-You can print `iris` in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in the user-friendly manner of tibbles that you are used to. To have it print more nicely, turn it into a tibble first.
+Check to see if the palmerpenguins package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type palmer and you should see the package if it is installed. If it is not, click the Install button and type palmerpenguins to install it.
 
-Add this to your script:
+Begin by loading the tidyverse and palmerpenguins package in your R script:
 
 
 ```r
-iris <- as_tibble(iris) # so it prints a little nicer
+library(tidyverse)
+library(palmerpenguins)
 ```
-
-Note that when you do this, iris will now show up in your Environment tab.
 
 ### Questions
 
-Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks. For each question, put a comment like `# question 1` on the line before, so you can read your script more easily, and follow each answer with a blank line to improve readability.
+Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks.
 
-For each answer, you can simply print the resulting table. You do not need to assign it a name. Some questions have more than one part, e.g. you need to use multiple dplyr functions in a row. You may use intermediate objects for this, but you are encouraged to try [combining multiple operations with the pipe](Combine%20multiple%20operations%20with%20the%20pipe).
+Put a comment like `# question 1` on the line before each code chunk, so you (and I) can read your script more easily.
 
-1.  Rename each variable so that it is all lower-case and uses an underscore `_` instead of a period `.` in the name (the recommended coding style in the [tidyverse style guide](https://style.tidyverse.org/syntax.html))
+1.  Print the penguins dataset
+2.  Filter penguins to include only Gentoo penguins
+3.  Filter penguins to include everything except Gentoo penguins
+4.  Filter penguins to include only penguins on Bisco Island.
+5.  Filter penguins to include only Adelie Penguins on Biscoe Island.
+6.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm.
+7.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm and flipper lengths less than 196 mm.
+8.  Filter penguins to include only observations with a missing value (`NA`) for bill length
+9.  Arrange all penguins by body mass
+10. Arrange all penguins by decreasing flipper length
+11. Select only the columns species and sex
+12. Select the column species and all columns that begin with "bill\_" using the `starts_with()` helper function
+13. Select all columns except those ending with "\_mm"
+14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
 
-2.  Convert the four numerical variables from cm to mm by multiplying by 10
-
-3.  Calculate sepal area and petal area (area is equal to length multiplied by width). Print a table with *only* the variables sepal area, petal area, and species.
-
-4.  Calculate the following statistics for the *entire dataset* from the sepal length variable and print the resulting table:
-
-    a.  sample size
-    b.  maximum value
-    c.  minimum value
-    d.  range
-    e.  median
-    f.  first quartile (q1)
-    g.  third quartile (q2)
-    h.  inter-quartile range (iqr)
-
-    Your answer should be a tibble with exactly one row
-
-5.  Calculate the following statistics [for each species]{.ul} from the **petal width** variable and print the resulting table:
-
-    a.  sample size
-    b.  mean
-    c.  standard deviation
-    d.  variance
-    e.  standard error of the mean
-    f.  approximate 95% confidence interval
-
-6.  Visualize the relationship between **petal width** and **species** using a strip plot.
-
-7.  Starting with the previous graph, add the mean and 95% confidence interval for each species
-
-8.  Visualize the relationship between petal length, petal width, and species using a scatter plot. Map the two numerical variables to the x and y axes and map species to the color and shape aesthetics.
-
-### Submission
+## Submission
 
 When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
 
@@ -644,7 +706,7 @@ Then copy the URL to your GitHub repository and submit that to the Assignment on
 
 ## Further reading
 
-Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on mutating, grouping, and summarizing in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
 
 You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
 

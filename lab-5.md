@@ -1,716 +1,651 @@
-# Lab 5: Frequency data
+# Lab 5: Data summarizing
 
 ## Objectives
 
 In this lab, you will learn to:
 
-1.  Test whether frequency data fits a proportional probability model
-2.  Test whether frequency data fits a Poisson probability model
+-   Rename variables
 
-## Getting started
+-   Create new variables
 
-1.  Go to D2L and follow the link to claim your Lab 5 repository from GitHub Classroom.
+-   Summarize a dataset as a whole or by groups
 
-2.  Clone the repository to your computer using RStudio
+-   Visualize the relationship between variables
 
-3.  Install the tidyverse package
+    -   One numerical and one categorical variable
+    -   Two numerical variables
+    -   Three variables
 
-4.  Create four scripts:
+## Introduction
 
-    a.  **proportional.R** (for the first example problem)
-    b.  **poisson.R** (for the second example problem)
-    c.  **cats.R** (for the first assignment problem)
-    d.  **truffles.R** (for the second assignment problem)
+Visualizing data is a key step in the data science workflow, but it is rarely the first step. Sometimes you only need part of a dataset to answer your question, which is why the previous lab, [Data subsetting](data-subsetting.html), introduced you to methods for extracting a subset of observations or variables from a table. At other times, you may need to create new variables from the original ones, or you may need to calculate summary statistic for a dataset or for groups within a dataset. This lab will introduce you to methods for that using the `diamonds` dataset from the **ggplot2** package and new functions from the **dplyr** package.
 
-5.  Work your way through the two examples in the tutorial below.
+In this lab you will:
 
-## Example 1: Proportional probability model
+-   Rename variables with `rename()`
+-   Create new variables with mutate `mutate()`
+-   Summarize a dataset with `group_by()` and `summarize()`
 
-Chapter 8, Section 2 of Whitlock & Schulter (2020) introduced you to the idea of the proportional probability model using an example about the number of births on days of the week.
+### Packages
 
-Below, you will see how the question can be worked in R using the tidyverse functions you learned in previous labs. The authors of the textbook also provide [code using mostly base R functions](https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html), but for this lab you should use tidyverse functions.
+In this lab you will use functions and datasets from the **dplyr** and **ggplot2** packages. While you could load those packages individually, in this course you are encouraged to always load the entire **tidyverse** set of packages.
 
-
-```r
-library(tidyverse)
-```
-
-### Read the data
-
-First read the data using `read_csv()` from the readr package (as opposed to the base function `read.csv()`):
+Load the **tidyverse** package:
 
 
 ```r
-birth_data <- read_csv("http://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08e1DayOfBirth.csv")
+library(tidyverse)    # load the tidyverse package
 ```
 
 ```
-#> Rows: 350 Columns: 1
-#> ── Column specification ────────────────────────────────────────────────────────
-#> Delimiter: ","
-#> chr (1): day
-#> 
-#> ℹ Use `spec()` to retrieve the full column specification for this data.
-#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.4     ✔ readr     2.1.4
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
+#> ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+#> ✔ purrr     1.0.2     
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-```r
-birth_data
-```
+### `diamonds` data
 
-```
-#> # A tibble: 350 × 1
-#>   day   
-#>   <chr> 
-#> 1 Sunday
-#> 2 Sunday
-#> 3 Sunday
-#> 4 Sunday
-#> 5 Sunday
-#> 6 Sunday
-#> # ℹ 344 more rows
-```
+In addition to getting us access to dplyr packages, loading the **tidyverse** package also lets us access the `diamonds` dataset from the **ggplot2** package. This lab will use the `diamonds` dataset to show examples of renaming, mutating, summarizing, and graphing.
 
-The data set is a random sample of babies born in 1999 in the United States. As you can see, the data set contains 350 rows, each representing a baby. The only column is `day`, a categorical variable which contains the day of the week on which the baby was born.
+You can read more about the `diamonds` dataset in the previous lab, [Data subsetting](data-subsetting.html).
 
-### Make a bar chart
+## Rename variables with `rename()`
 
-As with most data sets, the first order of business is to explore the data. We can start by looking at the distribution of the `day` variable using a bar chart:
+The `rename()` function allows you to rename variables in a data frame. The first argument to `rename()` is the data frame. The other arguments specify which variables to rename, with the format `new_name = old_name`.
+
+For example, say you want to rename the `x`, `y`, and `z` variables to `length`, `width`, and `height`:
 
 
 ```r
-ggplot(data = birth_data) +
-  geom_bar(mapping = aes(x = day))
+rename(diamonds, length = x, width = y, height = z)
 ```
 
-<img src="lab-5_files/figure-html/birth-day-bar-chart-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut       color clarity depth table price length width height
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int>  <dbl> <dbl>  <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5    55   326   3.95  3.98   2.43
+#> 2  0.21 Premium   E     SI1      59.8    61   326   3.89  3.84   2.31
+#> 3  0.23 Good      E     VS1      56.9    65   327   4.05  4.07   2.31
+#> 4  0.29 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
+#> 5  0.31 Good      J     SI2      63.3    58   335   4.34  4.35   2.75
+#> 6  0.24 Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
+#> # ℹ 53,934 more rows
+```
 
-### Fix the factor levels
+Note the lack of quotes around the names of the data frame, the new variable names or the old variables names
 
-When we read the data, R didn't know what kind of variable `day` was, so it played it conservatively and treated it as character (`chr`) data, which has no inherent order or enumerated list of possible values. When we plot the variable, ggplot simply puts them in alphabetical order.
-
-What we need to do is change the `day` variable so that it is a factor (`fct`) data type with enumerated values in a particular order. The first step is to create a vector with the days of the week in the correct order:
+The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:
 
 
 ```r
-days_of_week <- c("Monday", "Tuesday", "Wednesday", "Thursday", 
-                  "Friday", "Saturday", "Sunday")
-days_of_week
+rename(
+  diamonds, 
+  length = x, 
+  width = y, 
+  height = z
+)
 ```
 
-```
-#> [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
-#> [7] "Sunday"
-```
+This makes the code more readable. Just be sure you have commas after each argument except the last, and don't forget the closing parenthesis on its own line
 
-Then we can use `mutate()` to create a new variable using `factor()`, and use a little tidyverse magic from the forcats and stringr packages to shorten the day names for easier viewing. Let's call the new variable `day_fct` and `day_short`.
+## Create new variables with `mutate()`
+
+The `mutate()` function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to `mutate()` is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination of both.
+
+Let's do an example using the diamonds dataset. To make viewing the new variables easier, first select a subset of variables from the `diamonds` data set using `select()` and give the new data frame the name `d2`:
 
 
 ```r
-birth_data <- 
-  mutate(
-    birth_data, 
-    day_fct = factor(day, levels = days_of_week),
-    day_short = fct_relabel(day_fct, str_sub, start = 1, end = 3)
-  )
-birth_data
+# select the variables of interest
+d2 <- select(diamonds, carat, price)
+d2
 ```
 
 ```
-#> # A tibble: 350 × 3
-#>   day    day_fct day_short
-#>   <chr>  <fct>   <fct>    
-#> 1 Sunday Sunday  Sun      
-#> 2 Sunday Sunday  Sun      
-#> 3 Sunday Sunday  Sun      
-#> 4 Sunday Sunday  Sun      
-#> 5 Sunday Sunday  Sun      
-#> 6 Sunday Sunday  Sun      
-#> # ℹ 344 more rows
+#> # A tibble: 53,940 × 2
+#>   carat price
+#>   <dbl> <int>
+#> 1  0.23   326
+#> 2  0.21   326
+#> 3  0.23   327
+#> 4  0.29   334
+#> 5  0.31   335
+#> 6  0.24   336
+#> # ℹ 53,934 more rows
 ```
 
-Notice the data types listed under the variable names. When you have a factor variable in your data set, you can find out what the levels are using the levels function.
+Now use the new data frame `d2` to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named `ppc` ("price per carat"):
 
 
 ```r
-levels(birth_data$day_fct)
+# example of creating price per carat (ppc)
+mutate(d2, ppc = price / carat)
 ```
 
 ```
-#> [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday" 
-#> [7] "Sunday"
+#> # A tibble: 53,940 × 3
+#>   carat price   ppc
+#>   <dbl> <int> <dbl>
+#> 1  0.23   326 1417.
+#> 2  0.21   326 1552.
+#> 3  0.23   327 1422.
+#> 4  0.29   334 1152.
+#> 5  0.31   335 1081.
+#> 6  0.24   336 1400 
+#> # ℹ 53,934 more rows
 ```
 
-```r
-levels(birth_data$day_short)
-```
+### `mutate()` an existing variable
 
-```
-#> [1] "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"
-```
-
-Changing character variables to factors is common in R when you are working with categorical data, so you should become familiar with the `factor()` function. To learn more about dealing with factors in R, see the chapter [Factors](https://r4ds.had.co.nz/factors.html) in *R for Data Science*. In the example above, abbreviating the week names was fun, but it's not something you are expected to learn and apply on your own.
-
-### Make a better bar chart
-
-Now we're ready to plot the data again. All we need to do is swap `x = day` with `x = day_short`.
-
-This time, let's also change the y-axis label to "Frequency" and remove the x-axis label altogether as it's pretty obvious what it represents. To give it a little spice, we can set the fill color to MSUM red `"#a6192e"`.
+You do not have to create an entirely new variable when using `mutate()`. For example, let's say you wanted to convert the price from US Dollars (USD) to Canadian Dollars (CAD). The current exchange rate is about 1 USD to 1.27 CAD. You can overwrite the existing price variable by setting the new variable name to be the same as the old variable name:
 
 
 ```r
-ggplot(data = birth_data) +
-  geom_bar(mapping = aes(x = day_short), fill = "#a6192e") +
-  labs(y = "Frequency", x = NULL)
+mutate(diamonds, price = price * 1.27)
 ```
 
-<img src="lab-5_files/figure-html/birth-day-bar-chart-2-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5    55  414.  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8    61  414.  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9    65  415.  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4    58  424.  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3    58  425.  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8    57  427.  3.94  3.96  2.48
+#> # ℹ 53,934 more rows
+```
 
-### Create a frequency table
+## Summarize a data set with `summarize()`
 
-The other common method of visualizing frequency data for a categorical variable is with a frequency table. This is quite easy with the `count()` function in the dplyr package.
+You can summarize a data set using the `summarize()` function. Like other dplyr functions, the first argument to `summarize()` is the data frame. Additional arguments are name-value pairs, just like with `mutate()`. Values are set using various summary functions such as `mean()` or `sd()` (standard deviation). The difference is that whereas `mutate()` returns a data frame with the same number of rows as the input data frame, `summarize()` returns a data frame with only one row, and the only variables in the new data frame are the ones you named in `summarize()`. For example, to calculate the mean value of the `carat` variable, the code would look like this:
 
 
 ```r
-birth_freq_table <- count(birth_data, day_fct)
-birth_freq_table
+summarize(diamonds, mean_carat = mean(carat))
 ```
 
 ```
-#> # A tibble: 7 × 2
-#>   day_fct       n
-#>   <fct>     <int>
-#> 1 Monday       41
-#> 2 Tuesday      63
-#> 3 Wednesday    63
-#> 4 Thursday     47
-#> 5 Friday       56
-#> 6 Saturday     47
-#> # ℹ 1 more row
+#> # A tibble: 1 × 1
+#>   mean_carat
+#>        <dbl>
+#> 1      0.798
 ```
 
-### $\chi^2$ goodness-of-fit test
-
-The next step is to conduct a $\chi^2$ goodness-of-fit test, which can be done with the `chisq.test()` function. You can see how Whitlock & Schluter answer the question using base R functions [on the book website](https://whitlockschluter.zoology.ubc.ca/r-code/rcode08). Luckily, there is always a tidyverse way to do things. With some inspiration from [Tidy chi-square testing](http://ritsokiguess.site/docs/2018/04/12/tidy-chi-squared-testing/) by Ken on the *R, it's okay I guess* blog, here is one way to do it.
-
-First, you need the observed frequencies:
+You can calculate multiple summary statistics at the same time by providing a comma-separated list of name-value pairs. Because the line starts getting long, this example has each argument on its own line, but it would work just fine if everything was on the same line.
 
 
 ```r
-birth_freqs <- birth_freq_table$n
-birth_freqs
+summarize(
+  diamonds,
+  mean_carat = mean(carat), 
+  sd_carat = sd(carat)
+)
 ```
 
-```
-#> [1] 41 63 63 47 56 47 33
-```
+### Summary functions
 
-Second, you need a vector of expected probabilities, which if you will recall from the example is:
+There are a wide variety of functions you can use to summarize a variable. Here are some examples:
+
+-   `max()` - maximum value
+-   `min()` - minimum value
+-   `median()` - median value
+-   `mode()` mode
+-   `sd()` standard deviation
+-   `var()` variance
+-   `IQR()` interquartile range
+
+For each of those functions, you must put the name of the variable you want to summarize *inside* the given function as the first argument.
+
+#### Sample size
+
+There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
 
 
 ```r
-birth_probs <- c(52, 52, 52, 52, 53, 52, 52) / 365
-birth_probs
+summarize(diamonds, sampl_size = n())
 ```
 
 ```
-#> [1] 0.1424658 0.1424658 0.1424658 0.1424658 0.1452055 0.1424658 0.1424658
+#> # A tibble: 1 × 1
+#>   sampl_size
+#>        <int>
+#> 1      53940
 ```
 
-Next, you conduct the $\chi^2$ goodness-of-fit test:
+#### Quantiles
+
+Some summary functions require one or more arguments in addition to the name of the variable to summarize.
+
+One example is the `quantile()` function, whose `probs` argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable `carat`, you can use the quantile function with the argument of `probs = 0.25`:
 
 
 ```r
-chisq.test(x = birth_freqs, p = birth_probs)
+summarize(diamonds, q1 = quantile(carat, probs = 0.25))
 ```
 
 ```
-#> 
-#> 	Chi-squared test for given probabilities
-#> 
-#> data:  birth_freqs
-#> X-squared = 15.057, df = 6, p-value = 0.01982
+#> # A tibble: 1 × 1
+#>      q1
+#>   <dbl>
+#> 1   0.4
 ```
 
-The final step is to interpret your results. If you were conducting this analysis by calculator, you might have calculated the test statistic yourself and looked up a critical value from a statistical table to compare it to.
+### Combine functions and equations
 
-In R, you can get the exact $P$-value quite easily, so all you need to do is compare the $P$-value to the $\alpha$-level of your choice, which in this case will be 0.05.
-
-Thus, your interpretation would be:
-
-> Because the $P$-value of 0.02 is less than the $\alpha$-level of 0.05, I reject the null hypothesis. Therefore, births do not fit a proportional model.
-
-If you were writing a paper in APA format, you would write:
-
-> The proportion of births differed by day of the week, $\chi^2(6,N=350)=15.057$ , $p=0.020$.
-
-The number 350 comes from the sample size of the data set you used, and the 6 refers to the degrees of freedom.
-
-## Example 2: Poisson probability model
-
-Chapter 8, Section 5 of Whitlock & Schluter (2022) contained an example of using a $\chi^2$ goodness-of-fit test to tell whether extinctions occur randomly in the geologic record. The null distribution in this case was that the number of extinctions in 76 blocks of time showed a Poisson distribution.
-
-As with the previous example, Whitlock & Schluter provide code to perform this analysis, using base R functions, [on the book website](https://whitlockschluter3e.zoology.ubc.ca/RLabs/R_tutorial_Frequency_data.html).
-
-Here you can see how to approach this question in R using tidyverse functions.
-
-### Read the data
+When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the `price` variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:
 
 
 ```r
-extinct_data <- read_csv("http://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08e6MassExtinctions.csv")
-extinct_data
+summarize(
+  diamonds, 
+  sem = sd(price) / sqrt(n())
+)
 ```
 
-There are 76 time periods. The variable `numberOfExtinctions` gives the number of extinctions in that time period.
+```
+#> # A tibble: 1 × 1
+#>     sem
+#>   <dbl>
+#> 1  17.2
+```
 
-Before we go on, let's rename that unruly variable `numberOfExtinctions` so it matches our usual snake_case style:
+Notice that the equation for standard error (sem) above uses both the `sd()` function and the `n()` function.
+
+Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
 
 
 ```r
-extinct_data <- 
-  extinct_data %>% 
-  rename(n_extinct = numberOfExtinctions)
+summarize(
+  diamonds, 
+  mean_p = mean(price),
+  sd_p = sd(price),
+  sampl_size = n(),
+  sem = sd_p / sqrt(sampl_size),
+  ci_upper_limit = mean_p + 1.96 * sem,
+  ci_lower_limit = mean_p - 1.96 * sem
+)
 ```
 
-### Bar Chart
+```
+#> # A tibble: 1 × 6
+#>   mean_p  sd_p sampl_size   sem ci_upper_limit ci_lower_limit
+#>    <dbl> <dbl>      <int> <dbl>          <dbl>          <dbl>
+#> 1  3933. 3989.      53940  17.2          3966.          3899.
+```
 
-Starting with the raw data, we can use `geom_bar()` to visualize the distribution of the `n_extinct` variable as a bar chart.
+## Summarize a data set by groups
+
+In the previous section you learned how to use `summarize()` combined with a summary functions such as `mean()` and `sd()` to calculate statistics for all observations (rows) in a data set.
+
+A common goal in data transformation, however, is to calculate statistics for *groups* of observations rather than all observations together. For example, in a university course with two sections, you may want to calculate mean scores for each section instead of the class as a whole.
+
+The `group_by()` function combined with the `summarize()` function lets you calculated summary statistics for groups of observations. The groups are identified by a categorical variable called the grouping variable, while the statistics are calculated from one or more other variables.
+
+For example, let's explore how the mean price varies with the cut of a diamond in the `diamonds` data set.
+
+In the first step, you use `group_by()` to produced a grouped data frame. Like other dplyr verbs, the first argument to `group_by()` is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the `cut` variable and assign the resulting grouped data frame a new name, `diamonds_grouped`:
 
 
 ```r
-ggplot(data = extinct_data) +
-  geom_bar(mapping = aes(x = n_extinct), fill = "#a6192e") +
-  labs(y = "Frequency", x = "Number of Extinctions")
+diamonds_grouped <- group_by(diamonds, cut)
+diamonds_grouped
 ```
 
-<img src="lab-5_files/figure-html/extinct-bar-chart-1.png" width="70%" style="display: block; margin: auto;" />
+```
+#> # A tibble: 53,940 × 10
+#> # Groups:   cut [5]
+#>   carat cut       color clarity depth table price     x     y     z
+#>   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+#> 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+#> 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+#> 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+#> 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+#> 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+#> 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+#> # ℹ 53,934 more rows
+```
 
-### Frequency table
+The only difference in the output from printing the ungrouped `diamonds` table is the second line of the output, which now says `# Groups:   cut [5]`. That's saying the table is grouped by the `cut` variable and there are five groups (the five possible values of `cut`).
 
-Create a frequency table using `count()`. This time, use the print function to force R to print all rows, not just the first 10 (the default for tibbles). `Inf` means infinity, so `n = Inf` means print all the rows.
+The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:
 
 
 ```r
-extinct_data %>% 
-  count(n_extinct, name = "observed_freq") %>% 
-  print(n = Inf)
+summarize(diamonds_grouped, mean_price = mean(price))
 ```
 
 ```
-#> # A tibble: 14 × 2
-#>    n_extinct observed_freq
-#>        <dbl>         <int>
-#>  1         1            13
-#>  2         2            15
-#>  3         3            16
-#>  4         4             7
-#>  5         5            10
-#>  6         6             4
-#>  7         7             2
-#>  8         8             1
-#>  9         9             2
-#> 10        10             1
-#> 11        11             1
-#> 12        14             1
-#> 13        16             2
-#> 14        20             1
+#> # A tibble: 5 × 2
+#>   cut       mean_price
+#>   <ord>          <dbl>
+#> 1 Fair           4359.
+#> 2 Good           3929.
+#> 3 Very Good      3982.
+#> 4 Premium        4584.
+#> 5 Ideal          3458.
 ```
 
-Note that some numbers of extinctions are missing because no block of time had that number of extinctions. These include 0, 12, 13, 15, 17, 18, 19, and anything above 20.
+## Quick contingency tables
 
-Before we can continue, we should add these missing categories, which is fairly easy with the `complete()` function from tidyr.
+Counting the number of observations by group is a fairly common task, especially when you are exploring your data interactively in an R session (e.g. by typing commands into the console). One way to do this would be to use a grouped summary and the `n()` function as described above, for example:
 
 
 ```r
-extinct_freq_table <-
-  extinct_data %>% 
-  count(n_extinct, name = "observed_freq") %>% 
-  complete(
-    n_extinct = 0:20, 
-    fill = list(observed_freq = 0)
-  ) %>% 
-  print(n = Inf)
+diamonds %>% 
+  group_by(cut) %>% 
+  summarize(n = n())
 ```
 
 ```
-#> # A tibble: 21 × 2
-#>    n_extinct observed_freq
-#>        <dbl>         <int>
-#>  1         0             0
-#>  2         1            13
-#>  3         2            15
-#>  4         3            16
-#>  5         4             7
-#>  6         5            10
-#>  7         6             4
-#>  8         7             2
-#>  9         8             1
-#> 10         9             2
-#> 11        10             1
-#> 12        11             1
-#> 13        12             0
-#> 14        13             0
-#> 15        14             1
-#> 16        15             0
-#> 17        16             2
-#> 18        17             0
-#> 19        18             0
-#> 20        19             0
-#> 21        20             1
+#> # A tibble: 5 × 2
+#>   cut           n
+#>   <ord>     <int>
+#> 1 Fair       1610
+#> 2 Good       4906
+#> 3 Very Good 12082
+#> 4 Premium   13791
+#> 5 Ideal     21551
 ```
 
-`complete()` needs two arguments here. First, a vector of numbers containing all possible values of `n_extinct`. We could have done this with the `c()` function, for example `c(0, 1, …, 19, 20)`, but `0:20` is a shorthand for this.
-
-The bit at the end, `fill = list(observed_freq = 0)`, tells R to put a zero for `observed_freq` whenever it adds a new row.
-
-### Estimate the mean
-
-There are a couple of ways to accomplish this:
+Because it is such a common task, dplyr includes a special function `count()` to do just that but in fewer commands:
 
 
 ```r
-# tidyverse method
-mean_extinct <-
-  extinct_data %>% 
-  summarize(mean = mean(n_extinct)) %>% 
-  pull(mean)
-mean_extinct
+count(diamonds, cut)
 ```
 
 ```
-#> [1] 4.210526
+#> # A tibble: 5 × 2
+#>   cut           n
+#>   <ord>     <int>
+#> 1 Fair       1610
+#> 2 Good       4906
+#> 3 Very Good 12082
+#> 4 Premium   13791
+#> 5 Ideal     21551
 ```
 
-```r
-# dollar sign method
-mean_extinct <- mean(extinct_data$n_extinct)
-mean_extinct
-```
-
-```
-#> [1] 4.210526
-```
-
-### Expected frequencies
-
-Calculate the expected frequencies under the null distribution, a Poisson distribution, using the estimated mean. Here we will do this for the categories we have, up to 20 extinctions, but remember there is a non-zero probability of having 21 extinctions, or 22, or 23, etc. We will calculate those later.
+You can also do this to create a quick contingency table for multiple variables:
 
 
 ```r
-expected_proportions <- dpois(0:20, lambda = mean_extinct)
-expected_proportions
+distinct(diamonds, cut, clarity)
 ```
 
 ```
-#>  [1] 1.483856e-02 6.247813e-02 1.315329e-01 1.846076e-01 1.943238e-01
-#>  [6] 1.636411e-01 1.148358e-01 6.907419e-02 3.635484e-02 1.700811e-02
-#> [11] 7.161310e-03 2.741171e-03 9.618145e-04 3.115189e-04 9.368989e-05
-#> [16] 2.629892e-05 6.920767e-06 1.714122e-06 4.009642e-07 8.885633e-08
-#> [21] 1.870660e-08
+#> # A tibble: 40 × 2
+#>   cut       clarity
+#>   <ord>     <ord>  
+#> 1 Ideal     SI2    
+#> 2 Premium   SI1    
+#> 3 Good      VS1    
+#> 4 Premium   VS2    
+#> 5 Good      SI2    
+#> 6 Very Good VVS2   
+#> # ℹ 34 more rows
 ```
 
-We can add these to the frequency distribution with:
+If you just want to see the distinct values (levels) of a categorical variable, or the combinations of values for two or more categorical variables in a dataset, but you don't need the counts, there is an even simpler function `distinct()` for that:
 
 
 ```r
-extinct_freq_table <-
-  extinct_freq_table %>% 
-  mutate(
-    expected_prop = expected_proportions, # add proportions
-    expected_freq = expected_prop * 76    # calculate frequencies
-  ) %>% 
-  print(n = Inf)
+distinct(diamonds, cut)
 ```
 
 ```
-#> # A tibble: 21 × 4
-#>    n_extinct observed_freq expected_prop expected_freq
-#>        <dbl>         <int>         <dbl>         <dbl>
-#>  1         0             0  0.0148          1.13      
-#>  2         1            13  0.0625          4.75      
-#>  3         2            15  0.132          10.0       
-#>  4         3            16  0.185          14.0       
-#>  5         4             7  0.194          14.8       
-#>  6         5            10  0.164          12.4       
-#>  7         6             4  0.115           8.73      
-#>  8         7             2  0.0691          5.25      
-#>  9         8             1  0.0364          2.76      
-#> 10         9             2  0.0170          1.29      
-#> 11        10             1  0.00716         0.544     
-#> 12        11             1  0.00274         0.208     
-#> 13        12             0  0.000962        0.0731    
-#> 14        13             0  0.000312        0.0237    
-#> 15        14             1  0.0000937       0.00712   
-#> 16        15             0  0.0000263       0.00200   
-#> 17        16             2  0.00000692      0.000526  
-#> 18        17             0  0.00000171      0.000130  
-#> 19        18             0  0.000000401     0.0000305 
-#> 20        19             0  0.0000000889    0.00000675
-#> 21        20             1  0.0000000187    0.00000142
+#> # A tibble: 5 × 1
+#>   cut      
+#>   <ord>    
+#> 1 Ideal    
+#> 2 Premium  
+#> 3 Good     
+#> 4 Very Good
+#> 5 Fair
 ```
 
-Note that we added the expected proportions, and then calculated the expected number of extinctions by multiplying the expected proportions by 76, the number of time blocks.
+The functions `count()` and `distinct()` are useful when you want to get a quick handle on your categorical variables.
 
-### Graph expected frequencies
+## Visualize a categorical and numerical variable
 
-For this, we can't use `geom_bar()`, which counts the observations for us, because we have to use the frequency table in which they are already counted. The solution is to use `geom_col()` (col is short for column) instead.
+In the Introduction to ggplot2 lab, you [learned how to create a histogram](https://biol275-msum.github.io/introduction-to-ggplot2.html#histograms) to visualize the distribution of a single numerical variable. But what if you want to look at how *two* variables are related? For example, say you want to visualize the relationship between the cut and price of diamonds we summarized in the previous example.
 
-Then we can add a `geom_line()` for the expected frequencies.
+Here you will learn two ways to visualize the joint distribution of a numerical variable and a categorical variable:
+
+1.  Multiple histograms
+2.  Strip plots
+
+### Multiple histograms
+
+A common way of comparing multiple distributions is to create a single graph with multiple histograms, one for each variable or subset of observations.
+
+The `facet_wrap()` function in ggplot2 allows you to take a plot and split it up into multiple plots based on some categorical variable. The first argument to `facet_wrap()` is an expression of the form `~ var_name` where `var_name` is the name of the grouping variable.
+
+First, let's start by graphing the distribution of the `price` variable without regard to cut. We will set the number of bin width to 500 (dollars)
 
 
 ```r
-ggplot(data = extinct_freq_table,
-       mapping = aes(x = n_extinct)) +
-  geom_col(mapping = aes(y = observed_freq), fill = "#a6192e") +
-  geom_line(mapping = aes(y = expected_freq), size = 2) +
-  labs(y = "Frequency", x = "Number of Extinctions")
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500)
 ```
 
-```
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
+<img src="lab-5_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+
+Interestingly, the distribution appears to be bimodal, with the second, smaller mode around 4500.
+
+Now lets plot the same graph but add the `facet_wrap()` function. Remember to add a plus sign `+` at the end of the `geom_histogram()` so R knows you are trying add another layer to the graph:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut)
 ```
 
 <img src="lab-5_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
-### $\chi^2$ goodness-of-fit test
+The resulting plot now has five small graphs, called facets in tidyverse lingo, each labeled with the value of `cut` it represents.
 
-We have everything we need to conduct a $\chi^2$ goodness-of-fit test in our frequency table, namely the observed and expected frequencies for each number of extinctions. The problem is that some categories have frequencies less than 1, and there are too many categories with frequencies less than 5.
-
-To resolve this, we can combine some categories. Before we can do that, we need to convert `n_extinct` to a factor data type. Let's create a new tibble to hold this frequency table of combined categories.
+A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the *distribution* of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the `scales` argument to `facet_wrap()`:
 
 
 ```r
-combined_freq_table <-
-  extinct_freq_table %>% 
-  select(-expected_prop) %>% 
-  mutate(n_extinct = factor(n_extinct)) %>% 
-  print()
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = price), binwidth = 500) +
+  facet_wrap(~ cut, scales = "free_y")
 ```
 
-```
-#> # A tibble: 21 × 3
-#>   n_extinct observed_freq expected_freq
-#>   <fct>             <int>         <dbl>
-#> 1 0                     0          1.13
-#> 2 1                    13          4.75
-#> 3 2                    15         10.0 
-#> 4 3                    16         14.0 
-#> 5 4                     7         14.8 
-#> 6 5                    10         12.4 
-#> # ℹ 15 more rows
-```
+<img src="lab-5_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
-Note that we also dropped the `expected_prop` variable, which we no longer need.
+The `scales` argument can be set to `"free_y"`, `"free_x"`, or `"free"` to allow both axes to vary.
 
-Now we can modify `n_extinct` so it contains the new factor levels:
+Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which can be used to specify how many rows or columns the resulting facets should form. With histograms, it's common to put them all in one column so you can compare the shape of the distributions more easily.
+
+### Strip plots
+
+Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the `geom_jitter()` function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:
 
 
 ```r
-combined_freq_table <- 
-  combined_freq_table %>% 
-  mutate(n_extinct = fct_collapse(
-    n_extinct,
-    `0 or 1` = "0",
-    `0 or 1` = "1",
-    `2` = "2",
-    `3` = "3",
-    `4` = "4",
-    `5` = "5",
-    `6` = "6",
-    `7` = "7",
-    other_level = "8 or more",
-  )) %>% 
-  print()
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price))
 ```
 
-```
-#> # A tibble: 21 × 3
-#>   n_extinct observed_freq expected_freq
-#>   <fct>             <int>         <dbl>
-#> 1 0 or 1                0          1.13
-#> 2 0 or 1               13          4.75
-#> 3 2                    15         10.0 
-#> 4 3                    16         14.0 
-#> 5 4                     7         14.8 
-#> 6 5                    10         12.4 
-#> # ℹ 15 more rows
-```
+<img src="lab-5_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
-Note that the new factor level names are surrounded by backticks, not single quotes. The backticks are necessary because the new values start with numbers or special characters. If our new values had names that started with letters, the backticks would be unnecessary. See `??fct_collapse` for an example.
-
-There one more issue to solve. The frequency table above should have expected frequencies that add up to 76, but it doesn't:
+As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the `shape` argument to `geom_jitter()`. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the `alpha` argument to something low like 0.1 indicating 10% opacity.
 
 
 ```r
-missing_probabilities <- 76 - sum(combined_freq_table$expected_freq)
-missing_probabilities
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1)
 ```
 
-```
-#> [1] 3.516996e-07
-```
+<img src="lab-5_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
 
-That's because we did not calculate probabilities for categories larger than 20 extinctions. Those probabilities are small, but we still want to include them. So let's add a new row that includes those:
+One nice thing about strip plots is that they make it easy to view the both the raw data *and* summary statistics such as the means and confidence intervals.
+
+The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:
 
 
 ```r
-combined_freq_table %>% 
-  add_row(
-    n_extinct = factor("8 or more"),
-    observed_freq = 0,
-    expected_freq = missing_probabilities,
-    .before = 1
-  )
+summarize(diamonds_grouped, mean_price = mean(price))
 ```
 
-```
-#> # A tibble: 22 × 3
-#>   n_extinct observed_freq expected_freq
-#>   <fct>             <dbl>         <dbl>
-#> 1 8 or more             0   0.000000352
-#> 2 0 or 1                0   1.13       
-#> 3 0 or 1               13   4.75       
-#> 4 2                    15  10.0        
-#> 5 3                    16  14.0        
-#> 6 4                     7  14.8        
-#> # ℹ 16 more rows
-```
-
-Now we can use `summarize()` to add up the observed and expected frequencies for our newly combined categories. Before we do, however, there is an issue we must solve.
+Let's expand that a bit to include upper and lower confidence limits:
 
 
 ```r
-combined_freq_table <-
-  combined_freq_table %>% 
-  group_by(n_extinct) %>% 
+price_summary <-
   summarize(
-    observed_freq = sum(observed_freq),
-    expected_freq = sum(expected_freq)
-  ) %>% 
-  print()
-```
-
-```
-#> # A tibble: 8 × 3
-#>   n_extinct observed_freq expected_freq
-#>   <fct>             <int>         <dbl>
-#> 1 0 or 1               13          5.88
-#> 2 2                    15         10.0 
-#> 3 3                    16         14.0 
-#> 4 4                     7         14.8 
-#> 5 5                    10         12.4 
-#> 6 6                     4          8.73
-#> # ℹ 2 more rows
-```
-
-And finally, we can conduct the $\chi^2$ goodness-of-fit test!
-
-
-```r
-chisq.test(x = combined_freq_table$observed_freq,
-           p = combined_freq_table$expected_freq / 76)
-```
-
-```
-#> Warning in chisq.test(x = combined_freq_table$observed_freq, p =
-#> combined_freq_table$expected_freq/76): Chi-squared approximation may be
-#> incorrect
-```
-
-```
-#> 
-#> 	Chi-squared test for given probabilities
-#> 
-#> data:  combined_freq_table$observed_freq
-#> X-squared = 23.95, df = 7, p-value = 0.001163
-```
-
-The warning here is caused by the fact that one of the expected frequencies is less than 5. However, we have been careful not to violate the assumptions of the $\chi^2$ goodness-of-fit test (no expected frequencies less than 1, no more than 20% of categories with expected frequencies less than 5).
-
-Looking at the results, you will notice that it shows the test was conducted with 7 degrees of freedom.
-
-Recall from lecture that degrees of freedom are calculated as:
-
-$df=n-1-(\operatorname{number of parameters estimated})$
-
-And in this example, we esimated the mean $\mu$ from the sample, so $(\operatorname{number of parameters estimated})$ would be 1. Thus, with $n=8$ categories, $df=8-1-1=6$.
-
-The solution is to grab the $\chi^2$ test statistic from the results of the test and calculate the $P$-value using $df=6$ with the `pchisq()` function like this:
-
-
-```r
-chisq_results <-                                # save the results
-  chisq.test(
-    x = combined_freq_table$observed_freq,
-    p = combined_freq_table$expected_freq/76
+    diamonds_grouped, 
+    mean_price = mean(price),
+    sem = sd(price) / sqrt(n()),
+    ci_upper_limit = mean_price + 1.96 * sem,
+    ci_lower_limit = mean_price - 1.96 * sem
   )
-
-test_statistic <- chisq_results$statistic       # get the test statistic
-
-p_value <- 1 - pchisq(test_statistic, df = 6)   # get the real p-value
-p_value
+price_summary
 ```
 
 ```
-#>    X-squared 
-#> 0.0005334917
+#> # A tibble: 5 × 5
+#>   cut       mean_price   sem ci_upper_limit ci_lower_limit
+#>   <ord>          <dbl> <dbl>          <dbl>          <dbl>
+#> 1 Fair           4359.  88.7          4533.          4185.
+#> 2 Good           3929.  52.6          4032.          3826.
+#> 3 Very Good      3982.  35.8          4052.          3912.
+#> 4 Premium        4584.  37.0          4657.          4512.
+#> 5 Ideal          3458.  25.9          3508.          3407.
 ```
 
-Finally, interpret the results of the test:
+Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
 
-> Because the $P$-value of 5.3\times 10^{-4} is less than the $\alpha$-level of 0.05, I reject the null hypothesis. Therefore, the number of extinctions do not occur randomly in time.
 
-If you were writing a paper in APA format, you would write:
+```r
+ggplot(data = diamonds) +
+  geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
+  geom_crossbar(
+    data = price_summary, 
+    mapping = aes(x = cut, y = mean_price, ymax = ci_upper_limit, 
+                  ymin = ci_lower_limit),
+    color = "red"
+  )
+```
 
-> The number of extinctions do not occur randomly in time, $\chi^2(6,N=76)=23.95$, $p= 0.00053$.
+<img src="lab-5_files/figure-html/jitter-1.png" width="70%" style="display: block; margin: auto;" />
+
+The boxes showing the 95% confidence intervals do not show up well because the sample sizes are so large. For a better idea of what they look like, and examples of other types of errors bars, see [Vertical intervals: lines, crossbars & errorbars](https://ggplot2.tidyverse.org/reference/geom_linerange.html) on the [Reference](https://ggplot2.tidyverse.org/reference/index.html) page of the [ggplot2 website](https://ggplot2.tidyverse.org/index.html).
+
+## Visualize two numerical variables
+
+The most basic type of graph for visualizing the relationship between two numerical variables is the scatterplot. The `geom_point()` function can be used to add points two a graph. When it is used with numerical variables for the `x` and `y` aesthetics, the result is a scatterplot.
+
+For example, the following graph shows the relationship between carat and price:
+
+
+```r
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price))
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+
+Looking at the graph it is clear that as the weight of the diamond increases, so does the price.
+
+### Plotting three variables
+
+In order to more fully explore the relationships between multiple variables, it is sometimes useful the visualize them at the same time. For example, what if you wanted to see how cut, price, and carat are related?
+
+One way to do this might be to use `facet_wrap()` to create a separate scatter plot for each cut.
+
+A common alternative is to add a third aesthetic to the plot to differentiate points in some other way than by their x and y coordinates. These aesthetics include `color`, `size`, `shape`, and `alpha` for points, and `linetype` for lines. See the ggplot2 documentation on [Aesthetic specifications](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html) for examples.
+
+The following code plots the same scatter plot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.
+
+
+```r
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
+```
+
+<img src="lab-5_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Assignment
 
-Claim your repository for Lab 6 on GitHub Classroom using the link on D2L.
+First, create a new R script named `assignment.R`. At the top of the script, add code to load the tidyverse package.
 
-### Question 1 - Cats
+For your assignment, you will work with the famous Edgar Anderson `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are *Iris setosa*, *versicolor*, and *virginica*.
 
-Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).
+You can print `iris` in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in the user-friendly manner of tibbles that you are used to. To have it print more nicely, turn it into a tibble first.
 
-> In an article published in the Journal of the American Veterinary Medical Association, Whitney and Mehlhaff (1987) presented results on the injury rates of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high‑rise syndrome (FHRS).
->
-> A more recent study of FHRS included data on the month in which each of 119 cats fell (Vnuk et al. 2004). The data are in the accompanying table.
->
-> **Can you infer that the rate of cat falling varies between months of the year?**
-
-Carry out the goodness‑of‑fit test using the significance level $\alpha=0.05$. Use the methods shown in this lab (show your code). In your R script, add code comments with text stating the null and alternative hypotheses and reporting your results in APA format.
-
-The data are stored at:
+Add this to your script:
 
 
 ```r
-"https://whitlockschluter3e.zoology.ubc.ca/Data/chapter08/chap08q19FallingCatsByMonth.csv"
+iris <- as_tibble(iris) # so it prints a little nicer
 ```
 
-### Question 2 - Truffles
+Note that when you do this, iris will now show up in your Environment tab.
 
-Answer question 19 in the assignment questions section of chapter 8 in Whitlock and Schluter (2020).
+### Questions
 
-> Truffles are a great delicacy, sending thousands of mushroom hunters into the forest each fall to find them. A set of plots of equal size in an old‑growth forest in Northern California was surveyed to count the number of truffles (Waters et al. 1997).
->
-> **Are truffles randomly located around the forest?**
+Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks. For each question, put a comment like `# question 1` on the line before, so you can read your script more easily, and follow each answer with a blank line to improve readability.
 
-Carry out the goodness‑of‑fit test using the significance level $\alpha=0.05$. Use the methods shown in this lab (show your code). In your R script, add code comments with text stating the null and alternative hypotheses and reporting your results in APA format.
+For each answer, you can simply print the resulting table. You do not need to assign it a name. Some questions have more than one part, e.g. you need to use multiple dplyr functions in a row. You may use intermediate objects for this, but you are encouraged to try [combining multiple operations with the pipe](Combine%20multiple%20operations%20with%20the%20pipe).
 
-The data are stored at:
+1.  Rename each variable so that it is all lower-case and uses an underscore `_` instead of a period `.` in the name (the recommended coding style in the [tidyverse style guide](https://style.tidyverse.org/syntax.html))
 
+2.  Convert the four numerical variables from cm to mm by multiplying by 10
 
-```r
-"https://whitlockschluter.zoology.ubc.ca/wp-content/data/chapter08/chap08q16Truffles.csv"
-```
+3.  Calculate sepal area and petal area (area is equal to length multiplied by width). Print a table with *only* the variables sepal area, petal area, and species.
+
+4.  Calculate the following statistics for the *entire dataset* from the sepal length variable and print the resulting table:
+
+    a.  sample size
+    b.  maximum value
+    c.  minimum value
+    d.  range
+    e.  median
+    f.  first quartile (q1)
+    g.  third quartile (q2)
+    h.  inter-quartile range (iqr)
+
+    Your answer should be a tibble with exactly one row
+
+5.  Calculate the following statistics [for each species]{.underline} from the **petal width** variable and print the resulting table:
+
+    a.  sample size
+    b.  mean
+    c.  standard deviation
+    d.  variance
+    e.  standard error of the mean
+    f.  approximate 95% confidence interval
+
+6.  Visualize the relationship between **petal width** and **species** using a strip plot.
+
+7.  Starting with the previous graph, add the mean and 95% confidence interval for each species
+
+8.  Visualize the relationship between petal length, petal width, and species using a scatter plot. Map the two numerical variables to the x and y axes and map species to the color and shape aesthetics.
 
 ### Submission
 
 When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
 
 Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.
+
+## Further reading
+
+Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on mutating, grouping, and summarizing in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
+
+You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
+
+If you do want to read the chapter and try their examples in your own R Script then don't forget to install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages).

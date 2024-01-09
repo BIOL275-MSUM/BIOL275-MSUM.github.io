@@ -86,7 +86,7 @@ Edit the README file (either right there on GitHub or RStudio after cloning the 
 
 by Robert MacArthur and E. O. Wilson
 
-An exploratory data analysis for BIOL 275 Quantitative Biology at Minnesota State University Moorhead. Instructor: Chris Merkord
+An exploratory data analysis for BIOL 275 Biostatistics at Minnesota State University Moorhead. Instructor: Chris Merkord
 
 ### Abstract
 

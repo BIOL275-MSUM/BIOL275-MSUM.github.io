@@ -14,7 +14,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><strong><a href="./">Quantitative Biology</a></strong></li>
+        <li><strong><a href="./">Biostatistics</a></strong></li>
     sharing: no
   css: styles.css
 

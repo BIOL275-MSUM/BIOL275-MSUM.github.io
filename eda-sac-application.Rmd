@@ -112,7 +112,7 @@ Only one person in your group should submit the application.
     :::
 
     ::: text-primary
-    *This presentation is for BIOL 275 Quantitative Biology. Please group it with other presentations for that course.*
+    *This presentation is for BIOL 275 Biostatistics. Please group it with other presentations for that course.*
     :::
 
 11. Click the **Submit** button

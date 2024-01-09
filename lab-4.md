@@ -38,20 +38,16 @@ library(tidyverse)    # load the tidyverse package
 ```
 
 ```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-#> ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.6     ✔ dplyr   1.0.8
-#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-#> ✔ readr   2.1.2     ✔ forcats 0.5.1
-```
-
-```
+#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.4     ✔ readr     2.1.4
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
+#> ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+#> ✔ purrr     1.0.2     
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ### `diamonds` data
@@ -81,7 +77,7 @@ rename(diamonds, length = x, width = y, height = z)
 #> 4  0.29 Premium   I     VS2      62.4    58   334   4.2   4.23   2.63
 #> 5  0.31 Good      J     SI2      63.3    58   335   4.34  4.35   2.75
 #> 6  0.24 Very Good J     VVS2     62.8    57   336   3.94  3.96   2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 Note the lack of quotes around the names of the data frame, the new variable names or the old variables names
@@ -123,7 +119,7 @@ d2
 #> 4  0.29   334
 #> 5  0.31   335
 #> 6  0.24   336
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 Now use the new data frame `d2` to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named `ppc` ("price per carat"):
@@ -144,7 +140,7 @@ mutate(d2, ppc = price / carat)
 #> 4  0.29   334 1152.
 #> 5  0.31   335 1081.
 #> 6  0.24   336 1400 
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 ### `mutate()` an existing variable
@@ -166,7 +162,7 @@ mutate(diamonds, price = price * 1.27)
 #> 4  0.29 Premium   I     VS2      62.4    58  424.  4.2   4.23  2.63
 #> 5  0.31 Good      J     SI2      63.3    58  425.  4.34  4.35  2.75
 #> 6  0.24 Very Good J     VVS2     62.8    57  427.  3.94  3.96  2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 ## Summarize a data set with `summarize()`
@@ -316,7 +312,7 @@ diamonds_grouped
 #> 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
 #> 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
 #> 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 The only difference in the output from printing the ungrouped `diamonds` table is the second line of the output, which now says `# Groups:   cut [5]`. That's saying the table is grouped by the `cut` variable and there are five groups (the five possible values of `cut`).
@@ -396,7 +392,7 @@ distinct(diamonds, cut, clarity)
 #> 4 Premium   VS2    
 #> 5 Good      SI2    
 #> 6 Very Good VVS2   
-#> # … with 34 more rows
+#> # ℹ 34 more rows
 ```
 
 If you just want to see the distinct values (levels) of a categorical variable, or the combinations of values for two or more categorical variables in a dataset, but you don't need the counts, there is an even simpler function `distinct()` for that:

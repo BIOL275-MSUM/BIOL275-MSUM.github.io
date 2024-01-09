@@ -77,20 +77,16 @@ library(tidyverse)
 ```
 
 ```
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
-#> ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
-#> ✔ tibble  3.1.6     ✔ dplyr   1.0.8
-#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
-#> ✔ readr   2.1.2     ✔ forcats 0.5.1
-```
-
-```
+#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#> ✔ dplyr     1.1.4     ✔ readr     2.1.4
+#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
+#> ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+#> ✔ purrr     1.0.2     
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
+#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ### `diamonds`
@@ -117,7 +113,7 @@ diamonds
 #> 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
 #> 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
 #> 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
@@ -183,7 +179,7 @@ filter(diamonds, carat > 2)
 #> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
 #> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
 #> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
-#> # … with 1,883 more rows
+#> # ℹ 1,883 more rows
 ```
 
 ### Intermediate objects
@@ -214,7 +210,7 @@ big_diamonds
 #> 4  2.22 Fair    J     I1       66.7    56  5607  8.04  8.02  5.36
 #> 5  2.01 Fair    I     I1       67.4    58  5696  7.71  7.64  5.17
 #> 6  2.01 Fair    I     I1       55.9    64  5696  8.48  8.39  4.71
-#> # … with 1,883 more rows
+#> # ℹ 1,883 more rows
 ```
 
 Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
@@ -234,7 +230,7 @@ filter(big_diamonds, price > 15000)
 #> 4  2.48 Fair      I     SI2      56.7    66 15030  8.88  8.64  4.99
 #> 5  2.8  Premium   I     SI2      61.1    59 15030  9.03  8.98  5.5 
 #> 6  2.19 Premium   I     SI2      60.8    60 15032  8.34  8.38  5.08
-#> # … with 1,031 more rows
+#> # ℹ 1,031 more rows
 ```
 
 ### Basic Operators
@@ -262,7 +258,7 @@ filter(diamonds, cut == "Ideal")
 #> 4  0.3  Ideal I     SI2      62      54   348  4.31  4.34  2.68
 #> 5  0.33 Ideal I     SI2      61.8    55   403  4.49  4.51  2.78
 #> 6  0.33 Ideal I     SI2      61.2    56   403  4.49  4.5   2.75
-#> # … with 21,545 more rows
+#> # ℹ 21,545 more rows
 ```
 
 Note that `"Ideal"` has double quotes around it. This is to tell R you want to find the literal text string "Ideal". If you instead wrote `cut == Ideal` without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.
@@ -314,7 +310,7 @@ filter(diamonds, color == "D" | color == "E")
 #> 4  0.22 Fair    E     VS2      65.1    61   337  3.87  3.78  2.49
 #> 5  0.2  Premium E     SI2      60.2    62   345  3.79  3.75  2.27
 #> 6  0.32 Premium E     I1       60.9    58   345  4.38  4.42  2.68
-#> # … with 16,566 more rows
+#> # ℹ 16,566 more rows
 ```
 
 This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
@@ -365,7 +361,7 @@ filter(diamonds, str_detect(clarity, "VS"))
 #> 4  0.24 Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
 #> 5  0.22 Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
 #> 6  0.23 Very Good H     VS1      59.4    61   338  4     4.05  2.39
-#> # … with 29,144 more rows
+#> # ℹ 29,144 more rows
 ```
 
 The function itself is the comparison, there is no operator like `==` or `!=`.
@@ -403,7 +399,7 @@ arrange(diamonds, cut)
 #> 4  0.7  Fair  F     VS2      64.5    57  2762  5.57  5.53  3.58
 #> 5  0.7  Fair  F     VS2      65.3    55  2762  5.63  5.58  3.66
 #> 6  0.91 Fair  H     SI2      64.4    57  2763  6.11  6.09  3.93
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
@@ -423,7 +419,7 @@ arrange(diamonds, cut, price)
 #> 4  0.27 Fair  E     VS1      66.4    58   371  3.99  4.02  2.66
 #> 5  0.3  Fair  J     VS2      64.8    58   416  4.24  4.16  2.72
 #> 6  0.3  Fair  F     SI1      63.1    58   496  4.3   4.22  2.69
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using `levels()` . For example `levels(diamonds$cut)` .
@@ -447,7 +443,7 @@ arrange(diamonds, cut, desc(price))
 #> 4  2    Fair  G     VS2      67.6    58 18515  7.65  7.61  5.16
 #> 5  2.51 Fair  H     SI2      64.7    57 18308  8.44  8.5   5.48
 #> 6  3.01 Fair  I     SI2      65.8    56 18242  8.99  8.94  5.9 
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.
@@ -475,7 +471,7 @@ select(diamonds, carat, cut, color)
 #> 4  0.29 Premium   I    
 #> 5  0.31 Good      J    
 #> 6  0.24 Very Good J    
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 Technically, you can also select variables by their position, so `select(diamonds, carat, cut, color)` is equivalent to `select(diamonds, 1, 2, 3)`
@@ -497,7 +493,7 @@ select(diamonds, color, cut, carat)
 #> 4 I     Premium    0.29
 #> 5 J     Good       0.31
 #> 6 J     Very Good  0.24
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
@@ -517,7 +513,7 @@ select(diamonds, carat:price)
 #> 4  0.29 Premium   I     VS2      62.4    58   334
 #> 5  0.31 Good      J     SI2      63.3    58   335
 #> 6  0.24 Very Good J     VVS2     62.8    57   336
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 ### Removing variables
@@ -539,7 +535,7 @@ select(diamonds, -table)
 #> 4  0.29 Premium   I     VS2      62.4   334  4.2   4.23  2.63
 #> 5  0.31 Good      J     SI2      63.3   335  4.34  4.35  2.75
 #> 6  0.24 Very Good J     VVS2     62.8   336  3.94  3.96  2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
@@ -580,7 +576,7 @@ select(diamonds, ends_with("e"), everything())
 #> 4    58   334  0.29 Premium   I     VS2      62.4  4.2   4.23  2.63
 #> 5    58   335  0.31 Good      J     SI2      63.3  4.34  4.35  2.75
 #> 6    57   336  0.24 Very Good J     VVS2     62.8  3.94  3.96  2.48
-#> # … with 53,934 more rows
+#> # ℹ 53,934 more rows
 ```
 
 ## Combine multiple operations

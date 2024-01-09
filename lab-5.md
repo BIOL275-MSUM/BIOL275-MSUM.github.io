@@ -68,7 +68,7 @@ birth_data
 #> 4 Sunday
 #> 5 Sunday
 #> 6 Sunday
-#> # … with 344 more rows
+#> # ℹ 344 more rows
 ```
 
 The data set is a random sample of babies born in 1999 in the United States. As you can see, the data set contains 350 rows, each representing a baby. The only column is `day`, a categorical variable which contains the day of the week on which the baby was born.
@@ -126,7 +126,7 @@ birth_data
 #> 4 Sunday Sunday  Sun      
 #> 5 Sunday Sunday  Sun      
 #> 6 Sunday Sunday  Sun      
-#> # … with 344 more rows
+#> # ℹ 344 more rows
 ```
 
 Notice the data types listed under the variable names. When you have a factor variable in your data set, you can find out what the levels are using the levels function.
@@ -186,7 +186,7 @@ birth_freq_table
 #> 4 Thursday     47
 #> 5 Friday       56
 #> 6 Saturday     47
-#> # … with 1 more row
+#> # ℹ 1 more row
 ```
 
 ### $\chi^2$ goodness-of-fit test
@@ -467,6 +467,14 @@ ggplot(data = extinct_freq_table,
   labs(y = "Frequency", x = "Number of Extinctions")
 ```
 
+```
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
+```
+
 <img src="lab-5_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### $\chi^2$ goodness-of-fit test
@@ -494,7 +502,7 @@ combined_freq_table <-
 #> 4 3                    16         14.0 
 #> 5 4                     7         14.8 
 #> 6 5                    10         12.4 
-#> # … with 15 more rows
+#> # ℹ 15 more rows
 ```
 
 Note that we also dropped the `expected_prop` variable, which we no longer need.
@@ -530,7 +538,7 @@ combined_freq_table <-
 #> 4 3                    16         14.0 
 #> 5 4                     7         14.8 
 #> 6 5                    10         12.4 
-#> # … with 15 more rows
+#> # ℹ 15 more rows
 ```
 
 Note that the new factor level names are surrounded by backticks, not single quotes. The backticks are necessary because the new values start with numbers or special characters. If our new values had names that started with letters, the backticks would be unnecessary. See `??fct_collapse` for an example.
@@ -544,7 +552,7 @@ missing_probabilities
 ```
 
 ```
-#> [1] 3.516995e-07
+#> [1] 3.516996e-07
 ```
 
 That's because we did not calculate probabilities for categories larger than 20 extinctions. Those probabilities are small, but we still want to include them. So let's add a new row that includes those:
@@ -570,7 +578,7 @@ combined_freq_table %>%
 #> 4 2                    15  10.0        
 #> 5 3                    16  14.0        
 #> 6 4                     7  14.8        
-#> # … with 16 more rows
+#> # ℹ 16 more rows
 ```
 
 Now we can use `summarize()` to add up the observed and expected frequencies for our newly combined categories. Before we do, however, there is an issue we must solve.
@@ -597,7 +605,7 @@ combined_freq_table <-
 #> 4 4                     7         14.8 
 #> 5 5                    10         12.4 
 #> 6 6                     4          8.73
-#> # … with 2 more rows
+#> # ℹ 2 more rows
 ```
 
 And finally, we can conduct the $\chi^2$ goodness-of-fit test!

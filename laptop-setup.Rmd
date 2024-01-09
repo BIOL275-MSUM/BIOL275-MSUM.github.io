@@ -8,7 +8,7 @@ Some students may want to work on their own personal laptop or desktop computer 
 
 -   Install the software on your machine, including R, RStudio, and Git; see the next three sections for instructions.
 
--   Use RStudio Cloud, an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See RStudio Cloud below for instructions.
+-   Use Posit Cloud, an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See Posit Cloud below for instructions.
 
 ## Option 1: Install Software
 
@@ -62,15 +62,15 @@ On the Git webiste, go to [Download for Windows](https://git-scm.com/download/wi
 
 See the instructions at in the Git documentation [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-## Options 2:  Use RStudio Cloud
+## Options 2:  Use Posit Cloud
 
-If you don't want to install the software on your computer, your other option is to use RStudio Cloud <https://rstudio.cloud/> in a web browser.
+If you don't want to install the software on your computer, your other option is to use Posit Cloud <https://rstudio.cloud/> in a web browser.
 
-You have to create a free account, and you get about 30 hrs a month for free using the default settings.
+You have to create a free account, and you get 25 compute hours a month for free. That translates to 50 hours of having the project open, which is probably enough for most student uses.
 
 ## Introduce yourself to Git
 
-Whether you install the software yourself or use RStudio Cloud, you will need to introduce yourself to Git before you can make a commit. Quick instructions are provided below. For more detailed instructions, see the Git documentation [1.6 Getting Started - First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
+Whether you install the software yourself or use Posit Cloud, you will need to introduce yourself to Git before you can make a commit. Quick instructions are provided below. For more detailed instructions, see the Git documentation [1.6 Getting Started - First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
 
 First, open a Git command line in one of the following three ways (the first is the easiest):
 

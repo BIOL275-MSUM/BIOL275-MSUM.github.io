@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Lab 1 | BIOL 275 Biostatistics at MSUM</title>
+<title>1 Lab 1: Introduction to R and RStudio | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="Website for the course BIOL 275 Biostatistics at MSUM.">
+<meta name="description" content="The course tools for the lab include the software programs R and RStudio.  1.1 Objectives Learn how to: Open R and RStudio Create a Project in RStudio Adjust Project settings See what version of R...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="1 Lab 1 | BIOL 275 Biostatistics at MSUM">
+<meta property="og:title" content="1 Lab 1: Introduction to R and RStudio | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Website for the course BIOL 275 Biostatistics at MSUM.">
+<meta property="og:description" content="The course tools for the lab include the software programs R and RStudio.  1.1 Objectives Learn how to: Open R and RStudio Create a Project in RStudio Adjust Project settings See what version of R...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Lab 1 | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="Website for the course BIOL 275 Biostatistics at MSUM.">
+<meta name="twitter:title" content="1 Lab 1: Introduction to R and RStudio | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="The course tools for the lab include the software programs R and RStudio.  1.1 Objectives Learn how to: Open R and RStudio Create a Project in RStudio Adjust Project settings See what version of R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9000/transition.js"></script><script src="libs/bs3compat-0.6.1.9000/tabs.js"></script><script src="libs/bs3compat-0.6.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -67,7 +67,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
 <li class="book-part">Lab Assignments</li>
-<li><a class="active" href="lab-1.html"><span class="header-section-number">1</span> Lab 1</a></li>
+<li><a class="active" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
 <li><a class="" href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></li>
 <li><a class="" href="lab-3-data-subsetting.html"><span class="header-section-number">3</span> Lab 3: Data subsetting</a></li>
 <li><a class="" href="lab-4-data-summarizing.html"><span class="header-section-number">4</span> Lab 4: Data summarizing</a></li>
@@ -94,18 +94,172 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-1" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-1-introduction-to-r-and-rstudio" class="section level1" number="1">
 <h1>
-<span class="header-section-number">1</span> Lab 1<a class="anchor" aria-label="anchor" href="#lab-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio<a class="anchor" aria-label="anchor" href="#lab-1-introduction-to-r-and-rstudio"><i class="fas fa-link"></i></a>
 </h1>
-
+<p>The course tools for the lab include the software programs R and RStudio.</p>
+<div id="objectives" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Objectives<a class="anchor" aria-label="anchor" href="#objectives"><i class="fas fa-link"></i></a>
+</h2>
+<p>Learn how to:</p>
+<ol style="list-style-type: decimal">
+<li>Open R and RStudio</li>
+<li>Create a Project in RStudio</li>
+<li>Adjust Project settings</li>
+<li>See what version of R and RStudio you are using</li>
+<li>Create an R script</li>
+<li>Install and load packages</li>
+<li>Create a graph using ggplot</li>
+<li>Customize labels</li>
+<li>Export a graph as an image file</li>
+</ol>
+</div>
+<div id="assignment" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Follow along as your instructor introduces you to R and RStudio; Keep written notes of how to complete each step</li>
+<li>Create a Project in RStudio; it doesn’t matter where you save it or what you name it</li>
+<li>Install the following packages:
+<ul>
+<li>tidyverse</li>
+<li>palmerpenguins</li>
+</ul>
+</li>
+<li>Create an R script and add the code to load the following packages:
+<ul>
+<li>palmerpenguins</li>
+<li>ggplot2</li>
+</ul>
+</li>
+<li>While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">Introduction to palmerpenguins</a>
+</li>
+<li>In that article, find the code for “Scatterplot example 1”, copy it, and paste it into your R script</li>
+<li>Add code to add the following labels to the plot:
+<ul>
+<li>title: <code>“Penguin flipper length versus body mass”</code>
+</li>
+<li>x-axis: <code>“Body mass (g)”</code>
+</li>
+<li>y-axis: <code>“Flipper length (mm)”</code>
+</li>
+<li>caption: <code>“Created by YOUR NAME”</code><br>
+(replace YOUR NAME with <em>your</em> name)</li>
+</ul>
+</li>
+<li>Export the figure (save it on your computer somewhere)
+<ol style="list-style-type: decimal">
+<li>Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab</li>
+<li>Then follow along as the instructor shows you a code based way of doing it.</li>
+</ol>
+</li>
+<li>Create a new Microsoft Word document.
+<ol style="list-style-type: decimal">
+<li>Sign in to Microsoft 365 so you can save your document for later.</li>
+</ol>
+</li>
+<li>Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.</li>
+<li>Save the document as a PDF</li>
+<li>Upload the document to the Lab 1 assignment on D2L.</li>
+</ol>
+</div>
+<div id="checklist" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Checklist<a class="anchor" aria-label="anchor" href="#checklist"><i class="fas fa-link"></i></a>
+</h2>
+<p>Check your skills and comprehension; you should be able to do the following:</p>
+<ul>
+<li>Use the Windows operating system
+<ul>
+<li>Run programs
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>Use Windows Start Menu</li>
+<li>
+<input type="checkbox" disabled>Run a given version of R using 32-bit or 64-bit</li>
+<li>
+<input type="checkbox" disabled>Run RStudio</li>
+</ul>
+</li>
+<li>Work with folders and files
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>Run File Explorer on Windows</li>
+<li>
+<input type="checkbox" disabled>Open Documents folder through Quick Access</li>
+<li>
+<input type="checkbox" disabled>Open Documents folder through the C drive</li>
+<li>
+<input type="checkbox" disabled>Move and rename files and folders</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Use R
+<ul>
+<li>Work in the R Console
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>Find the command prompt (&gt;)</li>
+<li>
+<input type="checkbox" disabled>Discern the status of the command prompt (ready &gt;, waiting +, unrun code)</li>
+<li>
+<input type="checkbox" disabled>Escape a waiting command prompt (Esc)</li>
+<li>
+<input type="checkbox" disabled>Clear unrun code on a command prompt (Esc/Backspace)</li>
+<li>
+<input type="checkbox" disabled>Run a command (line of code)</li>
+<li>
+<input type="checkbox" disabled>Scroll through previous commands (up arrow)</li>
+</ul>
+</li>
+<li>Do math
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>Use numbers and operators + - * / ^ to do math</li>
+<li>
+<input type="checkbox" disabled>Control order of operators using parentheses ( )</li>
+<li>
+<input type="checkbox" disabled>Use math functions sqrt() and abs()</li>
+</ul>
+</li>
+<li>Work with objects in the global environment
+<ul class="task-list">
+<li>
+<input type="checkbox" disabled>Use assignment operator &lt;- to create an object</li>
+<li>
+<input type="checkbox" disabled>Identify valid and invalid object names:doesn’t start with a number, contains only letters, numbers, . and _</li>
+<li>
+<input type="checkbox" disabled>Print an object in the console by running its name</li>
+<li>
+<input type="checkbox" disabled>Print an object in the console using print()</li>
+<li>
+<input type="checkbox" disabled>List the objects in the global environment using ls()</li>
+<li>
+<input type="checkbox" disabled>Remove an object from the global environment using rm()</li>
+<li>
+<input type="checkbox" disabled>Remove all objects from the environment using rm(list = ls())</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html">Welcome</a></div>
 <div class="next"><a href="lab-2-introduction-to-data-visualization.html"><span class="header-section-number">2</span> Lab 2: Introduction to data visualization</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#lab-1"><span class="header-section-number">1</span> Lab 1</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-1-introduction-to-r-and-rstudio"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
+<li><a class="nav-link" href="#objectives"><span class="header-section-number">1.1</span> Objectives</a></li>
+<li><a class="nav-link" href="#assignment"><span class="header-section-number">1.2</span> Assignment</a></li>
+<li><a class="nav-link" href="#checklist"><span class="header-section-number">1.3</span> Checklist</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

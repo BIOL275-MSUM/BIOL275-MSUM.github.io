@@ -1,4 +1,4 @@
-# Lab 2: RStudio Projects
+# Lab 2: Workflow basics
 
 ## Learning Outcomes
 

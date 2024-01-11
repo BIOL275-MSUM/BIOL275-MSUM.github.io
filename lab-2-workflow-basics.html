@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM</title>
+<title>2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
 <meta name="description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM">
+<meta property="og:title" content="2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
 <meta property="og:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:title" content="2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM">
 <meta name="twitter:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@
 <li><a class="" href="index.html">Welcome</a></li>
 <li class="book-part">Lab Assignments</li>
 <li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
-<li><a class="active" href="lab-2-rstudio-projects.html"><span class="header-section-number">2</span> Lab 2: RStudio Projects</a></li>
+<li><a class="active" href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
 <li><a class="" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
 <li><a class="" href="lab-3-data-subsetting.html"><span class="header-section-number">4</span> Lab 3: Data subsetting</a></li>
 <li><a class="" href="lab-5-data-summarizing.html"><span class="header-section-number">5</span> Lab 5: Data summarizing</a></li>
@@ -94,9 +94,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-2-rstudio-projects" class="section level1" number="2">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-2-workflow-basics" class="section level1" number="2">
 <h1>
-<span class="header-section-number">2</span> Lab 2: RStudio Projects<a class="anchor" aria-label="anchor" href="#lab-2-rstudio-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2</span> Lab 2: Workflow basics<a class="anchor" aria-label="anchor" href="#lab-2-workflow-basics"><i class="fas fa-link"></i></a>
 </h1>
 <div id="learning-outcomes-1" class="section level2" number="2.1">
 <h2>
@@ -192,6 +192,9 @@
 <li>palmerpenguins</li>
 </ul>
 <p>To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.</p>
+<p>An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press <strong>Enter</strong> to run it.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"palmerpenguins"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="create-a-script" class="section level2" number="2.5">
 <h2>
@@ -232,7 +235,7 @@ Warning: if you start typing a file name that is the same as your project name, 
 </h2>
 <p>Below you will see two boxes, one with comments and code, and the next with example console output. The console output is just there to show you what to expect to appear in the console when you run the given code. Console output in this tutorial always appears in a box below the code, and has two pound signs before each line like this: <code>##</code></p>
 <p>Copy the code in the first box below (including the comments) and paste it into your script. You can copy the code by clicking the copy button in the upper right corner of the code box.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load packages -----------------------------------------------------------</span></span>
 <span></span>
 <span><span class="co"># run every time you restart RStudio</span></span>
@@ -286,7 +289,7 @@ Warning: if you start typing a file name that is the same as your project name, 
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lab-2-rstudio-projects"><span class="header-section-number">2</span> Lab 2: RStudio Projects</a></li>
+<li><a class="nav-link" href="#lab-2-workflow-basics"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
 <li><a class="nav-link" href="#learning-outcomes-1"><span class="header-section-number">2.1</span> Learning Outcomes</a></li>
 <li>
 <a class="nav-link" href="#work-with-projects-in-rstudio"><span class="header-section-number">2.2</span> Work with Projects in RStudio</a><ul class="nav navbar-nav">

@@ -1,4 +1,4 @@
-# Lab 2: RStudio Projects
+# Lab 2: Workflow basics
 
 ## Learning Outcomes
 
@@ -68,6 +68,13 @@ Install the two packages you will need for this assignment.
 -   palmerpenguins
 
 To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.
+
+An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press **Enter** to run it.
+
+
+```r
+install.packages(c("tidyverse", "palmerpenguins"))
+```
 
 ## Create a script
 

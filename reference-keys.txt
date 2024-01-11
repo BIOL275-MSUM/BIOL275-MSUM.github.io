@@ -2,7 +2,7 @@ lab-1-introduction-to-r-and-rstudio
 learning-outcomes
 assignment
 checklist
-lab-2-rstudio-projects
+lab-2-workflow-basics
 learning-outcomes-1
 work-with-projects-in-rstudio
 create-a-new-project

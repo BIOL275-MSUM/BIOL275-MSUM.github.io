@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust a project’s global settings Use R scripts Create an R script Run code from an R script Copy code from a tutorial...">
+<meta name="description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust a project’s global settings Use R scripts Create an R script Run code from an R script Copy code from a tutorial...">
+<meta property="og:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Lab 2: RStudio Projects | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust a project’s global settings Use R scripts Create an R script Run code from an R script Copy code from a tutorial...">
+<meta name="twitter:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9000/transition.js"></script><script src="libs/bs3compat-0.6.1.9000/tabs.js"></script><script src="libs/bs3compat-0.6.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -106,16 +106,16 @@
 <li>Work with Projects in RStudio
 <ol style="list-style-type: decimal">
 <li>Create a new Project</li>
-<li>Adjust a project’s global settings</li>
+<li>Adjust Project Options</li>
 </ol>
 </li>
 <li>Use R scripts
 <ol style="list-style-type: decimal">
 <li>Create an R script</li>
 <li>Run code from an R script</li>
+<li>Copy code from a tutorial into an R script</li>
 </ol>
 </li>
-<li>Copy code from a tutorial into an R script</li>
 <li>Use packages in RStudio
 <ol style="list-style-type: decimal">
 <li>Locate the Packages tab in RStudio</li>
@@ -126,30 +126,43 @@
 <li>Unload and detach a package</li>
 </ol>
 </li>
-<li>Create a graph using ggplot</li>
-<li>Export a graph as an image file</li>
-</ol>
-</div>
-<div id="create-a-project" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Create a project<a class="anchor" aria-label="anchor" href="#create-a-project"><i class="fas fa-link"></i></a>
-</h2>
-<div id="what-are-projects" class="section level3" number="2.2.1">
-<h3>
-<span class="header-section-number">2.2.1</span> What are Projects?<a class="anchor" aria-label="anchor" href="#what-are-projects"><i class="fas fa-link"></i></a>
-</h3>
-<p>RStudio projects make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents (scripts), and data files.</p>
-</div>
-<div id="create-a-project-in-rstudio" class="section level3" number="2.2.2">
-<h3>
-<span class="header-section-number">2.2.2</span> Create a project in RStudio<a class="anchor" aria-label="anchor" href="#create-a-project-in-rstudio"><i class="fas fa-link"></i></a>
-</h3>
+<li>Work from an online R tutorial
 <ol style="list-style-type: decimal">
-<li>Go to File &gt; New Project… or click the icon with a green plus sign over a blue cube</li>
-<li>Choose “New Directory”</li>
-<li>Name the project “Lab 2”</li>
-<li>Pay attention to the folder where your project will be saved; change the folder if you want</li>
+<li>Copy blocks of code</li>
+<li>Paste them into an R script</li>
+<li>Modify code to meet project needs</li>
 </ol>
+</li>
+<li>Export images to use in other documents</li>
+</ol>
+</div>
+<div id="work-with-projects-in-rstudio" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Work with Projects in RStudio<a class="anchor" aria-label="anchor" href="#work-with-projects-in-rstudio"><i class="fas fa-link"></i></a>
+</h2>
+<p>RStudio Projects help you keep all the files associated with a given project together in the same place. This could include things like data, code, and figures. For more information about Projects, see:</p>
+<ul>
+<li><a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">Using RStudio Projects – Posit Support</a></li>
+<li><a href="https://r4ds.hadley.nz/workflow-scripts#projects">R for Data Science (2e) - 6 Workflow: scripts and projects (hadley.nz)</a></li>
+</ul>
+<div id="create-a-new-project" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Create a new project<a class="anchor" aria-label="anchor" href="#create-a-new-project"><i class="fas fa-link"></i></a>
+</h3>
+<p>Let’s make a project for you to use while you complete this lab.</p>
+<p>Click File &gt; New Project…, then follow the steps shown below:</p>
+<ul>
+<li><p>Create Project: <strong>New Directory</strong></p></li>
+<li><p>Project type: <strong>New Project</strong></p></li>
+<li>
+<p>Create new project:</p>
+<ul>
+<li><p>Directory name: enter the name of your project, e.g. <strong>Lab 2</strong></p></li>
+<li><p>Create project as a subdirectory of: <strong>~</strong></p></li>
+<li><p><strong>Create Project</strong></p></li>
+</ul>
+</li>
+</ul>
 <p>You should be able to find the Project Folder on this computer if you need to, for example to copy data files into, or to back it up to a flash drive.</p>
 <p>Practice opening the File Explorer in Windows and navigating to the Project Folder. If you can’t find it, look in the Files tab in RStudio, click the “More” icon (a blue gear) and select “Show Folder in New Window”. When the window opens in the File Explorer, practice navigating from there to other important folders on the computer (e.g. “Downloads”) and back again. Here is some helpful documentation on using the File Explorer in Windows:</p>
 <ul>
@@ -157,10 +170,21 @@
 <li><a href="https://support.microsoft.com/en-us/windows/how-to-get-to-the-desktop-documents-and-pictures-folders-in-file-explorer-3370f06b-0f8d-4b25-be9a-3ee54f381e3d">How to get to the Desktop, Documents, and Pictures folders in File Explorer - Microsoft Support</a></li>
 </ul>
 </div>
+<div id="adjust-project-options" class="section level3" number="2.2.2">
+<h3>
+<span class="header-section-number">2.2.2</span> Adjust Project Options<a class="anchor" aria-label="anchor" href="#adjust-project-options"><i class="fas fa-link"></i></a>
+</h3>
+<p>Change your project options following the instructions on the <a href="project-options.html">Project Options</a> page</p>
 </div>
-<div id="install-the-packages" class="section level2" number="2.3">
+</div>
+<div id="packages" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> Install the packages<a class="anchor" aria-label="anchor" href="#install-the-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Packages<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="install-the-packages" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Install the packages<a class="anchor" aria-label="anchor" href="#install-the-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>Install the two packages you will need for this assignment.</p>
 <ul>
@@ -169,10 +193,11 @@
 </ul>
 <p>To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.</p>
 </div>
-<div id="create-a-script" class="section level2" number="2.4">
+<div id="create-a-script" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.4</span> Create a script<a class="anchor" aria-label="anchor" href="#create-a-script"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Create a script<a class="anchor" aria-label="anchor" href="#create-a-script"><i class="fas fa-link"></i></a>
 </h2>
+<p>Until now, you have run commands by typing them into the console. One of the benefits of R over programs such as Excel, however, is the ability to save your commands in the form of written code. Enter the <strong>script</strong>! A script is simply a text file containing commands for R to execute.</p>
 <ol style="list-style-type: decimal">
 <li>File &gt; New File &gt; R Script or click the icon with a green plus sign over a white rectangle; or use the keyboard shortcut <strong>Ctrl + Shift + N</strong>.<br>
 Note: Learn more about Keyboard shortcuts in Windows <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">here</a> and in RStudio <a href="https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE">here</a>.</li>
@@ -182,9 +207,9 @@ Note: documents which contain code are often called “source” documents.</li>
 Warning: if you start typing a file name that is the same as your project name, the computer may try to autocomplete the file name, for example as “Lab 2.Rproj”. Do not save the file with this name or very strange things will happen.</li>
 <li>Click Save and the new script will now be named, and will show a “.R” extension after the name in the tab in the source pane.</li>
 </ol>
-<div id="use-a-script" class="section level3" number="2.4.1">
+<div id="use-a-script" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.4.1</span> Use a script<a class="anchor" aria-label="anchor" href="#use-a-script"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> Use a script<a class="anchor" aria-label="anchor" href="#use-a-script"><i class="fas fa-link"></i></a>
 </h3>
 <p>Scripts are documents where you can write and save code for use later.</p>
 <p>For the rest of the course, you will usually write your code in a script, not directly into the console.</p>
@@ -192,18 +217,18 @@ Warning: if you start typing a file name that is the same as your project name, 
 <p>RStudio will copy the code to the Console, run it, and move the cursor to the next line of the R script. You can run multiple lines of code in a row by repeatedly clicking run or typing <strong>Ctrl + Enter</strong>, but be careful to watch for errors or other output in the console as you do this.</p>
 </div>
 </div>
-<div id="r-packages" class="section level2" number="2.5">
+<div id="r-packages" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.5</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> R packages<a class="anchor" aria-label="anchor" href="#r-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>In R, users share code with each other in the form of **packages**, each of which is a bundle of code, data, and other files. While R includes some basic functionality in it’s “base” packages, you often need to work with other packages when doing any data analysis.</p>
 <p>In this tutorial you will use a group of packages collectively referred to as the **tidyverse**.</p>
 <p>Before you can use a package, you need to download and install it. You can do this with code using the command `install.packages(“tidyverse”)`. It is usually not considered good practice to put this code in your script however. Instead, copy and paste it into the console, or use the</p>
 <p>If you are using RStudio Desktop, you will need to install the package first. In which case, you <strong>Install</strong> button in the Packages tab and type the package name <strong>tidyverse</strong>.</p>
 </div>
-<div id="load-the-packages" class="section level2" number="2.6">
+<div id="load-the-packages" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.6</span> Load the packages<a class="anchor" aria-label="anchor" href="#load-the-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Load the packages<a class="anchor" aria-label="anchor" href="#load-the-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>Below you will see two boxes, one with comments and code, and the next with example console output. The console output is just there to show you what to expect to appear in the console when you run the given code. Console output in this tutorial always appears in a box below the code, and has two pound signs before each line like this: <code>##</code></p>
 <p>Copy the code in the first box below (including the comments) and paste it into your script. You can copy the code by clicking the copy button in the upper right corner of the code box.</p>
@@ -218,9 +243,9 @@ Warning: if you start typing a file name that is the same as your project name, 
 <p>You will see a warning and some messages in the Console tab, but those can be safely ignored.</p>
 <p>You must run the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> commands each time you start RStudio. That’s why it’s nice to keep that code at the very top of your script.</p>
 </div>
-<div id="assignment-1" class="section level2" number="2.7">
+<div id="assignment-1" class="section level2" number="2.8">
 <h2>
-<span class="header-section-number">2.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.8</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">Introduction to palmerpenguins</a>
@@ -264,18 +289,19 @@ Warning: if you start typing a file name that is the same as your project name, 
 <li><a class="nav-link" href="#lab-2-rstudio-projects"><span class="header-section-number">2</span> Lab 2: RStudio Projects</a></li>
 <li><a class="nav-link" href="#learning-outcomes-1"><span class="header-section-number">2.1</span> Learning Outcomes</a></li>
 <li>
-<a class="nav-link" href="#create-a-project"><span class="header-section-number">2.2</span> Create a project</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#what-are-projects"><span class="header-section-number">2.2.1</span> What are Projects?</a></li>
-<li><a class="nav-link" href="#create-a-project-in-rstudio"><span class="header-section-number">2.2.2</span> Create a project in RStudio</a></li>
+<a class="nav-link" href="#work-with-projects-in-rstudio"><span class="header-section-number">2.2</span> Work with Projects in RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#create-a-new-project"><span class="header-section-number">2.2.1</span> Create a new project</a></li>
+<li><a class="nav-link" href="#adjust-project-options"><span class="header-section-number">2.2.2</span> Adjust Project Options</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#install-the-packages"><span class="header-section-number">2.3</span> Install the packages</a></li>
+<li><a class="nav-link" href="#packages"><span class="header-section-number">2.3</span> Packages</a></li>
+<li><a class="nav-link" href="#install-the-packages"><span class="header-section-number">2.4</span> Install the packages</a></li>
 <li>
-<a class="nav-link" href="#create-a-script"><span class="header-section-number">2.4</span> Create a script</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#use-a-script"><span class="header-section-number">2.4.1</span> Use a script</a></li></ul>
+<a class="nav-link" href="#create-a-script"><span class="header-section-number">2.5</span> Create a script</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#use-a-script"><span class="header-section-number">2.5.1</span> Use a script</a></li></ul>
 </li>
-<li><a class="nav-link" href="#r-packages"><span class="header-section-number">2.5</span> R packages</a></li>
-<li><a class="nav-link" href="#load-the-packages"><span class="header-section-number">2.6</span> Load the packages</a></li>
-<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.7</span> Assignment</a></li>
+<li><a class="nav-link" href="#r-packages"><span class="header-section-number">2.6</span> R packages</a></li>
+<li><a class="nav-link" href="#load-the-packages"><span class="header-section-number">2.7</span> Load the packages</a></li>
+<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.8</span> Assignment</a></li>
 </ul>
 
       <div class="book-extra">

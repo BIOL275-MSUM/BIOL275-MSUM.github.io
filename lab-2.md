@@ -4,33 +4,48 @@
 
 1.  Work with Projects in RStudio
     1.  Create a new Project
-    2.  Adjust a project's global settings
+    2.  Adjust Project Options
 2.  Use R scripts
     1.  Create an R script
     2.  Run code from an R script
-3.  Copy code from a tutorial into an R script
-4.  Use packages in RStudio
+    3.  Copy code from a tutorial into an R script
+3.  Use packages in RStudio
     1.  Locate the Packages tab in RStudio
     2.  Search or browse the list of installed packages
     3.  Install a new package
     4.  Load and attach a package using the Packages tab
     5.  Load and attach a package using the `library()` function
     6.  Unload and detach a package
-5.  Create a graph using ggplot
-6.  Export a graph as an image file
+4.  Work from an online R tutorial
+    1.  Copy blocks of code
+    2.  Paste them into an R script
+    3.  Modify code to meet project needs
+5.  Export images to use in other documents
 
-## Create a project
+## Work with Projects in RStudio
 
-### What are Projects?
+RStudio Projects help you keep all the files associated with a given project together in the same place. This could include things like data, code, and figures. For more information about Projects, see:
 
-RStudio projects make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents (scripts), and data files.
+-   [Using RStudio Projects -- Posit Support](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
+-   [R for Data Science (2e) - 6 Workflow: scripts and projects (hadley.nz)](https://r4ds.hadley.nz/workflow-scripts#projects)
 
-### Create a project in RStudio
+### Create a new project
 
-1.  Go to File \> New Project... or click the icon with a green plus sign over a blue cube
-2.  Choose "New Directory"
-3.  Name the project "Lab 2"
-4.  Pay attention to the folder where your project will be saved; change the folder if you want
+Let's make a project for you to use while you complete this lab.
+
+Click File \> New Project..., then follow the steps shown below:
+
+-   Create Project: **New Directory**
+
+-   Project type: **New Project**
+
+-   Create new project:
+
+    -   Directory name: enter the name of your project, e.g. **Lab 2**
+
+    -   Create project as a subdirectory of: **\~**
+
+    -   **Create Project**
 
 You should be able to find the Project Folder on this computer if you need to, for example to copy data files into, or to back it up to a flash drive.
 
@@ -38,6 +53,12 @@ Practice opening the File Explorer in Windows and navigating to the Project Fold
 
 -   [Find and open File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1)
 -   [How to get to the Desktop, Documents, and Pictures folders in File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/how-to-get-to-the-desktop-documents-and-pictures-folders-in-file-explorer-3370f06b-0f8d-4b25-be9a-3ee54f381e3d)
+
+### Adjust Project Options
+
+Change your project options following the instructions on the [Project Options](project-options.html) page
+
+## Packages
 
 ## Install the packages
 
@@ -50,11 +71,13 @@ To install, go to the Packages tab in RStudio, click the Install button, and typ
 
 ## Create a script
 
+Until now, you have run commands by typing them into the console. One of the benefits of R over programs such as Excel, however, is the ability to save your commands in the form of written code. Enter the **script**! A script is simply a text file containing commands for R to execute.
+
 1.  File \> New File \> R Script or click the icon with a green plus sign over a white rectangle; or use the keyboard shortcut **Ctrl + Shift + N**.\
     Note: Learn more about Keyboard shortcuts in Windows [here](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) and in RStudio [here](https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE).
 2.  The script will open in the new Source pane above the console\
     Note: documents which contain code are often called "source" documents.
-3.  Give the new file a name. Click the save button (a blue floppy disk) or go to File \> Save or type Ctrl+S. In the dialog window that pops up, give the file a name like "my script". It doesn't matter what you name it. \
+3.  Give the new file a name. Click the save button (a blue floppy disk) or go to File \> Save or type Ctrl+S. In the dialog window that pops up, give the file a name like "my script". It doesn't matter what you name it.\
     Warning: if you start typing a file name that is the same as your project name, the computer may try to autocomplete the file name, for example as "Lab 2.Rproj". Do not save the file with this name or very strange things will happen.
 4.  Click Save and the new script will now be named, and will show a ".R" extension after the name in the tab in the source pane.
 

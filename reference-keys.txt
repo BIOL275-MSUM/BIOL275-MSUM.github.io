@@ -4,9 +4,10 @@ assignment
 checklist
 lab-2-rstudio-projects
 learning-outcomes-1
-create-a-project
-what-are-projects
-create-a-project-in-rstudio
+work-with-projects-in-rstudio
+create-a-new-project
+adjust-project-options
+packages
 install-the-packages
 create-a-script
 use-a-script
@@ -48,7 +49,7 @@ further-reading
 lab-5-data-summarizing
 objectives-2
 introduction-1
-packages
+packages-1
 diamonds-data
 rename-variables-with-rename
 create-new-variables-with-mutate

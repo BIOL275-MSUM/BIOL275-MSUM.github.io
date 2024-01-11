@@ -1,37 +1,118 @@
 # Lab 2: RStudio Projects
 
-## Objectives
+## Learning Outcomes
 
-2.  Create a Project in RStudio
-3.  Adjust Project settings
-5.  Create an R script
-6.  Install and load packages
-7.  Create a graph using ggplot
-8.  Customize labels
-9.  Export a graph as an image file
+1.  Work with Projects in RStudio
+    1.  Create a new Project
+    2.  Adjust a project's global settings
+2.  Use R scripts
+    1.  Create an R script
+    2.  Run code from an R script
+3.  Copy code from a tutorial into an R script
+4.  Use packages in RStudio
+    1.  Locate the Packages tab in RStudio
+    2.  Search or browse the list of installed packages
+    3.  Install a new package
+    4.  Load and attach a package using the Packages tab
+    5.  Load and attach a package using the `library()` function
+    6.  Unload and detach a package
+5.  Create a graph using ggplot
+6.  Export a graph as an image file
 
 ## Assignment
 
-2.  Create a Project in RStudio; it doesn’t matter where you save it or what you name it
-3.  Install the following packages:
+This is a brief overview of the assignment. See the next sections for more detailed instructions.
+
+1.  Create a Project in RStudio; it doesn't matter where you save it or what you name it
+2.  Install the following packages:
     -   tidyverse
     -   palmerpenguins
-4.  Create an R script and add the code to load the following packages:
+3.  Create an R script and add the code to load the following packages:
     -   palmerpenguins
     -   ggplot2
-5.  While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article [Introduction to palmerpenguins](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
-6.  In that article, find the code for “Scatterplot example 1”, copy it, and paste it into your R script
-7.  Add code to add the following labels to the plot:
+4.  While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article [Introduction to palmerpenguins](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
+5.  In that article, find the code for "Scatterplot example 1", copy it, and paste it into your R script
+6.  Add code to add the following labels to the plot:
     -   title: `“Penguin flipper length versus body mass”`
     -   x-axis: `“Body mass (g)”`
     -   y-axis: `“Flipper length (mm)”`
     -   caption: `“Created by YOUR NAME”`\
         (replace YOUR NAME with *your* name)
-8.  Export the figure (save it on your computer somewhere)
+7.  Export the figure (save it on your computer somewhere)
     1.  Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab
     2.  Then follow along as the instructor shows you a code based way of doing it.
-9.  Create a new Microsoft Word document.
+8.  Create a new Microsoft Word document.
     1.  Sign in to Microsoft 365 so you can save your document for later.
-10. Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.
-11. Save the document as a PDF
-12. Upload the document to the Lab 1 assignment on D2L.
+9.  Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.
+10. Save the document as a PDF
+11. Upload the document to the Lab 2 assignment on D2L.
+
+## Create a project
+
+### What are Projects?
+
+RStudio projects make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents (scripts), and data files.
+
+### Create a project in RStudio
+
+1.  Go to File \> New Project... or click the icon with a green plus sign over a blue cube
+2.  Choose "New Directory"
+3.  Name the project "Lab 2"
+4.  Pay attention to the folder where your project will be saved; change the folder if you want
+
+You should be able to find the Project Folder on this computer if you need to, for example to copy data files into, or to back it up to a flash drive.
+
+Practice opening the File Explorer in Windows and navigating to the Project Folder. If you can't find it, look in the Files tab in RStudio, click the "More" icon (a blue gear) and select "Show Folder in New Window". When the window opens in the File Explorer, practice navigating from there to other important folders on the computer (e.g. "Downloads") and back again. Here is some helpful documentation on using the File Explorer in Windows:
+
+-   [Find and open File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1)
+-   [How to get to the Desktop, Documents, and Pictures folders in File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/how-to-get-to-the-desktop-documents-and-pictures-folders-in-file-explorer-3370f06b-0f8d-4b25-be9a-3ee54f381e3d)
+
+## Create a script
+
+1.  File \> New File \> R Script or click the icon with a green plus sign over a white rectangle; or use the keyboard shortcut **Ctrl + Shift + N**.\
+    Note: Learn more about Keyboard shortcuts in Windows [here](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) and in RStudio [here](https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE).
+2.  Give the new file a name, do not delete the file extension `.R` at the end of the file name
+3.  The script will open in the new Source pane above the console\
+    Note: documents which contain code are often called "source" documents.
+
+### Use a script
+
+Scripts are documents where you can write and save code for use later.
+
+For the rest of the course, you will usually write your code in a script, not directly into the console.
+
+To run the code in a script, put your cursor on the line you want to run and click the Run button (white rectangle with a right arrow) or type the keyboard shortcut **Ctrl + Enter**
+
+RStudio will copy the code to the Console, run it, and move the cursor to the next line of the R script. You can run multiple lines of code in a row by repeatedly clicking run or typing **Ctrl + Enter**, but be careful to watch for errors or other output in the console as you do this.
+
+## R packages
+
+In R, users share code with each other in the form of \*\*packages\*\*, each of which is a bundle of code, data, and other files. While R includes some basic functionality in it's "base" packages, you often need to work with other packages when doing any data analysis.
+
+In this tutorial you will use a group of packages collectively referred to as the \*\*tidyverse\*\*.
+
+Before you can use a package, you need to download and install it. You can do this with code using the command \`install.packages("tidyverse")\`. It is usually not considered good practice to put this code in your script however. Instead, copy and paste it into the console, or use the
+
+If you are using RStudio Desktop, you will need to install the package first. In which case, you **Install** button in the Packages tab and type the package name **tidyverse**.
+
+## Load the packages
+
+Below you will see two boxes, one with comments and code, and the next with example console output. The console output is just there to show you what to expect to appear in the console when you run the given code. Console output in this tutorial always appears in a box below the code, and has two pound signs before each line like this: `##`
+
+Copy the code in the first box below (including the comments) and paste it into your script. You can copy the code by clicking the copy button in the upper right corner of the code box.
+
+```{r, warning=FALSE, message=FALSE}
+# load packages -----------------------------------------------------------
+
+# run every time you restart RStudio
+library(tidyverse)  # load tidyverse, for working with datasets
+library(palmerpenguins)     # load palmerpenguins, our data source
+```
+
+Now run BOTH lines of code
+
+Put your cursor on the first line and press **Ctrl+Return** to run it. The cursor automatically moves to the next line, so you can press **Ctrl+Return** again to run the next line.
+
+You will see a warning and some messages in the Console tab, but those can be safely ignored.
+
+You must run the `library()` commands each time you start RStudio. That's why it's nice to keep that code at the very top of your script.

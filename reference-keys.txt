@@ -4,14 +4,15 @@ assignment
 checklist
 lab-2-rstudio-projects
 learning-outcomes-1
-assignment-1
 create-a-project
 what-are-projects
 create-a-project-in-rstudio
+install-the-packages
 create-a-script
 use-a-script
 r-packages
 load-the-packages
+assignment-1
 lab-3-data-visualization
 objectives
 assignment-2

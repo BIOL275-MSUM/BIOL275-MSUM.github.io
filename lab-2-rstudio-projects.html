@@ -130,69 +130,19 @@
 <li>Export a graph as an image file</li>
 </ol>
 </div>
-<div id="assignment-1" class="section level2" number="2.2">
+<div id="create-a-project" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.2</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Create a project<a class="anchor" aria-label="anchor" href="#create-a-project"><i class="fas fa-link"></i></a>
 </h2>
-<p>This is a brief overview of the assignment. See the next sections for more detailed instructions.</p>
-<ol style="list-style-type: decimal">
-<li>Create a Project in RStudio; it doesn’t matter where you save it or what you name it</li>
-<li>Install the following packages:
-<ul>
-<li>tidyverse</li>
-<li>palmerpenguins</li>
-</ul>
-</li>
-<li>Create an R script and add the code to load the following packages:
-<ul>
-<li>palmerpenguins</li>
-<li>ggplot2</li>
-</ul>
-</li>
-<li>While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">Introduction to palmerpenguins</a>
-</li>
-<li>In that article, find the code for “Scatterplot example 1”, copy it, and paste it into your R script</li>
-<li>Add code to add the following labels to the plot:
-<ul>
-<li>title: <code>“Penguin flipper length versus body mass”</code>
-</li>
-<li>x-axis: <code>“Body mass (g)”</code>
-</li>
-<li>y-axis: <code>“Flipper length (mm)”</code>
-</li>
-<li>caption: <code>“Created by YOUR NAME”</code><br>
-(replace YOUR NAME with <em>your</em> name)</li>
-</ul>
-</li>
-<li>Export the figure (save it on your computer somewhere)
-<ol style="list-style-type: decimal">
-<li>Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab</li>
-<li>Then follow along as the instructor shows you a code based way of doing it.</li>
-</ol>
-</li>
-<li>Create a new Microsoft Word document.
-<ol style="list-style-type: decimal">
-<li>Sign in to Microsoft 365 so you can save your document for later.</li>
-</ol>
-</li>
-<li>Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.</li>
-<li>Save the document as a PDF</li>
-<li>Upload the document to the Lab 2 assignment on D2L.</li>
-</ol>
-</div>
-<div id="create-a-project" class="section level2" number="2.3">
-<h2>
-<span class="header-section-number">2.3</span> Create a project<a class="anchor" aria-label="anchor" href="#create-a-project"><i class="fas fa-link"></i></a>
-</h2>
-<div id="what-are-projects" class="section level3" number="2.3.1">
+<div id="what-are-projects" class="section level3" number="2.2.1">
 <h3>
-<span class="header-section-number">2.3.1</span> What are Projects?<a class="anchor" aria-label="anchor" href="#what-are-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2.1</span> What are Projects?<a class="anchor" aria-label="anchor" href="#what-are-projects"><i class="fas fa-link"></i></a>
 </h3>
 <p>RStudio projects make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents (scripts), and data files.</p>
 </div>
-<div id="create-a-project-in-rstudio" class="section level3" number="2.3.2">
+<div id="create-a-project-in-rstudio" class="section level3" number="2.2.2">
 <h3>
-<span class="header-section-number">2.3.2</span> Create a project in RStudio<a class="anchor" aria-label="anchor" href="#create-a-project-in-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2.2</span> Create a project in RStudio<a class="anchor" aria-label="anchor" href="#create-a-project-in-rstudio"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
 <li>Go to File &gt; New Project… or click the icon with a green plus sign over a blue cube</li>
@@ -207,6 +157,17 @@
 <li><a href="https://support.microsoft.com/en-us/windows/how-to-get-to-the-desktop-documents-and-pictures-folders-in-file-explorer-3370f06b-0f8d-4b25-be9a-3ee54f381e3d">How to get to the Desktop, Documents, and Pictures folders in File Explorer - Microsoft Support</a></li>
 </ul>
 </div>
+</div>
+<div id="install-the-packages" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Install the packages<a class="anchor" aria-label="anchor" href="#install-the-packages"><i class="fas fa-link"></i></a>
+</h2>
+<p>Install the two packages you will need for this assignment.</p>
+<ul>
+<li>tidyverse</li>
+<li>palmerpenguins</li>
+</ul>
+<p>To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.</p>
 </div>
 <div id="create-a-script" class="section level2" number="2.4">
 <h2>
@@ -256,7 +217,42 @@ Warning: if you start typing a file name that is the same as your project name, 
 <p>Put your cursor on the first line and press <strong>Ctrl+Return</strong> to run it. The cursor automatically moves to the next line, so you can press <strong>Ctrl+Return</strong> again to run the next line.</p>
 <p>You will see a warning and some messages in the Console tab, but those can be safely ignored.</p>
 <p>You must run the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> commands each time you start RStudio. That’s why it’s nice to keep that code at the very top of your script.</p>
-
+</div>
+<div id="assignment-1" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">Introduction to palmerpenguins</a>
+</li>
+<li>In that article, find the code for “Scatterplot example 1”, copy it, and paste it into your R script</li>
+<li>Add code to add the following labels to the plot:
+<ul>
+<li>title: <code>“Penguin flipper length versus body mass”</code>
+</li>
+<li>x-axis: <code>“Body mass (g)”</code>
+</li>
+<li>y-axis: <code>“Flipper length (mm)”</code>
+</li>
+<li>caption: <code>“Created by YOUR NAME”</code><br>
+(replace YOUR NAME with <em>your</em> name)</li>
+</ul>
+</li>
+<li>Export the figure (save it on your computer somewhere)
+<ol style="list-style-type: decimal">
+<li>Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab</li>
+<li>Then follow along as the instructor shows you a code based way of doing it.</li>
+</ol>
+</li>
+<li>Create a new Microsoft Word document.
+<ol style="list-style-type: decimal">
+<li>Sign in to Microsoft 365 so you can save your document for later.</li>
+</ol>
+</li>
+<li>Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.</li>
+<li>Save the document as a PDF</li>
+<li>Upload the document to the Lab 2 assignment on D2L.</li>
+</ol>
 </div>
 </div>
   <div class="chapter-nav">
@@ -267,18 +263,19 @@ Warning: if you start typing a file name that is the same as your project name, 
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#lab-2-rstudio-projects"><span class="header-section-number">2</span> Lab 2: RStudio Projects</a></li>
 <li><a class="nav-link" href="#learning-outcomes-1"><span class="header-section-number">2.1</span> Learning Outcomes</a></li>
-<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.2</span> Assignment</a></li>
 <li>
-<a class="nav-link" href="#create-a-project"><span class="header-section-number">2.3</span> Create a project</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#what-are-projects"><span class="header-section-number">2.3.1</span> What are Projects?</a></li>
-<li><a class="nav-link" href="#create-a-project-in-rstudio"><span class="header-section-number">2.3.2</span> Create a project in RStudio</a></li>
+<a class="nav-link" href="#create-a-project"><span class="header-section-number">2.2</span> Create a project</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#what-are-projects"><span class="header-section-number">2.2.1</span> What are Projects?</a></li>
+<li><a class="nav-link" href="#create-a-project-in-rstudio"><span class="header-section-number">2.2.2</span> Create a project in RStudio</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#install-the-packages"><span class="header-section-number">2.3</span> Install the packages</a></li>
 <li>
 <a class="nav-link" href="#create-a-script"><span class="header-section-number">2.4</span> Create a script</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#use-a-script"><span class="header-section-number">2.4.1</span> Use a script</a></li></ul>
 </li>
 <li><a class="nav-link" href="#r-packages"><span class="header-section-number">2.5</span> R packages</a></li>
 <li><a class="nav-link" href="#load-the-packages"><span class="header-section-number">2.6</span> Load the packages</a></li>
+<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">2.7</span> Assignment</a></li>
 </ul>
 
       <div class="book-extra">

@@ -71,9 +71,11 @@ Practice opening the File Explorer in Windows and navigating to the Project Fold
 
 1.  File \> New File \> R Script or click the icon with a green plus sign over a white rectangle; or use the keyboard shortcut **Ctrl + Shift + N**.\
     Note: Learn more about Keyboard shortcuts in Windows [here](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec) and in RStudio [here](https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE).
-2.  Give the new file a name, do not delete the file extension `.R` at the end of the file name
-3.  The script will open in the new Source pane above the console\
+2.  The script will open in the new Source pane above the console\
     Note: documents which contain code are often called "source" documents.
+3.  Give the new file a name. Click the save button (a blue floppy disk) or go to File \> Save or type Ctrl+S. In the dialog window that pops up, give the file a name like "my script". It doesn't matter what you name it. \
+    Warning: if you start typing a file name that is the same as your project name, the computer may try to autocomplete the file name, for example as "Lab 2.Rproj". Do not save the file with this name or very strange things will happen.
+4.  Click Save and the new script will now be named, and will show a ".R" extension after the name in the tab in the source pane.
 
 ### Use a script
 

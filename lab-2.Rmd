@@ -69,6 +69,12 @@ Install the two packages you will need for this assignment.
 
 To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.
 
+An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press **Enter** to run it.
+
+```{r install-packages, message=FALSE, warning=FALSE}
+install.packages(c("tidyverse", "palmerpenguins"))
+```
+
 ## Create a script
 
 Until now, you have run commands by typing them into the console. One of the benefits of R over programs such as Excel, however, is the ability to save your commands in the form of written code. Enter the **script**! A script is simply a text file containing commands for R to execute.

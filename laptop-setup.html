@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Most students use the computers in the lab room to complete their labs. These computers already have all the necessary software installed, so you don’t have to do anything to get started. Some...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9000/transition.js"></script><script src="libs/bs3compat-0.6.1.9000/tabs.js"></script><script src="libs/bs3compat-0.6.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9001/transition.js"></script><script src="libs/bs3compat-0.6.1.9001/tabs.js"></script><script src="libs/bs3compat-0.6.1.9001/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -78,15 +78,16 @@
 <li><a class="" href="data-sets-1.html"><span class="header-section-number">8</span> Data sets</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="active" href="laptop-setup.html"><span class="header-section-number">9</span> Laptop Setup</a></li>
+<li><a class="" href="git-setup.html"><span class="header-section-number">10</span> Git Setup</a></li>
 <li class="book-part">Using RStudio</li>
-<li><a class="" href="project-options.html"><span class="header-section-number">11</span> Project Options</a></li>
-<li><a class="" href="code-sections.html"><span class="header-section-number">12</span> Code Sections</a></li>
-<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">13</span> R Markdown documents</a></li>
-<li><a class="" href="session-info.html"><span class="header-section-number">14</span> Session info</a></li>
+<li><a class="" href="project-options.html"><span class="header-section-number">12</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">13</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">14</span> R Markdown documents</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">15</span> Session info</a></li>
 <li class="book-part">Git and GitHub</li>
-<li><a class="" href="about-git-and-github.html"><span class="header-section-number">16</span> About Git and GitHub</a></li>
-<li><a class="" href="github-notifications.html"><span class="header-section-number">17</span> GitHub Notifications</a></li>
-<li><a class="" href="references.html"><span class="header-section-number">18</span> References</a></li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">17</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">18</span> GitHub Notifications</a></li>
+<li><a class="" href="references-1.html"><span class="header-section-number">19</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -101,16 +102,30 @@
 <p>Most students use the computers in the lab room to complete their labs. These computers already have all the necessary software installed, so you don’t have to do anything to get started.</p>
 <p>Some students may want to work on their own personal laptop or desktop computer instead of, or in addition to, the lab computers. If that is the case, you have two basic options:</p>
 <ul>
-<li><p>Install the software on your machine, including R, RStudio, and Git; see the next three sections for instructions.</p></li>
-<li><p>Use Posit Cloud, an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See Posit Cloud below for instructions.</p></li>
+<li><p><a href="laptop-setup.html#option-1-use-posit-cloud">Option 1: Use Posit Cloud</a>, an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See Posit Cloud below for instructions.</p></li>
+<li><p><a href="laptop-setup.html#option-2-install-the-software">Option 2: Install the software</a> on your machine, including R, RStudio, and Git; see the next three sections for instructions.</p></li>
 </ul>
-<div id="option-1-install-software" class="section level2" number="9.1">
+<div id="option-1-use-posit-cloud" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">9.1</span> Option 1: Install Software<a class="anchor" aria-label="anchor" href="#option-1-install-software"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Option 1: Use Posit Cloud<a class="anchor" aria-label="anchor" href="#option-1-use-posit-cloud"><i class="fas fa-link"></i></a>
 </h2>
-<div id="install-r" class="section level3" number="9.1.1">
+<p>If you don’t want to install the software on your computer, The easiest way to use R, RStudio, and Git on your own computer is to use Posit Cloud <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a> in a web browser.</p>
+<p>You have to create a free account, and you get 25 compute hours a month for free. That translates to 50 hours of having the project open, which is probably enough for most student uses.</p>
+</div>
+<div id="option-2-install-the-software" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Option 2: Install the Software<a class="anchor" aria-label="anchor" href="#option-2-install-the-software"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you really want to install the software on your own computer, here are instructions. Know that campus IT will probably not offer any help with this.</p>
+<p>The three software programs you need to install are:</p>
+<ul>
+<li><p>Install R</p></li>
+<li><p>Install RStudio</p></li>
+<li><p>Install Git</p></li>
+</ul>
+<div id="install-r" class="section level3" number="9.2.1">
 <h3>
-<span class="header-section-number">9.1.1</span> Install R<a class="anchor" aria-label="anchor" href="#install-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2.1</span> Install R<a class="anchor" aria-label="anchor" href="#install-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>You must install R before you install RStudio.</p>
 <p>Directions for installing R:</p>
@@ -138,9 +153,9 @@
 </li>
 </ol>
 </div>
-<div id="install-rstudio" class="section level3" number="9.1.2">
+<div id="install-rstudio" class="section level3" number="9.2.2">
 <h3>
-<span class="header-section-number">9.1.2</span> Install RStudio<a class="anchor" aria-label="anchor" href="#install-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2.2</span> Install RStudio<a class="anchor" aria-label="anchor" href="#install-rstudio"><i class="fas fa-link"></i></a>
 </h3>
 <p>Make sure you have installed R before you try to install RStudio.</p>
 <p>Directions for installing RStudio:</p>
@@ -152,69 +167,32 @@
 </ol>
 <div class="inline-figure"><img src="screenshots/download-rstudio.png" width="75%" style="display: block; margin: auto;"></div>
 </div>
-<div id="install-git" class="section level3" number="9.1.3">
+<div id="install-git" class="section level3" number="9.2.3">
 <h3>
-<span class="header-section-number">9.1.3</span> Install Git<a class="anchor" aria-label="anchor" href="#install-git"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2.3</span> Install Git<a class="anchor" aria-label="anchor" href="#install-git"><i class="fas fa-link"></i></a>
 </h3>
-<p>Quick instructions are provided below. For more detailed instructions, see the Git documentation Chapter <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">1.5 Getting Started - Installing Git</a>.</p>
-<div id="installing-on-windows" class="section level4" number="9.1.3.1">
-<h4>
-<span class="header-section-number">9.1.3.1</span> Installing on Windows<a class="anchor" aria-label="anchor" href="#installing-on-windows"><i class="fas fa-link"></i></a>
-</h4>
-<p>On the Git webiste, go to <a href="https://git-scm.com/download/win">Download for Windows</a> and click the first link to download the latest 64-bit version of Git for Windows.</p>
+<p>Git can be installed on Windows, MacOS, or Linux.</p>
+<p>For instructions, see the <a href="https://happygitwithr.com/install-git">Install Git</a> chapter of <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a> by Jenny Bryan.</p>
+<p>If you think you may have git already installed, or you just want to check, see the instructions in <a href="https://happygitwithr.com/install-git#git-already-installed">Git already installed?</a> Although you can follow the directions to launch a shell <a href="https://happygitwithr.com/shell#from-within-rstudio">from within RStudio</a>, you can also just click the Terminal tab in RStudio (next to the Console tab).</p>
+<p>Additional help installing Git may be found on the Git Documentation site at <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">1.5 Getting Started - Installing Git</a>.</p>
 </div>
-<div id="installing-on-macos" class="section level4" number="9.1.3.2">
-<h4>
-<span class="header-section-number">9.1.3.2</span> Installing on macOS<a class="anchor" aria-label="anchor" href="#installing-on-macos"><i class="fas fa-link"></i></a>
-</h4>
-<p>See the instructions at in the Git documentation <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">1.5 Getting Started - Installing Git</a>.</p>
-</div>
-</div>
-</div>
-<div id="options-2-use-posit-cloud" class="section level2" number="9.2">
-<h2>
-<span class="header-section-number">9.2</span> Options 2: Use Posit Cloud<a class="anchor" aria-label="anchor" href="#options-2-use-posit-cloud"><i class="fas fa-link"></i></a>
-</h2>
-<p>If you don’t want to install the software on your computer, your other option is to use Posit Cloud <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a> in a web browser.</p>
-<p>You have to create a free account, and you get 25 compute hours a month for free. That translates to 50 hours of having the project open, which is probably enough for most student uses.</p>
-</div>
-<div id="introduce-yourself-to-git" class="section level2" number="9.3">
-<h2>
-<span class="header-section-number">9.3</span> Introduce yourself to Git<a class="anchor" aria-label="anchor" href="#introduce-yourself-to-git"><i class="fas fa-link"></i></a>
-</h2>
-<p>Whether you install the software yourself or use Posit Cloud, you will need to introduce yourself to Git before you can make a commit. Quick instructions are provided below. For more detailed instructions, see the Git documentation <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">1.6 Getting Started - First-Time Git Setup</a>.</p>
-<p>First, open a Git command line in one of the following three ways (the first is the easiest):</p>
-<ul>
-<li><p>Click the Terminal tab in RStudio (bottom left pane)</p></li>
-<li><p>Click the Git tab in RStudio (top right pane), click the More icon (a blue gear), and click Shell… which will open a shell window</p></li>
-<li><p>In Windows, run the application Git CMD, for example by clicking on the icon in the Windows Start Menu</p></li>
-<li><p>In macOS, open a command line</p></li>
-</ul>
-<p>Second, run the following two commands.</p>
-<pre><code>$ git config --global user.name "Jane Doe"
-$ git config --global user.email janedoe@example.com</code></pre>
-<p>replacing the example name and email address with your own. The username and email address do <em>not</em> need to match any other username or email address you have, they are simply used for Git to record who made a particular commit.</p>
-<p>You should enter one command, press enter, then enter the second command, and press enter.</p>
-<p>Note, do not enter the $ sign at the beginning, that is just how we note a command prompt.</p>
-
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="data-sets-1.html"><span class="header-section-number">8</span> Data sets</a></div>
-<div class="next"><a href="project-options.html"><span class="header-section-number">11</span> Project Options</a></div>
+<div class="next"><a href="git-setup.html"><span class="header-section-number">10</span> Git Setup</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#laptop-setup"><span class="header-section-number">9</span> Laptop Setup</a></li>
+<li><a class="nav-link" href="#option-1-use-posit-cloud"><span class="header-section-number">9.1</span> Option 1: Use Posit Cloud</a></li>
 <li>
-<a class="nav-link" href="#option-1-install-software"><span class="header-section-number">9.1</span> Option 1: Install Software</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#install-r"><span class="header-section-number">9.1.1</span> Install R</a></li>
-<li><a class="nav-link" href="#install-rstudio"><span class="header-section-number">9.1.2</span> Install RStudio</a></li>
-<li><a class="nav-link" href="#install-git"><span class="header-section-number">9.1.3</span> Install Git</a></li>
+<a class="nav-link" href="#option-2-install-the-software"><span class="header-section-number">9.2</span> Option 2: Install the Software</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#install-r"><span class="header-section-number">9.2.1</span> Install R</a></li>
+<li><a class="nav-link" href="#install-rstudio"><span class="header-section-number">9.2.2</span> Install RStudio</a></li>
+<li><a class="nav-link" href="#install-git"><span class="header-section-number">9.2.3</span> Install Git</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#options-2-use-posit-cloud"><span class="header-section-number">9.2</span> Options 2: Use Posit Cloud</a></li>
-<li><a class="nav-link" href="#introduce-yourself-to-git"><span class="header-section-number">9.3</span> Introduce yourself to Git</a></li>
 </ul>
 
       <div class="book-extra">
@@ -232,7 +210,7 @@ $ git config --global user.email janedoe@example.com</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2024-01-11.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2024-01-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

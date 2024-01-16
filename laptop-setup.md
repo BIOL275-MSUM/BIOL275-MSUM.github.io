@@ -1,4 +1,4 @@
-# (PART) Appendices {-}
+# (PART) Appendices {.unnumbered}
 
 # Laptop Setup
 
@@ -6,11 +6,27 @@ Most students use the computers in the lab room to complete their labs. These co
 
 Some students may want to work on their own personal laptop or desktop computer instead of, or in addition to, the lab computers. If that is the case, you have two basic options:
 
--   Install the software on your machine, including R, RStudio, and Git; see the next three sections for instructions.
+-   [Option 1: Use Posit Cloud], an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See Posit Cloud below for instructions.
 
--   Use Posit Cloud, an online service that is essentially R, RStudio, and Git, all in a web browser. The only requirement is that you have an internet connection. See Posit Cloud below for instructions.
+-   [Option 2: Install the software] on your machine, including R, RStudio, and Git; see the next three sections for instructions.
 
-## Option 1: Install Software
+## Option 1: Use Posit Cloud
+
+If you don't want to install the software on your computer, The easiest way to use R, RStudio, and Git on your own computer is to use Posit Cloud <https://rstudio.cloud/> in a web browser.
+
+You have to create a free account, and you get 25 compute hours a month for free. That translates to 50 hours of having the project open, which is probably enough for most student uses.
+
+## Option 2: Install the Software
+
+If you really want to install the software on your own computer, here are instructions. Know that campus IT will probably not offer any help with this.
+
+The three software programs you need to install are:
+
+-   Install R
+
+-   Install RStudio
+
+-   Install Git
 
 ### Install R
 
@@ -48,43 +64,83 @@ Directions for installing RStudio:
 
 ### Install Git
 
-Quick instructions are provided below. For more detailed instructions, see the Git documentation Chapter [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+Git can be installed on Windows, MacOS, or Linux.
 
-#### Installing on Windows
+For instructions, see the [Install Git](https://happygitwithr.com/install-git) chapter of [Happy Git and GitHub for the useR](https://happygitwithr.com/) by Jenny Bryan.
 
-On the Git webiste, go to [Download for Windows](https://git-scm.com/download/win) and click the first link to download the latest 64-bit version of Git for Windows.
+If you think you may have git already installed, or you just want to check, see the instructions in [Git already installed?](https://happygitwithr.com/install-git#git-already-installed) Although you can follow the directions to launch a shell [from within RStudio](https://happygitwithr.com/shell#from-within-rstudio), you can also just click the Terminal tab in RStudio (next to the Console tab).
 
-#### Installing on macOS
+Additional help installing Git may be found on the Git Documentation site at [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-See the instructions at in the Git documentation [1.5 Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+# Git Setup
 
-## Options 2:  Use Posit Cloud
-
-If you don't want to install the software on your computer, your other option is to use Posit Cloud <https://rstudio.cloud/> in a web browser.
-
-You have to create a free account, and you get 25 compute hours a month for free. That translates to 50 hours of having the project open, which is probably enough for most student uses.
+To use Git, you must first give it some information. This needs to be done once on each computer you use and once in Posit Cloud if you are using that. If you are using a computer in a campus computer lab, all your documents and git settings are deleted each day, so you will need to do this step each time you sign in.
 
 ## Introduce yourself to Git
 
-Whether you install the software yourself or use Posit Cloud, you will need to introduce yourself to Git before you can make a commit. Quick instructions are provided below. For more detailed instructions, see the Git documentation [1.6 Getting Started - First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
+Whether you use Posit Cloud or install the software yourself, you will need to introduce yourself to Git before you can start using it. Quick instructions are provided below. For more detailed instructions, see [Introduce yourself to Git (happygitwithr.com)](https://happygitwithr.com/hello-git) and the Git documentation [1.6 Getting Started - First-Time Git Setup (git-scm.com)](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup).
 
-First, open a Git command line in one of the following three ways (the first is the easiest):
+What does "introduce yourself" mean? Basically it just means you need to give Git a name and email address it can attach to all the commits (changes) you make to your repositories.
 
--   Click the Terminal tab in RStudio (bottom left pane)
+There are two ways to introduce yourself: 1) by using the shell, or 2) via code in an R script. The shell works best if you need to do it once, for example if you are using Posit Cloud or have installed the software on your own computer. An R script works best if you are using a campus computer lab where your account is deleted at the end of every day.
 
--   Click the Git tab in RStudio (top right pane), click the More icon (a blue gear), and click Shell... which will open a shell window
+### Option 1: Use the shell
 
--   In Windows, run the application Git CMD, for example by clicking on the icon in the Windows Start Menu
+One way to introduce yourself is to use the command line in a shell. A shell is a simple program on your computer that lets you run commands to do things. Every Windows, macOS, or Linux computer has one, even if you've never seen it. You may also the shell called a "terminal" or "command line".
 
--   In macOS, open a command line
+STEP 1: Open a Git command line in one of the following three ways (the first is the easiest):
 
-Second, run the following two commands.
+-   In RStudio running on any computer or in Posit Cloud, do one of the following:
 
-    $ git config --global user.name "Jane Doe"
-    $ git config --global user.email janedoe@example.com
+    -   Click the Terminal tab in RStudio (bottom left pane next to the Console tab) or use the keyboard shortcut Alt+Shift+M
+    -   Click the Git tab in RStudio (top right pane), click the More icon (a blue gear), and click Shell... which will open a shell window
 
-replacing the example name and email address with your own. The username and email address do *not* need to match any other username or email address you have, they are simply used for Git to record who made a particular commit.
+-   In Windows:
+
+    -   run the application Git CMD, for example by clicking on the icon in the Windows Start Menu
+
+-   In macOS:
+
+    -   open a command line
+
+Step 2: Run the following two commands.
+
+``` bash
+$ git config --global user.name "Jane Doe"
+$ git config --global user.email janedoe@example.com
+```
+
+replacing the example name and email address with your own. The username can be whatever you want, but I recommend your first and last name. The email address should be the one associated with your GitHub account.
 
 You should enter one command, press enter, then enter the second command, and press enter.
 
 Note, do not enter the \$ sign at the beginning, that is just how we note a command prompt.
+
+Note, the username needs double quotes around it because it contains a space. The email does not, although it doesn't hurt anything to use quotes there as well.
+
+You can check to make sure the commands work by printing the global configuration settings with this command:
+
+``` bash
+git config --global --list
+```
+
+You should see your user name and user email listed there.
+
+### Option 2: Use R code
+
+This option works well if you are using a campus computer lab where your account is deleted at the end of every day. Thanks to [Happy Git and GitHub for the useR](https://happygitwithr.com/hello-git) for the inspiration for this.
+
+This method requires the [usethis package](https://usethis.r-lib.org/), so you will first need to install the package. Then run:
+
+
+```r
+# install if needed:
+# install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "Kari Nordmann", user.email = "kari@example.org")
+```
+
+You can install the package by highlighting that line without the comment character and running it.
+
+Note: this only needs to be run once until your user account is deleted from the computer, but it doesn't hurt to run it again.

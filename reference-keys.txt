@@ -26,8 +26,9 @@ lab-report
 final-render
 submission
 references
-lab-3-data-subsetting
+lab-4-data-subsetting
 objectives
+overview-1
 getting-started
 introduction
 prerequisites
@@ -79,7 +80,7 @@ questions-1
 submission-2
 further-reading-1
 eda-project
-overview-1
+overview-2
 purpose
 examples
 timeline
@@ -90,7 +91,7 @@ create-a-repository-for-your-project
 data-import-tips
 assignments
 sac-application
-overview-2
+overview-3
 how-to-write-an-abstract
 how-to-write-a-title
 assignment-submit-your-application

@@ -44,7 +44,7 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
 6.  Make your first commit:
 
-    1.  In the Git tab, check the box next to the two files `.gitignore` and `*.Rproj` to stage them for adding them to the repository.
+    1.  In the Git tab, check the box next to the `*.Rproj` file to stage it for adding them the repository
 
     2.  Click the "Commit" button
 
@@ -117,7 +117,7 @@ The data type labels need some explanation. Each data type represents a particul
 The most common column data you will see in data frames are:
 
 | Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
-|-----------|----------------|------------------------------------------------------------------------------------------------------------------|---------------------|---------------|
+|---------|---------|-----------------------------------|---------|---------|
 | logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
 | integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
 | double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |
@@ -442,7 +442,7 @@ Put a comment like `# question 1` on the line before each code chunk, so you (an
 1.  Print the penguins dataset
 2.  Filter penguins to include only Gentoo penguins
 3.  Filter penguins to include everything except Gentoo penguins
-4.  Filter penguins to include only penguins on Bisco Island.
+4.  Filter penguins to include only penguins on Biscoe Island.
 5.  Filter penguins to include only Adelie Penguins on Biscoe Island.
 6.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm.
 7.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm and flipper lengths less than 196 mm.
@@ -456,7 +456,7 @@ Put a comment like `# question 1` on the line before each code chunk, so you (an
 
 ## Submission
 
-![[Source: Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)](https://rstudio.github.io/cheatsheets/html/images/quarto-illustration.png)
+![[Source: Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)](https://rstudio.github.io/cheatsheets/html/images/quarto-illustration.png){width="80%"}
 
 1.  When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
 

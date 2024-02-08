@@ -1,7 +1,7 @@
 # SAC Application
 
 ::: text-muted
-2022 Instructions
+2024 Instructions
 :::
 
 You will present the results of your [Exploratory Data Analysis Project](eda-project-instructions.html) at Minnesota State University Moorhead's [Andrew B. Conteh Student Academic Conference (SAC)](https://www2.mnstate.edu/sac/).
@@ -26,7 +26,7 @@ Your abstract should be one paragraph with 100-250 words. Below, I suggest 6-7 s
 
 Write the abstract in first person future tense, for example "I will..."
 
-For more information about how to write an abstract, see [\<https://www.mnstate.edu/sac/preparing-presentation.aspx>](https://www.mnstate.edu/sac/preparing-presentation.aspx){.uri}
+For more information about how to write an abstract, see [\<https://www.mnstate.edu/sac/preparing-presentation.aspx\>](https://www.mnstate.edu/sac/preparing-presentation.aspx){.uri}
 
 ### How to write a title
 
@@ -42,7 +42,7 @@ The title could be generic such as "the relationship between X and Y", or a decl
 
 The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/SAC/form/index).
 
-Applications for the 2022 SAC are due [Friday March 11, 2022.]{.text-danger}
+Applications for the 2024 SAC are due [Friday March 8, 2024.]{.text-danger}
 
 If you do not submit your application by the deadline, you will be unable to participate in the SAC, which will negatively impact your course grade.
 

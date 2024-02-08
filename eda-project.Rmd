@@ -8,7 +8,7 @@ A major part of the lab will be to perform your own exploratory data analysis (E
 
 You will work in groups of two or three.
 
-Your group will choose a general topic to explore, find one or more datasets to use, and conduct an exploratory analysis of that data. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is Feb. 25, 2022).
+Your group will choose a general topic to explore, find one or more datasets to use, and conduct an exploratory analysis of that data. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is [**March 8, 2024**]{style="color:red;"}).
 
 ## Purpose
 

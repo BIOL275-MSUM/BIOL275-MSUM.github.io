@@ -146,7 +146,7 @@ The data type labels need some explanation. Each data type represents a particul
 The most common column data you will see in data frames are:
 
 | Data type | Example        | Description                                                                                                      | 4-way clasification | Column header |
-|---------|---------|-----------------------------------|---------|---------|
+|-----------|----------------|------------------------------------------------------------------------------------------------------------------|---------------------|---------------|
 | logical   | `TRUE`         | Logical values (true or false)                                                                                   | categorical nominal | lgl           |
 | integer   | `1L`           | Positive or negative whole number. The "L" is so R knows it's not a double                                       | numeric discrete    | int           |
 | double    | `1.5`          | Decimal numbers                                                                                                  | numeric continuous  | dbl           |

@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>17 Session info | BIOL 275 Biostatistics at MSUM</title>
+<title>16 Lab Reports | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="main div pre .copy button {  visibility: visible; } Information about your R session can help other users recreate your analyses or diagnose any errors you may be encountering. The session_info()...">
+<meta name="description" content="Guidelines for writing your lab reports as RMarkdown documents rendered into GitHub Flavored Markdown documents.  16.1 YAML header This is a basic template for the YAML header for a lab report....">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="17 Session info | BIOL 275 Biostatistics at MSUM">
+<meta property="og:title" content="16 Lab Reports | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="main div pre .copy button {  visibility: visible; } Information about your R session can help other users recreate your analyses or diagnose any errors you may be encountering. The session_info()...">
+<meta property="og:description" content="Guidelines for writing your lab reports as RMarkdown documents rendered into GitHub Flavored Markdown documents.  16.1 YAML header This is a basic template for the YAML header for a lab report....">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="17 Session info | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="main div pre .copy button {  visibility: visible; } Information about your R session can help other users recreate your analyses or diagnose any errors you may be encountering. The session_info()...">
+<meta name="twitter:title" content="16 Lab Reports | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="Guidelines for writing your lab reports as RMarkdown documents rendered into GitHub Flavored Markdown documents.  16.1 YAML header This is a basic template for the YAML header for a lab report....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1.9001/transition.js"></script><script src="libs/bs3compat-0.6.1.9001/tabs.js"></script><script src="libs/bs3compat-0.6.1.9001/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -88,8 +88,8 @@
 <li><a class="" href="project-options.html"><span class="header-section-number">13</span> Project Options</a></li>
 <li><a class="" href="code-sections.html"><span class="header-section-number">14</span> Code Sections</a></li>
 <li><a class="" href="r-markdown-documents.html"><span class="header-section-number">15</span> R Markdown documents</a></li>
-<li><a class="" href="lab-reports.html"><span class="header-section-number">16</span> Lab Reports</a></li>
-<li><a class="active" href="session-info.html"><span class="header-section-number">17</span> Session info</a></li>
+<li><a class="active" href="lab-reports.html"><span class="header-section-number">16</span> Lab Reports</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">17</span> Session info</a></li>
 <li class="book-part">Git and GitHub</li>
 <li><a class="" href="about-git-and-github.html"><span class="header-section-number">19</span> About Git and GitHub</a></li>
 <li><a class="" href="github-notifications.html"><span class="header-section-number">20</span> GitHub Notifications</a></li>
@@ -101,44 +101,40 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="session-info" class="section level1" number="17">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-reports" class="section level1" number="16">
 <h1>
-<span class="header-section-number">17</span> Session info<a class="anchor" aria-label="anchor" href="#session-info"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16</span> Lab Reports<a class="anchor" aria-label="anchor" href="#lab-reports"><i class="fas fa-link"></i></a>
 </h1>
-<!-- 
-The code chunk example below requires strange formatting to get it to show
-That formatting causes the copy button to be hidden
-This next css code chunk makes the copy button visible
-I'm still not sure how to make it visible only on hover
--->
-<style type="text/css">
-main div pre .copy button {
-  visibility: visible;
-}
-</style>
-<p>Information about your R session can help other users recreate your analyses or diagnose any errors you may be encountering.</p>
-<p>The <code>session_info()</code> function in the sessioninfo package provides information about the version of R you are running, your operating system, and the list of packages you have loaded, with version numbers.</p>
-<p>You can share such information in an R Markdown document with code like this:</p>
-<pre><code>```{r session-info}
-sessioninfo::session_info()
-```</code></pre>
-<p>In the code above, the double colons tell R to look for the <code>session_info()</code> function within the sessioninfo package, so you do not need to load the sessioninfo package.</p>
-<p>You do, however, need to have the sessioninfo package installed on your machine. To do that, you can run this code in your console just once (do not put it in your R or Rmd scripts):</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"sessioninfo"</span><span class="op">)</span></span></code></pre></div>
+<p>Guidelines for writing your lab reports as RMarkdown documents rendered into GitHub Flavored Markdown documents.</p>
+<div id="yaml-header-1" class="section level2" number="16.1">
+<h2>
+<span class="header-section-number">16.1</span> YAML header<a class="anchor" aria-label="anchor" href="#yaml-header-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>This is a basic template for the YAML header for a lab report.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb108-1"><a href="lab-reports.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb108-2"><a href="lab-reports.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Title"</span></span>
+<span id="cb108-3"><a href="lab-reports.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Author"</span></span>
+<span id="cb108-4"><a href="lab-reports.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> now</span></span>
+<span id="cb108-5"><a href="lab-reports.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> gfm</span></span>
+<span id="cb108-6"><a href="lab-reports.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb108-7"><a href="lab-reports.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="lab-reports.html"><span class="header-section-number">16</span> Lab Reports</a></div>
-<div class="next"><a href="about-git-and-github.html"><span class="header-section-number">19</span> About Git and GitHub</a></div>
+<div class="prev"><a href="r-markdown-documents.html"><span class="header-section-number">15</span> R Markdown documents</a></div>
+<div class="next"><a href="session-info.html"><span class="header-section-number">17</span> Session info</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#session-info"><span class="header-section-number">17</span> Session info</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-reports"><span class="header-section-number">16</span> Lab Reports</a></li>
+<li><a class="nav-link" href="#yaml-header-1"><span class="header-section-number">16.1</span> YAML header</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/session-info.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/session-info.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-reports.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-reports.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

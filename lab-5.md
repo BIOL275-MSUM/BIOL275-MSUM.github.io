@@ -157,7 +157,7 @@ Next, you will create a **lab report**:
 
 3.  Save the document as `lab-report.qmd`
 
-4.  Replace the YAML header with the YAML header from your Lab 4 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with `format: gfm`
+4.  Replace the default YAML header with the one described on the Lab Reports page of this website (see link in left nav bar)
 
 5.  Make sure you are in the Visual Mode for the next steps. Click the "Visual" button on the left of the tool bar near the save button.
 

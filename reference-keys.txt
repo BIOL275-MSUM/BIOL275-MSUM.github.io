@@ -157,6 +157,8 @@ parts-of-a-code-chunk
 chunk-arguments
 run-a-code-chunk
 knitting
+lab-reports
+yaml-header-1
 session-info
 part-git-and-github
 about-git-and-github

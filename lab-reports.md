@@ -1,0 +1,19 @@
+# Lab Reports
+
+Guidelines for writing your lab reports as RMarkdown documents rendered into GitHub Flavored Markdown documents.
+
+## YAML header
+
+This is a basic template for the YAML header for a lab report.
+
+
+```md
+---
+title: "Title"
+author: "Author"
+date: now
+format: gfm
+editor: visual
+---
+```
+

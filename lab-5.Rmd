@@ -127,7 +127,7 @@ See [Section 7.6 Data entry](https://r4ds.hadley.nz/data-import#data-entry) in R
 
 For this part of the assignment use the `tribble()` function to recreate the following table in R.
 
-```{r}
+```{r, echo=FALSE}
 tibble::tribble(
   ~cause, ~deaths, ~is_infectious, 
   "Heart disease", 695547, FALSE,

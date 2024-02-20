@@ -19,7 +19,9 @@ In this lab, you will learn to:
 A brief overview of the steps for this lab:
 
 1.  Complete the steps in [Getting Started] below
-2.  Read Chapters 7 and 20 from R for Data Science (2e)
+2.  Read chapters from R for Data Science (2e)
+    -   [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
+    -   [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
 3.  Read the *entire* [Assignment] section before beginning, then complete the requested assignment
 4.  [Submit](#submission) your assignment
 

@@ -285,14 +285,6 @@
 <p>Sometimes it is helpful to enter data directly into R, for example when you have a small table and using a CSV, Excel, or Google Sheet is overkill. In these cases you can us the <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> and <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> functions from the <strong>tibble</strong> package, part of the <strong>tidyverse</strong>.</p>
 <p>See <a href="https://r4ds.hadley.nz/data-import#data-entry">Section 7.6 Data entry</a> in R for Data Science (2e) for more details.</p>
 <p>For this part of the assignment use the <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> function to recreate the following table in R.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
-<span>  <span class="op">~</span><span class="va">cause</span>, <span class="op">~</span><span class="va">deaths</span>, <span class="op">~</span><span class="va">is_infectious</span>, </span>
-<span>  <span class="st">"Heart disease"</span>, <span class="fl">695547</span>, <span class="cn">FALSE</span>,</span>
-<span>  <span class="st">"Cancer"</span>, <span class="fl">605213</span>, <span class="cn">FALSE</span>,</span>
-<span>  <span class="st">"COVID-19"</span>, <span class="fl">416893</span>, <span class="cn">TRUE</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span>options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>dom <span class="op">=</span> <span class="st">'t'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Heart disease","Cancer","COVID-19"],[695547,605213,416893],[false,false,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cause<\/th>\n      <th>deaths<\/th>\n      <th>is_infectious<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cause","targets":1},{"name":"deaths","targets":2},{"name":"is_infectious","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><p>The table shows the three leading causes of death in the United States in 2021, <a href="https://www.cdc.gov/nchs/fastats/deaths.htm">according to the National Center for Health Statistics</a>. The variables include:<br></p>
 <ul>
@@ -321,7 +313,7 @@
 <li><p>Add a code chunk after the YAML; in it, load the <strong>tidyverse</strong>, <strong>readxl</strong>, and <strong>googlesheets4</strong> packages</p></li>
 <li>
 <p>Create three level 2 headings (two hash tags followed by a space and the heading name), like this:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Muskox CSV</span></span>
 <span></span>
 <span><span class="co">## Water quality XLSX</span></span>

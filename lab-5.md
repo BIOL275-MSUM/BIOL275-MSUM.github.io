@@ -128,16 +128,6 @@ See [Section 7.6 Data entry](https://r4ds.hadley.nz/data-import#data-entry) in R
 For this part of the assignment use the `tribble()` function to recreate the following table in R.
 
 
-```r
-tibble::tribble(
-  ~cause, ~deaths, ~is_infectious, 
-  "Heart disease", 695547, FALSE,
-  "Cancer", 605213, FALSE,
-  "COVID-19", 416893, TRUE
-) |> 
-  DT::datatable(options = list(dom = 't'))
-```
-
 ```{=html}
 <div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Heart disease","Cancer","COVID-19"],[695547,605213,416893],[false,false,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cause<\/th>\n      <th>deaths<\/th>\n      <th>is_infectious<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"cause","targets":1},{"name":"deaths","targets":2},{"name":"is_infectious","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>

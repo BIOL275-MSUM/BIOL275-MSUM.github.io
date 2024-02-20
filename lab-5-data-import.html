@@ -230,10 +230,45 @@
 </ol>
 </div>
 </div>
-<div id="read-the-xlsx-data-into-r" class="section level3" number="5.4.2">
+<div id="read-the-water-quality-data" class="section level3" number="5.4.2">
 <h3>
-<span class="header-section-number">5.4.2</span> Read the XLSX data into R<a class="anchor" aria-label="anchor" href="#read-the-xlsx-data-into-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4.2</span> Read the water quality data<a class="anchor" aria-label="anchor" href="#read-the-water-quality-data"><i class="fas fa-link"></i></a>
 </h3>
+<div id="download-the-water-quality-data" class="section level4" number="5.4.2.1">
+<h4>
+<span class="header-section-number">5.4.2.1</span> Download the water quality data<a class="anchor" aria-label="anchor" href="#download-the-water-quality-data"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://catalog.data.gov/dataset">Data.gov</a>
+</li>
+<li>Search for “cyanobacteria”</li>
+<li>Open the resource titled “1987-2018 cyanobacteria and water quality data for 20 reservoirs”</li>
+<li>Download the file <strong>Means_of_reservoir_nutrients.xlsx</strong> to the project folder for Lab 5</li>
+<li>Open the file to view it
+<ol style="list-style-type: decimal">
+<li>note the names and contents of the three tabs, “Read_Me”, “Means_of_variables”, and “Spearman_correlations”</li>
+<li>On the “Means_of_variables” sheet, look for missing values. Take note of the value used to denote them.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="read-the-water-quality-xls-data-into-r" class="section level4" number="5.4.2.2">
+<h4>
+<span class="header-section-number">5.4.2.2</span> Read the water quality XLS data into R<a class="anchor" aria-label="anchor" href="#read-the-water-quality-xls-data-into-r"><i class="fas fa-link"></i></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Open your R script</li>
+<li>Load the tidyverse package, which will load the readr package for you</li>
+<li>Use the <code>read_excel()</code> function to read the “Means_of_variables” sheet
+<ul>
+<li>note that this function is in the <strong>readxl</strong> package, so you will have to load that first</li>
+<li>note that the Means_of_variables sheet is not the first sheet, so you will have to use the <code>sheets</code> argument to <code>read_excel()</code>
+</li>
+</ul>
+</li>
+<li>Have R treat missing values appropriately.</li>
+</ol>
+</div>
 </div>
 <div id="read-google-sheets-data-into-r" class="section level3" number="5.4.3">
 <h3>
@@ -281,17 +316,19 @@
 <li><p>Create a new Quarto Document by going to File &gt; New File &gt; Quarto Document…</p></li>
 <li><p>In the dialog window, click the “Create Empty Document” button</p></li>
 <li><p>Save the document as <code>lab-report.qmd</code></p></li>
-<li><p>Replace the YAML header with the YAML header from your Lab 3 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with <code>format: gfm</code></p></li>
+<li><p>Replace the YAML header with the YAML header from your Lab 4 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with <code>format: gfm</code></p></li>
 <li><p>Make sure you are in the Visual Mode for the next steps. Click the “Visual” button on the left of the tool bar near the save button.</p></li>
 <li><p>Add a code chunk after the YAML; in it, load the <strong>tidyverse</strong>, <strong>readxl</strong>, and <strong>googlesheets4</strong> packages</p></li>
 <li>
 <p>Create three level 2 headings (two hash tags followed by a space and the heading name), like this:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Read the Muskox CSV</span></span>
+<code class="sourceCode R"><span><span class="co">## Muskox CSV</span></span>
 <span></span>
-<span><span class="co">## Question 2</span></span>
+<span><span class="co">## Water quality XLSX</span></span>
 <span></span>
-<span><span class="co">## Question 3</span></span></code></pre></div>
+<span><span class="co">## Animal Behavior Google sheets</span></span>
+<span></span>
+<span><span class="co">## Mortality causes</span></span></code></pre></div>
 </li>
 <li><p>After each heading, create a code chunk and copy and paste your (already working) code from your R script to the report, one output per question. Each question should produce a table output.</p></li>
 <li><p>Render your document</p></li>
@@ -329,7 +366,7 @@
 <li>
 <a class="nav-link" href="#assignment-3"><span class="header-section-number">5.4</span> Assignment</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#read-the-muskox-csv"><span class="header-section-number">5.4.1</span> Read the Muskox CSV</a></li>
-<li><a class="nav-link" href="#read-the-xlsx-data-into-r"><span class="header-section-number">5.4.2</span> Read the XLSX data into R</a></li>
+<li><a class="nav-link" href="#read-the-water-quality-data"><span class="header-section-number">5.4.2</span> Read the water quality data</a></li>
 <li><a class="nav-link" href="#read-google-sheets-data-into-r"><span class="header-section-number">5.4.3</span> Read Google Sheets data into R</a></li>
 <li><a class="nav-link" href="#enter-data-directly-in-r"><span class="header-section-number">5.4.4</span> Enter data directly in R</a></li>
 </ul>

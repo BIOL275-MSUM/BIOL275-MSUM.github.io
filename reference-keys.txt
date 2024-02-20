@@ -66,7 +66,9 @@ assignment-3
 read-the-muskox-csv
 download-the-muskox-data
 read-the-muskox-csv-data-into-r
-read-the-xlsx-data-into-r
+read-the-water-quality-data
+download-the-water-quality-data
+read-the-water-quality-xls-data-into-r
 read-google-sheets-data-into-r
 enter-data-directly-in-r
 create-your-lab-report

@@ -90,7 +90,26 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 3.  Use the `read_csv()` function to read the data file
 4.  Have R treat values of -999 in the organismQuantity column as missing values (NAs)
 
-### Read the XLSX data into R
+### Read the water quality data
+
+#### Download the water quality data
+
+1.  Go to [Data.gov](https://catalog.data.gov/dataset)
+2.  Search for "cyanobacteria"
+3.  Open the resource titled "1987-2018 cyanobacteria and water quality data for 20 reservoirs"
+4.  Download the file **Means_of_reservoir_nutrients.xlsx** to the project folder for Lab 5
+5.  Open the file to view it
+    1.  note the names and contents of the three tabs, "Read_Me", "Means_of_variables", and "Spearman_correlations"
+    2.  On the "Means_of_variables" sheet, look for missing values. Take note of the value used to denote them.
+
+#### Read the water quality XLS data into R
+
+1.  Open your R script
+2.  Load the tidyverse package, which will load the readr package for you
+3.  Use the `read_excel()` function to read the "Means_of_variables" sheet
+    -   note that this function is in the **readxl** package, so you will have to load that first
+    -   note that the Means_of_variables sheet is not the first sheet, so you will have to use the `sheets` argument to `read_excel()`
+4.  Have R treat missing values appropriately.
 
 ### Read Google Sheets data into R
 
@@ -146,7 +165,7 @@ Next, you will create a **lab report**:
 
 3.  Save the document as `lab-report.qmd`
 
-4.  Replace the YAML header with the YAML header from your Lab 3 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with `format: gfm`
+4.  Replace the YAML header with the YAML header from your Lab 4 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with `format: gfm`
 
 5.  Make sure you are in the Visual Mode for the next steps. Click the "Visual" button on the left of the tool bar near the save button.
 
@@ -156,11 +175,13 @@ Next, you will create a **lab report**:
 
     
     ```r
-    ## Read the Muskox CSV
+    ## Muskox CSV
     
-    ## Question 2
+    ## Water quality XLSX
     
-    ## Question 3
+    ## Animal Behavior Google sheets
+    
+    ## Mortality causes
     ```
 
 8.  After each heading, create a code chunk and copy and paste your (already working) code from your R script to the report, one output per question. Each question should produce a table output.

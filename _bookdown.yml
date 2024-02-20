@@ -19,6 +19,7 @@ rmd_files: [
   "project-options.Rmd",
   "code-sections.Rmd",
   "r-markdown-docs.Rmd",
+  "lab-reports.Rmd",
   "session-info.Rmd",
   
   "git-and-github.Rmd",

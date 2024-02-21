@@ -16,3 +16,9 @@ editor: visual
 ---
 ```
 
+
+### Some common mistakes
+
+- The title and author must be quoted (surrounded by double quotes)
+- The keys (title, author, date, format, editor, etc) must be lower case
+- The values (now, gfm, visual, etc) must be lower case

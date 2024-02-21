@@ -175,7 +175,7 @@ Next, you will create a **lab report**:
 
 3.  Save the document as `lab-report.qmd`
 
-4.  Replace the default YAML header with the one described on the Lab Reports page of this website (see link in left nav bar)
+4.  Replace the default YAML header with the one described on under [Lab Reports](lab-reports.html).
 
 5.  Make sure you are in the Visual Mode for the next steps. Click the "Visual" button on the left of the tool bar near the save button.
 

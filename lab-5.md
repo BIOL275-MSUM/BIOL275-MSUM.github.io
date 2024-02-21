@@ -85,11 +85,16 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
     You will know it is saved in the correct folder when you can see it in the Files tab in RStudio (bottom right pane)
 
-#### Read the Muskox CSV data into R 
+#### Read the Muskox CSV data into R
 
 1.  Open your R script
+
 2.  Load the tidyverse package, which will load the readr package for you
+
 3.  Use the `read_csv()` function to read the data file
+
+    IMPORTANT: do not use the similar base R function `read.csv()`.
+
 4.  Have R treat values of -999 in the organismQuantity column as missing values (NAs)
 
 ### Read the water quality data
@@ -121,6 +126,16 @@ See the crab data collected last week in Animal Behavior:
 
 Import the 'crabs' sheet into R using `read_sheet()` from the **googlesheets4** package.
 
+Note: the default behavior of googlesheets4 is to attempt to obtain a token for authorization. In our case, this is unnecessary because the sheet in question is viewable by the public. To prevent googlesheets4 from asking for a token, run the following code *before* you attempt to read the sheet:
+
+
+```r
+library(googlesheets4)
+gs4_deauth()
+```
+
+Note: when you read the sheet, the first argument to `read_sheet()` is the URL to the sheet, *or* the sheet ID, which is the long alpha-numeric string in the middle of the URL, in this case `15fozF3WTnH-PIL3Qm6RIyOFM6yk0RlxO3lBPF1ndu9s` . The sheet ID is shorter than the entire URL, so using it is preferable because it makes your code more readable.
+
 ### Enter data directly in R
 
 Sometimes it is helpful to enter data directly into R, for example when you have a small table and using a CSV, Excel, or Google Sheet is overkill. In these cases you can us the `tibble()` and `tribble()` functions from the **tibble** package, part of the **tidyverse**.
@@ -137,11 +152,11 @@ For this part of the assignment use the `tribble()` function to recreate the fol
 
 The table shows the three leading causes of death in the United States in 2021, [according to the National Center for Health Statistics](https://www.cdc.gov/nchs/fastats/deaths.htm). The variables include:\
 
--   **cause**. the cause of death (character)
+-   **cause**. CHARACTER. the cause of death.
 
--   **deaths**. the estimated number of deaths in 2021 in the US (numeric)
+-   **deaths**. NUMERIC. the estimated number of deaths in 2021 in the US.
 
--   **is_infectious**. a binary variable representing whether the cause of death is infectious or not (logical)
+-   **is_infectious**. LOGICAL. a binary variable representing whether the cause of death is infectious or not; possible values include `TRUE` and `FALSE`. Note these values should be in all caps and not quoted (surrounded by quotation marks).
 
 ## Lab Report Submission {#submission}
 

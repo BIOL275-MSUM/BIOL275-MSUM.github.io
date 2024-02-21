@@ -159,6 +159,7 @@ run-a-code-chunk
 knitting
 lab-reports
 yaml-header-1
+some-common-mistakes
 session-info
 part-git-and-github
 about-git-and-github

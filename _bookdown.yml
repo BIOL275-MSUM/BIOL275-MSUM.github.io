@@ -14,6 +14,7 @@ rmd_files: [
   "eda-project.Rmd",
   "eda-sac-application.Rmd",
   "data-sets.Rmd",
+  "citing-r.Rmd",
   
   "laptop-setup.Rmd",
   "project-options.Rmd",

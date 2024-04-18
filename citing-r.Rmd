@@ -60,7 +60,7 @@ To get the reference for a particular package.
 citation("tidyverse")
 ```
 
--   Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” \_Journal of Open Source Software\_, \*4\*(43), 1686. doi:10.21105/joss.01686 <https://doi.org/10.21105/joss.01686>.
+-   Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” \_Journal of Open Source Software\_, \*4\*(43), 1686. <doi:10.21105/joss.01686> <https://doi.org/10.21105/joss.01686>.
 
 To see package version numbers:
 
@@ -72,6 +72,6 @@ packageVersion("tidyverse")
 
 The methods section of your report will often include a paragraph like this:
 
-> All analyses were performed using R Statistical Software (v4.1.2; R Core Team 2024) in the RStudio IDE (Posit team 2024). We used the tidyverse R packages (Wickham et al. 2019) including readr, dplyr, ggplot2. Maps were created using the rnaturalearth (v 1.0.1; Massicotte and South 2023) and sf (Pebesma and Bivand 2023, Pebesma 2018) R packages.
+> All analyses were performed using R Statistical Computing Software (v4.3.3; R Core Team 2024) in the RStudio IDE (Posit team 2024). We used the tidyverse R packages (Wickham et al. 2019) including readr, dplyr, ggplot2. Maps were created using the R packages rnaturalearth (v 1.0.1; Massicotte and South 2023) and sf (Pebesma and Bivand 2023, Pebesma 2018).
 
 In addition, you would citation any sources for the data you use.

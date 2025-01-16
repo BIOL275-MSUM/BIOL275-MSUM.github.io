@@ -8,7 +8,10 @@ A major part of the lab will be to perform your own exploratory data analysis (E
 
 You will work in groups of two or three.
 
-Your group will choose a general topic to explore, find one or more datasets to use, and conduct an exploratory analysis of that data. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/) in April (application deadline is [**March 8, 2024**]{style="color:red;"}).
+Your group will choose a general topic to explore, find one or more datasets to use, and conduct an exploratory analysis of that data. You will present your results to the class and at the [MSUM's Andrew B. Conteh Student Academic Conference (SAC)](https://www.mnstate.edu/sac/).
+
+Application Deadline: [**March 18, 2025**]{style="color:red;"}
+Conference Date: [**April 15, 2025**]{style="color:blue;"}
 
 ## Purpose
 
@@ -34,16 +37,16 @@ There are many examples of exploratory data analyses available online. If you wa
 
 You will receive several weeks of in-class time during lab to work on your EDA Project.
 
--   During week 6, you will choose your project. There are at least three approaches to this:
+-   During week 2, you will choose your project. There are at least three approaches to this:
 
     1.  You select a data set and proposing some questions to explore within it,
     2.  You select an interesting topic and look for relevant data sets you can bring to bear on the subject
     3.  You provide your own question and data set, for example from a research project you are working on, or
     4.  Some combination of these.
 
--   During week 7 you will create a GitHub repository for your project. Your first addition will be a README file containing your project title and abstract.
+-   During week 2 you will create a GitHub repository for your project. Your first addition will be a README file containing your project title and abstract.
 
--   During week 8 your instructor will provide feedback on the abstract, which you will incorporate into a revised abstract and then [submit an application to the Student Academic Conference](sac-application.html).
+-   During week 4 your instructor will provide feedback on the abstract, which you will incorporate into a revised abstract and then [submit an application to the Student Academic Conference](sac-application.html).
 
 -   In subsequent weeks, we will take *some* time to work on the project, but you are also expected to work on it outside of class.
 

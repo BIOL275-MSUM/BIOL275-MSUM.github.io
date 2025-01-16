@@ -33,7 +33,7 @@ In this lab you will use functions and datasets from the **dplyr** and **ggplot2
 Load the **tidyverse** package:
 
 
-```r
+``` r
 library(tidyverse)    # load the tidyverse package
 ```
 
@@ -41,8 +41,8 @@ library(tidyverse)    # load the tidyverse package
 #> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.1.4     ✔ readr     2.1.5
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+#> ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 #> ✔ purrr     1.0.2     
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
@@ -63,7 +63,7 @@ The `rename()` function allows you to rename variables in a data frame. The firs
 For example, say you want to rename the `x`, `y`, and `z` variables to `length`, `width`, and `height`:
 
 
-```r
+``` r
 rename(diamonds, length = x, width = y, height = z)
 ```
 
@@ -85,7 +85,7 @@ Note the lack of quotes around the names of the data frame, the new variable nam
 The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:
 
 
-```r
+``` r
 rename(
   diamonds, 
   length = x, 
@@ -103,7 +103,7 @@ The `mutate()` function allows you to create a new variable in a data frame. As 
 Let's do an example using the diamonds dataset. To make viewing the new variables easier, first select a subset of variables from the `diamonds` data set using `select()` and give the new data frame the name `d2`:
 
 
-```r
+``` r
 # select the variables of interest
 d2 <- select(diamonds, carat, price)
 d2
@@ -125,7 +125,7 @@ d2
 Now use the new data frame `d2` to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named `ppc` ("price per carat"):
 
 
-```r
+``` r
 # example of creating price per carat (ppc)
 mutate(d2, ppc = price / carat)
 ```
@@ -148,7 +148,7 @@ mutate(d2, ppc = price / carat)
 You do not have to create an entirely new variable when using `mutate()`. For example, let's say you wanted to convert the price from US Dollars (USD) to Canadian Dollars (CAD). The current exchange rate is about 1 USD to 1.27 CAD. You can overwrite the existing price variable by setting the new variable name to be the same as the old variable name:
 
 
-```r
+``` r
 mutate(diamonds, price = price * 1.27)
 ```
 
@@ -170,7 +170,7 @@ mutate(diamonds, price = price * 1.27)
 You can summarize a data set using the `summarize()` function. Like other dplyr functions, the first argument to `summarize()` is the data frame. Additional arguments are name-value pairs, just like with `mutate()`. Values are set using various summary functions such as `mean()` or `sd()` (standard deviation). The difference is that whereas `mutate()` returns a data frame with the same number of rows as the input data frame, `summarize()` returns a data frame with only one row, and the only variables in the new data frame are the ones you named in `summarize()`. For example, to calculate the mean value of the `carat` variable, the code would look like this:
 
 
-```r
+``` r
 summarize(diamonds, mean_carat = mean(carat))
 ```
 
@@ -184,7 +184,7 @@ summarize(diamonds, mean_carat = mean(carat))
 You can calculate multiple summary statistics at the same time by providing a comma-separated list of name-value pairs. Because the line starts getting long, this example has each argument on its own line, but it would work just fine if everything was on the same line.
 
 
-```r
+``` r
 summarize(
   diamonds,
   mean_carat = mean(carat), 
@@ -211,7 +211,7 @@ For each of those functions, you must put the name of the variable you want to s
 There is also a special summary function `n()` which returns the number of rows, i.e. the sample size. Here is an example:
 
 
-```r
+``` r
 summarize(diamonds, sampl_size = n())
 ```
 
@@ -229,7 +229,7 @@ Some summary functions require one or more arguments in addition to the name of 
 One example is the `quantile()` function, whose `probs` argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable `carat`, you can use the quantile function with the argument of `probs = 0.25`:
 
 
-```r
+``` r
 summarize(diamonds, q1 = quantile(carat, probs = 0.25))
 ```
 
@@ -245,7 +245,7 @@ summarize(diamonds, q1 = quantile(carat, probs = 0.25))
 When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the `price` variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:
 
 
-```r
+``` r
 summarize(
   diamonds, 
   sem = sd(price) / sqrt(n())
@@ -264,7 +264,7 @@ Notice that the equation for standard error (sem) above uses both the `sd()` fun
 Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:
 
 
-```r
+``` r
 summarize(
   diamonds, 
   mean_p = mean(price),
@@ -296,7 +296,7 @@ For example, let's explore how the mean price varies with the cut of a diamond i
 In the first step, you use `group_by()` to produced a grouped data frame. Like other dplyr verbs, the first argument to `group_by()` is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the `cut` variable and assign the resulting grouped data frame a new name, `diamonds_grouped`:
 
 
-```r
+``` r
 diamonds_grouped <- group_by(diamonds, cut)
 diamonds_grouped
 ```
@@ -320,7 +320,7 @@ The only difference in the output from printing the ungrouped `diamonds` table i
 The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:
 
 
-```r
+``` r
 summarize(diamonds_grouped, mean_price = mean(price))
 ```
 
@@ -340,7 +340,7 @@ summarize(diamonds_grouped, mean_price = mean(price))
 Counting the number of observations by group is a fairly common task, especially when you are exploring your data interactively in an R session (e.g. by typing commands into the console). One way to do this would be to use a grouped summary and the `n()` function as described above, for example:
 
 
-```r
+``` r
 diamonds %>% 
   group_by(cut) %>% 
   summarize(n = n())
@@ -360,7 +360,7 @@ diamonds %>%
 Because it is such a common task, dplyr includes a special function `count()` to do just that but in fewer commands:
 
 
-```r
+``` r
 count(diamonds, cut)
 ```
 
@@ -378,7 +378,7 @@ count(diamonds, cut)
 You can also do this to create a quick contingency table for multiple variables:
 
 
-```r
+``` r
 distinct(diamonds, cut, clarity)
 ```
 
@@ -398,7 +398,7 @@ distinct(diamonds, cut, clarity)
 If you just want to see the distinct values (levels) of a categorical variable, or the combinations of values for two or more categorical variables in a dataset, but you don't need the counts, there is an even simpler function `distinct()` for that:
 
 
-```r
+``` r
 distinct(diamonds, cut)
 ```
 
@@ -433,7 +433,7 @@ The `facet_wrap()` function in ggplot2 allows you to take a plot and split it up
 First, let's start by graphing the distribution of the `price` variable without regard to cut. We will set the number of bin width to 500 (dollars)
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = price), binwidth = 500)
 ```
@@ -445,7 +445,7 @@ Interestingly, the distribution appears to be bimodal, with the second, smaller 
 Now lets plot the same graph but add the `facet_wrap()` function. Remember to add a plus sign `+` at the end of the `geom_histogram()` so R knows you are trying add another layer to the graph:
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = price), binwidth = 500) +
   facet_wrap(~ cut)
@@ -458,7 +458,7 @@ The resulting plot now has five small graphs, called facets in tidyverse lingo, 
 A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the *distribution* of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the `scales` argument to `facet_wrap()`:
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_histogram(mapping = aes(x = price), binwidth = 500) +
   facet_wrap(~ cut, scales = "free_y")
@@ -475,7 +475,7 @@ Other useful arguments to `facet_wrap()` include `nrow` and `ncol`, one of which
 Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the `geom_jitter()` function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_jitter(mapping = aes(x = cut, y = price))
 ```
@@ -485,7 +485,7 @@ ggplot(data = diamonds) +
 As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the `shape` argument to `geom_jitter()`. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the `alpha` argument to something low like 0.1 indicating 10% opacity.
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_jitter(mapping = aes(x = cut, y = price), alpha = .1)
 ```
@@ -497,14 +497,14 @@ One nice thing about strip plots is that they make it easy to view the both the 
 The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:
 
 
-```r
+``` r
 summarize(diamonds_grouped, mean_price = mean(price))
 ```
 
 Let's expand that a bit to include upper and lower confidence limits:
 
 
-```r
+``` r
 price_summary <-
   summarize(
     diamonds_grouped, 
@@ -530,7 +530,7 @@ price_summary
 Now that you have the summary statistics, add the means to the graph using the `geom_crossbar()` function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for `geom_crossbar()` are `y`, `ymin`, and `ymax`. Setting the color to red will make the crossbars stand out against the black raw data points.
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_jitter(mapping = aes(x = cut, y = price), alpha = .1) +
   geom_crossbar(
@@ -552,7 +552,7 @@ The most basic type of graph for visualizing the relationship between two numeri
 For example, the following graph shows the relationship between carat and price:
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price))
 ```
@@ -572,7 +572,7 @@ A common alternative is to add a third aesthetic to the plot to differentiate po
 The following code plots the same scatter plot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.
 
 
-```r
+``` r
 ggplot(data = diamonds) +
   geom_point(mapping = aes(x = carat, y = price, color = cut), alpha = 0.1)
 ```
@@ -590,7 +590,7 @@ You can print `iris` in the console to see the data set, but because it is a bas
 Add this to your script:
 
 
-```r
+``` r
 iris <- as_tibble(iris) # so it prints a little nicer
 ```
 

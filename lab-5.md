@@ -129,7 +129,7 @@ Import the 'crabs' sheet into R using `read_sheet()` from the **googlesheets4** 
 Note: the default behavior of googlesheets4 is to attempt to obtain a token for authorization. In our case, this is unnecessary because the sheet in question is viewable by the public. To prevent googlesheets4 from asking for a token, run the following code *before* you attempt to read the sheet:
 
 
-```r
+``` r
 library(googlesheets4)
 gs4_deauth()
 ```
@@ -181,7 +181,7 @@ Next, you will create a **lab report**:
 7.  Create three level 2 headings (two hash tags followed by a space and the heading name), like this:
 
     
-    ```r
+    ``` r
     ## Muskox CSV
     
     ## Water quality XLSX

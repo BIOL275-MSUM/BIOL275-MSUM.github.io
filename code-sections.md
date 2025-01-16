@@ -19,7 +19,7 @@ Here is a screenshot of the code sections in action:
 And here is the code in the script shown in the screenshot above:
 
 
-```r
+``` r
 ## This script shows an example of using comments to create a document outline
 
 # load packages -----------------------------------------------------------

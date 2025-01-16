@@ -1,7 +1,7 @@
 # SAC Application
 
 ::: text-muted
-2024 Instructions
+2025 Instructions
 :::
 
 You will present the results of your [Exploratory Data Analysis Project](eda-project-instructions.html) at Minnesota State University Moorhead's [Andrew B. Conteh Student Academic Conference (SAC)](https://www2.mnstate.edu/sac/).

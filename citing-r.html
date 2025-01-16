@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>10 Citing R | BIOL 275 Biostatistics at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="It is common practice when reporting the results of a statistical analysis to cite any software and packages used in the analysis. The following sections explain: How to cite R How to cite RStudio...">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta property="og:title" content="10 Citing R | BIOL 275 Biostatistics at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="It is common practice when reporting the results of a statistical analysis to cite any software and packages used in the analysis. The following sections explain: How to cite R How to cite RStudio...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 Citing R | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="It is common practice when reporting the results of a statistical analysis to cite any software and packages used in the analysis. The following sections explain: How to cite R How to cite RStudio...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0.9000/transition.js"></script><script src="libs/bs3compat-0.8.0.9000/tabs.js"></script><script src="libs/bs3compat-0.8.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.9000/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.33/datatables.js"></script><link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BIOL 275 Biostatistics at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
+<li><a class="" href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
+<li><a class="" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
+<li><a class="" href="lab-4-data-subsetting.html"><span class="header-section-number">4</span> Lab 4: Data subsetting</a></li>
+<li><a class="" href="lab-5-data-import.html"><span class="header-section-number">5</span> Lab 5: Data import</a></li>
+<li><a class="" href="lab-6-data-summarizing.html"><span class="header-section-number">6</span> Lab 6: Data summarizing</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">7</span> EDA Project</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">8</span> SAC Application</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">9</span> Data sets</a></li>
+<li><a class="active" href="citing-r.html"><span class="header-section-number">10</span> Citing R</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="laptop-setup.html"><span class="header-section-number">11</span> Laptop Setup</a></li>
+<li><a class="" href="git-setup.html"><span class="header-section-number">12</span> Git Setup</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">14</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">15</span> Code Sections</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">16</span> R Markdown documents</a></li>
+<li><a class="" href="lab-reports.html"><span class="header-section-number">17</span> Lab Reports</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">18</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">20</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">21</span> GitHub Notifications</a></li>
+<li><a class="" href="references-2.html"><span class="header-section-number">22</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="citing-r" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Citing R<a class="anchor" aria-label="anchor" href="#citing-r"><i class="fas fa-link"></i></a>
+</h1>
+<p>It is common practice when reporting the results of a statistical analysis to cite any software and packages used in the analysis.</p>
+<p>The following sections explain:</p>
+<ol style="list-style-type: decimal">
+<li>How to cite R</li>
+<li>How to cite RStudio</li>
+<li>How to cite R packages</li>
+</ol>
+<div id="references-1" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> References<a class="anchor" aria-label="anchor" href="#references-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>The first step to creating in-text citations is to create full references that can go in the Reference section of your report.</p>
+<div id="r-reference" class="section level3" number="10.1.1">
+<h3>
+<span class="header-section-number">10.1.1</span> R reference<a class="anchor" aria-label="anchor" href="#r-reference"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can get the references for R by running the <code><a href="https://rdrr.io/r/utils/citation.html">citation()</a></code> command:</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; To cite R in publications use:
+#&gt; 
+#&gt;   R Core Team (2024). _R: A Language and Environment for Statistical
+#&gt;   Computing_. R Foundation for Statistical Computing, Vienna, Austria.
+#&gt;   &lt;https://www.R-project.org/&gt;.
+#&gt; 
+#&gt; A BibTeX entry for LaTeX users is
+#&gt; 
+#&gt;   @Manual{,
+#&gt;     title = {R: A Language and Environment for Statistical Computing},
+#&gt;     author = {{R Core Team}},
+#&gt;     organization = {R Foundation for Statistical Computing},
+#&gt;     address = {Vienna, Austria},
+#&gt;     year = {2024},
+#&gt;     url = {https://www.R-project.org/},
+#&gt;   }
+#&gt; 
+#&gt; We have invested a lot of time and effort in creating R, please cite it
+#&gt; when using it for data analysis. See also 'citation("pkgname")' for
+#&gt; citing R packages.</code></pre>
+<p>Then just copy the formatted reference and paste it into your References section:</p>
+<ul>
+<li>R Core Team (2024). _R: A Language and Environment for Statistical Computing_. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</li>
+</ul>
+</div>
+<div id="rstudio-reference" class="section level3" number="10.1.2">
+<h3>
+<span class="header-section-number">10.1.2</span> RStudio reference<a class="anchor" aria-label="anchor" href="#rstudio-reference"><i class="fas fa-link"></i></a>
+</h3>
+<p>To get the reference for RStudio:</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">RStudio.Version</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Posit team (2024). RStudio: Integrated Development Environment for R. Posit Software, PBC, Boston, MA. URL <a href="http://www.posit.co/." class="uri">http://www.posit.co/.</a>
+</li>
+</ul>
+</div>
+<div id="r-package-references" class="section level3" number="10.1.3">
+<h3>
+<span class="header-section-number">10.1.3</span> R package references<a class="anchor" aria-label="anchor" href="#r-package-references"><i class="fas fa-link"></i></a>
+</h3>
+<p>Which packages to cite depends on the publication outlet. In general, cite packages that you have to load in your scripts. This means do not cite base R packages or dependencies of packages you load in your scripts.</p>
+<p>The exception to this might be packages in the tidyverse. For example, if you load the tidyverse package, still cite packages like dplyr and ggplot2 that you use in your code, even if you load them by loading tidyverse. Almost all analyses in this course will use dplyr and ggplot2. You may also be using other tidyverse packages including:</p>
+<ul>
+<li><p><strong>readr</strong>. for <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code></p></li>
+<li><p><strong>tidyr</strong>. especially <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code></p></li>
+<li><p><strong>forcats</strong>. functions that start with <code>fct_</code></p></li>
+<li><p><strong>stringr</strong>. functions that start with <code>str_</code></p></li>
+<li><p><strong>readxl</strong>. for <code>read_excel()</code></p></li>
+<li><p><strong>googlesheets4</strong>. for <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code></p></li>
+<li><p><strong>rnaturalearth</strong> and <strong>sf</strong>. for making maps.</p></li>
+</ul>
+<p>To get the reference for a particular package.</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; To cite package 'tidyverse' in publications use:
+#&gt; 
+#&gt;   Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
+#&gt;   Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller
+#&gt;   E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V,
+#&gt;   Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). "Welcome to
+#&gt;   the tidyverse." _Journal of Open Source Software_, *4*(43), 1686.
+#&gt;   doi:10.21105/joss.01686 &lt;https://doi.org/10.21105/joss.01686&gt;.
+#&gt; 
+#&gt; A BibTeX entry for LaTeX users is
+#&gt; 
+#&gt;   @Article{,
+#&gt;     title = {Welcome to the {tidyverse}},
+#&gt;     author = {Hadley Wickham and Mara Averick and Jennifer Bryan and Winston Chang and Lucy D'Agostino McGowan and Romain François and Garrett Grolemund and Alex Hayes and Lionel Henry and Jim Hester and Max Kuhn and Thomas Lin Pedersen and Evan Miller and Stephan Milton Bache and Kirill Müller and Jeroen Ooms and David Robinson and Dana Paige Seidel and Vitalie Spinu and Kohske Takahashi and Davis Vaughan and Claus Wilke and Kara Woo and Hiroaki Yutani},
+#&gt;     year = {2019},
+#&gt;     journal = {Journal of Open Source Software},
+#&gt;     volume = {4},
+#&gt;     number = {43},
+#&gt;     pages = {1686},
+#&gt;     doi = {10.21105/joss.01686},
+#&gt;   }</code></pre>
+<ul>
+<li>Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” _Journal of Open Source Software_, *4*(43), 1686. <a href="doi:10.21105/joss.01686" class="uri">doi:10.21105/joss.01686</a> <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a>.</li>
+</ul>
+<p>To see package version numbers:</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; [1] '2.0.0'</code></pre>
+</div>
+</div>
+<div id="in-text-citations" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> In-text citations<a class="anchor" aria-label="anchor" href="#in-text-citations"><i class="fas fa-link"></i></a>
+</h2>
+<p>The methods section of your report will often include a paragraph like this:</p>
+<blockquote>
+<p>All analyses were performed using R Statistical Computing Software (v4.3.3; R Core Team 2024) in the RStudio IDE (Posit team 2024). We used the tidyverse R packages (Wickham et al. 2019) including readr, dplyr, ggplot2. Maps were created using the R packages rnaturalearth (v 1.0.1; Massicotte and South 2023) and sf (Pebesma and Bivand 2023, Pebesma 2018).</p>
+</blockquote>
+<p>In addition, you would citation any sources for the data you use.</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="data-sets-1.html"><span class="header-section-number">9</span> Data sets</a></div>
+<div class="next"><a href="laptop-setup.html"><span class="header-section-number">11</span> Laptop Setup</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#citing-r"><span class="header-section-number">10</span> Citing R</a></li>
+<li>
+<a class="nav-link" href="#references-1"><span class="header-section-number">10.1</span> References</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-reference"><span class="header-section-number">10.1.1</span> R reference</a></li>
+<li><a class="nav-link" href="#rstudio-reference"><span class="header-section-number">10.1.2</span> RStudio reference</a></li>
+<li><a class="nav-link" href="#r-package-references"><span class="header-section-number">10.1.3</span> R package references</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#in-text-citations"><span class="header-section-number">10.2</span> In-text citations</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/citing-r.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/citing-r.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

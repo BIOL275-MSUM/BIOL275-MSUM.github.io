@@ -7,7 +7,7 @@ Guidelines for writing your lab reports as RMarkdown documents rendered into Git
 This is a basic template for the YAML header for a lab report.
 
 
-```md
+``` md
 ---
 title: "Title"
 author: "Author"

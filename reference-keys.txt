@@ -130,6 +130,12 @@ other-geospatial-data
 cellular-and-molecular-biology-and-biochemistry
 online-data-repositories
 datasets-in-r
+citing-r
+references-1
+r-reference
+rstudio-reference
+r-package-references
+in-text-citations
 laptop-setup
 option-1-use-posit-cloud
 option-2-install-the-software
@@ -175,4 +181,4 @@ github-notifications
 subscribing-to-notifications
 notification-methods
 notification-emails
-references-1
+references-2

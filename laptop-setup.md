@@ -133,7 +133,7 @@ This option works well if you are using a campus computer lab where your account
 This method requires the [usethis package](https://usethis.r-lib.org/), so you will first need to install the package. Then run:
 
 
-```r
+``` r
 # install if needed:
 # install.packages("usethis")
 

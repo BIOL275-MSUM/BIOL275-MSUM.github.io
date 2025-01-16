@@ -81,7 +81,7 @@ In addition to loading the dplyr package for you, loading the tidyverse package 
 Copy this code to your `diamonds-example.R` script and run it t load the tidyverse package:
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
@@ -89,8 +89,8 @@ library(tidyverse)
 #> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 #> ✔ dplyr     1.1.4     ✔ readr     2.1.5
 #> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+#> ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+#> ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 #> ✔ purrr     1.0.2     
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> ✖ dplyr::filter() masks stats::filter()
@@ -107,7 +107,7 @@ This data frame contains data on almost 54,000 diamonds, including price and oth
 First, take a look at `diamonds` by printing it in the console:
 
 
-```r
+``` r
 # print diamonds in the console
 diamonds
 ```
@@ -128,7 +128,7 @@ diamonds
 Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
 
 
-```r
+``` r
 help(diamonds) # method 1
 ??diamonds     # method 2
 ```
@@ -165,7 +165,7 @@ The `filter()` function allows you to take a table and pick rows to keep based o
 For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:
 
 
-```r
+``` r
 filter(diamonds, carat > 2)
 ```
 
@@ -189,14 +189,14 @@ When you run code to filter a data frame, R returns a new data frame.
 If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
 
 
-```r
+``` r
 big_diamonds <- filter(diamonds, carat > 2)
 ```
 
 When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
 
 
-```r
+``` r
 big_diamonds
 ```
 
@@ -216,7 +216,7 @@ big_diamonds
 Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
 
 
-```r
+``` r
 filter(big_diamonds, price > 15000)
 ```
 
@@ -244,7 +244,7 @@ There is one major difference between comparisons of numeric (integer and double
 Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
 
 
-```r
+``` r
 filter(diamonds, cut == "Ideal")
 ```
 
@@ -266,7 +266,7 @@ Note that `"Ideal"` has double quotes around it. This is to tell R you want to f
 Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
 
 
-```r
+``` r
 filter(diamonds, carat = 2)
 ```
 
@@ -286,7 +286,7 @@ In computer language, the expression for meeting multiple criteria simultaneousl
 If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
 
 
-```r
+``` r
 filter(diamonds, carat > 2, price < 6000)
 filter(diamonds, carat > 2 & price < 6000)
 ```
@@ -296,7 +296,7 @@ filter(diamonds, carat > 2 & price < 6000)
 For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
 
 
-```r
+``` r
 filter(diamonds, color == "D" | color == "E")
 ```
 
@@ -316,7 +316,7 @@ filter(diamonds, color == "D" | color == "E")
 This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
 
 
-```r
+``` r
 filter(diamonds, color %in% c("D", "E"))
 ```
 
@@ -325,7 +325,7 @@ filter(diamonds, color %in% c("D", "E"))
 "Not" comparisons can be used to pick rows that do not meet a given criteria. The `!` operator generally should be followed by parentheses `()` with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color *except* E:
 
 
-```r
+``` r
 filter(diamonds, !(color == "E"))
 ```
 
@@ -334,7 +334,7 @@ filter(diamonds, !(color == "E"))
 Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
 
 
-```r
+``` r
 filter(diamonds, !is.na(color))
 ```
 
@@ -347,7 +347,7 @@ There are a variety of other functions you can incorporate into your `filter()` 
 For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply `==` or `!=`. Let's say you want to find all diamonds with a clarity of `VS1`, `VS2`, `VVS1`, or `VVS2`. You could use the "or" operator, or the "in" operator. But what if you don't even know all the possible clarity values and you just want everything that contains `"VS"` anywhere in the word. There is a string-based helper function `str_detect()` which looks for a particular string of text inside a text variable:
 
 
-```r
+``` r
 filter(diamonds, str_detect(clarity, "VS"))
 ```
 
@@ -371,7 +371,7 @@ The name of the variable you want to look in goes *inside* the `str_detect()` fu
 If you want to pick only values of clarity that *start* or *end* with particular text, you can use the functions `str_starts()` or `str_ends()`. For example:
 
 
-```r
+``` r
 filter(diamonds, str_starts(clarity, "VS"))
 filter(diamonds, str_ends(clarity, "2"))
 ```
@@ -385,7 +385,7 @@ The first argument is the data frame to sort. Subsequent arguments are the names
 For example, to sort the `diamonds` data frame by cut:
 
 
-```r
+``` r
 arrange(diamonds, cut)
 ```
 
@@ -405,7 +405,7 @@ arrange(diamonds, cut)
 You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
 
 
-```r
+``` r
 arrange(diamonds, cut, price)
 ```
 
@@ -429,7 +429,7 @@ If you sort a character (text) variable, it will sort alphabetically. If you sor
 To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
 
 
-```r
+``` r
 arrange(diamonds, cut, desc(price))
 ```
 
@@ -457,7 +457,7 @@ The first argument is the name of the data frame. The subsequent arguments are t
 For example, say you wanted to focus on the variables carat, cut, and color, you could use:
 
 
-```r
+``` r
 select(diamonds, carat, cut, color)
 ```
 
@@ -479,7 +479,7 @@ Technically, you can also select variables by their position, so `select(diamond
 `select()` can also be used to rearrange the order of columns:
 
 
-```r
+``` r
 select(diamonds, color, cut, carat)
 ```
 
@@ -499,7 +499,7 @@ select(diamonds, color, cut, carat)
 There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
 
 
-```r
+``` r
 select(diamonds, carat:price)
 ```
 
@@ -521,7 +521,7 @@ select(diamonds, carat:price)
 Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
 
 
-```r
+``` r
 select(diamonds, -table)
 ```
 
@@ -541,7 +541,7 @@ select(diamonds, -table)
 To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
 
 
-```r
+``` r
 select(diamonds, -x:-y)
 ```
 
@@ -562,7 +562,7 @@ There are several functions that can be used within `select()` :
 For example, the following code would move table and price to the front and leave everything else at the end:
 
 
-```r
+``` r
 select(diamonds, ends_with("e"), everything())
 ```
 
@@ -600,7 +600,7 @@ Let's use an example to illustrate each option. For this example, let's say you 
 One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator `<-`. In our example, this might look something like:
 
 
-```r
+``` r
 big_diamonds <- filter(diamonds, carat >= 2)
 sorted_big_diamonds <- arrange(big_diamonds, price)
 select(sorted_big_diamonds, carat, cut, price)
@@ -611,7 +611,7 @@ One drawback to this approach is that it leaves two intermediate objects clutter
 Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:
 
 
-```r
+``` r
 x1 <- filter(diamonds, carat >= 2)
 x2 <- arrange(x1, price)
 select(x2, carat, cut, price)
@@ -622,7 +622,7 @@ The code is a lot smaller, but it is less understandable at a glance, and you st
 You might be tempted to just overwrite the existing diamonds dataset with the new one:
 
 
-```r
+``` r
 diamonds <- filter(diamonds, carat >= 2)
 diamonds <- arrange(diamonds, price)
 select(diamonds, carat, cut, price)
@@ -637,7 +637,7 @@ What if you need to use the original diamonds dataset again? Of course, it didn'
 Another option is to nest each function inside the other:
 
 
-```r
+``` r
 select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
 ```
 
@@ -650,7 +650,7 @@ A more elegant solution is to use the special pipe operator `|>`. Using the pipe
 Using this option, we could do:
 
 
-```r
+``` r
 diamonds |> 
   filter(carat >= 2) |> 
   arrange(price) |> 
@@ -672,7 +672,7 @@ Check to see if the **palmerpenguins** package is already installed by selecting
 Begin by loading the tidyverse and palmerpenguins package in your R script:
 
 
-```r
+``` r
 library(tidyverse)
 library(palmerpenguins)
 ```

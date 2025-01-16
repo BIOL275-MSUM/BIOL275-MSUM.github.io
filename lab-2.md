@@ -72,7 +72,7 @@ To install, go to the Packages tab in RStudio, click the Install button, and typ
 An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press **Enter** to run it.
 
 
-```r
+``` r
 install.packages(c("tidyverse", "palmerpenguins"))
 ```
 
@@ -115,7 +115,7 @@ Below you will see two boxes, one with comments and code, and the next with exam
 Copy the code in the first box below (including the comments) and paste it into your script. You can copy the code by clicking the copy button in the upper right corner of the code box.
 
 
-```r
+``` r
 # load packages -----------------------------------------------------------
 
 # run every time you restart RStudio

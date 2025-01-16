@@ -30,7 +30,7 @@ In the code above, the double colons tell R to look for the `session_info()` fun
 You do, however, need to have the sessioninfo package installed on your machine. To do that, you can run this code in your console just once (do not put it in your R or Rmd scripts):
 
 
-```r
+``` r
 install.packages("sessioninfo")
 ```
 

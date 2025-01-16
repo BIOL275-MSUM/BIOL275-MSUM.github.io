@@ -28,7 +28,7 @@ Then just copy the formatted reference and paste it into your References section
 
 To get the reference for RStudio:
 
-```{r}
+```{r eval=FALSE}
 RStudio.Version()
 ```
 

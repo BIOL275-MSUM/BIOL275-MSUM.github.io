@@ -2,6 +2,8 @@
 
 ## Learning Outcomes
 
+Read the list of learning objectives below to familiarize yourself with the objectives of the lab. Then proceed to the directions in the next section.
+
 1.  Work with Projects in RStudio
     1.  Create a new Project
     2.  Adjust Project Options
@@ -137,15 +139,17 @@ You must run the `library()` commands each time you start RStudio. That's why it
 
 1.  While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article [Introduction to palmerpenguins](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
 2.  In that article, find the code for "Scatterplot example 1", copy it, and paste it into your R script
-3.  Add code to add the following labels to the plot:
-    -   title: `“Penguin flipper length versus body mass”`
-    -   x-axis: `“Body mass (g)”`
-    -   y-axis: `“Flipper length (mm)”`
-    -   caption: `“Created by YOUR NAME”`\
-        (replace YOUR NAME with *your* name)
-4.  Export the figure (save it on your computer somewhere)
+3.  Modify your code so that it includes labels on the graph:
+    1.  Familiarize yourself with the [`labs`](https://ggplot2.tidyverse.org/reference/labs.html)`()` function
+    2.  Add the following labels:
+        -   title: `"Penguin flipper length versus body mass"`
+        -   x-axis: `"Body mass (g)"`
+        -   y-axis: `"Flipper length (mm)"`
+        -   caption: `"Created by YOUR NAME"`\
+            (replace YOUR NAME with *your* name)
+4.  Export the figure (save it on your computer somewhere) as a PNG (image) file
     1.  Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab
-    2.  Then follow along as the instructor shows you a code based way of doing it.
+    2.  Then follow along as the instructor shows you a code based way of doing it using [`ggsave`](https://ggplot2.tidyverse.org/reference/ggsave.html)`()`
 5.  Create a new Microsoft Word document.
     1.  Sign in to Microsoft 365 so you can save your document for later.
 6.  Find the file on your computer, copy it, and paste it into the Word document. Alternatively, you could use the insert image button and dialog within Word to do the same thing.

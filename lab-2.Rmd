@@ -29,7 +29,7 @@ RStudio Projects help you keep all the files associated with a given project tog
 -   [Using RStudio Projects -- Posit Support](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
 -   [R for Data Science (2e) - 6 Workflow: scripts and projects (hadley.nz)](https://r4ds.hadley.nz/workflow-scripts#projects)
 
-### Create a new project
+### STEP 1: Create a new project
 
 Let's make a project for you to use while you complete this lab.
 
@@ -54,28 +54,13 @@ Practice opening the File Explorer in Windows and navigating to the Project Fold
 -   [Find and open File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/find-and-open-file-explorer-ef370130-1cca-9dc5-e0df-2f7416fe1cb1)
 -   [How to get to the Desktop, Documents, and Pictures folders in File Explorer - Microsoft Support](https://support.microsoft.com/en-us/windows/how-to-get-to-the-desktop-documents-and-pictures-folders-in-file-explorer-3370f06b-0f8d-4b25-be9a-3ee54f381e3d)
 
-### Adjust Project Options
+### STEP 2: Adjust Project Options
 
 Change your project options following the instructions on the [Project Options](project-options.html) page
 
-## Packages
+## Using Scripts
 
-## Install the packages
-
-Install the two packages you will need for this assignment.
-
--   tidyverse
--   palmerpenguins
-
-To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.
-
-An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press **Enter** to run it.
-
-```{r install-packages, message=FALSE, warning=FALSE}
-install.packages(c("tidyverse", "palmerpenguins"))
-```
-
-## Create a script
+### STEP 3: Create a script
 
 Until now, you have run commands by typing them into the console. One of the benefits of R over programs such as Excel, however, is the ability to save your commands in the form of written code. Enter the **script**! A script is simply a text file containing commands for R to execute.
 
@@ -87,7 +72,7 @@ Until now, you have run commands by typing them into the console. One of the ben
     Warning: if you start typing a file name that is the same as your project name, the computer may try to autocomplete the file name, for example as "Lab 2.Rproj". Do not save the file with this name or very strange things will happen.
 4.  Click Save and the new script will now be named, and will show a ".R" extension after the name in the tab in the source pane.
 
-### Use a script
+### STEP 4: Practice using a script
 
 Scripts are documents where you can write and save code for use later.
 
@@ -107,7 +92,21 @@ Before you can use a package, you need to download and install it. You can do th
 
 If you are using RStudio Desktop, you will need to install the package first. In which case, you **Install** button in the Packages tab and type the package name **tidyverse**.
 
-## Load the packages
+### STEP 5: Install packages
+
+Install the two packages you will need for this assignment.
+
+-   tidyverse
+-   palmerpenguins
+
+To install, go to the Packages tab in RStudio, click the Install button, and type the names of the packages. Click Install and wait for the messages to stop scrolling in the console tab.
+
+An alternate way to install the packages is to run the code in the box below. You can copy the code by clicking the copy button in the upper right corner of the code box. Paste it into your console and press **Enter** to run it.
+
+```{r install-packages, message=FALSE, warning=FALSE} install.packages(c("tidyverse", "palmerpenguins"))}
+```
+
+### STEP 6: Load the packages
 
 Below you will see two boxes, one with comments and code, and the next with example console output. The console output is just there to show you what to expect to appear in the console when you run the given code. Console output in this tutorial always appears in a box below the code, and has two pound signs before each line like this: `##`
 
@@ -130,6 +129,8 @@ You will see a warning and some messages in the Console tab, but those can be sa
 You must run the `library()` commands each time you start RStudio. That's why it's nice to keep that code at the very top of your script.
 
 ## Assignment
+
+### STEP 7: Complete the Assignment below
 
 1.  While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article [Introduction to palmerpenguins](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
 2.  In that article, find the code for "Scatterplot example 1", copy it, and paste it into your R script

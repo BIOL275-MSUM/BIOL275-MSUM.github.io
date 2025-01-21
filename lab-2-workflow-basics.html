@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
+<meta name="description" content="2.1 Learning Outcomes Read the list of learning objectives below to familiarize yourself with the objectives of the lab. Then proceed to the directions in the next section. Work with Projects in...">
 <meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
+<meta property="og:description" content="2.1 Learning Outcomes Read the list of learning objectives below to familiarize yourself with the objectives of the lab. Then proceed to the directions in the next section. Work with Projects in...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Lab 2: Workflow basics | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="2.1 Learning Outcomes Work with Projects in RStudio Create a new Project Adjust Project Options Use R scripts Create an R script Run code from an R script Copy code from a tutorial into an R...">
+<meta name="twitter:description" content="2.1 Learning Outcomes Read the list of learning objectives below to familiarize yourself with the objectives of the lab. Then proceed to the directions in the next section. Work with Projects in...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0.9000/transition.js"></script><script src="libs/bs3compat-0.8.0.9000/tabs.js"></script><script src="libs/bs3compat-0.8.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -111,6 +111,7 @@
 <h2>
 <span class="header-section-number">2.1</span> Learning Outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes-1"><i class="fas fa-link"></i></a>
 </h2>
+<p>Read the list of learning objectives below to familiarize yourself with the objectives of the lab. Then proceed to the directions in the next section.</p>
 <ol style="list-style-type: decimal">
 <li>Work with Projects in RStudio
 <ol style="list-style-type: decimal">
@@ -268,22 +269,28 @@ Warning: if you start typing a file name that is the same as your project name, 
 <li>While the instructor helps everyone get caught up, familiarize yourself with the palmerpenguins package by reading the article <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">Introduction to palmerpenguins</a>
 </li>
 <li>In that article, find the code for “Scatterplot example 1”, copy it, and paste it into your R script</li>
-<li>Add code to add the following labels to the plot:
+<li>Modify your code so that it includes labels on the graph:
+<ol style="list-style-type: decimal">
+<li>Familiarize yourself with the <a href="https://ggplot2.tidyverse.org/reference/labs.html"><code>labs</code></a><code>()</code> function</li>
+<li>Add the following labels:
 <ul>
-<li>title: <code>“Penguin flipper length versus body mass”</code>
+<li>title: <code>"Penguin flipper length versus body mass"</code>
 </li>
-<li>x-axis: <code>“Body mass (g)”</code>
+<li>x-axis: <code>"Body mass (g)"</code>
 </li>
-<li>y-axis: <code>“Flipper length (mm)”</code>
+<li>y-axis: <code>"Flipper length (mm)"</code>
 </li>
-<li>caption: <code>“Created by YOUR NAME”</code><br>
+<li>caption: <code>"Created by YOUR NAME"</code><br>
 (replace YOUR NAME with <em>your</em> name)</li>
 </ul>
 </li>
-<li>Export the figure (save it on your computer somewhere)
+</ol>
+</li>
+<li>Export the figure (save it on your computer somewhere) as a PNG (image) file
 <ol style="list-style-type: decimal">
 <li>Play around with different ways to export, like using the Export button in the Plots tab in RStudio, or just copying the image in that tab</li>
-<li>Then follow along as the instructor shows you a code based way of doing it.</li>
+<li>Then follow along as the instructor shows you a code based way of doing it using <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave</code></a><code>()</code>
+</li>
 </ol>
 </li>
 <li>Create a new Microsoft Word document.

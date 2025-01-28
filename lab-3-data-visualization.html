@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Lab 3: Data visualization | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="3.1 Learning Outcomes Students will be able to: Use Git and GitHub to manage a project Use Quarto to author an HTML document Create graphs using the ggplot2 package Understand what aesthetic...">
+<meta name="description" content="3.1 Learning Outcomes Students will be able to: Create graphs using the ggplot2 package Understand what aesthetic mappings are and define them when graphing Visualize categorical and numerical...">
 <meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="3 Lab 3: Data visualization | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="3.1 Learning Outcomes Students will be able to: Use Git and GitHub to manage a project Use Quarto to author an HTML document Create graphs using the ggplot2 package Understand what aesthetic...">
+<meta property="og:description" content="3.1 Learning Outcomes Students will be able to: Create graphs using the ggplot2 package Understand what aesthetic mappings are and define them when graphing Visualize categorical and numerical...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Lab 3: Data visualization | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="3.1 Learning Outcomes Students will be able to: Use Git and GitHub to manage a project Use Quarto to author an HTML document Create graphs using the ggplot2 package Understand what aesthetic...">
+<meta name="twitter:description" content="3.1 Learning Outcomes Students will be able to: Create graphs using the ggplot2 package Understand what aesthetic mappings are and define them when graphing Visualize categorical and numerical...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0.9000/transition.js"></script><script src="libs/bs3compat-0.8.0.9000/tabs.js"></script><script src="libs/bs3compat-0.8.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -75,8 +75,8 @@
 <li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
 <li><a class="" href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
 <li><a class="active" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
-<li><a class="" href="lab-4-data-subsetting.html"><span class="header-section-number">4</span> Lab 4: Data subsetting</a></li>
-<li><a class="" href="lab-5-data-import.html"><span class="header-section-number">5</span> Lab 5: Data import</a></li>
+<li><a class="" href="lab-4-data-import.html"><span class="header-section-number">4</span> Lab 4: Data import</a></li>
+<li><a class="" href="lab-5-data-subsetting.html"><span class="header-section-number">5</span> Lab 5: Data subsetting</a></li>
 <li><a class="" href="lab-6-data-summarizing.html"><span class="header-section-number">6</span> Lab 6: Data summarizing</a></li>
 <li class="book-part">EDA Project</li>
 <li><a class="" href="eda-project.html"><span class="header-section-number">7</span> EDA Project</a></li>
@@ -113,8 +113,6 @@
 </h2>
 <p>Students will be able to:</p>
 <ol style="list-style-type: decimal">
-<li>Use Git and GitHub to manage a project</li>
-<li>Use Quarto to author an HTML document</li>
 <li>Create graphs using the ggplot2 package</li>
 <li>Understand what aesthetic mappings are and define them when graphing</li>
 <li>Visualize categorical and numerical distributions using bar charts and histograms</li>
@@ -123,225 +121,201 @@
 <li>Visualize the relationships between three variables by mapping additional aesthetics like color and shape and using facets</li>
 </ol>
 </div>
-<div id="overview" class="section level2" number="3.2">
+<div id="introduction" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">3.2</span> Overview<a class="anchor" aria-label="anchor" href="#overview"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this lab, you will work in pairs as you read the instructions below and follow them. Your instructor will help as needed. You may begin as soon as you arrive in lab.</p>
-<p>In steps 1-5, you will learn more about our classroom workflow which relies on git, GitHub, and GitHub Classroom.</p>
-<p>In steps 6-10, you will read <a href="https://r4ds.hadley.nz/data-visualize">Chapter 1 Data Visualization</a> from R for Data Science (2e)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Wickham, H., M. Çetinkaya-Rundel, and G. Grolemund. 2023. R for data science: import, tidy, transform, visualize, and model data. Second edition. O’Reilly Media, Inc., Sabastopol, California, USA. &lt;a href="https://r4ds.hadley.nz/" class="uri"&gt;https://r4ds.hadley.nz/&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a> to deepen your understanding of data visualization methods using ggplot2. As you read, you will answer the questions outlined below in an R Markdown document. You will turn in your answers by pushing your files to GitHub and submitting a link to your GitHub repository on D2L.</p>
+<p>The lab manual for this course is <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. You can skim the Introduction, which covers much of what you learned in your previous labs.</p>
 </div>
-<div id="get-started-with-git" class="section level2" number="3.3">
+<div id="prerequisites" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">3.3</span> Get started with Git<a class="anchor" aria-label="anchor" href="#get-started-with-git"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"><i class="fas fa-link"></i></a>
+</h2>
+<p>This lab assumes you know how to:</p>
+<ol style="list-style-type: decimal">
+<li>Create a new project in RStudio</li>
+<li>Create a new R script</li>
+<li>Write code in your R script, run it, and interpret output in the Console</li>
+<li>Save a plot as a PNG file using the Export function in the Plots pane</li>
+</ol>
+<p>This lab assumes you have already:</p>
+<ol style="list-style-type: decimal">
+<li>Set the global options in RStudio</li>
+<li>Installed the tidyverse package</li>
+</ol>
+</div>
+<div id="tutorial-walkthrough" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Tutorial Walkthrough<a class="anchor" aria-label="anchor" href="#tutorial-walkthrough"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li><p>Familiarize yourself with version control by reading <a href="about-git-and-github.html#about-git-and-github">About Git and GitHub</a>.</p></li>
-<li><p><a href="git-setup.html#introduce-yourself-to-git">Introduce yourself to Git</a> on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first <a href="laptop-setup.html#install-git">Install Git</a> on it. If you are using Posit Cloud, git should already be installed.</p></li>
-<li><p>Go to GitHub <a href="https://github.com/" class="uri">https://github.com/</a> and Sign Up for an account. Confirm your email address before continuing to the next step.</p></li>
-<li>
-<p>Claim your GitHub repository for this lab by following the GitHub Classroom link posted on D2L in this lab’s content module. Because this is your first time using GitHub Classroom, you will need to select your name from the list to link your GitHub account with your instructor’s record for you.</p>
-<p>After claiming the repository, <strong>copy the repository link</strong> (or copy the URL in the browser window), which you will use in the next step.</p>
-</li>
-<li><p>Create a new RStudio project, this time using the <strong>Version Control</strong> option instead of the New Project option. Select <strong>Git</strong>, then <strong>paste the link to your repository</strong> in the Repository URL field. Press the tab key to autofill the Project Directory Name field with the name of your GitHub repository.</p></li>
-<li>
-<p>When complete, RStudio should have your project open and <strong>the Git tab in the upper right should be present</strong>. If not, ask for help.</p>
-<p>If a dialog window opens asking you to enter your GitHub username and password, do this:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>If asked for your GitHub username and password, click “Cancel”. If asked for just your username, enter it and press Enter.</p></li>
-<li><p>Enter a personal access token (PAT) from GitHub. To generate that token:</p></li>
-<li>
-<p>This will cause another dialog window to appear asking for your GitHub password. Do not enter it. Instead, enter a Personal Access Token (PAT):</p>
-<ol style="list-style-type: lower-roman">
-<li><p>Go to the Personal Access Tokens page in your GitHub Settings: <a href="https://github.com/settings/tokens" class="uri">https://github.com/settings/tokens</a></p></li>
-<li><p>Generate a new token by clicking the button “Generate new token”, then click “Generate new token (classic)” and confirm access using two-factor authentication.</p></li>
-<li><p>The PAT will only be good for the computer you use it on. If you move to another computer later you will have to repeat this process and generate a new token. If you are on a campus computer that gets wiped periodically, you may need to repeat this process. If you are on your own computer, or Posit Cloud, you should only need to do this once</p></li>
-<li><p>For this token, enter a <strong>Note</strong> describing which computer and which type of access you are granting. For example: “CB 200 Computer 193827 repo access”.</p></li>
-<li><p>Set the expiration date. I recommend setting a custom date near the end of the semester.</p></li>
-<li><p>Select the scope by checking the “<strong>repo</strong>” box. This means the PAT will grant full control of your repositories, which is what you want RStudio to have.</p></li>
-<li><p>Scroll down and click the green <strong>Generate token</strong> button.</p></li>
-<li><p>On the next screen, copy the token that is generated.</p></li>
-<li><p>Go back to the RStudio dialog window asking you for your GitHub password. Paste the PAT you just copied into the password field and press Enter.</p></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</div>
-<div id="lab-report-in-quarto" class="section level2" number="3.4">
-<h2>
-<span class="header-section-number">3.4</span> Lab report in Quarto<a class="anchor" aria-label="anchor" href="#lab-report-in-quarto"><i class="fas fa-link"></i></a>
-</h2>
-<p>In this course, you will learn to write your reports using <a href="https://quarto.org/">Quarto</a>, a system developed by Posit to allow you to weave narrative text and R code and output into elegant documents including HTML, PDF, Word, PowerPoint, and more. The process is code-based, so it is fully reproducible.</p>
-<p>In your new RStudio project, inspect the list of files shown in the Files tab in the bottom right pane.</p>
-<p>You will see one named <code>lab-report.qmd</code>. Click the file name to open it in a new source window.</p>
-<p>Look through the document and you will notice the following elements:</p>
+<li>Create a new RStudio project for this lab. Call it <strong>Lab 3 Data Visualization</strong>.</li>
+<li>In the new project, create a new R script and save it as <strong>data-vis-practice.R</strong>. This is where you will write code as you follow along in the book tutorial as described below.</li>
+<li>Navigate to R4DS <a href="https://r4ds.hadley.nz/data-visualize">Chapter 1 Data Visualization</a> and begin reading.
 <ul>
-<li><p><strong>Metadata</strong> at the top, beginning and ending with three dashes <code>---</code>. This is called the YAML header and contains information about how the document should be rendered when you make your lab report from it. Put your name in the author field, but otherwise leave it as is.</p></li>
-<li><p>Some <strong>narrative text</strong> including headings, paragraphs, and numbered lists.</p></li>
-<li><p>Some vertical lines with the word “answer” after them. These are where you will write your answers to the questions. The formatting used here is called a “blockquote”. This will be handy to know when you need to add and format your own answers.</p></li>
-<li><p>R code chunks. These look like colored boxes that begin with <code>{r}</code>. This is where you can put R code. Think of each box as its own little R script. Or more accurately, that all the chunks in a given Quarto document together form a script. For example, if you run the code <code>x &lt;- 1</code> in one chunk and then run <code>print(x)</code> in the next code chunk, it will remember <code>x</code> and print it correctly in the second chunk. In other words, the environment is maintained from chunk to chunk.</p></li>
-</ul>
-<p>Why include R code chunks in the document? There are two main reasons:</p>
-<ol style="list-style-type: decimal">
-<li>To show the instructor you know what code to run to answer a question.</li>
-<li>To show the output of the code. This could be graphical output, like a bar chart or scatterplot, or text output like the results from a statistical hypothesis test.</li>
-</ol>
-<p>In this way, you can weave together narrative text and the output of R code. No more copying images from R and pasting them into a Word document to create a report. In fact, you can actually <a href="https://quarto.org/docs/output-formats/ms-word.html">export your document as a Word document</a> by changing one line of the YAML header. Other formats Quarto can create include PDF and PowerPoint.</p>
-</div>
-<div id="render-your-report" class="section level2" number="3.5">
-<h2>
-<span class="header-section-number">3.5</span> Render your report<a class="anchor" aria-label="anchor" href="#render-your-report"><i class="fas fa-link"></i></a>
-</h2>
-<p>Your <code>lab-report.qmd</code> document already contains some text to get you started.</p>
-<p>One thing you will need to know is how to convert your Quarto file into your lab report, a process RStudio calls “rendering”.</p>
-<p>To render your lab report, click the “Render” button and wait while the process completes. A new tab should open in your web browser showing the rendered lab report.</p>
-<p>Compare how the rendered lab report compares to the original Quarto document and you will see a few changes:</p>
-<ul>
-<li><p>The title, subtitle, author, and date from the YAML header are now formatted nicely</p></li>
-<li><p>There is a table of contents on the right side</p></li>
-<li><p>The first R code chunk, which contains the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> commands, has been run. You can now see both the code you supplied in the R code chunk and the output of that code. In this case, the output is the message about which tidyverse packages were loaded and which function names have conflicts. Its the same output you would see in your console if you ran that code yourself in R.</p></li>
-<li><p>The last code chunk has been rendered, showing your session info, which includes your operating system, version of R, and which packages were loaded when you created the lab report.</p></li>
-</ul>
-<p>You will also notice that there is a new <code>lab-report.html</code> file in your project directory, as well as a folder named <code>lab-report_files</code>. The folder contains a variety of files needed to show the HTML file correctly. In the future, it will contain any images generated by R, for example plots created by ggplot.</p>
-</div>
-<div id="make-your-first-git-commit" class="section level2" number="3.6">
-<h2>
-<span class="header-section-number">3.6</span> Make your first Git commit<a class="anchor" aria-label="anchor" href="#make-your-first-git-commit"><i class="fas fa-link"></i></a>
-</h2>
-<p>Eventually you will want to save your HTML lab report and its associated files in a way that your instructor can access them. This is done by adding those files to your repository on GitHub.</p>
-<p>How do you do that? That involves “committing” the changes on your computer first, then “pushing” those changes to GitHub.</p>
-<p>In Git, a “commit” is a set of changes to source files that are saved together with a description of the changes. Commits are the basic unit of version control. You can look at a list of past commits and know exactly what each one changed. You can also revert files back to the way they were after a particular commit, allowing you to see various versions of your documents or even permanently undo changes you have committed.</p>
-<p>Now its time to make your first commit.</p>
-<ol style="list-style-type: decimal">
-<li>
-<p><strong>Stage the change.</strong> In the Git tab, you will now see <code>lab-report.qmd</code> and <code>lab-report_files</code>, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.</p>
-<p>Check the box next to each one. The yellow question marks will change to a green letter “A”. The name of the folder will actually be replaced by the list of all files within that folder. The letter “A” signifies that you are adding new files for git to keep track of. The check box signifies that you have “staged” the changes to those particular files, which means they will be included in the next commit.</p>
-</li>
-<li>
-<p><strong>Commit the staged changes.</strong></p>
-<ol style="list-style-type: lower-alpha">
-<li>
-<p>Open the Commit window using one of these methods:</p>
-<ul>
-<li>Click the Commit button in the Git tab</li>
-<li>Go to the Tools menu &gt; Version Control &gt; Commit…</li>
-<li>Use the keyboard shortcut Alt+Ctrl+M</li>
+<li>As you read, copy code from the book and paste it into your R script. Run the code to see the various outputs in the Console and Plots tabs.</li>
+<li>This script will not be graded, it is just for you to practice running code and to make sure code works before pasting it into your report.</li>
+<li>Skip the exercises.</li>
 </ul>
 </li>
-<li><p>Double check that the changes you want to save are staged, i.e. the box next to the file is checked.</p></li>
-<li>
-<p>Put your cursor in the Commit message text box and type a commit message:</p>
-<pre><code>Render for the first time</code></pre>
-<p>A good commit describe what changes are being made in the files you are committing and is usually written in present tense.</p>
-</li>
-<li><p>Click “Commit” to make it official.</p></li>
 </ol>
-</li>
-<li>
-<p><strong>Push the commit to GitHub.</strong></p>
-<p>The changes have now been committed on your computer (or Posit Cloud), but have not yet been synced back to your repository in the cloud, GitHub.</p>
-<p>Push the commit to GitHub using one of these methods:</p>
-<ul>
-<li>Click the Push button on the Git tab</li>
-<li>Go to the Tools menu &gt; Version Control &gt; Push Branch</li>
-</ul>
-</li>
-<li><p>Go to your repository in GitHub and refresh the browser window. You should see your new file in the file list.</p></li>
-</ol>
-<p>Congratulations on your first time using GitHub in the class, and for most of you the first time using version control ever.</p>
-<p>In the future, you will always use the same steps to make changes to your projects:</p>
-<ol style="list-style-type: decimal">
-<li>Edit your files. Save the edits.</li>
-<li>Stage the changes (you can select multiple files at this step).</li>
-<li>Commit the changes</li>
-<li>Push the commit (you can save up several commits in a row before you Push).</li>
-</ol>
-<p>You should always follow these steps at the end of each class (if not more often) to save your work. The next time you work on a different computer, you can create your project using Version Control &gt; Git and your code will be automatically downloaded from GitHub.</p>
 </div>
-<div id="data-visualization" class="section level2" number="3.7">
+<div id="your-assignment" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">3.7</span> Data visualization<a class="anchor" aria-label="anchor" href="#data-visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> Your Assignment<a class="anchor" aria-label="anchor" href="#your-assignment"><i class="fas fa-link"></i></a>
 </h2>
-<p>You are now ready to complete the data visualization part of the lab.</p>
-<p>The lab manual for this course is <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Feel free to <em>skim</em> the Introduction, which covers much of what you learned in your previous labs.</p>
-<p>Navigate to <a href="https://r4ds.hadley.nz/data-visualize">Chapter 1 Data Visualization</a> and begin reading.</p>
-<p>If you have not already, open the R script in your project named <code>chapter-1-practice.R</code>.</p>
-<p>As you read, copy code from the book and paste it into your R script. This script will not be graded, it is just for you to practice running code and to make sure code works before pasting it into your report.</p>
-<p>Some sections will end with a set of exercises. The exercises contain prompts to generate R code or questions to assess your understanding.</p>
-<p>After reading Section 1.2, go through the exercises. When you know how to answer each question, go to your <code>lab-report.qmd</code> document and put your answer after each question. There is a placeholder “answer” for each one.</p>
-<p>When you need to enter code, you will see an R code chunk. Copy the working code you have from your R script <code>chapter-1-practice.R</code> and paste it into the code chunk.</p>
-<p>Repeat for sections 1.4 and 1.5.</p>
-<p>At any point, you can see how your lab report looks by clicking the Render button.</p>
-</div>
-<div id="lab-report" class="section level2" number="3.8">
-<h2>
-<span class="header-section-number">3.8</span> Lab report<a class="anchor" aria-label="anchor" href="#lab-report"><i class="fas fa-link"></i></a>
-</h2>
-<div id="final-render" class="section level3" number="3.8.1">
+<div id="instructions" class="section level3" number="3.5.1">
 <h3>
-<span class="header-section-number">3.8.1</span> Final render<a class="anchor" aria-label="anchor" href="#final-render"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions"><i class="fas fa-link"></i></a>
 </h3>
-<p>When you are done, Render one more time to get your final lab report.</p>
 <ol style="list-style-type: decimal">
-<li><p>Save your source documents (the R script and the Quarto document).</p></li>
-<li><p>Render the lab report Quarto document.</p></li>
-<li>
-<p>Commit the changes to your re[pository:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Go to the Git tab in RStudio</p></li>
-<li><p>Check the box next to each file or folder listed in the tab</p></li>
-<li><p>Click the “Commit” button</p></li>
-<li><p>Enter a commit message. Be specific.</p></li>
-<li><p>Click the “Commit” button</p></li>
-</ol>
-</li>
-<li>
-<p>Push the commit to GitHub:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Click the Push button (up arrow) on the Git tab</p></li>
-<li><p>Check the repository on GitHub to see if it updated</p></li>
-</ol>
-</li>
+<li>Create a new Microsoft Word document and put your name at the top.</li>
+<li>Number questions 1-5 on the document. You do not need to copy and paste the questions below, just have the numbers.</li>
+<li>As you complete the questions below, write your answer or paste your plot into the document under the corresponding number.</li>
+<li>Save your word document as a PDF file and submit it to D2L.</li>
 </ol>
 </div>
-<div id="submission" class="section level3" number="3.8.2">
+<div id="questions" class="section level3" number="3.5.2">
 <h3>
-<span class="header-section-number">3.8.2</span> Submission<a class="anchor" aria-label="anchor" href="#submission"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.2</span> Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
 </h3>
-<p>In your web browser, navigate to your GitHub repository for this lab. Click on your lab-report.html file to view it. Copy the URL to the lab report and submit that to the Assignment on D2L.</p>
+<ol style="list-style-type: decimal">
+<li>Inspecting a dataset
+<ul>
+<li>How many rows and columns are there in the penguins dataset?</li>
+<li>List two ways you can determine this in RStudio.</li>
+</ul>
+</li>
+<li>Using help
+<ul>
+<li>Use the ?help command to look up a function.</li>
+<li>Which function did you look up?</li>
+</ul>
+</li>
+<li>Create a barchart with the following characteristics.
+<ul>
+<li>
+<strong>Data:</strong> Use the penguins dataset</li>
+<li>
+<strong>Aesthetics:</strong>
+<ul>
+<li>Map island to the x-axis</li>
+<li>Arrange islands by decreasing frequency from left to right</li>
+<li>Map island to color</li>
+</ul>
+</li>
+<li>
+<strong>Geom:</strong> Use <code>geom_barchart()</code>
+</li>
+<li>
+<strong>Labels:</strong> Include the following labels
+<ul>
+<li>
+<strong>Title:</strong> appropriate text</li>
+<li>
+<strong>Caption:</strong> <code>"Created by YOUR NAME"</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create a histogram with the following characteristics.
+<ul>
+<li>
+<strong>Data:</strong> Use the penguins dataset</li>
+<li>
+<strong>Aesthetics:</strong>
+<ul>
+<li>Map a continuous variable of your choice to the x-axis</li>
+<li>Map a categorical variable of your choice to color</li>
+</ul>
+</li>
+<li>
+<strong>Geom:</strong> Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>
+</li>
+<li>
+<strong>Labels:</strong> Include the following labels
+<ul>
+<li>
+<strong>Title:</strong> appropriate text</li>
+<li>
+<strong>Caption:</strong> “Created by YOUR NAME”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create a scatterplot with the following characteristics.
+<ul>
+<li>
+<strong>Data:</strong> Use the penguins dataset</li>
+<li>
+<strong>Aesthetics:</strong>
+<ul>
+<li>Map a continuous variable to the x-axis</li>
+<li>Map a continuous variable to the y-axis</li>
+<li>Map a continuous variable to size</li>
+<li>Map a categorical variable to color</li>
+</ul>
+</li>
+<li>
+<strong>Geom:</strong> Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>
+</li>
+<li>
+<strong>Scales:</strong>
+<ul>
+<li>Use the <code>scale_color_colorblind()</code> or <code><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer()</a></code> function to set the colors to a colorblind-safe palette</li>
+</ul>
+</li>
+<li>
+<strong>Labels:</strong> Include the following labels
+<ul>
+<li>
+<strong>Title:</strong> appropriate text</li>
+<li>
+<strong>Caption:</strong> <code>"Created by YOUR NAME"</code>
+</li>
+<li>
+<strong>X-axis:</strong> appropriate text and measurement units, nicely formatted</li>
+<li>
+<strong>Y-axis:</strong> appropriate text and measurement units, nicely formatted</li>
+<li>
+<strong>Size:</strong> appropriate text and measurement units, nicely formatted</li>
+<li>
+<strong>Color:</strong> appropriate text, nicely formatted</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
-<div id="references" class="section level2" number="3.9">
+<div id="references" class="section level2" number="3.6">
 <h2>
-<span class="header-section-number">3.9</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6</span> References<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wickham, H., M. Çetinkaya-Rundel, and G. Grolemund. 2023. R for data science: import, tidy, transform, visualize, and model data. Second edition. O’Reilly Media, Inc., Sabastopol, California, USA. <a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a></p>
 
 </div>
 </div>
-
   <div class="chapter-nav">
 <div class="prev"><a href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></div>
-<div class="next"><a href="lab-4-data-subsetting.html"><span class="header-section-number">4</span> Lab 4: Data subsetting</a></div>
+<div class="next"><a href="lab-4-data-import.html"><span class="header-section-number">4</span> Lab 4: Data import</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#lab-3-data-visualization"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
 <li><a class="nav-link" href="#learning-outcomes-2"><span class="header-section-number">3.1</span> Learning Outcomes</a></li>
-<li><a class="nav-link" href="#overview"><span class="header-section-number">3.2</span> Overview</a></li>
-<li><a class="nav-link" href="#get-started-with-git"><span class="header-section-number">3.3</span> Get started with Git</a></li>
-<li><a class="nav-link" href="#lab-report-in-quarto"><span class="header-section-number">3.4</span> Lab report in Quarto</a></li>
-<li><a class="nav-link" href="#render-your-report"><span class="header-section-number">3.5</span> Render your report</a></li>
-<li><a class="nav-link" href="#make-your-first-git-commit"><span class="header-section-number">3.6</span> Make your first Git commit</a></li>
-<li><a class="nav-link" href="#data-visualization"><span class="header-section-number">3.7</span> Data visualization</a></li>
+<li><a class="nav-link" href="#introduction"><span class="header-section-number">3.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#prerequisites"><span class="header-section-number">3.3</span> Prerequisites</a></li>
+<li><a class="nav-link" href="#tutorial-walkthrough"><span class="header-section-number">3.4</span> Tutorial Walkthrough</a></li>
 <li>
-<a class="nav-link" href="#lab-report"><span class="header-section-number">3.8</span> Lab report</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#final-render"><span class="header-section-number">3.8.1</span> Final render</a></li>
-<li><a class="nav-link" href="#submission"><span class="header-section-number">3.8.2</span> Submission</a></li>
+<a class="nav-link" href="#your-assignment"><span class="header-section-number">3.5</span> Your Assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#instructions"><span class="header-section-number">3.5.1</span> Instructions</a></li>
+<li><a class="nav-link" href="#questions"><span class="header-section-number">3.5.2</span> Questions</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#references"><span class="header-section-number">3.9</span> References</a></li>
+<li><a class="nav-link" href="#references"><span class="header-section-number">3.6</span> References</a></li>
 </ul>
 
       <div class="book-extra">
@@ -359,7 +333,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-21.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

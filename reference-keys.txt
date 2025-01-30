@@ -47,6 +47,7 @@ enter-data-directly-in-r
 lab-report
 final-render
 submission
+lab-report-submission
 create-your-lab-report
 submit-your-lab-report
 lab-5-data-subsetting

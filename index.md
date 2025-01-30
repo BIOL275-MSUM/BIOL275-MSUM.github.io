@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "BIOL 275 Biostatistics at MSUM"
 author: "Chris Merkord"
-date: "2025-01-28"
+date: "2025-01-30"
 github-repo: BIOL275-MSUM/BIOL275-MSUM.github.io
 description: "Website for the course BIOL 275 Biostatistics at MSUM."
 site: bookdown::bookdown_site

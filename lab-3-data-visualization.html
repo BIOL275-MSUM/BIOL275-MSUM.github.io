@@ -183,30 +183,42 @@
 <ol style="list-style-type: decimal">
 <li>Inspecting a dataset
 <ul>
+<li>Answer the following question in your word document:
+<ul>
 <li>How many rows and columns are there in the penguins dataset?</li>
-<li>List two ways you can determine this in RStudio.</li>
+<li>List two ways you can determine this in RStudio</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Using help
 <ul>
-<li>Use the ?help command to look up a function.</li>
+<li>Use the <code>?</code> operator or <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> function to look up a function. For example: <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">?ggplot</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">help(ggplot)</a></code>.</li>
+<li>Answer the following question in your word document:
+<ul>
 <li>Which function did you look up?</li>
 </ul>
 </li>
-<li>Create a barchart with the following characteristics.
+</ul>
+</li>
+<li>Create a barchart with the following characteristics and insert it into your Word document.
+<ul>
+<li>Graph characteristics:
 <ul>
 <li>
 <strong>Data:</strong> Use the penguins dataset</li>
 <li>
 <strong>Aesthetics:</strong>
 <ul>
-<li>Map island to the x-axis</li>
+<li>Map island to the x-axis, i.e. <code>x</code>
+</li>
 <li>Arrange islands by decreasing frequency from left to right</li>
-<li>Map island to color</li>
+<li>Map island to the fill aesthetic, i.e. <code>fill</code>
+</li>
 </ul>
 </li>
 <li>
-<strong>Geom:</strong> Use <code>geom_barchart()</code>
+<strong>Geom:</strong> Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>
 </li>
 <li>
 <strong>Labels:</strong> Include the following labels
@@ -220,15 +232,26 @@
 </li>
 </ul>
 </li>
-<li>Create a histogram with the following characteristics.
+<li>Hints:
+<ul>
+<li>See <a href="https://r4ds.hadley.nz/data-visualize#a-categorical-variable">R4DS Section 1.4.1 A categorical variable</a> for a reminder of how do to make a barchart.</li>
+<li>See <a href="https://r4ds.hadley.nz/data-visualize#creating-a-ggplot">R4DS Section 1.2.4 Adding aesthetics and layers</a> for a reminder of how to map variables in the data to aesthetic features of the graph (like the x-axis and color), and how to add labels to a graph using the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function.</li>
+<li>The x-axis aesthetic is <code>x</code> and the fill color aesthetic is <code>fill</code> . You can see a list of possible aesthetics for a given geom function by looking at the help page of the geom function, e.g. <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">?geom_bar</a></code>
+</li>
+<li>When adding layers to a ggpot, don’t forget to put a <code>+</code> at the end of the previous line</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create a histogram with the following characteristics and insert it into your Word document.
 <ul>
 <li>
 <strong>Data:</strong> Use the penguins dataset</li>
 <li>
 <strong>Aesthetics:</strong>
 <ul>
-<li>Map a continuous variable of your choice to the x-axis</li>
-<li>Map a categorical variable of your choice to color</li>
+<li>Map a continuous variable of your choice to the x-axis aesthetic</li>
+<li>Map a categorical variable of your choice to the fill aesthetic</li>
 </ul>
 </li>
 <li>
@@ -245,17 +268,19 @@
 </li>
 </ul>
 </li>
-<li>Create a scatterplot with the following characteristics.
+<li>Create a scatterplot with the following characteristics and insert it into your Word document.
+<ul>
+<li>Graph characteristics:
 <ul>
 <li>
 <strong>Data:</strong> Use the penguins dataset</li>
 <li>
 <strong>Aesthetics:</strong>
 <ul>
-<li>Map a continuous variable to the x-axis</li>
-<li>Map a continuous variable to the y-axis</li>
-<li>Map a continuous variable to size</li>
-<li>Map a categorical variable to color</li>
+<li>Map a continuous variable to the x-axis aesthetic</li>
+<li>Map a continuous variable to the y-axis aesthetic</li>
+<li>Map a continuous variable to size aesthetic</li>
+<li>Map a categorical variable to color aesthetic</li>
 </ul>
 </li>
 <li>
@@ -283,6 +308,16 @@
 <strong>Size:</strong> appropriate text and measurement units, nicely formatted</li>
 <li>
 <strong>Color:</strong> appropriate text, nicely formatted</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hints:
+<ul>
+<li>See <a href="Hints:%20See%20R4DS%20Section%201.4.1%20A%20categorical%20variable%20for%20a%20reminder%20of%20how%20do%20to%20make%20a%20barchart.">R4DS Section 1.5.3 Two numerical variables</a> for a reminder of how do to make a scatterplot.</li>
+<li>See <a href="https://r4ds.hadley.nz/data-visualize#creating-a-ggplot">R4DS Section 1.2.4 Adding aesthetics and layers</a> for an example of using <code>scale_color_colorblind()</code>
+</li>
+<li>When adding lots of labels in the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function, put each one on a separate line for clarity. Don’t forget the comma on the preceding line.</li>
 </ul>
 </li>
 </ul>
@@ -333,7 +368,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-28.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

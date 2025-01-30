@@ -52,47 +52,60 @@ This lab assumes you have already:
 ### Questions
 
 1.  Inspecting a dataset
-    -   How many rows and columns are there in the penguins dataset?
-    -   List two ways you can determine this in RStudio.
+    -   Answer the following question in your word document:
+        -   How many rows and columns are there in the penguins dataset?
+        -   List two ways you can determine this in RStudio
 2.  Using help
-    -   Use the ?help command to look up a function.
-    -   Which function did you look up?
-3.  Create a barchart with the following characteristics.
+    -   Use the `?` operator or `help()` function to look up a function. For example: `?ggplot` or `help(ggplot)`.
+    -   Answer the following question in your word document:
+        -   Which function did you look up?
+3.  Create a barchart with the following characteristics and insert it into your Word document.
+    -   Graph characteristics:
+        -   **Data:** Use the penguins dataset
+        -   **Aesthetics:**
+            -   Map island to the x-axis, i.e. `x`
+            -   Arrange islands by decreasing frequency from left to right
+            -   Map island to the fill aesthetic, i.e. `fill`
+        -   **Geom:** Use `geom_bar()`
+        -   **Labels:** Include the following labels
+            -   **Title:** appropriate text
+            -   **Caption:** `"Created by YOUR NAME"`
+    -   Hints:
+        -   See [R4DS Section 1.4.1 A categorical variable](https://r4ds.hadley.nz/data-visualize#a-categorical-variable) for a reminder of how do to make a barchart.
+        -   See [R4DS Section 1.2.4 Adding aesthetics and layers](https://r4ds.hadley.nz/data-visualize#creating-a-ggplot) for a reminder of how to map variables in the data to aesthetic features of the graph (like the x-axis and color), and how to add labels to a graph using the `labs()` function.
+        -   The x-axis aesthetic is `x` and the fill color aesthetic is `fill` . You can see a list of possible aesthetics for a given geom function by looking at the help page of the geom function, e.g. `?geom_bar`
+        -   When adding layers to a ggpot, don't forget to put a `+` at the end of the previous line
+4.  Create a histogram with the following characteristics and insert it into your Word document.
     -   **Data:** Use the penguins dataset
     -   **Aesthetics:**
-        -   Map island to the x-axis
-        -   Arrange islands by decreasing frequency from left to right
-        -   Map island to color
-    -   **Geom:** Use `geom_barchart()`
-    -   **Labels:** Include the following labels
-        -   **Title:** appropriate text
-        -   **Caption:** `"Created by YOUR NAME"`
-4.  Create a histogram with the following characteristics.
-    -   **Data:** Use the penguins dataset
-    -   **Aesthetics:**
-        -   Map a continuous variable of your choice to the x-axis
-        -   Map a categorical variable of your choice to color
+        -   Map a continuous variable of your choice to the x-axis aesthetic
+        -   Map a categorical variable of your choice to the fill aesthetic
     -   **Geom:** Use `geom_histogram()`
     -   **Labels:** Include the following labels
         -   **Title:** appropriate text
         -   **Caption:** "Created by YOUR NAME"
-5.  Create a scatterplot with the following characteristics.
-    -   **Data:** Use the penguins dataset
-    -   **Aesthetics:**
-        -   Map a continuous variable to the x-axis
-        -   Map a continuous variable to the y-axis
-        -   Map a continuous variable to size
-        -   Map a categorical variable to color
-    -   **Geom:** Use `geom_point()`
-    -   **Scales:**
-        -   Use the `scale_color_colorblind()` or `scale_color_brewer()` function to set the colors to a colorblind-safe palette
-    -   **Labels:** Include the following labels
-        -   **Title:** appropriate text
-        -   **Caption:** `"Created by YOUR NAME"`
-        -   **X-axis:** appropriate text and measurement units, nicely formatted
-        -   **Y-axis:** appropriate text and measurement units, nicely formatted
-        -   **Size:** appropriate text and measurement units, nicely formatted
-        -   **Color:** appropriate text, nicely formatted
+5.  Create a scatterplot with the following characteristics and insert it into your Word document.
+    -   Graph characteristics:
+        -   **Data:** Use the penguins dataset
+        -   **Aesthetics:**
+            -   Map a continuous variable to the x-axis aesthetic
+            -   Map a continuous variable to the y-axis aesthetic
+            -   Map a continuous variable to size aesthetic
+            -   Map a categorical variable to color aesthetic
+        -   **Geom:** Use `geom_point()`
+        -   **Scales:**
+            -   Use the `scale_color_colorblind()` or `scale_color_brewer()` function to set the colors to a colorblind-safe palette
+        -   **Labels:** Include the following labels
+            -   **Title:** appropriate text
+            -   **Caption:** `"Created by YOUR NAME"`
+            -   **X-axis:** appropriate text and measurement units, nicely formatted
+            -   **Y-axis:** appropriate text and measurement units, nicely formatted
+            -   **Size:** appropriate text and measurement units, nicely formatted
+            -   **Color:** appropriate text, nicely formatted
+    -   Hints:
+        -   See [R4DS Section 1.5.3 Two numerical variables](Hints:  See R4DS Section 1.4.1 A categorical variable for a reminder of how do to make a barchart.) for a reminder of how do to make a scatterplot.
+        -   See [R4DS Section 1.2.4 Adding aesthetics and layers](https://r4ds.hadley.nz/data-visualize#creating-a-ggplot) for an example of using `scale_color_colorblind()`
+        -   When adding lots of labels in the `labs()` function, put each one on a separate line for clarity. Don't forget the comma on the preceding line.
 
 ## References
 

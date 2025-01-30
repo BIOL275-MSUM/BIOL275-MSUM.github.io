@@ -181,18 +181,23 @@
 </h2>
 <p>In this course, you will learn to write your reports using <a href="https://quarto.org/">Quarto</a>, a system developed by Posit to allow you to weave narrative text and R code and output into elegant documents including HTML, PDF, Word, PowerPoint, and more. The process is code-based, so it is fully reproducible.</p>
 <p>In your new RStudio project, inspect the list of files shown in the Files tab in the bottom right pane.</p>
-<p>You will see one named <code>lab-report.qmd</code>. Click the file name to open it in a new source window.</p>
-<p>Look through the document and you will notice the following elements:</p>
-<ul>
-<li><p><strong>Metadata</strong> at the top, beginning and ending with three dashes <code>---</code>. This is called the YAML header and contains information about how the document should be rendered when you make your lab report from it. Put your name in the author field, but otherwise leave it as is.</p></li>
-<li><p>Some <strong>narrative text</strong> including headings, paragraphs, and numbered lists.</p></li>
-<li><p>Some vertical lines with the word “answer” after them. These are where you will write your answers to the questions. The formatting used here is called a “blockquote”. This will be handy to know when you need to add and format your own answers.</p></li>
-<li><p>R code chunks. These look like colored boxes that begin with <code>{r}</code>. This is where you can put R code. Think of each box as its own little R script. Or more accurately, that all the chunks in a given Quarto document together form a script. For example, if you run the code <code>x &lt;- 1</code> in one chunk and then run <code>print(x)</code> in the next code chunk, it will remember <code>x</code> and print it correctly in the second chunk. In other words, the environment is maintained from chunk to chunk.</p></li>
-</ul>
+<ol style="list-style-type: decimal">
+<li>Create a new file… a Quarto Document… and name it <code>lab-report.qmd</code>
+</li>
+<li>Look at the document and you will see the following:
+<ol style="list-style-type: decimal">
+<li>
+<strong>Metadata</strong> at the top, beginning and ending with three dashes <code>---</code>. This is called the YAML header and contains information about how the document should be rendered when you make your lab report from it. Put your name in the author field, but otherwise leave it as is.</li>
+<li>Some <strong>narrative text</strong> including headings, paragraphs, and numbered lists.</li>
+<li>Some vertical lines with the word “answer” after them. These are where you will write your answers to the questions. The formatting used here is called a “blockquote”. This will be handy to know when you need to add and format your own answers.</li>
+<li>R code chunks. These look like colored boxes that begin with <code>{r}</code>. This is where you can put R code. Think of each box as its own little R script. Or more accurately, that all the chunks in a given Quarto document together form a script. For example, if you run the code <code>x &lt;- 1</code> in one chunk and then run <code>print(x)</code> in the next code chunk, it will remember <code>x</code> and print it correctly in the second chunk. In other words, the environment is maintained from chunk to chunk.</li>
+</ol>
+</li>
+</ol>
 <p>Why include R code chunks in the document? There are two main reasons:</p>
 <ol style="list-style-type: decimal">
-<li>To show the instructor you know what code to run to answer a question.</li>
 <li>To show the output of the code. This could be graphical output, like a bar chart or scatterplot, or text output like the results from a statistical hypothesis test.</li>
+<li>To show the instructor you know what code to run to answer a question.</li>
 </ol>
 <p>In this way, you can weave together narrative text and the output of R code. No more copying images from R and pasting them into a Word document to create a report. In fact, you can actually <a href="https://quarto.org/docs/output-formats/ms-word.html">export your document as a Word document</a> by changing one line of the YAML header. Other formats Quarto can create include PDF and PowerPoint.</p>
 </div>

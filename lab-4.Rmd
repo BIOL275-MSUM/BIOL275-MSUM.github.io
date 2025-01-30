@@ -15,23 +15,23 @@ Students will be able to:
 A brief overview of the steps for this lab:
 
 1.  Complete the steps in [Getting Started] below
-2.  Read chapters from R for Data Science (2e)
+2.  Read chapters from R for Data Science (2e).
     -   [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
     -   [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
 3.  Read the *entire* [Assignment] section before beginning, then complete the requested assignment
-4.  [Submit](#submission) your assignment
+4.  [Submit](#submission) your assignment by pushing your repository to GitHub and submitting your GitHub repository link for the D2L assignment.
 
 ## Get started with Git
 
 1.  Familiarize yourself with version control by reading [About Git and GitHub].
 
-2.  [Introduce yourself to Git] on your computer. Campus computers should have Git already installed on them. If you are using your own computer, you must first [Install Git] on it. If you are using Posit Cloud, git should already be installed.
+2.  [Introduce yourself to Git] on your computer. Campus computers should have Git already installed on them.
 
-3.  Go to GitHub <https://github.com/> and Sign Up for an account. Confirm your email address before continuing to the next step.
+    -   NOTE: If you are using your own computer, you must first [Install Git] on it. If you are using Posit Cloud, git should already be installed.
 
-4.  Claim your GitHub repository for this lab by following the GitHub Classroom link posted on D2L in this lab's content module. Because this is your first time using GitHub Classroom, you will need to select your name from the list to link your GitHub account with your instructor's record for you.
+3.  Claim your GitHub repository for this lab by following the link posted on D2L in this lab's content module. Because this is your first time using GitHub Classroom, you will need to select your name from the list to link your GitHub account with your instructor's record for you.
 
-    After claiming the repository, **copy the repository link** (or copy the URL in the browser window), which you will use in the next step.
+4.  After claiming the repository, **copy the repository link** (or copy the URL in the browser window), which you will use in the next step.
 
 5.  Create a new RStudio project, this time using the **Version Control** option instead of the New Project option. Select **Git**, then **paste the link to your repository** in the Repository URL field. Press the tab key to autofill the Project Directory Name field with the name of your GitHub repository.
 
@@ -39,11 +39,7 @@ A brief overview of the steps for this lab:
 
     If a dialog window opens asking you to enter your GitHub username and password, do this:
 
-    a.  If asked for your GitHub username and password, click "Cancel". If asked for just your username, enter it and press Enter.
-
-    b.  Enter a personal access token (PAT) from GitHub. To generate that token:
-
-    c.  This will cause another dialog window to appear asking for your GitHub password. Do not enter it. Instead, enter a Personal Access Token (PAT):
+    a.  If asked for your GitHub username and password, click "Token" or "Personal Access Token" instead. Follow instructions below to get your Personal Access Token (PAT):
 
         i.  Go to the Personal Access Tokens page in your GitHub Settings: <https://github.com/settings/tokens>
 
@@ -51,7 +47,7 @@ A brief overview of the steps for this lab:
 
         iii. The PAT will only be good for the computer you use it on. If you move to another computer later you will have to repeat this process and generate a new token. If you are on a campus computer that gets wiped periodically, you may need to repeat this process. If you are on your own computer, or Posit Cloud, you should only need to do this once
 
-        iv. For this token, enter a **Note** describing which computer and which type of access you are granting. For example: "CB 200 Computer 193827 repo access".
+        iv. For this token, enter a **Note** describing which computer and which type of access you are granting. For example: "LO 90 Computer 193827 repo access".
 
         v.  Set the expiration date. I recommend setting a custom date near the end of the semester.
 
@@ -328,11 +324,11 @@ When you are done, Render one more time to get your final lab report.
 
     b.  Check the repository on GitHub to see if it updated
 
-### Submission
+### Submission {#submission}
 
 In your web browser, navigate to your GitHub repository for this lab. Click on your lab-report.html file to view it. Copy the URL to the lab report and submit that to the Assignment on D2L.
 
-## Lab Report Submission {#submission}
+## Lab Report Submission
 
 When you have completed the assignment listed above, save your files, commit your changes, and push them to GitHub.
 

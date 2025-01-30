@@ -1,0 +1,58 @@
+# Downloading Files
+
+When working on projects, you may need to download datasets, scripts, or other files from the internet. Here’s how to find and organize these files on your computer.
+
+## Where Do Downloads Go?
+
+By default, web browsers save files to the **Downloads** folder. Below are instructions for finding this folder in popular web browsers:
+
+-   **Google Chrome**: Click the three-dot menu in the top-right corner → Select **Downloads** → Right-click the file and choose **Show in folder**.
+-   **Mozilla Firefox**: Click the download icon in the toolbar → Click the folder icon next to the downloaded file.
+-   **Microsoft Edge**: Click the three-dot menu in the top-right corner → Select **Downloads** → Click **Show in folder**.
+-   **Safari (Mac)**: Click the download icon in the top-right corner → Click the magnifying glass next to the file to open its location.
+
+## Moving Files to Your Project Folder
+
+After downloading a file, you should move it to your R project folder. Follow the instructions based on your operating system.
+
+### **Windows (File Explorer)**
+
+1.  Open **File Explorer** (press `Win + E`).
+2.  Navigate to the **Downloads** folder (usually under "This PC" \> "Downloads").
+3.  Locate your downloaded file.
+4.  Find your project folder. If using RStudio projects, it’s typically in **Documents** under a folder with your project’s name.
+5.  Drag and drop the file from **Downloads** into your project folder.
+
+### **Mac (Finder)**
+
+1.  Open **Finder**.
+2.  Click **Downloads** in the left sidebar.
+3.  Locate your downloaded file.
+4.  Find your R project folder. If using RStudio projects, it is likely in the **Documents** folder.
+5.  Drag and drop the file from **Downloads** into your project folder.
+
+### **Posit Cloud**
+
+1.  Click the **Files** tab in the lower-right panel of Posit Cloud.
+2.  If you downloaded a file, it may appear in your home directory.
+3.  Use the **Upload** button in Posit Cloud to upload the file from your computer if needed.
+4.  Use the **Move** button to move the file to the correct directory within your project.
+
+## Finding Your R Project Folder
+
+Your R project folder is where all files for your analysis should be stored. If you are unsure where your project folder is: - Open **RStudio** and check the **Files** pane (lower-right by default). - Click **More** (gear icon) → **Go to Working Directory**. - Alternatively, run the following command in RStudio to print your project directory:
+
+```{r eval=FALSE}
+getwd()
+```
+
+-   The output will show the path to your current working directory.
+
+## Summary
+
+-   Find your downloads using your web browser’s **Downloads** section.
+-   Move downloaded files to your **R project folder**.
+-   Use **File Explorer (Windows)**, **Finder (Mac)**, or **Posit Cloud’s Files tab** to organize files.
+-   Use `getwd()` in R to confirm your working directory.
+
+Keeping your files organized is crucial for reproducible research and efficient workflow. Always ensure that your dataset and scripts are in your project folder before working in RStudio.

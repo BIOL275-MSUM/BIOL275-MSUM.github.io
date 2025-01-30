@@ -19,6 +19,7 @@ rmd_files: [
   "laptop-setup.Rmd",
   "project-options.Rmd",
   "code-sections.Rmd",
+  "downloading.Rmd",
   "r-markdown-docs.Rmd",
   "lab-reports.Rmd",
   "session-info.Rmd",

@@ -63,7 +63,7 @@ This lab assumes you have already:
         -   Map island to the x-axis
         -   Arrange islands by decreasing frequency from left to right
         -   Map island to color
-    -   **Geom:** Use `geom_barchart()`
+    -   **Geom:** Use `geom_bar()`
     -   **Labels:** Include the following labels
         -   **Title:** appropriate text
         -   **Caption:** `"Created by YOUR NAME"`

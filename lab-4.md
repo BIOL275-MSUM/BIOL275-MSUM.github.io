@@ -147,7 +147,7 @@ You should always follow these steps at the end of each class (if not more often
 
 ## Download data files
 
-Start by downloading two data files to your project folder. Follow the guidelines for [Downloading Files] and [Organizing Data.]
+Start by downloading two data files to your project folder. Follow the guidelines for [Downloading Files] and [Organizing Data].
 
 ### Download the Muskox data
 

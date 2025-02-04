@@ -26,7 +26,6 @@ questions
 references
 lab-4-data-import
 learning-outcomes-3
-overview
 get-started-with-git
 claim-your-repository-from-github-classroom
 clone-the-repository-to-your-machine
@@ -43,7 +42,7 @@ enter-data-directly-in-r
 assignment-submission
 lab-5-data-subsetting
 objectives
-overview-1
+overview
 getting-started
 introduction-1
 prerequisites-1
@@ -95,7 +94,7 @@ questions-2
 submission-1
 further-reading-1
 eda-project
-overview-2
+overview-1
 purpose
 examples
 timeline
@@ -106,7 +105,7 @@ create-a-repository-for-your-project
 data-import-tips
 assignments
 sac-application
-overview-3
+overview-2
 how-to-write-an-abstract
 how-to-write-a-title
 assignment-submit-your-application

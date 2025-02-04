@@ -9,17 +9,6 @@ By the end of this lab, students will be able to:
 4.  Deal with common data import issues
 5.  Enter small datasets directly into R
 
-## Overview
-
-A brief overview of the steps for this lab:
-
-1.  Complete the steps in [Getting Started] below
-2.  Read chapters from R for Data Science (2e).
-    -   [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
-    -   [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
-3.  Read the *entire* [Assignment] section before beginning, then complete the requested assignment
-4.  [Submit](#submission) your assignment by pushing your repository to GitHub and submitting your GitHub repository link for the D2L assignment.
-
 ## Get started with Git
 
 1.  Familiarize yourself with version control by reading [About Git and GitHub].
@@ -184,6 +173,9 @@ Start by downloading two data files to your project folder. Follow the guideline
 
 ## Read the data into R
 
+Read chapter from R for Data Science (2e).
+-   [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
+
 ### Read the Muskox CSV data
 
 1.  Open your R script
@@ -207,6 +199,10 @@ Start by downloading two data files to your project folder. Follow the guideline
 4.  Have R treat missing values appropriately.
 
 ## Read Google Sheets data into R
+
+Read chapter from R for Data Science (2e).
+-   [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
+
 
 See the crab data collected last week in Animal Behavior:
 

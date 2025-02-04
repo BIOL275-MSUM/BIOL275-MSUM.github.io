@@ -73,22 +73,6 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
 1.  Once RStudio has started, double-check your [Project Options](project-options.html) as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)
 
-2.  Make your first commit:
-
-    1.  In the Git tab, check the box next to the `*.Rproj` and `.gitignore` files to stage it for adding them the repository
-
-    2.  Click the "Commit" button
-
-    3.  Enter a commit message such as "Create a new RStudio project"
-
-    4.  Click Commit to submit the commit
-
-    5.  Click Push to push the commit to GitHub
-
-        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)
-
-3.  Create a new R script. This is what you will use to develop the code for your assignment
-
 ## Make your first Git commit
 
 Eventually you will want to save your HTML lab report and its associated files in a way that your instructor can access them. This is done by adding those files to your repository on GitHub.
@@ -99,7 +83,7 @@ In Git, a "commit" is a set of changes to source files that are saved together w
 
 Now its time to make your first commit.
 
-1.  **Stage the change.** In the Git tab, you will now see two files listed: the R Project file (project-name.Rproj) file and the .gitignore file, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.
+1.  **Stage the change.** In the Git tab, you will now see two files listed: the R Project file `project-name.Rproj` file and the `.gitignore` file, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.
 
     Check the box next to each one. The yellow question marks will change to a green letter "A". The name of the folder will actually be replaced by the list of all files within that folder. The letter "A" signifies that you are adding new files for git to keep track of. The check box signifies that you have "staged" the changes to those particular files, which means they will be included in the next commit.
 

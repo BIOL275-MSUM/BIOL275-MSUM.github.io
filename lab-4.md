@@ -5,9 +5,9 @@
 By the end of this lab, students will be able to:
 
 1.  Use Git and GitHub to manage a project
-3.  Import datasets in various formats into R
-4.  Deal with common data import issues
-5.  Enter small datasets directly into R
+2.  Import datasets in various formats into R
+3.  Deal with common data import issues
+4.  Enter small datasets directly into R
 
 ## Get started with Git
 
@@ -147,7 +147,7 @@ You should always follow these steps at the end of each class (if not more often
 
 ## Download data files
 
-Start by downloading two data files to your project folder. Follow the guidelines for [Downloading Files] and [Organizing Data].
+Start by downloading two data files and putting them in a data folder within the project folder. Follow the guidelines for [Downloading Files] and [Organizing Data].
 
 ### Download the Muskox data
 
@@ -160,7 +160,7 @@ Start by downloading two data files to your project folder. Follow the guideline
 4.  Download the file **1972_2011_sex_age_composition_dwc.csv** to the project folder.
 
     You will know it is saved in the correct folder when you can see it in the Files tab in RStudio (bottom right pane)
-    
+
 ### Download the water quality data
 
 1.  Go to [Data.gov](https://catalog.data.gov/dataset)
@@ -173,8 +173,7 @@ Start by downloading two data files to your project folder. Follow the guideline
 
 ## Read the data into R
 
-Read chapter from R for Data Science (2e).
--   [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
+Read chapter from R for Data Science (2e). - [Chapters 7 Data Import](https://r4ds.hadley.nz/data-import)
 
 ### Read the Muskox CSV data
 
@@ -188,7 +187,6 @@ Read chapter from R for Data Science (2e).
 
 4.  Have R treat values of -999 in the organismQuantity column as missing values (NAs)
 
-
 ### Read the water quality XLS data
 
 1.  Open your R script
@@ -200,9 +198,7 @@ Read chapter from R for Data Science (2e).
 
 ## Read Google Sheets data into R
 
-Read chapter from R for Data Science (2e).
--   [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
-
+Read chapter from R for Data Science (2e). - [Chapter 20 Spreadsheets](https://r4ds.hadley.nz/spreadsheets)
 
 See the crab data collected last week in Animal Behavior:
 
@@ -244,10 +240,10 @@ The table shows the three leading causes of death in the United States in 2021, 
 
 ## Assignment submission
 
-1. Save changes in your R script
-2. Be sure your data is in a data folder and data/ has been added to .gitignore
-3. Stage all your changes by checking the boxes next to files in the git tab
-4. Commit the changes
-5. Push the changes
-6. Go to Github and copy the URL to your lab 4 repository online
-7. Submit the URL to your lab 4 assignment on D2L
+1.  Save changes in your R script
+2.  Be sure your data is in a data folder and data/ has been added to .gitignore
+3.  Stage all your changes by checking the boxes next to files in the git tab
+4.  Commit the changes
+5.  Push the changes
+6.  Go to Github and copy the URL to your lab 4 repository online
+7.  Submit the URL to your lab 4 assignment on D2L

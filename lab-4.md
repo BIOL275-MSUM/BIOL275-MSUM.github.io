@@ -75,7 +75,7 @@ Your instructor has created a blank repository for you using GitHub Classroom.
 
 2.  Make your first commit:
 
-    1.  In the Git tab, check the box next to the `*.Rproj` file to stage it for adding them the repository
+    1.  In the Git tab, check the box next to the `*.Rproj` and `.gitignore` files to stage it for adding them the repository
 
     2.  Click the "Commit" button
 

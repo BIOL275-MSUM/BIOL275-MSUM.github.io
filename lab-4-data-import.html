@@ -127,7 +127,7 @@
 </h2>
 <p>A brief overview of the steps for this lab:</p>
 <ol style="list-style-type: decimal">
-<li>Complete the steps in <a href="lab-4-data-import.html#getting-started">Getting Started</a> below</li>
+<li>Complete the steps in <a href="lab-5-data-subsetting.html#getting-started">Getting Started</a> below</li>
 <li>Read chapters from R for Data Science (2e).
 <ul>
 <li><a href="https://r4ds.hadley.nz/data-import">Chapters 7 Data Import</a></li>
@@ -153,9 +153,8 @@
 </li>
 <li><p>Claim your GitHub repository for this lab by following the link posted on D2L in this lab’s content module. Because this is your first time using GitHub Classroom, you will need to select your name from the list to link your GitHub account with your instructor’s record for you.</p></li>
 <li><p>After claiming the repository, <strong>copy the repository link</strong> (or copy the URL in the browser window), which you will use in the next step.</p></li>
-<li><p>Create a new RStudio project, this time using the <strong>Version Control</strong> option instead of the New Project option. Select <strong>Git</strong>, then <strong>paste the link to your repository</strong> in the Repository URL field. Press the tab key to autofill the Project Directory Name field with the name of your GitHub repository.</p></li>
 <li>
-<p>When complete, RStudio should have your project open and <strong>the Git tab in the upper right should be present</strong>. If not, ask for help.</p>
+<p>Create a new RStudio project, this time using the <strong>Version Control</strong> option instead of the New Project option. Select <strong>Git</strong>, then <strong>paste the link to your repository</strong> in the Repository URL field. Press the tab key to autofill the Project Directory Name field with the name of your GitHub repository.</p>
 <p>If a dialog window opens asking you to enter your GitHub username and password, do this:</p>
 <ol style="list-style-type: lower-alpha">
 <li>
@@ -174,11 +173,59 @@
 </li>
 </ol>
 </li>
+<li><p>When complete, RStudio should have your project open and <strong>the Git tab in the upper right should be present</strong>. If not, ask for help.</p></li>
 </ol>
 </div>
-<div id="make-your-first-git-commit" class="section level2" number="4.4">
+<div id="claim-your-repository-from-github-classroom" class="section level2" number="4.4">
 <h2>
-<span class="header-section-number">4.4</span> Make your first Git commit<a class="anchor" aria-label="anchor" href="#make-your-first-git-commit"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4</span> Claim your repository from GitHub Classroom<a class="anchor" aria-label="anchor" href="#claim-your-repository-from-github-classroom"><i class="fas fa-link"></i></a>
+</h2>
+<p>Your instructor has created a blank repository for you using GitHub Classroom.</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to the course D2L page</p></li>
+<li><p>Navigate to the module for this lab</p></li>
+<li><p>Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL</p></li>
+</ol>
+</div>
+<div id="clone-the-repository-to-your-machine" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> Clone the repository to your machine<a class="anchor" aria-label="anchor" href="#clone-the-repository-to-your-machine"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>In RStudio, create a New Project</p></li>
+<li><p>Select the Version Control option, then GitHub</p></li>
+<li><p>Paste the URL you copied, and press tab to auto-complete the directory name</p></li>
+<li><p>Select a parent directory in which to place your new project folder, probably either <code>~</code> or <code>~/R</code>.</p></li>
+<li><p>Click OK.</p></li>
+</ol>
+</div>
+<div id="prepare-your-working-environment" class="section level2" number="4.6">
+<h2>
+<span class="header-section-number">4.6</span> Prepare your working environment<a class="anchor" aria-label="anchor" href="#prepare-your-working-environment"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li><p>Once RStudio has started, double-check your <a href="project-options.html">Project Options</a> as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)</p></li>
+<li>
+<p>Make your first commit:</p>
+<ol style="list-style-type: decimal">
+<li><p>In the Git tab, check the box next to the <code>*.Rproj</code> file to stage it for adding them the repository</p></li>
+<li><p>Click the “Commit” button</p></li>
+<li><p>Enter a commit message such as “Create a new RStudio project”</p></li>
+<li><p>Click Commit to submit the commit</p></li>
+<li>
+<p>Click Push to push the commit to GitHub</p>
+<ol style="list-style-type: decimal">
+<li>If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Create a new R script. This is what you will use to develop the code for your assignment</p></li>
+</ol>
+</div>
+<div id="make-your-first-git-commit" class="section level2" number="4.7">
+<h2>
+<span class="header-section-number">4.7</span> Make your first Git commit<a class="anchor" aria-label="anchor" href="#make-your-first-git-commit"><i class="fas fa-link"></i></a>
 </h2>
 <p>Eventually you will want to save your HTML lab report and its associated files in a way that your instructor can access them. This is done by adding those files to your repository on GitHub.</p>
 <p>How do you do that? That involves “committing” the changes on your computer first, then “pushing” those changes to GitHub.</p>
@@ -186,7 +233,7 @@
 <p>Now its time to make your first commit.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p><strong>Stage the change.</strong> In the Git tab, you will now see <code>lab-report.qmd</code> and <code>lab-report_files</code>, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.</p>
+<p><strong>Stage the change.</strong> In the Git tab, you will now see two files listed: the R Project file (project-name.Rproj) file and the .gitignore file, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.</p>
 <p>Check the box next to each one. The yellow question marks will change to a green letter “A”. The name of the folder will actually be replaced by the list of all files within that folder. The letter “A” signifies that you are adding new files for git to keep track of. The check box signifies that you have “staged” the changes to those particular files, which means they will be included in the next commit.</p>
 </li>
 <li>
@@ -230,71 +277,15 @@
 </ol>
 <p>You should always follow these steps at the end of each class (if not more often) to save your work. The next time you work on a different computer, you can create your project using Version Control &gt; Git and your code will be automatically downloaded from GitHub.</p>
 </div>
-<div id="getting-started" class="section level2" number="4.5" data-link="Getting Started">
+<div id="download-data-files" class="section level2" number="4.8">
 <h2>
-<span class="header-section-number">4.5</span> Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8</span> Download data files<a class="anchor" aria-label="anchor" href="#download-data-files"><i class="fas fa-link"></i></a>
 </h2>
-<div id="claim-your-repository-from-github-classroom" class="section level3" number="4.5.1">
-<h3>
-<span class="header-section-number">4.5.1</span> Claim your repository from GitHub Classroom<a class="anchor" aria-label="anchor" href="#claim-your-repository-from-github-classroom"><i class="fas fa-link"></i></a>
-</h3>
-<p>Your instructor has created a blank repository for you using GitHub Classroom.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to the course D2L page</p></li>
-<li><p>Navigate to the module for this lab</p></li>
-<li><p>Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL</p></li>
-</ol>
-</div>
-<div id="clone-the-repository-to-your-machine" class="section level3" number="4.5.2">
-<h3>
-<span class="header-section-number">4.5.2</span> Clone the repository to your machine<a class="anchor" aria-label="anchor" href="#clone-the-repository-to-your-machine"><i class="fas fa-link"></i></a>
-</h3>
-<ol style="list-style-type: decimal">
-<li><p>In RStudio, create a New Project</p></li>
-<li><p>Select the Version Control option, then GitHub</p></li>
-<li><p>Paste the URL you copied, and press tab to auto-complete the directory name</p></li>
-<li><p>Select a parent directory in which to place your new project folder, probably either <code>~</code> or <code>~/R</code>.</p></li>
-<li><p>Click OK.</p></li>
-</ol>
-</div>
-<div id="prepare-your-working-environment" class="section level3" number="4.5.3">
-<h3>
-<span class="header-section-number">4.5.3</span> Prepare your working environment<a class="anchor" aria-label="anchor" href="#prepare-your-working-environment"><i class="fas fa-link"></i></a>
-</h3>
-<ol style="list-style-type: decimal">
-<li><p>Once RStudio has started, double-check your <a href="project-options.html">Project Options</a> as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)</p></li>
-<li>
-<p>Make your first commit:</p>
-<ol style="list-style-type: decimal">
-<li><p>In the Git tab, check the box next to the <code>*.Rproj</code> file to stage it for adding them the repository</p></li>
-<li><p>Click the “Commit” button</p></li>
-<li><p>Enter a commit message such as “Create a new RStudio project”</p></li>
-<li><p>Click Commit to submit the commit</p></li>
-<li>
-<p>Click Push to push the commit to GitHub</p>
-<ol style="list-style-type: decimal">
-<li>If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>Create a new R script. This is what you will use to develop the code for your assignment</p></li>
-</ol>
-</div>
-</div>
-<div id="assignment-2" class="section level2" number="4.6">
-<h2>
-<span class="header-section-number">4.6</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-2"><i class="fas fa-link"></i></a>
-</h2>
-<div id="download-data-files" class="section level3" number="4.6.1">
-<h3>
-<span class="header-section-number">4.6.1</span> Download data files<a class="anchor" aria-label="anchor" href="#download-data-files"><i class="fas fa-link"></i></a>
-</h3>
 <p>Start by downloading two data files to your project folder. Follow the guidelines for <a href="downloading-files.html#downloading-files">Downloading Files</a> and [Organizing Data.]</p>
-<div id="download-the-muskox-data" class="section level4" number="4.6.1.1">
-<h4>
-<span class="header-section-number">4.6.1.1</span> Download the Muskox data<a class="anchor" aria-label="anchor" href="#download-the-muskox-data"><i class="fas fa-link"></i></a>
-</h4>
+<div id="download-the-muskox-data" class="section level3" number="4.8.1">
+<h3>
+<span class="header-section-number">4.8.1</span> Download the Muskox data<a class="anchor" aria-label="anchor" href="#download-the-muskox-data"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Go to <a href="https://catalog.data.gov/dataset">Data.gov</a>, a comprehensive online platform managed by the U.S. government, offering access to a vast array of datasets generated by federal agencies. It serves as a centralized hub for users to discover, access, and utilize open data for research, analysis, and innovation purposes.</p></li>
 <li><p>Search for “muskox”</p></li>
@@ -305,10 +296,10 @@
 </li>
 </ol>
 </div>
-<div id="download-the-water-quality-data" class="section level4" number="4.6.1.2">
-<h4>
-<span class="header-section-number">4.6.1.2</span> Download the water quality data<a class="anchor" aria-label="anchor" href="#download-the-water-quality-data"><i class="fas fa-link"></i></a>
-</h4>
+<div id="download-the-water-quality-data" class="section level3" number="4.8.2">
+<h3>
+<span class="header-section-number">4.8.2</span> Download the water quality data<a class="anchor" aria-label="anchor" href="#download-the-water-quality-data"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://catalog.data.gov/dataset">Data.gov</a>
 </li>
@@ -324,14 +315,14 @@
 </ol>
 </div>
 </div>
-<div id="read-the-data-into-r" class="section level3" number="4.6.2">
+<div id="read-the-data-into-r" class="section level2" number="4.9">
+<h2>
+<span class="header-section-number">4.9</span> Read the data into R<a class="anchor" aria-label="anchor" href="#read-the-data-into-r"><i class="fas fa-link"></i></a>
+</h2>
+<div id="read-the-muskox-csv-data" class="section level3" number="4.9.1">
 <h3>
-<span class="header-section-number">4.6.2</span> Read the data into R<a class="anchor" aria-label="anchor" href="#read-the-data-into-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.9.1</span> Read the Muskox CSV data<a class="anchor" aria-label="anchor" href="#read-the-muskox-csv-data"><i class="fas fa-link"></i></a>
 </h3>
-<div id="read-the-muskox-csv-data" class="section level4" number="4.6.2.1">
-<h4>
-<span class="header-section-number">4.6.2.1</span> Read the Muskox CSV data<a class="anchor" aria-label="anchor" href="#read-the-muskox-csv-data"><i class="fas fa-link"></i></a>
-</h4>
 <ol style="list-style-type: decimal">
 <li><p>Open your R script</p></li>
 <li><p>Load the tidyverse package, which will load the readr package for you</p></li>
@@ -342,10 +333,10 @@
 <li><p>Have R treat values of -999 in the organismQuantity column as missing values (NAs)</p></li>
 </ol>
 </div>
-<div id="read-the-water-quality-xls-data" class="section level4" number="4.6.2.2">
-<h4>
-<span class="header-section-number">4.6.2.2</span> Read the water quality XLS data<a class="anchor" aria-label="anchor" href="#read-the-water-quality-xls-data"><i class="fas fa-link"></i></a>
-</h4>
+<div id="read-the-water-quality-xls-data" class="section level3" number="4.9.2">
+<h3>
+<span class="header-section-number">4.9.2</span> Read the water quality XLS data<a class="anchor" aria-label="anchor" href="#read-the-water-quality-xls-data"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Open your R script</li>
 <li>Load the tidyverse package, which will load the readr package for you</li>
@@ -360,10 +351,10 @@
 </ol>
 </div>
 </div>
-<div id="read-google-sheets-data-into-r" class="section level3" number="4.6.3">
-<h3>
-<span class="header-section-number">4.6.3</span> Read Google Sheets data into R<a class="anchor" aria-label="anchor" href="#read-google-sheets-data-into-r"><i class="fas fa-link"></i></a>
-</h3>
+<div id="read-google-sheets-data-into-r" class="section level2" number="4.10">
+<h2>
+<span class="header-section-number">4.10</span> Read Google Sheets data into R<a class="anchor" aria-label="anchor" href="#read-google-sheets-data-into-r"><i class="fas fa-link"></i></a>
+</h2>
 <p>See the crab data collected last week in Animal Behavior:</p>
 <p><a href="https://docs.google.com/spreadsheets/d/15fozF3WTnH-PIL3Qm6RIyOFM6yk0RlxO3lBPF1ndu9s/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/15fozF3WTnH-PIL3Qm6RIyOFM6yk0RlxO3lBPF1ndu9s/edit?usp=sharing</a></p>
 <p>Import the ‘crabs’ sheet into R using <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> from the <strong>googlesheets4</strong> package.</p>
@@ -373,10 +364,10 @@
 <span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Note: when you read the sheet, the first argument to <code><a href="https://googlesheets4.tidyverse.org/reference/range_read.html">read_sheet()</a></code> is the URL to the sheet, <em>or</em> the sheet ID, which is the long alpha-numeric string in the middle of the URL, in this case <code>15fozF3WTnH-PIL3Qm6RIyOFM6yk0RlxO3lBPF1ndu9s</code> . The sheet ID is shorter than the entire URL, so using it is preferable because it makes your code more readable.</p>
 </div>
-<div id="enter-data-directly-in-r" class="section level3" number="4.6.4">
-<h3>
-<span class="header-section-number">4.6.4</span> Enter data directly in R<a class="anchor" aria-label="anchor" href="#enter-data-directly-in-r"><i class="fas fa-link"></i></a>
-</h3>
+<div id="enter-data-directly-in-r" class="section level2" number="4.11">
+<h2>
+<span class="header-section-number">4.11</span> Enter data directly in R<a class="anchor" aria-label="anchor" href="#enter-data-directly-in-r"><i class="fas fa-link"></i></a>
+</h2>
 <p>Sometimes it is helpful to enter data directly into R, for example when you have a small table and using a CSV, Excel, or Google Sheet is overkill. In these cases you can us the <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code> and <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> functions from the <strong>tibble</strong> package, part of the <strong>tidyverse</strong>.</p>
 <p>See <a href="https://r4ds.hadley.nz/data-import#data-entry">Section 7.6 Data entry</a> in R for Data Science (2e) for more details.</p>
 <p>For this part of the assignment use the <code><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble()</a></code> function to recreate the following table in R.</p>
@@ -388,13 +379,19 @@
 <li><p><strong>is_infectious</strong>. LOGICAL. a binary variable representing whether the cause of death is infectious or not; possible values include <code>TRUE</code> and <code>FALSE</code>. Note these values should be in all caps and not quoted (surrounded by quotation marks).</p></li>
 </ul>
 </div>
-<div id="submit-your-lab-report" class="section level3" number="4.6.5">
-<h3>
-<span class="header-section-number">4.6.5</span> Submit your lab report<a class="anchor" aria-label="anchor" href="#submit-your-lab-report"><i class="fas fa-link"></i></a>
-</h3>
-<p>Finally, show your R script to an instructor or LA for in-class grading.</p>
-
-</div>
+<div id="assignment-submission" class="section level2" number="4.12">
+<h2>
+<span class="header-section-number">4.12</span> Assignment submission<a class="anchor" aria-label="anchor" href="#assignment-submission"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Save changes in your R script</li>
+<li>Be sure your data is in a data folder and data/ has been added to .gitignore</li>
+<li>Stage all your changes by checking the boxes next to files in the git tab</li>
+<li>Commit the changes</li>
+<li>Push the changes</li>
+<li>Go to Github and copy the URL to your lab 4 repository online</li>
+<li>Submit the URL to your lab 4 assignment on D2L</li>
+</ol>
 </div>
 </div>
   <div class="chapter-nav">
@@ -407,23 +404,25 @@
 <li><a class="nav-link" href="#learning-outcomes-3"><span class="header-section-number">4.1</span> Learning Outcomes</a></li>
 <li><a class="nav-link" href="#overview"><span class="header-section-number">4.2</span> Overview</a></li>
 <li><a class="nav-link" href="#get-started-with-git"><span class="header-section-number">4.3</span> Get started with Git</a></li>
-<li><a class="nav-link" href="#make-your-first-git-commit"><span class="header-section-number">4.4</span> Make your first Git commit</a></li>
+<li><a class="nav-link" href="#claim-your-repository-from-github-classroom"><span class="header-section-number">4.4</span> Claim your repository from GitHub Classroom</a></li>
+<li><a class="nav-link" href="#clone-the-repository-to-your-machine"><span class="header-section-number">4.5</span> Clone the repository to your machine</a></li>
+<li><a class="nav-link" href="#prepare-your-working-environment"><span class="header-section-number">4.6</span> Prepare your working environment</a></li>
+<li><a class="nav-link" href="#make-your-first-git-commit"><span class="header-section-number">4.7</span> Make your first Git commit</a></li>
 <li>
-<a class="nav-link" href="#getting-started"><span class="header-section-number">4.5</span> Getting Started</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#claim-your-repository-from-github-classroom"><span class="header-section-number">4.5.1</span> Claim your repository from GitHub Classroom</a></li>
-<li><a class="nav-link" href="#clone-the-repository-to-your-machine"><span class="header-section-number">4.5.2</span> Clone the repository to your machine</a></li>
-<li><a class="nav-link" href="#prepare-your-working-environment"><span class="header-section-number">4.5.3</span> Prepare your working environment</a></li>
+<a class="nav-link" href="#download-data-files"><span class="header-section-number">4.8</span> Download data files</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#download-the-muskox-data"><span class="header-section-number">4.8.1</span> Download the Muskox data</a></li>
+<li><a class="nav-link" href="#download-the-water-quality-data"><span class="header-section-number">4.8.2</span> Download the water quality data</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#assignment-2"><span class="header-section-number">4.6</span> Assignment</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#download-data-files"><span class="header-section-number">4.6.1</span> Download data files</a></li>
-<li><a class="nav-link" href="#read-the-data-into-r"><span class="header-section-number">4.6.2</span> Read the data into R</a></li>
-<li><a class="nav-link" href="#read-google-sheets-data-into-r"><span class="header-section-number">4.6.3</span> Read Google Sheets data into R</a></li>
-<li><a class="nav-link" href="#enter-data-directly-in-r"><span class="header-section-number">4.6.4</span> Enter data directly in R</a></li>
-<li><a class="nav-link" href="#submit-your-lab-report"><span class="header-section-number">4.6.5</span> Submit your lab report</a></li>
+<a class="nav-link" href="#read-the-data-into-r"><span class="header-section-number">4.9</span> Read the data into R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#read-the-muskox-csv-data"><span class="header-section-number">4.9.1</span> Read the Muskox CSV data</a></li>
+<li><a class="nav-link" href="#read-the-water-quality-xls-data"><span class="header-section-number">4.9.2</span> Read the water quality XLS data</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#read-google-sheets-data-into-r"><span class="header-section-number">4.10</span> Read Google Sheets data into R</a></li>
+<li><a class="nav-link" href="#enter-data-directly-in-r"><span class="header-section-number">4.11</span> Enter data directly in R</a></li>
+<li><a class="nav-link" href="#assignment-submission"><span class="header-section-number">4.12</span> Assignment submission</a></li>
 </ul>
 
       <div class="book-extra">

@@ -28,12 +28,10 @@ lab-4-data-import
 learning-outcomes-3
 overview
 get-started-with-git
-make-your-first-git-commit
-getting-started
 claim-your-repository-from-github-classroom
 clone-the-repository-to-your-machine
 prepare-your-working-environment
-assignment-2
+make-your-first-git-commit
 download-data-files
 download-the-muskox-data
 download-the-water-quality-data
@@ -42,11 +40,11 @@ read-the-muskox-csv-data
 read-the-water-quality-xls-data
 read-google-sheets-data-into-r
 enter-data-directly-in-r
-submit-your-lab-report
+assignment-submission
 lab-5-data-subsetting
 objectives
 overview-1
-getting-started-1
+getting-started
 introduction-1
 prerequisites-1
 diamonds
@@ -68,7 +66,7 @@ combine-multiple-operations
 create-intermediate-objects
 nest-functions
 use-the-pipe
-assignment-3
+assignment-2
 questions-1
 submission
 further-reading
@@ -92,7 +90,7 @@ multiple-histograms
 strip-plots
 visualize-two-numerical-variables
 plotting-three-variables
-assignment-4
+assignment-3
 questions-2
 submission-1
 further-reading-1

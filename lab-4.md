@@ -34,8 +34,6 @@ A brief overview of the steps for this lab:
 
 5.  Create a new RStudio project, this time using the **Version Control** option instead of the New Project option. Select **Git**, then **paste the link to your repository** in the Repository URL field. Press the tab key to autofill the Project Directory Name field with the name of your GitHub repository.
 
-6.  When complete, RStudio should have your project open and **the Git tab in the upper right should be present**. If not, ask for help.
-
     If a dialog window opens asking you to enter your GitHub username and password, do this:
 
     a.  If asked for your GitHub username and password, click "Token" or "Personal Access Token" instead. Follow instructions below to get your Personal Access Token (PAT):
@@ -58,6 +56,50 @@ A brief overview of the steps for this lab:
 
         ix. Go back to the RStudio dialog window asking you for your GitHub password. Paste the PAT you just copied into the password field and press Enter.
 
+6.  When complete, RStudio should have your project open and **the Git tab in the upper right should be present**. If not, ask for help.
+
+## Claim your repository from GitHub Classroom
+
+Your instructor has created a blank repository for you using GitHub Classroom.
+
+1.  Go to the course D2L page
+
+2.  Navigate to the module for this lab
+
+3.  Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL
+
+## Clone the repository to your machine
+
+1.  In RStudio, create a New Project
+
+2.  Select the Version Control option, then GitHub
+
+3.  Paste the URL you copied, and press tab to auto-complete the directory name
+
+4.  Select a parent directory in which to place your new project folder, probably either `~` or `~/R`.
+
+5.  Click OK.
+
+## Prepare your working environment
+
+1.  Once RStudio has started, double-check your [Project Options](project-options.html) as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)
+
+2.  Make your first commit:
+
+    1.  In the Git tab, check the box next to the `*.Rproj` file to stage it for adding them the repository
+
+    2.  Click the "Commit" button
+
+    3.  Enter a commit message such as "Create a new RStudio project"
+
+    4.  Click Commit to submit the commit
+
+    5.  Click Push to push the commit to GitHub
+
+        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)
+
+3.  Create a new R script. This is what you will use to develop the code for your assignment
+
 ## Make your first Git commit
 
 Eventually you will want to save your HTML lab report and its associated files in a way that your instructor can access them. This is done by adding those files to your repository on GitHub.
@@ -68,7 +110,7 @@ In Git, a "commit" is a set of changes to source files that are saved together w
 
 Now its time to make your first commit.
 
-1.  **Stage the change.** In the Git tab, you will now see `lab-report.qmd` and `lab-report_files`, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.
+1.  **Stage the change.** In the Git tab, you will now see two files listed: the R Project file (project-name.Rproj) file and the .gitignore file, each with two yellow quesion marks next to it. This signifies that git sees new files or folders that you have not told it what to do with.
 
     Check the box next to each one. The yellow question marks will change to a green letter "A". The name of the folder will actually be replaced by the list of all files within that folder. The letter "A" signifies that you are adding new files for git to keep track of. The check box signifies that you have "staged" the changes to those particular files, which means they will be included in the next commit.
 
@@ -114,57 +156,11 @@ In the future, you will always use the same steps to make changes to your projec
 
 You should always follow these steps at the end of each class (if not more often) to save your work. The next time you work on a different computer, you can create your project using Version Control \> Git and your code will be automatically downloaded from GitHub.
 
-## Getting Started {data-link="Getting Started"}
-
-### Claim your repository from GitHub Classroom
-
-Your instructor has created a blank repository for you using GitHub Classroom.
-
-1.  Go to the course D2L page
-
-2.  Navigate to the module for this lab
-
-3.  Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL
-
-### Clone the repository to your machine
-
-1.  In RStudio, create a New Project
-
-2.  Select the Version Control option, then GitHub
-
-3.  Paste the URL you copied, and press tab to auto-complete the directory name
-
-4.  Select a parent directory in which to place your new project folder, probably either `~` or `~/R`.
-
-5.  Click OK.
-
-### Prepare your working environment
-
-1.  Once RStudio has started, double-check your [Project Options](project-options.html) as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)
-
-2.  Make your first commit:
-
-    1.  In the Git tab, check the box next to the `*.Rproj` file to stage it for adding them the repository
-
-    2.  Click the "Commit" button
-
-    3.  Enter a commit message such as "Create a new RStudio project"
-
-    4.  Click Commit to submit the commit
-
-    5.  Click Push to push the commit to GitHub
-
-        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)
-
-3.  Create a new R script. This is what you will use to develop the code for your assignment
-
-## Assignment
-
-### Download data files
+## Download data files
 
 Start by downloading two data files to your project folder. Follow the guidelines for [Downloading Files] and [Organizing Data.]
 
-#### Download the Muskox data
+### Download the Muskox data
 
 1.  Go to [Data.gov](https://catalog.data.gov/dataset), a comprehensive online platform managed by the U.S. government, offering access to a vast array of datasets generated by federal agencies. It serves as a centralized hub for users to discover, access, and utilize open data for research, analysis, and innovation purposes.
 
@@ -176,7 +172,7 @@ Start by downloading two data files to your project folder. Follow the guideline
 
     You will know it is saved in the correct folder when you can see it in the Files tab in RStudio (bottom right pane)
     
-#### Download the water quality data
+### Download the water quality data
 
 1.  Go to [Data.gov](https://catalog.data.gov/dataset)
 2.  Search for "cyanobacteria"
@@ -186,9 +182,9 @@ Start by downloading two data files to your project folder. Follow the guideline
     1.  note the names and contents of the three tabs, "Read_Me", "Means_of_variables", and "Spearman_correlations"
     2.  On the "Means_of_variables" sheet, look for missing values. Take note of the value used to denote them.
 
-### Read the data into R
+## Read the data into R
 
-#### Read the Muskox CSV data
+### Read the Muskox CSV data
 
 1.  Open your R script
 
@@ -201,7 +197,7 @@ Start by downloading two data files to your project folder. Follow the guideline
 4.  Have R treat values of -999 in the organismQuantity column as missing values (NAs)
 
 
-#### Read the water quality XLS data
+### Read the water quality XLS data
 
 1.  Open your R script
 2.  Load the tidyverse package, which will load the readr package for you
@@ -210,7 +206,7 @@ Start by downloading two data files to your project folder. Follow the guideline
     -   note that the Means_of_variables sheet is not the first sheet, so you will have to use the `sheets` argument to `read_excel()`
 4.  Have R treat missing values appropriately.
 
-### Read Google Sheets data into R
+## Read Google Sheets data into R
 
 See the crab data collected last week in Animal Behavior:
 
@@ -228,7 +224,7 @@ gs4_deauth()
 
 Note: when you read the sheet, the first argument to `read_sheet()` is the URL to the sheet, *or* the sheet ID, which is the long alpha-numeric string in the middle of the URL, in this case `15fozF3WTnH-PIL3Qm6RIyOFM6yk0RlxO3lBPF1ndu9s` . The sheet ID is shorter than the entire URL, so using it is preferable because it makes your code more readable.
 
-### Enter data directly in R
+## Enter data directly in R
 
 Sometimes it is helpful to enter data directly into R, for example when you have a small table and using a CSV, Excel, or Google Sheet is overkill. In these cases you can us the `tibble()` and `tribble()` functions from the **tibble** package, part of the **tidyverse**.
 
@@ -250,6 +246,12 @@ The table shows the three leading causes of death in the United States in 2021, 
 
 -   **is_infectious**. LOGICAL. a binary variable representing whether the cause of death is infectious or not; possible values include `TRUE` and `FALSE`. Note these values should be in all caps and not quoted (surrounded by quotation marks).
 
-### Submit your lab report
+## Assignment submission
 
-Finally, show your R script to an instructor or LA for in-class grading.
+1. Save changes in your R script
+2. Be sure your data is in a data folder and data/ has been added to .gitignore
+3. Stage all your changes by checking the boxes next to files in the git tab
+4. Commit the changes
+5. Push the changes
+6. Go to Github and copy the URL to your lab 4 repository online
+7. Submit the URL to your lab 4 assignment on D2L

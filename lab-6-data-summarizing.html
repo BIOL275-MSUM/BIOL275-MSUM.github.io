@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="6.1 Objectives In this lab, you will learn to: Rename variables Create new variables Summarize a dataset as a whole or by groups Visualize the relationship between variables One numerical and one...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0.9000/transition.js"></script><script src="libs/bs3compat-0.8.0.9000/tabs.js"></script><script src="libs/bs3compat-0.8.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0.9000/transition.js"></script><script src="libs/bs3compat-0.9.0.9000/tabs.js"></script><script src="libs/bs3compat-0.9.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.9000/fill.css" rel="stylesheet">
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="libs/datatables-binding-0.33/datatables.js"></script><link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -89,13 +89,15 @@
 <li class="book-part">Using RStudio</li>
 <li><a class="" href="project-options.html"><span class="header-section-number">14</span> Project Options</a></li>
 <li><a class="" href="code-sections.html"><span class="header-section-number">15</span> Code Sections</a></li>
-<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">16</span> R Markdown documents</a></li>
-<li><a class="" href="lab-reports.html"><span class="header-section-number">17</span> Lab Reports</a></li>
-<li><a class="" href="session-info.html"><span class="header-section-number">18</span> Session info</a></li>
+<li><a class="" href="downloading-files.html"><span class="header-section-number">16</span> Downloading Files</a></li>
+<li><a class="" href="organizing-data.html"><span class="header-section-number">17</span> Organizing Data</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">18</span> R Markdown documents</a></li>
+<li><a class="" href="lab-reports.html"><span class="header-section-number">19</span> Lab Reports</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">20</span> Session info</a></li>
 <li class="book-part">Git and GitHub</li>
-<li><a class="" href="about-git-and-github.html"><span class="header-section-number">20</span> About Git and GitHub</a></li>
-<li><a class="" href="github-notifications.html"><span class="header-section-number">21</span> GitHub Notifications</a></li>
-<li><a class="" href="references-2.html"><span class="header-section-number">22</span> References</a></li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">22</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">23</span> GitHub Notifications</a></li>
+<li><a class="" href="references-2.html"><span class="header-section-number">24</span> References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -146,7 +148,7 @@
 </h3>
 <p>In this lab you will use functions and datasets from the <strong>dplyr</strong> and <strong>ggplot2</strong> packages. While you could load those packages individually, in this course you are encouraged to always load the entire <strong>tidyverse</strong> set of packages.</p>
 <p>Load the <strong>tidyverse</strong> package:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>    <span class="co"># load the tidyverse package</span></span></code></pre></div>
 <pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 #&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -173,7 +175,7 @@
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> function allows you to rename variables in a data frame. The first argument to <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> is the data frame. The other arguments specify which variables to rename, with the format <code>new_name = old_name</code>.</p>
 <p>For example, say you want to rename the <code>x</code>, <code>y</code>, and <code>z</code> variables to <code>length</code>, <code>width</code>, and <code>height</code>:</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="va">diamonds</span>, length <span class="op">=</span> <span class="va">x</span>, width <span class="op">=</span> <span class="va">y</span>, height <span class="op">=</span> <span class="va">z</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   carat cut       color clarity depth table price length width height
@@ -187,7 +189,7 @@
 #&gt; # ℹ 53,934 more rows</code></pre>
 <p>Note the lack of quotes around the names of the data frame, the new variable names or the old variables names</p>
 <p>The more arguments there are to a function, the harder it is to read. If your line of code gets too long, or is hard to read, try putting each argument on its own line like this:</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
 <span>  <span class="va">diamonds</span>, </span>
 <span>  length <span class="op">=</span> <span class="va">x</span>, </span>
@@ -202,7 +204,7 @@
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function allows you to create a new variable in a data frame. As with other dplyr functions, the first argument to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> is the data frame. Additional arguments are name-value pairs. The name gives the name of the column in the output. The value is often a mathematical expression (in the case of numerical variables), a function, or some combination of both.</p>
 <p>Let’s do an example using the diamonds dataset. To make viewing the new variables easier, first select a subset of variables from the <code>diamonds</code> data set using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and give the new data frame the name <code>d2</code>:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># select the variables of interest</span></span>
 <span><span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">carat</span>, <span class="va">price</span><span class="op">)</span></span>
 <span><span class="va">d2</span></span></code></pre></div>
@@ -217,7 +219,7 @@
 #&gt; 6  0.24   336
 #&gt; # ℹ 53,934 more rows</code></pre>
 <p>Now use the new data frame <code>d2</code> to calculate the price per carat for each diamond. You can call the new variable anything you want. In this example, it is named <code>ppc</code> (“price per carat”):</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># example of creating price per carat (ppc)</span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">d2</span>, ppc <span class="op">=</span> <span class="va">price</span> <span class="op">/</span> <span class="va">carat</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 3
@@ -235,7 +237,7 @@
 <span class="header-section-number">6.4.1</span> <code>mutate()</code> an existing variable<a class="anchor" aria-label="anchor" href="#mutate-an-existing-variable"><i class="fas fa-link"></i></a>
 </h3>
 <p>You do not have to create an entirely new variable when using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. For example, let’s say you wanted to convert the price from US Dollars (USD) to Canadian Dollars (CAD). The current exchange rate is about 1 USD to 1.27 CAD. You can overwrite the existing price variable by setting the new variable name to be the same as the old variable name:</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">diamonds</span>, price <span class="op">=</span> <span class="va">price</span> <span class="op">*</span> <span class="fl">1.27</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
 #&gt;   carat cut       color clarity depth table price     x     y     z
@@ -254,14 +256,14 @@
 <span class="header-section-number">6.5</span> Summarize a data set with <code>summarize()</code><a class="anchor" aria-label="anchor" href="#summarize-a-data-set-with-summarize"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can summarize a data set using the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function. Like other dplyr functions, the first argument to <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> is the data frame. Additional arguments are name-value pairs, just like with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Values are set using various summary functions such as <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> or <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> (standard deviation). The difference is that whereas <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> returns a data frame with the same number of rows as the input data frame, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> returns a data frame with only one row, and the only variables in the new data frame are the ones you named in <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>. For example, to calculate the mean value of the <code>carat</code> variable, the code would look like this:</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">diamonds</span>, mean_carat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1 × 1
 #&gt;   mean_carat
 #&gt;        &lt;dbl&gt;
 #&gt; 1      0.798</code></pre>
 <p>You can calculate multiple summary statistics at the same time by providing a comma-separated list of name-value pairs. Because the line starts getting long, this example has each argument on its own line, but it would work just fine if everything was on the same line.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>  <span class="va">diamonds</span>,</span>
 <span>  mean_carat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">carat</span><span class="op">)</span>, </span>
@@ -294,7 +296,7 @@
 <span class="header-section-number">6.5.1.1</span> Sample size<a class="anchor" aria-label="anchor" href="#sample-size"><i class="fas fa-link"></i></a>
 </h4>
 <p>There is also a special summary function <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> which returns the number of rows, i.e. the sample size. Here is an example:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">diamonds</span>, sampl_size <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1 × 1
 #&gt;   sampl_size
@@ -307,7 +309,7 @@
 </h4>
 <p>Some summary functions require one or more arguments in addition to the name of the variable to summarize.</p>
 <p>One example is the <code><a href="https://rdrr.io/r/stats/quantile.html">quantile()</a></code> function, whose <code>probs</code> argument is the probability you want to calculate the quantile for. For example, to calculate the first quartile (0.25 quantile) of the variable <code>carat</code>, you can use the quantile function with the argument of <code>probs = 0.25</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">diamonds</span>, q1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">carat</span>, probs <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 1 × 1
 #&gt;      q1
@@ -320,7 +322,7 @@
 <span class="header-section-number">6.5.2</span> Combine functions and equations<a class="anchor" aria-label="anchor" href="#combine-functions-and-equations"><i class="fas fa-link"></i></a>
 </h3>
 <p>When summarizing, you can use both functions and mathematical operators when creating a new variable. For example, here is code that calculates the standard error of the mean for the <code>price</code> variable. Remember that standard error is equal to the standard deviation divided by the square root of the sample size:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>  <span class="va">diamonds</span>, </span>
 <span>  sem <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -331,7 +333,7 @@
 #&gt; 1  17.2</code></pre>
 <p>Notice that the equation for standard error (sem) above uses both the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function and the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function.</p>
 <p>Alternative, you could summarize the mean and sample size first and then use those new variables for creating a third variable. In the example below we calculate the mean and sample size first, use those to calculate the standard error, and then use that to calculate an approximate 95% confidence interval:</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>  <span class="va">diamonds</span>, </span>
 <span>  mean_p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,</span>
@@ -356,7 +358,7 @@
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function combined with the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function lets you calculated summary statistics for groups of observations. The groups are identified by a categorical variable called the grouping variable, while the statistics are calculated from one or more other variables.</p>
 <p>For example, let’s explore how the mean price varies with the cut of a diamond in the <code>diamonds</code> data set.</p>
 <p>In the first step, you use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to produced a grouped data frame. Like other dplyr verbs, the first argument to <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> is the name of the dataset. Additional arguments identify the variables you want to group by. In this example, we group the diamonds dataset by the <code>cut</code> variable and assign the resulting grouped data frame a new name, <code>diamonds_grouped</code>:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diamonds_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></span>
 <span><span class="va">diamonds_grouped</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 53,940 × 10
@@ -372,7 +374,7 @@
 #&gt; # ℹ 53,934 more rows</code></pre>
 <p>The only difference in the output from printing the ungrouped <code>diamonds</code> table is the second line of the output, which now says <code># Groups:   cut [5]</code>. That’s saying the table is grouped by the <code>cut</code> variable and there are five groups (the five possible values of <code>cut</code>).</p>
 <p>The next step is to summarize the grouped data frame, just like you summarized the ungrouped data frame in the previous section:</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">diamonds_grouped</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 5 × 2
 #&gt;   cut       mean_price
@@ -388,7 +390,7 @@
 <span class="header-section-number">6.7</span> Quick contingency tables<a class="anchor" aria-label="anchor" href="#quick-contingency-tables"><i class="fas fa-link"></i></a>
 </h2>
 <p>Counting the number of observations by group is a fairly common task, especially when you are exploring your data interactively in an R session (e.g. by typing commands into the console). One way to do this would be to use a grouped summary and the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function as described above, for example:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -401,7 +403,7 @@
 #&gt; 4 Premium   13791
 #&gt; 5 Ideal     21551</code></pre>
 <p>Because it is such a common task, dplyr includes a special function <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> to do just that but in fewer commands:</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 5 × 2
 #&gt;   cut           n
@@ -412,7 +414,7 @@
 #&gt; 4 Premium   13791
 #&gt; 5 Ideal     21551</code></pre>
 <p>You can also do this to create a quick contingency table for multiple variables:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span>, <span class="va">clarity</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 40 × 2
 #&gt;   cut       clarity
@@ -425,7 +427,7 @@
 #&gt; 6 Very Good VVS2   
 #&gt; # ℹ 34 more rows</code></pre>
 <p>If you just want to see the distinct values (levels) of a categorical variable, or the combinations of values for two or more categorical variables in a dataset, but you don’t need the counts, there is an even simpler function <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code> for that:</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; # A tibble: 5 × 1
 #&gt;   cut      
@@ -454,20 +456,20 @@
 <p>A common way of comparing multiple distributions is to create a single graph with multiple histograms, one for each variable or subset of observations.</p>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> function in ggplot2 allows you to take a plot and split it up into multiple plots based on some categorical variable. The first argument to <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> is an expression of the form <code>~ var_name</code> where <code>var_name</code> is the name of the grouping variable.</p>
 <p>First, let’s start by graphing the distribution of the <code>price</code> variable without regard to cut. We will set the number of bin width to 500 (dollars)</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Interestingly, the distribution appears to be bimodal, with the second, smaller mode around 4500.</p>
 <p>Now lets plot the same graph but add the <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> function. Remember to add a plus sign <code>+</code> at the end of the <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> so R knows you are trying add another layer to the graph:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">cut</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The resulting plot now has five small graphs, called facets in tidyverse lingo, each labeled with the value of <code>cut</code> it represents.</p>
 <p>A common issue when faceting is that all facets have the same x and y axis limits. For example, in the graph above, the y axis ranges from 0 to about 5500, but the highest count for Fair cut diamonds is less than 200 because there are far fewer of these diamonds sold. If you goal is to show the <em>distribution</em> of prices rather than the relative sample size of the each cut, it makes more sense to let the y axis scale vary based on the data. You can accomplish this with the <code>scales</code> argument to <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>:</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">500</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">cut</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre></div>
@@ -480,21 +482,21 @@
 <span class="header-section-number">6.8.2</span> Strip plots<a class="anchor" aria-label="anchor" href="#strip-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p>Strip charts are another common way to visualize the relationship between a numerical variable and a categorical variable. For this kind of plot, you use the <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> function. Unlike a histogram, which creates the y axis for you by counting the number of rows, a strip chart requires you to specify both the x and y axes in the aesthetic mapping. Most often the categorical variable is the explanatory variable and is placed on the x axis:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>As you can see, there is quite a bit of overplotting. This makes it more difficult to estimate the density of points in any part of the graph. If overplotting is minor, one solution is to use hollow circles instead of filled ones by altering the <code>shape</code> argument to <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>. With severe overplotting like this, a better strategy is to make the points semi-transparent by setting the <code>alpha</code> argument to something low like 0.1 indicating 10% opacity.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>One nice thing about strip plots is that they make it easy to view the both the raw data <em>and</em> summary statistics such as the means and confidence intervals.</p>
 <p>The trick to adding summary statistics to a ggplot based on raw data is that you have to first create a new data frame containing the summary statistics. If you remember, we summarized the price by cut like this:</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span><span class="va">diamonds_grouped</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s expand that a bit to include upper and lower confidence limits:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">price_summary</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
 <span>    <span class="va">diamonds_grouped</span>, </span>
@@ -513,7 +515,7 @@
 #&gt; 4 Premium        4584.  37.0          4657.          4512.
 #&gt; 5 Ideal          3458.  25.9          3508.          3407.</code></pre>
 <p>Now that you have the summary statistics, add the means to the graph using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar()</a></code> function. Because the crossbars will be based on the summary data, not the raw data, you will need to specify a new data argument and aesthetic mappings. The required aesthetics for <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar()</a></code> are <code>y</code>, <code>ymin</code>, and <code>ymax</code>. Setting the color to red will make the crossbars stand out against the black raw data points.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_crossbar</a></span><span class="op">(</span></span>
@@ -532,7 +534,7 @@
 </h2>
 <p>The most basic type of graph for visualizing the relationship between two numerical variables is the scatterplot. The <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function can be used to add points two a graph. When it is used with numerical variables for the <code>x</code> and <code>y</code> aesthetics, the result is a scatterplot.</p>
 <p>For example, the following graph shows the relationship between carat and price:</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;"></div>
@@ -545,7 +547,7 @@
 <p>One way to do this might be to use <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> to create a separate scatter plot for each cut.</p>
 <p>A common alternative is to add a third aesthetic to the plot to differentiate points in some other way than by their x and y coordinates. These aesthetics include <code>color</code>, <code>size</code>, <code>shape</code>, and <code>alpha</code> for points, and <code>linetype</code> for lines. See the ggplot2 documentation on <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html">Aesthetic specifications</a> for examples.</p>
 <p>The following code plots the same scatter plot as above, but with the color aesthetic mapped to the cut variable. To reduce overplotting, the alpha level has been reduced to 0.3.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span>, color <span class="op">=</span> <span class="va">cut</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="lab-6_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;"></div>
@@ -559,7 +561,7 @@
 <p>For your assignment, you will work with the famous Edgar Anderson <code>iris</code> data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are <em>Iris setosa</em>, <em>versicolor</em>, and <em>virginica</em>.</p>
 <p>You can print <code>iris</code> in the console to see the data set, but because it is a basic data frame and not an enhanced tibble, it will not print in the user-friendly manner of tibbles that you are used to. To have it print more nicely, turn it into a tibble first.</p>
 <p>Add this to your script:</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># so it prints a little nicer</span></span></code></pre></div>
 <p>Note that when you do this, iris will now show up in your Environment tab.</p>
 <div id="questions-2" class="section level3" number="6.10.1">
@@ -602,9 +604,9 @@
 <li><p>Visualize the relationship between petal length, petal width, and species using a scatter plot. Map the two numerical variables to the x and y axes and map species to the color and shape aesthetics.</p></li>
 </ol>
 </div>
-<div id="submission-2" class="section level3" number="6.10.2">
+<div id="submission-1" class="section level3" number="6.10.2">
 <h3>
-<span class="header-section-number">6.10.2</span> Submission<a class="anchor" aria-label="anchor" href="#submission-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.2</span> Submission<a class="anchor" aria-label="anchor" href="#submission-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.</p>
 <p>Then copy the URL to your GitHub repository and submit that to the Assignment on D2L.</p>
@@ -661,7 +663,7 @@
 <li>
 <a class="nav-link" href="#assignment-4"><span class="header-section-number">6.10</span> Assignment</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#questions-2"><span class="header-section-number">6.10.1</span> Questions</a></li>
-<li><a class="nav-link" href="#submission-2"><span class="header-section-number">6.10.2</span> Submission</a></li>
+<li><a class="nav-link" href="#submission-1"><span class="header-section-number">6.10.2</span> Submission</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#further-reading-1"><span class="header-section-number">6.11</span> Further reading</a></li>
@@ -682,7 +684,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-01-30.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

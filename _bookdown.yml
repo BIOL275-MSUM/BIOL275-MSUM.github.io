@@ -20,6 +20,7 @@ rmd_files: [
   "project-options.Rmd",
   "code-sections.Rmd",
   "downloading.Rmd",
+  "organizing-data.Rmd",
   "r-markdown-docs.Rmd",
   "lab-reports.Rmd",
   "session-info.Rmd",

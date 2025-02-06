@@ -1,3 +1,4 @@
+lab-schedule
 lab-1-introduction-to-r-and-rstudio
 learning-outcomes
 assignment

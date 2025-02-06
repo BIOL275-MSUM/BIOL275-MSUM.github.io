@@ -1,8 +1,31 @@
-# EDA Repository 
+# EDA Repository
 
-## Create a repository for your project
+## Claim Your Group Repository
 
-One member of your group should [create a new repository](https://docs.github.com/en/get-started/quickstart/create-a-repo) on GitHub. Name the repository using your last names, the year, and "EDA Project", for example: "MacArthur and Wilson 2022 EDA Project". While creating the project, choose to make it public and initialize it with a README file.
+To get started, you need to claim your group repository for this assignment via GitHub Classroom.
+
+1. **Access the Assignment Link:**
+   - Log into D2L.
+   - Navigate to the Biostatistics course.
+   - Locate the assignment link titled *Exploratory Data Analysis Group Assignment*.
+
+2. **Claim Your Repository:**
+   - Choose one person to claim the repository:
+       - Click on the assignment link in D2L.
+       - Sign in to GitHub if prompted.
+       - Accept the assignment and create your group repository.
+       - Name the repository using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
+   - After the repo is created, other group members should follow the link and join the same repository.
+
+3. **Clone the Repository:**
+   - All group members should do this.
+   - Copy the repository URL from GitHub.
+   - Open RStudio.
+   - Go to *File* > *New Project* > *Version Control* > *Git*.
+   - Paste the URL and choose a directory on your computer.
+   - Click *Create Project*.
+
+## README Setup
 
 Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this\*.
 

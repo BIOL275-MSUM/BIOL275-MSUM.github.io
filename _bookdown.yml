@@ -12,6 +12,7 @@ rmd_files: [
   "lab-6.Rmd",
   
   "eda-project.Rmd",
+  "eda-repository.Rmd",
   "eda-sac-application.Rmd",
   "data-sets.Rmd",
   "citing-r.Rmd",

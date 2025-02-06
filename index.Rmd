@@ -18,17 +18,13 @@ Welcome to the website for *BIOL 275 Biostatistics at MSUM*. This site serves as
 
 ## 2025 Lab Schedule
 
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
-| Week     | Date      | Tuesday Activity                       | Thursday Activity                                                                        |          |
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
-| 1        | Jan 14-16 | Lab 1: [Introduction to R and RStudio] | EDA Activity 1: Introduction to the Exploratory Data Analysis Project and team formation |          |
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
-| 2        | Jan 21-23 | Lab 2: [Workflow Basics]               | EDA Activity 2: Choose a question and [find a dataset](data-sets.html)                   |          |
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
-| 3        | Jan 28-30 | Lab 3: [Data visualization]            | EDA Activity 2 (continued)                                                               |          |
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
-| 4        | Feb 4-6   | Lab 4: [Data import]                   | EDA Activity 3: Repository setup                                                         |          |
-+----------+-----------+----------------------------------------+------------------------------------------------------------------------------------------+----------+
+|  |  |  |  |  |
+|-----------|-----------|-----------|------------------------------|-----------|
+| Week | Date | Tuesday Activity | Thursday Activity |  |
+| 1 | Jan 14-16 | Lab 1: [Introduction to R and RStudio] | EDA Activity 1: Introduction to the Exploratory Data Analysis Project and team formation |  |
+| 2 | Jan 21-23 | Lab 2: [Workflow Basics] | EDA Activity 2: Choose a question and [find a dataset](data-sets.html) |  |
+| 3 | Jan 28-30 | Lab 3: [Data visualization] | EDA Activity 2 (continued) |  |
+| 4 | Feb 4-6 | Lab 4: [Data import] | EDA Activity 3: [Repository setup](eda-repository.html) |  |
 
 ## Acknowledgements {.unnumbered}
 

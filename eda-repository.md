@@ -1,0 +1,64 @@
+# EDA Repository
+
+## Claim Your Group Repository
+
+To get started, you need to claim your group repository for this assignment via GitHub Classroom.
+
+1. **Access the Assignment Link:**
+   - Log into D2L.
+   - Navigate to the Biostatistics course.
+   - Locate the assignment link titled *Exploratory Data Analysis Group Assignment*.
+
+2. **Claim Your Repository:**
+   - Choose one person to claim the repository:
+       - Click on the assignment link in D2L.
+       - Sign in to GitHub if prompted.
+       - Accept the assignment and create your group repository.
+       - Name the repository using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
+   - After the repo is created, other group members should follow the link and join the same repository.
+
+3. **Clone the Repository:**
+   - All group members should do this.
+   - Copy the repository URL from GitHub.
+   - Open RStudio.
+   - Go to *File* > *New Project* > *Version Control* > *Git*.
+   - Paste the URL and choose a directory on your computer.
+   - Click *Create Project*.
+
+## README Setup
+
+Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this\*.
+
+
+``` md
+# MacArthur and Wilson 2022 EDA Project
+
+## An equilibrium theory of insular zoogeography*
+
+by Robert MacArthur and E. O. Wilson
+
+An exploratory data analysis for BIOL 275 Biostatistics at Minnesota State University Moorhead. Instructor: Chris Merkord
+
+### Abstract
+
+A graphical equilibrium model, balancing immigration and extinction rates of species, has been developed which appears fully consistent with the fauna-area curves and the distance effect seen in land and freshwater bird faunas of the Indo-Australian islands. The establishment of the equilibrium condition allows the development of a more precise zoogeographic theory than hitherto possible. 
+
+One new and non-obvious prediction can be made from the model which is immediately verifiable from existing data, that the number of species increases with area more rapidly on far islands than on near ones. Similarly, the number of species on large islands decreases with distance faster than does the number of species on small islands.
+
+As groups of islands pass from the unsaturated to saturated conditions, the variance-to-mean ratio should change from unity to about one-half. When the faunal buildup reaches 90% of the equilibrium number, the extinction rate in species/year should equal 2.303 times the variance divided by the time (in years) required to reach the 90% level. The implications of this relation are discussed with reference to the Krakatau faunas, where the buildup rate is known.
+
+A "radiation zone," in which the rate of intra-archipelagic exchange of autochthonous species approaches or exceeds extraarchipelagic immigration toward the outer limits of the taxon's range, is predicted as still another consequence of the equilibrium condition. This condition seems to be fulfilled by conventional information but cannot be rigorously tested with the existing data.
+
+Where faunas are at or near equilibrium, it should be possible to devise indirect estimates of the actual immigration and extinction rates, as well as of the times required to reach equilibrium. It should also be possible to estimate the mean dispersal distance of propagules overseas from the zoogeographic data. Mathematical models have been constructed to these ends and certain applications suggested.
+
+The main purpose of the paper is to express the criteria and implications of the equilibrium condition, without extending them for the present beyond the Indo-Australian bird faunas.
+```
+
+\*Note: this is not a real abstract, it is meant only as an example for how to format your abstract.
+
+Your EDA project will have its own GitHub repository which will eventually include:
+
+1.  An R project file (.Rproj) and .gitignore file
+2.  Your data analysis R scripts
+3.  README.Rmd containing the text and code to create your final poster
+4.  README.md containing your final "poster". This document will contain the same text, tables, graphs, and other figures as the poster you present at the Student Academic Conference.

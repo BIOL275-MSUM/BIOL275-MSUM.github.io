@@ -102,9 +102,11 @@ timeline
 choose-a-project
 data-sets
 question
-create-a-repository-for-your-project
 data-import-tips
 assignments
+eda-repository
+claim-your-group-repository
+readme-setup
 sac-application
 overview-2
 how-to-write-an-abstract

@@ -36,7 +36,7 @@ If your project is tracked using **Git** and stored on GitHub, you should **not*
    data/
    ```
    
-2. **Store data source information in a `README` file** inside the `data/` folder. This file should include:
+2. **Store data source information in a repository `README` file**. This file should include:
    - Where to obtain the data.
    - Any preprocessing steps needed before analysis.
    - A description of file formats and column meanings.

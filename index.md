@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "BIOL 275 Biostatistics at MSUM"
 author: "Chris Merkord"
-date: "2025-02-06"
+date: "2025-02-13"
 github-repo: BIOL275-MSUM/BIOL275-MSUM.github.io
 description: "Website for the course BIOL 275 Biostatistics at MSUM."
 site: bookdown::bookdown_site
@@ -18,13 +18,24 @@ Welcome to the website for *BIOL 275 Biostatistics at MSUM*. This site serves as
 
 ## 2025 Lab Schedule
 
-|  |  |  |  |  |
-|-------------|-------------|-------------|-----------------------|-------------|
-| Week | Date | Tuesday Activity | Thursday Activity |  |
-| 1 | Jan 14-16 | [Lab 1: Introduction to R and RStudio](lab-1.html) | EDA Activity 1: Introduction to the Exploratory Data Analysis Project and team formation |  |
-| 2 | Jan 21-23 | [Lab 2: Workflow Basics](lab-2.html) | EDA Activity 2: Choose a question and [find a dataset](data-sets.html) |  |
-| 3 | Jan 28-30 | [Lab 3: Data visualization](lab-3.html) | EDA Activity 2 (continued) |  |
-| 4 | Feb 4-6 | [Lab 4: Data import](lab-4.html) | EDA Activity 3: [Repository setup](eda-repository.html) |  |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| Week       | Date       | Tuesday Activity                                   | Thursday Activity                                                                        |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 1          | Jan 14-16  | [Lab 1: Introduction to R and RStudio](lab-1.html) | EDA Activity 1: Introduction to the Exploratory Data Analysis Project and team formation |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 2          | Jan 21-23  | [Lab 2: Workflow Basics](lab-2.html)               | EDA Activity 2: Choose a question and [find a dataset](data-sets.html)                   |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 3          | Jan 28-30  | [Lab 3: Data visualization](lab-3.html)            | EDA Activity 2, continued                                                                |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 4          | Feb 4-6    | [Lab 4: Data import](lab-4.html)                   | EDA Activity 3: [Repository setup](eda-repository.html)                                  |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 5          | Feb 11-13  | ~~Lab 5: Data subsetting~~ \                       | EDA Activity 3: [Repository setup](eda-repository.html)                                  |            |
+|            |            | (class cancelled)                                  |                                                                                          |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
+| 6          | Feb 18-20  | Lab 5: Data subsetting                             | EDA Activity 4: Abstract Writing                                                         |            |
+|            |            |                                                    |                                                                                          |            |
+|            |            |                                                    | (independent study, instructor not present)                                              |            |
++------------+------------+----------------------------------------------------+------------------------------------------------------------------------------------------+------------+
 
 ## Acknowledgements {.unnumbered}
 

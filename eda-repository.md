@@ -1,31 +1,86 @@
-# EDA Repository
+# EDA Repository Setup
 
-## Claim Your Group Repository
+For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA).
 
-To get started, you need to claim your group repository for this assignment via GitHub Classroom.
+## 1. Claim Your Group Repository
 
-1. **Access the Assignment Link:**
-   - Log into D2L.
-   - Navigate to the Biostatistics course.
-   - Locate the assignment link titled *Exploratory Data Analysis Group Assignment*.
+Each group will use a GitHub Classroom repository for their project.
 
-2. **Claim Your Repository:**
-   - Choose one person to claim the repository:
-       - Click on the assignment link in D2L.
-       - Sign in to GitHub if prompted.
-       - Accept the assignment and create your group repository.
-       - Name the repository using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
-   - After the repo is created, other group members should follow the link and join the same repository.
+1.  **Access the Assignment Link**
+    -   Log into D2L and navigate to the Biostatistics course.
+    -   Locate the *Exploratory Data Analysis Group Assignment* link.
+    -   Click the link to access GitHub Classroom.
+2.  **Claim Your Repository:**
+    -   One person should claim the repository on behalf of the group.
+    -   Sign in to GitHub if prompted and accept the assignment.
+    -   Name the repository using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
+    -   Next, other group members should follow the same D2L link, find the repository, and join it.
+3.  **Clone the Repository:**
+    -   All group members should do this.
+    -   Copy the repository URL from GitHub.
+    -   Open RStudio.
+    -   Go to *File* \> *New Project* \> *Version Control* \> *Git*.
+    -   Paste the URL and choose a directory on your computer.
+    -   Click *Create Project*.
 
-3. **Clone the Repository:**
-   - All group members should do this.
-   - Copy the repository URL from GitHub.
-   - Open RStudio.
-   - Go to *File* > *New Project* > *Version Control* > *Git*.
-   - Paste the URL and choose a directory on your computer.
-   - Click *Create Project*.
+## 2. Configure Project Options
 
-## README Setup
+After cloning, adjust your RStudio project settings:
+
+-   Enable Git version control if it is not already active.
+-   Adjust settings as needed (see [Project Options](project-options.html) for details).
+
+## 3. Set Up Your Folder Structure
+
+Organize your repository with the following folders:
+
+-   `data/` – Store datasets here.
+-   `output/` – Save graphs and other output here.
+
+Add these folders to your `.gitignore` file to prevent them from being tracked by Git.
+
+For guidance on structuring your project, refer to [Organizing Data](organizing-data.html).
+
+## 4. Create Essential Files
+
+Each group should create the following files.
+
+-   **Individual R Script** (`your-name.R`)\
+    Each team member should create an R script to experiment with code.
+
+-   **Quarto Report File** (`eda.qmd`)\
+    This is your shared document for writing the report.
+
+-   **README File** (`README.md`)\
+    A README file provides a brief summary of your project. To create one, install the **usethis** package and run the following command in the R console:
+
+    ``` r
+    usethis::use_readme_md()
+    ```
+
+    Note: only one person should create the shared files (report and readme files), while each person should create their own R script.
+
+## 5. Commit and Push Your Changes
+
+1.  Save all open files in RStudio
+2.  Use the Git tab in RStudio to **stage** and **commit** your changes.
+3.  **Push** updates to GitHub.
+4.  Verify your files are visible in your repository online.
+5.  You may need to **Pull** updates from GitHub before pushing, if another group member has pushed a commit since the last time you pulled.
+
+## 6. Update your README
+
+Your README.md file should be updated to include the following:
+
+-   Project Title
+
+-   A sentence describing the project; e.g. an expanded version of "this is an exploratory data analysis for Biostatistics"
+
+-   List of team members
+
+-   Project Abstract
+
+-   Instructions for downloading and saving the necessary data files
 
 Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this\*.
 
@@ -55,10 +110,3 @@ The main purpose of the paper is to express the criteria and implications of the
 ```
 
 \*Note: this is not a real abstract, it is meant only as an example for how to format your abstract.
-
-Your EDA project will have its own GitHub repository which will eventually include:
-
-1.  An R project file (.Rproj) and .gitignore file
-2.  Your data analysis R scripts
-3.  README.Rmd containing the text and code to create your final poster
-4.  README.md containing your final "poster". This document will contain the same text, tables, graphs, and other figures as the poster you present at the Student Academic Conference.

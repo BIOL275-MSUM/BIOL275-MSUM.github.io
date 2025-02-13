@@ -80,7 +80,7 @@
 <li><a class="" href="lab-6-data-summarizing.html"><span class="header-section-number">6</span> Lab 6: Data summarizing</a></li>
 <li class="book-part">EDA Project</li>
 <li><a class="" href="eda-project.html"><span class="header-section-number">7</span> EDA Project</a></li>
-<li><a class="" href="eda-repository.html"><span class="header-section-number">8</span> EDA Repository</a></li>
+<li><a class="" href="eda-repository-setup.html"><span class="header-section-number">8</span> EDA Repository Setup</a></li>
 <li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
 <li><a class="" href="data-sets-1.html"><span class="header-section-number">10</span> Data sets</a></li>
 <li><a class="" href="citing-r.html"><span class="header-section-number">11</span> Citing R</a></li>
@@ -146,14 +146,14 @@
 </li>
 </ul>
 <p>Step 2: Run the following two commands.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb107-1"><a href="git-setup.html#cb107-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Jane Doe"</span></span>
-<span id="cb107-2"><a href="git-setup.html#cb107-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email janedoe@example.com</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="git-setup.html#cb108-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Jane Doe"</span></span>
+<span id="cb108-2"><a href="git-setup.html#cb108-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email janedoe@example.com</span></code></pre></div>
 <p>replacing the example name and email address with your own. The username can be whatever you want, but I recommend your first and last name. The email address should be the one associated with your GitHub account.</p>
 <p>You should enter one command, press enter, then enter the second command, and press enter.</p>
 <p>Note, do not enter the $ sign at the beginning, that is just how we note a command prompt.</p>
 <p>Note, the username needs double quotes around it because it contains a space. The email does not, although it doesn’t hurt anything to use quotes there as well.</p>
 <p>You can check to make sure the commands work by printing the global configuration settings with this command:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="git-setup.html#cb108-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="git-setup.html#cb109-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div>
 <p>You should see your user name and user email listed there.</p>
 </div>
 <div id="option-2-use-r-code" class="section level3" number="13.1.2">
@@ -162,7 +162,7 @@
 </h3>
 <p>This option works well if you are using a campus computer lab where your account is deleted at the end of every day. Thanks to <a href="https://happygitwithr.com/hello-git">Happy Git and GitHub for the useR</a> for the inspiration for this.</p>
 <p>This method requires the <a href="https://usethis.r-lib.org/">usethis package</a>, so you will first need to install the package. Then run:</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install if needed:</span></span>
 <span><span class="co"># install.packages("usethis")</span></span>
 <span></span>

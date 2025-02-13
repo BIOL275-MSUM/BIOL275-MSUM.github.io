@@ -104,9 +104,13 @@ data-sets
 question
 data-import-tips
 assignments
-eda-repository
+eda-repository-setup
 claim-your-group-repository
-readme-setup
+configure-project-options
+set-up-your-folder-structure
+create-essential-files
+commit-and-push-your-changes
+update-your-readme
 sac-application
 overview-2
 how-to-write-an-abstract

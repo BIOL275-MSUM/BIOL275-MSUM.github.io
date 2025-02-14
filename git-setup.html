@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>13 Git Setup | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="To use Git, you must first give it some information. This needs to be done once on each computer you use and once in Posit Cloud if you are using that. If you are using a computer in a campus...">
+<meta name="description" content="13.1 Introduction Git is a version control system that helps track changes to your code and collaborate with others. See Git and Github for more information. In this guide, you’ll learn how to...">
 <meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="13 Git Setup | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="To use Git, you must first give it some information. This needs to be done once on each computer you use and once in Posit Cloud if you are using that. If you are using a computer in a campus...">
+<meta property="og:description" content="13.1 Introduction Git is a version control system that helps track changes to your code and collaborate with others. See Git and Github for more information. In this guide, you’ll learn how to...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13 Git Setup | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="To use Git, you must first give it some information. This needs to be done once on each computer you use and once in Posit Cloud if you are using that. If you are using a computer in a campus...">
+<meta name="twitter:description" content="13.1 Introduction Git is a version control system that helps track changes to your code and collaborate with others. See Git and Github for more information. In this guide, you’ll learn how to...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0.9000/transition.js"></script><script src="libs/bs3compat-0.9.0.9000/tabs.js"></script><script src="libs/bs3compat-0.9.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -110,68 +110,95 @@
 <h1>
 <span class="header-section-number">13</span> Git Setup<a class="anchor" aria-label="anchor" href="#git-setup"><i class="fas fa-link"></i></a>
 </h1>
-<p>To use Git, you must first give it some information. This needs to be done once on each computer you use and once in Posit Cloud if you are using that. If you are using a computer in a campus computer lab, all your documents and git settings are deleted each day, so you will need to do this step each time you sign in.</p>
-<div id="introduce-yourself-to-git" class="section level2" number="13.1">
+<div id="introduction-3" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">13.1</span> Introduce yourself to Git<a class="anchor" aria-label="anchor" href="#introduce-yourself-to-git"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-3"><i class="fas fa-link"></i></a>
 </h2>
-<p>Whether you use Posit Cloud or install the software yourself, you will need to introduce yourself to Git before you can start using it. Quick instructions are provided below. For more detailed instructions, see <a href="https://happygitwithr.com/hello-git">Introduce yourself to Git (happygitwithr.com)</a> and the Git documentation <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">1.6 Getting Started - First-Time Git Setup (git-scm.com)</a>.</p>
-<p>What does “introduce yourself” mean? Basically it just means you need to give Git a name and email address it can attach to all the commits (changes) you make to your repositories.</p>
-<p>There are two ways to introduce yourself: 1) by using the shell, or 2) via code in an R script. The shell works best if you need to do it once, for example if you are using Posit Cloud or have installed the software on your own computer. An R script works best if you are using a campus computer lab where your account is deleted at the end of every day.</p>
-<div id="option-1-use-the-shell" class="section level3" number="13.1.1">
-<h3>
-<span class="header-section-number">13.1.1</span> Option 1: Use the shell<a class="anchor" aria-label="anchor" href="#option-1-use-the-shell"><i class="fas fa-link"></i></a>
-</h3>
-<p>One way to introduce yourself is to use the command line in a shell. A shell is a simple program on your computer that lets you run commands to do things. Every Windows, macOS, or Linux computer has one, even if you’ve never seen it. You may also the shell called a “terminal” or “command line”.</p>
-<p>STEP 1: Open a Git command line in one of the following three ways (the first is the easiest):</p>
-<ul>
-<li>
-<p>In RStudio running on any computer or in Posit Cloud, do one of the following:</p>
-<ul>
-<li>Click the Terminal tab in RStudio (bottom left pane next to the Console tab) or use the keyboard shortcut Alt+Shift+M</li>
-<li>Click the Git tab in RStudio (top right pane), click the More icon (a blue gear), and click Shell… which will open a shell window</li>
-</ul>
-</li>
-<li>
-<p>In Windows:</p>
-<ul>
-<li>run the application Git CMD, for example by clicking on the icon in the Windows Start Menu</li>
-</ul>
-</li>
-<li>
-<p>In macOS:</p>
-<ul>
-<li>open a command line</li>
-</ul>
-</li>
-</ul>
-<p>Step 2: Run the following two commands.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb108-1"><a href="git-setup.html#cb108-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Jane Doe"</span></span>
-<span id="cb108-2"><a href="git-setup.html#cb108-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email janedoe@example.com</span></code></pre></div>
-<p>replacing the example name and email address with your own. The username can be whatever you want, but I recommend your first and last name. The email address should be the one associated with your GitHub account.</p>
-<p>You should enter one command, press enter, then enter the second command, and press enter.</p>
-<p>Note, do not enter the $ sign at the beginning, that is just how we note a command prompt.</p>
-<p>Note, the username needs double quotes around it because it contains a space. The email does not, although it doesn’t hurt anything to use quotes there as well.</p>
-<p>You can check to make sure the commands work by printing the global configuration settings with this command:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb109-1"><a href="git-setup.html#cb109-1" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code></pre></div>
-<p>You should see your user name and user email listed there.</p>
+<p>Git is a version control system that helps track changes to your code and collaborate with others. See <a href="git-and-github.html">Git and Github</a> for more information.</p>
+<p>In this guide, you’ll learn how to <strong>install</strong> and <strong>configure</strong> Git for use with RStudio.</p>
+<blockquote>
+<p><strong>Note:</strong> If you are working in a campus computer lab or using <a href="https://posit.cloud/">Posit Cloud</a>, Git is already installed. You do <strong>not</strong> need to install anything, but you do need to configure Git (see below).</p>
+</blockquote>
+<p>More complete instructions can be found in the <a href="https://happygitwithr.com/install-git">Install Git</a> chapter of <a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a> by Jenny Bryan. Additional help can be found on the Git Documentation site at <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">1.5 Getting Started - Installing Git</a>.</p>
 </div>
-<div id="option-2-use-r-code" class="section level3" number="13.1.2">
+<div id="installing-git" class="section level2" number="13.2">
+<h2>
+<span class="header-section-number">13.2</span> Installing Git<a class="anchor" aria-label="anchor" href="#installing-git"><i class="fas fa-link"></i></a>
+</h2>
+<div id="windows" class="section level3" number="13.2.1">
 <h3>
-<span class="header-section-number">13.1.2</span> Option 2: Use R code<a class="anchor" aria-label="anchor" href="#option-2-use-r-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2.1</span> Windows<a class="anchor" aria-label="anchor" href="#windows"><i class="fas fa-link"></i></a>
 </h3>
-<p>This option works well if you are using a campus computer lab where your account is deleted at the end of every day. Thanks to <a href="https://happygitwithr.com/hello-git">Happy Git and GitHub for the useR</a> for the inspiration for this.</p>
-<p>This method requires the <a href="https://usethis.r-lib.org/">usethis package</a>, so you will first need to install the package. Then run:</p>
+<ol style="list-style-type: decimal">
+<li>Download the Git installer from <a href="https://git-scm.com/downloads">git-scm.com</a>.</li>
+<li>Run the installer and accept the default settings.</li>
+<li>Ensure that “Git from the command line and also from 3rd-party software” is selected.</li>
+<li>For the default editor, you can leave it as Vim or choose another text editor.</li>
+<li>Complete the installation and restart your computer (if prompted).</li>
+</ol>
+</div>
+<div id="macos" class="section level3" number="13.2.2">
+<h3>
+<span class="header-section-number">13.2.2</span> macOS<a class="anchor" aria-label="anchor" href="#macos"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<p><a href="https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac">Open the Terminal</a> and type:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb108-1"><a href="git-setup.html#cb108-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div>
+<p>If Git is already installed, this will display the installed version.</p>
+</li>
+<li>
+<p>If Git is not installed, you can install it using Homebrew:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb109-1"><a href="git-setup.html#cb109-1" tabindex="-1"></a><span class="ex">brew</span> install git</span></code></pre></div>
+<p>If you do not have Homebrew installed, follow the instructions at <a href="https://brew.sh/">brew.sh</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="configuring-git" class="section level2" number="13.3">
+<h2>
+<span class="header-section-number">13.3</span> Configuring Git<a class="anchor" aria-label="anchor" href="#configuring-git"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once Git is installed, you need to introduce yourself to Git by setting your name and email. This information is used to track your contributions.</p>
+<div id="checking-your-git-configuration" class="section level3" number="13.3.1">
+<h3>
+<span class="header-section-number">13.3.1</span> Checking Your Git Configuration<a class="anchor" aria-label="anchor" href="#checking-your-git-configuration"><i class="fas fa-link"></i></a>
+</h3>
+<p>Before setting up Git, check if you have already configured it:</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install if needed:</span></span>
-<span><span class="co"># install.packages("usethis")</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
-<span><span class="fu">use_git_config</span><span class="op">(</span>user.name <span class="op">=</span> <span class="st">"Kari Nordmann"</span>, user.email <span class="op">=</span> <span class="st">"kari@example.org"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the package by highlighting that line without the comment character and running it.</p>
-<p>Note: this only needs to be run once until your user account is deleted from the computer, but it doesn’t hurt to run it again.</p>
-
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gert/">gert</a></span><span class="op">)</span></span>
+<span><span class="fu">git_config_global</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
+<div id="setting-up-your-git-identity" class="section level3" number="13.3.2">
+<h3>
+<span class="header-section-number">13.3.2</span> Setting Up Your Git Identity<a class="anchor" aria-label="anchor" href="#setting-up-your-git-identity"><i class="fas fa-link"></i></a>
+</h3>
+<p>If your name and email are not set, you can configure them using <code>usethis</code>:</p>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
+<span><span class="fu">use_git_config</span><span class="op">(</span>user.name <span class="op">=</span> <span class="st">"Your Name"</span>, user.email <span class="op">=</span> <span class="st">"your.email@example.com"</span><span class="op">)</span></span></code></pre></div>
+<p>Replace <code>"Your Name"</code> with your actual name and <code>"your.email@example.com"</code> with the email address associated with your GitHub account.</p>
+</div>
+</div>
+<div id="verifying-your-configuration" class="section level2" number="13.4">
+<h2>
+<span class="header-section-number">13.4</span> Verifying Your Configuration<a class="anchor" aria-label="anchor" href="#verifying-your-configuration"><i class="fas fa-link"></i></a>
+</h2>
+<p>To verify that Git saved your settings, run:</p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">git_config_global</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>You should see your name and email in the output.</p>
+</div>
+<div id="next-steps" class="section level2" number="13.5">
+<h2>
+<span class="header-section-number">13.5</span> Next Steps<a class="anchor" aria-label="anchor" href="#next-steps"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>If you plan to use Git with GitHub, set up SSH authentication or use HTTPS.</li>
+<li>Learn how to create and clone repositories in RStudio.</li>
+</ul>
+<p>You’re now ready to use Git with RStudio!</p>
+
 </div>
 </div>
   <div class="chapter-nav">
@@ -181,18 +208,27 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#git-setup"><span class="header-section-number">13</span> Git Setup</a></li>
+<li><a class="nav-link" href="#introduction-3"><span class="header-section-number">13.1</span> Introduction</a></li>
 <li>
-<a class="nav-link" href="#introduce-yourself-to-git"><span class="header-section-number">13.1</span> Introduce yourself to Git</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#option-1-use-the-shell"><span class="header-section-number">13.1.1</span> Option 1: Use the shell</a></li>
-<li><a class="nav-link" href="#option-2-use-r-code"><span class="header-section-number">13.1.2</span> Option 2: Use R code</a></li>
+<a class="nav-link" href="#installing-git"><span class="header-section-number">13.2</span> Installing Git</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#windows"><span class="header-section-number">13.2.1</span> Windows</a></li>
+<li><a class="nav-link" href="#macos"><span class="header-section-number">13.2.2</span> macOS</a></li>
 </ul>
 </li>
+<li>
+<a class="nav-link" href="#configuring-git"><span class="header-section-number">13.3</span> Configuring Git</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#checking-your-git-configuration"><span class="header-section-number">13.3.1</span> Checking Your Git Configuration</a></li>
+<li><a class="nav-link" href="#setting-up-your-git-identity"><span class="header-section-number">13.3.2</span> Setting Up Your Git Identity</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#verifying-your-configuration"><span class="header-section-number">13.4</span> Verifying Your Configuration</a></li>
+<li><a class="nav-link" href="#next-steps"><span class="header-section-number">13.5</span> Next Steps</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/laptop-setup.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/laptop-setup.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/git-setup.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/git-setup.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -204,7 +240,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-13.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

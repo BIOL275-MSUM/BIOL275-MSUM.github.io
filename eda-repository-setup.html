@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>8 EDA Repository Setup | BIOL 275 Biostatistics at MSUM</title>
 <meta name="author" content="Chris Merkord">
-<meta name="description" content="For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA). ...">
+<meta name="description" content="For this assignment, you will form a project team on GitHub, create a shared GitHub repository for your project, and create the basic folder and file structure within the project. Your repository...">
 <meta name="generator" content="bookdown 0.42 with bs4_book()">
 <meta property="og:title" content="8 EDA Repository Setup | BIOL 275 Biostatistics at MSUM">
 <meta property="og:type" content="book">
-<meta property="og:description" content="For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA). ...">
+<meta property="og:description" content="For this assignment, you will form a project team on GitHub, create a shared GitHub repository for your project, and create the basic folder and file structure within the project. Your repository...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="8 EDA Repository Setup | BIOL 275 Biostatistics at MSUM">
-<meta name="twitter:description" content="For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA). ...">
+<meta name="twitter:description" content="For this assignment, you will form a project team on GitHub, create a shared GitHub repository for your project, and create the basic folder and file structure within the project. Your repository...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0.9000/transition.js"></script><script src="libs/bs3compat-0.9.0.9000/tabs.js"></script><script src="libs/bs3compat-0.9.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -110,70 +110,189 @@
 <h1>
 <span class="header-section-number">8</span> EDA Repository Setup<a class="anchor" aria-label="anchor" href="#eda-repository-setup"><i class="fas fa-link"></i></a>
 </h1>
-<p>For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA).</p>
-<div id="claim-your-group-repository" class="section level2" number="8.1">
+<p>For this assignment, you will form a project team on GitHub, create a shared GitHub repository for your project, and create the basic folder and file structure within the project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA).</p>
+<div id="create-your-team-and-repository-on-github" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">8.1</span> 1. Claim Your Group Repository<a class="anchor" aria-label="anchor" href="#claim-your-group-repository"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Create your team and repository on GitHub<a class="anchor" aria-label="anchor" href="#create-your-team-and-repository-on-github"><i class="fas fa-link"></i></a>
 </h2>
-<p>Each group will use a GitHub Classroom repository for their project.</p>
+<p>The first step is to <em>create</em> or <em>join</em> a project team and a team repository on GitHub. Your instructor has a set procedure for how to do this in a way that grants the correct viewing and editing permissions for all team members and the instructor.</p>
 <ol style="list-style-type: decimal">
 <li>
-<strong>Access the Assignment Link</strong>
-<ul>
+<strong>STEP 1: one team member creates a new team</strong>
+<ol style="list-style-type: decimal">
 <li>Log into D2L and navigate to the Biostatistics course.</li>
 <li>Locate the <em>Exploratory Data Analysis Group Assignment</em> link.</li>
 <li>Click the link to access GitHub Classroom.</li>
-</ul>
+<li>Click the button to create a new group</li>
+<li>Name the group using the last names of each group member, separated by hyphens (e.g., <code>merkord-broderick</code>).</li>
+<li>Click OK. This will create the new group <em>and</em> create the group repository for the EDA project.</li>
+<li>Copy the URL to the new group repository and continue below to clone the repository in RStudio.</li>
+</ol>
 </li>
 <li>
-<strong>Claim Your Repository:</strong>
-<ul>
-<li>One person should claim the repository on behalf of the group.</li>
-<li>Sign in to GitHub if prompted and accept the assignment.</li>
-<li>Name the repository using the last names of each group member, separated by hyphens (e.g., <code>merkord-broderick</code>).</li>
-<li>Next, other group members should follow the same D2L link, find the repository, and join it.</li>
-</ul>
-</li>
-<li>
-<strong>Clone the Repository:</strong>
-<ul>
-<li>All group members should do this.</li>
-<li>Copy the repository URL from GitHub.</li>
-<li>Open RStudio.</li>
-<li>Go to <em>File</em> &gt; <em>New Project</em> &gt; <em>Version Control</em> &gt; <em>Git</em>.</li>
-<li>Paste the URL and choose a directory on your computer.</li>
-<li>Click <em>Create Project</em>.</li>
-</ul>
+<strong>STEP 2: other team members join the team</strong>
+<ol style="list-style-type: decimal">
+<li>Log into D2L and navigate to the Biostatistics course.</li>
+<li>Locate the <em>Exploratory Data Analysis Group Assignment</em> link.</li>
+<li>Click the link to access GitHub Classroom.</li>
+<li>Find the group your teammate created in the previous step. It should have your last name in it.</li>
+<li>Click Join.</li>
+<li>Copy the URL to the new group repository and continue below to clone the repository in RStudio.</li>
+</ol>
 </li>
 </ol>
 </div>
-<div id="configure-project-options" class="section level2" number="8.2">
+<div id="check-your-git-setup" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">8.2</span> 2. Configure Project Options<a class="anchor" aria-label="anchor" href="#configure-project-options"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Check your Git Setup<a class="anchor" aria-label="anchor" href="#check-your-git-setup"><i class="fas fa-link"></i></a>
 </h2>
-<p>After cloning, adjust your RStudio project settings:</p>
-<ul>
-<li>Enable Git version control if it is not already active.</li>
-<li>Adjust settings as needed (see <a href="project-options.html">Project Options</a> for details).</li>
-</ul>
+<p>To continue, Git should be installed on your computer and you should have introduced yourself to Git.</p>
+<p>See <a href="git-setup.html">Git Setup</a> for instructions.</p>
 </div>
-<div id="set-up-your-folder-structure" class="section level2" number="8.3">
+<div id="clone-the-eda-project-repository-using-rstudio" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">8.3</span> 3. Set Up Your Folder Structure<a class="anchor" aria-label="anchor" href="#set-up-your-folder-structure"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Clone the EDA project repository using RStudio<a class="anchor" aria-label="anchor" href="#clone-the-eda-project-repository-using-rstudio"><i class="fas fa-link"></i></a>
 </h2>
-<p>Organize your repository with the following folders:</p>
+<p>Each group member should clone the EDA project repository to their computer or Posit Cloud workspace.</p>
+<blockquote>
+<p><strong>IMPORTANT: It is best if one team member clones the repository, makes their first Git commit, and pushes it to GitHub before the other team members clone the repository.</strong></p>
+</blockquote>
+<div id="clone-step-1-one-team-member-clones-the-repository-and-makes-the-first-commit" class="section level3" number="8.3.1">
+<h3>
+<span class="header-section-number">8.3.1</span> <strong>CLONE STEP 1: One team member clones the repository and makes the first commit</strong><a class="anchor" aria-label="anchor" href="#clone-step-1-one-team-member-clones-the-repository-and-makes-the-first-commit"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<p><strong>Copy the URL</strong> for the EDA project repository</p>
+<ol style="list-style-type: lower-alpha">
+<li>Copy the URL to the repository you created or joined in the previous step</li>
+<li>If you no longer see the URL on your screen, you can find your repo like this:
+<ol style="list-style-type: lower-roman">
+<li>Go to <a href="https://github.com" class="uri">https://github.com</a> or click on the GitHub logo to go to the home page</li>
+<li>Click the name of your team in the left navigation menu under <strong>Your teams</strong>
+</li>
+<li>Click the <strong>Repositories</strong> tab to see a list of your team’s repositories</li>
+<li>Click the name of your repository</li>
+<li>On the repo page, copy the URL from the browser or click the green Code button followed by the copy button next to the URL</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Open RStudio</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Open RStudio on your computer, or sign in to Posit Cloud in a web browser.</li>
+</ol>
+</li>
+<li>
+<p><strong>Create RStudio Project and Clone the Repository</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Go to <em>File</em> &gt; <em>New Project</em> &gt; <em>Version Control</em> &gt; <em>Git</em>
+</li>
+<li>Paste the URL into the first box</li>
+<li>Hit the tab key to autocomplete the second box</li>
+<li>Leave the directory as is, for example <code>~</code>
+</li>
+<li>Click <em>Create Project</em>
+</li>
+</ol>
+<p>NOTE: When you created the new project, RStudio automatically created a project file (<code>repo-name.Rproj</code>) and a <code>.gitignore</code> file. The addition of these two files to the new project repo is the first set of changes you need to commit to Git.</p>
+</li>
+<li>
+<p><strong>Make your first commit</strong></p>
+<ol style="list-style-type: decimal">
+<li>Navigate to the <strong>Git tab</strong> in the upper right pane in RStudio</li>
+<li>
+<strong>Stage</strong> the changes (the addition of two new files):
+<ol style="list-style-type: lower-alpha">
+<li>Check the box next to the R project file and gitignore file</li>
+</ol>
+</li>
+<li>
+<strong>Commit</strong> the changes
+<ol style="list-style-type: lower-alpha">
+<li>Click the <em>Commit</em> button on the Git tab
 <ul>
-<li>
-<code>data/</code> – Store datasets here.</li>
-<li>
-<code>output/</code> – Save graphs and other output here.</li>
+<li>Note: if the buttons in your Git tab do not have labels, make your RStudio window larger until the labels show up</li>
 </ul>
-<p>Add these folders to your <code>.gitignore</code> file to prevent them from being tracked by Git.</p>
-<p>For guidance on structuring your project, refer to <a href="organizing-data.html">Organizing Data</a>.</p>
+</li>
+<li>In the popup window, add a commit message “First commit” and click the <em>Commit</em> button</li>
+<li>Close the commit window
+<ul>
+<li>Note: at this point you should see a message in your Git tab like “Your branch is ahead of ‘origin/main’ by 1 commit.”</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<strong>Push</strong> the commit to GitHub
+<ol style="list-style-type: lower-alpha">
+<li>Click the <em>Push</em> button on the Git tab
+<ul>
+<li>Note: you should see a small window appear with some confirmation that the commit was pushed to github. Close this window.</li>
+<li>Note: the message in your Git tab “Your branch is ahead of ‘origin/main’ by 1 commit.” should disappear.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 </div>
-<div id="create-essential-files" class="section level2" number="8.4">
+<div id="clone-step-2-other-team-members-clone-the-repository" class="section level3" number="8.3.2">
+<h3>
+<span class="header-section-number">8.3.2</span> CLONE STEP 2: Other team members clone the repository<a class="anchor" aria-label="anchor" href="#clone-step-2-other-team-members-clone-the-repository"><i class="fas fa-link"></i></a>
+</h3>
+<p>After the CLONE STEP 1 is complete, each of the other team members may now clone the repository to their own computer or Posit Cloud workspace. See instructions above for how to do each step:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Copy the URL</strong> for the EDA project repository</li>
+<li><strong>Open RStudio</strong></li>
+<li><strong>Create RStudio Project and Clone the Repository</strong></li>
+</ol>
+</div>
+</div>
+<div id="collaboration-on-shared-git-repositories" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">8.4</span> 4. Create Essential Files<a class="anchor" aria-label="anchor" href="#create-essential-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Collaboration on shared Git repositories<a class="anchor" aria-label="anchor" href="#collaboration-on-shared-git-repositories"><i class="fas fa-link"></i></a>
+</h2>
+<p>Moving forward, each team member may now edit files in their local repository and stage, commit, and push those changes to Github.</p>
+<p>If another team member has pushed commits to Github, you should use the Pull button in the Git tab to pull those commits to your local.</p>
+<p>The workflow should look something like this:</p>
+<div class="float">
+<img src="https://kevintshoemaker.github.io/StatsChats/GIT1.png" alt="Multi-user workflow with Git and GitHub. Credit: MathBio Stats Chats"><div class="figcaption">Multi-user workflow with Git and GitHub. Credit: <a href="https://kevintshoemaker.github.io/StatsChats/GIT_tutorial.html">MathBio Stats Chats</a>
+</div>
+</div>
+<p>When working in a shared Git repository, it’s important to collaborate carefully to avoid conflicts and make it easy to track changes. First, always <em>Pull</em> the latest changes from the remote repository (green down arrow in the Git tab) before you start editing, so you have the most up-to-date version of the files. Make edits in small, focused units—try to work on one file at a time and commit each change separately with a meaningful commit message. This makes it easier to track changes and undo mistakes if necessary. Avoid editing the same files as your teammates at the same time to prevent merge conflicts, which happen when Git cannot automatically combine changes. If you do run into a merge conflict, don’t panic—Git will highlight the conflicting sections, and you can work with your teammates to resolve them. Finally, communicate with your team about what you’re working on, and push (<code>git push</code>) your changes frequently to keep the repository updated. Following these practices will help ensure a smooth and efficient workflow when working with Git.</p>
+</div>
+<div id="configure-project-options" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Configure Project Options<a class="anchor" aria-label="anchor" href="#configure-project-options"><i class="fas fa-link"></i></a>
+</h2>
+<p>After cloning, adjust your RStudio project options so that .RData files and .RHistory files are not created or opened automatically.</p>
+<p>See <a href="project-options.html">Project Options</a> for instructions.</p>
+</div>
+<div id="set-up-your-data-folder" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Set Up Your Data Folder<a class="anchor" aria-label="anchor" href="#set-up-your-data-folder"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the Files tab in RStudio, you can click the New Folder button to create a new folder named <code>data</code>. This is where you will save your original data files.</p>
+<p>In general, you should avoid storing data on Github when possible. See <a href="organizing-data.html">Organizing Data</a> for rationale.</p>
+<p>To tell git not to track your data files, add the <code>data</code> folder to your <code>.gitignore</code> file:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open the <code>.gitignore</code> file by clicking on it in the Files tab in RStudio</p></li>
+<li>
+<p>Type <code>data/</code> on a new line at the end of the document</p>
+<p>Be sure to end it with a slash, which tells Git its a folder</p>
+</li>
+<li><p>Save the changes to the file.</p></li>
+<li><p>Stage, commit, and push the changes.</p></li>
+</ol>
+<p>Each team member will need to create the data folder and copy their data into it. Only one person needs to update the <code>.gitignore</code> file.</p>
+</div>
+<div id="create-essential-files" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Create Essential Files<a class="anchor" aria-label="anchor" href="#create-essential-files"><i class="fas fa-link"></i></a>
 </h2>
 <p>Each group should create the following files.</p>
 <ul>
@@ -190,32 +309,31 @@ A README file provides a brief summary of your project. To create one, install t
 </li>
 </ul>
 </div>
-<div id="commit-and-push-your-changes" class="section level2" number="8.5">
+<div id="update-your-readme" class="section level2" number="8.8">
 <h2>
-<span class="header-section-number">8.5</span> 5. Commit and Push Your Changes<a class="anchor" aria-label="anchor" href="#commit-and-push-your-changes"><i class="fas fa-link"></i></a>
-</h2>
-<ol style="list-style-type: decimal">
-<li>Save all open files in RStudio</li>
-<li>Use the Git tab in RStudio to <strong>stage</strong> and <strong>commit</strong> your changes.</li>
-<li>
-<strong>Push</strong> updates to GitHub.</li>
-<li>Verify your files are visible in your repository online.</li>
-<li>You may need to <strong>Pull</strong> updates from GitHub before pushing, if another group member has pushed a commit since the last time you pulled.</li>
-</ol>
-</div>
-<div id="update-your-readme" class="section level2" number="8.6">
-<h2>
-<span class="header-section-number">8.6</span> 6. Update your README<a class="anchor" aria-label="anchor" href="#update-your-readme"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.8</span> Update your README<a class="anchor" aria-label="anchor" href="#update-your-readme"><i class="fas fa-link"></i></a>
 </h2>
 <p>Your README.md file should be updated to include the following:</p>
 <ul>
-<li><p>Project Title</p></li>
-<li><p>A sentence describing the project; e.g. an expanded version of “this is an exploratory data analysis for Biostatistics”</p></li>
-<li><p>List of team members</p></li>
-<li><p>Project Abstract</p></li>
-<li><p>Instructions for downloading and saving the necessary data files</p></li>
+<li>Project Title</li>
+<li>A sentence describing the project; e.g. an expanded version of “this is an exploratory data analysis for Biostatistics”</li>
+<li>List of team members</li>
+<li>Project Abstract</li>
+<li>Instructions for downloading and saving the necessary data files</li>
 </ul>
-<p>Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this*.</p>
+<p>Edit the <code>README.md</code> file:</p>
+<ol style="list-style-type: decimal">
+<li>Open the file by clicking its name in the Files tab in RStudio</li>
+<li>Switch to visual mode if you are not already in it (look for the visual mode button at the top of the source pane in RStudio. See the RStudio web page on <a href="https://rstudio.github.io/visual-markdown-editing/">Visual R Markdown</a> for tips on editing markdown files.</li>
+<li>Make necessary edits to the file.</li>
+<li>Save the changes, then stage, commit, and push.</li>
+<li>Other team members should <em>Pull</em> the commit.</li>
+</ol>
+<div id="example-readme" class="section level3" number="8.8.1">
+<h3>
+<span class="header-section-number">8.8.1</span> Example README<a class="anchor" aria-label="anchor" href="#example-readme"><i class="fas fa-link"></i></a>
+</h3>
+<p>The entire readme should look something like this</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb100-1"><a href="eda-repository-setup.html#cb100-1" tabindex="-1"></a><span class="fu"># MacArthur and Wilson 2022 EDA Project</span></span>
 <span id="cb100-2"><a href="eda-repository-setup.html#cb100-2" tabindex="-1"></a></span>
 <span id="cb100-3"><a href="eda-repository-setup.html#cb100-3" tabindex="-1"></a><span class="fu">## An equilibrium theory of insular zoogeography*</span></span>
@@ -236,9 +354,18 @@ A README file provides a brief summary of your project. To create one, install t
 <span id="cb100-18"><a href="eda-repository-setup.html#cb100-18" tabindex="-1"></a></span>
 <span id="cb100-19"><a href="eda-repository-setup.html#cb100-19" tabindex="-1"></a>Where faunas are at or near equilibrium, it should be possible to devise indirect estimates of the actual immigration and extinction rates, as well as of the times required to reach equilibrium. It should also be possible to estimate the mean dispersal distance of propagules overseas from the zoogeographic data. Mathematical models have been constructed to these ends and certain applications suggested.</span>
 <span id="cb100-20"><a href="eda-repository-setup.html#cb100-20" tabindex="-1"></a></span>
-<span id="cb100-21"><a href="eda-repository-setup.html#cb100-21" tabindex="-1"></a>The main purpose of the paper is to express the criteria and implications of the equilibrium condition, without extending them for the present beyond the Indo-Australian bird faunas.</span></code></pre></div>
+<span id="cb100-21"><a href="eda-repository-setup.html#cb100-21" tabindex="-1"></a>The main purpose of the paper is to express the criteria and implications of the equilibrium condition, without extending them for the present beyond the Indo-Australian bird faunas.</span>
+<span id="cb100-22"><a href="eda-repository-setup.html#cb100-22" tabindex="-1"></a></span>
+<span id="cb100-23"><a href="eda-repository-setup.html#cb100-23" tabindex="-1"></a><span class="fu">### Data setup</span></span>
+<span id="cb100-24"><a href="eda-repository-setup.html#cb100-24" tabindex="-1"></a></span>
+<span id="cb100-25"><a href="eda-repository-setup.html#cb100-25" tabindex="-1"></a>Instructions for getting the data needed to run the scripts, and how to organize it in the repository:</span>
+<span id="cb100-26"><a href="eda-repository-setup.html#cb100-26" tabindex="-1"></a></span>
+<span id="cb100-27"><a href="eda-repository-setup.html#cb100-27" tabindex="-1"></a><span class="ss">1. </span>Go to https://example.com and click the "Download Data" button to download the CSV file containing the data.</span>
+<span id="cb100-28"><a href="eda-repository-setup.html#cb100-28" tabindex="-1"></a></span>
+<span id="cb100-29"><a href="eda-repository-setup.html#cb100-29" tabindex="-1"></a><span class="ss">2. </span>Copy the downloaded data into a <span class="in">`data`</span> folder in the repository</span></code></pre></div>
 <p>*Note: this is not a real abstract, it is meant only as an example for how to format your abstract.</p>
 
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -248,12 +375,21 @@ A README file provides a brief summary of your project. To create one, install t
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#eda-repository-setup"><span class="header-section-number">8</span> EDA Repository Setup</a></li>
-<li><a class="nav-link" href="#claim-your-group-repository"><span class="header-section-number">8.1</span> 1. Claim Your Group Repository</a></li>
-<li><a class="nav-link" href="#configure-project-options"><span class="header-section-number">8.2</span> 2. Configure Project Options</a></li>
-<li><a class="nav-link" href="#set-up-your-folder-structure"><span class="header-section-number">8.3</span> 3. Set Up Your Folder Structure</a></li>
-<li><a class="nav-link" href="#create-essential-files"><span class="header-section-number">8.4</span> 4. Create Essential Files</a></li>
-<li><a class="nav-link" href="#commit-and-push-your-changes"><span class="header-section-number">8.5</span> 5. Commit and Push Your Changes</a></li>
-<li><a class="nav-link" href="#update-your-readme"><span class="header-section-number">8.6</span> 6. Update your README</a></li>
+<li><a class="nav-link" href="#create-your-team-and-repository-on-github"><span class="header-section-number">8.1</span> Create your team and repository on GitHub</a></li>
+<li><a class="nav-link" href="#check-your-git-setup"><span class="header-section-number">8.2</span> Check your Git Setup</a></li>
+<li>
+<a class="nav-link" href="#clone-the-eda-project-repository-using-rstudio"><span class="header-section-number">8.3</span> Clone the EDA project repository using RStudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#clone-step-1-one-team-member-clones-the-repository-and-makes-the-first-commit"><span class="header-section-number">8.3.1</span> CLONE STEP 1: One team member clones the repository and makes the first commit</a></li>
+<li><a class="nav-link" href="#clone-step-2-other-team-members-clone-the-repository"><span class="header-section-number">8.3.2</span> CLONE STEP 2: Other team members clone the repository</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#collaboration-on-shared-git-repositories"><span class="header-section-number">8.4</span> Collaboration on shared Git repositories</a></li>
+<li><a class="nav-link" href="#configure-project-options"><span class="header-section-number">8.5</span> Configure Project Options</a></li>
+<li><a class="nav-link" href="#set-up-your-data-folder"><span class="header-section-number">8.6</span> Set Up Your Data Folder</a></li>
+<li><a class="nav-link" href="#create-essential-files"><span class="header-section-number">8.7</span> Create Essential Files</a></li>
+<li>
+<a class="nav-link" href="#update-your-readme"><span class="header-section-number">8.8</span> Update your README</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#example-readme"><span class="header-section-number">8.8.1</span> Example README</a></li></ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -271,7 +407,7 @@ A README file provides a brief summary of your project. To create one, install t
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-13.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,47 +1,128 @@
 # EDA Repository Setup
 
-For this assignment, you will set up a GitHub repository for your group project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA).
+For this assignment, you will form a project team on GitHub, create a shared GitHub repository for your project, and create the basic folder and file structure within the project. Your repository will be the central place where your team collaborates on your exploratory data analysis (EDA).
 
-## 1. Claim Your Group Repository
+## Create your team and repository on GitHub
 
-Each group will use a GitHub Classroom repository for their project.
+The first step is to *create* or *join* a project team and a team repository on GitHub. Your instructor has a set procedure for how to do this in a way that grants the correct viewing and editing permissions for all team members and the instructor.
 
-1.  **Access the Assignment Link**
-    -   Log into D2L and navigate to the Biostatistics course.
-    -   Locate the *Exploratory Data Analysis Group Assignment* link.
-    -   Click the link to access GitHub Classroom.
-2.  **Claim Your Repository:**
-    -   One person should claim the repository on behalf of the group.
-    -   Sign in to GitHub if prompted and accept the assignment.
-    -   Name the repository using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
-    -   Next, other group members should follow the same D2L link, find the repository, and join it.
-3.  **Clone the Repository:**
-    -   All group members should do this.
-    -   Copy the repository URL from GitHub.
-    -   Open RStudio.
-    -   Go to *File* \> *New Project* \> *Version Control* \> *Git*.
-    -   Paste the URL and choose a directory on your computer.
-    -   Click *Create Project*.
+1.  **STEP 1: one team member creates a new team**
+    1.  Log into D2L and navigate to the Biostatistics course.
+    2.  Locate the *Exploratory Data Analysis Group Assignment* link.
+    3.  Click the link to access GitHub Classroom.
+    4.  Click the button to create a new group
+    5.  Name the group using the last names of each group member, separated by hyphens (e.g., `merkord-broderick`).
+    6.  Click OK. This will create the new group *and* create the group repository for the EDA project.
+    7.  Copy the URL to the new group repository and continue below to clone the repository in RStudio.
+2.  **STEP 2: other team members join the team**
+    1.  Log into D2L and navigate to the Biostatistics course.
+    2.  Locate the *Exploratory Data Analysis Group Assignment* link.
+    3.  Click the link to access GitHub Classroom.
+    4.  Find the group your teammate created in the previous step. It should have your last name in it.
+    5.  Click Join.
+    6.  Copy the URL to the new group repository and continue below to clone the repository in RStudio.
 
-## 2. Configure Project Options
+## Check your Git Setup
 
-After cloning, adjust your RStudio project settings:
+To continue, Git should be installed on your computer and you should have introduced yourself to Git.
 
--   Enable Git version control if it is not already active.
--   Adjust settings as needed (see [Project Options](project-options.html) for details).
+See [Git Setup](git-setup.html) for instructions.
 
-## 3. Set Up Your Folder Structure
+## Clone the EDA project repository using RStudio
 
-Organize your repository with the following folders:
+Each group member should clone the EDA project repository to their computer or Posit Cloud workspace.
 
--   `data/` – Store datasets here.
--   `output/` – Save graphs and other output here.
+> **IMPORTANT: It is best if one team member clones the repository, makes their first Git commit, and pushes it to GitHub before the other team members clone the repository.**
 
-Add these folders to your `.gitignore` file to prevent them from being tracked by Git.
+### **CLONE STEP 1: One team member clones the repository and makes the first commit**
 
-For guidance on structuring your project, refer to [Organizing Data](organizing-data.html).
+1.  **Copy the URL** for the EDA project repository
 
-## 4. Create Essential Files
+    a.  Copy the URL to the repository you created or joined in the previous step
+    b.  If you no longer see the URL on your screen, you can find your repo like this:
+        i.  Go to <https://github.com> or click on the GitHub logo to go to the home page
+        ii. Click the name of your team in the left navigation menu under **Your teams**
+        iii. Click the **Repositories** tab to see a list of your team's repositories
+        iv. Click the name of your repository
+        v.  On the repo page, copy the URL from the browser or click the green Code button followed by the copy button next to the URL
+
+2.  **Open RStudio**
+
+    a.  Open RStudio on your computer, or sign in to Posit Cloud in a web browser.
+
+3.  **Create RStudio Project and Clone the Repository**
+
+    a.  Go to *File* \> *New Project* \> *Version Control* \> *Git*
+    b.  Paste the URL into the first box
+    c.  Hit the tab key to autocomplete the second box
+    d.  Leave the directory as is, for example `~`
+    e.  Click *Create Project*
+
+    NOTE: When you created the new project, RStudio automatically created a project file (`repo-name.Rproj`) and a `.gitignore` file. The addition of these two files to the new project repo is the first set of changes you need to commit to Git.
+
+4.  **Make your first commit**
+
+    1.  Navigate to the **Git tab** in the upper right pane in RStudio
+    2.  **Stage** the changes (the addition of two new files):
+        a.  Check the box next to the R project file and gitignore file
+    3.  **Commit** the changes
+        a.  Click the *Commit* button on the Git tab
+            -   Note: if the buttons in your Git tab do not have labels, make your RStudio window larger until the labels show up
+        b.  In the popup window, add a commit message "First commit" and click the *Commit* button
+        c.  Close the commit window
+            -   Note: at this point you should see a message in your Git tab like "Your branch is ahead of 'origin/main' by 1 commit."
+    4.  **Push** the commit to GitHub
+        a.  Click the *Push* button on the Git tab
+            -   Note: you should see a small window appear with some confirmation that the commit was pushed to github. Close this window.
+            -   Note: the message in your Git tab "Your branch is ahead of 'origin/main' by 1 commit." should disappear.
+
+### CLONE STEP 2: Other team members clone the repository
+
+After the CLONE STEP 1 is complete, each of the other team members may now clone the repository to their own computer or Posit Cloud workspace. See instructions above for how to do each step:
+
+1.  **Copy the URL** for the EDA project repository
+2.  **Open RStudio**
+3.  **Create RStudio Project and Clone the Repository**
+
+## Collaboration on shared Git repositories
+
+Moving forward, each team member may now edit files in their local repository and stage, commit, and push those changes to Github.
+
+If another team member has pushed commits to Github, you should use the Pull button in the Git tab to pull those commits to your local.
+
+The workflow should look something like this:
+
+![Multi-user workflow with Git and GitHub. Credit: [MathBio Stats Chats](https://kevintshoemaker.github.io/StatsChats/GIT_tutorial.html)](https://kevintshoemaker.github.io/StatsChats/GIT1.png)
+
+When working in a shared Git repository, it's important to collaborate carefully to avoid conflicts and make it easy to track changes. First, always *Pull* the latest changes from the remote repository (green down arrow in the Git tab) before you start editing, so you have the most up-to-date version of the files. Make edits in small, focused units—try to work on one file at a time and commit each change separately with a meaningful commit message. This makes it easier to track changes and undo mistakes if necessary. Avoid editing the same files as your teammates at the same time to prevent merge conflicts, which happen when Git cannot automatically combine changes. If you do run into a merge conflict, don't panic—Git will highlight the conflicting sections, and you can work with your teammates to resolve them. Finally, communicate with your team about what you're working on, and push (`git push`) your changes frequently to keep the repository updated. Following these practices will help ensure a smooth and efficient workflow when working with Git.
+
+## Configure Project Options
+
+After cloning, adjust your RStudio project options so that .RData files and .RHistory files are not created or opened automatically.
+
+See [Project Options](project-options.html) for instructions.
+
+## Set Up Your Data Folder
+
+In the Files tab in RStudio, you can click the New Folder button to create a new folder named `data`. This is where you will save your original data files.
+
+In general, you should avoid storing data on Github when possible. See [Organizing Data](organizing-data.html) for rationale.
+
+To tell git not to track your data files, add the `data` folder to your `.gitignore` file:
+
+1.  Open the `.gitignore` file by clicking on it in the Files tab in RStudio
+
+2.  Type `data/` on a new line at the end of the document
+
+    Be sure to end it with a slash, which tells Git its a folder
+
+3.  Save the changes to the file.
+
+4.  Stage, commit, and push the changes.
+
+Each team member will need to create the data folder and copy their data into it. Only one person needs to update the `.gitignore` file.
+
+## Create Essential Files
 
 Each group should create the following files.
 
@@ -60,29 +141,27 @@ Each group should create the following files.
 
     Note: only one person should create the shared files (report and readme files), while each person should create their own R script.
 
-## 5. Commit and Push Your Changes
-
-1.  Save all open files in RStudio
-2.  Use the Git tab in RStudio to **stage** and **commit** your changes.
-3.  **Push** updates to GitHub.
-4.  Verify your files are visible in your repository online.
-5.  You may need to **Pull** updates from GitHub before pushing, if another group member has pushed a commit since the last time you pulled.
-
-## 6. Update your README
+## Update your README
 
 Your README.md file should be updated to include the following:
 
 -   Project Title
-
 -   A sentence describing the project; e.g. an expanded version of "this is an exploratory data analysis for Biostatistics"
-
 -   List of team members
-
 -   Project Abstract
-
 -   Instructions for downloading and saving the necessary data files
 
-Edit the README file (either right there on GitHub or RStudio after cloning the repository) to include your names, the project title, and the abstract. The names and title should be formatted as second-level headings. The entire readme should look something like this\*.
+Edit the `README.md` file:
+
+1.  Open the file by clicking its name in the Files tab in RStudio
+2.  Switch to visual mode if you are not already in it (look for the visual mode button at the top of the source pane in RStudio. See the RStudio web page on [Visual R Markdown](https://rstudio.github.io/visual-markdown-editing/) for tips on editing markdown files.
+3.  Make necessary edits to the file.
+4.  Save the changes, then stage, commit, and push.
+5.  Other team members should *Pull* the commit.
+
+### Example README
+
+The entire readme should look something like this
 
 
 ``` md
@@ -107,6 +186,14 @@ A "radiation zone," in which the rate of intra-archipelagic exchange of autochth
 Where faunas are at or near equilibrium, it should be possible to devise indirect estimates of the actual immigration and extinction rates, as well as of the times required to reach equilibrium. It should also be possible to estimate the mean dispersal distance of propagules overseas from the zoogeographic data. Mathematical models have been constructed to these ends and certain applications suggested.
 
 The main purpose of the paper is to express the criteria and implications of the equilibrium condition, without extending them for the present beyond the Indo-Australian bird faunas.
+
+### Data setup
+
+Instructions for getting the data needed to run the scripts, and how to organize it in the repository:
+
+1. Go to https://example.com and click the "Download Data" button to download the CSV file containing the data.
+
+2. Copy the downloaded data into a `data` folder in the repository
 ```
 
 \*Note: this is not a real abstract, it is meant only as an example for how to format your abstract.

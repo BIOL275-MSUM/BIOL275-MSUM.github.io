@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 Lab 5: Data transformation 1 | BIOL 275 Biostatistics at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="5.1 Learning Outcomes By the end of this lab, students will be able to: Pick rows based on their values Reorder rows based on their values Use the pipe operator  5.2 Introduction The following...">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta property="og:title" content="5 Lab 5: Data transformation 1 | BIOL 275 Biostatistics at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="5.1 Learning Outcomes By the end of this lab, students will be able to: Pick rows based on their values Reorder rows based on their values Use the pipe operator  5.2 Introduction The following...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 Lab 5: Data transformation 1 | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="5.1 Learning Outcomes By the end of this lab, students will be able to: Pick rows based on their values Reorder rows based on their values Use the pipe operator  5.2 Introduction The following...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0.9000/transition.js"></script><script src="libs/bs3compat-0.9.0.9000/tabs.js"></script><script src="libs/bs3compat-0.9.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.9000/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.33/datatables.js"></script><link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BIOL 275 Biostatistics at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
+<li><a class="" href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
+<li><a class="" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
+<li><a class="" href="lab-4-data-import.html"><span class="header-section-number">4</span> Lab 4: Data import</a></li>
+<li><a class="active" href="lab-5-data-transformation-1.html"><span class="header-section-number">5</span> Lab 5: Data transformation 1</a></li>
+<li><a class="" href="lab-6-data-summarizing.html"><span class="header-section-number">6</span> Lab 6: Data summarizing</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">7</span> EDA Project</a></li>
+<li><a class="" href="eda-repository-setup.html"><span class="header-section-number">8</span> EDA Repository Setup</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">9</span> SAC Application</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">10</span> Data sets</a></li>
+<li><a class="" href="citing-r.html"><span class="header-section-number">11</span> Citing R</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="laptop-setup.html"><span class="header-section-number">12</span> Laptop Setup</a></li>
+<li><a class="" href="git-setup.html"><span class="header-section-number">13</span> Git Setup</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">15</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">16</span> Code Sections</a></li>
+<li><a class="" href="downloading-files.html"><span class="header-section-number">17</span> Downloading Files</a></li>
+<li><a class="" href="organizing-data.html"><span class="header-section-number">18</span> Organizing Data</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">19</span> R Markdown documents</a></li>
+<li><a class="" href="lab-reports.html"><span class="header-section-number">20</span> Lab Reports</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">21</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">23</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">24</span> GitHub Notifications</a></li>
+<li><a class="" href="references-2.html"><span class="header-section-number">25</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-5-data-transformation-1" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Lab 5: Data transformation 1<a class="anchor" aria-label="anchor" href="#lab-5-data-transformation-1"><i class="fas fa-link"></i></a>
+</h1>
+<div id="learning-outcomes-4" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Learning Outcomes<a class="anchor" aria-label="anchor" href="#learning-outcomes-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>By the end of this lab, students will be able to:</p>
+<ol style="list-style-type: decimal">
+<li>Pick rows based on their values</li>
+<li>Reorder rows based on their values</li>
+<li>Use the pipe operator</li>
+</ol>
+</div>
+<div id="introduction-1" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>The following assignment implements a just-in-time learning approach where you will acquire knowledge and skills exactly when you need them, rather than in advance.</p>
+</div>
+<div id="prerequisites-1" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Complete the following instructions to prepare for the lab:</p>
+<ol style="list-style-type: decimal">
+<li>Set the following global options in RStudio
+<ol style="list-style-type: lower-alpha">
+<li>Go to the Tools menu &gt; Global Options</li>
+<li>Under <strong>General &gt; Basic</strong>, uncheck the boxes under Workspace and History</li>
+<li>Under <strong>Code &gt; Editing</strong>, check the box for “Use native pipe operator”</li>
+<li>Under <strong>Code &gt; Completion</strong>, check the box for “Use tab for multiline autocompletions”</li>
+</ol>
+</li>
+<li>Claim your repository on GitHub by following the link on D2L in the Lab 5 Content module.</li>
+<li>Clone your repository to your computer using the <strong>New Project &gt; Version Control &gt; Git</strong> method</li>
+<li>Make your first commit by adding the R project file and gitignore file to Git.</li>
+</ol>
+</div>
+<div id="assignment-2" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment-2"><i class="fas fa-link"></i></a>
+</h2>
+<div id="instructions-1" class="section level3" number="5.4.1">
+<h3>
+<span class="header-section-number">5.4.1</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Open the <code>questions.R</code> script. This is where you will write the code to answer the questions below.</li>
+<li>If it is not already installed, then install the <strong>tidyverse</strong> package. Do not add code to the script to do this.</li>
+<li>Run the code under the sections:
+<ol style="list-style-type: lower-alpha">
+<li>
+<code>load packages ----</code>
+<ul>
+<li>Loads the required packages</li>
+</ul>
+</li>
+<li>
+<code>look at penguin data ----</code>
+<ul>
+<li>A variety of commands to remind you how to look at a dataset by printing various things in the console</li>
+</ul>
+</li>
+<li>
+<code>example of pipe usage ----</code>
+<ul>
+<li>Commands that illustrate how to use the pipe operator <code>|&gt;</code> .</li>
+<li>Read section <a href="https://r4ds.hadley.nz/data-transform.html#dplyr-basics">R4DS 3.1.3 dplyr basics</a> so you have a general idea of how the pipe is used.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Answer the questions in the <code>Questions ----</code> section of the script by writing code
+<ul>
+<li>Below each question, write code to perform the requested action</li>
+<li>Do not assign the results a name (i.e. do not create an object) using the assignment operator. For example, if the question asked you to glimpse the penguins data:
+<ul>
+<li>Correct: <code>penguins |&gt; glimpse()</code>
+</li>
+<li>Incorrect: <code>new_df &lt;- penguins |&gt; glimpse()</code>
+</li>
+</ul>
+</li>
+<li>Include only one command per question.
+<ul>
+<li><p>Do not include every version of code you tried.</p></li>
+<li><p>Only include a single command that performs the required action.</p></li>
+<li>
+<p>The command may extend over multiple lines, for example:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div id="questions-1" class="section level3" number="5.4.2">
+<h3>
+<span class="header-section-number">5.4.2</span> Questions<a class="anchor" aria-label="anchor" href="#questions-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Filter the penguins data to include only birds with bill lengths greater than 55 mm.</li>
+<li>Filter the penguins data to include only birds with flipper lengths less than or equal to 180 mm.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins.</li>
+<li>Filter the penguins data to exclude penguins on Biscoe Island.</li>
+<li>Filter the penguins data to include penguins captured in 2007 and 2009.</li>
+<li>Filter the data to include only penguins with a missing value for bill length.</li>
+<li>Filter the penguins data to exclude penguins with a missing value for sex.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.</li>
+<li>Arrange the penguins dataset in increasing order by flipper length.</li>
+<li>Arrange the penguins dataset in decreasing order by body mass.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.</li>
+</ol>
+</div>
+<div id="grading" class="section level3" number="5.4.3">
+<h3>
+<span class="header-section-number">5.4.3</span> Grading<a class="anchor" aria-label="anchor" href="#grading"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Your grade will be based on the completeness and accuracy of the code in your script.</p></li>
+<li><p>Commands will be run starting at the top of the script.</p></li>
+<li><p>Questions will be marked correct only if the code runs without error and produces the requested output in the console.</p></li>
+<li><p>Before submitting, you are strongly advised to run your entire script from top to bottom, one line at a time, to ensure it does not produce errors and it prints the requested output in the console.</p></li>
+</ul>
+</div>
+</div>
+<div id="submission" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Submission<a class="anchor" aria-label="anchor" href="#submission"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Save changes in your R script</li>
+<li>Stage your changes by checking the boxes next to files in the git tab</li>
+<li>Commit the changes</li>
+<li>Push the changes</li>
+<li>Go to Github and copy the URL to your lab repository online
+<ul>
+<li>The easiest way to copy the URL is to click the green <strong>Code</strong> button, then the copy button</li>
+</ul>
+</li>
+<li>Submit the URL to your assignment on D2L</li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-4-data-import.html"><span class="header-section-number">4</span> Lab 4: Data import</a></div>
+<div class="next"><a href="lab-6-data-summarizing.html"><span class="header-section-number">6</span> Lab 6: Data summarizing</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-5-data-transformation-1"><span class="header-section-number">5</span> Lab 5: Data transformation 1</a></li>
+<li><a class="nav-link" href="#learning-outcomes-4"><span class="header-section-number">5.1</span> Learning Outcomes</a></li>
+<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">5.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#prerequisites-1"><span class="header-section-number">5.3</span> Prerequisites</a></li>
+<li>
+<a class="nav-link" href="#assignment-2"><span class="header-section-number">5.4</span> Assignment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#instructions-1"><span class="header-section-number">5.4.1</span> Instructions</a></li>
+<li><a class="nav-link" href="#questions-1"><span class="header-section-number">5.4.2</span> Questions</a></li>
+<li><a class="nav-link" href="#grading"><span class="header-section-number">5.4.3</span> Grading</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#submission"><span class="header-section-number">5.5</span> Submission</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-5.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-5.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-02-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

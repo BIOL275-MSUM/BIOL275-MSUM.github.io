@@ -59,16 +59,26 @@ Complete the following instructions to prepare for the lab:
 ### Questions
 
 1.  Filter the penguins data to include only birds with bill lengths greater than 55 mm.
+    -   Familiarize yourself with the filter function: [R4DS 3.2.1 `filter()`](https://r4ds.hadley.nz/data-transform.html#filter)
+    -   Know how to use the logical operators
 2.  Filter the penguins data to include only birds with flipper lengths less than or equal to 180 mm.
 3.  Filter the penguins data to include only Chinstrap Penguins.
+    -   Avoid the `=` mistake described in [R4DS 3.2.2 Common mistakes](https://r4ds.hadley.nz/data-transform.html#filter)
 4.  Filter the penguins data to exclude penguins on Biscoe Island.
+    -   Use the "not equal to" operator described in R4DS 3.2.1
 5.  Filter the penguins data to include penguins captured in 2007 and 2009.
+    -   Use the "in" operator `%in%` described in R4DS 3.2.1
 6.  Filter the data to include only penguins with a missing value for bill length.
+    1.  Use the `is.na()` function
+    2.  See examples of this in [R4DS 4.3 Pipes](https://r4ds.hadley.nz/workflow-style.html#sec-pipes)
 7.  Filter the penguins data to exclude penguins with a missing value for sex.
 8.  Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.
+    -   Master the "or" operator `|` or the comma `,` as described in R4DS 3.2.1
 9.  Arrange the penguins dataset in increasing order by flipper length.
+    -   See [R4DS 3.2.3 `arrange()`](https://r4ds.hadley.nz/data-transform.html#arrange)
 10. Arrange the penguins dataset in decreasing order by body mass.
 11. Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.
+    -   This requires using the pipe operator: [R4DS 3.4 The pipe](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe)
 
 ### Grading
 

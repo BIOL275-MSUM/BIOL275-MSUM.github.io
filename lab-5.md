@@ -73,7 +73,7 @@ Complete the following instructions to prepare for the lab:
     2.  See examples of this in [R4DS 4.3 Pipes](https://r4ds.hadley.nz/workflow-style.html#sec-pipes)
 7.  Filter the penguins data to exclude penguins with a missing value for sex.
 8.  Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.
-    -   Master the "or" operator `|` or the comma `,` as described in R4DS 3.2.1
+    -   Master the "and" operator `&` or the comma `,` as described in R4DS 3.2.1
 9.  Arrange the penguins dataset in increasing order by flipper length.
     -   See [R4DS 3.2.3 `arrange()`](https://r4ds.hadley.nz/data-transform.html#arrange)
 10. Arrange the penguins dataset in decreasing order by body mass.

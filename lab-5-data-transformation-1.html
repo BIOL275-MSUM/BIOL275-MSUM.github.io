@@ -224,6 +224,7 @@
 <ul>
 <li>Avoid the <code>=</code> mistake described in <a href="https://r4ds.hadley.nz/data-transform.html#filter">R4DS 3.2.2 Common mistakes</a>
 </li>
+<li>Note that species is a categorical variable (see the <code>&lt;fct&gt;</code> below the variable name when you print the dataset in the console). See the first code block in <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe">R4DS 3.4 The pipe</a> for an example of filtering on a categorical variable.</li>
 </ul>
 </li>
 <li>Filter the penguins data to exclude penguins on Biscoe Island.
@@ -256,7 +257,7 @@
 </ul>
 </li>
 <li>Arrange the penguins dataset in decreasing order by body mass.</li>
-<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.
+<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and then arrange the rows by decreasing body mass.
 <ul>
 <li>This requires using the pipe operator: <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe">R4DS 3.4 The pipe</a>
 </li>

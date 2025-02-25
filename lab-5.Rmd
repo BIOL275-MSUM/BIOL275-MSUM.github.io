@@ -64,6 +64,7 @@ Complete the following instructions to prepare for the lab:
 2.  Filter the penguins data to include only birds with flipper lengths less than or equal to 180 mm.
 3.  Filter the penguins data to include only Chinstrap Penguins.
     -   Avoid the `=` mistake described in [R4DS 3.2.2 Common mistakes](https://r4ds.hadley.nz/data-transform.html#filter)
+    -   Note that species is a categorical variable (see the `<fct>` below the variable name when you print the dataset in the console). See the first code block in [R4DS 3.4 The pipe](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe) for an example of filtering on a categorical variable.
 4.  Filter the penguins data to exclude penguins on Biscoe Island.
     -   Use the "not equal to" operator described in R4DS 3.2.1
 5.  Filter the penguins data to include penguins captured in 2007 and 2009.

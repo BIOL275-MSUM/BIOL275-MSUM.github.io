@@ -78,7 +78,7 @@ Complete the following instructions to prepare for the lab:
 9.  Arrange the penguins dataset in increasing order by flipper length.
     -   See [R4DS 3.2.3 `arrange()`](https://r4ds.hadley.nz/data-transform.html#arrange)
 10. Arrange the penguins dataset in decreasing order by body mass.
-11. Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.
+11. Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and then arrange the rows by decreasing body mass.
     -   This requires using the pipe operator: [R4DS 3.4 The pipe](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe)
 
 ### Grading

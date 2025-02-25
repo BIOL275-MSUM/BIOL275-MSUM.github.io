@@ -212,17 +212,56 @@
 <span class="header-section-number">5.4.2</span> Questions<a class="anchor" aria-label="anchor" href="#questions-1"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li>Filter the penguins data to include only birds with bill lengths greater than 55 mm.</li>
+<li>Filter the penguins data to include only birds with bill lengths greater than 55 mm.
+<ul>
+<li>Familiarize yourself with the filter function: <a href="https://r4ds.hadley.nz/data-transform.html#filter">R4DS 3.2.1 <code>filter()</code></a>
+</li>
+<li>Know how to use the logical operators</li>
+</ul>
+</li>
 <li>Filter the penguins data to include only birds with flipper lengths less than or equal to 180 mm.</li>
-<li>Filter the penguins data to include only Chinstrap Penguins.</li>
-<li>Filter the penguins data to exclude penguins on Biscoe Island.</li>
-<li>Filter the penguins data to include penguins captured in 2007 and 2009.</li>
-<li>Filter the data to include only penguins with a missing value for bill length.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins.
+<ul>
+<li>Avoid the <code>=</code> mistake described in <a href="https://r4ds.hadley.nz/data-transform.html#filter">R4DS 3.2.2 Common mistakes</a>
+</li>
+</ul>
+</li>
+<li>Filter the penguins data to exclude penguins on Biscoe Island.
+<ul>
+<li>Use the “not equal to” operator described in R4DS 3.2.1</li>
+</ul>
+</li>
+<li>Filter the penguins data to include penguins captured in 2007 and 2009.
+<ul>
+<li>Use the “in” operator <code>%in%</code> described in R4DS 3.2.1</li>
+</ul>
+</li>
+<li>Filter the data to include only penguins with a missing value for bill length.
+<ol style="list-style-type: decimal">
+<li>Use the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function</li>
+<li>See examples of this in <a href="https://r4ds.hadley.nz/workflow-style.html#sec-pipes">R4DS 4.3 Pipes</a>
+</li>
+</ol>
+</li>
 <li>Filter the penguins data to exclude penguins with a missing value for sex.</li>
-<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.</li>
-<li>Arrange the penguins dataset in increasing order by flipper length.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.
+<ul>
+<li>Master the “or” operator <code>|</code> or the comma <code>,</code> as described in R4DS 3.2.1</li>
+</ul>
+</li>
+<li>Arrange the penguins dataset in increasing order by flipper length.
+<ul>
+<li>See <a href="https://r4ds.hadley.nz/data-transform.html#arrange">R4DS 3.2.3 <code>arrange()</code></a>
+</li>
+</ul>
+</li>
 <li>Arrange the penguins dataset in decreasing order by body mass.</li>
-<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.</li>
+<li>Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.
+<ul>
+<li>This requires using the pipe operator: <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe">R4DS 3.4 The pipe</a>
+</li>
+</ul>
+</li>
 </ol>
 </div>
 <div id="grading" class="section level3" number="5.4.3">

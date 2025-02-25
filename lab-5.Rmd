@@ -1,487 +1,91 @@
-# Lab 5: Data subsetting
+# Lab 5: Data transformation 1
 
-## Objectives
+## Learning Outcomes
 
-In this lab, you will learn to:
+By the end of this lab, students will be able to:
 
--   Pick rows based on their values
--   Reorder rows based on their values
--   Pick columns based on their names
--   Combine multiple operations
-
-## Overview
-
-A brief overview of the steps for this lab:
-
-1.  Complete the steps in [Getting Started] below
-2.  Read the next four sections which to learn how to subset of a dataset using the `diamonds` dataset as an example
-3.  Read the *entire* [Assignment] section before beggining, then complete the requested assignment
-4.  [Submission] your assignment
-
-## Getting Started
-
-Your instructor has created a blank repository for you using GitHub Classroom.
-
-1.  Go to the course D2L page
-
-2.  Navigate to the Lab 4 module
-
-3.  Follow the link to claim your GitHub Classroom repository. After claiming your repository, copy its URL
-
-4.  Clone the repository to your machine:
-
-    1.  In RStudio, create a New Project
-
-    2.  Select the Version Control option, then GitHub
-
-    3.  Paste the URL you copied, and press tab to autocomplete the directory name
-
-    4.  Select a parent directory in which to place your new project folder, probably either `~` or `~/R`.
-
-    5.  Click OK.
-
-5.  Once RStudio has started, double-check your [Project Options](project-options.html) as described in Lab 2. (set the options to not save .RData or .Rhistory files, and not auto-load them on startup)
-
-6.  Make your first commit:
-
-    1.  In the Git tab, check the box next to the `*.Rproj` file to stage it for adding them the repository
-
-    2.  Click the "Commit" button
-
-    3.  Enter a commit message such as "Create a new RStudio project"
-
-    4.  Click Commit to submit the commit
-
-    5.  Click Push to push the commit to GitHub
-
-        1.  If RStudio prompts you for credentials, follow the method you learned in Lab 2 (use your GitHub username and a Personal Access Token for the password)
-
-7.  Create two new R scripts:
-
-    -   `diamonds-example.R` to use for the diamonds tutorial, which you can call
-
-    -   `penguins-assignment.R` to use for the penguins assignment, which you can call
+1.  Pick rows based on their values
+2.  Reorder rows based on their values
+3.  Use the pipe operator
 
 ## Introduction
 
-Working with tabular data often requires manipulating the contents of the table. For example, you may want remove certain columns to make the table easier to read, or remove rows that do not match certain criteria before graphing.
-
-You can manipulate tables easily with functions from the dplyr package, one of the core members of the tidyverse.
-
--   Pick rows by their values using `filter()`
--   Reorder rows using `arrange()`
--   Pick columns by name using `select()`
-
-### Prerequisites
-
-In this lab you will use functions from the dplyr package. While you could load that package by itself, in this course you are encouraged to always load the entire tidyverse set of packages.
-
-In addition to loading the dplyr package for you, loading the tidyverse package also lets you access the `diamonds` dataset from the ggplot2 package. This lab will use the `diamonds` dataset to show examples of filtering, arranging, and selecting.
-
-Copy this code to your `diamonds-example.R` script and run it t load the tidyverse package:
-
-```{r load-tidyverse}
-library(tidyverse)
-```
-
-### `diamonds`
-
-You will explore basic dplyr functions using the `diamonds` data frame, found in the ggplot package.
-
-This data frame contains data on almost 54,000 diamonds, including price and other attributes.
-
-First, take a look at `diamonds` by printing it in the console:
-
-```{r print-diamonds}
-# print diamonds in the console
-diamonds
-```
-
-Familiarize yourself with the variables in the data frame by looking at the help page for `diamonds`:
-
-```{r help-diamonds, eval=FALSE}
-help(diamonds) # method 1
-??diamonds     # method 2
-```
-
-You can also get there by going to the Help tab (bottom right in RStudio) and typing diamonds in the search field (not the Find in Topic field).
-
-If you get a message starting with "No documentation" or you search and do not find the diamonds data frame, it may be because you have not loaded the ggplot2 package yet, either directly or by loading the tidyverse package. Load it and try again.
-
-The most important thing to note about the variables in the data frame right now are the variable names and their classes (the type of data they contain).
-
-Note that when you printed `diamonds` in the console, the first line of the output said it was a tibble with 53,940 rows and 10 variables. The second row named the variables. The third row gave their data types: 6 numeric continuous variables labeled `<dbl>` , one numeric discrete variable labeled `<int>`, and three categorical ordinal variables labeled `<ord>`.
-
-The data type labels need some explanation. Each data type represents a particular kind of data in R. These are similar to the categorical/numerical distinction you learn about in lecture, but there are more used in R, some for very specific purposes (e.g. the Date and POSIXt types).
-
-The most common column data you will see in data frames are:
-
-| Data type | Example | Description | 4-way clasification | Column header |
-|----|----|----|----|----|
-| logical | `TRUE` | Logical values (true or false) | categorical nominal | lgl |
-| integer | `1L` | Positive or negative whole number. The "L" is so R knows it's not a double | numeric discrete | int |
-| double | `1.5` | Decimal numbers | numeric continuous | dbl |
-| character | `"A"` | Text; note that `"1"` is still a character data type because of the double quotes | categorical nominal | chr |
-| factor | `factor("A")` | Text with an enumerated list of values; you can see possible values with `levels()` | categorical nominal | fct |
-| ordered | `ordered("A")` | Text with an enumerated list of values which have an inherent order; you can see possible values with `levels()` | categorical ordinal | ord |
-| Date | `Sys.Date()` | Date | numeric discrete | date |
-| POSIXt | `Sys.time()` | Date plus time | numeric continuous | dttm |
-
-You can read more about data types in the [Column data types](https://tibble.tidyverse.org/articles/types.html) vignette in the tibble package.
-
-## Filter rows with `filter()`
-
-The `filter()` function allows you to take a table and pick rows to keep based on their values. The first argument is the name of the data frame. The other arguments are expressions that decide which rows to keep.
-
-For example, to take the diamonds data frame and pick only diamonds with a weight of 2 or more carats, you could write:
-
-```{r filter-greater-than}
-filter(diamonds, carat > 2)
-```
-
-### Intermediate objects
-
-When you run code to filter a data frame, R returns a new data frame.
-
-If you want to use that new data frame for some further operation, you would need to save the result by assigning it a new name using the assignment operator `<-`
-
-```{r filter-assign}
-big_diamonds <- filter(diamonds, carat > 2)
-```
-
-When you run this line of code, note that there is no output in the console. R generally does not produce any output when you use the assignment operator. If you want the new object to be printed in the console, you have to print it by running the name of the new object:
-
-```{r print-assigned}
-big_diamonds
-```
-
-Now, if you want to filter the `big_diamonds` object further, you can use it as the data object for another `filter()` function:
-
-```{r}
-filter(big_diamonds, price > 15000)
-```
-
-### Basic Operators
-
-The `>` symbol is known as an "operator". These are special characters you use to compare things in R. Some of the basic operators include `>`, `>=`, `<`, `<=`, `==` (equals), and `!=` (not equals).
-
-Note that the greater and less than operators can only be used on numerical and ordinal categorical variables, while `==` and `!=` can be used with any type of variable.
-
-There is one major difference between comparisons of numeric (integer and double) variables and character, factor, or ordered factor variables, and that is the use of the double quotes `"`.
-
-Here is an example of using the `==` operator with the `cut` variable, an ordered factor data type:
-
-```{r filter-chr}
-filter(diamonds, cut == "Ideal")
-```
-
-Note that `"Ideal"` has double quotes around it. This is to tell R you want to find the literal text string "Ideal". If you instead wrote `cut == Ideal` without the quotes, then R would look for an object named Ideal in your environment and, not finding any, would return an error.
-
-Another common errors when you are starting out is to try to use `=` instead of `==`. When you do that, you will get a helpful error message:
-
-```{r filter-error, error=TRUE}
-filter(diamonds, carat = 2)
-```
-
-### Logical Operators
-
-In computer language, the expression for meeting multiple criteria simultaneously is called "and" and uses the ampersand `&` operator. The expression for meeting either one criteria or the other, or both, is called "or" and is denoted using the vertical bar `|` operator. Finally, the expression for not meeting a criteria is called "not" and is denoted with the exclamation point `!` operator.
-
-#### And operator
-
-If you put three or more arguments in your `filter()` function (the data argument plus two or more criteria arguments), then only rows meeting ALL criteria are kept, so it performs an "and" operation. Thus these two lines of code will return identical results:
-
-```{r filter-and, eval=FALSE}
-filter(diamonds, carat > 2, price < 6000)
-filter(diamonds, carat > 2 & price < 6000)
-```
-
-#### Or operator
-
-For "or" comparisons, you have to use the vertical bar `|` operator. For example, this code will return a table with diamonds having a color of D or E.
-
-```{r filter-or}
-filter(diamonds, color == "D" | color == "E")
-```
-
-This can get a bit cumbersome if you have multiple criteria, but there is a shortcut. You can combine all the values you want to keep using the `c()` function and then use the "in" operator `%in%` like this:
-
-```{r filter-in, eval=FALSE}
-filter(diamonds, color %in% c("D", "E"))
-```
-
-#### Not operator
-
-"Not" comparisons can be used to pick rows that do not meet a given criteria. The `!` operator generally should be followed by parentheses `()` with the affirmative criteria inside them. For example, this code will return a table of diamonds with any color *except* E:
-
-```{r, eval=FALSE}
-filter(diamonds, !(color == "E"))
-```
-
-#### Missing values
-
-Missing values are a story for a later date! You don't need to know this yet, but if you find yourself here looking for an answer, you can filter values without a "missing value" for color like this:
-
-```{r filter-not-na, eval=FALSE}
-filter(diamonds, !is.na(color))
-```
-
-The diamonds dataset does not contain any missing values, so the results here are uninteresting, but at least now you know how.
-
-### String helper functions
-
-There are a variety of other functions you can incorporate into your `filter()` function to achieve specific results.
-
-For example, if you are dealing with a text column (e.g. character, factor, or ordered), you may wish to filter based on something more precise than simply `==` or `!=`. Let's say you want to find all diamonds with a clarity of `VS1`, `VS2`, `VVS1`, or `VVS2`. You could use the "or" operator, or the "in" operator. But what if you don't even know all the possible clarity values and you just want everything that contains `"VS"` anywhere in the word. There is a string-based helper function `str_detect()` which looks for a particular string of text inside a text variable:
-
-```{r}
-filter(diamonds, str_detect(clarity, "VS"))
-```
-
-The function itself is the comparison, there is no operator like `==` or `!=`.
-
-The name of the variable you want to look in goes *inside* the `str_detect()` function as the first argument, while the text you want to detect is the second argument, surrounded by double quotes.
-
-If you want to pick only values of clarity that *start* or *end* with particular text, you can use the functions `str_starts()` or `str_ends()`. For example:
-
-```{r,eval=FALSE}
-filter(diamonds, str_starts(clarity, "VS"))
-filter(diamonds, str_ends(clarity, "2"))
-```
-
-## Arrange rows with `arrange()`
-
-The arrange() function will allow you to sort the rows in a data frame based on the values in one or more columns. It always returns a data frame with the same number of rows as the input data frame.
-
-The first argument is the data frame to sort. Subsequent arguments are the names of columns by which to sort.
-
-For example, to sort the `diamonds` data frame by cut:
-
-```{r arrange-1}
-arrange(diamonds, cut)
-```
-
-You can see that even within Fair cut diamonds, there is still considerable variation in price. If you want to further sort within each cut, you can add additional arguments:
-
-```{r arrange-2}
-arrange(diamonds, cut, price)
-```
-
-If you sort a character (text) variable, it will sort alphabetically. If you sort a factor or ordered variable, it will sort based on the order of the factors levels, which you can see using `levels()` . For example `levels(diamonds$cut)` .
-
-### Descending order
-
-To sort a variable in descending rather than ascending order, you can wrap the variable name in the `desc()` function. For example, to sort so that the worst cut diamonds are at the top of the data frame, and within those the highest priced diamonds are at the top, you could use:
-
-```{r arrange-3}
-arrange(diamonds, cut, desc(price))
-```
-
-Why do some Fair cut diamonds cost so much? Probably because they are huge! The first 6 diamonds in that list are all at least 2 carats in weight.
-
-## Select columns with `select()`
-
-The `select()` function allows you to select which *columns* (i.e. variables) to keep, or conversely which ones to remove. The function returns a new data frame with the same number of rows as the input data frame, but with fewer columns as specified by the arguments.
-
-The first argument is the name of the data frame. The subsequent arguments are the names of the variables you want to keep.
-
-For example, say you wanted to focus on the variables carat, cut, and color, you could use:
-
-```{r select-1}
-select(diamonds, carat, cut, color)
-```
-
-Technically, you can also select variables by their position, so `select(diamonds, carat, cut, color)` is equivalent to `select(diamonds, 1, 2, 3)`
-
-`select()` can also be used to rearrange the order of columns:
-
-```{r select-2}
-select(diamonds, color, cut, carat)
-```
-
-There is also a shorthand for selecting many variables that appear consecutively in the data frame using the colon `:` operator. For example, to select every variable from carat to price (which would include carat, cut, color, clarity, depth, table, and price), you could do:
-
-```{r select-3}
-select(diamonds, carat:price)
-```
-
-### Removing variables
-
-Sometimes its easier to say which variables you *don't* want to keep rather than which ones you *do*. In those scenarios you can put a hyphen (negative symbol) directly before a variable name. The resulting data frame has all the variables *except* the one you named. For example, to return every row except table, you could do:
-
-```{r select-remove}
-select(diamonds, -table)
-```
-
-To remove several variables, you can prepend each one with a `-`. You can even remove a range of values, but the syntax is quirky. You have to put the `-` before each variable name. For example, to remove x, y, and z variables:
-
-```{r select-remove-range, eval=FALSE}
-select(diamonds, -x:-y)
-```
-
-### Helper functions
-
-Sometime you have to work with a massive data frame that contains dozens or even hundreds of variables. In those cases it can be cumbersome to name every variable to add or remove.
-
-There are several functions that can be used within `select()` :
-
--   `starts_with("abc")` finds all columns whose name starts with "abc"
-
--   `ends_with("abc")` finds all columns whose name ends with "abc"
-
--   `contains("abc")` finds all columns whose name contains "abc"
-
--   `everything()` finds all columns that have not already been explicitly added or dropped. This is useful if there are a few variables you want to move to the front (left) of the data frame.
-
-For example, the following code would move table and price to the front and leave everything else at the end:
-
-```{r select-everything}
-select(diamonds, ends_with("e"), everything())
-```
-
-## Combine multiple operations
-
-Up to this point, you have learned how to perform one action at a time, either filtering, arranging, or selecting. But what if you want to perform multiple steps in a row?
-
-You have three basic options:
-
--   Create intermediate objects
--   Nest functions
--   Use the pipe
-
-Let's use an example to illustrate each option. For this example, let's say you want to perform the following actions with the diamonds dataset:
-
-1.  Pick only diamonds with a weight of 2 or more carats
-2.  Sort the diamonds by price
-3.  Select only the variables variables carat, cut, and price
-
-### Create intermediate objects
-
-One solution is to do each step one at a time, creating intermediate objects along the way using the assignment operator `<-`. In our example, this might look something like:
-
-```{r intermediate-steps-1, eval=FALSE}
-big_diamonds <- filter(diamonds, carat >= 2)
-sorted_big_diamonds <- arrange(big_diamonds, price)
-select(sorted_big_diamonds, carat, cut, price)
-```
-
-One drawback to this approach is that it leaves two intermediate objects cluttering up your environment, neither of which you need. You could either leave them, or remove them using `rm()`.
-
-Another drawback is that there is a lot of code, because the object names have to be long enough so you know what they represent. To solve this problem, you could use shorter names like this:
-
-```{r intermediate-steps-2, eval=FALSE}
-x1 <- filter(diamonds, carat >= 2)
-x2 <- arrange(x1, price)
-select(x2, carat, cut, price)
-```
-
-The code is a lot smaller, but it is less understandable at a glance, and you still have intermediate objects left behind.
-
-You might be tempted to just overwrite the existing diamonds dataset with the new one:
-
-```{r overwriting, eval=FALSE}
-diamonds <- filter(diamonds, carat >= 2)
-diamonds <- arrange(diamonds, price)
-select(diamonds, carat, cut, price)
-```
-
-The issue here is that you no longer have your original diamonds dataset. If you do not mind that, then this is a decent solution. You might use this option if you want to clean up a dataset after reading it from a file, for example to rename unwieldy variables or deal with missing values.
-
-What if you need to use the original diamonds dataset again? Of course, it didn't disappear, and you can still access it by specifying the package `ggplot2::diamonds` or by removing diamonds from your global environment `rm(diamonds)`. But overall, this isn't an ideal solution.
-
-### Nest functions
-
-Another option is to nest each function inside the other:
-
-```{r pipe-example-nested, eval=FALSE}
-
-select(arrange(filter(diamonds, carat >= 2), price), carat, cut, price)
-```
-
-It works, but it is hard to read and interpret at a glance.
-
-### Use the pipe
-
-A more elegant solution is to use the special pipe operator `|>`. Using the pipe, `x |> f()` is equivalent to `f(x)`. The pipe operator takes what is to the left of the pipe and uses it as the first argument to the function to the right of the pipe.
-
-Using this option, we could do:
-
-```{r pipe-example-piped, eval=FALSE}
-
-diamonds |> 
-  filter(carat >= 2) |> 
-  arrange(price) |> 
-  select(carat, cut, price)
-```
-
-The pipe is like saying "take this thing, then do this to it, then do this to it". Pipes can make your code simpler, shorter, and easier to read.
-
-You can find a more complete discussion in the [Pipes](https://r4ds.had.co.nz/pipes.html) chapter in *R for Data Science.*
+The following assignment implements a just-in-time learning approach where you will acquire knowledge and skills exactly when you need them, rather than in advance.
+
+## Prerequisites
+
+Complete the following instructions to prepare for the lab:
+
+1.  Set the following global options in RStudio
+    a.  Go to the Tools menu \> Global Options
+    b.  Under **General \> Basic**, uncheck the boxes under Workspace and History
+    c.  Under **Code \> Editing**, check the box for "Use native pipe operator"
+    d.  Under **Code \> Completion**, check the box for "Use tab for multiline autocompletions"
+2.  Claim your repository on GitHub by following the link on D2L in the Lab 5 Content module.
+3.  Clone your repository to your computer using the **New Project \> Version Control \> Git** method
+4.  Make your first commit by adding the R project file and gitignore file to Git.
 
 ## Assignment
 
-Open your `penguins-assignment.R` script by clicking on the name in the Files tab (or if its already open click its tab in the source pane.
+### Instructions
 
-For this assignment you will work with the Palmer Penguins dataset you used in the previous lab.
+1.  Open the `questions.R` script. This is where you will write the code to answer the questions below.
+2.  If it is not already installed, then install the **tidyverse** package. Do not add code to the script to do this.
+3.  Run the code under the sections:
+    a.  `load packages ----`
+        -   Loads the required packages
+    b.  `look at penguin data ----`
+        -   A variety of commands to remind you how to look at a dataset by printing various things in the console
+    c.  `example of pipe usage ----`
+        -   Commands that illustrate how to use the pipe operator `|>` .
+        -   Read section [R4DS 3.1.3 dplyr basics](https://r4ds.hadley.nz/data-transform.html#dplyr-basics) so you have a general idea of how the pipe is used.
+4.  Answer the questions in the `Questions ----` section of the script by writing code
+    -   Below each question, write code to perform the requested action
+    -   Do not assign the results a name (i.e. do not create an object) using the assignment operator. For example, if the question asked you to glimpse the penguins data:
+        -   Correct: `penguins |> glimpse()`
+        -   Incorrect: `new_df <- penguins |> glimpse()`
+    -   Include only one command per question.
+        -   Do not include every version of code you tried.
 
-Check to see if the **palmerpenguins** package is already installed by selecting the Packages tab in the bottom right pane. In the search field, type "palmer" and you should see the package if it is installed. If it is not, click the Install button and type `palmerpenguins` to install it.
+        -   Only include a single command that performs the required action.
 
-Begin by loading the tidyverse and palmerpenguins package in your R script:
+        -   The command may extend over multiple lines, for example:
 
-```{r, eval=FALSE}
-library(tidyverse)
-library(palmerpenguins)
-```
+            ``` R
+            penguins |>
+              glimpse()
+            ```
 
 ### Questions
 
-Now use what you know from previous labs, and what you have learned from today's lab, to perform the following data manipulation tasks.
+1.  Filter the penguins data to include only birds with bill lengths greater than 55 mm.
+2.  Filter the penguins data to include only birds with flipper lengths less than or equal to 180 mm.
+3.  Filter the penguins data to include only Chinstrap Penguins.
+4.  Filter the penguins data to exclude penguins on Biscoe Island.
+5.  Filter the penguins data to include penguins captured in 2007 and 2009.
+6.  Filter the data to include only penguins with a missing value for bill length.
+7.  Filter the penguins data to exclude penguins with a missing value for sex.
+8.  Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm.
+9.  Arrange the penguins dataset in increasing order by flipper length.
+10. Arrange the penguins dataset in decreasing order by body mass.
+11. Filter the penguins data to include only Chinstrap Penguins with flipper lengths less than or equal to 180 mm and arrange penguins in arrange them in decreasing order by body mass.
 
-Put a comment like `# question 1` on the line before each code chunk, so you (and I) can read your script more easily.
+### Grading
 
-1.  Print the penguins dataset
-2.  Filter penguins to include only Gentoo penguins
-3.  Filter penguins to include everything except Gentoo penguins
-4.  Filter penguins to include only penguins on Biscoe Island.
-5.  Filter penguins to include only Adelie Penguins on Biscoe Island.
-6.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm.
-7.  Filter penguins to include only Chinstrap penguins with bill lengths greater than or equal to 50 mm and flipper lengths less than 196 mm.
-8.  Filter penguins to include only observations with a missing value (`NA`) for bill length
-9.  Arrange all penguins by body mass
-10. Arrange all penguins by decreasing flipper length
-11. Select only the columns species and sex
-12. Select the column species and all columns that begin with "bill\_" using the `starts_with()` helper function
-13. Select all columns except those ending with "\_mm"
-14. Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
+-   Your grade will be based on the completeness and accuracy of the code in your script.
+
+-   Commands will be run starting at the top of the script.
+
+-   Questions will be marked correct only if the code runs without error and produces the requested output in the console.
+
+-   Before submitting, you are strongly advised to run your entire script from top to bottom, one line at a time, to ensure it does not produce errors and it prints the requested output in the console.
 
 ## Submission
 
-![[Source: Quarto Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)](https://rstudio.github.io/cheatsheets/html/images/quarto-illustration.png){width="80%"}
-
-1.  When you have completed the questions listed above, save your files, commit your changes, and push them to GitHub.
-
-2.  Next, you will create a **lab report**:
-
-    a.  Create a new Quarto Document by going to File \> New File \> Quarto Document...
-    b.  In the dialog window, click the "Create Empty Document" button
-    c.  Save the document as `lab-report.qmd`
-    d.  Replace the YAML header with the YAML header from your Lab 3 script (find it on GitHub, copy it, and paste it here). Edit the title so it says the name of this lab. Be sure the format is github flavored markdown with `format: gfm`
-    e.  Make sure you are in the Visual Mode for the next parts. Click the "Visual" button on the left of the tool bar near the save button.
-    f.  Add a code chunk after the YAML and load the **tidyverse** and **palmerpenguins** packages in it
-    g.  Copy the questions in the Questions section above, then on a new line in your report, paste the questions.
-    h.  After each question, create a code chunk and copy and paste your (already working) code from your R script to the report, one output per question. Each question should produce a table output.
-    i.  Render your document
-
-3.  Again, save your files, commit your changes, and push them to GitHub.
-
-4.  Copy the URL to your `lab-report.md` file (not qmd) on GitHub.
-
-5.  Submit that to the Assignment on D2L.
-
-## Further reading
-
-Your lab manual, *R for Data Science* (R4DS), contains detailed instructions on filtering, arranging, and selecting in [Chapter 5: Data transformation](https://r4ds.had.co.nz/transform.html).
-
-You do not need to read the chapter, but it would certainly help solidify the concepts introduced in this lab.
-
-If you do want to read the chapter and try their examples in your own R Script then don't forget to install the nycflights13 package as described in [R4DS Section 1.4.4 Other Packages](https://r4ds.had.co.nz/introduction.html?q=nycflights13#other-packages).
+1.  Save changes in your R script
+2.  Stage your changes by checking the boxes next to files in the git tab
+3.  Commit the changes
+4.  Push the changes
+5.  Go to Github and copy the URL to your lab repository online
+    -   The easiest way to copy the URL is to click the green **Code** button, then the copy button
+6.  Submit the URL to your assignment on D2L

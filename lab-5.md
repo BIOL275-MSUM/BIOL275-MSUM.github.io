@@ -51,7 +51,7 @@ Complete the following instructions to prepare for the lab:
 
         -   The command may extend over multiple lines, for example:
 
-            ``` R
+            ``` r
             penguins |>
               glimpse()
             ```

@@ -13,6 +13,7 @@ rmd_files: [
   
   "eda-project.Rmd",
   "eda-repository-setup.Rmd",
+  "quarto.Rmd",
   "eda-sac-application.Rmd",
   "data-sets.Rmd",
   "citing-r.Rmd",

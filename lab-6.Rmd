@@ -63,7 +63,7 @@ Complete the following instructions to prepare for the lab:
     1.  Use the `ends_with()` helper function
 5.  Rename the `island` variable to `location`
     1.  Use the `rename()` function as described in [R4DS 3.3.3](https://r4ds.hadley.nz/data-transform.html#rename)
-6.  Select the variables flipper length and flipper width, then create a new variable named `aspect_ratio` by that is the ratio of flipper length to flipper width.
+6.  Select the variables bill length and bill depth, then create a new variable named `aspect_ratio` by that is the ratio of bill length to bill depth.
     1.  Use the `mutate()` function as described in [R4DS 3.3.1](https://r4ds.hadley.nz/data-transform.html#sec-mutate)
 7.  Extra credit: Use pipes to select female Adelie penguins with a bill depth of at least 18 mm, arrange the results by decreasing bill depth, and select only the columns year and flipper_length_mm, in that order.
 

@@ -40,9 +40,9 @@ The title could be generic such as "the relationship between X and Y", or a decl
 
 ## Assignment: Submit your application
 
-The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/SAC/form/index).
+The process of presentation at the SAC begins with submitting an application using the [online application form](https://my.mnstate.edu/sac/form).
 
-Applications for the 2024 SAC are due [Friday March 8, 2024.]{.text-danger}
+Applications for the 2025 SAC are due [Friday March 16, 2025.]{.text-danger}
 
 If you do not submit your application by the deadline, you will be unable to participate in the SAC, which will negatively impact your course grade.
 
@@ -77,7 +77,7 @@ You will need the following:
 
 Only one person in your group should submit the application.
 
-1.  Go to the online application form: <https://my.mnstate.edu/SAC/form/index>
+1.  Go to the [online application form](https://my.mnstate.edu/sac/form)
 
 2.  Read the guidelines, check the box, and click the Apply Now button
 
@@ -89,7 +89,7 @@ Only one person in your group should submit the application.
 
     3.  Click the **Add Student** to List button
 
-    4.  Repeat for each additional person in the group, or any other students who will be coauthors on the poster (for example, others from your research group if you are part of a larger team outside of class)
+    4.  Repeat for each additional person in the group, or any other students who will be coauthors on the poster (for example, others from your research group if you are part of a larger team outside of class). Do not add the course instructor here, that will be later.
 
 4.  Enter the presentation **title** (copy and paste from your pre-written title)
 
@@ -103,11 +103,17 @@ Only one person in your group should submit the application.
 
 8.  Department: select **Biosciences**
 
-9.  Mentor: select **Merkord, Christopher**
+9.  Discipline: select **Biology**
+
+10. Mentor: select **Merkord, Christopher**
 
     -   If you have other faculty mentors, click the Add Additional Mentor button
 
-10. ::: text-warning
+11. Presenter lunch:
+
+    -   If you want to go to the free lunch, check the box.
+
+12. ::: text-warning
     Special Requests: copy and paste the following into the text box:
     :::
 
@@ -115,7 +121,15 @@ Only one person in your group should submit the application.
     *This presentation is for BIOL 275 Biostatistics. Please group it with other presentations for that course.*
     :::
 
-11. Click the **Submit** button
+    If you are presenting another poster or oral presentation, you can also add something like this:
+
+    ::: text-primary
+    *I am also presenting another poster and an oral presentation. Please schedule these for (different times) or (the same time, next to each other).*
+    :::
+
+13. Tag: type **biostats**
+
+14. Click the **Submit** button
 
 By submitting this application you authorize the Student Academic Conference to publish your first and last name with your presentation in both print and online material and that you have made all group members aware of this, as well.
 
@@ -123,4 +137,4 @@ By submitting this application you authorize the Student Academic Conference to 
 
 Print the confirmation screen as a PDF, or print the confirmation email you receive as a PDF.
 
-Submit the PDF on D2L under the SAC Abstract assignment submission, due by Friday, March 11, 2022.
+Submit the PDF on D2L under the SAC Abstract assignment submission.

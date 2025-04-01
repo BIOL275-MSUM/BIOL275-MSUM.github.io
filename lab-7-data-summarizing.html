@@ -179,13 +179,21 @@ where:</p>
 </h2>
 <p>This example shows how to explore the relationship between diamond price and cut using the <code>diamonds</code> dataset from the <code>ggplot2</code> package. The variable <code>cut</code> is a categorical variable describing the quality of the diamond’s cut, ranging from Fair to Ideal. Because cut influences how well a diamond reflects light, we might expect it to be associated with differences in price.</p>
 <p>We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.</p>
+<div id="load-packages" class="section level3" number="7.3.1">
+<h3>
+<span class="header-section-number">7.3.1</span> Load Packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># load packages ------------------------------</span></span>
 <span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># summarize price by cut ---------------------</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="summarizing-the-data" class="section level3" number="7.3.2">
+<h3>
+<span class="header-section-number">7.3.2</span> Summarizing the data<a class="anchor" aria-label="anchor" href="#summarizing-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># summarize price by cut ---------------------</span></span>
 <span></span>
 <span><span class="va">diamond_summary</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -215,7 +223,12 @@ where:</p>
 #&gt; 5 Ideal           1810       3458.         3808.       21551         25.9   1.96
 #&gt; # ℹ 6 more variables: ci_mean_lower &lt;dbl&gt;, ci_mean_upper &lt;dbl&gt;,
 #&gt; #   chi2_lower &lt;dbl&gt;, chi2_upper &lt;dbl&gt;, ci_sd_lower &lt;dbl&gt;, ci_sd_upper &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+</div>
+<div id="facetted-histograms" class="section level3" number="7.3.3">
+<h3>
+<span class="header-section-number">7.3.3</span> Facetted histograms<a class="anchor" aria-label="anchor" href="#facetted-histograms"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Faceted histograms ------------------------</span></span>
 <span></span>
 <span><span class="co"># Prepare a long-format data frame for </span></span>
@@ -252,7 +265,7 @@ where:</p>
 #&gt; 5 Very Good Mean      3982.
 #&gt; 6 Very Good Median    2648 
 #&gt; # ℹ 4 more rows</code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create the plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span>, fill <span class="op">=</span> <span class="st">"gray70"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -271,10 +284,15 @@ where:</p>
 <span>    linetype <span class="op">=</span> <span class="st">"Statistic"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Strip plot with violin and means ----------</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="lab-7_files/figure-html/histograms-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="strip-plots" class="section level3" number="7.3.4">
+<h3>
+<span class="header-section-number">7.3.4</span> Strip plots<a class="anchor" aria-label="anchor" href="#strip-plots"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Strip plot with violin and means ----------</span></span>
 <span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="fl">.02</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># only for big data sets</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -302,12 +320,12 @@ where:</p>
 <span>    y <span class="op">=</span> <span class="st">"Price (USD)"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="lab-7_files/figure-html/diamonds-example-1.png" width="70%" style="display: block; margin: auto;"><img src="lab-7_files/figure-html/diamonds-example-2.png" width="70%" style="display: block; margin: auto;"></p>
+<div class="inline-figure"><img src="lab-7_files/figure-html/strip-plots-1.png" width="70%" style="display: block; margin: auto;"></div>
 </div>
-<div id="instructions-3" class="section level2" number="7.4">
-<h2>
-<span class="header-section-number">7.4</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-3"><i class="fas fa-link"></i></a>
-</h2>
+<div id="instructions-3" class="section level3" number="7.3.5">
+<h3>
+<span class="header-section-number">7.3.5</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-3"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.</li>
 <li>Clone your repository to your computer using the <strong>New Project &gt; Version Control &gt; Git</strong> method</li>
@@ -356,9 +374,10 @@ where:</p>
 </li>
 </ol>
 </div>
-<div id="questions-3" class="section level2" number="7.5">
+</div>
+<div id="questions-3" class="section level2" number="7.4">
 <h2>
-<span class="header-section-number">7.5</span> Questions<a class="anchor" aria-label="anchor" href="#questions-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.4</span> Questions<a class="anchor" aria-label="anchor" href="#questions-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>All questions work with the penguins dataset.</p>
 <ol style="list-style-type: decimal">
@@ -496,9 +515,16 @@ where:</p>
 <li><a class="nav-link" href="#lab-7-data-summarizing"><span class="header-section-number">7</span> Lab 7: Data summarizing</a></li>
 <li><a class="nav-link" href="#student-learning-outcomes"><span class="header-section-number">7.1</span> Student Learning Outcomes</a></li>
 <li><a class="nav-link" href="#introduction-3"><span class="header-section-number">7.2</span> Introduction</a></li>
-<li><a class="nav-link" href="#example"><span class="header-section-number">7.3</span> Example</a></li>
-<li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.4</span> Instructions</a></li>
-<li><a class="nav-link" href="#questions-3"><span class="header-section-number">7.5</span> Questions</a></li>
+<li>
+<a class="nav-link" href="#example"><span class="header-section-number">7.3</span> Example</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-packages"><span class="header-section-number">7.3.1</span> Load Packages</a></li>
+<li><a class="nav-link" href="#summarizing-the-data"><span class="header-section-number">7.3.2</span> Summarizing the data</a></li>
+<li><a class="nav-link" href="#facetted-histograms"><span class="header-section-number">7.3.3</span> Facetted histograms</a></li>
+<li><a class="nav-link" href="#strip-plots"><span class="header-section-number">7.3.4</span> Strip plots</a></li>
+<li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.3.5</span> Instructions</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#questions-3"><span class="header-section-number">7.4</span> Questions</a></li>
 </ul>
 
       <div class="book-extra">

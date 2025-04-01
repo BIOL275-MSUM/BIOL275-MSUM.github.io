@@ -145,12 +145,12 @@
 <ol style="list-style-type: decimal">
 <li>
 <p><a href="https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac">Open the Terminal</a> and type:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="git-setup.html#cb21-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="git-setup.html#cb23-1" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div>
 <p>If Git is already installed, this will display the installed version.</p>
 </li>
 <li>
 <p>If Git is not installed, you can install it using Homebrew:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="git-setup.html#cb22-1" tabindex="-1"></a><span class="ex">brew</span> install git</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="git-setup.html#cb24-1" tabindex="-1"></a><span class="ex">brew</span> install git</span></code></pre></div>
 <p>If you do not have Homebrew installed, follow the instructions at <a href="https://brew.sh/">brew.sh</a>.</p>
 </li>
 </ol>
@@ -166,7 +166,7 @@
 <span class="header-section-number">14.3.1</span> Checking Your Git Configuration<a class="anchor" aria-label="anchor" href="#checking-your-git-configuration"><i class="fas fa-link"></i></a>
 </h3>
 <p>Before setting up Git, check if you have already configured it:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gert/">gert</a></span><span class="op">)</span></span>
 <span><span class="fu">git_config_global</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -175,7 +175,7 @@
 <span class="header-section-number">14.3.2</span> Setting Up Your Git Identity<a class="anchor" aria-label="anchor" href="#setting-up-your-git-identity"><i class="fas fa-link"></i></a>
 </h3>
 <p>If your name and email are not set, you can configure them using <code>usethis</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
 <span><span class="fu">use_git_config</span><span class="op">(</span>user.name <span class="op">=</span> <span class="st">"Your Name"</span>, user.email <span class="op">=</span> <span class="st">"your.email@example.com"</span><span class="op">)</span></span></code></pre></div>
 <p>Replace <code>"Your Name"</code> with your actual name and <code>"your.email@example.com"</code> with the email address associated with your GitHub account.</p>
@@ -186,7 +186,7 @@
 <span class="header-section-number">14.4</span> Verifying Your Configuration<a class="anchor" aria-label="anchor" href="#verifying-your-configuration"><i class="fas fa-link"></i></a>
 </h2>
 <p>To verify that Git saved your settings, run:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">git_config_global</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>You should see your name and email in the output.</p>
 </div>

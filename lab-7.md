@@ -64,13 +64,19 @@ This example shows how to explore the relationship between diamond price and cut
 
 We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.
 
+### Load Packages
+
 
 ``` r
 # load packages ------------------------------
 
 library(tidyverse)
+```
+
+### Summarizing the data
 
 
+``` r
 # summarize price by cut ---------------------
 
 diamond_summary <- 
@@ -105,6 +111,9 @@ diamond_summary <-
 #> # ℹ 6 more variables: ci_mean_lower <dbl>, ci_mean_upper <dbl>,
 #> #   chi2_lower <dbl>, chi2_upper <dbl>, ci_sd_lower <dbl>, ci_sd_upper <dbl>
 ```
+
+### Facetted histograms
+
 
 ``` r
 # Faceted histograms ------------------------
@@ -168,8 +177,14 @@ ggplot(diamonds, aes(x = price / 1000)) +
   ) +
   theme_minimal() +
   theme(legend.position = "bottom")
+```
+
+<img src="lab-7_files/figure-html/histograms-1.png" width="70%" style="display: block; margin: auto;" />
+
+### Strip plots
 
 
+``` r
 # Strip plot with violin and means ----------
 diamonds |> 
   sample_frac(.02) |> # only for big data sets
@@ -200,9 +215,9 @@ diamonds |>
   theme_minimal()
 ```
 
-<img src="lab-7_files/figure-html/diamonds-example-1.png" width="70%" style="display: block; margin: auto;" /><img src="lab-7_files/figure-html/diamonds-example-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="lab-7_files/figure-html/strip-plots-1.png" width="70%" style="display: block; margin: auto;" />
 
-## Instructions
+### Instructions
 
 1.  Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.
 2.  Clone your repository to your computer using the **New Project \> Version Control \> Git** method

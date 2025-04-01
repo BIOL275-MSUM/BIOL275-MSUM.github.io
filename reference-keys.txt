@@ -63,6 +63,10 @@ lab-7-data-summarizing
 student-learning-outcomes
 introduction-3
 example
+load-packages
+summarizing-the-data
+facetted-histograms
+strip-plots
 instructions-3
 questions-3
 eda-project

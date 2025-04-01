@@ -250,14 +250,15 @@ All questions work with the penguins dataset.
         -   **ci_std_dev_upper** (upper bound to the confidence interval)
         -   **ci_std_dev_lower** (lower bound to the confidence interval)
 5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
+    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
+        -   Select the variables you need, species, median_bm, and mean_bm.
+        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**.
+        -   In the `geom_vline()` set the data argument to the vertical line dataset you just created
+        -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
     -   geom_histogram() creates the histogram
     -   facet_wrap() separates the three species into different panels
         -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
         -   Example: to facet the diamonds data by cut, use `facet_wrap(~cut)`
-    -   Adding vertical lines for both the mean and median requires reshaping the summary data into long format using `pivot_longer()`
-        -   You can put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**.
-        -   When you add the `geom_vline()` you need to set the data argument to the vertical line dataset you just created
-        -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
 6.  Create a strip plot that shows the distribution of penguin body masses by species
     -   Include the raw data (geom_point)
     -   Include violin plots (geom_violin)

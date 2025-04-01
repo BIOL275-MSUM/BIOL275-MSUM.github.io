@@ -64,12 +64,17 @@ This example shows how to explore the relationship between diamond price and cut
 
 We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.
 
-```{r diamonds-example, message=FALSE, warning=FALSE}
+### Load Packages
+
+```{r load-packages, message=FALSE, warning=FALSE}
 # load packages ------------------------------
 
 library(tidyverse)
+```
 
+### Summarizing the data
 
+```{r summarize-data, message=FALSE, warning=FALSE}
 # summarize price by cut ---------------------
 
 diamond_summary <- 
@@ -90,7 +95,11 @@ diamond_summary <-
     ci_sd_upper = sqrt((sample_size - 1) * std_dev_price^2 / chi2_upper)
   ) |> 
   print()
+```
 
+### Facetted histograms
+
+```{r histograms, message=FALSE, warning=FALSE}
 # Faceted histograms ------------------------
 
 # Prepare a long-format data frame for 
@@ -139,7 +148,11 @@ ggplot(diamonds, aes(x = price / 1000)) +
   theme_minimal() +
   theme(legend.position = "bottom")
 
+```
 
+### Strip plots
+
+```{r strip-plots, message=FALSE, warning=FALSE}
 # Strip plot with violin and means ----------
 diamonds |> 
   sample_frac(.02) |> # only for big data sets
@@ -170,7 +183,7 @@ diamonds |>
   theme_minimal()
 ```
 
-## Instructions
+### Instructions
 
 1.  Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.
 2.  Clone your repository to your computer using the **New Project \> Version Control \> Git** method

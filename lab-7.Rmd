@@ -133,7 +133,7 @@ ggplot(diamonds, aes(x = price / 1000)) +
   labs(
     title = "Distribution of Diamond Prices by Cut",
     x = "Price (thousands of USD)",
-    y = "Count",
+    y = "Frequency",
     linetype = "Statistic"
   ) +
   theme_minimal() +

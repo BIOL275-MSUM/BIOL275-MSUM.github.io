@@ -59,6 +59,13 @@ instructions-2
 questions-2
 grading-1
 submission-1
+lab-7-data-summarizing
+student-learning-outcomes
+introduction-3
+example
+instructions-3
+questions-3
+section
 eda-project
 overview
 purpose
@@ -116,7 +123,7 @@ install-r
 install-rstudio
 install-git
 git-setup
-introduction-3
+introduction-4
 installing-git
 windows
 macos

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>7 Lab 7: Data summarizing | BIOL 275 Biostatistics at MSUM</title>
+<meta name="author" content="Chris Merkord">
+<meta name="description" content="7.1 Student Learning Outcomes By the end of this lab, you will be able to: Calculate group-wise summary statistics (mean, standard deviation, sample size, and confidence intervals) for a...">
+<meta name="generator" content="bookdown 0.42 with bs4_book()">
+<meta property="og:title" content="7 Lab 7: Data summarizing | BIOL 275 Biostatistics at MSUM">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Student Learning Outcomes By the end of this lab, you will be able to: Calculate group-wise summary statistics (mean, standard deviation, sample size, and confidence intervals) for a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 Lab 7: Data summarizing | BIOL 275 Biostatistics at MSUM">
+<meta name="twitter:description" content="7.1 Student Learning Outcomes By the end of this lab, you will be able to: Calculate group-wise summary statistics (mean, standard deviation, sample size, and confidence intervals) for a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0.9000/transition.js"></script><script src="libs/bs3compat-0.9.0.9000/tabs.js"></script><script src="libs/bs3compat-0.9.0.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.9000/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.33/datatables.js"></script><link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><!-- <link rel="stylesheet" href="https://use.typekit.net/nvk0gxc.css"> --><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">BIOL 275 Biostatistics at MSUM</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Lab Assignments</li>
+<li><a class="" href="lab-1-introduction-to-r-and-rstudio.html"><span class="header-section-number">1</span> Lab 1: Introduction to R and RStudio</a></li>
+<li><a class="" href="lab-2-workflow-basics.html"><span class="header-section-number">2</span> Lab 2: Workflow basics</a></li>
+<li><a class="" href="lab-3-data-visualization.html"><span class="header-section-number">3</span> Lab 3: Data visualization</a></li>
+<li><a class="" href="lab-4-data-import.html"><span class="header-section-number">4</span> Lab 4: Data import</a></li>
+<li><a class="" href="lab-5-data-transformation-1.html"><span class="header-section-number">5</span> Lab 5: Data transformation 1</a></li>
+<li><a class="" href="lab-6-data-transformation-2.html"><span class="header-section-number">6</span> Lab 6: Data transformation 2</a></li>
+<li><a class="active" href="lab-7-data-summarizing.html"><span class="header-section-number">7</span> Lab 7: Data summarizing</a></li>
+<li class="book-part">EDA Project</li>
+<li><a class="" href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></li>
+<li><a class="" href="eda-repository-setup.html"><span class="header-section-number">9</span> EDA Repository Setup</a></li>
+<li><a class="" href="sac-application.html"><span class="header-section-number">10</span> SAC Application</a></li>
+<li><a class="" href="data-sets-1.html"><span class="header-section-number">11</span> Data sets</a></li>
+<li><a class="" href="citing-r.html"><span class="header-section-number">12</span> Citing R</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="laptop-setup.html"><span class="header-section-number">13</span> Laptop Setup</a></li>
+<li><a class="" href="git-setup.html"><span class="header-section-number">14</span> Git Setup</a></li>
+<li class="book-part">Using RStudio</li>
+<li><a class="" href="project-options.html"><span class="header-section-number">16</span> Project Options</a></li>
+<li><a class="" href="code-sections.html"><span class="header-section-number">17</span> Code Sections</a></li>
+<li><a class="" href="downloading-files.html"><span class="header-section-number">18</span> Downloading Files</a></li>
+<li><a class="" href="organizing-data.html"><span class="header-section-number">19</span> Organizing Data</a></li>
+<li><a class="" href="r-markdown-documents.html"><span class="header-section-number">20</span> R Markdown documents</a></li>
+<li><a class="" href="lab-reports.html"><span class="header-section-number">21</span> Lab Reports</a></li>
+<li><a class="" href="session-info.html"><span class="header-section-number">22</span> Session info</a></li>
+<li class="book-part">Git and GitHub</li>
+<li><a class="" href="about-git-and-github.html"><span class="header-section-number">24</span> About Git and GitHub</a></li>
+<li><a class="" href="github-notifications.html"><span class="header-section-number">25</span> GitHub Notifications</a></li>
+<li><a class="" href="references-2.html"><span class="header-section-number">26</span> References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lab-7-data-summarizing" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Lab 7: Data summarizing<a class="anchor" aria-label="anchor" href="#lab-7-data-summarizing"><i class="fas fa-link"></i></a>
+</h1>
+<div id="student-learning-outcomes" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Student Learning Outcomes<a class="anchor" aria-label="anchor" href="#student-learning-outcomes"><i class="fas fa-link"></i></a>
+</h2>
+<p>By the end of this lab, you will be able to:</p>
+<ul>
+<li>Calculate group-wise summary statistics (mean, standard deviation, sample size, and confidence intervals) for a continuous variable across levels of a categorical variable.</li>
+<li>Use faceted histograms to compare the distribution of a continuous variable across groups.</li>
+<li>Create strip plots overlaid with violin plots, group means, and confidence intervals using <code>ggplot2</code>.</li>
+<li>Select and interpret appropriate visualizations to explore the relationship between a categorical variable and a continuous variable.</li>
+<li>Communicate data patterns using well-labeled and appropriately styled visualizations.</li>
+</ul>
+</div>
+<div id="introduction-3" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>When exploring a dataset, one of the most common tasks is comparing a continuous variable across the levels of a categorical variable. For example, does body mass differ between penguin species? Does diamond price vary by cut? Before running statistical models or formal tests, it’s important to visualize these relationships so you can understand the structure of your data, spot potential outliers, and assess whether assumptions for analysis might be met.</p>
+<p>In this lab, you’ll focus on two powerful tools for visualizing how a continuous variable varies across categories: faceted histograms and strip plots with overlaid summaries.</p>
+<p>A <strong>faceted histogram</strong> is a good first step when you want to compare the overall shape of a continuous variable across groups. Rather than layering multiple distributions on a single plot (which often leads to visual clutter), faceting creates side-by-side histograms—one for each group—so that you can clearly see differences in spread, skew, and modality. This is especially useful early in the data exploration process when you’re trying to build an intuitive understanding of how your variable behaves across groups.</p>
+<p>Once you’ve examined the distributions, a <strong>strip plot</strong> offers a cleaner and more precise way to compare values between groups. Like a boxplot, it summarizes the distribution of a variable—but unlike a boxplot, a strip plot shows the actual raw data points, which gives you a better sense of sample size, spread, and unusual values. In this lab, you’ll enhance strip plots by adding violin plots (to show the shape of the distribution), the group mean (rather than the median), and 95% confidence intervals for each mean. This approach emphasizes estimation and visualization of group differences using interpretable summaries.</p>
+<p>To construct these summaries, you will calculate the following statistics for each group:</p>
+<ul>
+<li><p>The <strong>mean</strong> of the continuous variable:<br><span class="math display">\[
+\bar{Y} = \frac{1}{n} \sum_{i=1}^{n} Y_i
+\]</span></p></li>
+<li><p>The <strong>standard deviation</strong>:<br><span class="math display">\[
+s = \sqrt{\frac{1}{n - 1} \sum_{i=1}^{n} (Y_i - \bar{Y})^2}
+\]</span></p></li>
+<li>
+<p>The <strong>95% confidence interval for the mean</strong>:<br><span class="math display">\[
+\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} &lt; \mu &lt; \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}
+\]</span><br>
+where:</p>
+<ul>
+<li>
+<span class="math inline">\(\bar{Y}\)</span> is the sample mean</li>
+<li>
+<span class="math inline">\(SE_{\bar{Y}} = \dfrac{s}{\sqrt{n}}\)</span> is the standard error of the mean</li>
+<li>
+<span class="math inline">\(t_{0.025,\,df}\)</span> is the critical value from the t-distribution with <span class="math inline">\(df = n - 1\)</span> degrees of freedom</li>
+</ul>
+</li>
+<li>
+<p>The <strong>95% confidence interval for the standard deviation</strong>:<br><span class="math display">\[
+\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} &lt; \sigma &lt; \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}
+\]</span><br>
+where:</p>
+<ul>
+<li>
+<span class="math inline">\(s\)</span> is the sample standard deviation</li>
+<li>
+<span class="math inline">\(n\)</span> is the sample size</li>
+<li>
+<span class="math inline">\(\chi^2_{\alpha/2}\)</span> and <span class="math inline">\(\chi^2_{1 - \alpha/2}\)</span> are critical values from the chi-square distribution with <span class="math inline">\(n - 1\)</span> degrees of freedom</li>
+</ul>
+</li>
+</ul>
+<p>This interval tells you the range of plausible values for the population standard deviation, based on your sample. Though less commonly visualized, it helps assess uncertainty in variability across groups.</p>
+<p>In this lab assignment, you’ll first work see a fully developed example using the <code>diamonds</code> dataset to see how to create group summaries and effective visualizations. Then you’ll apply the same techniques to the <code>penguins</code> dataset, answering questions and generating your own analysis using the skills you’ve learned. ## Packages</p>
+<p>In this lab you will use functions and datasets from the <strong>dplyr</strong> and <strong>ggplot2</strong> packages. While you could load those packages individually, in this course you are encouraged to always load the entire <strong>tidyverse</strong> set of packages. In addition, you will be using the Palmer penguins dataset from the <strong>palmerpenguins</strong> package.</p>
+</div>
+<div id="example" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
+</h2>
+<p>This example shows how to explore the relationship between diamond price and cut using the <code>diamonds</code> dataset from the <code>ggplot2</code> package. The variable <code>cut</code> is a categorical variable describing the quality of the diamond’s cut, ranging from Fair to Ideal. Because cut influences how well a diamond reflects light, we might expect it to be associated with differences in price.</p>
+<p>We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load packages ------------------------------</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># summarize price by cut ---------------------</span></span>
+<span></span>
+<span><span class="va">diamond_summary</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    std_dev_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    sample_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    std_err_mean <span class="op">=</span> <span class="va">std_dev_price</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span>,</span>
+<span>    t_crit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    ci_mean_lower <span class="op">=</span> <span class="va">mean_price</span> <span class="op">-</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
+<span>    ci_mean_upper <span class="op">=</span> <span class="va">mean_price</span> <span class="op">+</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
+<span>    chi2_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    chi2_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    ci_sd_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_lower</span><span class="op">)</span>,</span>
+<span>    ci_sd_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_upper</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 13
+#&gt;   cut      median_price mean_price std_dev_price sample_size std_err_mean t_crit
+#&gt;   &lt;ord&gt;           &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 Fair            3282       4359.         3560.        1610         88.7   1.96
+#&gt; 2 Good            3050.      3929.         3682.        4906         52.6   1.96
+#&gt; 3 Very Go…        2648       3982.         3936.       12082         35.8   1.96
+#&gt; 4 Premium         3185       4584.         4349.       13791         37.0   1.96
+#&gt; 5 Ideal           1810       3458.         3808.       21551         25.9   1.96
+#&gt; # ℹ 6 more variables: ci_mean_lower &lt;dbl&gt;, ci_mean_upper &lt;dbl&gt;,
+#&gt; #   chi2_lower &lt;dbl&gt;, chi2_upper &lt;dbl&gt;, ci_sd_lower &lt;dbl&gt;, ci_sd_upper &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Faceted histograms ------------------------</span></span>
+<span></span>
+<span><span class="co"># Prepare a long-format data frame for </span></span>
+<span><span class="co">#   vertical lines</span></span>
+<span><span class="va">diamond_lines</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">diamond_summary</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">cut</span>, <span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"statistic"</span>,</span>
+<span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="co"># make the statistic names readable</span></span>
+<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span></span>
+<span>      <span class="va">statistic</span>,</span>
+<span>      median_price <span class="op">=</span> <span class="st">"Median"</span>,</span>
+<span>      mean_price <span class="op">=</span> <span class="st">"Mean"</span>,</span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="co"># ensure order in legend</span></span>
+<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>   </span>
+<span>      <span class="va">statistic</span>, </span>
+<span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Median"</span>, <span class="st">"Mean"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 10 × 3
+#&gt;   cut       statistic value
+#&gt;   &lt;ord&gt;     &lt;fct&gt;     &lt;dbl&gt;
+#&gt; 1 Fair      Mean      4359.
+#&gt; 2 Fair      Median    3282 
+#&gt; 3 Good      Mean      3929.
+#&gt; 4 Good      Median    3050.
+#&gt; 5 Very Good Mean      3982.
+#&gt; 6 Very Good Median    2648 
+#&gt; # ℹ 4 more rows</code></pre>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create the plot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.5</span>, fill <span class="op">=</span> <span class="st">"gray70"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_lines</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">value</span> <span class="op">/</span> <span class="fl">1000</span>, linetype <span class="op">=</span> <span class="va">statistic</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_linetype_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mean"</span> <span class="op">=</span> <span class="st">"dashed"</span>, <span class="st">"Median"</span> <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">cut</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribution of Diamond Prices by Cut"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Price (thousands of USD)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Count"</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"Statistic"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Strip plot with violin and means ----------</span></span>
+<span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="fl">.02</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># only for big data sets</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray90"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.8</span>, size <span class="op">=</span> <span class="fl">0.4</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>        ymin <span class="op">=</span> <span class="va">ci_mean_lower</span>, </span>
+<span>        ymax <span class="op">=</span> <span class="va">ci_mean_upper</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>    linewidth <span class="op">=</span> <span class="fl">0.8</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">mean_price</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Diamond Price by Cut"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Cut Quality"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Price (USD)"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="lab-7_files/figure-html/diamonds-example-1.png" width="70%" style="display: block; margin: auto;"><img src="lab-7_files/figure-html/diamonds-example-2.png" width="70%" style="display: block; margin: auto;"></p>
+</div>
+<div id="instructions-3" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-3"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.</li>
+<li>Clone your repository to your computer using the <strong>New Project &gt; Version Control &gt; Git</strong> method</li>
+<li>Set your Global Options in RStudio
+<ol style="list-style-type: lower-alpha">
+<li>Open RStudio</li>
+<li>Go to the Tools menu &gt; Global Options</li>
+<li>Under <strong>General &gt; Basic</strong>, uncheck the boxes under Workspace and History</li>
+<li>Under <strong>Code &gt; Editing</strong>, check the box for “Use native pipe operator”</li>
+<li>Under <strong>Code &gt; Completion</strong>, check the box for “Use tab for multiline autocompletions”</li>
+</ol>
+</li>
+<li>Make your first commit by adding the R project file (lab-7-data-summarizing-your-name.RProj) and gitignore file (.gitignore) to Git.
+<ul>
+<li>The commit message should be “Add RProj and gitignore files”</li>
+</ul>
+</li>
+<li>Create a new <code>questions.R</code> script. This is where you will write the code to answer the questions below.</li>
+<li>If it is not already installed, then install the <strong>tidyverse</strong> and <strong>palmerpenguins</strong> packages.
+<ul>
+<li>Best practice: put the library command in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).</li>
+<li>Alternative method: use the <strong>Packages</strong> tab in RStudio (lower right pane) to check for the presence of the two packages, and to install them if necessary.</li>
+<li>Not recommended: typing <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> into the console</li>
+<li>Definitely not recommended: putting <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in your R script.</li>
+</ul>
+</li>
+<li>Under the section <code># load packages ----</code>
+<ul>
+<li>Write the code to load your packages.</li>
+</ul>
+</li>
+<li>Under the section <code># questions ----</code>
+<ul>
+<li>Put placeholder comments for the questions below.</li>
+<li>Below each comment, write code to perform the requested action</li>
+<li>Do not assign the results a name (i.e. do not create an object) using the assignment operator <em>unless instructed to do so</em>.</li>
+<li>For eah question, only include the minimum code necessary. Do not include every version of code you tried.</li>
+</ul>
+</li>
+<li>Save your script, commit it to Git, and push the commit to GitHub</li>
+<li>To submit your assignment:
+<ol style="list-style-type: lower-alpha">
+<li>In a web browser, navigate to your Git repository, copy the URL</li>
+<li>Paste that as your assignment in the D2L submission box for the lab</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="questions-3" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Questions<a class="anchor" aria-label="anchor" href="#questions-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>All questions work with the penguins dataset.</p>
+<ol style="list-style-type: decimal">
+<li>Calculate the mean bill depth of penguins <em>by species</em> (one mean per species)
+<ul>
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function described in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a>
+</li>
+<li>Group by species; there are two ways to do this:
+<ul>
+<li>Include the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function in the pipeline before the summarize; see <a href="https://r4ds.hadley.nz/data-transform.html#group_by">R4DS 3.4.1 group_by()</a> for details and an example</li>
+<li>Alternative: use the experimental new <code>.by =</code> argument in the summarize function itself, as described in <a href="https://r4ds.hadley.nz/data-transform.html#by">R4DS 3.5.6 .by</a>.</li>
+</ul>
+</li>
+<li>Suggestion: Name the new variable <strong>mean_bd</strong>
+</li>
+<li>Tip: use the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to calculate the mean, for example <code>mean_bd = mean(flipper_length_mm)</code>
+</li>
+<li>Warning: If you see an <code>NA</code> in the mean column, it is because there are missing values in the data used to calculate the mean. Use the <code>na.rm</code> argument to <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, for example <code>mean(flipper_length_mm, na.rm = TRUE)</code> to exclude missing values when calculating the mean</li>
+</ul>
+</li>
+<li>For each species, calculate the mean bill depth, the number of penguins in the dataset, and the number of values used to calculate the mean
+<ul>
+<li>In your <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function, you can calculate multiple variables at once; see the third code block in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a> for an example</li>
+<li>The final data frame should have <em>exactly</em> the following columns:
+<ul>
+<li>
+<strong><code>mean_bd</code></strong> (mean bill depth): calculate using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> with <code>na.rm=TRUE</code>
+</li>
+<li>
+<strong><code>n_rows</code></strong> (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function, which does not take any arguments, for example <code>n = n()</code>
+</li>
+<li>
+<strong><code>n_nas</code></strong> (number of NAs): the number of missing values for bill depth; use a trick to do this: <code>NAs = sum(is.na(bill_length_mm))</code>
+</li>
+<li>
+<strong><code>sample_size</code></strong> (sample size): the number of values used to calculate bill depth; use a trick to do this: <code>sample_size = sum(!is.na(bill_length_mm))</code>
+</li>
+</ul>
+</li>
+<li>Note how <code>n</code> and <code>sampl_size</code> are not the same; ask yourself, which should you use to calculate a standard error of the mean?</li>
+</ul>
+</li>
+<li>Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
+<ul>
+<li><p><strong>mean_bd</strong> (sample mean): average bill depth</p></li>
+<li><p><strong>sampl_size</strong> (sample size): use the equation from question 2 to calculate</p></li>
+<li><p><strong>std_dev</strong> (sample standard deviation): use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function to calculate</p></li>
+<li><p><strong>std_err_mean</strong> (standard error of the mean): use the equation above <span class="math inline">\(SE_{\bar{Y}} = \frac{s}{\sqrt{n}}\)</span></p></li>
+<li>
+<p><strong>t_crit</strong> (t critical value): use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function to calculate the t-value needed for a confidence interval</p>
+<ul>
+<li>This function takes two main arguments: <code>p</code> and <code>df</code>.</li>
+<li>
+<code>p</code> is the cumulative probability, meaning the area under the t-distribution curve to the <strong>left</strong> of the desired t-value.
+<ul>
+<li>For a two-tailed 95% confidence interval, use <code>p = 0.975</code> (because 2.5% is in the upper tail).</li>
+</ul>
+</li>
+<li>df is the degrees of freedom and is typically calculated as the sample size minus one: <code>df = sampl_size - 1</code>
+</li>
+<li>example: <code>qt(p = 0.975, df = sampl_size - 1)</code>
+</li>
+<li>
+<strong>ci_mean_upper</strong> (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.</li>
+<li>
+<strong>ci_mean_lower</strong> (lower bound): calculate similar to the upper bound</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Calculate the mean <strong>body mass</strong> by species, including a 95% confidence interval for the mean, and a 95% confidence interval for the standard deviation.
+<ul>
+<li>Calculate the mean and confidence interval as above</li>
+<li>Also calculate the confidence interval for the standard deviation using the equation <span class="math inline">\(\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} &lt; \sigma &lt; \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}\)</span> where <span class="math inline">\(\sigma\)</span> is the population standard deviation, <span class="math inline">\(s\)</span> is the sample standard deviation, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\chi^2_{1 - \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{\alpha/2}\)</span> are the critical values from the chi-squared distribution.</li>
+<li>The final data frame should have the following columns:
+<ul>
+<li>
+<strong>sample_size</strong> (sample size)</li>
+<li>
+<strong>mean_bd</strong> (average bill depth)</li>
+<li>
+<strong>std_dev_bd</strong> (standard deviation)</li>
+<li>
+<strong>ci_mean_upper</strong> (upper bound to the confidence interval)</li>
+<li>
+<strong>ci_mean_lower</strong> (lower bound to the confidence interval)</li>
+<li>
+<strong>ci_std_dev_upper</strong> (upper bound to the confidence interval)</li>
+<li>
+<strong>ci_std_dev_lower</strong> (lower bound to the confidence interval)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
+<ul>
+<li>geom_histogram()</li>
+<li>facet_wrap()</li>
+</ul>
+</li>
+<li>Create a strip plot that shows the distribution of penguin body masses by species
+<ul>
+<li>Include the raw data (geom_point)</li>
+<li>Include violin plots (geom_violin)</li>
+<li>Include the means (geom_point)</li>
+<li>Include the confidence intervals for the mean (geom_errorbar)</li>
+</ul>
+</li>
+</ol>
+<div id="section" class="section level3" number="7.5.1">
+<h3>
+<span class="header-section-number">7.5.1</span> <a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
+</h3>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-6-data-transformation-2.html"><span class="header-section-number">6</span> Lab 6: Data transformation 2</a></div>
+<div class="next"><a href="eda-project.html"><span class="header-section-number">8</span> EDA Project</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lab-7-data-summarizing"><span class="header-section-number">7</span> Lab 7: Data summarizing</a></li>
+<li><a class="nav-link" href="#student-learning-outcomes"><span class="header-section-number">7.1</span> Student Learning Outcomes</a></li>
+<li><a class="nav-link" href="#introduction-3"><span class="header-section-number">7.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#example"><span class="header-section-number">7.3</span> Example</a></li>
+<li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.4</span> Instructions</a></li>
+<li>
+<a class="nav-link" href="#questions-3"><span class="header-section-number">7.5</span> Questions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#section"><span class="header-section-number">7.5.1</span></a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/blob/master/lab-7.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/BIOL275-MSUM/BIOL275-MSUM.github.io/edit/master/lab-7.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-04-01.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

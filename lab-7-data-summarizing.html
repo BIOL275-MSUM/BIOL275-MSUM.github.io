@@ -455,8 +455,21 @@ where:</p>
 </li>
 <li>Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
 <ul>
-<li>geom_histogram()</li>
-<li>facet_wrap()</li>
+<li>geom_histogram() creates the histogram</li>
+<li>facet_wrap() separates the three species into different panels
+<ul>
+<li>The argument to facet wrap should be an equation (use the tilde <code>~</code>) with the name of the grouping variable</li>
+<li>Example: to facet the diamonds data by cut, use <code>facet_wrap(~cut)</code>
+</li>
+</ul>
+</li>
+<li>Adding vertical lines for both the mean and median requires reshaping the summary data into long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>
+<ul>
+<li>You can put the name of the statistic, “Mean” or “Median”, in a new column named <strong>statistic</strong>, and the values in a new column named <strong>value</strong>.</li>
+<li>When you add the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> you need to set the data argument to the vertical line dataset you just created</li>
+<li>Be sure to add the <code>x=grouping_variable</code> to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Create a strip plot that shows the distribution of penguin body masses by species
@@ -468,12 +481,6 @@ where:</p>
 </ul>
 </li>
 </ol>
-<div id="section" class="section level3" number="7.5.1">
-<h3>
-<span class="header-section-number">7.5.1</span> <a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a>
-</h3>
-
-</div>
 </div>
 </div>
 
@@ -490,9 +497,7 @@ where:</p>
 <li><a class="nav-link" href="#introduction-3"><span class="header-section-number">7.2</span> Introduction</a></li>
 <li><a class="nav-link" href="#example"><span class="header-section-number">7.3</span> Example</a></li>
 <li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.4</span> Instructions</a></li>
-<li>
-<a class="nav-link" href="#questions-3"><span class="header-section-number">7.5</span> Questions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#section"><span class="header-section-number">7.5.1</span></a></li></ul>
-</li>
+<li><a class="nav-link" href="#questions-3"><span class="header-section-number">7.5</span> Questions</a></li>
 </ul>
 
       <div class="book-extra">

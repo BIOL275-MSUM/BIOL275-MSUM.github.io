@@ -65,7 +65,6 @@ introduction-3
 example
 instructions-3
 questions-3
-section
 eda-project
 overview
 purpose

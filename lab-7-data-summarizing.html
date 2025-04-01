@@ -385,9 +385,6 @@ where:</p>
 <li>The final data frame should have <em>exactly</em> the following columns:
 <ul>
 <li>
-<strong><code>mean_bd</code></strong> (mean bill depth): calculate using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> with <code>na.rm=TRUE</code>
-</li>
-<li>
 <strong><code>n_rows</code></strong> (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function, which does not take any arguments, for example <code>n = n()</code>
 </li>
 <li>
@@ -396,6 +393,9 @@ where:</p>
 <li>
 <strong><code>sample_size</code></strong> (sample size): the number of values used to calculate bill depth; use a trick to do this: <code>sample_size = sum(!is.na(bill_length_mm))</code>
 </li>
+<li>
+<strong><code>mean_bd</code></strong> (mean bill depth): calculate using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> with <code>na.rm=TRUE</code>
+</li>
 </ul>
 </li>
 <li>Note how <code>n</code> and <code>sampl_size</code> are not the same; ask yourself, which should you use to calculate a standard error of the mean?</li>
@@ -403,9 +403,9 @@ where:</p>
 </li>
 <li>Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
 <ul>
-<li><p><strong>mean_bd</strong> (sample mean): average bill depth</p></li>
 <li><p><strong>sampl_size</strong> (sample size): use the equation from question 2 to calculate</p></li>
-<li><p><strong>std_dev</strong> (sample standard deviation): use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function to calculate</p></li>
+<li><p><strong>mean_bd</strong> (sample mean): average bill depth</p></li>
+<li><p><strong>std_dev_bd</strong> (sample standard deviation): use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function to calculate</p></li>
 <li><p><strong>std_err_mean</strong> (standard error of the mean): use the equation above <span class="math inline">\(SE_{\bar{Y}} = \frac{s}{\sqrt{n}}\)</span></p></li>
 <li>
 <p><strong>t_crit</strong> (t critical value): use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function to calculate the t-value needed for a confidence interval</p>
@@ -438,9 +438,9 @@ where:</p>
 <li>
 <strong>sample_size</strong> (sample size)</li>
 <li>
-<strong>mean_bd</strong> (average bill depth)</li>
+<strong>mean_bm</strong> (mean body mass)</li>
 <li>
-<strong>std_dev_bd</strong> (standard deviation)</li>
+<strong>std_dev_bm</strong> (standard deviation of body mass)</li>
 <li>
 <strong>ci_mean_upper</strong> (upper bound to the confidence interval)</li>
 <li>

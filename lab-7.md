@@ -247,17 +247,17 @@ All questions work with the penguins dataset.
 2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the number of values used to calculate the mean
     -   In your `summarize()` function, you can calculate multiple variables at once; see the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example
     -   The final data frame should have *exactly* the following columns:
-        -   **`mean_bd`** (mean bill depth): calculate using `mean()` with `na.rm=TRUE`
         -   **`n_rows`** (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the `n()` function, which does not take any arguments, for example `n = n()`
         -   **`n_nas`** (number of NAs): the number of missing values for bill depth; use a trick to do this: `NAs = sum(is.na(bill_length_mm))`
         -   **`sample_size`** (sample size): the number of values used to calculate bill depth; use a trick to do this: `sample_size = sum(!is.na(bill_length_mm))`
+        -   **`mean_bd`** (mean bill depth): calculate using `mean()` with `na.rm=TRUE`
     -   Note how `n` and `sampl_size` are not the same; ask yourself, which should you use to calculate a standard error of the mean?
 3.  Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
-    -   **mean_bd** (sample mean): average bill depth
-
     -   **sampl_size** (sample size): use the equation from question 2 to calculate
 
-    -   **std_dev** (sample standard deviation): use the `sd()` function to calculate
+    -   **mean_bd** (sample mean): average bill depth
+
+    -   **std_dev_bd** (sample standard deviation): use the `sd()` function to calculate
 
     -   **std_err_mean** (standard error of the mean): use the equation above $SE_{\bar{Y}} = \frac{s}{\sqrt{n}}$
 
@@ -275,8 +275,8 @@ All questions work with the penguins dataset.
     -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
     -   The final data frame should have the following columns:
         -   **sample_size** (sample size)
-        -   **mean_bd** (average bill depth)
-        -   **std_dev_bd** (standard deviation)
+        -   **mean_bm** (mean body mass)
+        -   **std_dev_bm** (standard deviation of body mass)
         -   **ci_mean_upper** (upper bound to the confidence interval)
         -   **ci_mean_lower** (lower bound to the confidence interval)
         -   **ci_std_dev_upper** (upper bound to the confidence interval)

@@ -257,5 +257,3 @@ All questions work with the penguins dataset.
     -   Include violin plots (geom_violin)
     -   Include the means (geom_point)
     -   Include the confidence intervals for the mean (geom_errorbar)
-
-### 

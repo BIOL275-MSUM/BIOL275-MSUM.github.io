@@ -10,6 +10,7 @@ rmd_files: [
   "lab-4.Rmd",
   "lab-5.Rmd",
   "lab-6.Rmd",
+  "lab-7.Rmd",
   
   "eda-project.Rmd",
   "eda-repository-setup.Rmd",

@@ -159,19 +159,18 @@ diamond_lines <-
 
 ``` r
 # Create the plot
-ggplot(diamonds, aes(x = price / 1000)) +
-  geom_histogram(binwidth = 0.5, fill = "gray70", color = "black") +
+ggplot(diamonds, aes(x = price)) +
+  geom_histogram(bins = 30, fill = "gray70", color = "black") +
   geom_vline(
     data = diamond_lines,
-    aes(xintercept = value / 1000, linetype = statistic),
+    aes(xintercept = value, linetype = statistic),
     color = "red",
     show.legend = TRUE
   ) +
-  scale_linetype_manual(values = c("Mean" = "dashed", "Median" = "solid")) +
-  facet_wrap(~ cut, scales = "free_y") +
+  facet_wrap(~ cut, scales = "free_y", ncol = 1) +
   labs(
     title = "Distribution of Diamond Prices by Cut",
-    x = "Price (thousands of USD)",
+    x = "Price (USD)",
     y = "Frequency",
     linetype = "Statistic"
   ) +

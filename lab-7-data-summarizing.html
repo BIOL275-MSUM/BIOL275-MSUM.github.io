@@ -455,19 +455,20 @@ where:</p>
 </li>
 <li>Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
 <ul>
+<li>Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>
+<ul>
+<li>Select the variables you need, species, median_bm, and mean_bm.</li>
+<li>Use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the name of the statistic, “Mean” or “Median”, in a new column named <strong>statistic</strong>, and the values in a new column named <strong>value</strong>.</li>
+<li>In the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> set the data argument to the vertical line dataset you just created</li>
+<li>Be sure to add the <code>x=grouping_variable</code> to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.</li>
+</ul>
+</li>
 <li>geom_histogram() creates the histogram</li>
 <li>facet_wrap() separates the three species into different panels
 <ul>
 <li>The argument to facet wrap should be an equation (use the tilde <code>~</code>) with the name of the grouping variable</li>
 <li>Example: to facet the diamonds data by cut, use <code>facet_wrap(~cut)</code>
 </li>
-</ul>
-</li>
-<li>Adding vertical lines for both the mean and median requires reshaping the summary data into long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>
-<ul>
-<li>You can put the name of the statistic, “Mean” or “Median”, in a new column named <strong>statistic</strong>, and the values in a new column named <strong>value</strong>.</li>
-<li>When you add the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> you need to set the data argument to the vertical line dataset you just created</li>
-<li>Be sure to add the <code>x=grouping_variable</code> to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.</li>
 </ul>
 </li>
 </ul>

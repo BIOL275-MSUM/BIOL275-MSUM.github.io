@@ -169,15 +169,23 @@ All questions work with the penguins dataset. The first question introduces you 
         a.  Name the new variables **ci_std_dev_upper** (upper bound to the confidence interval) and **ci_std_dev_lower** (lower bound to the confidence interval)
         b.  See if you can write the equations to calculate the bounds yourself. If you need help, refer to the worked example below.
 5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
-    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
-        -   Select the variables you need, species, median_bm, and mean_bm.
-        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**.
-        -   In the `geom_vline()` set the data argument to the vertical line dataset you just created
+    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()` and save this new, reshaped data frame for later use by assigning it a name with the `->` assignment operator. Here are steps to create the reshaped summary data frame:
+        -   Assigning the new name, for example: `penguin_lines ->`
+        -   Start with the peguins dataset: `penguins |>`
+        -   Summarize the dataset by calculating the mean and median body mass.
+            -   For example, name your new variables **median_bm**, and **mean_bm**.
+        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**. See the example below.
+        -   Recode the statistic variable so it has pretty names that will look good on the graph.
+            -   For example, recode "mean_bd" as "Mean"
+    -   Create your ggplot, using the raw penguins data.
+        -   geom_histogram() creates the histogram
+            -   Choose an appropriate number of bins using the `bins=` argument.
+        -   Add a `geom_vline()` and set the data argument to the vertical line dataset you just created, **penguin_lines**
         -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
-    -   geom_histogram() creates the histogram
-    -   facet_wrap() separates the three species into different panels
-        -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
-        -   Example: to facet the diamonds data by cut, use `facet_wrap(~cut)`
+        -   facet_wrap() separates the three species into different panels
+            -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
+            -   Add the `ncol=1` argument to force the histogram panels to be in a single column rather than the default side-by-side.
+            -   Example: to facet the diamonds data by cut, use `facet_wrap(~ cut, ncol = 1)`
 6.  Create a strip plot that shows the distribution of penguin body masses by species
     -   Include the raw data (geom_point)
     -   Include violin plots (geom_violin)

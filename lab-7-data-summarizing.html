@@ -379,19 +379,42 @@ where:</p>
 </li>
 <li>Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
 <ul>
-<li>Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>
+<li>Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and save this new, reshaped data frame for later use by assigning it a name with the <code>-&gt;</code> assignment operator. Here are steps to create the reshaped summary data frame:
 <ul>
-<li>Select the variables you need, species, median_bm, and mean_bm.</li>
-<li>Use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the name of the statistic, “Mean” or “Median”, in a new column named <strong>statistic</strong>, and the values in a new column named <strong>value</strong>.</li>
-<li>In the <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> set the data argument to the vertical line dataset you just created</li>
-<li>Be sure to add the <code>x=grouping_variable</code> to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.</li>
+<li>Assigning the new name, for example: <code>penguin_lines -&gt;</code>
+</li>
+<li>Start with the peguins dataset: <code>penguins |&gt;</code>
+</li>
+<li>Summarize the dataset by calculating the mean and median body mass.
+<ul>
+<li>For example, name your new variables <strong>median_bm</strong>, and <strong>mean_bm</strong>.</li>
 </ul>
 </li>
-<li>geom_histogram() creates the histogram</li>
+<li>Use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the name of the statistic, “Mean” or “Median”, in a new column named <strong>statistic</strong>, and the values in a new column named <strong>value</strong>. See the example below.</li>
+<li>Recode the statistic variable so it has pretty names that will look good on the graph.
+<ul>
+<li>For example, recode “mean_bd” as “Mean”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create your ggplot, using the raw penguins data.
+<ul>
+<li>geom_histogram() creates the histogram
+<ul>
+<li>Choose an appropriate number of bins using the <code>bins=</code> argument.</li>
+</ul>
+</li>
+<li>Add a <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> and set the data argument to the vertical line dataset you just created, <strong>penguin_lines</strong>
+</li>
+<li>Be sure to add the <code>x=grouping_variable</code> to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.</li>
 <li>facet_wrap() separates the three species into different panels
 <ul>
 <li>The argument to facet wrap should be an equation (use the tilde <code>~</code>) with the name of the grouping variable</li>
-<li>Example: to facet the diamonds data by cut, use <code>facet_wrap(~cut)</code>
+<li>Add the <code>ncol=1</code> argument to force the histogram panels to be in a single column rather than the default side-by-side.</li>
+<li>Example: to facet the diamonds data by cut, use <code>facet_wrap(~ cut, ncol = 1)</code>
+</li>
+</ul>
 </li>
 </ul>
 </li>

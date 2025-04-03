@@ -101,27 +101,34 @@ In this lab you will use functions and datasets from the **dplyr** and **ggplot2
 All questions work with the penguins dataset.
 
 1.  Calculate the mean bill depth of penguins *by species* (one mean per species)
-    -   Start with the `penguins` data frame
-    -   Pipe the data frame into the next function using the native pipe operator `|>`
-    -   Group by species using the `group_by()` function described in [R4DS 3.4.1 `group_by()`](https://r4ds.hadley.nz/data-transform.html#group_by)
-        -   The argument to `group_by()` is the unquoted name of the variable (column) that contains the categorical variable you want to use to separate your observations (rows) into groups
-        -   Hint: the instructions say "*by species*"
-    -   Use the `summarize()` function described in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize).
-        -   The argument for the function is a name = value pair where name is the new name of the summary statistic you want to create, and value is the value, function, or equation used to calculate the summary statistic.
-        -   What should you name your summary statistic? Because it is the mean of bill depth, you could use **mean_bd**.
-        -   Which equation should use you to calculate the summary statistic? Common summary functions include `mean()`, `median()`, and `sd()` .
-        -   For example, to create a summary statistic for median flipper length, you would use: `median_fl = median(flipper_length_mm)`
-    -   Run your code now and you may see a value of `NA` for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
-        -   Exclude those missing values during calculation of the mean by setting the `na.rm` argument to `TRUE`.
-        -   Extending the example above for calculating a median: `median_fl = median(flipper_length_mm, na.rm = TRUE)`.
-2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the number of values used to calculate the mean
-    -   In your `summarize()` function, you can calculate multiple variables at once; see the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example
-    -   The final data frame should have *exactly* the following columns:
-        -   **`n_rows`** (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the `n()` function, which does not take any arguments, for example `n = n()`
-        -   **`n_nas`** (number of NAs): the number of missing values for bill depth; use a trick to do this: `NAs = sum(is.na(bill_length_mm))`
-        -   **`sample_size`** (sample size): the number of values used to calculate bill depth; use a trick to do this: `sample_size = sum(!is.na(bill_length_mm))`
-        -   **`mean_bd`** (mean bill depth): calculate using `mean()` with `na.rm=TRUE`
-    -   Note how `n` and `sampl_size` are not the same; ask yourself, which should you use to calculate a standard error of the mean?
+    a.  Start with the `penguins` data frame
+    b.  Pipe the data frame into the next function using the native pipe operator `|>`
+    c.  Group by species using the `group_by()` function described in [R4DS 3.4.1 `group_by()`](https://r4ds.hadley.nz/data-transform.html#group_by)
+        i.  The argument to `group_by()` is the unquoted name of the variable (column) that contains the categorical variable you want to use to separate your observations (rows) into groups
+        ii. Hint: the instructions say "*by species*"
+    d.  Use the `summarize()` function described in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize).
+        i.  The argument for the function is a name = value pair where name is the new name of the summary statistic you want to create, and value is the value, function, or equation used to calculate the summary statistic.
+        ii. What should you name your summary statistic? Because it is the mean of bill depth, you could use **mean_bd**.
+        iii. Which equation should use you to calculate the summary statistic? Common summary functions include `mean()`, `median()`, and `sd()` .
+        iv. For example, to create a summary statistic for median flipper length, you would use: `median_fl = median(flipper_length_mm)`
+    e.  Run your code now and you may see a value of `NA` for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
+        i.  Exclude those missing values during calculation of the mean by setting the `na.rm` argument to `TRUE`.
+        ii. Extending the example above for calculating a median: `median_fl = median(flipper_length_mm, na.rm = TRUE)`.
+2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the sample size (the number of values used to calculate the mean).
+    a.  Start by copying your code from question 1.
+    b.  Add a new summary statistic for the number of rows in the dataset for each species
+        i.  You can calculate multiple summary statistics in the same summarize function. To do this, in the summarize function, put a comma after your equation for the mean. On a new line, add your new summary statistic. See the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example of calculating two variables, `avg_delay` and `n`, in the same summarize function.
+        ii. Name the new variable **n_rows** and use the `n()` equation to calculate it. This function counts the number of rows in the dataset—for each group, if you are using `group_by()`.
+        iii. The function does not take any arguments, for example `n = n()` .
+    c.  You might be tempted to think of your new `n_rows` statistic as the same size for calculating the means. This isn't always the case, however, as `n()` counts *all* the rows in the dataset regardless of whether they contain missing values (`NA`) for a particular variable of interest. The actual sample size would not count those missing values. So how do we exclude them? See below.
+    d.  Add a new summary statistic for the number of missing values for bill depth for each species.
+        i.  Name the new variable **`n_nas`** (number of NAs).
+        ii. Use the equation `sum(is.na(bill_length_mm))` to calculate the statistic. Why does this work? The function `is.na()` returns `TRUE` when a value is `NA` and `FALSE` when a value is not. The `sum()` function coerces that vector of trues an falses into numerical format by converting `TRUE`s to `1`s and `FALSE`s to `0`s. Adding up the `1`s gives you the number of missing values.
+    e.  Add a new summary statistic for the number of *non*-missing values for bill depth for each species. *This* is the sample size used to calculate the mean.
+        i.  Name the new variable **`sample_size`**.
+        ii. Modify the previous equation so it returns TRUE when a value *is not* missing and FALSE when it *is* missing. In R this is done by adding the not operator `!` before the `is.na()`. All TRUE values become !TRUE, i.e. FALSE, and vice versa.
+        iii. For example: `sum(!is.na(bill_length_mm))`.
+    f.  Note how `n` and `sampl_size` are not the same. Ask yourself: which should you use to calculate a standard error of the mean?
 3.  Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
     -   **sampl_size** (sample size): use the equation from question 2 to calculate
 

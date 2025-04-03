@@ -155,17 +155,19 @@ All questions work with the penguins dataset. The first question introduces you 
         b.  See the Introduction for a reminder of how to calculate a confidence interval for the mean: $\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} < \mu < \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}$.
         c.  Use the `t_crit` and `std_err_mean` variables you just created to calculate the confidence intervals
         d.  For example: `ci_mean_upper = t_crit * std_err_mean`.
-4.  Estimate the mean **body mass** by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.
-    -   Calculate the mean and confidence interval as above
-    -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
-    -   The final data frame should have the following columns:
-        -   **sample_size** (sample size)
-        -   **mean_bm** (mean body mass)
-        -   **std_dev_bm** (standard deviation of body mass)
-        -   **ci_mean_upper** (upper bound to the confidence interval)
-        -   **ci_mean_lower** (lower bound to the confidence interval)
-        -   **ci_std_dev_upper** (upper bound to the confidence interval)
-        -   **ci_std_dev_lower** (lower bound to the confidence interval)
+4.  Estimate the standard deviation of **body mass** by species. Include a 95% confidence interval for the standard deviation.
+    a.  Calculate the sample size and estimate the sample standard deviation as above.
+    b.  See the Introduction for a reminder of how to calculate a confidence interval for the standard deviation: $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
+    c.  Before you can calculate the confidence interval, you must look up the two chi-squared critical values.
+        i.  Add two new variables, **chi2_lower** and **chi2upper**, to hold the critical values.
+        ii. Calculate these values using the following equations:
+            -   `chi2_lower = qchisq(0.975, df = sample_size - 1)`
+            -   `chi2_upper = qchisq(0.025, df = sample_size - 1)`
+            -   Note the different values for the `p` argument
+        iii. Side note: there are two critical values here because the chi-squared distribution is not symmetrical like the t distribution.
+    d.  Add two new variables for the upper and lower bounds for the confidence interval around your estimate of the sample standard deviation
+        a.  Name the new variables **ci_std_dev_upper** (upper bound to the confidence interval) and **ci_std_dev_lower** (lower bound to the confidence interval)
+        b.  See if you can write the equations to calculate the bounds yourself. If you need help, refer to the worked example below.
 5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
     -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
         -   Select the variables you need, species, median_bm, and mean_bm.

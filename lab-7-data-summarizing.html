@@ -242,9 +242,9 @@ where:</p>
 <h2>
 <span class="header-section-number">7.4</span> Questions<a class="anchor" aria-label="anchor" href="#questions-3"><i class="fas fa-link"></i></a>
 </h2>
-<p>All questions work with the penguins dataset.</p>
+<p>All questions work with the penguins dataset. The first question introduces you to the idea of summarizing by group. The second question shows you how to calculate sample size. The third question illustrates the estimation of a confidence interval for a mean, and the fourth question adds a confidence interval for the standard deviation. The final two questions show you how to visualize the distribution of values for each sample and add summary statistics to those visualizations.</p>
 <ol style="list-style-type: decimal">
-<li>Calculate the mean bill depth of penguins <em>by species</em> (one mean per species)
+<li>Estimate the mean bill depth of penguins <em>by species</em> (one mean per species)
 <ol style="list-style-type: lower-alpha">
 <li>Start with the <code>penguins</code> data frame</li>
 <li>Pipe the data frame into the next function using the native pipe operator <code>|&gt;</code>
@@ -272,7 +272,7 @@ where:</p>
 </li>
 </ol>
 </li>
-<li>For each species, calculate the mean bill depth, the number of penguins in the dataset, and the sample size (the number of values used to calculate the mean).
+<li>For each species, calculate the number of penguins (aka rows, aka observations) in the dataset, and the sample size (the number of values used to calculate the mean).
 <ol style="list-style-type: lower-alpha">
 <li>Start by copying your code from question 1.</li>
 <li>Add a new summary statistic for the number of rows in the dataset for each species
@@ -299,7 +299,7 @@ where:</p>
 <li>Note how <code>n</code> and <code>sampl_size</code> are not the same. Ask yourself: which should you use to calculate a standard error of the mean?</li>
 </ol>
 </li>
-<li>Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
+<li>Estimate a 95% confidence interval for the mean bill depth of penguins, by species.
 <ul>
 <li><p><strong>sampl_size</strong> (sample size): use the equation from question 2 to calculate</p></li>
 <li><p><strong>mean_bd</strong> (sample mean): average bill depth</p></li>
@@ -327,7 +327,7 @@ where:</p>
 </li>
 </ul>
 </li>
-<li>Calculate the mean <strong>body mass</strong> by species, including a 95% confidence interval for the mean, and a 95% confidence interval for the standard deviation.
+<li>Estimate the mean <strong>body mass</strong> by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.
 <ul>
 <li>Calculate the mean and confidence interval as above</li>
 <li>Also calculate the confidence interval for the standard deviation using the equation <span class="math inline">\(\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} &lt; \sigma &lt; \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}\)</span> where <span class="math inline">\(\sigma\)</span> is the population standard deviation, <span class="math inline">\(s\)</span> is the sample standard deviation, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\chi^2_{1 - \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{\alpha/2}\)</span> are the critical values from the chi-squared distribution.</li>

@@ -98,7 +98,7 @@ In this lab you will use functions and datasets from the **dplyr** and **ggplot2
 
 ## Questions
 
-All questions work with the penguins dataset.
+All questions work with the penguins dataset. The first question introduces you to the idea of summarizing by group. The second question shows you how to calculate sample size. The third question illustrates the estimation of a confidence interval for a mean, and the fourth question adds a confidence interval for the standard deviation. The final two questions show you how to visualize the distribution of values for each sample and add summary statistics to those visualizations.
 
 1.  Calculate the mean bill depth of penguins *by species* (one mean per species)
     a.  Start with the `penguins` data frame

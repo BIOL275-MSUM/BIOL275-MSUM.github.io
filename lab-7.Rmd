@@ -152,7 +152,7 @@ All questions work with the penguins dataset. The first question introduces you 
         iii. Technically this is not a summary statistic as it does not summarize data values into a single statistic. When you run your code, this will be apparent because each row will contain the same value.
     f.  Add *two* new values for the upper and and lower bounds to the confidence interval.
         a.  Name these two variables **ci_mean_upper** and **ci_mean_lower**.
-        b.  See the Introduction for a reminder of how to calculate a confidence interval: $\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} < \mu < \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}$.
+        b.  See the Introduction for a reminder of how to calculate a confidence interval for the mean: $\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} < \mu < \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}$.
         c.  Use the `t_crit` and `std_err_mean` variables you just created to calculate the confidence intervals
         d.  For example: `ci_mean_upper = t_crit * std_err_mean`.
 4.  Estimate the mean **body mass** by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.

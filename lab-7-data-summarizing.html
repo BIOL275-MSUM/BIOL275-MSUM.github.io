@@ -300,13 +300,31 @@ where:</p>
 </ol>
 </li>
 <li>Estimate a 95% confidence interval for the mean bill depth of penguins, by species.
-<ul>
-<li><p><strong>sampl_size</strong> (sample size): use the equation from question 2 to calculate</p></li>
-<li><p><strong>mean_bd</strong> (sample mean): average bill depth</p></li>
-<li><p><strong>std_dev_bd</strong> (sample standard deviation): use the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function to calculate</p></li>
-<li><p><strong>std_err_mean</strong> (standard error of the mean): use the equation above <span class="math inline">\(SE_{\bar{Y}} = \frac{s}{\sqrt{n}}\)</span></p></li>
+<ol style="list-style-type: lower-alpha">
+<li>Start by copying your code from question 2.</li>
+<li>Remove the statistics for <code>n_rows</code> and <code>n_nas</code>.</li>
+<li>Add a new summary statistic for the standard deviation of bill depth.
+<ol style="list-style-type: lower-roman">
+<li>Name the new variable <strong>std_dev</strong> and use the equation <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> to calculate it.</li>
 <li>
-<p><strong>t_crit</strong> (t critical value): use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function to calculate the t-value needed for a confidence interval</p>
+<code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> words the same way as <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, so be sure to exclude missing values when you use it.</li>
+</ol>
+</li>
+<li>Add a new summary statistic for the standard error of the mean.
+<ol style="list-style-type: lower-roman">
+<li>Name the new variable <strong>std_err_mean</strong>
+</li>
+<li>See the Introduction for a reminder of how to calculate the standard error: <span class="math inline">\(SE_{\bar{Y}} = \frac{s}{\sqrt{n}}\)</span> where <span class="math inline">\(s\)</span> is the sample standard deviation and <span class="math inline">\(n\)</span> is the sample size.</li>
+<li>In a <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function, you can use variables you have just calculated in subsequent variables. Here you will use the <code>sample_size</code> and <code>std_dev</code> variables you have already calculated to calculate the new <code>std_err_mean</code> variable.</li>
+<li>Use the <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> function to calculate the square root, and the <code>/</code> operator to divide.</li>
+<li>For example: <code>std_err_mean = sample_size / sqrt(std_err)</code>
+</li>
+</ol>
+</li>
+<li>Add a new variable to hold the critical value from the <span class="math inline">\(t\)</span> distribution we will use to calculate the confidence interval.
+<ol style="list-style-type: lower-roman">
+<li>Name the new variable <strong>t_crit</strong> (t critical value)</li>
+<li>Use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function to calculate the t-value needed for the confidence interval
 <ul>
 <li>This function takes two main arguments: <code>p</code> and <code>df</code>.</li>
 <li>
@@ -319,37 +337,45 @@ where:</p>
 </li>
 <li>example: <code>qt(p = 0.975, df = sampl_size - 1)</code>
 </li>
-<li>
-<strong>ci_mean_upper</strong> (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.</li>
-<li>
-<strong>ci_mean_lower</strong> (lower bound): calculate similar to the upper bound</li>
 </ul>
 </li>
-</ul>
+<li>Technically this is not a summary statistic as it does not summarize data values into a single statistic. When you run your code, this will be apparent because each row will contain the same value.</li>
+</ol>
 </li>
-<li>Estimate the mean <strong>body mass</strong> by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.
+<li>Add <em>two</em> new values for the upper and and lower bounds to the confidence interval.
+<ol style="list-style-type: lower-alpha">
+<li>Name these two variables <strong>ci_mean_upper</strong> and <strong>ci_mean_lower</strong>.</li>
+<li>See the Introduction for a reminder of how to calculate a confidence interval for the mean: <span class="math inline">\(\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} &lt; \mu &lt; \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}\)</span>.</li>
+<li>Use the <code>t_crit</code> and <code>std_err_mean</code> variables you just created to calculate the confidence intervals</li>
+<li>For example: <code>ci_mean_upper = t_crit * std_err_mean</code>.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Estimate the standard deviation of <strong>body mass</strong> by species. Include a 95% confidence interval for the standard deviation.
+<ol style="list-style-type: lower-alpha">
+<li>Calculate the sample size and estimate the sample standard deviation as above.</li>
+<li>See the Introduction for a reminder of how to calculate a confidence interval for the standard deviation: <span class="math inline">\(\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} &lt; \sigma &lt; \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}\)</span> where <span class="math inline">\(\sigma\)</span> is the population standard deviation, <span class="math inline">\(s\)</span> is the sample standard deviation, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\chi^2_{1 - \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{\alpha/2}\)</span> are the critical values from the chi-squared distribution.</li>
+<li>Before you can calculate the confidence interval, you must look up the two chi-squared critical values.
+<ol style="list-style-type: lower-roman">
+<li>Add two new variables, <strong>chi2_lower</strong> and <strong>chi2upper</strong>, to hold the critical values.</li>
+<li>Calculate these values using the following equations:
 <ul>
-<li>Calculate the mean and confidence interval as above</li>
-<li>Also calculate the confidence interval for the standard deviation using the equation <span class="math inline">\(\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} &lt; \sigma &lt; \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}\)</span> where <span class="math inline">\(\sigma\)</span> is the population standard deviation, <span class="math inline">\(s\)</span> is the sample standard deviation, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\chi^2_{1 - \alpha/2}\)</span> and <span class="math inline">\(\chi^2_{\alpha/2}\)</span> are the critical values from the chi-squared distribution.</li>
-<li>The final data frame should have the following columns:
-<ul>
-<li>
-<strong>sample_size</strong> (sample size)</li>
-<li>
-<strong>mean_bm</strong> (mean body mass)</li>
-<li>
-<strong>std_dev_bm</strong> (standard deviation of body mass)</li>
-<li>
-<strong>ci_mean_upper</strong> (upper bound to the confidence interval)</li>
-<li>
-<strong>ci_mean_lower</strong> (lower bound to the confidence interval)</li>
-<li>
-<strong>ci_std_dev_upper</strong> (upper bound to the confidence interval)</li>
-<li>
-<strong>ci_std_dev_lower</strong> (lower bound to the confidence interval)</li>
+<li><code>chi2_lower = qchisq(0.975, df = sample_size - 1)</code></li>
+<li><code>chi2_upper = qchisq(0.025, df = sample_size - 1)</code></li>
+<li>Note the different values for the <code>p</code> argument</li>
 </ul>
 </li>
-</ul>
+<li>Side note: there are two critical values here because the chi-squared distribution is not symmetrical like the t distribution.</li>
+</ol>
+</li>
+<li>Add two new variables for the upper and lower bounds for the confidence interval around your estimate of the sample standard deviation
+<ol style="list-style-type: lower-alpha">
+<li>Name the new variables <strong>ci_std_dev_upper</strong> (upper bound to the confidence interval) and <strong>ci_std_dev_lower</strong> (lower bound to the confidence interval)</li>
+<li>See if you can write the equations to calculate the bounds yourself. If you need help, refer to the worked example below.</li>
+</ol>
+</li>
+</ol>
 </li>
 <li>Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
 <ul>

@@ -130,34 +130,44 @@ All questions work with the penguins dataset. The first question introduces you 
         iii. For example: `sum(!is.na(bill_length_mm))`.
     f.  Note how `n` and `sampl_size` are not the same. Ask yourself: which should you use to calculate a standard error of the mean?
 3.  Estimate a 95% confidence interval for the mean bill depth of penguins, by species.
-    -   **sampl_size** (sample size): use the equation from question 2 to calculate
-
-    -   **mean_bd** (sample mean): average bill depth
-
-    -   **std_dev_bd** (sample standard deviation): use the `sd()` function to calculate
-
-    -   **std_err_mean** (standard error of the mean): use the equation above $SE_{\bar{Y}} = \frac{s}{\sqrt{n}}$
-
-    -   **t_crit** (t critical value): use the `qt()` function to calculate the t-value needed for a confidence interval
-
-        -   This function takes two main arguments: `p` and `df`.
-        -   `p` is the cumulative probability, meaning the area under the t-distribution curve to the **left** of the desired t-value.
-            -   For a two-tailed 95% confidence interval, use `p = 0.975` (because 2.5% is in the upper tail).
-        -   df is the degrees of freedom and is typically calculated as the sample size minus one: `df = sampl_size - 1`
-        -   example: `qt(p = 0.975, df = sampl_size - 1)`
-        -   **ci_mean_upper** (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.
-        -   **ci_mean_lower** (lower bound): calculate similar to the upper bound
-4.  Estimate the mean **body mass** by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.
-    -   Calculate the mean and confidence interval as above
-    -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
-    -   The final data frame should have the following columns:
-        -   **sample_size** (sample size)
-        -   **mean_bm** (mean body mass)
-        -   **std_dev_bm** (standard deviation of body mass)
-        -   **ci_mean_upper** (upper bound to the confidence interval)
-        -   **ci_mean_lower** (lower bound to the confidence interval)
-        -   **ci_std_dev_upper** (upper bound to the confidence interval)
-        -   **ci_std_dev_lower** (lower bound to the confidence interval)
+    a.  Start by copying your code from question 2.
+    b.  Remove the statistics for `n_rows` and `n_nas`.
+    c.  Add a new summary statistic for the standard deviation of bill depth.
+        i.  Name the new variable **std_dev** and use the equation `sd()` to calculate it.
+        ii. `sd()` words the same way as `mean()`, so be sure to exclude missing values when you use it.
+    d.  Add a new summary statistic for the standard error of the mean.
+        i.  Name the new variable **std_err_mean**
+        ii. See the Introduction for a reminder of how to calculate the standard error: $SE_{\bar{Y}} = \frac{s}{\sqrt{n}}$ where $s$ is the sample standard deviation and $n$ is the sample size.
+        iii. In a `summarize()` function, you can use variables you have just calculated in subsequent variables. Here you will use the `sample_size` and `std_dev` variables you have already calculated to calculate the new `std_err_mean` variable.
+        iv. Use the `sqrt()` function to calculate the square root, and the `/` operator to divide.
+        v.  For example: `std_err_mean = sample_size / sqrt(std_err)`
+    e.  Add a new variable to hold the critical value from the $t$ distribution we will use to calculate the confidence interval.
+        i.  Name the new variable **t_crit** (t critical value)
+        ii. Use the `qt()` function to calculate the t-value needed for the confidence interval
+            -   This function takes two main arguments: `p` and `df`.
+            -   `p` is the cumulative probability, meaning the area under the t-distribution curve to the **left** of the desired t-value.
+                -   For a two-tailed 95% confidence interval, use `p = 0.975` (because 2.5% is in the upper tail).
+            -   df is the degrees of freedom and is typically calculated as the sample size minus one: `df = sampl_size - 1`
+            -   example: `qt(p = 0.975, df = sampl_size - 1)`
+        iii. Technically this is not a summary statistic as it does not summarize data values into a single statistic. When you run your code, this will be apparent because each row will contain the same value.
+    f.  Add *two* new values for the upper and and lower bounds to the confidence interval.
+        a.  Name these two variables **ci_mean_upper** and **ci_mean_lower**.
+        b.  See the Introduction for a reminder of how to calculate a confidence interval for the mean: $\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} < \mu < \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}$.
+        c.  Use the `t_crit` and `std_err_mean` variables you just created to calculate the confidence intervals
+        d.  For example: `ci_mean_upper = t_crit * std_err_mean`.
+4.  Estimate the standard deviation of **body mass** by species. Include a 95% confidence interval for the standard deviation.
+    a.  Calculate the sample size and estimate the sample standard deviation as above.
+    b.  See the Introduction for a reminder of how to calculate a confidence interval for the standard deviation: $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
+    c.  Before you can calculate the confidence interval, you must look up the two chi-squared critical values.
+        i.  Add two new variables, **chi2_lower** and **chi2upper**, to hold the critical values.
+        ii. Calculate these values using the following equations:
+            -   `chi2_lower = qchisq(0.975, df = sample_size - 1)`
+            -   `chi2_upper = qchisq(0.025, df = sample_size - 1)`
+            -   Note the different values for the `p` argument
+        iii. Side note: there are two critical values here because the chi-squared distribution is not symmetrical like the t distribution.
+    d.  Add two new variables for the upper and lower bounds for the confidence interval around your estimate of the sample standard deviation
+        a.  Name the new variables **ci_std_dev_upper** (upper bound to the confidence interval) and **ci_std_dev_lower** (lower bound to the confidence interval)
+        b.  See if you can write the equations to calculate the bounds yourself. If you need help, refer to the worked example below.
 5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
     -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
         -   Select the variables you need, species, median_bm, and mean_bm.

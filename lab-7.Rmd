@@ -100,7 +100,7 @@ In this lab you will use functions and datasets from the **dplyr** and **ggplot2
 
 All questions work with the penguins dataset. The first question introduces you to the idea of summarizing by group. The second question shows you how to calculate sample size. The third question illustrates the estimation of a confidence interval for a mean, and the fourth question adds a confidence interval for the standard deviation. The final two questions show you how to visualize the distribution of values for each sample and add summary statistics to those visualizations.
 
-1.  Calculate the mean bill depth of penguins *by species* (one mean per species)
+1.  Estimate the mean bill depth of penguins *by species* (one mean per species)
     a.  Start with the `penguins` data frame
     b.  Pipe the data frame into the next function using the native pipe operator `|>`
     c.  Group by species using the `group_by()` function described in [R4DS 3.4.1 `group_by()`](https://r4ds.hadley.nz/data-transform.html#group_by)
@@ -114,7 +114,7 @@ All questions work with the penguins dataset. The first question introduces you 
     e.  Run your code now and you may see a value of `NA` for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
         i.  Exclude those missing values during calculation of the mean by setting the `na.rm` argument to `TRUE`.
         ii. Extending the example above for calculating a median: `median_fl = median(flipper_length_mm, na.rm = TRUE)`.
-2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the sample size (the number of values used to calculate the mean).
+2.  For each species, calculate the number of penguins (aka rows, aka observations) in the dataset, and the sample size (the number of values used to calculate the mean).
     a.  Start by copying your code from question 1.
     b.  Add a new summary statistic for the number of rows in the dataset for each species
         i.  You can calculate multiple summary statistics in the same summarize function. To do this, in the summarize function, put a comma after your equation for the mean. On a new line, add your new summary statistic. See the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example of calculating two variables, `avg_delay` and `n`, in the same summarize function.
@@ -129,7 +129,7 @@ All questions work with the penguins dataset. The first question introduces you 
         ii. Modify the previous equation so it returns TRUE when a value *is not* missing and FALSE when it *is* missing. In R this is done by adding the not operator `!` before the `is.na()`. All TRUE values become !TRUE, i.e. FALSE, and vice versa.
         iii. For example: `sum(!is.na(bill_length_mm))`.
     f.  Note how `n` and `sampl_size` are not the same. Ask yourself: which should you use to calculate a standard error of the mean?
-3.  Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
+3.  Estimate a 95% confidence interval for the mean bill depth of penguins, by species.
     -   **sampl_size** (sample size): use the equation from question 2 to calculate
 
     -   **mean_bd** (sample mean): average bill depth
@@ -147,7 +147,7 @@ All questions work with the penguins dataset. The first question introduces you 
         -   example: `qt(p = 0.975, df = sampl_size - 1)`
         -   **ci_mean_upper** (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.
         -   **ci_mean_lower** (lower bound): calculate similar to the upper bound
-4.  Calculate the mean **body mass** by species, including a 95% confidence interval for the mean, and a 95% confidence interval for the standard deviation.
+4.  Estimate the mean **body mass** by species, include a 95% confidence interval for the mean, and add a 95% confidence interval for the standard deviation.
     -   Calculate the mean and confidence interval as above
     -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
     -   The final data frame should have the following columns:

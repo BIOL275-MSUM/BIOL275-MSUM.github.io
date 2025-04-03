@@ -193,22 +193,30 @@ diamonds |>
     d.  Under **Code \> Editing**, check the box for "Use native pipe operator"
     e.  Under **Code \> Completion**, check the box for "Use tab for multiline autocompletions"
 4.  Make your first commit by adding the R project file (lab-7-data-summarizing-your-name.RProj) and gitignore file (.gitignore) to Git.
-    -   The commit message should be "Add RProj and gitignore files"
-5.  Create a new `questions.R` script. This is where you will write the code to answer the questions below.
-6.  If it is not already installed, then install the **tidyverse** and **palmerpenguins** packages.
-    -   Best practice: put the library command in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).
+    -   The commit message should be "Add RProj and gitignore files".
+5.  Create a new R script. This is where you will write the code to answer the questions below. Make your second commit by adding the script. The commit message should be "Add R script for assignment".
+6.  Add code sections to your script by using the Ctrl+Shift+R shortcut, or type them manually in your script using the format `# Heading ----` . Under each section, put placeholder comments in the format `# Question 1` for the questions you will answer below. Sections and questions are as follows:
+    1.  Load packages
+    2.  Summarize data
+    3.  Faceted histograms
+    4.  Strip plot
+7.  Under the section `# Load packages ----`
+    -   Write the code to load your packages, i.e. `library(package_name)`
+    -   You will be using the **tidyverse** and **palmerpenguins** packages in this assignment
+    -   Best practice: put the library commands in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).
     -   Alternative method: use the **Packages** tab in RStudio (lower right pane) to check for the presence of the two packages, and to install them if necessary.
     -   Not recommended: typing `install.packages()` into the console
     -   Definitely not recommended: putting `install.packages()` in your R script.
-7.  Under the section `# load packages ----`
-    -   Write the code to load your packages.
-8.  Under the section `# questions ----`
-    -   Put placeholder comments for the questions below.
-    -   Below each comment, write code to perform the requested action
-    -   Do not assign the results a name (i.e. do not create an object) using the assignment operator *unless instructed to do so*.
-    -   For eah question, only include the minimum code necessary. Do not include every version of code you tried.
-9.  Save your script, commit it to Git, and push the commit to GitHub
-10. To submit your assignment:
+8.  Add placeholder comments for each question you will answer:
+    1.  Under the summarize data section, put comments for questions 1–4, for example: `# Question 1`
+    2.  Under the faceted histogram section, put a comment for questions 5
+    3.  Under the strip plot section, put a comment for question six.
+9.  Save your script, commit it to Git, and push the commit to GitHub. A good commit message would be "Add code sections and question placeholders".
+10. Write code the answer the questions listed below.
+    1.  Below the comment for each question, write code to perform the requested action
+    2.  For each question, only include the minimum code necessary. Do not include every version of code you tried.
+    3.  Do not assign the results a name (i.e. do not create an object) using the assignment operator `->` unless it is necessary to complete a subsequent task. For example, when you create a summary table and then need to plot both the raw and summarized data on the same graph.
+11. To submit your assignment:
     a.  In a web browser, navigate to your Git repository, copy the URL
     b.  Paste that as your assignment in the D2L submission box for the lab
 

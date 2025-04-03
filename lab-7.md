@@ -58,6 +58,122 @@ In this lab assignment, you'll first work see a fully developed example using th
 
 In this lab you will use functions and datasets from the **dplyr** and **ggplot2** packages. While you could load those packages individually, in this course you are encouraged to always load the entire **tidyverse** set of packages. In addition, you will be using the Palmer penguins dataset from the **palmerpenguins** package.
 
+## Instructions
+
+1.  Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.
+2.  Clone your repository to your computer using the **New Project \> Version Control \> Git** method
+3.  Set your Global Options in RStudio
+    a.  Open RStudio
+    b.  Go to the Tools menu \> Global Options
+    c.  Under **General \> Basic**, uncheck the boxes under Workspace and History
+    d.  Under **Code \> Editing**, check the box for "Use native pipe operator"
+    e.  Under **Code \> Completion**, check the box for "Use tab for multiline autocompletions"
+4.  Make your first commit by adding the R project file (lab-7-data-summarizing-your-name.RProj) and gitignore file (.gitignore) to Git.
+    -   The commit message should be "Add RProj and gitignore files".
+5.  Create a new R script. This is where you will write the code to answer the questions below. Make your second commit by adding the script. The commit message should be "Add R script for assignment".
+6.  Add code sections to your script by using the Ctrl+Shift+R shortcut, or type them manually in your script using the format `# Heading ----` . Under each section, put placeholder comments in the format `# Question 1` for the questions you will answer below. Sections and questions are as follows:
+    1.  Load packages
+    2.  Summarize data
+    3.  Faceted histograms
+    4.  Strip plot
+7.  Under the section `# Load packages ----`
+    -   Write the code to load your packages, i.e. `library(package_name)`
+    -   You will be using the **tidyverse** and **palmerpenguins** packages in this assignment
+    -   Best practice: put the library commands in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).
+    -   Alternative method: use the **Packages** tab in RStudio (lower right pane) to check for the presence of the two packages, and to install them if necessary.
+    -   Not recommended: typing `install.packages()` into the console
+    -   Definitely not recommended: putting `install.packages()` in your R script.
+8.  Add placeholder comments for each question you will answer:
+    1.  Under the summarize data section, put comments for questions 1–4, for example: `# Question 1`
+    2.  Under the faceted histogram section, put a comment for questions 5
+    3.  Under the strip plot section, put a comment for question six.
+9.  Save your script, commit it to Git, and push the commit to GitHub. A good commit message would be "Add code sections and question placeholders".
+10. Write code the answer the questions listed below.
+    1.  Below the comment for each question, write code to perform the requested action
+    2.  For each question, only include the minimum code necessary. Do not include every version of code you tried.
+    3.  Do not assign the results a name (i.e. do not create an object) using the assignment operator `->` unless it is necessary to complete a subsequent task. For example, when you create a summary table and then need to plot both the raw and summarized data on the same graph.
+11. To submit your assignment:
+    a.  In a web browser, navigate to your Git repository, copy the URL
+    b.  Paste that as your assignment in the D2L submission box for the lab
+
+## Questions
+
+All questions work with the penguins dataset.
+
+1.  Calculate the mean bill depth of penguins *by species* (one mean per species)
+    a.  Start with the `penguins` data frame
+    b.  Pipe the data frame into the next function using the native pipe operator `|>`
+    c.  Group by species using the `group_by()` function described in [R4DS 3.4.1 `group_by()`](https://r4ds.hadley.nz/data-transform.html#group_by)
+        i.  The argument to `group_by()` is the unquoted name of the variable (column) that contains the categorical variable you want to use to separate your observations (rows) into groups
+        ii. Hint: the instructions say "*by species*"
+    d.  Use the `summarize()` function described in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize).
+        i.  The argument for the function is a name = value pair where name is the new name of the summary statistic you want to create, and value is the value, function, or equation used to calculate the summary statistic.
+        ii. What should you name your summary statistic? Because it is the mean of bill depth, you could use **mean_bd**.
+        iii. Which equation should use you to calculate the summary statistic? Common summary functions include `mean()`, `median()`, and `sd()` .
+        iv. For example, to create a summary statistic for median flipper length, you would use: `median_fl = median(flipper_length_mm)`
+    e.  Run your code now and you may see a value of `NA` for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
+        i.  Exclude those missing values during calculation of the mean by setting the `na.rm` argument to `TRUE`.
+        ii. Extending the example above for calculating a median: `median_fl = median(flipper_length_mm, na.rm = TRUE)`.
+2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the sample size (the number of values used to calculate the mean).
+    a.  Start by copying your code from question 1.
+    b.  Add a new summary statistic for the number of rows in the dataset for each species
+        i.  You can calculate multiple summary statistics in the same summarize function. To do this, in the summarize function, put a comma after your equation for the mean. On a new line, add your new summary statistic. See the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example of calculating two variables, `avg_delay` and `n`, in the same summarize function.
+        ii. Name the new variable **n_rows** and use the `n()` equation to calculate it. This function counts the number of rows in the dataset—for each group, if you are using `group_by()`.
+        iii. The function does not take any arguments, for example `n = n()` .
+    c.  You might be tempted to think of your new `n_rows` statistic as the same size for calculating the means. This isn't always the case, however, as `n()` counts *all* the rows in the dataset regardless of whether they contain missing values (`NA`) for a particular variable of interest. The actual sample size would not count those missing values. So how do we exclude them? See below.
+    d.  Add a new summary statistic for the number of missing values for bill depth for each species.
+        i.  Name the new variable **`n_nas`** (number of NAs).
+        ii. Use the equation `sum(is.na(bill_length_mm))` to calculate the statistic. Why does this work? The function `is.na()` returns `TRUE` when a value is `NA` and `FALSE` when a value is not. The `sum()` function coerces that vector of trues an falses into numerical format by converting `TRUE`s to `1`s and `FALSE`s to `0`s. Adding up the `1`s gives you the number of missing values.
+    e.  Add a new summary statistic for the number of *non*-missing values for bill depth for each species. *This* is the sample size used to calculate the mean.
+        i.  Name the new variable **`sample_size`**.
+        ii. Modify the previous equation so it returns TRUE when a value *is not* missing and FALSE when it *is* missing. In R this is done by adding the not operator `!` before the `is.na()`. All TRUE values become !TRUE, i.e. FALSE, and vice versa.
+        iii. For example: `sum(!is.na(bill_length_mm))`.
+    f.  Note how `n` and `sampl_size` are not the same. Ask yourself: which should you use to calculate a standard error of the mean?
+3.  Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
+    -   **sampl_size** (sample size): use the equation from question 2 to calculate
+
+    -   **mean_bd** (sample mean): average bill depth
+
+    -   **std_dev_bd** (sample standard deviation): use the `sd()` function to calculate
+
+    -   **std_err_mean** (standard error of the mean): use the equation above $SE_{\bar{Y}} = \frac{s}{\sqrt{n}}$
+
+    -   **t_crit** (t critical value): use the `qt()` function to calculate the t-value needed for a confidence interval
+
+        -   This function takes two main arguments: `p` and `df`.
+        -   `p` is the cumulative probability, meaning the area under the t-distribution curve to the **left** of the desired t-value.
+            -   For a two-tailed 95% confidence interval, use `p = 0.975` (because 2.5% is in the upper tail).
+        -   df is the degrees of freedom and is typically calculated as the sample size minus one: `df = sampl_size - 1`
+        -   example: `qt(p = 0.975, df = sampl_size - 1)`
+        -   **ci_mean_upper** (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.
+        -   **ci_mean_lower** (lower bound): calculate similar to the upper bound
+4.  Calculate the mean **body mass** by species, including a 95% confidence interval for the mean, and a 95% confidence interval for the standard deviation.
+    -   Calculate the mean and confidence interval as above
+    -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
+    -   The final data frame should have the following columns:
+        -   **sample_size** (sample size)
+        -   **mean_bm** (mean body mass)
+        -   **std_dev_bm** (standard deviation of body mass)
+        -   **ci_mean_upper** (upper bound to the confidence interval)
+        -   **ci_mean_lower** (lower bound to the confidence interval)
+        -   **ci_std_dev_upper** (upper bound to the confidence interval)
+        -   **ci_std_dev_lower** (lower bound to the confidence interval)
+5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
+    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
+        -   Select the variables you need, species, median_bm, and mean_bm.
+        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**.
+        -   In the `geom_vline()` set the data argument to the vertical line dataset you just created
+        -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
+    -   geom_histogram() creates the histogram
+    -   facet_wrap() separates the three species into different panels
+        -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
+        -   Example: to facet the diamonds data by cut, use `facet_wrap(~cut)`
+6.  Create a strip plot that shows the distribution of penguin body masses by species
+    -   Include the raw data (geom_point)
+    -   Include violin plots (geom_violin)
+    -   Include the means (geom_point)
+    -   Include the confidence intervals for the mean (geom_errorbar)
+
 ## Example
 
 This example shows how to explore the relationship between diamond price and cut using the `diamonds` dataset from the `ggplot2` package. The variable `cut` is a categorical variable describing the quality of the diamond’s cut, ranging from Fair to Ideal. Because cut influences how well a diamond reflects light, we might expect it to be associated with differences in price.
@@ -215,98 +331,3 @@ diamonds |>
 ```
 
 <img src="lab-7_files/figure-html/strip-plots-1.png" width="70%" style="display: block; margin: auto;" />
-
-### Instructions
-
-1.  Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.
-2.  Clone your repository to your computer using the **New Project \> Version Control \> Git** method
-3.  Set your Global Options in RStudio
-    a.  Open RStudio
-    b.  Go to the Tools menu \> Global Options
-    c.  Under **General \> Basic**, uncheck the boxes under Workspace and History
-    d.  Under **Code \> Editing**, check the box for "Use native pipe operator"
-    e.  Under **Code \> Completion**, check the box for "Use tab for multiline autocompletions"
-4.  Make your first commit by adding the R project file (lab-7-data-summarizing-your-name.RProj) and gitignore file (.gitignore) to Git.
-    -   The commit message should be "Add RProj and gitignore files"
-5.  Create a new `questions.R` script. This is where you will write the code to answer the questions below.
-6.  If it is not already installed, then install the **tidyverse** and **palmerpenguins** packages.
-    -   Best practice: put the library command in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).
-    -   Alternative method: use the **Packages** tab in RStudio (lower right pane) to check for the presence of the two packages, and to install them if necessary.
-    -   Not recommended: typing `install.packages()` into the console
-    -   Definitely not recommended: putting `install.packages()` in your R script.
-7.  Under the section `# load packages ----`
-    -   Write the code to load your packages.
-8.  Under the section `# questions ----`
-    -   Put placeholder comments for the questions below.
-    -   Below each comment, write code to perform the requested action
-    -   Do not assign the results a name (i.e. do not create an object) using the assignment operator *unless instructed to do so*.
-    -   For eah question, only include the minimum code necessary. Do not include every version of code you tried.
-9.  Save your script, commit it to Git, and push the commit to GitHub
-10. To submit your assignment:
-    a.  In a web browser, navigate to your Git repository, copy the URL
-    b.  Paste that as your assignment in the D2L submission box for the lab
-
-## Questions
-
-All questions work with the penguins dataset.
-
-1.  Calculate the mean bill depth of penguins *by species* (one mean per species)
-    -   Use the `summarize()` function described in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize)
-    -   Group by species; there are two ways to do this:
-        -   Include the `group_by()` function in the pipeline before the summarize; see [R4DS 3.4.1 group_by()](https://r4ds.hadley.nz/data-transform.html#group_by) for details and an example
-        -   Alternative: use the experimental new `.by =` argument in the summarize function itself, as described in [R4DS 3.5.6 .by](https://r4ds.hadley.nz/data-transform.html#by).
-    -   Suggestion: Name the new variable **mean_bd**
-    -   Tip: use the `mean()` function to calculate the mean, for example `mean_bd = mean(flipper_length_mm)`
-    -   Warning: If you see an `NA` in the mean column, it is because there are missing values in the data used to calculate the mean. Use the `na.rm` argument to `mean()`, for example `mean(flipper_length_mm, na.rm = TRUE)` to exclude missing values when calculating the mean
-2.  For each species, calculate the mean bill depth, the number of penguins in the dataset, and the number of values used to calculate the mean
-    -   In your `summarize()` function, you can calculate multiple variables at once; see the third code block in [R4DS 3.5.2 `summarize()`](https://r4ds.hadley.nz/data-transform.html#sec-summarize) for an example
-    -   The final data frame should have *exactly* the following columns:
-        -   **`n_rows`** (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the `n()` function, which does not take any arguments, for example `n = n()`
-        -   **`n_nas`** (number of NAs): the number of missing values for bill depth; use a trick to do this: `NAs = sum(is.na(bill_length_mm))`
-        -   **`sample_size`** (sample size): the number of values used to calculate bill depth; use a trick to do this: `sample_size = sum(!is.na(bill_length_mm))`
-        -   **`mean_bd`** (mean bill depth): calculate using `mean()` with `na.rm=TRUE`
-    -   Note how `n` and `sampl_size` are not the same; ask yourself, which should you use to calculate a standard error of the mean?
-3.  Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
-    -   **sampl_size** (sample size): use the equation from question 2 to calculate
-
-    -   **mean_bd** (sample mean): average bill depth
-
-    -   **std_dev_bd** (sample standard deviation): use the `sd()` function to calculate
-
-    -   **std_err_mean** (standard error of the mean): use the equation above $SE_{\bar{Y}} = \frac{s}{\sqrt{n}}$
-
-    -   **t_crit** (t critical value): use the `qt()` function to calculate the t-value needed for a confidence interval
-
-        -   This function takes two main arguments: `p` and `df`.
-        -   `p` is the cumulative probability, meaning the area under the t-distribution curve to the **left** of the desired t-value.
-            -   For a two-tailed 95% confidence interval, use `p = 0.975` (because 2.5% is in the upper tail).
-        -   df is the degrees of freedom and is typically calculated as the sample size minus one: `df = sampl_size - 1`
-        -   example: `qt(p = 0.975, df = sampl_size - 1)`
-        -   **ci_mean_upper** (upper bound to the confidence interval): calculate using the mean, t-value, and standard error.
-        -   **ci_mean_lower** (lower bound): calculate similar to the upper bound
-4.  Calculate the mean **body mass** by species, including a 95% confidence interval for the mean, and a 95% confidence interval for the standard deviation.
-    -   Calculate the mean and confidence interval as above
-    -   Also calculate the confidence interval for the standard deviation using the equation $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
-    -   The final data frame should have the following columns:
-        -   **sample_size** (sample size)
-        -   **mean_bm** (mean body mass)
-        -   **std_dev_bm** (standard deviation of body mass)
-        -   **ci_mean_upper** (upper bound to the confidence interval)
-        -   **ci_mean_lower** (lower bound to the confidence interval)
-        -   **ci_std_dev_upper** (upper bound to the confidence interval)
-        -   **ci_std_dev_lower** (lower bound to the confidence interval)
-5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
-    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()`
-        -   Select the variables you need, species, median_bm, and mean_bm.
-        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**.
-        -   In the `geom_vline()` set the data argument to the vertical line dataset you just created
-        -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
-    -   geom_histogram() creates the histogram
-    -   facet_wrap() separates the three species into different panels
-        -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
-        -   Example: to facet the diamonds data by cut, use `facet_wrap(~cut)`
-6.  Create a strip plot that shows the distribution of penguin body masses by species
-    -   Include the raw data (geom_point)
-    -   Include violin plots (geom_violin)
-    -   Include the means (geom_point)
-    -   Include the confidence intervals for the mean (geom_errorbar)

@@ -173,158 +173,10 @@ where:</p>
 <p>In this lab assignment, you’ll first work see a fully developed example using the <code>diamonds</code> dataset to see how to create group summaries and effective visualizations. Then you’ll apply the same techniques to the <code>penguins</code> dataset, answering questions and generating your own analysis using the skills you’ve learned. ## Packages</p>
 <p>In this lab you will use functions and datasets from the <strong>dplyr</strong> and <strong>ggplot2</strong> packages. While you could load those packages individually, in this course you are encouraged to always load the entire <strong>tidyverse</strong> set of packages. In addition, you will be using the Palmer penguins dataset from the <strong>palmerpenguins</strong> package.</p>
 </div>
-<div id="example" class="section level2" number="7.3">
+<div id="instructions-3" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.3</span> Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-3"><i class="fas fa-link"></i></a>
 </h2>
-<p>This example shows how to explore the relationship between diamond price and cut using the <code>diamonds</code> dataset from the <code>ggplot2</code> package. The variable <code>cut</code> is a categorical variable describing the quality of the diamond’s cut, ranging from Fair to Ideal. Because cut influences how well a diamond reflects light, we might expect it to be associated with differences in price.</p>
-<p>We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.</p>
-<div id="load-packages" class="section level3" number="7.3.1">
-<h3>
-<span class="header-section-number">7.3.1</span> Load Packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># load packages ------------------------------</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="summarizing-the-data" class="section level3" number="7.3.2">
-<h3>
-<span class="header-section-number">7.3.2</span> Summarizing the data<a class="anchor" aria-label="anchor" href="#summarizing-the-data"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># summarize price by cut ---------------------</span></span>
-<span></span>
-<span><span class="va">diamond_summary</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    std_dev_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    sample_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    std_err_mean <span class="op">=</span> <span class="va">std_dev_price</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span>,</span>
-<span>    t_crit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
-<span>    ci_mean_lower <span class="op">=</span> <span class="va">mean_price</span> <span class="op">-</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
-<span>    ci_mean_upper <span class="op">=</span> <span class="va">mean_price</span> <span class="op">+</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
-<span>    chi2_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
-<span>    chi2_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
-<span>    ci_sd_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_lower</span><span class="op">)</span>,</span>
-<span>    ci_sd_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_upper</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>#&gt; # A tibble: 5 × 13
-#&gt;   cut      median_price mean_price std_dev_price sample_size std_err_mean t_crit
-#&gt;   &lt;ord&gt;           &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 Fair            3282       4359.         3560.        1610         88.7   1.96
-#&gt; 2 Good            3050.      3929.         3682.        4906         52.6   1.96
-#&gt; 3 Very Go…        2648       3982.         3936.       12082         35.8   1.96
-#&gt; 4 Premium         3185       4584.         4349.       13791         37.0   1.96
-#&gt; 5 Ideal           1810       3458.         3808.       21551         25.9   1.96
-#&gt; # ℹ 6 more variables: ci_mean_lower &lt;dbl&gt;, ci_mean_upper &lt;dbl&gt;,
-#&gt; #   chi2_lower &lt;dbl&gt;, chi2_upper &lt;dbl&gt;, ci_sd_lower &lt;dbl&gt;, ci_sd_upper &lt;dbl&gt;</code></pre>
-</div>
-<div id="facetted-histograms" class="section level3" number="7.3.3">
-<h3>
-<span class="header-section-number">7.3.3</span> Facetted histograms<a class="anchor" aria-label="anchor" href="#facetted-histograms"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Faceted histograms ------------------------</span></span>
-<span></span>
-<span><span class="co"># Prepare a long-format data frame for </span></span>
-<span><span class="co">#   vertical lines</span></span>
-<span><span class="va">diamond_lines</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">diamond_summary</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">cut</span>, <span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span>,</span>
-<span>    names_to <span class="op">=</span> <span class="st">"statistic"</span>,</span>
-<span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    <span class="co"># make the statistic names readable</span></span>
-<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span></span>
-<span>      <span class="va">statistic</span>,</span>
-<span>      median_price <span class="op">=</span> <span class="st">"Median"</span>,</span>
-<span>      mean_price <span class="op">=</span> <span class="st">"Mean"</span>,</span>
-<span>    <span class="op">)</span>,</span>
-<span>    <span class="co"># ensure order in legend</span></span>
-<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>   </span>
-<span>      <span class="va">statistic</span>, </span>
-<span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Median"</span>, <span class="st">"Mean"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>#&gt; # A tibble: 10 × 3
-#&gt;   cut       statistic value
-#&gt;   &lt;ord&gt;     &lt;fct&gt;     &lt;dbl&gt;
-#&gt; 1 Fair      Mean      4359.
-#&gt; 2 Fair      Median    3282 
-#&gt; 3 Good      Mean      3929.
-#&gt; 4 Good      Median    3050.
-#&gt; 5 Very Good Mean      3982.
-#&gt; 6 Very Good Median    2648 
-#&gt; # ℹ 4 more rows</code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Create the plot</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">30</span>, fill <span class="op">=</span> <span class="st">"gray70"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span></span>
-<span>    data <span class="op">=</span> <span class="va">diamond_lines</span>,</span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">value</span>, linetype <span class="op">=</span> <span class="va">statistic</span><span class="op">)</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">cut</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribution of Diamond Prices by Cut"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Price (USD)"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Frequency"</span>,</span>
-<span>    linetype <span class="op">=</span> <span class="st">"Statistic"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="lab-7_files/figure-html/histograms-1.png" width="70%" style="display: block; margin: auto;"></div>
-</div>
-<div id="strip-plots" class="section level3" number="7.3.4">
-<h3>
-<span class="header-section-number">7.3.4</span> Strip plots<a class="anchor" aria-label="anchor" href="#strip-plots"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Strip plot with violin and means ----------</span></span>
-<span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="fl">.02</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># only for big data sets</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray90"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span></span>
-<span>    width <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.8</span>, size <span class="op">=</span> <span class="fl">0.4</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange</a></span><span class="op">(</span></span>
-<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>        ymin <span class="op">=</span> <span class="va">ci_mean_lower</span>, </span>
-<span>        ymax <span class="op">=</span> <span class="va">ci_mean_upper</span><span class="op">)</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
-<span>    linewidth <span class="op">=</span> <span class="fl">0.8</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
-<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">mean_price</span><span class="op">)</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
-<span>    size <span class="op">=</span> <span class="fl">2</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Diamond Price by Cut"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Cut Quality"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Price (USD)"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="lab-7_files/figure-html/strip-plots-1.png" width="70%" style="display: block; margin: auto;"></div>
-</div>
-<div id="instructions-3" class="section level3" number="7.3.5">
-<h3>
-<span class="header-section-number">7.3.5</span> Instructions<a class="anchor" aria-label="anchor" href="#instructions-3"><i class="fas fa-link"></i></a>
-</h3>
 <ol style="list-style-type: decimal">
 <li>Claim your personal lab 7 repository on GitHub by following the link on D2L in the corresponding Content module.</li>
 <li>Clone your repository to your computer using the <strong>New Project &gt; Version Control &gt; Git</strong> method</li>
@@ -339,32 +191,45 @@ where:</p>
 </li>
 <li>Make your first commit by adding the R project file (lab-7-data-summarizing-your-name.RProj) and gitignore file (.gitignore) to Git.
 <ul>
-<li>The commit message should be “Add RProj and gitignore files”</li>
+<li>The commit message should be “Add RProj and gitignore files”.</li>
 </ul>
 </li>
-<li>Create a new <code>questions.R</code> script. This is where you will write the code to answer the questions below.</li>
-<li>If it is not already installed, then install the <strong>tidyverse</strong> and <strong>palmerpenguins</strong> packages.
+<li>Create a new R script. This is where you will write the code to answer the questions below. Make your second commit by adding the script. The commit message should be “Add R script for assignment”.</li>
+<li>Add code sections to your script by using the Ctrl+Shift+R shortcut, or type them manually in your script using the format <code># Heading ----</code> . Under each section, put placeholder comments in the format <code># Question 1</code> for the questions you will answer below. Sections and questions are as follows:
+<ol style="list-style-type: decimal">
+<li>Load packages</li>
+<li>Summarize data</li>
+<li>Faceted histograms</li>
+<li>Strip plot</li>
+</ol>
+</li>
+<li>Under the section <code># Load packages ----</code>
 <ul>
-<li>Best practice: put the library command in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).</li>
+<li>Write the code to load your packages, i.e. <code><a href="https://rdrr.io/r/base/library.html">library(package_name)</a></code>
+</li>
+<li>You will be using the <strong>tidyverse</strong> and <strong>palmerpenguins</strong> packages in this assignment</li>
+<li>Best practice: put the library commands in your script, click save, and click the Install button that appears on the banner at the top of your source pane (your R script).</li>
 <li>Alternative method: use the <strong>Packages</strong> tab in RStudio (lower right pane) to check for the presence of the two packages, and to install them if necessary.</li>
 <li>Not recommended: typing <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> into the console</li>
 <li>Definitely not recommended: putting <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in your R script.</li>
 </ul>
 </li>
-<li>Under the section <code># load packages ----</code>
-<ul>
-<li>Write the code to load your packages.</li>
-</ul>
+<li>Add placeholder comments for each question you will answer:
+<ol style="list-style-type: decimal">
+<li>Under the summarize data section, put comments for questions 1–4, for example: <code># Question 1</code>
 </li>
-<li>Under the section <code># questions ----</code>
-<ul>
-<li>Put placeholder comments for the questions below.</li>
-<li>Below each comment, write code to perform the requested action</li>
-<li>Do not assign the results a name (i.e. do not create an object) using the assignment operator <em>unless instructed to do so</em>.</li>
-<li>For eah question, only include the minimum code necessary. Do not include every version of code you tried.</li>
-</ul>
+<li>Under the faceted histogram section, put a comment for questions 5</li>
+<li>Under the strip plot section, put a comment for question six.</li>
+</ol>
 </li>
-<li>Save your script, commit it to Git, and push the commit to GitHub</li>
+<li>Save your script, commit it to Git, and push the commit to GitHub. A good commit message would be “Add code sections and question placeholders”.</li>
+<li>Write code the answer the questions listed below.
+<ol style="list-style-type: decimal">
+<li>Below the comment for each question, write code to perform the requested action</li>
+<li>For each question, only include the minimum code necessary. Do not include every version of code you tried.</li>
+<li>Do not assign the results a name (i.e. do not create an object) using the assignment operator <code>-&gt;</code> unless it is necessary to complete a subsequent task. For example, when you create a summary table and then need to plot both the raw and summarized data on the same graph.</li>
+</ol>
+</li>
 <li>To submit your assignment:
 <ol style="list-style-type: lower-alpha">
 <li>In a web browser, navigate to your Git repository, copy the URL</li>
@@ -373,7 +238,6 @@ where:</p>
 </li>
 </ol>
 </div>
-</div>
 <div id="questions-3" class="section level2" number="7.4">
 <h2>
 <span class="header-section-number">7.4</span> Questions<a class="anchor" aria-label="anchor" href="#questions-3"><i class="fas fa-link"></i></a>
@@ -381,43 +245,59 @@ where:</p>
 <p>All questions work with the penguins dataset.</p>
 <ol style="list-style-type: decimal">
 <li>Calculate the mean bill depth of penguins <em>by species</em> (one mean per species)
-<ul>
-<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function described in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a>
+<ol style="list-style-type: lower-alpha">
+<li>Start with the <code>penguins</code> data frame</li>
+<li>Pipe the data frame into the next function using the native pipe operator <code>|&gt;</code>
 </li>
-<li>Group by species; there are two ways to do this:
-<ul>
-<li>Include the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function in the pipeline before the summarize; see <a href="https://r4ds.hadley.nz/data-transform.html#group_by">R4DS 3.4.1 group_by()</a> for details and an example</li>
-<li>Alternative: use the experimental new <code>.by =</code> argument in the summarize function itself, as described in <a href="https://r4ds.hadley.nz/data-transform.html#by">R4DS 3.5.6 .by</a>.</li>
-</ul>
+<li>Group by species using the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function described in <a href="https://r4ds.hadley.nz/data-transform.html#group_by">R4DS 3.4.1 <code>group_by()</code></a>
+<ol style="list-style-type: lower-roman">
+<li>The argument to <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> is the unquoted name of the variable (column) that contains the categorical variable you want to use to separate your observations (rows) into groups</li>
+<li>Hint: the instructions say “<em>by species</em>”</li>
+</ol>
 </li>
-<li>Suggestion: Name the new variable <strong>mean_bd</strong>
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function described in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a>.
+<ol style="list-style-type: lower-roman">
+<li>The argument for the function is a name = value pair where name is the new name of the summary statistic you want to create, and value is the value, function, or equation used to calculate the summary statistic.</li>
+<li>What should you name your summary statistic? Because it is the mean of bill depth, you could use <strong>mean_bd</strong>.</li>
+<li>Which equation should use you to calculate the summary statistic? Common summary functions include <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, and <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> .</li>
+<li>For example, to create a summary statistic for median flipper length, you would use: <code>median_fl = median(flipper_length_mm)</code>
 </li>
-<li>Tip: use the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to calculate the mean, for example <code>mean_bd = mean(flipper_length_mm)</code>
+</ol>
 </li>
-<li>Warning: If you see an <code>NA</code> in the mean column, it is because there are missing values in the data used to calculate the mean. Use the <code>na.rm</code> argument to <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, for example <code>mean(flipper_length_mm, na.rm = TRUE)</code> to exclude missing values when calculating the mean</li>
-</ul>
+<li>Run your code now and you may see a value of <code>NA</code> for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
+<ol style="list-style-type: lower-roman">
+<li>Exclude those missing values during calculation of the mean by setting the <code>na.rm</code> argument to <code>TRUE</code>.</li>
+<li>Extending the example above for calculating a median: <code>median_fl = median(flipper_length_mm, na.rm = TRUE)</code>.</li>
+</ol>
 </li>
-<li>For each species, calculate the mean bill depth, the number of penguins in the dataset, and the number of values used to calculate the mean
-<ul>
-<li>In your <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> function, you can calculate multiple variables at once; see the third code block in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a> for an example</li>
-<li>The final data frame should have <em>exactly</em> the following columns:
-<ul>
-<li>
-<strong><code>n_rows</code></strong> (number of penguins in the dataset): this includes rows with missing values for bill depth; calculate using the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function, which does not take any arguments, for example <code>n = n()</code>
+</ol>
 </li>
-<li>
-<strong><code>n_nas</code></strong> (number of NAs): the number of missing values for bill depth; use a trick to do this: <code>NAs = sum(is.na(bill_length_mm))</code>
+<li>For each species, calculate the mean bill depth, the number of penguins in the dataset, and the sample size (the number of values used to calculate the mean).
+<ol style="list-style-type: lower-alpha">
+<li>Start by copying your code from question 1.</li>
+<li>Add a new summary statistic for the number of rows in the dataset for each species
+<ol style="list-style-type: lower-roman">
+<li>You can calculate multiple summary statistics in the same summarize function. To do this, in the summarize function, put a comma after your equation for the mean. On a new line, add your new summary statistic. See the third code block in <a href="https://r4ds.hadley.nz/data-transform.html#sec-summarize">R4DS 3.5.2 <code>summarize()</code></a> for an example of calculating two variables, <code>avg_delay</code> and <code>n</code>, in the same summarize function.</li>
+<li>Name the new variable <strong>n_rows</strong> and use the <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> equation to calculate it. This function counts the number of rows in the dataset—for each group, if you are using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</li>
+<li>The function does not take any arguments, for example <code>n = n()</code> .</li>
+</ol>
 </li>
-<li>
-<strong><code>sample_size</code></strong> (sample size): the number of values used to calculate bill depth; use a trick to do this: <code>sample_size = sum(!is.na(bill_length_mm))</code>
+<li>You might be tempted to think of your new <code>n_rows</code> statistic as the same size for calculating the means. This isn’t always the case, however, as <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> counts <em>all</em> the rows in the dataset regardless of whether they contain missing values (<code>NA</code>) for a particular variable of interest. The actual sample size would not count those missing values. So how do we exclude them? See below.</li>
+<li>Add a new summary statistic for the number of missing values for bill depth for each species.
+<ol style="list-style-type: lower-roman">
+<li>Name the new variable <strong><code>n_nas</code></strong> (number of NAs).</li>
+<li>Use the equation <code>sum(is.na(bill_length_mm))</code> to calculate the statistic. Why does this work? The function <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> returns <code>TRUE</code> when a value is <code>NA</code> and <code>FALSE</code> when a value is not. The <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> function coerces that vector of trues an falses into numerical format by converting <code>TRUE</code>s to <code>1</code>s and <code>FALSE</code>s to <code>0</code>s. Adding up the <code>1</code>s gives you the number of missing values.</li>
+</ol>
 </li>
-<li>
-<strong><code>mean_bd</code></strong> (mean bill depth): calculate using <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> with <code>na.rm=TRUE</code>
+<li>Add a new summary statistic for the number of <em>non</em>-missing values for bill depth for each species. <em>This</em> is the sample size used to calculate the mean.
+<ol style="list-style-type: lower-roman">
+<li>Name the new variable <strong><code>sample_size</code></strong>.</li>
+<li>Modify the previous equation so it returns TRUE when a value <em>is not</em> missing and FALSE when it <em>is</em> missing. In R this is done by adding the not operator <code>!</code> before the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. All TRUE values become !TRUE, i.e. FALSE, and vice versa.</li>
+<li>For example: <code>sum(!is.na(bill_length_mm))</code>.</li>
+</ol>
 </li>
-</ul>
-</li>
-<li>Note how <code>n</code> and <code>sampl_size</code> are not the same; ask yourself, which should you use to calculate a standard error of the mean?</li>
-</ul>
+<li>Note how <code>n</code> and <code>sampl_size</code> are not the same. Ask yourself: which should you use to calculate a standard error of the mean?</li>
+</ol>
 </li>
 <li>Calculate mean bill depth by species, include a 95% confidence interval. The final data frame should have the following columns:
 <ul>
@@ -501,6 +381,156 @@ where:</p>
 </li>
 </ol>
 </div>
+<div id="example" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
+</h2>
+<p>This example shows how to explore the relationship between diamond price and cut using the <code>diamonds</code> dataset from the <code>ggplot2</code> package. The variable <code>cut</code> is a categorical variable describing the quality of the diamond’s cut, ranging from Fair to Ideal. Because cut influences how well a diamond reflects light, we might expect it to be associated with differences in price.</p>
+<p>We’ll walk through loading packages, summarizing price by cut, and creating two types of plots: faceted histograms to show the distribution of prices by cut, and strip plots with overlaid violin plots, means, and confidence intervals.</p>
+<div id="load-packages" class="section level3" number="7.5.1">
+<h3>
+<span class="header-section-number">7.5.1</span> Load Packages<a class="anchor" aria-label="anchor" href="#load-packages"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># load packages ------------------------------</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="summarizing-the-data" class="section level3" number="7.5.2">
+<h3>
+<span class="header-section-number">7.5.2</span> Summarizing the data<a class="anchor" aria-label="anchor" href="#summarizing-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># summarize price by cut ---------------------</span></span>
+<span></span>
+<span><span class="va">diamond_summary</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    std_dev_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">price</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    sample_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    std_err_mean <span class="op">=</span> <span class="va">std_dev_price</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span>,</span>
+<span>    t_crit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    ci_mean_lower <span class="op">=</span> <span class="va">mean_price</span> <span class="op">-</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
+<span>    ci_mean_upper <span class="op">=</span> <span class="va">mean_price</span> <span class="op">+</span> <span class="va">t_crit</span> <span class="op">*</span> <span class="va">std_err_mean</span>,</span>
+<span>    chi2_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    chi2_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    ci_sd_lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_lower</span><span class="op">)</span>,</span>
+<span>    ci_sd_upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sample_size</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">std_dev_price</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">chi2_upper</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 5 × 13
+#&gt;   cut      median_price mean_price std_dev_price sample_size std_err_mean t_crit
+#&gt;   &lt;ord&gt;           &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 Fair            3282       4359.         3560.        1610         88.7   1.96
+#&gt; 2 Good            3050.      3929.         3682.        4906         52.6   1.96
+#&gt; 3 Very Go…        2648       3982.         3936.       12082         35.8   1.96
+#&gt; 4 Premium         3185       4584.         4349.       13791         37.0   1.96
+#&gt; 5 Ideal           1810       3458.         3808.       21551         25.9   1.96
+#&gt; # ℹ 6 more variables: ci_mean_lower &lt;dbl&gt;, ci_mean_upper &lt;dbl&gt;,
+#&gt; #   chi2_lower &lt;dbl&gt;, chi2_upper &lt;dbl&gt;, ci_sd_lower &lt;dbl&gt;, ci_sd_upper &lt;dbl&gt;</code></pre>
+</div>
+<div id="facetted-histograms" class="section level3" number="7.5.3">
+<h3>
+<span class="header-section-number">7.5.3</span> Facetted histograms<a class="anchor" aria-label="anchor" href="#facetted-histograms"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Faceted histograms ------------------------</span></span>
+<span></span>
+<span><span class="co"># Prepare a long-format data frame for </span></span>
+<span><span class="co">#   vertical lines</span></span>
+<span><span class="va">diamond_lines</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">diamond_summary</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">cut</span>, <span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mean_price</span>, <span class="va">median_price</span><span class="op">)</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"statistic"</span>,</span>
+<span>    values_to <span class="op">=</span> <span class="st">"value"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    <span class="co"># make the statistic names readable</span></span>
+<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span></span>
+<span>      <span class="va">statistic</span>,</span>
+<span>      median_price <span class="op">=</span> <span class="st">"Median"</span>,</span>
+<span>      mean_price <span class="op">=</span> <span class="st">"Mean"</span>,</span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="co"># ensure order in legend</span></span>
+<span>    statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>   </span>
+<span>      <span class="va">statistic</span>, </span>
+<span>      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Median"</span>, <span class="st">"Mean"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>#&gt; # A tibble: 10 × 3
+#&gt;   cut       statistic value
+#&gt;   &lt;ord&gt;     &lt;fct&gt;     &lt;dbl&gt;
+#&gt; 1 Fair      Mean      4359.
+#&gt; 2 Fair      Median    3282 
+#&gt; 3 Good      Mean      3929.
+#&gt; 4 Good      Median    3050.
+#&gt; 5 Very Good Mean      3982.
+#&gt; 6 Very Good Median    2648 
+#&gt; # ℹ 4 more rows</code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create the plot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">30</span>, fill <span class="op">=</span> <span class="st">"gray70"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_lines</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">value</span>, linetype <span class="op">=</span> <span class="va">statistic</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">cut</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribution of Diamond Prices by Cut"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Price (USD)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Frequency"</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"Statistic"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="lab-7_files/figure-html/histograms-1.png" width="70%" style="display: block; margin: auto;"></div>
+</div>
+<div id="strip-plots" class="section level3" number="7.5.4">
+<h3>
+<span class="header-section-number">7.5.4</span> Strip plots<a class="anchor" aria-label="anchor" href="#strip-plots"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Strip plot with violin and means ----------</span></span>
+<span><span class="va">diamonds</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="fl">.02</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># only for big data sets</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray90"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.8</span>, size <span class="op">=</span> <span class="fl">0.4</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_linerange</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>        ymin <span class="op">=</span> <span class="va">ci_mean_lower</span>, </span>
+<span>        ymax <span class="op">=</span> <span class="va">ci_mean_upper</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>    linewidth <span class="op">=</span> <span class="fl">0.8</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">diamond_summary</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cut</span>, y <span class="op">=</span> <span class="va">mean_price</span><span class="op">)</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Diamond Price by Cut"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Cut Quality"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Price (USD)"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="lab-7_files/figure-html/strip-plots-1.png" width="70%" style="display: block; margin: auto;"></div>
+
+</div>
+</div>
 </div>
 
 
@@ -514,16 +544,16 @@ where:</p>
 <li><a class="nav-link" href="#lab-7-data-summarizing"><span class="header-section-number">7</span> Lab 7: Data summarizing</a></li>
 <li><a class="nav-link" href="#student-learning-outcomes"><span class="header-section-number">7.1</span> Student Learning Outcomes</a></li>
 <li><a class="nav-link" href="#introduction-3"><span class="header-section-number">7.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.3</span> Instructions</a></li>
+<li><a class="nav-link" href="#questions-3"><span class="header-section-number">7.4</span> Questions</a></li>
 <li>
-<a class="nav-link" href="#example"><span class="header-section-number">7.3</span> Example</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#load-packages"><span class="header-section-number">7.3.1</span> Load Packages</a></li>
-<li><a class="nav-link" href="#summarizing-the-data"><span class="header-section-number">7.3.2</span> Summarizing the data</a></li>
-<li><a class="nav-link" href="#facetted-histograms"><span class="header-section-number">7.3.3</span> Facetted histograms</a></li>
-<li><a class="nav-link" href="#strip-plots"><span class="header-section-number">7.3.4</span> Strip plots</a></li>
-<li><a class="nav-link" href="#instructions-3"><span class="header-section-number">7.3.5</span> Instructions</a></li>
+<a class="nav-link" href="#example"><span class="header-section-number">7.5</span> Example</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-packages"><span class="header-section-number">7.5.1</span> Load Packages</a></li>
+<li><a class="nav-link" href="#summarizing-the-data"><span class="header-section-number">7.5.2</span> Summarizing the data</a></li>
+<li><a class="nav-link" href="#facetted-histograms"><span class="header-section-number">7.5.3</span> Facetted histograms</a></li>
+<li><a class="nav-link" href="#strip-plots"><span class="header-section-number">7.5.4</span> Strip plots</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#questions-3"><span class="header-section-number">7.4</span> Questions</a></li>
 </ul>
 
       <div class="book-extra">
@@ -541,7 +571,7 @@ where:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-04-01.</p>
+    <p>"<strong>BIOL 275 Biostatistics at MSUM</strong>" was written by Chris Merkord. It was last built on 2025-04-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -100,6 +100,8 @@ In this lab you will use functions and datasets from the **dplyr** and **ggplot2
 
 All questions work with the penguins dataset. The first question introduces you to the idea of summarizing by group. The second question shows you how to calculate sample size. The third question illustrates the estimation of a confidence interval for a mean, and the fourth question adds a confidence interval for the standard deviation. The final two questions show you how to visualize the distribution of values for each sample and add summary statistics to those visualizations.
 
+### Question 1: Means by group
+
 1.  Estimate the mean bill depth of penguins *by species* (one mean per species)
     a.  Start with the `penguins` data frame
     b.  Pipe the data frame into the next function using the native pipe operator `|>`
@@ -114,6 +116,9 @@ All questions work with the penguins dataset. The first question introduces you 
     e.  Run your code now and you may see a value of `NA` for the mean for certain groups. This is because there are missing values in the data for those groups. You should adjust your code for calculating the sample statistic so that it only uses the non-missing values.
         i.  Exclude those missing values during calculation of the mean by setting the `na.rm` argument to `TRUE`.
         ii. Extending the example above for calculating a median: `median_fl = median(flipper_length_mm, na.rm = TRUE)`.
+
+### Question 2: Sample sizes and missing values
+
 2.  For each species, calculate the number of penguins (aka rows, aka observations) in the dataset, and the sample size (the number of values used to calculate the mean).
     a.  Start by copying your code from question 1.
     b.  Add a new summary statistic for the number of rows in the dataset for each species
@@ -129,6 +134,9 @@ All questions work with the penguins dataset. The first question introduces you 
         ii. Modify the previous equation so it returns TRUE when a value *is not* missing and FALSE when it *is* missing. In R this is done by adding the not operator `!` before the `is.na()`. All TRUE values become !TRUE, i.e. FALSE, and vice versa.
         iii. For example: `sum(!is.na(bill_length_mm))`.
     f.  Note how `n` and `sampl_size` are not the same. Ask yourself: which should you use to calculate a standard error of the mean?
+
+### Question 3: Means with confidence intervals
+
 3.  Estimate a 95% confidence interval for the mean bill depth of penguins, by species.
     a.  Start by copying your code from question 2.
     b.  Remove the statistics for `n_rows` and `n_nas`.
@@ -155,11 +163,14 @@ All questions work with the penguins dataset. The first question introduces you 
         b.  See the Introduction for a reminder of how to calculate a confidence interval for the mean: $\bar{Y} - t_{\alpha/2,\,df} \cdot SE_{\bar{Y}} < \mu < \bar{Y} + t_{\alpha/2,\,df} \cdot SE_{\bar{Y}}$.
         c.  Use the `t_crit` and `std_err_mean` variables you just created to calculate the confidence intervals
         d.  For example: `ci_mean_upper = t_crit * std_err_mean`.
+
+### Question 4: Standard deviations with confidence intervals
+
 4.  Estimate the standard deviation of **body mass** by species. Include a 95% confidence interval for the standard deviation.
     a.  Calculate the sample size and estimate the sample standard deviation as above.
     b.  See the Introduction for a reminder of how to calculate a confidence interval for the standard deviation: $\sqrt{\frac{(n - 1) s^2}{\chi^2_{1 - \alpha/2}}} < \sigma < \sqrt{\frac{(n - 1) s^2}{\chi^2_{\alpha/2}}}$ where $\sigma$ is the population standard deviation, $s$ is the sample standard deviation, $n$ is the sample size, and $\chi^2_{1 - \alpha/2}$ and $\chi^2_{\alpha/2}$ are the critical values from the chi-squared distribution.
     c.  Before you can calculate the confidence interval, you must look up the two chi-squared critical values.
-        i.  Add two new variables, **chi2_lower** and **chi2upper**, to hold the critical values.
+        i.  Add two new variables to the data frame, **chi2_lower** and **chi2upper**, to hold the critical values.
         ii. Calculate these values using the following equations:
             -   `chi2_lower = qchisq(0.975, df = sample_size - 1)`
             -   `chi2_upper = qchisq(0.025, df = sample_size - 1)`
@@ -168,29 +179,48 @@ All questions work with the penguins dataset. The first question introduces you 
     d.  Add two new variables for the upper and lower bounds for the confidence interval around your estimate of the sample standard deviation
         a.  Name the new variables **ci_std_dev_upper** (upper bound to the confidence interval) and **ci_std_dev_lower** (lower bound to the confidence interval)
         b.  See if you can write the equations to calculate the bounds yourself. If you need help, refer to the worked example below.
-5.  Create a single graph that shows the distribution of penguin body masses using three histograms, one for each species; include vertical lines showing the median and mean body masses for each species
-    -   Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()` and save this new, reshaped data frame for later use by assigning it a name with the `->` assignment operator. Here are steps to create the reshaped summary data frame:
-        -   Assigning the new name, for example: `penguin_lines ->`
-        -   Start with the peguins dataset: `penguins |>`
-        -   Summarize the dataset by calculating the mean and median body mass.
-            -   For example, name your new variables **median_bm**, and **mean_bm**.
-        -   Use `pivot_longer()` to put the name of the statistic, "Mean" or "Median", in a new column named **statistic**, and the values in a new column named **value**. See the example below.
-        -   Recode the statistic variable so it has pretty names that will look good on the graph.
-            -   For example, recode "mean_bd" as "Mean"
-    -   Create your ggplot, using the raw penguins data.
-        -   geom_histogram() creates the histogram
-            -   Choose an appropriate number of bins using the `bins=` argument.
-        -   Add a `geom_vline()` and set the data argument to the vertical line dataset you just created, **penguin_lines**
-        -   Be sure to add the `x=grouping_variable` to the aesthetic for the vline. Because you are using a different dataset for this geom, it will not inherit the x aesthetic from the ggplot call.
-        -   facet_wrap() separates the three species into different panels
+
+### Question 5: Faceted histograms
+
+5.  Create histograms to compare the distribution of penguin body masses for each species.
+
+    The graph should be a single plot with three panels, one for each species. Stack the panels vertically to facilitate comparison of the location and spread of body masses among the three species. Add vertical lines to the histogram to show the mean and median body masses for each species.
+
+    a.  Before plotting, you need to prepare the medians and means for adding to the histograms. To add both statistics to the same graph and label them appropriately, you need to reshape the summary data into long format using `pivot_longer()` and save this new, reshaped data frame for later use by assigning it a name with the `->` assignment operator. Here are steps to create the reshaped summary data frame:
+        i.  Give the table a name, for example: `body_mass_stats <-`
+        ii. Summarize the penguins dataset by calculating the mean and median body mass.
+        iii. Use `pivot_longer()` to reshape the summary table. Put the variable names, "mean" and "median", in a new column named **statistic**, and put the values in a new column named **price**. See the example below.
+    b.  Create your histograms using `ggplot()` .
+        i.  Start with your `ggplot()` call using the penguins dataset. Do not provide a mapping argument here. You will do that separately for each geom.
+        ii. Use `geom_histogram()` to create the histograms. Set the `x` aesthetic to body mass. Use the `bins` argument to choose an appropriate number of bins.
+        iii. Use `geom_vline()` to add the vertical lines for the means and medians.
+             -   Set the `data` argument to **body_mass_stats**, the dataset you created above.
+
+             -   For the `mapping` argument, set the `xintercept` aesthetic to the column in the body_mass_stats dataset that contains the numbers for the mean and median. You defined this with the `values_to` argument in `pivot_longer()` above.
+
+             -   If you want the lines for the mean and median to look different, you can set other aesthetics like `linetype` or `color` to the `statistic` variable. By default, this will add a legend to the plot showing what each vline represents.
+
+             -   If you do not set the color in the aesthetic mapping, you should probably set it here at the geom level to something that will allow the lines to stand out from the histograms.
+        iv. Use `facet_wrap()` to separate the three species onto different panels.
             -   The argument to facet wrap should be an equation (use the tilde `~`) with the name of the grouping variable
-            -   Add the `ncol=1` argument to force the histogram panels to be in a single column rather than the default side-by-side.
-            -   Example: to facet the diamonds data by cut, use `facet_wrap(~ cut, ncol = 1)`
+
+            -   Add the `ncol=1` argument to stack the histograms in a single column.
+
+            -   Add the `scales = "free_y"` argument to allow the y-axis scale to vary on each panel so the histogram takes up the entire vertical space. This allows you to compare the location, spread, and shape of the distributions without being distracted by unequal sample sizes across species.
+
+### Question 6: Strip plot
+
 6.  Create a strip plot that shows the distribution of penguin body masses by species
-    -   Include the raw data (geom_point)
-    -   Include violin plots (geom_violin)
-    -   Include the means (geom_point)
-    -   Include the confidence intervals for the mean (geom_errorbar)
+
+    See below for an example.
+
+    a.  Plot the penguins data using `ggplot()`
+    b.  Use `geom_violin()` to show the distributions
+    c.  Use `geom_jitter()` to add the raw data
+    d.  Use `stat_summary()` to calculate the mean and confidence interval on the fly and add it to the plot as a point and linerange.
+        -   Set the `fun.data = "mean_cl_normal"` . This will use the `smean.cl.normal()` function from the Hmisc package to compute the sample mean and lower and upper confidence limits based on the t-distribution.
+        -   Adjust the color, linewidth, and size arguments to your liking.
+    e.  Use `labs()` to add a sensible title, x-axis label, and y-axis label.
 
 ## Example
 
@@ -200,113 +230,116 @@ We’ll walk through loading packages, summarizing price by cut, and creating tw
 
 ### Load Packages
 
-```{r load-packages, message=FALSE, warning=FALSE}
+```{r load-packages}
+#| message: false
+#| warning: false
 # load packages ------------------------------
 
-library(tidyverse)
+library(tidyverse)    # loads ggplot2, dplyr, etc
+library(hmisc)        # help w/ graphing summaries
 ```
 
-### Summarizing the data
+### Summarize the data
 
-```{r summarize-data, message=FALSE, warning=FALSE}
+```{r summarize-data}
+#| message: false
+#| warning: false
 # summarize price by cut ---------------------
 
-diamond_summary <- 
-  diamonds %>%
+diamonds %>%
   group_by(cut) %>%
   summarize(
-    median_price = median(price, na.rm = TRUE),
-    mean_price = mean(price, na.rm = TRUE),
-    std_dev_price = sd(price, na.rm = TRUE),
     sample_size = sum(!is.na(price)),
-    std_err_mean = std_dev_price / sqrt(sample_size),
+    median = median(price, na.rm = TRUE),
+    mean = mean(price, na.rm = TRUE),
+    std_dev = sd(price, na.rm = TRUE),
+    std_err_mean = std_dev / sqrt(sample_size),
     t_crit = qt(0.975, df = sample_size - 1),
-    ci_mean_lower = mean_price - t_crit * std_err_mean,
-    ci_mean_upper = mean_price + t_crit * std_err_mean,
+    ci_mean_lower = mean - t_crit * std_err_mean,
+    ci_mean_upper = mean + t_crit * std_err_mean,
     chi2_lower = qchisq(0.975, df = sample_size - 1),
     chi2_upper = qchisq(0.025, df = sample_size - 1),
-    ci_sd_lower = sqrt((sample_size - 1) * std_dev_price^2 / chi2_lower),
-    ci_sd_upper = sqrt((sample_size - 1) * std_dev_price^2 / chi2_upper)
-  ) |> 
-  print()
+    ci_sd_lower = sqrt((sample_size - 1) * std_dev^2 / chi2_lower),
+    ci_sd_upper = sqrt((sample_size - 1) * std_dev^2 / chi2_upper)
+  )
 ```
 
-### Facetted histograms
+### Faceted histograms
 
-```{r histograms, message=FALSE, warning=FALSE, fig.asp=1}
-# Faceted histograms ------------------------
+```{r histograms}
+#| message: false
+#| warning: false
+#| fig.asp: 1.5
+# faceted histograms ------------------------
 
-# Prepare a long-format data frame for 
-#   vertical lines
-diamond_lines <- 
-  diamond_summary |> 
-  select(cut, mean_price, median_price) |> 
-  pivot_longer(
-    cols = c(mean_price, median_price),
-    names_to = "statistic",
-    values_to = "value"
+# prepare a data frame for the statistics
+price_stats <- 
+  diamonds %>%
+  group_by(cut) %>%
+  # summarize, calculate mean and median, excluding missing values
+  summarize(
+    median = median(price, na.rm = TRUE),
+    mean = mean(price, na.rm = TRUE),
   ) |> 
-  mutate(
-    # make the statistic names readable
-    statistic = recode(
-      statistic,
-      median_price = "Median",
-      mean_price = "Mean",
-    ),
-    # ensure order in legend
-    statistic = factor(   
-      statistic, 
-      levels = c("Median", "Mean")
-    )
+  # pivot data from wide to long
+  pivot_longer(
+    cols = c(mean, median),
+    names_to = "statistic",
+    values_to = "price"
   ) |> 
   print()
 
-
-# Create the plot
+# plot the histograms
 ggplot(diamonds, aes(x = price)) +
   geom_histogram(bins = 30, fill = "gray70", color = "black") +
   geom_vline(
-    data = diamond_lines,
-    aes(xintercept = value, linetype = statistic),
-    color = "red",
-    show.legend = TRUE
+    data = price_stats,
+    aes(xintercept = price, color = statistic, linetype = statistic),
+    size = 1
   ) +
   facet_wrap(~ cut, scales = "free_y", ncol = 1) +
   labs(
     title = "Distribution of Diamond Prices by Cut",
     x = "Price (USD)",
     y = "Frequency",
+    color = "Statistic",
     linetype = "Statistic"
   ) +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-
+  theme_minimal()
 ```
 
-### Strip plots
+### Strip plot
 
-```{r strip-plots, message=FALSE, warning=FALSE}
-# Strip plot with violin and means ----------
+```{r sample-for-strip-plot}
+#| include: false
+set.seed(1)
+diamonds <- sample_frac(diamonds, 0.02)
+```
+
+```{r plot-strip-plots}
+#| message: false
+#| warning: false
+#| fig.cap: "This example uses a subset of the diamonds dataset to make the points and summaries easier to see."
+# load Hmisc package to help with summaries
+library(Hmisc)
+
+# strip plot with violin, means, and conf intervs ----------
 diamonds |> 
-  sample_frac(.02) |> # only for big data sets
   ggplot(aes(x = cut, y = price)) +
-  geom_violin(fill = "gray90", color = NA) +
+  geom_violin(
+    fill = "gray90", 
+    color = NA
+  ) +
   geom_jitter(
-    width = 0.2, alpha = 0.8, size = 0.4
+    width = 0.2, 
+    alpha = 0.8, 
+    size = 0.4
   ) +
-  geom_linerange(
-    data = diamond_summary,
-    aes(x = cut, y = NULL,
-        ymin = ci_mean_lower, 
-        ymax = ci_mean_upper),
-    color = "blue",
-    linewidth = 0.8
-  ) +
-  geom_point(
-    data = diamond_summary,
-    aes(x = cut, y = mean_price),
-    color = "blue",
-    size = 2
+  stat_summary(
+    fun.data = "mean_cl_normal", 
+    color = "red", 
+    linewidth = 1, 
+    size = .8
   ) +
   labs(
     title = "Diamond Price by Cut",

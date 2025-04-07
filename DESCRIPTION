@@ -6,7 +6,8 @@ Imports:
     readxl,
     tidyverse,
     DT,
-    palmerpenguins
+    palmerpenguins,
+    Hmisc
 Suggests:
     bookdown,
     bslib,

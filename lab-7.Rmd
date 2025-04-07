@@ -236,7 +236,7 @@ We’ll walk through loading packages, summarizing price by cut, and creating tw
 # load packages ------------------------------
 
 library(tidyverse)    # loads ggplot2, dplyr, etc
-library(hmisc)        # help w/ graphing summaries
+library(Hmisc)        # help w/ graphing summaries
 ```
 
 ### Summarize the data

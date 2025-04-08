@@ -32,11 +32,11 @@ Your poster should contain the following elements:
 
 ## Format and Style
 
-- Use a [scientific writing style](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/bes2.1258).
+-   Use a [scientific writing style](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1002/bes2.1258).
 
-- Keep sentences fairly short.
+-   Keep sentences fairly short.
 
-- Don't put more than about three sentences per paragraph. This makes it easier to read in an online format.
+-   Don't put more than about three sentences per paragraph. This makes it easier to read in an online format.
 
 ## Template
 
@@ -44,7 +44,7 @@ To create your poster, you should create a README.Rmd. Use the following templat
 
 The BOLD WORDS in the template below are placeholders that you should replace with your own text.
 
-````
+````         
 ---
 output: github_document
 ---
@@ -93,7 +93,6 @@ DISCUSSION
 - REFERENCE 2
 - REFERENCE 3
 - ETC.
-
 ````
 
 ## Visual Editor
@@ -112,61 +111,59 @@ You can add images to your markdown document in various ways. The easiest is to 
 
 If your image is located online, then your source would be the image URL:
 
-``` {.html}
+``` html
 <img src="https://your-image-url.png" width="400">
 ```
 
 If you saved the image to your RStudio project directory, then your source would be the image name:
 
-``` {.html}
+``` html
 <img src="image.png" width="400">
 ```
 
 If you saved the image to a directory (folder) within your RStudio project directory, then your source would be the relative path followed by the image name:
 
-``` {.html}
+``` html
 <img src="images/image.png" width="400">
 ```
-
 
 ## Introduction
 
 Your introduction should:
 
-- Provide relevant background information
+-   Provide relevant background information
 
-- Clearly identify the problem or question you plan to address
+-   Clearly identify the problem or question you plan to address
 
-- State the wider implications for answering this question
+-   State the wider implications for answering this question
 
-- Cite relevant information
+-   Cite relevant information
 
-- Include helpful images or diagrams
+-   Include helpful images or diagrams
 
 ## Methods
 
 The methods section should include paragraphs related to:
 
-- **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
+-   **Data Acquisition**. In paragraph or list form, describe how you obtained the data. Be specific... which websites did you go to, did you select which data to download, did you have to request access, etc. Use in-text citations to cite your data sources... find on their websites how to cite them appropriately. Put full references in your literature cite.
 
-- **Data Preparation**. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
+-   **Data Preparation**. In paragraph or list form, describe how you cleaned up the data in preparation for your analyses.
 
-- Citations should include:
+-   Citations should include:
 
-    - R
-    - RStudio
-    - any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
-    - any R packages you used to access data
-    - the source of your data. 
-
+    -   R
+    -   RStudio
+    -   any R packages from the tidyverse you used (e.g. readr, dply, ggplot2)
+    -   any R packages you used to access data
+    -   the source of your data.
 
 ## Results
 
 Your results should contain short paragraphs describing the patterns you found in your data, each followed by a corresponding graph.
 
-- Do not show any code, just figures
+-   Do not show any code, just figures
 
-- Explain what each figure shows, not what it is. For example, instead of saying a figure is a histogram, say that it shows that the variable in question has a normal distribution and give the approximate mean and standard deviation.
+-   Explain what each figure shows, not what it is. For example, instead of saying a figure is a histogram, say that it shows that the variable in question has a normal distribution and give the approximate mean and standard deviation.
 
 ## Discussion
 

@@ -17,6 +17,7 @@ rmd_files: [
   "eda-sac-application.Rmd",
   "data-sets.Rmd",
   "citing-r.Rmd",
+  "eda-example.Rmd",
   
   "laptop-setup.Rmd",
   "git-setup.Rmd",

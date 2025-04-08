@@ -1,0 +1,76 @@
+---
+title: "Exploratory Data Analysis of [Dataset Title]"
+author:
+  - name: "First Last"
+    affiliation: "Department of Biosciences, Minnesota State University Moorhead"
+    email: your.email@go.mnstate.edu
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: false
+execute:
+  echo: false
+  warning: false
+  message: false
+editor: visual
+---
+
+Presentation ID: 1234 \[replace 1234 with your ID#\]
+
+# Abstract
+
+A concise summary of your analysis, dataset, key methods, and findings. Keep it under 250 words.
+
+# Introduction
+
+-   Describe the study system
+
+-   Identify a gap in knowledge
+
+-   Describe how you plan to address that gap (which dataset you will use, which variables you will use)
+
+-   Cite at least two peer-reviewed journal articles
+
+## Methods
+
+-   For each data source, say:
+
+    -   How was the data originally collected (by whomever collected the data)
+
+    -   How you personally got the data; if you downloaded it from the internet, give explicit directions for how
+
+    -   Cite the source
+
+-   Give an overview of how you processed and analyzed the data; do not go into specifics about how you graphed it (that is obvious based on seeing the graphs)
+
+-   A paragraph saying analysis was done in R and RStudio. Cite R and RStudio. Cite the packages you used.
+
+## Results
+
+-   Start with sentences describing your results in words
+
+-   You need to cite 4 peer-reviewed journal articles in your report. Those citations could go in the intro, methods, or discussion, as appropriate
+
+```{r}
+#| label: fig-example
+#| fig-cap: "Example figure caption."
+#| echo: false
+plot(cars)
+```
+
+# Discussion
+
+Interpret your results. What do they mean in context? What patterns did you discover? Were there any surprises? Any limitations?
+
+# References
+
+-   Four peer-reviewed journal articles, cited somewhere in the intro, methods, or discussion; at least two cited in the intro, and at least two in the discussion.
+
+-   Citations for R and RStudio,
+
+-   Citations for tidyverse and any non-tidyverse packages you used
+
+# Acknowledgements
+
+-   You can acknowledge any people or organizations here; e.g. the course instructor, if they are not already a coauthor. Do not acknowledge coauthors.

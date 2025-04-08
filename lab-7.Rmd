@@ -246,8 +246,8 @@ library(Hmisc)        # help w/ graphing summaries
 #| warning: false
 # summarize price by cut ---------------------
 
-diamonds %>%
-  group_by(cut) %>%
+diamonds |> 
+  group_by(cut) |>
   summarize(
     sample_size = sum(!is.na(price)),
     median = median(price, na.rm = TRUE),
@@ -274,8 +274,8 @@ diamonds %>%
 
 # prepare a data frame for the statistics
 price_stats <- 
-  diamonds %>%
-  group_by(cut) %>%
+  diamonds |> 
+  group_by(cut) |> 
   # summarize, calculate mean and median, excluding missing values
   summarize(
     median = median(price, na.rm = TRUE),
@@ -316,7 +316,7 @@ set.seed(1)
 diamonds <- sample_frac(diamonds, 0.02)
 ```
 
-```{r plot-strip-plots}
+```{r plot-strip-plots} |>}
 #| message: false
 #| warning: false
 #| fig.cap: "This example uses a subset of the diamonds dataset to make the points and summaries easier to see."
